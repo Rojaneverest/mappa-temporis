@@ -1,0 +1,114 @@
+# Southeast Asia, c. 800 BCE – 700 CE. Groups: mainland, islands.
+lanes:
+  - id: dong-son
+    name: Đông Sơn culture
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 3
+    basis: archaeology
+    span: c. 1000 BCE – c. 1 CE
+    events:
+      - { id: bronze-drums, date: c. 500 BCE, label: "Great bronze drums are cast and traded across Southeast Asia", prominence: 2, themes: [art, trade], sources: [wikipedia:Dong_Son_drum] }
+    images:
+      - { id: ngoc-lu-drum, source: "commons:File:Ngoc Lu.jpg", date: c. 500 BCE, prominence: 3, treatment: plate, caption: "The Ngọc Lũ bronze drum" }
+    sources: [wikipedia:Đông_Sơn_culture]
+
+  - id: au-lac
+    name: Âu Lạc
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 4
+    span: 257 – 179 BCE
+    relations:
+      - { type: becomes, lane: nanyue, at: 179 BCE }
+    sources: [wikipedia:Âu_Lạc]
+
+  - id: nanyue
+    name: Nanyue
+    endonym: { text: 南越, script: Hant, translit: Nányuè }
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 3
+    span: 204 – 111 BCE
+    relations:
+      - { type: becomes, lane: jiaozhi, at: 111 BCE }
+    sources: [wikipedia:Nanyue]
+
+  - id: jiaozhi
+    name: Chinese rule in the north (Jiaozhi)
+    region: southeast-asia
+    group: mainland
+    sphere: sinic
+    prominence: 4
+    span: 111 BCE – 939 CE
+    events:
+      - { id: trung-sisters, date: 40 CE, label: "The Trưng sisters lead a revolt against Han rule", prominence: 2, themes: [women, war], sources: [wikipedia:Trưng_sisters] }
+    sources: [wikipedia:First_Chinese_domination_of_Vietnam]
+
+  - id: funan
+    name: Funan
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 2
+    span: c. 50 – c. 627 CE
+    relations:
+      - { type: becomes, lane: chenla, at: c. 627 CE }
+    events:
+      - { id: oc-eo, date: 2nd c., label: "Oc Eo port trades with India and Rome — a Roman gold coin was found here", prominence: 3, themes: [trade], sources: [wikipedia:Óc_Eo] }
+    sources: [wikipedia:Funan]
+
+  - id: chenla
+    name: Chenla
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 3
+    span: c. 550 – 802 CE
+    sources: [wikipedia:Chenla]
+
+  - id: champa
+    name: Champa
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 3
+    span: 192 – 1832 CE
+    events:
+      - { id: my-son, date: 4th c., label: "Mỹ Sơn sanctuary to Shiva is begun", prominence: 4, themes: [religion, art], sources: [wikipedia:Mỹ_Sơn] }
+    sources: [wikipedia:Champa]
+
+  - id: pyu
+    name: Pyu city-states
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 3
+    basis: archaeology
+    span: c. 200 BCE – c. 1050 CE
+    sources: [wikipedia:Pyu_city-states]
+
+  - id: tarumanagara
+    name: Tarumanagara & Kutai
+    region: southeast-asia
+    group: islands
+    sphere: southeast-asian
+    prominence: 4
+    span: c. 358 – 669 CE
+    events:
+      - { id: kutai-yupa, date: c. 400 CE, label: "Sanskrit pillar inscriptions at Kutai, the oldest in Indonesia", prominence: 4, thread: scripts, sources: [wikipedia:Kutai_Martadipura] }
+    sources: [wikipedia:Tarumanagara]
+
+  - id: srivijaya
+    name: Srivijaya
+    region: southeast-asia
+    group: islands
+    sphere: southeast-asian
+    prominence: 2
+    span: c. 650 – 1377 CE
+    events:
+      - { id: yijing, date: 671 CE, label: "The Chinese monk Yijing studies Sanskrit at Srivijaya", prominence: 3, themes: [religion, ideas], sources: [wikipedia:Yijing_(monk)] }
+    sources: [wikipedia:Srivijaya]

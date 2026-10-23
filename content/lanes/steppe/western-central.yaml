@@ -1,0 +1,84 @@
+# The western steppe and Central Asia, c. 800 BCE – 700 CE (the eastern steppe is in eastern-steppe.yaml).
+lanes:
+  - id: scythians
+    name: Scythians
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 2
+    span: c. 800 BCE – c. 200 CE
+    relations:
+      - { type: influences, lane: neo-assyria, at: c. 650 BCE }
+    events:
+      - { id: scythian-raids, date: c. 650 BCE, label: "Scythian horsemen raid deep into the Near East", prominence: 4, themes: [war, migration], confidence: probable, sources: [wikipedia:Scythians] }
+      - { id: darius-scythia, date: c. 513 BCE, label: "Darius invades Scythia and finds no one to fight", prominence: 3, themes: [war], sources: [wikipedia:Darius_I's_European_Scythian_campaign] }
+      - { id: herodotus-scythians, date: c. 440 BCE, label: "Herodotus describes Scythian burials, horses and gold", prominence: 4, themes: [ideas], sources: [wikipedia:Scythians] }
+    sources: [wikipedia:Scythians]
+
+  - id: sarmatians
+    name: Sarmatians
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 3
+    span: c. 500 BCE – c. 400 CE
+    sources: [wikipedia:Sarmatians]
+
+  - id: huns
+    name: Huns
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 2
+    span: c. 370 – 469 CE
+    relations:
+      - { type: influences, lane: germanic-peoples, at: 376 CE }
+    events:
+      - { id: catalaunian, date: 451 CE, label: "Romans and Visigoths stop Attila on the Catalaunian Plains", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Catalaunian_Plains] }
+      - { id: attila-dies, date: 453 CE, label: "Attila dies on his wedding night; the Hunnic empire breaks apart", prominence: 3, sources: [wikipedia:Attila] }
+    sources: [wikipedia:Huns]
+
+  - id: avars
+    name: Avars
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 4
+    span: 567 – 822 CE
+    sources: [wikipedia:Pannonian_Avars]
+
+  - id: greco-bactria
+    name: Greco-Bactrian kingdom
+    region: steppe
+    group: central-asia
+    sphere: hellenic
+    prominence: 3
+    span: c. 256 – c. 120 BCE
+    events:
+      - { id: ai-khanoum, date: c. 250 BCE, label: "Ai-Khanoum: a Greek city with a theatre on the Oxus", prominence: 3, sources: [wikipedia:Ai-Khanoum] }
+    sources: [wikipedia:Greco-Bactrian_Kingdom]
+
+  - id: yuezhi
+    name: Yuezhi
+    region: steppe
+    group: central-asia
+    sphere: steppe
+    prominence: 3
+    span: c. 300 BCE – 30 CE
+    relations:
+      - { type: becomes, lane: kushan, at: 30 CE }
+      - { type: conquers, lane: greco-bactria, at: c. 130 BCE }
+    events:
+      - { id: yuezhi-west, date: c. 176 BCE, label: "Driven west by the Xiongnu, the Yuezhi migrate to Bactria", prominence: 3, themes: [migration], sources: [wikipedia:Yuezhi] }
+    sources: [wikipedia:Yuezhi]
+
+  - id: sogdians
+    name: Sogdian city-states
+    region: steppe
+    group: central-asia
+    sphere: persian
+    prominence: 3
+    span: c. 500 BCE – c. 750 CE
+    events:
+      - { id: sogdian-merchants, date: c. 500 CE, label: "Sogdian merchants run the Silk Road from Samarkand to Chang'an", prominence: 3, thread: silk-road, themes: [trade], sources: [wikipedia:Sogdia] }
+    sources: [wikipedia:Sogdia]

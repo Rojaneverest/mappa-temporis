@@ -9,7 +9,7 @@ import { Painter, imageNeeds, type ImageStore } from '../../../packages/render/s
 
 export type ToWorker =
   | { type: 'init'; chartUrl: string }
-  | { type: 'tile'; id: string; x0: number; y0: number; s: number; w: number; h: number };
+  | { type: 'tile'; id: string; x0: number; y0: number; s: number; zoom: number; w: number; h: number };
 
 export type FromWorker =
   | { type: 'ready' }
@@ -41,11 +41,10 @@ self.onmessage = async (e: MessageEvent<ToWorker>) => {
 };
 
 async function init(chartUrl: string) {
-  const [kit, chart, ...fontBufs] = await Promise.all([
+  const [kit, chart] = await Promise.all([
     CanvasKitInit({ locateFile: (f: string) => `/canvaskit/${f}` }),
-    fetch(chartUrl).then((r) => r.json() as Promise<DisplayList>),
-    ...FONT_FILES.map((f) => fetch(`/fonts/${f.file}`).then((r) => r.arrayBuffer())),
-  ]);
+    fetch(chartUrl).then((r) => r.json() as Promise<DisplayList>),  ]);
+  const fontBufs = await Promise.all(FONT_FILES.map((f) => fetch(`${chart.fonts}${f.file}`).then((r) => r.arrayBuffer())));
   ck = kit;
   dl = chart;
   const buffers = new Map(FONT_FILES.map((f, i) => [f.file, fontBufs[i]!] as const));
@@ -85,9 +84,9 @@ async function renderTile(job: Extract<ToWorker, { type: 'tile' }>) {
   // Flatbush returns hits in arbitrary order; display-list order is z-order.
   const hits = index.search(job.x0, job.y0, job.x0 + job.w / job.s, job.y0 + job.h / job.s).sort((a, b) => a - b);
   // Images arrive before the tile is painted, so a tile is never drawn half-finished.
-  const needed = imageNeeds(dl, hits, job.s).filter((k) => !images.has(k));
+  const needed = imageNeeds(dl, hits, job.s, job.zoom).filter((k) => !images.has(k));
   if (needed.length) await Promise.all(needed.map(loadImage));
-  painter.paint(surface!.getCanvas(), { x0: job.x0, y0: job.y0, s: job.s, widthPx: job.w, heightPx: job.h }, hits, { paper: false });
+  painter.paint(surface!.getCanvas(), { x0: job.x0, y0: job.y0, s: job.s, zoom: job.zoom, widthPx: job.w, heightPx: job.h }, hits, { paper: false });
   surface!.flush();
   const snapshot = surface!.makeImageSnapshot();
   const pixels = snapshot.readPixels(0, 0, {

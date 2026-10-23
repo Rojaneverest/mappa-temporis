@@ -1,0 +1,158 @@
+# Africa (outside Egypt), c. 800 BCE – 700 CE. Groups west → east: west-africa, nile-horn, maghreb.
+# The Maghreb sits on the right so Carthage neighbours Rome across the region border.
+lanes:
+  # ------------------------------------------------------------------ west & central africa
+  - id: nok
+    name: Nok culture
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 2
+    basis: archaeology
+    span: c. 1500 BCE – c. 1 CE
+    events:
+      - { id: nok-terracottas, date: c. 900 BCE, label: "Nok sculptors begin their great terracotta heads", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Nok_culture] }
+      - { id: west-african-iron, date: c. 500 BCE, label: "Iron smelting in West Africa — perhaps invented independently", prominence: 2, confidence: disputed, themes: [technology], sources: [wikipedia:Iron_metallurgy_in_Africa] }
+    images:
+      - { id: nok-head, source: "commons:File:Nok sculpture Louvre 70-1998-11-1.jpg", date: c. 500 BCE, prominence: 2, treatment: cutout, caption: "Nok terracotta figure" }
+    sources: [wikipedia:Nok_culture]
+
+  - id: bantu-expansion
+    name: Bantu expansion
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 2
+    basis: archaeology
+    span: c. 1000 BCE – c. 500 CE
+    events:
+      - { id: urewe, date: c. 500 BCE, label: "Iron-working Bantu farmers reach the Great Lakes", prominence: 3, themes: [migration, technology], confidence: probable, sources: [wikipedia:Urewe] }
+      - { id: bantu-south, date: c. 300 CE, label: "Bantu-speaking farmers reach southern Africa", prominence: 3, themes: [migration], confidence: probable, sources: [wikipedia:Bantu_expansion] }
+    sources: [wikipedia:Bantu_expansion]
+
+  - id: djenne-djenno
+    name: Djenné-Djenno
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 3
+    basis: archaeology
+    span: c. 250 BCE – c. 1400 CE
+    events:
+      - { id: djenne-city, date: c. 250 BCE, label: "One of the oldest cities south of the Sahara rises on the Niger", prominence: 3, sources: [wikipedia:Djenné-Djenno] }
+    sources: [wikipedia:Djenné-Djenno]
+
+  - id: ghana-empire
+    name: Ghana (Wagadu)
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 2
+    span: c. 300 – 1200 CE
+    events:
+      - { id: camel-caravans, date: c. 300 CE, label: "Camel caravans open the trans-Saharan gold trade", prominence: 2, confidence: probable, themes: [trade], sources: [wikipedia:Trans-Saharan_trade] }
+    sources: [wikipedia:Ghana_Empire]
+
+  # ------------------------------------------------------------------ the middle nile & the horn
+  - id: kush
+    name: Kingdom of Kush
+    region: africa
+    group: nile-horn
+    sphere: african
+    prominence: 1
+    span: c. 1070 BCE – c. 350 CE
+    segments:
+      - { name: Napata, span: c. 1070 – 270 BCE, weight: 5 }
+      - { name: Meroë, span: 270 BCE – c. 350 CE, weight: 4 }
+    relations:
+      - { type: conquers, lane: egypt-third-intermediate, at: c. 728 BCE }
+    events:
+      - { id: black-pharaohs, date: c. 728 BCE, label: "Piye conquers Egypt — the 'Black Pharaohs' of the 25th Dynasty", prominence: 1, sources: [wikipedia:Twenty-fifth_Dynasty_of_Egypt] }
+      - { id: kush-leaves-egypt, date: 664 BCE, label: "Assyria drives the Kushite pharaohs out of Egypt", prominence: 4, themes: [war], sources: [wikipedia:Tantamani] }
+      - { id: meroe-pyramids, date: c. 270 BCE, label: "Royal burials move to Meroë — more pyramids than all of Egypt", prominence: 2, themes: [art], sources: [wikipedia:Nubian_pyramids] }
+      - { id: meroitic-script, date: 2nd c. BCE, label: "Meroitic script, still only partly understood", prominence: 3, thread: scripts, sources: [wikipedia:Meroitic_script] }
+      - { id: amanirenas, date: c. 25 BCE, label: "Queen Amanirenas fights Rome to a negotiated peace", prominence: 3, themes: [women, war], sources: [wikipedia:Amanirenas] }
+    images:
+      - { id: kushite-king, source: "met:545027", date: c. 700 BCE, prominence: 2, treatment: cutout, caption: "Kneeling Kushite king of the 25th Dynasty" }
+    sources: [wikipedia:Kingdom_of_Kush]
+
+  - id: dmt
+    name: Dʿmt
+    region: africa
+    group: nile-horn
+    sphere: african
+    prominence: 4
+    span: c. 980 – 400 BCE
+    sources: [wikipedia:Dʿmt]
+
+  - id: aksum
+    name: Kingdom of Aksum
+    endonym: { text: አክሱም, script: Ethi, translit: ʾAksum }
+    region: africa
+    group: nile-horn
+    sphere: african
+    prominence: 2
+    span: c. 100 – c. 940 CE
+    relations:
+      - { type: conquers, lane: kush, at: c. 350 CE }
+      - { type: conquers, lane: saba, at: c. 525 CE }
+    events:
+      - { id: aksum-coins, date: c. 270 CE, label: "Aksum mints its own gold coins", prominence: 4, thread: money, themes: [trade], sources: [wikipedia:Aksumite_currency] }
+      - { id: aksum-stelae, date: 4th c., label: "Giant stone stelae rise over Aksum's royal tombs", prominence: 3, themes: [art], sources: [wikipedia:Obelisk_of_Axum] }
+      - { id: ezana, date: c. 330 CE, label: "King Ezana adopts Christianity", prominence: 2, themes: [religion], sources: [wikipedia:Ezana_of_Axum] }
+      - { id: first-hijra, date: 615 CE, label: "Aksum shelters Muhammad's persecuted followers", prominence: 3, themes: [religion, migration], sources: [wikipedia:Migration_to_Abyssinia] }
+    images:
+      - { id: aksum-stele, source: "commons:File:Rome Stele.jpg", date: 4th c., prominence: 3, treatment: plate, caption: "The great stele of Aksum" }
+    sources: [wikipedia:Kingdom_of_Aksum]
+
+  # ------------------------------------------------------------------ the maghreb
+  - id: garamantes
+    name: Garamantes
+    region: africa
+    group: maghreb
+    sphere: african
+    prominence: 4
+    span: c. 500 BCE – c. 700 CE
+    events:
+      - { id: foggaras, date: c. 1st c. BCE, label: "Underground channels water oases in the Sahara", prominence: 4, confidence: probable, themes: [technology], sources: [wikipedia:Garamantes] }
+    sources: [wikipedia:Garamantes]
+
+  - id: carthage
+    name: Carthage
+    region: africa
+    group: maghreb
+    sphere: punic
+    prominence: 2
+    span: 814 – 146 BCE
+    events:
+      - { id: carthage-founded, date: 814 BCE, label: "Settlers from Tyre found Carthage (traditional date)", prominence: 3, confidence: legendary, themes: [migration], sources: [wikipedia:Ancient_Carthage] }
+      - { id: hanno, date: c. 500 BCE, label: "Hanno the Navigator sails down the West African coast", prominence: 3, confidence: probable, themes: [exploration], sources: [wikipedia:Hanno_the_Navigator] }
+      - { id: himera, date: 480 BCE, label: "Defeat at Himera checks Carthage in Sicily", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Himera_(480_BC)] }
+      - { id: first-punic-war, date: 264 BCE, label: "The First Punic War with Rome begins", prominence: 3, themes: [war], sources: [wikipedia:First_Punic_War] }
+      - { id: hannibal-alps, date: 218 BCE, label: "Hannibal crosses the Alps with his elephants", prominence: 1, themes: [war], sources: [wikipedia:Hannibal's_crossing_of_the_Alps] }
+      - { id: cannae, date: 216 BCE, label: "Cannae: Hannibal's masterpiece", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Cannae] }
+      - { id: zama, date: 202 BCE, label: "Scipio defeats Hannibal at Zama", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Zama] }
+    sources: [wikipedia:Ancient_Carthage]
+
+  - id: numidia
+    name: Numidia
+    region: africa
+    group: maghreb
+    sphere: african
+    prominence: 3
+    span: 202 – 46 BCE
+    events:
+      - { id: jugurtha, date: 112 BCE, label: "Jugurtha's war with Rome", prominence: 4, themes: [war], sources: [wikipedia:Jugurthine_War] }
+    sources: [wikipedia:Numidia]
+
+  - id: vandal-kingdom
+    name: Vandal kingdom
+    region: africa
+    group: maghreb
+    sphere: celtic-germanic
+    prominence: 3
+    span: 435 – 534 CE
+    events:
+      - { id: vandals-carthage, date: 439 CE, label: "The Vandals seize Carthage", prominence: 3, themes: [war, migration], sources: [wikipedia:Vandal_Kingdom] }
+      - { id: sack-455, date: 455 CE, label: "Vandals sack Rome", prominence: 3, themes: [war], sources: [wikipedia:Sack_of_Rome_(455)] }
+    sources: [wikipedia:Vandal_Kingdom]

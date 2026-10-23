@@ -1,0 +1,312 @@
+# Europe, c. 800 BCE – 700 CE. Groups west → east: north-europe, italy, greece.
+lanes:
+  # ------------------------------------------------------------------ north
+  - id: hallstatt
+    name: Hallstatt culture
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 3
+    basis: archaeology
+    span: c. 800 – 450 BCE
+    relations:
+      - { type: becomes, lane: la-tene, at: c. 450 BCE }
+    events:
+      - { id: hallstatt-salt, date: c. 700 BCE, label: "Salt mines at Hallstatt make Alpine chiefs rich", prominence: 4, themes: [trade], sources: [wikipedia:Hallstatt_culture] }
+    sources: [wikipedia:Hallstatt_culture]
+
+  - id: la-tene
+    name: Celts (La Tène)
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 2
+    span: c. 450 – 1 BCE
+    events:
+      - { id: celts-delphi, date: 279 BCE, label: "Celtic war-bands invade Greece and attack Delphi", prominence: 4, themes: [war, migration], sources: [wikipedia:Gallic_invasion_of_the_Balkans] }
+      - { id: alesia, date: 52 BCE, label: "Vercingetorix surrenders to Caesar at Alesia", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Alesia] }
+    sources: [wikipedia:La_Tène_culture, wikipedia:Celts]
+
+  - id: germanic-peoples
+    name: Germanic peoples
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 2
+    span: c. 500 BCE – 500 CE
+    relations:
+      - { type: splits-into, lanes: [franks, visigoths, anglo-saxons], at: c. 450 CE }
+    events:
+      - { id: teutoburg, date: 9 CE, label: "Arminius destroys three Roman legions in the Teutoburg Forest", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_the_Teutoburg_Forest] }
+      - { id: goths-danube, date: 376 CE, label: "Fleeing the Huns, the Goths cross the Danube into the Empire", prominence: 2, themes: [migration], sources: [wikipedia:Gothic_War_(376–382)] }
+      - { id: adrianople, date: 378 CE, label: "Goths kill Emperor Valens at Adrianople", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Adrianople] }
+    sources: [wikipedia:Germanic_peoples]
+
+  - id: franks
+    name: Franks (Merovingians)
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 3
+    span: 481 – 751 CE
+    events:
+      - { id: clovis-baptism, date: c. 496 CE, label: "Clovis, king of the Franks, is baptised", prominence: 3, confidence: probable, themes: [religion], sources: [wikipedia:Clovis_I] }
+    sources: [wikipedia:Merovingian_dynasty]
+
+  - id: anglo-saxons
+    name: Anglo-Saxon kingdoms
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 4
+    span: c. 450 – 927 CE
+    events:
+      - { id: sutton-hoo, date: c. 625 CE, label: "A king is buried in his ship at Sutton Hoo", prominence: 4, themes: [art], sources: [wikipedia:Sutton_Hoo] }
+    sources: [wikipedia:Anglo-Saxons]
+
+  - id: visigoths
+    name: Visigothic kingdom
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 3
+    span: 418 – 721 CE
+    sources: [wikipedia:Visigothic_Kingdom]
+
+  # ------------------------------------------------------------------ italy
+  - id: etruscans
+    name: Etruscans
+    region: europe
+    group: italy
+    sphere: italic
+    prominence: 3
+    span: c. 900 – 27 BCE
+    events:
+      - { id: etruscan-league, date: c. 600 BCE, label: "Twelve Etruscan cities at the height of their power", prominence: 4, sources: [wikipedia:Etruscan_civilization] }
+    sources: [wikipedia:Etruscan_civilization]
+
+  - id: roman-kingdom
+    name: Roman Kingdom
+    region: europe
+    group: italy
+    sphere: roman
+    prominence: 3
+    basis: legend
+    span: 753 – 509 BCE
+    relations:
+      - { type: becomes, lane: roman-republic, at: 509 BCE }
+    events:
+      - { id: founding-rome, date: 753 BCE, label: "Romulus founds Rome (traditional date)", prominence: 3, confidence: legendary, sources: [wikipedia:Founding_of_Rome] }
+    sources: [wikipedia:Roman_Kingdom]
+
+  - id: roman-republic
+    name: Roman Republic
+    endonym: { text: SPQR, script: Latn, translit: Senatus Populusque Romanus }
+    wikidata: Q17167
+    region: europe
+    group: italy
+    sphere: roman
+    prominence: 1
+    span: 509 – 27 BCE
+    relations:
+      - { type: becomes, lane: roman-empire, at: 27 BCE }
+      - { type: conquers, lane: carthage, at: 146 BCE }
+      - { type: conquers, lane: antigonid, at: 168 BCE }
+    events:
+      - { id: republic-founded, date: 509 BCE, label: "The last king is expelled and the Republic is born", prominence: 2, themes: [government], sources: [wikipedia:Roman_Republic] }
+      - { id: twelve-tables, date: 450 BCE, label: "The Twelve Tables: Rome's first written laws", prominence: 4, themes: [government], sources: [wikipedia:Twelve_Tables] }
+      - { id: gauls-sack-rome, date: c. 387 BCE, label: "Gauls sack Rome", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_the_Allia] }
+      - { id: syracuse-archimedes, date: 212 BCE, label: "Rome takes Syracuse; Archimedes is killed", prominence: 3, themes: [war, ideas], sources: [wikipedia:Archimedes] }
+      - { id: carthage-destroyed, date: 146 BCE, label: "Carthage and Corinth are razed", prominence: 2, themes: [war], sources: [wikipedia:Third_Punic_War] }
+      - { id: spartacus, date: 73 BCE, label: "Spartacus leads a slave revolt", prominence: 3, themes: [war], sources: [wikipedia:Spartacus] }
+      - { id: gallic-war, date: 58 BCE, label: "Caesar begins the conquest of Gaul", prominence: 3, themes: [war], sources: [wikipedia:Gallic_Wars] }
+      - { id: caesar-assassinated, date: 44 BCE, label: "Julius Caesar is assassinated on the Ides of March", prominence: 1, themes: [government], sources: [wikipedia:Assassination_of_Julius_Caesar] }
+    sources: [wikipedia:Roman_Republic]
+
+  - id: roman-empire
+    name: Roman Empire
+    endonym: { text: IMPERIVM ROMANVM, script: Latn }
+    wikidata: Q2277
+    region: europe
+    group: italy
+    sphere: roman
+    prominence: 1
+    span: 27 BCE – 395 CE
+    segments:
+      - { name: Principate, span: 27 BCE – 235 CE, weight: 6 }
+      - { name: Crisis of the Third Century, span: 235 – 284 CE, weight: 4 }
+      - { name: Dominate, span: 284 – 395 CE, weight: 5 }
+    relations:
+      - { type: splits-into, lanes: [western-roman, eastern-roman], at: 395 CE }
+      - { type: conquers, lane: ptolemaic, at: 30 BCE }
+      - { type: conquers, lane: nabataea, at: 106 CE }
+    events:
+      - { id: augustus, date: 27 BCE, label: "Octavian becomes Augustus, the first emperor", prominence: 2, themes: [government], sources: [wikipedia:Augustus] }
+      - { id: great-fire, date: 64 CE, label: "The Great Fire of Rome", prominence: 4, sources: [wikipedia:Great_Fire_of_Rome] }
+      - { id: pompeii, date: 79 CE, label: "Vesuvius buries Pompeii and Herculaneum", prominence: 2, sources: [wikipedia:Eruption_of_Mount_Vesuvius_in_79_AD] }
+      - { id: colosseum, date: 80 CE, label: "The Colosseum opens with 100 days of games", prominence: 2, themes: [art], sources: [wikipedia:Colosseum] }
+      - { id: trajan-extent, date: 117 CE, label: "The Empire at its greatest extent under Trajan", prominence: 2, sources: [wikipedia:Trajan] }
+      - { id: antonine-plague, date: 165 CE, label: "The Antonine Plague kills millions", prominence: 3, themes: [disease], sources: [wikipedia:Antonine_Plague] }
+      - { id: citizenship-212, date: 212 CE, label: "Caracalla makes all free men citizens", prominence: 4, themes: [government], sources: [wikipedia:Constitutio_Antoniniana] }
+      - { id: edict-milan, date: 313 CE, label: "Edict of Milan tolerates Christianity", prominence: 2, themes: [religion], sources: [wikipedia:Edict_of_Milan] }
+      - { id: constantinople-founded, date: 330 CE, label: "Constantine refounds Byzantium as Constantinople", prominence: 2, sources: [wikipedia:Constantinople] }
+      - { id: christian-state, date: 380 CE, label: "Christianity becomes the state religion", prominence: 3, themes: [religion], sources: [wikipedia:Edict_of_Thessalonica] }
+    images:
+      - { id: augustus-portrait, source: "met:247993", date: c. 20 CE, prominence: 2, treatment: cutout, caption: "Portrait of the emperor Augustus" }
+    sources: [wikipedia:Roman_Empire]
+
+  - id: western-roman
+    name: Western Roman Empire
+    region: europe
+    group: italy
+    sphere: roman
+    prominence: 2
+    span: 395 – 476 CE
+    relations:
+      - { type: becomes, lane: ostrogoths, at: 493 CE }
+    events:
+      - { id: sack-410, date: 410 CE, label: "Alaric's Visigoths sack Rome", prominence: 2, themes: [war], sources: [wikipedia:Sack_of_Rome_(410)] }
+      - { id: fall-west, date: 476 CE, label: "Odoacer deposes the last western emperor", prominence: 1, themes: [government], sources: [wikipedia:Fall_of_the_Western_Roman_Empire] }
+    sources: [wikipedia:Western_Roman_Empire]
+
+  - id: ostrogoths
+    name: Ostrogothic Italy
+    region: europe
+    group: italy
+    sphere: celtic-germanic
+    prominence: 3
+    span: 493 – 553 CE
+    events:
+      - { id: boethius, date: 524 CE, label: "Boethius writes The Consolation of Philosophy awaiting execution", prominence: 4, themes: [ideas], sources: [wikipedia:The_Consolation_of_Philosophy] }
+    sources: [wikipedia:Ostrogothic_Kingdom]
+
+  - id: lombards
+    name: Lombard kingdom
+    region: europe
+    group: italy
+    sphere: celtic-germanic
+    prominence: 4
+    span: 568 – 774 CE
+    sources: [wikipedia:Kingdom_of_the_Lombards]
+
+  # ------------------------------------------------------------------ greece
+  - id: greek-poleis
+    name: Greek city-states
+    endonym: { text: Ἑλλάς, script: Grek, translit: Hellás }
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 2
+    span: c. 800 – 338 BCE
+    events:
+      - { id: olympics, date: 776 BCE, label: "First recorded Olympic Games", prominence: 2, sources: [wikipedia:Ancient_Olympic_Games] }
+      - { id: greek-alphabet, date: c. 775 BCE, label: "Greeks adapt the Phoenician letters, adding vowels", prominence: 2, thread: alphabet, themes: [ideas], confidence: probable, sources: [wikipedia:Greek_alphabet] }
+      - { id: homer, date: 8th c. BCE, label: "The Iliad and the Odyssey take shape", prominence: 2, confidence: disputed, themes: [art], sources: [wikipedia:Homer] }
+      - { id: greek-colonies, date: c. 700 BCE, label: "Greek colonies spread from Spain to the Black Sea", prominence: 4, themes: [migration, trade], sources: [wikipedia:Greek_colonisation] }
+      - { id: thales, date: c. 585 BCE, label: "Thales of Miletus seeks natural causes, not gods", prominence: 3, themes: [ideas], sources: [wikipedia:Thales_of_Miletus] }
+      - { id: chaeronea, date: 338 BCE, label: "Philip II of Macedon defeats Athens and Thebes at Chaeronea", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Chaeronea_(338_BC)] }
+    images:
+      - { id: kouros, source: "met:253370", date: c. 585 BCE, prominence: 2, treatment: cutout, caption: "Marble kouros, Attica" }
+    sources: [wikipedia:Polis]
+
+  - id: athens
+    name: Athens
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 1
+    span: c. 800 – 322 BCE
+    segments:
+      - { name: Archaic Athens, span: c. 800 – 508 BCE, weight: 3 }
+      - { name: Athenian democracy, span: 508 – 322 BCE, weight: 6 }
+    events:
+      - { id: solon, date: 594 BCE, label: "Solon's reforms free debt-slaves", prominence: 4, themes: [government], sources: [wikipedia:Solon] }
+      - { id: cleisthenes, date: 508 BCE, label: "Cleisthenes founds Athenian democracy", prominence: 1, themes: [government], sources: [wikipedia:Cleisthenes] }
+      - { id: marathon, date: 490 BCE, label: "Athenians defeat the Persians at Marathon", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Marathon] }
+      - { id: salamis, date: 480 BCE, label: "The Greek fleet destroys Xerxes' navy at Salamis", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Salamis] }
+      - { id: parthenon, date: 447 BCE, label: "Work begins on the Parthenon", prominence: 1, themes: [art], sources: [wikipedia:Parthenon] }
+      - { id: herodotus, date: c. 430 BCE, label: "Herodotus writes his Histories — the 'father of history'", prominence: 2, themes: [ideas], sources: [wikipedia:Herodotus] }
+      - { id: peloponnesian-war, date: 431 BCE, label: "The Peloponnesian War with Sparta begins", prominence: 2, themes: [war], sources: [wikipedia:Peloponnesian_War] }
+      - { id: socrates, date: 399 BCE, label: "Socrates is sentenced to death", prominence: 2, themes: [ideas], sources: [wikipedia:Trial_of_Socrates] }
+      - { id: academy, date: c. 387 BCE, label: "Plato founds the Academy", prominence: 3, themes: [ideas], sources: [wikipedia:Platonic_Academy] }
+      - { id: lyceum, date: 335 BCE, label: "Aristotle opens the Lyceum", prominence: 3, themes: [ideas], sources: [wikipedia:Lyceum] }
+    images:
+      - { id: parthenon-west, source: "commons:File:Parthenon from west.jpg", date: 432 BCE, prominence: 1, treatment: plate, caption: "The Parthenon, Athens" }
+    sources: [wikipedia:History_of_Athens]
+
+  - id: sparta
+    name: Sparta
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 3
+    span: c. 900 – 192 BCE
+    events:
+      - { id: thermopylae, date: 480 BCE, label: "Leonidas and his 300 fall at Thermopylae", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Thermopylae] }
+      - { id: sparta-wins, date: 404 BCE, label: "Sparta wins the Peloponnesian War", prominence: 4, themes: [war], sources: [wikipedia:Peloponnesian_War] }
+      - { id: leuctra, date: 371 BCE, label: "Thebes breaks Spartan power at Leuctra", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Leuctra] }
+    sources: [wikipedia:Sparta]
+
+  - id: macedon
+    name: Macedon
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 3
+    span: c. 700 – 336 BCE
+    relations:
+      - { type: becomes, lane: alexander-empire, at: 336 BCE }
+    sources: [wikipedia:Macedonia_(ancient_kingdom)]
+
+  - id: alexander-empire
+    name: Empire of Alexander
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 1
+    span: 336 – 323 BCE
+    segments:
+      - { name: Empire of Alexander, span: 336 – 323 BCE, weight: 6 }
+    relations:
+      - { type: splits-into, lanes: [antigonid, ptolemaic, seleucid], at: 323 BCE }
+      - { type: conquers, lane: achaemenid, at: 330 BCE }
+    events:
+      - { id: issus, date: 333 BCE, label: "Alexander routs Darius III at Issus", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Issus] }
+      - { id: alexandria-founded, date: 331 BCE, label: "Alexander founds Alexandria in Egypt", prominence: 2, sources: [wikipedia:Alexandria] }
+      - { id: gaugamela, date: 331 BCE, label: "Victory at Gaugamela: the Persian Empire falls", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Gaugamela] }
+      - { id: hydaspes, date: 326 BCE, label: "Alexander's army reaches India and refuses to go further", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Hydaspes] }
+      - { id: alexander-dies, date: 323 BCE, label: "Alexander dies in Babylon at 32; his generals divide the empire", prominence: 1, sources: [wikipedia:Death_of_Alexander_the_Great] }
+    sources: [wikipedia:Alexander_the_Great]
+
+  - id: antigonid
+    name: Antigonid Macedon
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 3
+    span: 306 – 168 BCE
+    events:
+      - { id: pydna, date: 168 BCE, label: "Rome crushes Macedon at Pydna", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Pydna] }
+    sources: [wikipedia:Antigonid_dynasty]
+
+  - id: eastern-roman
+    name: Eastern Roman Empire (Byzantium)
+    endonym: { text: Βασιλεία τῶν Ῥωμαίων, script: Grek, translit: Basileía tôn Rhōmaíōn }
+    wikidata: Q12544
+    region: europe
+    group: greece
+    sphere: roman
+    prominence: 1
+    span: 395 – 1453 CE
+    relations:
+      - { type: conquers, lane: vandal-kingdom, at: 534 CE }
+      - { type: conquers, lane: ostrogoths, at: 553 CE }
+    events:
+      - { id: justinian-code, date: 529 CE, label: "Justinian's Code gathers a thousand years of Roman law", prominence: 3, themes: [government], sources: [wikipedia:Corpus_Juris_Civilis] }
+      - { id: hagia-sophia, date: 537 CE, label: "Hagia Sophia is consecrated", prominence: 1, themes: [art, religion], sources: [wikipedia:Hagia_Sophia] }
+      - { id: justinian-plague, date: 541 CE, label: "The Plague of Justinian — the first pandemic of bubonic plague", prominence: 2, themes: [disease], sources: [wikipedia:Plague_of_Justinian] }
+      - { id: siege-626, date: 626 CE, label: "Constantinople survives an Avar and Persian siege", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Constantinople_(626)] }
+      - { id: greek-fire, date: c. 674 CE, label: "Greek fire repels the first Arab siege of Constantinople", prominence: 3, themes: [war, technology], confidence: probable, sources: [wikipedia:Siege_of_Constantinople_(674–678)] }
+    images:
+      - { id: hagia-sophia-view, source: "commons:File:Hagia Sophia Mars 2013.jpg", date: 537 CE, prominence: 1, treatment: plate, caption: "Hagia Sophia, Constantinople" }
+    sources: [wikipedia:Byzantine_Empire]

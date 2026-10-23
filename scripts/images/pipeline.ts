@@ -65,10 +65,19 @@ const dedupe = (s: string) => {
   return Number.isInteger(h) && s.slice(0, h) === s.slice(h) ? s.slice(0, h) : s;
 };
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/** Polite JSON fetch: museum APIs throttle bursts (the Met answers with an HTML challenge page). */
 async function getJson(url: string) {
-  const r = await fetch(url, { headers: { 'User-Agent': UA } });
-  if (!r.ok) throw new Error(`${r.status} ${url}`);
-  return r.json();
+  for (let attempt = 1; ; attempt++) {
+    await sleep(url.includes('metmuseum') ? 600 : 150);
+    const r = await fetch(url, { headers: { 'User-Agent': UA } });
+    const type = r.headers.get('content-type') ?? '';
+    if (r.ok && type.includes('json')) return r.json();
+    if (attempt >= 5) throw new Error(`${r.status} ${type} ${url}`);
+    console.warn(`  … throttled (${r.status}), retrying in ${attempt * 8}s`);
+    await sleep(attempt * 8000);
+  }
 }
 
 async function resolve(img: LaneImage): Promise<ImageMeta> {

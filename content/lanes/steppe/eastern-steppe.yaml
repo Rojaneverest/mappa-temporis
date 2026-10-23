@@ -93,6 +93,7 @@ lanes:
   - id: hephthalites
     name: Hephthalites
     region: steppe
+    group: central-asia
     sphere: steppe
     prominence: 4
     span: c. 440 – c. 560 CE

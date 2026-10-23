@@ -98,6 +98,8 @@ export type Item = TextItem | PathItem | RectItem | LineItem | ImageItem;
 export interface DisplayList {
   version: 1;
   title: string;
+  /** URL prefix of this sheet's subset fonts. */
+  fonts: string;
   width: number;
   height: number;
   /** y = y0 + (astronomicalYear - year0) * unitsPerYear */

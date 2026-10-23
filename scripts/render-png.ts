@@ -14,7 +14,8 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const [out = 'proof.png', scaleArg, ...rest] = process.argv.slice(2);
 
-const dl: DisplayList = JSON.parse(readFileSync(join(ROOT, 'apps/explorer/public/chart/proof-east-asia.json'), 'utf8'));
+const SHEET = process.env.SHEET ?? 'classical-world';
+const dl: DisplayList = JSON.parse(readFileSync(join(ROOT, `apps/explorer/public/chart/${SHEET}.json`), 'utf8'));
 const CanvasKitInit = require('canvaskit-wasm/bin/canvaskit.js');
 const ckDir = dirname(require.resolve('canvaskit-wasm/bin/canvaskit.wasm'));
 const ck: CanvasKit = await CanvasKitInit({ locateFile: (f: string) => join(ckDir, f) });

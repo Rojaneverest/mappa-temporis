@@ -95,11 +95,11 @@ export function pickImageSize(item: ImageItem, s: number): number {
 }
 
 /** Image files ("<id>/<size>") a view will draw. */
-export function imageNeeds(dl: DisplayList, indices: Iterable<number>, s: number): string[] {
+export function imageNeeds(dl: DisplayList, indices: Iterable<number>, s: number, zoom = s): string[] {
   const out: string[] = [];
   for (const i of indices) {
     const it = dl.items[i]!;
-    if (it.k !== 'image' || fadeAt(it.fade, s) <= 0.01 || Math.max(it.w, it.h) * s < 2) continue;
+    if (it.k !== 'image' || fadeAt(it.fade, zoom) <= 0.01 || Math.max(it.w, it.h) * s < 2) continue;
     out.push(`${it.id}/${pickImageSize(it, s)}`);
   }
   return out;
@@ -111,6 +111,11 @@ export interface View {
   y0: number;
   /** Device pixels per world unit. */
   s: number;
+  /**
+   * Zoom in CSS pixels per world unit, used for the calm-by-default fade-ins (designed in CSS px).
+   * Defaults to `s`; on a Retina screen the browser passes s / devicePixelRatio.
+   */
+  zoom?: number;
   widthPx: number;
   heightPx: number;
 }
@@ -149,9 +154,10 @@ export class Painter {
     canvas.save();
     canvas.scale(view.s, view.s);
     canvas.translate(-view.x0, -view.y0);
+    const zoom = view.zoom ?? view.s;
     for (const i of indices) {
       const item = this.dl.items[i]!;
-      const alpha = (item.alpha ?? 1) * fadeAt(item.fade, view.s);
+      const alpha = (item.alpha ?? 1) * fadeAt(item.fade, zoom);
       if (alpha <= 0.01) continue;
       switch (item.k) {
         case 'text': this.drawText(canvas, i, item, alpha, view.s); break;

@@ -3,7 +3,9 @@ import type { Folio } from '../../../packages/render/src/folio.ts';
 import { Viewer, type ViewState } from './viewer.ts';
 import { Panel } from './panel.ts';
 
-const CHART = '/chart/proof-east-asia';
+// ?sheet=<id> picks a sheet (default: the classical world); see content/sheets/.
+const SHEET = new URLSearchParams(location.search).get('sheet') ?? 'classical-world';
+const CHART = `/chart/${SHEET}`;
 
 const [dl, folio]: [DisplayList, Folio] = await Promise.all([
   fetch(`${CHART}.json`).then((r) => r.json()),

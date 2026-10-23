@@ -3,7 +3,7 @@ title: Proof sheet I
 subtitle: East Asia & the Eastern Steppe · 800 BCE – 700 CE
 window: 800 BCE – 700 CE
 regions:
-  - { id: steppe, name: The Eastern Steppe }
+  - { id: steppe, name: The Eastern Steppe, groups: [steppe] }
   - { id: east-asia, name: East Asia, groups: [china, korea, japan] }
 eras:
   - id: iron-age

@@ -4,7 +4,7 @@
   "type": "module",
   "packageManager": "pnpm@11.24.0",
   "scripts": {
-    "build:chart": "node scripts/build-chart.ts",
+    "build:chart": "for f in content/sheets/*.yaml; do node scripts/build-chart.ts $(basename $f .yaml) || exit 1; done",
     "images": "node scripts/images/pipeline.ts",
     "build:tools": "mkdir -p tools/bin && swiftc -O tools/cutout/cutout.swift -o tools/bin/cutout",
     "dev": "pnpm build:chart && pnpm --filter explorer dev",

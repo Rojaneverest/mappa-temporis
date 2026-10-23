@@ -1,0 +1,195 @@
+# South Asia, c. 800 BCE – 700 CE. Groups west → east/south: northwest, gangetic, deccan-south, lanka.
+lanes:
+  # ------------------------------------------------------------------ northwest
+  - id: indo-greek
+    name: Indo-Greek kingdoms
+    region: south-asia
+    group: northwest
+    sphere: hellenic
+    prominence: 3
+    span: c. 180 BCE – c. 10 CE
+    events:
+      - { id: menander, date: c. 150 BCE, label: "King Menander debates a Buddhist monk in the Milinda Pañha", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Menander_I] }
+    sources: [wikipedia:Indo-Greek_Kingdom]
+
+  - id: indo-scythian
+    name: Indo-Scythians & Western Satraps
+    region: south-asia
+    group: northwest
+    sphere: steppe
+    prominence: 4
+    span: c. 150 BCE – c. 415 CE
+    sources: [wikipedia:Indo-Scythians]
+
+  - id: kushan
+    name: Kushan Empire
+    region: south-asia
+    group: northwest
+    sphere: steppe
+    prominence: 2
+    span: 30 – 375 CE
+    events:
+      - { id: gandhara-buddha, date: 1st c., label: "Gandharan sculptors carve some of the first images of the Buddha", prominence: 2, themes: [art, religion], sources: [wikipedia:Greco-Buddhist_art] }
+      - { id: kanishka, date: c. 127 CE, label: "Kanishka the Great, patron of Buddhism, rules from Peshawar to the Ganges", prominence: 2, sources: [wikipedia:Kanishka] }
+    images:
+      - { id: gandhara-buddha-statue, source: "met:646117", date: 3rd c., prominence: 2, treatment: cutout, caption: "Buddha from Gandhara" }
+    sources: [wikipedia:Kushan_Empire]
+
+  # ------------------------------------------------------------------ the ganges plain
+  - id: vedic
+    name: Late Vedic India
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 3
+    span: c. 1100 – c. 600 BCE
+    relations:
+      - { type: becomes, lane: magadha, at: c. 600 BCE }
+    events:
+      - { id: upanishads, date: c. 700 BCE, label: "The first Upanishads: karma, rebirth and the self", prominence: 2, confidence: probable, themes: [ideas, religion], sources: [wikipedia:Upanishads] }
+    sources: [wikipedia:Vedic_period]
+
+  - id: magadha
+    name: Magadha
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 3
+    span: c. 600 – 345 BCE
+    relations:
+      - { type: becomes, lane: nanda, at: c. 345 BCE }
+    events:
+      - { id: buddha, date: 5th c. BCE, label: "Siddhartha Gautama, the Buddha, teaches", prominence: 1, confidence: disputed, themes: [religion, ideas], sources: [wikipedia:The_Buddha] }
+      - { id: mahavira, date: 5th c. BCE, label: "Mahavira teaches non-violence: the Jain way", prominence: 3, confidence: disputed, themes: [religion], sources: [wikipedia:Mahavira] }
+      - { id: panini, date: c. 450 BCE, label: "Pāṇini writes the grammar of Sanskrit", prominence: 3, confidence: disputed, themes: [ideas], sources: [wikipedia:Pāṇini] }
+    sources: [wikipedia:Magadha]
+
+  - id: nanda
+    name: Nanda Empire
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 3
+    span: c. 345 – 322 BCE
+    relations:
+      - { type: becomes, lane: maurya, at: 322 BCE }
+    sources: [wikipedia:Nanda_Empire]
+
+  - id: maurya
+    name: Maurya Empire
+    endonym: { text: 𑀫𑁅𑀭𑁆𑀬, script: Brah, translit: Maurya }
+    wikidata: Q62943
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 1
+    span: 322 – 185 BCE
+    relations:
+      - { type: becomes, lane: shunga, at: 185 BCE }
+    events:
+      - { id: chandragupta, date: 322 BCE, label: "Chandragupta Maurya unites northern India", prominence: 2, sources: [wikipedia:Chandragupta_Maurya] }
+      - { id: arthashastra, date: c. 300 BCE, label: "The Arthashastra, a manual of statecraft", prominence: 4, confidence: disputed, themes: [government, ideas], sources: [wikipedia:Arthashastra] }
+      - { id: kalinga, date: c. 261 BCE, label: "After the slaughter at Kalinga, Ashoka turns to Buddhism", prominence: 1, themes: [war, religion], sources: [wikipedia:Kalinga_War] }
+      - { id: ashoka-edicts, date: c. 250 BCE, label: "Ashoka's edicts carved on pillars and rocks across India", prominence: 2, thread: scripts, themes: [government, religion], sources: [wikipedia:Edicts_of_Ashoka] }
+    images:
+      - { id: lion-capital, source: "commons:File:Lion Capital of Ashoka 3.jpg", date: c. 250 BCE, prominence: 2, treatment: cutout, caption: "Ashoka’s lion capital, Sarnath" }
+    sources: [wikipedia:Maurya_Empire]
+
+  - id: shunga
+    name: Shunga dynasty
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 3
+    span: 185 – 73 BCE
+    sources: [wikipedia:Shunga_Empire]
+
+  - id: gupta
+    name: Gupta Empire
+    wikidata: Q11774
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 1
+    span: c. 320 – c. 550 CE
+    relations:
+      - { type: becomes, lane: harsha, at: 606 CE }
+    events:
+      - { id: gupta-founded, date: c. 320 CE, label: "Chandragupta I founds the Gupta dynasty", prominence: 3, sources: [wikipedia:Chandragupta_I] }
+      - { id: kalidasa, date: 5th c., label: "Kalidasa writes Shakuntala", prominence: 3, themes: [art], sources: [wikipedia:Kalidasa] }
+      - { id: nalanda, date: c. 427 CE, label: "Nalanda, a monastery-university, is founded", prominence: 2, themes: [ideas, religion], sources: [wikipedia:Nalanda_mahavihara] }
+      - { id: aryabhata, date: 499 CE, label: "Aryabhata's astronomy: the Earth spins on its axis", prominence: 2, themes: [ideas, sky], thread: numerals, sources: [wikipedia:Aryabhatiya] }
+      - { id: huna-invasions, date: c. 480 CE, label: "Huna invasions shake the empire", prominence: 3, themes: [war, migration], sources: [wikipedia:Alchon_Huns] }
+    images:
+      - { id: gupta-buddha, source: "met:38201", date: c. 500 CE, prominence: 3, treatment: cutout, caption: "Head of a Buddha, late Gupta" }
+    sources: [wikipedia:Gupta_Empire]
+
+  - id: harsha
+    name: Harsha's empire
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 3
+    span: 606 – 647 CE
+    events:
+      - { id: brahmagupta, date: 628 CE, label: "Brahmagupta writes down the rules of arithmetic with zero", prominence: 2, thread: numerals, themes: [ideas], note: "Brahmagupta worked at Bhillamala, outside Harsha's realm, in the same years.", sources: [wikipedia:Brahmagupta] }
+    sources: [wikipedia:Harsha]
+
+  # ------------------------------------------------------------------ deccan & the south
+  - id: satavahana
+    name: Satavahanas
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 3
+    span: c. 100 BCE – c. 225 CE
+    events:
+      - { id: sanchi, date: 1st c. BCE, label: "The carved gateways of the Great Stupa at Sanchi", prominence: 2, themes: [art, religion], sources: [wikipedia:Sanchi] }
+    sources: [wikipedia:Satavahana_dynasty]
+
+  - id: vakataka
+    name: Vakatakas
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 4
+    span: c. 250 – c. 500 CE
+    events:
+      - { id: ajanta, date: c. 470 CE, label: "The painted caves of Ajanta", prominence: 2, themes: [art, religion], sources: [wikipedia:Ajanta_Caves] }
+    sources: [wikipedia:Vakataka_dynasty]
+
+  - id: tamilakam
+    name: Cheras, Cholas & Pandyas
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 3
+    span: c. 300 BCE – c. 300 CE
+    events:
+      - { id: sangam, date: c. 100 CE, label: "Sangam poets write the classics of Tamil literature", prominence: 3, confidence: probable, themes: [art], sources: [wikipedia:Sangam_literature] }
+      - { id: muziris, date: 1st c., label: "Roman ships trade gold for pepper at Muziris", prominence: 3, themes: [trade], sources: [wikipedia:Muziris] }
+    sources: [wikipedia:Sangam_period]
+
+  - id: pallava
+    name: Pallavas
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 3
+    span: 275 – 897 CE
+    events:
+      - { id: mamallapuram, date: 7th c., label: "Temples cut from living rock at Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Group_of_Monuments_at_Mahabalipuram] }
+    sources: [wikipedia:Pallava_dynasty]
+
+  # ------------------------------------------------------------------ sri lanka
+  - id: anuradhapura
+    name: Anuradhapura kingdom
+    region: south-asia
+    group: lanka
+    sphere: indic
+    prominence: 3
+    span: 377 BCE – 1017 CE
+    events:
+      - { id: mahinda, date: c. 250 BCE, label: "Ashoka's son Mahinda brings Buddhism to Sri Lanka", prominence: 3, themes: [religion], sources: [wikipedia:Mahinda_(Buddhist_monk)] }
+      - { id: sigiriya, date: c. 480 CE, label: "King Kashyapa builds his palace atop the rock of Sigiriya", prominence: 3, themes: [art], sources: [wikipedia:Sigiriya] }
+    sources: [wikipedia:Anuradhapura_Kingdom]

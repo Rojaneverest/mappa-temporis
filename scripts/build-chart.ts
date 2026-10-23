@@ -28,6 +28,8 @@ import { sourceLink, type Folio, type FolioEntry } from '../packages/render/src/
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'apps/explorer/public');
+/** Which sheet to build: content/sheets/<id>.yaml */
+const SHEET_ID = process.argv[2] ?? 'classical-world';
 const require = createRequire(import.meta.url);
 
 // ---------------------------------------------------------------- design constants (world units)
@@ -66,7 +68,7 @@ function walk(dir: string): string[] {
   });
 }
 
-const sheet = Sheet.parse(loadYaml(join(ROOT, 'content/sheets/proof-east-asia.yaml')));
+const sheet = Sheet.parse(loadYaml(join(ROOT, `content/sheets/${SHEET_ID}.yaml`)));
 const lanes: Lane[] = walk(join(ROOT, 'content/lanes')).flatMap((f) => {
   const parsed = LaneFile.safeParse(loadYaml(f));
   if (!parsed.success) {
@@ -105,17 +107,33 @@ const yTop = Y(year0);
 const yBottom = Y(year1);
 const height = yBottom + FOOTER;
 
+// A sheet shows its regions; when a region lists groups, only those groups.
+const sheetRegions = new Map(sheet.regions.map((r) => [r.id, r.groups]));
+const inSheet = (l: Lane) => sheetRegions.has(l.region) && (!sheetRegions.get(l.region)!.length || sheetRegions.get(l.region)!.includes(groupOf(l)));
 const visibleLanes = lanes.filter((l) => {
   const s = parseSpan(l.span);
-  return l.prominence !== 5 && s.end.year >= year0 && s.start.year <= year1;
+  return inSheet(l) && l.prominence !== 5 && s.end.year >= year0 && s.start.year <= year1;
 });
+
+/** Room a lane needs beside it: none for a bare lane, more for many labels or a big image. */
+function labelDemand(l: Lane): number {
+  const shown = l.events.filter((e) => e.prominence <= 4).length;
+  const bigImage = Math.max(0, ...l.images.filter((i) => manifest[i.id] && i.prominence <= 3).map((i) => {
+    const a = manifest[i.id]!;
+    const long = IMAGE_LONG[i.prominence];
+    return a.width >= a.height ? long : long * (a.width / a.height);
+  }));
+  const forLabels = shown === 0 ? 60 : Math.min(LABEL_SPACE[l.prominence], 260 + 90 * shown);
+  return Math.max(forLabels, bigImage + 80, l.prominence === 4 ? 120 : 0);
+}
 
 interface RegionLayout { id: string; name: string; x0: number; width: number; flow: Flow; trackOf: Map<string, number> }
 const regionLayouts: RegionLayout[] = [];
 let cursor = MARGIN_L;
 for (const r of sheet.regions) {
   const rl = visibleLanes.filter((l) => l.region === r.id);
-  const groupOrder = r.groups.length ? r.groups : [r.id];
+  // Groups west → east as the sheet lists them; unlisted groups follow in order of appearance.
+  const groupOrder = [...new Set([...r.groups, ...rl.map(groupOf)])];
   const tl: TrackLane[] = rl.map((l) => {
     const s = parseSpan(l.span);
     return {
@@ -133,13 +151,14 @@ for (const r of sheet.regions) {
         lanes: ids.map((id) => {
           const l = laneById.get(id)!;
           const s = parseSpan(l.span);
-          return { start: s.start.year, end: s.end.year + 1, need: LANE_ZONE + LABEL_SPACE[l.prominence] };
+          return { start: s.start.year, end: s.end.year + 1, need: LANE_ZONE + labelDemand(l) };
         }),
       };
     }),
     year0, year1, step: 10, groupGap: 180, pad: 120,
   });
   regionLayouts.push({ id: r.id, name: r.name, x0: cursor, width: flow.width, flow, trackOf: assignment.trackOf });
+  if (process.env.VERBOSE) console.log(`  region ${r.id}: ${assignment.tracks.length} tracks, ${Math.round(flow.width)} wide`);
   cursor += flow.width + REGION_GAP;
 }
 const width = cursor - REGION_GAP + MARGIN_R;
@@ -420,8 +439,10 @@ for (const p of placed.values()) {
         const d = rel.type === 'merges-into'
           ? `M ${p.cxAt(yy - 80)} ${yy - 80} C ${p.cxAt(yy)} ${yy} ${x2 - dir * 120} ${yy} ${x2} ${yy}`
           : `M ${x1} ${yy} L ${x2} ${yy}`;
-        layers.links.push({ k: 'path', d, stroke: mix(color, INK, 0.25), sw: 2.2, hair: true, dash: rel.type === 'influences' ? [5, 5] : undefined, alpha: 0.75, b: [Math.min(x1, x2) - 20, yy - 90, Math.max(x1, x2) + 20, yy + 30] });
-        layers.links.push({ k: 'path', d: ARROW(x2 + dir * 10, yy, dir, 34), fill: mix(color, INK, 0.25), alpha: 0.85, b: [Math.min(x2 - 40, x2 + 50), yy - 30, Math.max(x2 - 40, x2 + 50), yy + 30] });
+        // Long-distance arrows would slash across whole regions at the wall view: let them appear only up close.
+        const fade: Fade | undefined = Math.abs(x2 - x1) > 2500 ? [0.07, 0.11] : undefined;
+        layers.links.push({ k: 'path', d, stroke: mix(color, INK, 0.25), sw: 2.2, hair: true, dash: rel.type === 'influences' ? [5, 5] : undefined, alpha: 0.75, fade, b: [Math.min(x1, x2) - 20, yy - 90, Math.max(x1, x2) + 20, yy + 30] });
+        layers.links.push({ k: 'path', d: ARROW(x2 + dir * 10, yy, dir, 34), fill: mix(color, INK, 0.25), alpha: 0.85, fade, b: [Math.min(x2 - 40, x2 + 50), yy - 30, Math.max(x2 - 40, x2 + 50), yy + 30] });
         grid.mark(Math.min(x1, x2), yy - 14, Math.abs(x2 - x1), 28);
       } else {
         // Succession / splits between tracks: a soft ribbon from the end of one lane into the next.
@@ -496,20 +517,32 @@ function placeLabel(p: PlacedLane, ev: Lane['events'][number], yy: number, prom:
   const pre = formatDate(parseDate(ev.date));
   const tick = prom <= 2 ? 26 : 16;
   const maxSlide = MAX_SLIDE_YEARS * UNITS_PER_YEAR;
+  // Measurements are cached per wrap width (rounded), since sliding re-asks often.
+  const measured = new Map<number, ReturnType<typeof measure>>();
+  const measureAt = (w: number, align: 'left' | 'right') => {
+    const key = Math.floor(w / 20) * 20 * (align === 'left' ? 1 : -1);
+    let m = measured.get(key);
+    if (!m) { m = measure(ck, fonts, { role: st.role, text: ev.label, pre, size: st.size, color: st.color, align, w: Math.abs(key) }); measured.set(key, m); }
+    return { m, w: Math.abs(key) };
+  };
   const tryAt = (side: 1 | -1) => {
     const edge = side === 1 ? p.cxAt(yy) + p.halfAt(yy) : p.cxAt(yy) - p.halfAt(yy);
     const x0 = edge + side * (tick + 40);
-    const avail = side === 1
-      ? Math.min(LABEL_MAX_W[prom], p.limitAt(yy) - x0 - 20, grid.freeRunRight(x0, yy - st.size, st.size * 2, LABEL_MAX_W[prom]))
-      : grid.freeRunLeft(x0, yy - st.size, st.size * 2, LABEL_MAX_W[prom]);
-    if (avail < Math.min(200, LABEL_MAX_W[prom])) return null;
-    const m = measure(ck, fonts, { role: st.role, text: ev.label, pre, size: st.size, color: st.color, align: side === 1 ? 'left' : 'right', w: avail });
-    const w = Math.ceil(m.longest) + 4;
-    const x = side === 1 ? x0 : x0 - w;
-    // Slide: try the exact date first, then nudge down (or a little up) until it fits.
+    // Slide: try the exact date first, then nudge down (or a little up). At each position, measure
+    // the free run beside the lane and wrap the label to fit it.
     for (let dy = 0; dy <= maxSlide; dy += 10) {
       for (const sgn of dy === 0 ? [0] : [1, -1]) {
         if (sgn === -1 && dy > 3 * UNITS_PER_YEAR) continue;
+        const bandTop = yy - st.size * 0.6 + sgn * dy;
+        const run = side === 1
+          // A label may borrow empty room from the next track; the grid keeps it off lanes and other labels.
+          ? grid.freeRunRight(x0, bandTop, st.size * 1.2, LABEL_MAX_W[prom]) - 30
+          : grid.freeRunLeft(x0, bandTop, st.size * 1.2, LABEL_MAX_W[prom]) - 30;
+        const avail = Math.min(LABEL_MAX_W[prom], run);
+        if (avail < Math.min(200, LABEL_MAX_W[prom])) continue;
+        const { m } = measureAt(avail, side === 1 ? 'left' : 'right');
+        const w = Math.ceil(m.longest) + 4;
+        const x = side === 1 ? x0 : x0 - w;
         const top = yy - m.lineH / 2 + sgn * dy;
         if (grid.isFree(x, top, w, m.h)) return { x, top, w, h: m.h, lineH: m.lineH, side };
       }
@@ -677,6 +710,7 @@ for (const lane of lanes) {
 const dl: DisplayList = {
   version: 1,
   title: `${sheet.title} — ${sheet.subtitle}`,
+  fonts: `/fonts/${SHEET_ID}/`,
   width,
   height,
   time: { y0: HEADER, year0, year1, unitsPerYear: UNITS_PER_YEAR },
@@ -686,10 +720,10 @@ const dl: DisplayList = {
 };
 
 mkdirSync(join(OUT, 'chart'), { recursive: true });
-mkdirSync(join(OUT, 'fonts'), { recursive: true });
+mkdirSync(join(OUT, 'fonts', SHEET_ID), { recursive: true });
 mkdirSync(join(OUT, 'canvaskit'), { recursive: true });
-writeFileSync(join(OUT, 'chart/proof-east-asia.json'), JSON.stringify(dl));
-writeFileSync(join(OUT, 'chart/proof-east-asia.folio.json'), JSON.stringify(folio));
+writeFileSync(join(OUT, `chart/${SHEET_ID}.json`), JSON.stringify(dl));
+writeFileSync(join(OUT, `chart/${SHEET_ID}.folio.json`), JSON.stringify(folio));
 // Ship only the glyphs the chart uses (every font gets the same character set, so
 // font fallback behaves exactly as it did when the build measured the text).
 const used = new Set<string>(' 0123456789.,;:–—-·()[]’\'"?!/&BCEADc');
@@ -699,7 +733,7 @@ let fontBytes = 0;
 for (const { file } of FONT_FILES) {
   const src = readFileSync(join(ROOT, 'assets/fonts', file));
   const out = await subsetFont(src, charset, { targetFormat: 'truetype' });
-  writeFileSync(join(OUT, 'fonts', file), out);
+  writeFileSync(join(OUT, 'fonts', SHEET_ID, file), out);
   fontBytes += out.length;
 }
 copyFileSync(join(ckDir, 'canvaskit.wasm'), join(OUT, 'canvaskit/canvaskit.wasm'));
@@ -723,7 +757,6 @@ function luminance(hex: string): number {
 
 function lint() {
   const problems: string[] = [];
-  const regionGroups = new Map(sheet.regions.map((r) => [r.id, r.groups.length ? r.groups : [r.id]]));
   const ids = new Set<string>();
   for (const l of lanes) {
     for (const id of [l.id, ...l.events.map((e) => e.id), ...l.images.map((i) => i.id)]) {
@@ -731,8 +764,6 @@ function lint() {
       ids.add(id);
     }
     const span = parseSpan(l.span);
-    if (!regionGroups.has(l.region)) problems.push(`${l.id}: unknown region "${l.region}"`);
-    else if (!regionGroups.get(l.region)!.includes(groupOf(l))) problems.push(`${l.id}: group "${groupOf(l)}" is not listed for region ${l.region}`);
     for (const s of l.segments) {
       const ss = parseSpan(s.span);
       if (ss.start.year < span.start.year - 1 || ss.end.year > span.end.year + 1) problems.push(`${l.id}: segment "${s.name}" outside the lane's span`);

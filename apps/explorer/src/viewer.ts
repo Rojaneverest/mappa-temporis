@@ -343,7 +343,7 @@ export class Viewer {
       const size = Math.round(TILE * this.dpr);
       slot.busy = true;
       this.inflight.add(job.id);
-      slot.w.postMessage({ type: 'tile', id: job.id, x0: job.i * tw, y0: job.j * tw, s: sDev, w: size, h: size } satisfies ToWorker);
+      slot.w.postMessage({ type: 'tile', id: job.id, x0: job.i * tw, y0: job.j * tw, s: sDev, zoom: 2 ** job.k, w: size, h: size } satisfies ToWorker);
     }
   }
 
@@ -351,7 +351,7 @@ export class Viewer {
     this.miniRequested = true;
     const s = (MINI_W * this.dpr) / this.dl.width;
     slot.busy = true;
-    slot.w.postMessage({ type: 'tile', id: 'mini', x0: 0, y0: 0, s, w: Math.round(this.dl.width * s), h: Math.round(this.dl.height * s) } satisfies ToWorker);
+    slot.w.postMessage({ type: 'tile', id: 'mini', x0: 0, y0: 0, s, zoom: s / this.dpr, w: Math.round(this.dl.width * s), h: Math.round(this.dl.height * s) } satisfies ToWorker);
   }
 
   private onWorker(slot: Slot, msg: FromWorker) {
@@ -533,11 +533,21 @@ export class Viewer {
     ctx.font = '600 12px Georgia, serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
+    // Region names: shrink to fit their column; drop any that would collide.
+    let lastRight = -Infinity;
     for (const r of this.dl.regions) {
       const a = Math.max(RULER_W + 8, (r.x0 - this.x0) * this.s);
       const b = Math.min(this.cssW - 8, (r.x1 - this.x0) * this.s);
-      if (b - a < 60) continue;
-      ctx.fillText(spaced(r.name.toUpperCase()), (a + b) / 2, HEADER_H / 2 + 1);
+      if (b - a < 40) continue;
+      const label = spaced(r.name.toUpperCase());
+      let size = 12;
+      ctx.font = `600 ${size}px Georgia, serif`;
+      let w = ctx.measureText(label).width;
+      if (w > b - a - 6) { size = Math.max(8, Math.floor((size * (b - a - 6)) / w)); ctx.font = `600 ${size}px Georgia, serif`; w = ctx.measureText(label).width; }
+      const cx = (a + b) / 2;
+      if (w > b - a + 4 || cx - w / 2 < lastRight + 6) continue;
+      ctx.fillText(label, cx, HEADER_H / 2 + 1);
+      lastRight = cx + w / 2;
     }
     if (laneHeads.length) {
       ctx.font = '600 11px ui-sans-serif, -apple-system, sans-serif';

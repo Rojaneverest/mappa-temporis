@@ -1,0 +1,29 @@
+# Phase 1 vertical slice: the whole world in Classical Antiquity, framed by its neighbours.
+title: The Classical World
+subtitle: Every region of the Earth · 800 BCE – 700 CE
+window: 800 BCE – 700 CE
+regions:
+  - { id: americas, name: The Americas, groups: [north-america, mesoamerica, andes] }
+  - { id: africa, name: Africa, groups: [west-africa, nile-horn, maghreb] }
+  - { id: europe, name: Europe, groups: [north-europe, italy, greece] }
+  - { id: near-east, name: The Mediterranean & Near East, groups: [egypt, levant, anatolia, iran] }
+  - { id: steppe, name: The Steppe & Central Asia, groups: [western-steppe, central-asia, steppe] }
+  - { id: south-asia, name: South Asia, groups: [northwest, gangetic, deccan-south, lanka] }
+  - { id: east-asia, name: East Asia, groups: [china, korea, japan] }
+  - { id: southeast-asia, name: Southeast Asia, groups: [mainland, islands] }
+  - { id: oceania, name: Oceania, groups: [australia, pacific] }
+eras:
+  - id: iron-age
+    name: Iron Age
+    span: 1200 – 601 BCE
+    forces: [climate, migration, war]
+  - id: classical
+    name: Classical Antiquity
+    span: 600 BCE – 500 CE
+    forces: [ideas]
+    turningPoint: { label: The Axial Age — philosophies that still shape us, span: 600 – 500 BCE }
+  - id: middle-ages
+    name: Middle Ages
+    span: 501 – 1500
+    forces: [climate, migration, disease]
+    turningPoint: { label: Volcanic winters of 536 · Plague of Justinian, span: 536 – 549 CE }
