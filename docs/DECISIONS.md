@@ -19,3 +19,6 @@
 | 15 | 2026-10-23 | Placement order: words before pictures (P1–P2 labels, P1–P2 images, P3 labels, P3 images, P4 labels) | Images placed first crowded out key labels |
 | 16 | 2026-10-23 | Cut-outs via Apple Vision subject lifting (Swift CLI); Met Open Access + Wikimedia Commons as first image sources; credits generated into docs/CREDITS.md | Clean masks on museum photos, no ML setup needed on this Mac |
 | 17 | 2026-10-23 | Fonts are subset at build time to the characters the chart uses | 28 MB → ~1 MB |
+| 18 | 2026-10-23 | Tracks are as wide as their widest lane plus the labels they actually carry | The classical world sheet went 77k → 51k units wide with no labels lost |
+| 19 | 2026-10-23 | Threads (Silk Road, alphabet, writing, numerals, money) are optional layers, off by default | Calm first; journeys across regions on demand |
+| 20 | 2026-10-23 | Atlas uses Cliopatria matched by hand-picked names, then exact names, then Wikidata IDs | Cliopatria tags "Roman Empire" with Byzantium's QID, so IDs alone mislink |

@@ -36,6 +36,7 @@ lanes:
     sphere: celtic-germanic
     prominence: 2
     span: c. 500 BCE – 500 CE
+    cliopatria: ["Goths", "Saxons", "Ripuarian Franks", "Salian Franks", "Burgundians"]
     relations:
       - { type: splits-into, lanes: [franks, visigoths, anglo-saxons], at: c. 450 CE }
     events:
@@ -51,6 +52,7 @@ lanes:
     sphere: celtic-germanic
     prominence: 3
     span: 481 – 751 CE
+    cliopatria: ["Kingdom of the Franks", "Merovingian Empire"]
     events:
       - { id: clovis-baptism, date: c. 496 CE, label: "Clovis, king of the Franks, is baptised", prominence: 3, confidence: probable, themes: [religion], sources: [wikipedia:Clovis_I] }
     sources: [wikipedia:Merovingian_dynasty]
@@ -62,6 +64,7 @@ lanes:
     sphere: celtic-germanic
     prominence: 4
     span: c. 450 – 927 CE
+    cliopatria: ["Anglo-Saxon England"]
     events:
       - { id: sutton-hoo, date: c. 625 CE, label: "A king is buried in his ship at Sutton Hoo", prominence: 4, themes: [art], sources: [wikipedia:Sutton_Hoo] }
     sources: [wikipedia:Anglo-Saxons]
@@ -95,6 +98,7 @@ lanes:
     prominence: 3
     basis: legend
     span: 753 – 509 BCE
+    cliopatria: ["Roman Kingdom"]
     relations:
       - { type: becomes, lane: roman-republic, at: 509 BCE }
     events:
@@ -179,6 +183,7 @@ lanes:
     sphere: celtic-germanic
     prominence: 3
     span: 493 – 553 CE
+    cliopatria: ["Ostrogothic Kingdom"]
     events:
       - { id: boethius, date: 524 CE, label: "Boethius writes The Consolation of Philosophy awaiting execution", prominence: 4, themes: [ideas], sources: [wikipedia:The_Consolation_of_Philosophy] }
     sources: [wikipedia:Ostrogothic_Kingdom]
@@ -190,6 +195,7 @@ lanes:
     sphere: celtic-germanic
     prominence: 4
     span: 568 – 774 CE
+    cliopatria: ["Lombards", "Kingdom of Italy"]
     sources: [wikipedia:Kingdom_of_the_Lombards]
 
   # ------------------------------------------------------------------ greece
@@ -201,6 +207,7 @@ lanes:
     sphere: hellenic
     prominence: 2
     span: c. 800 – 338 BCE
+    cliopatria: ["Greek City-States"]
     events:
       - { id: olympics, date: 776 BCE, label: "First recorded Olympic Games", prominence: 2, sources: [wikipedia:Ancient_Olympic_Games] }
       - { id: greek-alphabet, date: c. 775 BCE, label: "Greeks adapt the Phoenician letters, adding vowels", prominence: 2, thread: alphabet, themes: [ideas], confidence: probable, sources: [wikipedia:Greek_alphabet] }
@@ -219,6 +226,7 @@ lanes:
     sphere: hellenic
     prominence: 1
     span: c. 800 – 322 BCE
+    cliopatria: ["Athenian Coalition", "Second Athenian League"]
     segments:
       - { name: Archaic Athens, span: c. 800 – 508 BCE, weight: 3 }
       - { name: Athenian democracy, span: 508 – 322 BCE, weight: 6 }
@@ -244,6 +252,7 @@ lanes:
     sphere: hellenic
     prominence: 3
     span: c. 900 – 192 BCE
+    cliopatria: ["Peloponnesian League"]
     events:
       - { id: thermopylae, date: 480 BCE, label: "Leonidas and his 300 fall at Thermopylae", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Thermopylae] }
       - { id: sparta-wins, date: 404 BCE, label: "Sparta wins the Peloponnesian War", prominence: 4, themes: [war], sources: [wikipedia:Peloponnesian_War] }
@@ -257,6 +266,7 @@ lanes:
     sphere: hellenic
     prominence: 3
     span: c. 700 – 336 BCE
+    cliopatria: ["Macedonian Empire"]
     relations:
       - { type: becomes, lane: alexander-empire, at: 336 BCE }
     sources: [wikipedia:Macedonia_(ancient_kingdom)]
@@ -288,6 +298,7 @@ lanes:
     sphere: hellenic
     prominence: 3
     span: 306 – 168 BCE
+    cliopatria: ["Antigonid Macedonia", "Antigonid Dynasty"]
     events:
       - { id: pydna, date: 168 BCE, label: "Rome crushes Macedon at Pydna", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Pydna] }
     sources: [wikipedia:Antigonid_dynasty]
@@ -301,6 +312,7 @@ lanes:
     sphere: roman
     prominence: 1
     span: 395 – 1453 CE
+    cliopatria: ["Eastern Roman Empire", "Byzantine Empire"]
     relations:
       - { type: conquers, lane: vandal-kingdom, at: 534 CE }
       - { type: conquers, lane: ostrogoths, at: 553 CE }

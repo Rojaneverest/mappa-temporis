@@ -8,6 +8,7 @@ lanes:
     sphere: hellenic
     prominence: 3
     span: c. 180 BCE – c. 10 CE
+    cliopatria: ["Indo-Greeks"]
     events:
       - { id: menander, date: c. 150 BCE, label: "King Menander debates a Buddhist monk in the Milinda Pañha", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Menander_I] }
     sources: [wikipedia:Indo-Greek_Kingdom]
@@ -19,6 +20,7 @@ lanes:
     sphere: steppe
     prominence: 4
     span: c. 150 BCE – c. 415 CE
+    cliopatria: ["Indo-Scythians", "Western Satraps"]
     sources: [wikipedia:Indo-Scythians]
 
   - id: kushan
@@ -56,6 +58,7 @@ lanes:
     sphere: indic
     prominence: 3
     span: c. 600 – 345 BCE
+    cliopatria: ["Magadha - Haryanka dynasty", "Magadha - Shaishunaga dynasty", "Janapada of Magadha"]
     relations:
       - { type: becomes, lane: nanda, at: c. 345 BCE }
     events:
@@ -102,6 +105,7 @@ lanes:
     sphere: indic
     prominence: 3
     span: 185 – 73 BCE
+    cliopatria: ["Shunga Empire"]
     sources: [wikipedia:Shunga_Empire]
 
   - id: gupta
@@ -143,6 +147,7 @@ lanes:
     sphere: indic
     prominence: 3
     span: c. 100 BCE – c. 225 CE
+    cliopatria: ["Satavahana Dynasty"]
     events:
       - { id: sanchi, date: 1st c. BCE, label: "The carved gateways of the Great Stupa at Sanchi", prominence: 2, themes: [art, religion], sources: [wikipedia:Sanchi] }
     sources: [wikipedia:Satavahana_dynasty]
@@ -154,6 +159,7 @@ lanes:
     sphere: indic
     prominence: 4
     span: c. 250 – c. 500 CE
+    cliopatria: ["Vakataka Kingdom"]
     events:
       - { id: ajanta, date: c. 470 CE, label: "The painted caves of Ajanta", prominence: 2, themes: [art, religion], sources: [wikipedia:Ajanta_Caves] }
     sources: [wikipedia:Vakataka_dynasty]
@@ -165,6 +171,7 @@ lanes:
     sphere: indic
     prominence: 3
     span: c. 300 BCE – c. 300 CE
+    cliopatria: ["Early Cheras", "Early Cholas", "Early Pandyas"]
     events:
       - { id: sangam, date: c. 100 CE, label: "Sangam poets write the classics of Tamil literature", prominence: 3, confidence: probable, themes: [art], sources: [wikipedia:Sangam_literature] }
       - { id: muziris, date: 1st c., label: "Roman ships trade gold for pepper at Muziris", prominence: 3, themes: [trade], sources: [wikipedia:Muziris] }
@@ -177,6 +184,7 @@ lanes:
     sphere: indic
     prominence: 3
     span: 275 – 897 CE
+    cliopatria: ["Late Pallava Empire"]
     events:
       - { id: mamallapuram, date: 7th c., label: "Temples cut from living rock at Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Group_of_Monuments_at_Mahabalipuram] }
     sources: [wikipedia:Pallava_dynasty]
@@ -189,6 +197,7 @@ lanes:
     sphere: indic
     prominence: 3
     span: 377 BCE – 1017 CE
+    cliopatria: ["Anurādhapura"]
     events:
       - { id: mahinda, date: c. 250 BCE, label: "Ashoka's son Mahinda brings Buddhism to Sri Lanka", prominence: 3, themes: [religion], sources: [wikipedia:Mahinda_(Buddhist_monk)] }
       - { id: sigiriya, date: c. 480 CE, label: "King Kashyapa builds his palace atop the rock of Sigiriya", prominence: 3, themes: [art], sources: [wikipedia:Sigiriya] }

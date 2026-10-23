@@ -51,6 +51,7 @@ lanes:
     prominence: 2
     basis: archaeology
     span: c. 1200 – 400 BCE
+    cliopatria: ["Olmec Civilization"]
     events:
       - { id: la-venta, date: c. 900 BCE, label: "La Venta becomes the great Olmec centre; colossal stone heads", prominence: 2, themes: [art], sources: [wikipedia:La_Venta] }
       - { id: cascajal, date: c. 900 BCE, label: "The Cascajal Block — perhaps the first writing in the Americas", prominence: 4, confidence: disputed, thread: scripts, sources: [wikipedia:Cascajal_Block] }
@@ -65,6 +66,7 @@ lanes:
     sphere: mesoamerican
     prominence: 3
     span: c. 500 BCE – c. 800 CE
+    cliopatria: ["Zapotec Civilization"]
     events:
       - { id: monte-alban, date: c. 500 BCE, label: "Monte Albán is founded on a levelled mountaintop", prominence: 3, sources: [wikipedia:Monte_Albán] }
     sources: [wikipedia:Zapotec_civilization]
@@ -93,6 +95,7 @@ lanes:
     sphere: mesoamerican
     prominence: 1
     span: c. 2000 BCE – 1697 CE
+    cliopatria: ["Mayan City-States"]
     segments:
       - { name: Preclassic Maya, span: c. 2000 BCE – 250 CE, weight: 3 }
       - { name: Classic Maya, span: 250 – 900 CE, weight: 6 }

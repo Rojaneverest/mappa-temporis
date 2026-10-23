@@ -11,3 +11,4 @@ apps/explorer/public/canvaskit/
 # compiled tools
 tools/bin/
 apps/explorer/public/img/
+apps/explorer/public/atlas/

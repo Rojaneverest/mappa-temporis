@@ -61,6 +61,7 @@ lanes:
     sphere: african
     prominence: 1
     span: c. 1070 BCE – c. 350 CE
+    cliopatria: ["Kingdom of Kush"]
     segments:
       - { name: Napata, span: c. 1070 – 270 BCE, weight: 5 }
       - { name: Meroë, span: 270 BCE – c. 350 CE, weight: 4 }
@@ -93,6 +94,7 @@ lanes:
     sphere: african
     prominence: 2
     span: c. 100 – c. 940 CE
+    cliopatria: ["Kingdom of Axum"]
     relations:
       - { type: conquers, lane: kush, at: c. 350 CE }
       - { type: conquers, lane: saba, at: c. 525 CE }
@@ -124,6 +126,7 @@ lanes:
     sphere: punic
     prominence: 2
     span: 814 – 146 BCE
+    cliopatria: ["Carthage"]
     events:
       - { id: carthage-founded, date: 814 BCE, label: "Settlers from Tyre found Carthage (traditional date)", prominence: 3, confidence: legendary, themes: [migration], sources: [wikipedia:Ancient_Carthage] }
       - { id: hanno, date: c. 500 BCE, label: "Hanno the Navigator sails down the West African coast", prominence: 3, confidence: probable, themes: [exploration], sources: [wikipedia:Hanno_the_Navigator] }
@@ -143,6 +146,7 @@ lanes:
     sphere: african
     prominence: 3
     span: 202 – 46 BCE
+    cliopatria: ["Kingdom of Numidia"]
     events:
       - { id: jugurtha, date: 112 BCE, label: "Jugurtha's war with Rome", prominence: 4, themes: [war], sources: [wikipedia:Jugurthine_War] }
     sources: [wikipedia:Numidia]

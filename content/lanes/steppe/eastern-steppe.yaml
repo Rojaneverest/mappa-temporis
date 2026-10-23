@@ -97,6 +97,7 @@ lanes:
     sphere: steppe
     prominence: 4
     span: c. 440 – c. 560 CE
+    cliopatria: ["White Huns"]
     events:
       - id: peroz
         date: 484 CE

@@ -70,6 +70,10 @@ export class Viewer {
   onPick: (ref: string | null) => void = () => {};
   /** Called (debounced by the caller) whenever the camera settles somewhere new. */
   onViewChange: (v: ViewState) => void = () => {};
+  /** Called every frame drawn: the year under the cursor (or at the centre) and what is hovered / selected. */
+  onFocus: (year: number, hover: string | null, selected: string | null) => void = () => {};
+  /** Distance of the minimap from the bottom edge (other panels may sit below it). */
+  miniBottom = 48;
 
   constructor(canvas: HTMLCanvasElement, dl: DisplayList, folio: Folio, chartUrl: string, status: HTMLElement) {
     this.canvas = canvas;
@@ -407,7 +411,7 @@ export class Viewer {
     if (!this.mini || !this.showMini || this.s / this.fitScale < 1.6) return null;
     const h = Math.min(this.mini.h, this.cssH * 0.45);
     const w = (h / this.mini.h) * this.mini.w;
-    return { x: RULER_W + 12, y: this.cssH - h - 48, w, h };
+    return { x: RULER_W + 12, y: this.cssH - h - this.miniBottom, w, h };
   }
 
   private miniHit(px: number, py: number) {
@@ -471,6 +475,9 @@ export class Viewer {
     this.drawHighlight(this.selected, 0.9, 2);
     this.drawHud(k);
     this.drawMinimap();
+    const focusY = this.cursor && this.cursor.y > HEADER_H ? this.cursor.y : this.cssH / 2;
+    const year = Math.min(this.dl.time.year1, Math.max(this.dl.time.year0, yToYear(this.dl, this.y0 + focusY / this.s)));
+    this.onFocus(year, this.hover, this.selected);
   }
 
   /** Draw tile (k,i,j), or the best coarser ancestor's matching region while it renders. */

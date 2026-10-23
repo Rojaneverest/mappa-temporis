@@ -108,6 +108,7 @@ lanes:
     sphere: korean-japanese
     prominence: 4
     span: 42 – 562 CE
+    cliopatria: ["Byeonhan"]
     sources: [wikipedia:Gaya_confederacy]
 
   - id: jomon
@@ -194,6 +195,7 @@ lanes:
     sphere: korean-japanese
     prominence: 3
     span: 538 – 710 CE
+    cliopatria: ["Asuka Japan"]
     events:
       - id: seventeen-articles
         date: 604 CE

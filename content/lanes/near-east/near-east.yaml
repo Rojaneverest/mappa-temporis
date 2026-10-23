@@ -8,6 +8,7 @@ lanes:
     sphere: egyptian
     prominence: 3
     span: 1069 – 664 BCE
+    cliopatria: ["Twenty-second Dynasty of Egypt", "Twenty-third Dynasty of Egypt"]
     relations:
       - { type: becomes, lane: egypt-late-period, at: 664 BCE }
     sources: [wikipedia:Third_Intermediate_Period_of_Egypt]
@@ -20,6 +21,7 @@ lanes:
     sphere: egyptian
     prominence: 2
     span: 664 – 332 BCE
+    cliopatria: ["Twenty-sixth Dynasty of Egypt", "Thirtieth Dynasty of Egypt"]
     segments:
       - { name: Saite revival, span: 664 – 525 BCE, weight: 4 }
       - { name: Persian rule, span: 525 – 404 BCE, weight: 2, style: interregnum }
@@ -38,6 +40,7 @@ lanes:
     sphere: hellenic
     prominence: 2
     span: 305 – 30 BCE
+    cliopatria: ["Ptolemaic Kingdom"]
     events:
       - { id: euclid, date: c. 300 BCE, label: "Euclid writes the Elements in Alexandria", prominence: 2, themes: [ideas], sources: [wikipedia:Euclid's_Elements] }
       - { id: library-alexandria, date: c. 285 BCE, label: "The Library of Alexandria gathers the world's books", prominence: 2, confidence: probable, themes: [ideas], sources: [wikipedia:Library_of_Alexandria] }
@@ -59,6 +62,7 @@ lanes:
     sphere: punic
     prominence: 3
     span: c. 1100 – 332 BCE
+    cliopatria: ["Phoenicia"]
     relations:
       - { type: influences, lane: greek-poleis, at: c. 775 BCE }
     events:
@@ -99,6 +103,7 @@ lanes:
     sphere: hebrew
     prominence: 3
     span: 539 BCE – 135 CE
+    cliopatria: ["Judea"]
     segments:
       - { name: Persian Yehud, span: 539 – 332 BCE, weight: 2 }
       - { name: Hellenistic Judea, span: 332 – 140 BCE, weight: 2 }
@@ -120,6 +125,7 @@ lanes:
     sphere: arabian
     prominence: 3
     span: c. 300 BCE – 106 CE
+    cliopatria: ["Nabataeans"]
     events:
       - { id: petra-treasury, date: 1st c., label: "Petra's Treasury is carved from the rose-red rock", prominence: 3, themes: [art, trade], sources: [wikipedia:Al-Khazneh] }
     sources: [wikipedia:Nabataean_Kingdom]
@@ -131,6 +137,7 @@ lanes:
     sphere: arabian
     prominence: 3
     span: c. 800 BCE – 570 CE
+    cliopatria: ["Sabaeans", "Himyarite Kingdom"]
     events:
       - { id: marib-dam, date: c. 700 BCE, label: "The great dam of Marib waters the incense kingdom of Sheba", prominence: 4, themes: [technology, trade], confidence: probable, sources: [wikipedia:Marib_Dam] }
     sources: [wikipedia:Sabaeans, wikipedia:Himyarite_Kingdom]
@@ -142,6 +149,7 @@ lanes:
     sphere: arabian
     prominence: 4
     span: 260 – 273 CE
+    cliopatria: ["Palmyrene Empire"]
     events:
       - { id: zenobia, date: 272 CE, label: "Queen Zenobia's revolt against Rome ends in defeat", prominence: 3, themes: [women, war], sources: [wikipedia:Zenobia] }
     sources: [wikipedia:Palmyrene_Empire]
@@ -222,6 +230,7 @@ lanes:
     sphere: persian
     prominence: 4
     span: c. 860 – 590 BCE
+    cliopatria: ["Kingdom of Urartu"]
     sources: [wikipedia:Urartu]
 
   - id: armenia
@@ -244,6 +253,7 @@ lanes:
     sphere: hellenic
     prominence: 4
     span: 282 – 133 BCE
+    cliopatria: ["Kingdom of Pergamon"]
     events:
       - { id: parchment, date: c. 190 BCE, label: "Pergamon's library popularises parchment", prominence: 4, confidence: disputed, themes: [technology], sources: [wikipedia:Parchment] }
     sources: [wikipedia:Attalid_dynasty]
@@ -287,6 +297,7 @@ lanes:
     sphere: persian
     prominence: 3
     span: c. 678 – 550 BCE
+    cliopatria: ["Median Kingdom"]
     relations:
       - { type: becomes, lane: achaemenid, at: 550 BCE }
     sources: [wikipedia:Medes]

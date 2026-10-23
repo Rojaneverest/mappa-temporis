@@ -80,6 +80,8 @@ export const Lane = z.object({
   relations: z.array(Relation).default([]),
   events: z.array(Event).default([]),
   images: z.array(LaneImage).default([]),
+  /** Cliopatria polity names to show for this lane in the Atlas, when Wikidata/name matching misses. */
+  cliopatria: z.array(z.string()).default([]),
   sources: z.array(z.string()).default([]),
 });
 export type Lane = z.infer<typeof Lane>;

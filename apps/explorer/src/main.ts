@@ -2,6 +2,7 @@ import type { DisplayList } from '../../../packages/render/src/displaylist.ts';
 import type { Folio } from '../../../packages/render/src/folio.ts';
 import { Viewer, type ViewState } from './viewer.ts';
 import { Panel } from './panel.ts';
+import { Atlas } from './atlas.ts';
 
 // ?sheet=<id> picks a sheet (default: the classical world); see content/sheets/.
 const SHEET = new URLSearchParams(location.search).get('sheet') ?? 'classical-world';
@@ -86,6 +87,27 @@ const toggleLayers = () => {
 };
 layersBtn.addEventListener('click', toggleLayers);
 window.addEventListener('keydown', (e) => { if ((e.key === 'l' || e.key === 'L') && !(e.target as HTMLElement).closest?.('input')) toggleLayers(); });
+
+// ---- atlas: the world in the year under the cursor
+const atlasEl = document.getElementById('atlas')!;
+const atlasBtn = document.getElementById('atlas-btn')!;
+const atlas = new Atlas(atlasEl);
+atlas.load(`/atlas/${SHEET}.topo.json`).catch((err) => console.warn('atlas', err));
+atlas.onPickLane = (laneId) => select(laneId, true);
+const laneOf = (ref: string | null) => {
+  const e = ref ? folio.entries[ref] : undefined;
+  return e ? (e.kind === 'lane' ? e.id : e.laneId || null) : null;
+};
+viewer.onFocus = (year, hover, selected) => atlas.set(year, laneOf(hover) ?? laneOf(selected));
+const setAtlas = (open: boolean) => {
+  atlasEl.classList.toggle('hidden', !open);
+  atlasBtn.setAttribute('aria-pressed', String(open));
+  viewer.miniBottom = open ? 48 + atlasEl.offsetHeight + 24 : 48;
+  try { localStorage.setItem('mt-atlas', open ? '1' : '0'); } catch { /* not remembered */ }
+};
+setAtlas((() => { try { return localStorage.getItem('mt-atlas') !== '0'; } catch { return true; } })());
+atlasBtn.addEventListener('click', () => setAtlas(atlasEl.classList.contains('hidden')));
+window.addEventListener('keydown', (e) => { if ((e.key === 'a' || e.key === 'A') && !(e.target as HTMLElement).closest?.('input')) setAtlas(atlasEl.classList.contains('hidden')); });
 
 // Handy for debugging from the console.
 (window as unknown as { viewer: Viewer }).viewer = viewer;

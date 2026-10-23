@@ -6,6 +6,7 @@
   "scripts": {
     "build:chart": "for f in content/sheets/*.yaml; do node scripts/build-chart.ts $(basename $f .yaml) || exit 1; done",
     "images": "node scripts/images/pipeline.ts",
+    "atlas": "for f in content/sheets/*.yaml; do node scripts/atlas/build-atlas.ts $(basename $f .yaml) || exit 1; done",
     "build:tools": "mkdir -p tools/bin && swiftc -O tools/cutout/cutout.swift -o tools/bin/cutout",
     "dev": "pnpm build:chart && pnpm --filter explorer dev",
     "test": "vitest run",
@@ -15,6 +16,7 @@
     "@types/node": "^24.0.0",
     "canvaskit-wasm": "0.42.0",
     "flatbush": "^4.6.2",
+    "mapshaper": "^0.7.95",
     "sharp": "^0.35.5",
     "subset-font": "^2.9.0",
     "typescript": "5.9.3",

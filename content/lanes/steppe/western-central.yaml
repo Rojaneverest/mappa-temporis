@@ -7,6 +7,7 @@ lanes:
     sphere: steppe
     prominence: 2
     span: c. 800 BCE – c. 200 CE
+    cliopatria: ["Scythia"]
     relations:
       - { type: influences, lane: neo-assyria, at: c. 650 BCE }
     events:
@@ -31,6 +32,7 @@ lanes:
     sphere: steppe
     prominence: 2
     span: c. 370 – 469 CE
+    cliopatria: ["Huns", "Hunnic Empire"]
     relations:
       - { type: influences, lane: germanic-peoples, at: 376 CE }
     events:
@@ -45,6 +47,7 @@ lanes:
     sphere: steppe
     prominence: 4
     span: 567 – 822 CE
+    cliopatria: ["Avar Khaganate"]
     sources: [wikipedia:Pannonian_Avars]
 
   - id: greco-bactria

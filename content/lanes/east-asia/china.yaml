@@ -18,6 +18,7 @@ lanes:
     sphere: sinic
     prominence: 3
     span: c. 900 – 221 BCE
+    cliopatria: ["Qin"]
     relations:
       - { type: becomes, lane: qin, at: 221 BCE }
     events:
@@ -43,6 +44,7 @@ lanes:
     sphere: sinic
     prominence: 2
     span: 770 – 256 BCE
+    cliopatria: ["Later Zhou", "Zhou Dynasty"]
     segments:
       - { name: Spring and Autumn period, span: 770 – 476 BCE, weight: 4 }
       - { name: Warring States period, span: 475 – 256 BCE, weight: 3 }
@@ -95,6 +97,7 @@ lanes:
     sphere: sinic
     prominence: 2
     span: 221 – 206 BCE
+    cliopatria: ["Qin Dynasty"]
     events:
       - id: qin-unifies
         date: 221 BCE
@@ -132,6 +135,7 @@ lanes:
     sphere: sinic
     prominence: 1
     span: 202 BCE – 220 CE
+    cliopatria: ["Han Dynasty", "Xin Dynasty"]
     segments:
       - { name: Western Han, span: 202 BCE – 9 CE, weight: 6 }
       - { name: Xin (Wang Mang), span: 9 – 23 CE, weight: 2, style: interregnum }
@@ -270,6 +274,7 @@ lanes:
     sphere: sinic
     prominence: 2
     span: 581 – 618 CE
+    cliopatria: ["Sui Dynasty"]
     relations:
       - { type: becomes, lane: tang, at: 618 CE }
     events:
@@ -295,6 +300,7 @@ lanes:
     sphere: sinic
     prominence: 1
     span: 618 – 907 CE
+    cliopatria: ["Tang Dynasty"]
     events:
       - id: xuanzang
         date: 629 CE
@@ -391,6 +397,7 @@ lanes:
     sphere: sinic
     prominence: 3
     span: 420 – 589 CE
+    cliopatria: ["Liu Song Dynasty", "Southern Qi", "Liang Dynasty", "Chen Dynasty"]
     segments:
       - { name: Liu Song, span: 420 – 479 CE }
       - { name: Southern Qi, span: 479 – 502 CE }
@@ -439,6 +446,7 @@ lanes:
     sphere: sinic
     prominence: 4
     span: 403 – 222 BCE
+    cliopatria: ["Han", "Wei", "Zhao"]
     sources: [wikipedia:Partition_of_Jin]
 
   - id: sixteen-kingdoms
@@ -448,6 +456,7 @@ lanes:
     sphere: sinic
     prominence: 4
     span: 304 – 439 CE
+    cliopatria: ["Former Zhao", "Later Zhao", "Former Yan", "Former Qin", "Later Qin", "Later Yan", "Northern Liang", "Western Qin", "Northern Yan", "Southern Yan", "Xia", "Western Liang", "Southern Liang", "Later Liang", "Cheng Han", "Former Liang"]
     sources: [wikipedia:Sixteen_Kingdoms]
 
   - id: northern-wei
@@ -489,6 +498,7 @@ lanes:
     sphere: sinic
     prominence: 4
     span: 534 – 577 CE
+    cliopatria: ["Eastern Wei", "Northern Qi"]
     images:
       - id: northern-qi-camel
         source: "met:44795"
@@ -505,6 +515,7 @@ lanes:
     sphere: sinic
     prominence: 4
     span: 535 – 581 CE
+    cliopatria: ["Western Wei", "Northern Zhou"]
     relations:
       - { type: becomes, lane: sui, at: 581 CE }
     sources: [wikipedia:Northern_Zhou]

@@ -98,6 +98,7 @@ lanes:
     sphere: southeast-asian
     prominence: 4
     span: c. 358 – 669 CE
+    cliopatria: ["Tarumanagara"]
     events:
       - { id: kutai-yupa, date: c. 400 CE, label: "Sanskrit pillar inscriptions at Kutai, the oldest in Indonesia", prominence: 4, thread: scripts, sources: [wikipedia:Kutai_Martadipura] }
     sources: [wikipedia:Tarumanagara]
