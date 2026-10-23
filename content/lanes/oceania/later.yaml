@@ -1,0 +1,133 @@
+# Oceania from c. 700 CE to today.
+lanes:
+  - id: colonial-australia
+    name: Colonial Australia & Australia
+    region: oceania
+    group: australia
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1788 – 2026 CE
+    cliopatria: ["Australia", "New South Wales", "Commonwealth of Australia"]
+    events:
+      - { id: first-fleet, date: 1788 CE, label: "The First Fleet lands at Sydney Cove; smallpox follows", prominence: 2, themes: [migration, disease], sources: [wikipedia:First_Fleet] }
+      - { id: federation-australia, date: 1901 CE, label: "Federation: the Commonwealth of Australia", prominence: 4, themes: [government], sources: [wikipedia:Federation_of_Australia] }
+      - { id: mabo, date: 1992 CE, label: "The Mabo decision overturns 'terra nullius'", prominence: 3, themes: [government], sources: [wikipedia:Mabo_v_Queensland_(No_2)] }
+      - { id: gold-rush-australia, date: 1851 CE, label: "The Victorian gold rush", prominence: 4, themes: [migration], sources: [wikipedia:Victorian_gold_rush] }
+      - { id: gallipoli, date: 1915 CE, label: "Gallipoli", prominence: 3, themes: [war], sources: [wikipedia:Gallipoli_campaign] }
+      - { id: referendum-1967, date: 1967 CE, label: "Aboriginal Australians counted in the census at last", prominence: 4, themes: [government], sources: [wikipedia:1967_Australian_referendum] }
+    images:
+      - { id: sydney-opera-house, source: "commons:File:Sydney Opera House - Dec 2008.jpg", date: 1973 CE, prominence: 3, treatment: plate, caption: "The Sydney Opera House, 1973" }
+    sources: [wikipedia:History_of_Australia]
+
+  - id: east-polynesia
+    name: East Polynesian voyagers
+    region: oceania
+    group: pacific
+    sphere: oceanian
+    prominence: 2
+    basis: archaeology
+    span: c. 900 – c. 1300 CE
+    relations:
+      - { type: succeeds, lane: ancestral-polynesia, at: c. 1000 CE }
+      - { type: splits-into, lanes: [hawaii, rapa-nui, maori], at: c. 1250 CE }
+    events:
+      - { id: polynesian-triangle, date: c. 1000 CE, label: "Star-navigating canoes settle the Polynesian Triangle — a sixth of the globe", prominence: 1, themes: [exploration, migration, sky], sources: [wikipedia:Polynesian_navigation] }
+      - { id: sweet-potato, date: c. 1100 CE, label: "Sweet potatoes from South America: Polynesians reached the Americas", prominence: 3, confidence: probable, themes: [exploration, trade], sources: [wikipedia:Sweet_potato] }
+      - { id: rarotonga, date: c. 1000 CE, label: "Voyagers settle the Cook and Society Islands", prominence: 3, themes: [migration], confidence: probable, sources: [wikipedia:Polynesian_navigation] }
+    sources: [wikipedia:Polynesian_triangle]
+
+  - id: tui-tonga
+    name: Tuʻi Tonga & Tonga
+    region: oceania
+    group: pacific
+    sphere: oceanian
+    prominence: 3
+    span: c. 950 – 2026 CE
+    cliopatria: ["Tu'i Tonga Empire", "Tonga", "Kingdom of Tonga"]
+    events:
+      - { id: haamonga, date: c. 1200 CE, label: "The Haʻamonga ʻa Maui trilithon", prominence: 4, themes: [art], sources: [wikipedia:Haʻamonga_ʻa_Maui] }
+      - { id: tonga-empire, date: c. 1200 CE, label: "Tonga's maritime chiefdom reaches Samoa and beyond", prominence: 3, themes: [government], confidence: probable, sources: [wikipedia:Tuʻi_Tonga_Empire] }
+      - { id: tonga-constitution, date: 1875 CE, label: "Tonga's constitution; it is never colonised", prominence: 4, themes: [government], sources: [wikipedia:Tonga] }
+    sources: [wikipedia:Tuʻi_Tonga_Empire]
+
+  - id: nan-madol
+    name: Saudeleur dynasty (Pohnpei)
+    region: oceania
+    group: pacific
+    sphere: oceanian
+    prominence: 4
+    span: c. 1100 – c. 1628 CE
+    events:
+      - { id: nan-madol-city, date: c. 1180 CE, label: "Nan Madol: a city of basalt islets in a lagoon", prominence: 3, themes: [art], sources: [wikipedia:Nan_Madol] }
+      - { id: isokelekel, date: c. 1628 CE, label: "Isokelekel overthrows the Saudeleurs", prominence: 4, confidence: legendary, sources: [wikipedia:Isokelekel] }
+    sources: [wikipedia:Saudeleur_dynasty]
+
+  - id: hawaii
+    name: Hawaiʻi
+    endonym: { text: Hawaiʻi, script: Latn }
+    region: oceania
+    group: pacific
+    sphere: oceanian
+    prominence: 3
+    span: c. 1250 – 1898 CE
+    cliopatria: ["Kingdom of Hawaii", "Hawaii"]
+    events:
+      - { id: cook-hawaii, date: 1778 CE, label: "James Cook reaches Hawaiʻi; he dies there the next year", prominence: 3, themes: [exploration], sources: [wikipedia:James_Cook] }
+      - { id: kamehameha, date: 1810 CE, label: "Kamehameha unites the islands", prominence: 3, themes: [government], sources: [wikipedia:Kamehameha_I] }
+      - { id: hawaii-annexed, date: 1898 CE, label: "After a coup by planters, the US annexes Hawaiʻi", prominence: 4, themes: [government], sources: [wikipedia:Overthrow_of_the_Hawaiian_Kingdom] }
+      - { id: hawaii-settled, date: c. 1250 CE, label: "Polynesians settle Hawaiʻi", prominence: 3, themes: [migration], sources: [wikipedia:History_of_Hawaii] }
+      - { id: liliuokalani, date: 1893 CE, label: "Queen Liliʻuokalani is overthrown", prominence: 3, themes: [women, government], sources: [wikipedia:Liliʻuokalani] }
+    sources: [wikipedia:History_of_Hawaii]
+
+  - id: rapa-nui
+    name: Rapa Nui
+    endonym: { text: Rapa Nui, script: Latn }
+    region: oceania
+    group: pacific
+    sphere: oceanian
+    prominence: 3
+    span: c. 1200 – 2026 CE
+    events:
+      - { id: moai, date: c. 1300 CE, label: "The moai: nearly 1,000 ancestor statues face inland", prominence: 1, themes: [art, religion], sources: [wikipedia:Moai] }
+      - { id: rongorongo, date: c. 1800 CE, label: "Rongorongo glyphs, still undeciphered", prominence: 4, thread: scripts, confidence: disputed, sources: [wikipedia:Rongorongo] }
+      - { id: rapa-nui-slavers, date: 1862 CE, label: "Peruvian slave raids and smallpox leave 111 islanders", prominence: 4, themes: [disease], sources: [wikipedia:Easter_Island] }
+      - { id: rapa-nui-settled, date: c. 1200 CE, label: "Polynesians reach Rapa Nui, the most remote inhabited island", prominence: 3, themes: [migration], sources: [wikipedia:Easter_Island] }
+      - { id: roggeveen, date: 1722 CE, label: "Roggeveen lands on Easter Sunday", prominence: 4, themes: [exploration], sources: [wikipedia:Jacob_Roggeveen] }
+    images:
+      - { id: moai-rano-raraku, source: "commons:File:Moai Rano raraku.jpg", date: c. 1300 CE, prominence: 1, treatment: plate, caption: "Moai at Rano Raraku, Rapa Nui" }
+    sources: [wikipedia:Easter_Island]
+
+  - id: maori
+    name: Māori & Aotearoa New Zealand
+    endonym: { text: Aotearoa, script: Latn }
+    region: oceania
+    group: pacific
+    sphere: oceanian
+    prominence: 2
+    span: c. 1250 – 2026 CE
+    cliopatria: ["New Zealand", "Colony of New Zealand", "Dominion of New Zealand"]
+    segments:
+      - { name: Māori Aotearoa, span: c. 1250 – 1840 CE, weight: 3 }
+      - { name: New Zealand, span: 1840 – 2026 CE, weight: 3 }
+    events:
+      - { id: moa-extinct, date: c. 1400 CE, label: "The giant moa is hunted to extinction", prominence: 4, themes: [climate], sources: [wikipedia:Moa] }
+      - { id: tasman, date: 1642 CE, label: "Abel Tasman sights the coast", prominence: 4, themes: [exploration], sources: [wikipedia:Abel_Tasman] }
+      - { id: waitangi, date: 1840 CE, label: "The Treaty of Waitangi", prominence: 2, themes: [government], sources: [wikipedia:Treaty_of_Waitangi] }
+      - { id: women-vote, date: 1893 CE, label: "New Zealand: the first country where women vote", prominence: 2, themes: [women, government], sources: [wikipedia:Women's_suffrage_in_New_Zealand] }
+      - { id: aotearoa-settled, date: c. 1280 CE, label: "Polynesian voyagers settle Aotearoa — the last major land reached by humans", prominence: 2, themes: [migration], sources: [wikipedia:Māori_people] }
+      - { id: musket-wars, date: 1807 CE, label: "The Musket Wars", prominence: 4, themes: [war], sources: [wikipedia:Musket_Wars] }
+      - { id: new-zealand-wars, date: 1845 CE, label: "The New Zealand Wars over land", prominence: 4, themes: [war], sources: [wikipedia:New_Zealand_Wars] }
+      - { id: maori-language-act, date: 1987 CE, label: "Te reo Māori becomes an official language", prominence: 4, sources: [wikipedia:Māori_Language_Act_1987] }
+    sources: [wikipedia:History_of_New_Zealand]
+
+  - id: fiji
+    name: Fiji
+    region: oceania
+    group: pacific
+    sphere: oceanian
+    prominence: 4
+    span: c. 1000 – 2026 CE
+    cliopatria: ["Fiji", "Colony of Fiji"]
+    events:
+      - { id: fiji-ceded, date: 1874 CE, label: "Fiji is ceded to Britain; Indian indentured labourers follow", prominence: 4, themes: [migration], sources: [wikipedia:Colony_of_Fiji] }
+    sources: [wikipedia:History_of_Fiji]

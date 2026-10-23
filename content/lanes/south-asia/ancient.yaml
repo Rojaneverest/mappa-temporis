@@ -1,0 +1,66 @@
+# South Asia to c. 800 BCE.
+lanes:
+  - id: mehrgarh
+    name: Mehrgarh
+    region: south-asia
+    group: northwest
+    sphere: indic
+    prominence: 3
+    basis: archaeology
+    span: c. 7000 – c. 2600 BCE
+    relations:
+      - { type: becomes, lane: indus-valley, at: c. 3300 BCE }
+    events:
+      - { id: mehrgarh-farming, date: c. 7000 BCE, label: "Farming villages with barley, wheat and cattle at the foot of the Bolan Pass", prominence: 3, themes: [technology], sources: [wikipedia:Mehrgarh] }
+      - { id: mehrgarh-dentistry, date: c. 5500 BCE, label: "Mehrgarh: teeth drilled with flint bits — the oldest dentistry", prominence: 3, themes: [science], sources: [wikipedia:Mehrgarh] }
+      - { id: mehrgarh-cotton, date: c. 5000 BCE, label: "Cotton is cultivated in the Indus borderlands", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Cotton] }
+    sources: [wikipedia:Mehrgarh]
+
+  - id: indus-valley
+    name: Indus Valley Civilization
+    region: south-asia
+    group: northwest
+    sphere: indic
+    prominence: 1
+    basis: archaeology
+    span: c. 3300 – c. 1300 BCE
+    cliopatria: ["Indus Valley Civilization", "Harappan Civilization"]
+    segments:
+      - { name: Early Harappan, span: c. 3300 – c. 2600 BCE, weight: 3 }
+      - { name: Mature Harappan, span: c. 2600 – c. 1900 BCE, weight: 6 }
+      - { name: Late Harappan, span: c. 1900 – c. 1300 BCE, weight: 2 }
+    events:
+      - { id: mohenjo-daro, date: c. 2600 BCE, label: "Mohenjo-daro and Harappa: grid streets, brick drains and the Great Bath", prominence: 1, themes: [art, technology], sources: [wikipedia:Mohenjo-daro] }
+      - { id: indus-script, date: c. 2600 BCE, label: "The Indus script — still undeciphered", prominence: 2, thread: scripts, sources: [wikipedia:Indus_script] }
+      - { id: meluhha, date: c. 2300 BCE, label: "Ships from 'Meluhha' trade carnelian and timber with Mesopotamia", prominence: 3, themes: [trade], sources: [wikipedia:Meluhha] }
+      - { id: indus-decline, date: c. 1900 BCE, label: "As the monsoon weakens, the great cities empty", prominence: 2, themes: [climate, migration], confidence: probable, sources: [wikipedia:Indus_Valley_Civilisation] }
+      - { id: indus-weights, date: c. 2600 BCE, label: "Standard weights, baked bricks, drains in every street", prominence: 3, themes: [technology, government], sources: [wikipedia:Indus_Valley_Civilisation] }
+      - { id: lothal, date: c. 2400 BCE, label: "Lothal's dock; Indus seals turn up in Mesopotamia", prominence: 3, themes: [trade], sources: [wikipedia:Lothal] }
+    images:
+      - { id: mohenjo-daro-view, source: "commons:File:Mohenjo-daro.jpg", date: c. 2500 BCE, prominence: 2, treatment: plate, caption: "Mohenjo-daro: the Great Bath and the stupa mound" }
+    sources: [wikipedia:Indus_Valley_Civilisation]
+
+  - id: early-vedic
+    name: Early Vedic India
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 3
+    span: c. 1500 – c. 1100 BCE
+    relations:
+      - { type: becomes, lane: vedic, at: c. 1100 BCE }
+    events:
+      - { id: rigveda, date: c. 1400 BCE, label: "The hymns of the Rigveda are composed and memorised", prominence: 2, confidence: probable, themes: [religion, art], sources: [wikipedia:Rigveda] }
+    sources: [wikipedia:Vedic_period]
+
+  - id: southern-neolithic
+    name: Southern Neolithic & megalith builders
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 4
+    basis: archaeology
+    span: c. 3000 – c. 300 BCE
+    relations:
+      - { type: becomes, lane: tamilakam, at: c. 300 BCE }
+    sources: [wikipedia:South_Indian_Neolithic]

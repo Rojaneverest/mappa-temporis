@@ -54,11 +54,16 @@ export const LaneImage = z.object({
   /** Where on the time axis the image belongs. */
   date: DateText,
   prominence: Prominence,
-  /** cutout: object lifted from its photo with a soft shadow; plate: framed rectangle (paintings, scenes). */
-  treatment: z.enum(['cutout', 'plate']),
+  /** cutout: object lifted from its photo with a soft shadow; plate: framed rectangle (paintings, scenes);
+   *  backdrop: printed into the paper (multiplied), unframed — the era maps. */
+  treatment: z.enum(['cutout', 'plate', 'backdrop']),
   caption: z.string().max(80),
   /** Made in the era it illustrates (vs. a later depiction). */
   ofItsTime: z.boolean().default(true),
+  /** Backdrops only: print light as ink (photographs of Earth against black space). */
+  invert: z.boolean().default(false),
+  /** Backdrops only: lift the object off its photo's background (Apple Vision) before printing. */
+  lift: z.boolean().default(false),
 });
 export type LaneImage = z.infer<typeof LaneImage>;
 
@@ -95,12 +100,21 @@ export const Era = z.object({
   span: SpanText,
   forces: z.array(z.enum(['climate', 'migration', 'disease', 'war', 'technology', 'ideas'])).default([]),
   turningPoint: z.object({ label: z.string(), span: SpanText }).optional(),
+  /** "The world as they saw it": a map made in (or about) this era, printed into the left margin. */
+  map: LaneImage.optional(),
+  /** Paper tint for the era's substrate band (very faint). */
+  tint: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),
+  /** A few sentences for the Folio. */
+  note: z.string().optional(),
+  sources: z.array(z.string()).default([]),
 });
 export type Era = z.infer<typeof Era>;
 
 export const Region = z.object({
   id: z.string(),
   name: z.string(),
+  /** Used in the frozen header when the full name doesn't fit. */
+  short: z.string().optional(),
   /** Sub-regions, west to east. Lanes without a group use the region id. */
   groups: z.array(z.string()).default([]),
 });
@@ -110,6 +124,12 @@ export const Sheet = z.object({
   title: z.string(),
   subtitle: z.string(),
   window: SpanText,
+  /** Compressed stretches (e.g. the Neolithic prologue): `factor` 5 = a fifth of the normal space per year. */
+  /** Piecewise time scale: space per year relative to the main scale (0.2 = compressed fivefold, 2 = doubled).
+   *  Stretches not listed use the main scale. Each label is printed just below where its stretch begins. */
+  scale: z.array(z.object({ span: SpanText, factor: z.number().min(0.05).max(10), label: z.string().optional() })).default([]),
+  /** Draw the population curve and climate ribbons in the right margin. */
+  margins: z.boolean().default(false),
   regions: z.array(Region),
   eras: z.array(Era),
 });
@@ -120,6 +140,28 @@ export const Thread = z.object({
   name: z.string(),
   color: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
 });
+export const ClimateEpisode = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  name: z.string(),
+  span: SpanText,
+  kind: z.enum(['warm', 'cold', 'dry', 'wet']),
+  note: z.string(),
+  sources: z.array(z.string()).min(1),
+});
+export type ClimateEpisode = z.infer<typeof ClimateEpisode>;
+
+export const MarginsFile = z.object({
+  population: z.object({
+    note: z.string(),
+    sources: z.array(z.string()).min(1),
+    /** [date, millions of people] */
+    points: z.array(z.tuple([DateText, z.number().positive()])).min(2),
+    callouts: z.array(z.object({ year: DateText, label: z.string() })).default([]),
+  }),
+  climate: z.array(ClimateEpisode),
+});
+export type MarginsFile = z.infer<typeof MarginsFile>;
+
 export const ThreadFile = z.object({ threads: z.array(Thread) });
 export type Thread = z.infer<typeof Thread>;
 

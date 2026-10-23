@@ -1,0 +1,375 @@
+# The Near East from the first farmers to c. 800 BCE.
+lanes:
+  # ------------------------------------------------------------------ egypt
+  - id: naqada
+    name: Predynastic Egypt (Naqada)
+    region: near-east
+    group: egypt
+    sphere: egyptian
+    prominence: 3
+    basis: archaeology
+    span: c. 4000 – c. 3100 BCE
+    relations:
+      - { type: becomes, lane: egypt-early-dynastic, at: c. 3100 BCE }
+    events:
+      - { id: hieroglyphs-first, date: c. 3200 BCE, label: "The first hieroglyphs, on labels in a royal tomb at Abydos", prominence: 2, thread: scripts, confidence: probable, sources: [wikipedia:Egyptian_hieroglyphs] }
+      - { id: naqada-boats, date: c. 3500 BCE, label: "Painted pots with Nile boats", prominence: 4, themes: [art], sources: [wikipedia:Naqada_culture] }
+      - { id: hierakonpolis, date: c. 3400 BCE, label: "Hierakonpolis, a city of kings before Egypt", prominence: 4, sources: [wikipedia:Hierakonpolis] }
+    sources: [wikipedia:Naqada_culture]
+
+  - id: egypt-early-dynastic
+    name: Early Dynastic Egypt
+    region: near-east
+    group: egypt
+    sphere: egyptian
+    prominence: 2
+    span: c. 3100 – 2686 BCE
+    relations:
+      - { type: becomes, lane: egypt-old-kingdom, at: 2686 BCE }
+    events:
+      - { id: narmer, date: c. 3100 BCE, label: "Narmer unites Upper and Lower Egypt", prominence: 2, themes: [government], confidence: probable, sources: [wikipedia:Narmer] }
+      - { id: narmer-palette, date: c. 3100 BCE, label: "The Narmer Palette: Upper and Lower Egypt united", prominence: 1, themes: [government, art], sources: [wikipedia:Narmer_Palette] }
+      - { id: abydos-tombs, date: c. 3000 BCE, label: "Royal tombs at Abydos", prominence: 4, sources: [wikipedia:Umm_El_Qa'ab] }
+    sources: [wikipedia:Early_Dynastic_Period_(Egypt)]
+
+  - id: egypt-old-kingdom
+    name: Old Kingdom Egypt
+    endonym: { text: 𓆎𓅓𓏏𓊖, script: Egyp, translit: Kemet }
+    region: near-east
+    group: egypt
+    sphere: egyptian
+    prominence: 1
+    span: 2686 – 2181 BCE
+    cliopatria: ["Old Kingdom of Egypt", "Egypt"]
+    relations:
+      - { type: becomes, lane: egypt-first-intermediate, at: 2181 BCE }
+    events:
+      - { id: step-pyramid, date: c. 2650 BCE, label: "Imhotep builds Djoser's Step Pyramid", prominence: 2, themes: [art], sources: [wikipedia:Pyramid_of_Djoser] }
+      - { id: great-pyramid, date: c. 2560 BCE, label: "The Great Pyramid of Giza — the tallest building on Earth for 3,800 years", prominence: 1, themes: [art, technology], sources: [wikipedia:Great_Pyramid_of_Giza] }
+      - { id: sphinx, date: c. 2500 BCE, label: "The Great Sphinx is carved", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Great_Sphinx_of_Giza] }
+      - { id: old-kingdom-collapse, date: c. 2181 BCE, label: "Low Nile floods and famine: the Old Kingdom collapses", prominence: 3, themes: [climate], confidence: probable, sources: [wikipedia:4.2-kiloyear_event] }
+      - { id: djoser, date: c. 2670 BCE, label: "Imhotep's Step Pyramid for Djoser", prominence: 2, themes: [art, technology], sources: [wikipedia:Pyramid_of_Djoser] }
+      - { id: pyramid-texts, date: c. 2350 BCE, label: "The Pyramid Texts", prominence: 3, themes: [religion], sources: [wikipedia:Pyramid_Texts] }
+    images:
+      - { id: giza-pyramids, source: "commons:File:All Gizah Pyramids.jpg", date: c. 2560 BCE, prominence: 1, treatment: plate, caption: "The pyramids of Giza" }
+    sources: [wikipedia:Old_Kingdom_of_Egypt]
+
+  - id: egypt-first-intermediate
+    name: First Intermediate Period
+    region: near-east
+    group: egypt
+    sphere: egyptian
+    prominence: 3
+    span: 2181 – 2055 BCE
+    relations:
+      - { type: becomes, lane: egypt-middle-kingdom, at: 2055 BCE }
+    events:
+      - { id: low-niles, date: c. 2150 BCE, label: "Low Nile floods, famine and rival kings", prominence: 3, themes: [climate], sources: [wikipedia:First_Intermediate_Period_of_Egypt] }
+    sources: [wikipedia:First_Intermediate_Period_of_Egypt]
+
+  - id: egypt-middle-kingdom
+    name: Middle Kingdom Egypt
+    region: near-east
+    group: egypt
+    sphere: egyptian
+    prominence: 2
+    span: 2055 – 1650 BCE
+    relations:
+      - { type: becomes, lane: egypt-second-intermediate, at: 1650 BCE }
+    events:
+      - { id: mentuhotep, date: 2055 BCE, label: "Mentuhotep II reunites Egypt", prominence: 3, sources: [wikipedia:Mentuhotep_II] }
+      - { id: sinuhe, date: c. 1875 BCE, label: "The Story of Sinuhe, a classic of Egyptian literature", prominence: 4, themes: [art], sources: [wikipedia:Story_of_Sinuhe] }
+      - { id: faiyum, date: c. 1850 BCE, label: "The Faiyum is drained and farmed", prominence: 4, themes: [technology], sources: [wikipedia:Faiyum_Oasis] }
+    sources: [wikipedia:Middle_Kingdom_of_Egypt]
+
+  - id: egypt-second-intermediate
+    name: Second Intermediate Period
+    region: near-east
+    group: egypt
+    sphere: egyptian
+    prominence: 3
+    span: 1650 – 1550 BCE
+    relations:
+      - { type: becomes, lane: egypt-new-kingdom, at: 1550 BCE }
+    events:
+      - { id: hyksos, date: c. 1650 BCE, label: "The Hyksos rule the Nile Delta, bringing horse and chariot", prominence: 3, themes: [migration, technology], sources: [wikipedia:Hyksos] }
+      - { id: hyksos-chariot, date: c. 1600 BCE, label: "The Hyksos bring the horse and chariot to Egypt", prominence: 3, themes: [technology, war], sources: [wikipedia:Hyksos] }
+    sources: [wikipedia:Second_Intermediate_Period_of_Egypt]
+
+  - id: egypt-new-kingdom
+    name: New Kingdom Egypt
+    region: near-east
+    group: egypt
+    sphere: egyptian
+    prominence: 1
+    span: 1550 – 1069 BCE
+    cliopatria: ["New Kingdom of Egypt"]
+    relations:
+      - { type: becomes, lane: egypt-third-intermediate, at: 1069 BCE }
+      - { type: conquers, lane: kerma, at: c. 1500 BCE }
+    events:
+      - { id: hatshepsut, date: 1479 BCE, label: "Hatshepsut rules as pharaoh and sends ships to Punt", prominence: 2, themes: [women, trade], sources: [wikipedia:Hatshepsut] }
+      - { id: megiddo, date: 1457 BCE, label: "Thutmose III wins at Megiddo — the first battle recorded in detail", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Megiddo_(15th_century_BC)] }
+      - { id: amarna-letters, date: c. 1350 BCE, label: "The Amarna letters: great kings write to each other as 'brothers'", prominence: 3, themes: [diplomacy], sources: [wikipedia:Amarna_letters] }
+      - { id: akhenaten, date: c. 1346 BCE, label: "Akhenaten worships one god, the sun-disc Aten", prominence: 2, themes: [religion], sources: [wikipedia:Akhenaten] }
+      - { id: tutankhamun, date: c. 1323 BCE, label: "The boy-king Tutankhamun is buried with his golden mask", prominence: 2, themes: [art], sources: [wikipedia:Tutankhamun] }
+      - { id: kadesh, date: 1274 BCE, label: "Ramesses II fights the Hittites at Kadesh; the first known peace treaty follows", prominence: 2, themes: [war, diplomacy], sources: [wikipedia:Battle_of_Kadesh] }
+      - { id: sea-peoples, date: c. 1177 BCE, label: "Ramesses III repels the Sea Peoples", prominence: 2, themes: [war, migration], sources: [wikipedia:Sea_Peoples] }
+      - { id: valley-kings, date: c. 1500 BCE, label: "Pharaohs are buried in the Valley of the Kings", prominence: 3, sources: [wikipedia:Valley_of_the_Kings] }
+      - { id: abu-simbel, date: c. 1264 BCE, label: "Abu Simbel", prominence: 2, themes: [art], sources: [wikipedia:Abu_Simbel] }
+      - { id: deir-el-medina-strike, date: c. 1157 BCE, label: "The first recorded strike: unpaid tomb-builders down tools", prominence: 3, sources: [wikipedia:Deir_el-Medina] }
+    sources: [wikipedia:New_Kingdom_of_Egypt]
+
+  # ------------------------------------------------------------------ levant
+  - id: natufian
+    name: Natufians
+    region: near-east
+    group: levant
+    sphere: hebrew
+    prominence: 3
+    basis: archaeology
+    span: c. 12500 – c. 9500 BCE
+    relations:
+      - { type: becomes, lane: ppn-levant, at: c. 9500 BCE }
+    events:
+      - { id: natufian-villages, date: c. 10000 BCE, label: "Foragers settle in year-round villages and harvest wild cereals", prominence: 3, sources: [wikipedia:Natufian_culture] }
+      - { id: natufian-feast, date: c. 10000 BCE, label: "Natufians settle in villages and harvest wild cereals", prominence: 3, themes: [technology], sources: [wikipedia:Natufian_culture] }
+    sources: [wikipedia:Natufian_culture]
+
+  - id: ppn-levant
+    name: First farmers of the Levant
+    region: near-east
+    group: levant
+    sphere: hebrew
+    prominence: 2
+    basis: archaeology
+    span: c. 9500 – c. 4500 BCE
+    events:
+      - { id: first-farming, date: c. 9500 BCE, label: "Wheat, barley and lentils are domesticated in the Fertile Crescent", prominence: 1, themes: [technology], sources: [wikipedia:Neolithic_Revolution] }
+      - { id: jericho-tower, date: c. 8000 BCE, label: "Jericho raises a stone tower and walls", prominence: 3, themes: [art], sources: [wikipedia:Tower_of_Jericho] }
+      - { id: plastered-skulls, date: c. 7000 BCE, label: "Plastered ancestor skulls", prominence: 4, themes: [religion, art], sources: [wikipedia:Plastered_human_skulls] }
+      - { id: einkorn, date: c. 9000 BCE, label: "Wheat, barley, lentils, then sheep and goats are domesticated", prominence: 2, themes: [technology], sources: [wikipedia:Neolithic_founder_crops] }
+    sources: [wikipedia:Pre-Pottery_Neolithic_A]
+
+  - id: canaan
+    name: Canaanite city-states
+    region: near-east
+    group: levant
+    sphere: punic
+    prominence: 3
+    span: c. 3000 – c. 1150 BCE
+    relations:
+      - { type: becomes, lane: phoenicia, at: c. 1150 BCE }
+    events:
+      - { id: proto-sinaitic, date: c. 1850 BCE, label: "Proto-Sinaitic: the first alphabet, a few dozen letters from hieroglyphs", prominence: 1, thread: alphabet, confidence: probable, sources: [wikipedia:Proto-Sinaitic_script] }
+      - { id: ugarit, date: c. 1400 BCE, label: "Ugarit writes an alphabet in cuneiform signs", prominence: 4, thread: alphabet, sources: [wikipedia:Ugaritic_alphabet] }
+      - { id: ugarit-alphabet, date: c. 1400 BCE, label: "Ugarit's cuneiform alphabet", prominence: 3, thread: alphabet, sources: [wikipedia:Ugaritic_alphabet] }
+    sources: [wikipedia:Canaan]
+
+  - id: early-israel
+    name: Early Israel
+    region: near-east
+    group: levant
+    sphere: hebrew
+    prominence: 4
+    span: c. 1200 – c. 930 BCE
+    relations:
+      - { type: splits-into, lanes: [israel-kingdom, judah], at: c. 930 BCE }
+    events:
+      - { id: merneptah, date: c. 1208 BCE, label: "The Merneptah Stele: the first mention of 'Israel'", prominence: 3, sources: [wikipedia:Merneptah_Stele] }
+    sources: [wikipedia:History_of_ancient_Israel_and_Judah]
+
+  # ------------------------------------------------------------------ anatolia
+  - id: gobekli-tepe
+    name: Göbekli Tepe
+    region: near-east
+    group: anatolia
+    sphere: persian
+    prominence: 2
+    basis: archaeology
+    span: c. 9600 – c. 8000 BCE
+    events:
+      - { id: gobekli-pillars, date: c. 9500 BCE, label: "Hunters raise carved stone pillars — monuments before farming", prominence: 1, themes: [art, religion], sources: [wikipedia:Göbekli_Tepe] }
+      - { id: gobekli-buried, date: c. 8000 BCE, label: "Göbekli Tepe's enclosures are backfilled", prominence: 4, confidence: disputed, sources: [wikipedia:Göbekli_Tepe] }
+    images:
+      - { id: gobekli-pillars-photo, source: "commons:File:Göbekli Tepe, Urfa.jpg", date: c. 9500 BCE, prominence: 2, treatment: plate, caption: "Göbekli Tepe's carved pillars, built by foragers" }
+    sources: [wikipedia:Göbekli_Tepe]
+
+  - id: catalhoyuk
+    name: Çatalhöyük
+    region: near-east
+    group: anatolia
+    sphere: persian
+    prominence: 3
+    basis: archaeology
+    span: c. 7100 – c. 5700 BCE
+    events:
+      - { id: catalhoyuk-town, date: c. 7000 BCE, label: "A town of thousands with doors in the roofs", prominence: 3, sources: [wikipedia:Çatalhöyük] }
+      - { id: catalhoyuk-houses, date: c. 6700 BCE, label: "Çatalhöyük: 5,000 people, entering their houses by the roof", prominence: 3, sources: [wikipedia:Çatalhöyük] }
+    sources: [wikipedia:Çatalhöyük]
+
+  - id: hittites
+    name: Hittite Empire
+    region: near-east
+    group: anatolia
+    sphere: persian
+    prominence: 2
+    span: c. 1650 – c. 1180 BCE
+    cliopatria: ["Hittite Empire", "Hittite Old Kingdom", "Hittite New Kingdom"]
+    events:
+      - { id: babylon-sacked-1595, date: 1595 BCE, label: "Mursili I sacks Babylon", prominence: 3, themes: [war], sources: [wikipedia:Mursili_I] }
+      - { id: hittite-collapse, date: c. 1180 BCE, label: "Hattusa is abandoned as the Bronze Age world collapses", prominence: 2, themes: [war, climate], sources: [wikipedia:Late_Bronze_Age_collapse] }
+      - { id: hattusa, date: c. 1600 BCE, label: "Hattusa, the Hittite capital", prominence: 3, sources: [wikipedia:Hattusa] }
+      - { id: kadesh-treaty, date: 1259 BCE, label: "The first known peace treaty, with Egypt", prominence: 2, themes: [government], sources: [wikipedia:Egyptian–Hittite_peace_treaty] }
+    sources: [wikipedia:Hittites]
+
+  # ------------------------------------------------------------------ mesopotamia & iran
+  - id: ubaid
+    name: Ubaid culture
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 3
+    basis: archaeology
+    span: c. 6500 – c. 3800 BCE
+    relations:
+      - { type: becomes, lane: uruk, at: c. 3800 BCE }
+    events:
+      - { id: ubaid-irrigation, date: c. 5500 BCE, label: "Farmers irrigate the plains of southern Mesopotamia", prominence: 3, themes: [technology], sources: [wikipedia:Ubaid_period] }
+      - { id: eridu, date: c. 5400 BCE, label: "Eridu's first temple, rebuilt for 3,000 years", prominence: 3, themes: [religion], sources: [wikipedia:Eridu] }
+    sources: [wikipedia:Ubaid_period]
+
+  - id: uruk
+    name: Uruk period
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 2
+    basis: archaeology
+    span: c. 3800 – c. 3100 BCE
+    relations:
+      - { type: becomes, lane: sumer, at: c. 3100 BCE }
+    events:
+      - { id: wheel, date: c. 3500 BCE, label: "The wheel", prominence: 2, themes: [technology], confidence: probable, sources: [wikipedia:Wheel] }
+      - { id: first-city, date: c. 3400 BCE, label: "Uruk becomes the first city, with perhaps 40,000 people", prominence: 2, sources: [wikipedia:Uruk] }
+      - { id: cuneiform-first, date: c. 3300 BCE, label: "Accountants invent writing: the first cuneiform tablets", prominence: 1, thread: scripts, themes: [ideas], confidence: probable, sources: [wikipedia:Cuneiform] }
+    sources: [wikipedia:Uruk_period]
+
+  - id: sumer
+    name: Sumerian city-states
+    endonym: { text: 𒆠𒂗𒄀, script: Xsux, translit: Ki-en-gi }
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 1
+    span: c. 3100 – c. 2334 BCE
+    cliopatria: ["Sumerian City-States"]
+    relations:
+      - { type: becomes, lane: akkad, at: c. 2334 BCE }
+    events:
+      - { id: gilgamesh-king, date: c. 2700 BCE, label: "Gilgamesh rules Uruk — later the hero of the world's oldest epic", prominence: 3, confidence: legendary, themes: [art], sources: [wikipedia:Gilgamesh] }
+      - { id: ur-royal-tombs, date: c. 2600 BCE, label: "The Royal Tombs of Ur, full of gold and lapis lazuli", prominence: 2, themes: [art], sources: [wikipedia:Royal_Cemetery_at_Ur] }
+      - { id: sexagesimal, date: c. 2500 BCE, label: "Counting in sixties — why we still have 60 minutes", prominence: 3, thread: numerals, themes: [ideas], confidence: probable, sources: [wikipedia:Sexagesimal] }
+      - { id: royal-tombs-ur, date: c. 2600 BCE, label: "The Royal Tombs of Ur", prominence: 3, themes: [art], sources: [wikipedia:Royal_Cemetery_at_Ur] }
+    sources: [wikipedia:Sumer]
+
+  - id: akkad
+    name: Akkadian Empire
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 1
+    span: c. 2334 – c. 2154 BCE
+    cliopatria: ["Akkadian Empire"]
+    relations:
+      - { type: becomes, lane: ur-iii, at: c. 2112 BCE }
+    events:
+      - { id: sargon, date: c. 2334 BCE, label: "Sargon of Akkad builds the world's first empire", prominence: 1, themes: [war, government], sources: [wikipedia:Sargon_of_Akkad] }
+      - { id: enheduanna, date: c. 2285 BCE, label: "Enheduanna, priestess of Ur, the first author known by name", prominence: 2, themes: [women, art], sources: [wikipedia:Enheduanna] }
+      - { id: akkad-collapse, date: c. 2154 BCE, label: "Drought and invaders bring Akkad down", prominence: 3, themes: [climate, migration], confidence: probable, sources: [wikipedia:4.2-kiloyear_event] }
+    sources: [wikipedia:Akkadian_Empire]
+
+  - id: ur-iii
+    name: Third Dynasty of Ur
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 2
+    span: c. 2112 – c. 2004 BCE
+    cliopatria: ["Third Dynasty of Ur"]
+    relations:
+      - { type: becomes, lane: old-babylon, at: c. 1894 BCE }
+    events:
+      - { id: ur-nammu, date: c. 2100 BCE, label: "The Code of Ur-Nammu, the oldest surviving law code", prominence: 2, themes: [government], sources: [wikipedia:Code_of_Ur-Nammu] }
+      - { id: ziggurat-ur, date: c. 2100 BCE, label: "The Great Ziggurat of Ur", prominence: 2, themes: [art, religion], sources: [wikipedia:Ziggurat_of_Ur] }
+      - { id: ur-nammu-code, date: c. 2100 BCE, label: "The Code of Ur-Nammu, the oldest surviving law code", prominence: 3, themes: [government], sources: [wikipedia:Code_of_Ur-Nammu] }
+    images:
+      - { id: ur-ziggurat, source: "commons:File:Ancient ziggurat at Ali Air Base Iraq 2005.jpg", date: c. 2100 BCE, prominence: 2, treatment: plate, caption: "The Ziggurat of Ur (restored facade)", ofItsTime: false }
+    sources: [wikipedia:Third_Dynasty_of_Ur]
+
+  - id: old-babylon
+    name: Old Babylonian Empire
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 1
+    span: c. 1894 – 1595 BCE
+    cliopatria: ["Old Babylonian Empire", "Babylonia"]
+    relations:
+      - { type: becomes, lane: kassite-babylon, at: 1595 BCE }
+    events:
+      - { id: hammurabi, date: c. 1754 BCE, label: "Hammurabi's law code: an eye for an eye", prominence: 1, themes: [government], sources: [wikipedia:Code_of_Hammurabi] }
+      - { id: ea-nasir, date: c. 1750 BCE, label: "Nanni writes to complain about Ea-nasir's bad copper — the oldest known customer complaint", prominence: 4, themes: [trade], sources: [wikipedia:Complaint_tablet_to_Ea-nasir] }
+      - { id: plimpton-322, date: c. 1800 BCE, label: "Plimpton 322: a table of Pythagorean triples, 1,200 years before Pythagoras", prominence: 3, thread: numerals, themes: [ideas], sources: [wikipedia:Plimpton_322] }
+    sources: [wikipedia:First_Babylonian_dynasty]
+
+  - id: kassite-babylon
+    name: Kassite Babylonia
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 3
+    span: 1595 – 1155 BCE
+    events:
+      - { id: kudurru, date: c. 1200 BCE, label: "Kudurru boundary stones", prominence: 4, sources: [wikipedia:Kudurru] }
+    sources: [wikipedia:Kassites]
+
+  - id: assyria-early
+    name: Old and Middle Assyria
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 2
+    span: c. 2025 – 912 BCE
+    cliopatria: ["Middle Assyrian Empire", "Old Assyrian Empire", "Assyria"]
+    relations:
+      - { type: becomes, lane: neo-assyria, at: 911 BCE }
+    events:
+      - { id: kanesh, date: c. 1900 BCE, label: "Assyrian merchants trade tin and textiles at Kanesh in Anatolia", prominence: 3, themes: [trade], sources: [wikipedia:Kültepe] }
+    sources: [wikipedia:Assyria]
+
+  - id: mitanni
+    name: Mitanni
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 3
+    span: c. 1550 – c. 1260 BCE
+    cliopatria: ["Mitanni"]
+    events:
+      - { id: kikkuli, date: c. 1400 BCE, label: "Kikkuli's horse-training manual", prominence: 4, themes: [technology], sources: [wikipedia:Kikkuli] }
+      - { id: mitanni-gods, date: c. 1380 BCE, label: "A treaty invokes Mitra and Varuna — Indo-Aryan gods in Syria", prominence: 3, themes: [religion], sources: [wikipedia:Mitanni] }
+    sources: [wikipedia:Mitanni]
+
+  - id: elam
+    name: Elam
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 3
+    span: c. 3200 – 539 BCE
+    cliopatria: ["Elam"]
+    events:
+      - { id: proto-elamite, date: c. 3100 BCE, label: "Proto-Elamite writing, still undeciphered", prominence: 4, thread: scripts, sources: [wikipedia:Proto-Elamite_script] }
+      - { id: chogha-zanbil, date: c. 1250 BCE, label: "The ziggurat of Chogha Zanbil", prominence: 4, themes: [art], sources: [wikipedia:Chogha_Zanbil] }
+    sources: [wikipedia:Elam]

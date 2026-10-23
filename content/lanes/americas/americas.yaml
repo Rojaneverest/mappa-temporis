@@ -13,6 +13,7 @@ lanes:
       - { type: becomes, lane: hopewell, at: c. 100 BCE }
     events:
       - { id: adena-mounds, date: c. 500 BCE, label: "Burial mounds and earthworks rise across the Ohio Valley", prominence: 3, sources: [wikipedia:Adena_culture] }
+      - { id: serpent-mound, date: c. 300 BCE, label: "Serpent Mound, Ohio (date disputed)", prominence: 3, themes: [art, religion], confidence: disputed, sources: [wikipedia:Serpent_Mound] }
     sources: [wikipedia:Adena_culture]
 
   - id: hopewell
@@ -26,6 +27,7 @@ lanes:
     events:
       - { id: hopewell-trade, date: c. 100 CE, label: "Trade spans a continent: Rockies obsidian, Gulf shells, Lake Superior copper", prominence: 2, themes: [trade], sources: [wikipedia:Hopewell_tradition] }
       - { id: newark-earthworks, date: c. 250 CE, label: "The Newark Earthworks, aligned to the 18.6-year cycle of the Moon", prominence: 3, confidence: probable, themes: [sky, art], sources: [wikipedia:Newark_Earthworks] }
+      - { id: hopewell-obsidian, date: c. 100 CE, label: "Obsidian from Yellowstone and shells from Florida meet in Ohio", prominence: 4, themes: [trade], sources: [wikipedia:Hopewell_Interaction_Sphere] }
     images:
       - { id: hopewell-falcon, source: "commons:File:Hopewell culture falcon.jpg", date: c. 200 CE, prominence: 2, treatment: cutout, caption: "Hopewell falcon cut from sheet copper" }
     sources: [wikipedia:Hopewell_tradition]
@@ -55,6 +57,8 @@ lanes:
     events:
       - { id: la-venta, date: c. 900 BCE, label: "La Venta becomes the great Olmec centre; colossal stone heads", prominence: 2, themes: [art], sources: [wikipedia:La_Venta] }
       - { id: cascajal, date: c. 900 BCE, label: "The Cascajal Block — perhaps the first writing in the Americas", prominence: 4, confidence: disputed, thread: scripts, sources: [wikipedia:Cascajal_Block] }
+      - { id: colossal-heads, date: c. 1200 BCE, label: "San Lorenzo's colossal stone heads", prominence: 2, themes: [art], sources: [wikipedia:Olmec_colossal_heads] }
+      - { id: olmec-ballgame, date: c. 1000 BCE, label: "Rubber balls and the Mesoamerican ballgame", prominence: 3, themes: [religion], sources: [wikipedia:Mesoamerican_ballgame] }
     images:
       - { id: olmec-face, source: "met:310279", date: c. 700 BCE, prominence: 3, treatment: cutout, caption: "Olmec jade face" }
     sources: [wikipedia:Olmecs]
@@ -69,6 +73,8 @@ lanes:
     cliopatria: ["Zapotec Civilization"]
     events:
       - { id: monte-alban, date: c. 500 BCE, label: "Monte Albán is founded on a levelled mountaintop", prominence: 3, sources: [wikipedia:Monte_Albán] }
+      - { id: zapotec-writing, date: c. 500 BCE, label: "Zapotec glyphs: among the earliest writing in the Americas", prominence: 3, thread: scripts, sources: [wikipedia:Zapotec_script] }
+      - { id: mitla, date: c. 750 CE, label: "Zapotec power shifts to Mitla", prominence: 4, sources: [wikipedia:Mitla] }
     sources: [wikipedia:Zapotec_civilization]
 
   - id: teotihuacan
@@ -84,6 +90,7 @@ lanes:
       - { id: entrada, date: 378 CE, label: "Teotihuacan's envoy Siyaj K'ak' installs a new king at Tikal", prominence: 3, themes: [war], sources: [wikipedia:Siyaj_K'ak'] }
       - { id: teotihuacan-peak, date: c. 450 CE, label: "Around 100,000 people live in the city — among the largest on Earth", prominence: 2, sources: [wikipedia:Teotihuacan] }
       - { id: teotihuacan-burns, date: c. 550 CE, label: "The city centre is burned and abandoned", prominence: 3, confidence: probable, sources: [wikipedia:Teotihuacan] }
+      - { id: feathered-serpent-temple, date: c. 200 CE, label: "The Temple of the Feathered Serpent", prominence: 3, themes: [art, religion], sources: [wikipedia:Temple_of_the_Feathered_Serpent,_Teotihuacan] }
     images:
       - { id: teotihuacan-mask, source: "met:310647", date: c. 450 CE, prominence: 2, treatment: cutout, caption: "Stone mask from Teotihuacan" }
     sources: [wikipedia:Teotihuacan]
@@ -109,8 +116,15 @@ lanes:
       - { id: calakmul-tikal, date: 562 CE, label: "Calakmul's Snake Kingdom defeats Tikal", prominence: 3, themes: [war], sources: [wikipedia:Calakmul] }
       - { id: pakal, date: 615 CE, label: "Pakal the Great becomes king of Palenque at 12", prominence: 2, sources: [wikipedia:K'inich_Janaab'_Pakal] }
       - { id: pakal-tomb, date: 683 CE, label: "Pakal is buried in the Temple of the Inscriptions", prominence: 4, themes: [art], sources: [wikipedia:Temple_of_the_Inscriptions] }
+      - { id: classic-collapse, date: c. 900 CE, label: "The Classic Maya collapse: the southern cities empty in drought", prominence: 2, themes: [climate], confidence: probable, sources: [wikipedia:Classic_Maya_collapse] }
+      - { id: chichen-itza, date: c. 1000 CE, label: "Chichén Itzá and El Castillo", prominence: 1, themes: [art, sky], sources: [wikipedia:Chichen_Itza] }
+      - { id: dresden-codex, date: c. 1200 CE, label: "The Dresden Codex tracks Venus and eclipses", prominence: 3, themes: [sky, science], thread: calendars, sources: [wikipedia:Dresden_Codex] }
+      - { id: mani-auto-da-fe, date: 1562 CE, label: "Bishop Landa burns the Maya books at Maní", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Diego_de_Landa] }
+      - { id: nojpeten, date: 1697 CE, label: "Nojpetén, the last independent Maya city, falls", prominence: 3, themes: [war], sources: [wikipedia:Spanish_conquest_of_Petén] }
     images:
       - { id: maya-vessel, source: "met:662967", date: c. 700 CE, prominence: 2, treatment: cutout, caption: "Maya vessel with a mythological scene" }
+      - { id: tikal-temple, source: "commons:File:Tikal Temple I.jpg", date: 732 CE, prominence: 2, treatment: plate, caption: "Tikal, Temple I" }
+      - { id: chichen-itza-castillo, source: "commons:File:Chichen Itza 3.jpg", date: c. 1000 CE, prominence: 2, treatment: plate, caption: "El Castillo, Chichén Itzá" }
     sources: [wikipedia:Maya_civilization]
 
   # ------------------------------------------------------------------ andes
@@ -124,6 +138,7 @@ lanes:
     span: c. 900 – 200 BCE
     events:
       - { id: chavin-temple, date: c. 750 BCE, label: "Pilgrims crowd the labyrinthine temple at Chavín de Huántar", prominence: 3, themes: [religion], sources: [wikipedia:Chavín_de_Huántar] }
+      - { id: lanzon, date: c. 800 BCE, label: "The Lanzón, a carved deity deep in the temple's galleries", prominence: 3, themes: [religion, art], sources: [wikipedia:Lanzón] }
     sources: [wikipedia:Chavín_culture]
 
   - id: paracas
@@ -138,6 +153,7 @@ lanes:
       - { type: becomes, lane: nazca, at: c. 100 BCE }
     events:
       - { id: paracas-textiles, date: c. 300 BCE, label: "Paracas weavers make some of the finest textiles of the ancient world", prominence: 3, themes: [art], sources: [wikipedia:Paracas_culture] }
+      - { id: paracas-skulls, date: c. 400 BCE, label: "Paracas practices skull shaping and surgery", prominence: 4, sources: [wikipedia:Paracas_culture] }
     sources: [wikipedia:Paracas_culture]
 
   - id: nazca
@@ -150,6 +166,7 @@ lanes:
     span: c. 100 BCE – c. 800 CE
     events:
       - { id: nazca-lines, date: c. 200 CE, label: "Giant lines and figures are drawn across the desert, visible whole only from the air", prominence: 1, themes: [art, religion], sources: [wikipedia:Nazca_Lines] }
+      - { id: nazca-aqueducts, date: c. 500 CE, label: "Puquios: spiral wells still bring water to Nazca fields", prominence: 3, themes: [technology], sources: [wikipedia:Puquios] }
     images:
       - { id: nazca-hummingbird, source: "commons:File:Nazca colibri.jpg", date: c. 200 CE, prominence: 2, treatment: plate, caption: "The hummingbird of the Nazca Lines, from the air" }
     sources: [wikipedia:Nazca_culture]
@@ -165,6 +182,7 @@ lanes:
     events:
       - { id: sipan, date: c. 250 CE, label: "The Lord of Sipán is buried in gold and turquoise", prominence: 3, themes: [art], sources: [wikipedia:Lord_of_Sipán] }
       - { id: huaca-sol, date: c. 450 CE, label: "The Huaca del Sol, built of millions of adobe bricks", prominence: 4, themes: [art], sources: [wikipedia:Huacas_de_Moche] }
+      - { id: moche-portrait-vessels, date: c. 400 CE, label: "Portrait vessels: individual faces in clay", prominence: 3, themes: [art], sources: [wikipedia:Moche_culture] }
     images:
       - { id: moche-portrait, source: "met:308528", date: c. 600 CE, prominence: 2, treatment: cutout, caption: "Moche portrait bottle" }
     sources: [wikipedia:Moche_culture]
@@ -179,6 +197,7 @@ lanes:
     span: c. 500 – c. 1000 CE
     events:
       - { id: gateway-sun, date: c. 600 CE, label: "The Gateway of the Sun above Lake Titicaca", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Gate_of_the_Sun] }
+      - { id: titicaca-fields, date: c. 600 CE, label: "Raised fields around Lake Titicaca feed perhaps 100,000", prominence: 3, themes: [technology], sources: [wikipedia:Tiwanaku] }
     sources: [wikipedia:Tiwanaku]
 
   - id: wari
@@ -189,4 +208,7 @@ lanes:
     prominence: 3
     basis: archaeology
     span: c. 600 – c. 1000 CE
+    events:
+      - { id: wari-roads, date: c. 800 CE, label: "Wari roads and outposts: a first Andean empire", prominence: 4, themes: [government], sources: [wikipedia:Wari_culture] }
+      - { id: wari-quipu, date: c. 700 CE, label: "Wari's knotted cords, ancestors of the Inca quipu", prominence: 4, thread: scripts, sources: [wikipedia:Quipu] }
     sources: [wikipedia:Wari_culture]

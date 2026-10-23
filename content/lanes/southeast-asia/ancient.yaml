@@ -1,0 +1,44 @@
+# Southeast Asia and the Austronesian world to c. 800 BCE.
+lanes:
+  - id: hoabinhian
+    name: Hoabinhian foragers
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 4
+    basis: archaeology
+    span: c. 10000 – c. 2000 BCE
+    events:
+      - { id: spirit-cave, date: c. 9000 BCE, label: "Spirit Cave: foragers gather nuts and plants in Thailand", prominence: 4, sources: [wikipedia:Spirit_Cave_(Thailand)] }
+      - { id: rice-arrives, date: c. 2500 BCE, label: "Rice farmers spread south from China", prominence: 3, themes: [migration], confidence: probable, sources: [wikipedia:Neolithic_Southeast_Asia] }
+    sources: [wikipedia:Hoabinhian]
+
+  - id: ban-chiang
+    name: Ban Chiang
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 3
+    basis: archaeology
+    span: c. 2100 BCE – c. 200 CE
+    events:
+      - { id: ban-chiang-bronze, date: c. 1500 BCE, label: "Bronze working begins in Thailand", prominence: 3, confidence: disputed, themes: [technology], sources: [wikipedia:Ban_Chiang] }
+    sources: [wikipedia:Ban_Chiang]
+
+  - id: austronesians
+    name: Austronesian voyagers
+    region: southeast-asia
+    group: islands
+    sphere: oceanian
+    prominence: 2
+    basis: archaeology
+    span: c. 3500 – c. 500 BCE
+    relations:
+      - { type: influences, lane: lapita, at: c. 1600 BCE }
+    events:
+      - { id: out-of-taiwan, date: c. 3000 BCE, label: "Outrigger canoes carry farmers from Taiwan into the Philippines", prominence: 2, themes: [migration, exploration], sources: [wikipedia:Austronesian_expansion] }
+      - { id: austronesian-indonesia, date: c. 2000 BCE, label: "Austronesians spread through Indonesia — and eventually to Madagascar and Easter Island", prominence: 3, themes: [migration], sources: [wikipedia:Austronesian_peoples] }
+      - { id: taiwan-out, date: c. 3000 BCE, label: "Austronesian seafarers set out from Taiwan", prominence: 2, themes: [migration, exploration], confidence: probable, sources: [wikipedia:Austronesian_expansion] }
+      - { id: outrigger, date: c. 2000 BCE, label: "Outrigger canoes reach the Philippines and Indonesia", prominence: 3, themes: [technology], sources: [wikipedia:Outrigger_boat] }
+      - { id: madagascar, date: c. 500 BCE, label: "Austronesians cross the Indian Ocean toward Madagascar (by c. 500 CE)", prominence: 3, themes: [migration], confidence: disputed, sources: [wikipedia:Malagasy_people] }
+    sources: [wikipedia:Austronesian_expansion]

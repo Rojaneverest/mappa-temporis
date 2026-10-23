@@ -11,7 +11,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
 import sharp from 'sharp';
-import { LaneFile, type LaneImage } from '../../packages/core/src/schema.ts';
+import { LaneFile, Sheet, type LaneImage } from '../../packages/core/src/schema.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const CACHE = join(ROOT, '.cache/images');
@@ -53,12 +53,15 @@ function walk(dir: string): string[] {
 }
 
 const images: LaneImage[] = walk(join(ROOT, 'content/lanes')).flatMap((f) => LaneFile.parse(YAML.parse(readFileSync(f, 'utf8'))).lanes.flatMap((l) => l.images));
+// Era maps live on the sheets.
+for (const f of walk(join(ROOT, 'content/sheets'))) for (const era of Sheet.parse(YAML.parse(readFileSync(f, 'utf8'))).eras) if (era.map && !images.some((i) => i.id === era.map!.id)) images.push(era.map);
 const manifestPath = join(OUT, 'manifest.json');
 const manifest: Record<string, ManifestEntry> = existsSync(manifestPath) && !FORCE ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
 
 const stripHtml = (s = '') => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 /** Commons ObjectName often carries Wikidata label soup ("X title QS:P1476,…"); keep the plain name. */
-const cleanTitle = (s: string) => s.split(/\s+(?:title|label) QS:/)[0]!.trim();
+/** Commons ObjectName often trails Wikidata label dumps ('… label QS:Len,"Earthrise" …'): prefer the English label. */
+const cleanTitle = (s: string) => s.match(/label QS:Len,"([^"]+)"/)?.[1]?.trim() ?? s.split(/\s*(?:title|label) QS:/)[0]!.trim();
 /** Commons sometimes repeats the artist text ("Unknown authorUnknown author"). */
 const dedupe = (s: string) => {
   const h = s.length / 2;
@@ -113,8 +116,20 @@ async function resolve(img: LaneImage): Promise<ImageMeta> {
 
 async function download(meta: ImageMeta): Promise<string> {
   const path = join(CACHE, 'raw', `${meta.id}.img`);
-  if (existsSync(path) && !FORCE) return path;
-  const r = await fetch(meta.downloadUrl, { headers: { 'User-Agent': UA } });
+  if (existsSync(path + '.jpg') && !FORCE) return path + '.jpg';
+  // Originals are throttled hardest; a standard-width Commons thumbnail is plenty for the chart.
+  const thumb = meta.downloadUrl.match(/^(https:\/\/upload\.wikimedia\.org\/wikipedia\/commons)\/(\w)\/(\w\w)\/([^?]+)/);
+  let url = meta.downloadUrl;
+  let r = await fetch(url, { headers: { 'User-Agent': UA } });
+  for (let attempt = 1; r.status === 429 && attempt <= 5; attempt++) {
+    if (thumb && attempt === 1) {
+      const [, base, a, ab, name] = thumb;
+      url = `${base}/thumb/${a}/${ab}/${name}/1920px-${name}${/\.tiff?$/i.test(name!) ? '.jpg' : ''}`;
+      console.warn('  … original throttled, using the 1920px thumbnail');
+    } else console.warn(`  … download throttled, retrying in ${attempt * 15}s`);
+    await sleep(attempt * 15000);
+    r = await fetch(url, { headers: { 'User-Agent': UA } });
+  }
   if (!r.ok) throw new Error(`${r.status} downloading ${meta.downloadUrl}`);
   // Normalise everything to a PNG/JPEG the Vision tool can read.
   const buf = Buffer.from(await r.arrayBuffer());
@@ -124,6 +139,13 @@ async function download(meta: ImageMeta): Promise<string> {
 }
 
 /** Lift the subject and give it a soft contact shadow, as if the object sits on the paper. */
+/** The subject alone, on transparency (cached). */
+function liftPath(img: LaneImage, rawPath: string): string {
+  const cutPath = join(CACHE, 'cut', `${img.id}.png`);
+  if (!existsSync(cutPath) || FORCE) execFileSync(CUTOUT, [rawPath, cutPath], { stdio: 'pipe' });
+  return cutPath;
+}
+
 async function cutout(img: LaneImage, rawPath: string): Promise<Buffer> {
   const cutPath = join(CACHE, 'cut', `${img.id}.png`);
   if (!existsSync(cutPath) || FORCE) execFileSync(CUTOUT, [rawPath, cutPath], { stdio: 'pipe' });
@@ -146,14 +168,30 @@ async function cutout(img: LaneImage, rawPath: string): Promise<Buffer> {
   return sharp(blurred).composite([{ input: await subject.png().toBuffer(), left: pad, top: pad }]).png().toBuffer();
 }
 
+/** Backdrops are printed into the paper: darkness becomes sepia ink, light becomes transparent —
+ *  the same as multiplying the map onto whatever paper (and era tint) lies beneath. */
+async function inkPrint(rawPath: string, invert: boolean): Promise<Buffer> {
+  const { data, info } = await sharp(rawPath).resize({ width: 2048, height: 2048, fit: 'inside', withoutEnlargement: true })
+    .flatten({ background: '#ffffff' }).grayscale().normalise({ lower: 2, upper: 96 }).raw().toBuffer({ resolveWithObject: true });
+  const out = Buffer.alloc(info.width * info.height * 4);
+  for (let i = 0; i < info.width * info.height; i++) {
+    out[i * 4] = 58; out[i * 4 + 1] = 40; out[i * 4 + 2] = 24;
+    const v = data[i * info.channels]!;
+    out[i * 4 + 3] = invert ? v : 255 - v;
+  }
+  return sharp(out, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
+}
+
 let done = 0;
-for (const m of Object.values(manifest)) m.credit = m.credit.replace(/^(.+?)\1 \//, '$1 /');
+for (const m of Object.values(manifest)) { m.credit = m.credit.replace(/^(.+?)\1 \//, '$1 /'); m.title = cleanTitle(m.title); }
 for (const img of images) {
   if (manifest[img.id] && !FORCE) continue;
   try {
     const meta = await resolve(img);
     const rawPath = await download(meta);
-    let buf = img.treatment === 'cutout' ? await cutout(img, rawPath) : await sharp(rawPath).png().toBuffer();
+    let buf = img.treatment === 'cutout' ? await cutout(img, rawPath)
+      : img.treatment === 'backdrop' ? await inkPrint(img.lift ? liftPath(img, rawPath) : rawPath, img.invert)
+      : await sharp(rawPath).png().toBuffer();
     // Cap the master at 2048 on the long side.
     buf = await sharp(buf).resize({ width: 2048, height: 2048, fit: 'inside', withoutEnlargement: true }).png().toBuffer();
     const { width = 1, height = 1 } = await sharp(buf).metadata();

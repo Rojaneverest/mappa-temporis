@@ -1,0 +1,105 @@
+# The Americas from the first peoples to c. 800 BCE.
+lanes:
+  - id: archaic-north-america
+    name: Paleo-Indian & Archaic peoples
+    region: americas
+    group: north-america
+    sphere: north-american
+    prominence: 3
+    basis: archaeology
+    span: c. 10000 – c. 1000 BCE
+    relations:
+      - { type: becomes, lane: adena, at: c. 800 BCE }
+    events:
+      - { id: clovis, date: c. 9000 BCE, label: "Clovis and Folsom hunters follow mammoth and bison", prominence: 3, sources: [wikipedia:Clovis_culture] }
+      - { id: watson-brake, date: c. 3500 BCE, label: "Watson Brake, Louisiana: earth mounds older than the pyramids", prominence: 3, themes: [art], sources: [wikipedia:Watson_Brake] }
+      - { id: monte-verde, date: c. 10000 BCE, label: "Hunters across both continents; Monte Verde in Chile is older still", prominence: 3, themes: [migration], sources: [wikipedia:Monte_Verde] }
+      - { id: eastern-agricultural, date: c. 2000 BCE, label: "Sunflower, squash and goosefoot domesticated in the Eastern Woodlands", prominence: 3, themes: [technology], sources: [wikipedia:Eastern_Agricultural_Complex] }
+    sources: [wikipedia:Archaic_period_in_North_America]
+
+  - id: poverty-point
+    name: Poverty Point
+    region: americas
+    group: north-america
+    sphere: north-american
+    prominence: 2
+    basis: archaeology
+    span: c. 1700 – c. 1100 BCE
+    events:
+      - { id: poverty-point-earthworks, date: c. 1600 BCE, label: "Hunter-gatherers build vast concentric earthworks on the Mississippi", prominence: 2, themes: [art], sources: [wikipedia:Poverty_Point] }
+      - { id: poverty-point-trade, date: c. 1500 BCE, label: "Copper from the Great Lakes, flint from Ohio reach Poverty Point", prominence: 4, themes: [trade], sources: [wikipedia:Poverty_Point] }
+    sources: [wikipedia:Poverty_Point]
+
+  - id: archaic-mesoamerica
+    name: First farmers of Mesoamerica
+    region: americas
+    group: mesoamerica
+    sphere: mesoamerican
+    prominence: 3
+    basis: archaeology
+    span: c. 10000 – c. 1500 BCE
+    relations:
+      - { type: becomes, lane: olmec, at: c. 1200 BCE }
+    events:
+      - { id: squash, date: c. 8000 BCE, label: "Squash is domesticated in Oaxaca", prominence: 3, themes: [technology], sources: [wikipedia:Guilá_Naquitz_Cave] }
+      - { id: maize, date: c. 7000 BCE, label: "Teosinte becomes maize — the grain that will feed the Americas", prominence: 1, themes: [technology], confidence: probable, sources: [wikipedia:Maize] }
+      - { id: guila-naquitz, date: c. 8000 BCE, label: "Guilá Naquitz cave: the first squash seeds", prominence: 4, sources: [wikipedia:Guilá_Naquitz_Cave] }
+    sources: [wikipedia:Archaic_period_in_the_Americas]
+
+  - id: andean-archaic
+    name: Andean foragers & first farmers
+    region: americas
+    group: andes
+    sphere: andean
+    prominence: 3
+    basis: archaeology
+    span: c. 10000 – c. 3500 BCE
+    relations:
+      - { type: becomes, lane: norte-chico, at: c. 3500 BCE }
+    events:
+      - { id: potato, date: c. 8000 BCE, label: "The potato is domesticated near Lake Titicaca", prominence: 2, themes: [technology], confidence: probable, sources: [wikipedia:Potato] }
+      - { id: chinchorro, date: c. 5000 BCE, label: "The Chinchorro mummify their dead, 2,000 years before Egypt", prominence: 3, themes: [religion], sources: [wikipedia:Chinchorro_mummies] }
+      - { id: llama, date: c. 4000 BCE, label: "Llamas and alpacas are domesticated in the Andes", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Llama] }
+    sources: [wikipedia:Andean_preceramic]
+
+  - id: norte-chico
+    name: Norte Chico (Caral)
+    region: americas
+    group: andes
+    sphere: andean
+    prominence: 2
+    basis: archaeology
+    span: c. 3500 – c. 1800 BCE
+    cliopatria: ["Norte Chico Civilization"]
+    events:
+      - { id: caral, date: c. 2600 BCE, label: "Caral: pyramids and plazas in the oldest city of the Americas", prominence: 1, themes: [art], sources: [wikipedia:Caral] }
+      - { id: caral-quipu, date: c. 2500 BCE, label: "Caral's pyramids — no pottery, no war, built on cotton and anchovies", prominence: 3, sources: [wikipedia:Caral] }
+    sources: [wikipedia:Norte_Chico_civilization]
+
+  - id: archaic-caribbean
+    name: First Caribbean islanders
+    region: americas
+    group: caribbean
+    sphere: mesoamerican
+    prominence: 4
+    basis: archaeology
+    span: c. 4000 – c. 500 BCE
+    relations:
+      - { type: becomes, lane: taino, at: c. 500 BCE }
+    sources: [wikipedia:Pre-Arawakan_languages_of_the_Greater_Antilles]
+
+  - id: amazonia
+    name: Amazonian peoples
+    region: americas
+    group: south-america
+    sphere: andean
+    prominence: 3
+    basis: archaeology
+    span: c. 10000 BCE – 2026 CE
+    events:
+      - { id: cassava, date: c. 6000 BCE, label: "Cassava is domesticated in the southern Amazon", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Cassava] }
+      - { id: terra-preta, date: c. 450 CE, label: "Marajoara mound-builders and the fertile 'dark earths' of the Amazon", prominence: 3, sources: [wikipedia:Marajoara_culture] }
+      - { id: marajoara, date: c. 800 CE, label: "Marajoara mound-builders on the Amazon's mouth", prominence: 3, themes: [art], sources: [wikipedia:Marajoara_culture] }
+      - { id: orellana, date: 1542 CE, label: "Orellana sails down the Amazon and reports great towns on its banks", prominence: 3, themes: [exploration], sources: [wikipedia:Francisco_de_Orellana] }
+      - { id: rubber-boom, date: c. 1890 CE, label: "The rubber boom brings forced labour to the Amazon", prominence: 4, themes: [trade], sources: [wikipedia:Amazon_rubber_cycle] }
+    sources: [wikipedia:Indigenous_peoples_in_Brazil]

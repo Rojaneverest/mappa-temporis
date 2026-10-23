@@ -1,0 +1,72 @@
+# The margins: how many people there were, and what the climate was doing.
+# Drawn in the right margin of sheets that ask for them (`margins: true`).
+
+population:
+  note: >-
+    Estimates of world population, drawn on a logarithmic scale so that the slow millennia and the
+    explosive last two centuries both stay readable. Before 1800 every figure is an informed guess;
+    scholars disagree by a factor of two in antiquity.
+  sources: [wikipedia:Estimates_of_historical_world_population, "https://ourworldindata.org/population-sources", wikipedia:Population_growth]
+  # [year, millions]
+  points:
+    - [10000 BCE, 4]
+    - [8000 BCE, 5]
+    - [6000 BCE, 7]
+    - [5000 BCE, 9]
+    - [4000 BCE, 11]
+    - [3000 BCE, 18]
+    - [2000 BCE, 32]
+    - [1000 BCE, 50]
+    - [500 BCE, 100]
+    - [200 BCE, 150]
+    - [1 CE, 200]
+    - [200 CE, 210]
+    - [400 CE, 200]
+    - [600 CE, 200]
+    - [800 CE, 220]
+    - [1000 CE, 275]
+    - [1200 CE, 380]
+    - [1340 CE, 440]
+    - [1400 CE, 360]
+    - [1500 CE, 460]
+    - [1600 CE, 560]
+    - [1650 CE, 520]
+    - [1700 CE, 610]
+    - [1750 CE, 790]
+    - [1800 CE, 980]
+    - [1850 CE, 1260]
+    - [1900 CE, 1650]
+    - [1927 CE, 2000]
+    - [1950 CE, 2500]
+    - [1960 CE, 3000]
+    - [1974 CE, 4000]
+    - [1987 CE, 5000]
+    - [1999 CE, 6000]
+    - [2011 CE, 7000]
+    - [2022 CE, 8000]
+    - [2026 CE, 8250]
+  callouts:
+    - { year: 10000 BCE, label: "About 4 million people, all foragers" }
+    - { year: 3000 BCE, label: "About 18 million: the first cities" }
+    - { year: 1 CE, label: "About 200 million — half in Rome's and Han China's empires" }
+    - { year: 1340 CE, label: "The Black Death: the world loses perhaps a fifth" }
+    - { year: 1650 CE, label: "17th-century crisis: war, famine, the Little Ice Age" }
+    - { year: 1804 CE, label: "1 billion" }
+    - { year: 1927 CE, label: "2 billion" }
+    - { year: 1974 CE, label: "4 billion" }
+    - { year: 2022 CE, label: "8 billion" }
+
+climate:
+  - { id: younger-dryas-end, name: The Younger Dryas ends, span: c. 9700 BCE, kind: warm, note: "The last cold snap of the Ice Age ends within decades; the stable, warm Holocene begins — and with it, farming.", sources: [wikipedia:Younger_Dryas] }
+  - { id: holocene-optimum, name: Holocene Climatic Optimum, span: c. 7000 – c. 3000 BCE, kind: warm, note: "The warmest stretch of the Holocene in many regions; monsoons reach far north.", sources: [wikipedia:Holocene_climatic_optimum] }
+  - { id: green-sahara, name: The Green Sahara, span: c. 9000 – c. 3500 BCE, kind: wet, note: "The African Humid Period: lakes, grasslands, hippos and herders across what is now desert.", sources: [wikipedia:African_humid_period] }
+  - { id: event-8-2, name: The 8.2-kiloyear event, span: c. 6200 BCE, kind: cold, note: "A meltwater pulse from North America chills the North Atlantic for a century or two.", sources: [wikipedia:8.2-kiloyear_event] }
+  - { id: event-5-9, name: The 5.9-kiloyear event, span: c. 3900 BCE, kind: dry, note: "Intense aridification; the Sahara dries out, pushing herders toward the Nile — perhaps one spark for Egyptian civilization.", sources: [wikipedia:5.9-kiloyear_event] }
+  - { id: event-4-2, name: The 4.2-kiloyear event, span: c. 2200 – c. 2100 BCE, kind: dry, note: "A century-long drought linked to the fall of Akkad, Egypt's Old Kingdom and the decline of the Indus cities.", sources: [wikipedia:4.2-kiloyear_event] }
+  - { id: event-3-2, name: The 3.2-kiloyear drought, span: c. 1200 – c. 1150 BCE, kind: dry, note: "Drought in the eastern Mediterranean, one of the stresses behind the Bronze Age collapse.", sources: [wikipedia:Late_Bronze_Age_collapse] }
+  - { id: roman-warm, name: Roman Warm Period, span: c. 250 BCE – c. 400 CE, kind: warm, note: "A mild, stable climate that helped Rome and Han China feed their cities.", sources: [wikipedia:Roman_Warm_Period] }
+  - { id: lalia, name: Late Antique Little Ice Age, span: 536 – c. 660 CE, kind: cold, note: "Volcanic eruptions in 536, 540 and 547 darken the sky; 536 may be the worst year to have been alive. The Plague of Justinian follows.", sources: [wikipedia:Late_Antique_Little_Ice_Age] }
+  - { id: medieval-warm, name: Medieval Climate Anomaly, span: c. 950 – c. 1250 CE, kind: warm, note: "Warmth in the North Atlantic (Norse Greenland) — and megadroughts in the American Southwest.", sources: [wikipedia:Medieval_Warm_Period] }
+  - { id: little-ice-age, name: Little Ice Age, span: c. 1300 – c. 1850 CE, kind: cold, note: "Centuries of cooler summers, frost fairs on the Thames, and harvest failures in the 1600s.", sources: [wikipedia:Little_Ice_Age] }
+  - { id: tambora-1815, name: The year without a summer, span: 1815 – 1816 CE, kind: cold, note: "Tambora's eruption brings snow in June to New England and famine to Europe and Yunnan.", sources: [wikipedia:Year_Without_a_Summer] }
+  - { id: modern-warming, name: Modern warming, span: 1850 – 2026 CE, kind: warm, note: "Burning fossil fuels has warmed the Earth by about 1.3 °C since the 1800s — faster than any change on this chart.", sources: [wikipedia:Climate_change, wikipedia:Instrumental_temperature_record] }

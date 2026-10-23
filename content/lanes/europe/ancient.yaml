@@ -1,0 +1,150 @@
+# Europe from the first farmers to c. 800 BCE.
+lanes:
+  - id: neolithic-britain
+    name: Neolithic & Bronze Age Britain
+    region: europe
+    group: british-isles
+    sphere: celtic-germanic
+    prominence: 3
+    basis: archaeology
+    span: c. 4000 – c. 800 BCE
+    events:
+      - { id: stonehenge-begun, date: c. 3000 BCE, label: "Stonehenge begins as a circular ditch and bank", prominence: 3, themes: [religion], sources: [wikipedia:Stonehenge] }
+      - { id: stonehenge-sarsens, date: c. 2500 BCE, label: "The great sarsen stones of Stonehenge are raised", prominence: 1, themes: [art, sky], sources: [wikipedia:Stonehenge] }
+      - { id: beakers, date: c. 2450 BCE, label: "Bell Beaker newcomers replace most of Britain's ancestry", prominence: 3, themes: [migration], sources: [wikipedia:Bell_Beaker_culture] }
+      - { id: skara-brae, date: c. 3100 BCE, label: "Skara Brae, a stone village in Orkney", prominence: 3, sources: [wikipedia:Skara_Brae] }
+      - { id: amesbury-archer, date: c. 2300 BCE, label: "The Amesbury Archer, buried near Stonehenge, came from the Alps", prominence: 4, themes: [migration], sources: [wikipedia:Amesbury_Archer] }
+    images:
+      - { id: stonehenge-view, source: "commons:File:Stonehenge2007 07 30.jpg", date: c. 2500 BCE, prominence: 2, treatment: plate, caption: "Stonehenge, aligned to the solstices" }
+    sources: [wikipedia:Neolithic_British_Isles]
+
+  - id: el-argar
+    name: El Argar
+    region: europe
+    group: iberia
+    sphere: italic
+    prominence: 4
+    basis: archaeology
+    span: c. 2200 – c. 1550 BCE
+    events:
+      - { id: argar-women, date: c. 1800 BCE, label: "El Argar's richest graves belong to women", prominence: 4, themes: [women], sources: [wikipedia:Argaric_culture] }
+    sources: [wikipedia:Argaric_culture]
+
+  - id: neolithic-europe
+    name: First farmers of Europe
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 3
+    basis: archaeology
+    span: c. 6500 – c. 2200 BCE
+    events:
+      - { id: farming-europe, date: c. 6500 BCE, label: "Farmers from Anatolia bring wheat and herds into Greece and the Balkans", prominence: 2, themes: [migration, technology], sources: [wikipedia:Neolithic_Europe] }
+      - { id: linear-pottery, date: c. 5500 BCE, label: "Linear Pottery farmers build longhouses across central Europe", prominence: 3, themes: [migration], sources: [wikipedia:Linear_Pottery_culture] }
+      - { id: varna-gold, date: c. 4500 BCE, label: "Varna: the oldest worked gold in the world", prominence: 3, themes: [art], sources: [wikipedia:Varna_Necropolis] }
+      - { id: otzi, date: c. 3300 BCE, label: "Ötzi the Iceman dies in the Alps, an arrowhead in his shoulder", prominence: 3, sources: [wikipedia:Ötzi] }
+      - { id: corded-ware, date: c. 2900 BCE, label: "Herders with steppe ancestry sweep across Europe", prominence: 3, themes: [migration], sources: [wikipedia:Corded_Ware_culture] }
+      - { id: lbk, date: c. 5500 BCE, label: "Longhouse farmers spread across Central Europe", prominence: 3, themes: [migration], sources: [wikipedia:Linear_Pottery_culture] }
+      - { id: carnac, date: c. 4500 BCE, label: "The stone rows of Carnac", prominence: 3, themes: [religion], sources: [wikipedia:Carnac_stones] }
+    sources: [wikipedia:Neolithic_Europe]
+
+  - id: nordic-bronze
+    name: Nordic Bronze Age
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 4
+    basis: archaeology
+    span: c. 1700 – c. 500 BCE
+    events:
+      - { id: sun-chariot, date: c. 1400 BCE, label: "The Trundholm sun chariot", prominence: 4, themes: [art, sky], sources: [wikipedia:Trundholm_sun_chariot] }
+      - { id: trundholm, date: c. 1400 BCE, label: "The Trundholm sun chariot", prominence: 3, themes: [art, sky], sources: [wikipedia:Trundholm_sun_chariot] }
+      - { id: nebra, date: c. 1600 BCE, label: "The Nebra sky disc", prominence: 2, themes: [sky], sources: [wikipedia:Nebra_sky_disc] }
+    sources: [wikipedia:Nordic_Bronze_Age]
+
+  - id: urnfield
+    name: Urnfield culture
+    region: europe
+    group: central-europe
+    sphere: celtic-germanic
+    prominence: 4
+    basis: archaeology
+    span: c. 1300 – c. 800 BCE
+    relations:
+      - { type: becomes, lane: hallstatt, at: c. 800 BCE }
+    events:
+      - { id: urnfield-cremation, date: c. 1200 BCE, label: "Cremation in urnfields spreads across Europe", prominence: 4, themes: [religion], sources: [wikipedia:Urnfield_culture] }
+    sources: [wikipedia:Urnfield_culture]
+
+  - id: cucuteni
+    name: Cucuteni–Trypillia
+    region: europe
+    group: eastern-europe
+    sphere: celtic-germanic
+    prominence: 3
+    basis: archaeology
+    span: c. 5500 – c. 2750 BCE
+    events:
+      - { id: mega-settlements, date: c. 3900 BCE, label: "Mega-settlements of 10,000 people, larger than the first cities", prominence: 3, sources: [wikipedia:Cucuteni–Trypillia_culture] }
+      - { id: megasites, date: c. 4000 BCE, label: "Trypillia mega-sites of 10,000 people, burned and rebuilt", prominence: 3, sources: [wikipedia:Cucuteni–Trypillia_culture] }
+    sources: [wikipedia:Cucuteni–Trypillia_culture]
+
+  - id: malta-temples
+    name: Temple builders of Malta
+    region: europe
+    group: italy
+    sphere: italic
+    prominence: 3
+    basis: archaeology
+    span: c. 3600 – c. 2500 BCE
+    events:
+      - { id: ggantija, date: c. 3600 BCE, label: "Ġgantija: free-standing stone temples older than the pyramids", prominence: 3, themes: [religion, art], sources: [wikipedia:Ġgantija] }
+      - { id: hypogeum, date: c. 3300 BCE, label: "The Hypogeum of Ħal Saflieni, carved underground", prominence: 4, themes: [religion], sources: [wikipedia:Ħal_Saflieni_Hypogeum] }
+    sources: [wikipedia:Megalithic_Temples_of_Malta]
+
+  - id: minoans
+    name: Minoans
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 2
+    span: c. 3100 – c. 1100 BCE
+    cliopatria: ["Minoan Civilization", "Minoan civilization"]
+    relations:
+      - { type: influences, lane: mycenaeans, at: c. 1600 BCE }
+    events:
+      - { id: knossos, date: c. 1950 BCE, label: "The first palace at Knossos", prominence: 2, themes: [art], sources: [wikipedia:Knossos] }
+      - { id: linear-a, date: c. 1800 BCE, label: "Linear A, still undeciphered", prominence: 3, thread: scripts, sources: [wikipedia:Linear_A] }
+      - { id: thera, date: c. 1600 BCE, label: "The Thera eruption buries Akrotiri — perhaps the seed of the Atlantis story", prominence: 2, confidence: disputed, themes: [climate], sources: [wikipedia:Minoan_eruption] }
+      - { id: knossos-taken, date: c. 1450 BCE, label: "Mycenaean Greeks take over Knossos", prominence: 3, themes: [war], sources: [wikipedia:Minoan_civilization] }
+      - { id: knossos-palace, date: c. 1900 BCE, label: "The palace of Knossos", prominence: 2, themes: [art], sources: [wikipedia:Knossos] }
+    sources: [wikipedia:Minoan_civilization]
+
+  - id: mycenaeans
+    name: Mycenaean Greece
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 2
+    span: c. 1750 – c. 1100 BCE
+    cliopatria: ["Mycenaean Greece", "Mycenaean civilization"]
+    relations:
+      - { type: becomes, lane: greek-dark-ages, at: c. 1100 BCE }
+    events:
+      - { id: linear-b, date: c. 1450 BCE, label: "Linear B: the oldest written Greek", prominence: 3, thread: scripts, sources: [wikipedia:Linear_B] }
+      - { id: troy, date: c. 1180 BCE, label: "The fall of Troy, as Homer will tell it", prominence: 2, confidence: legendary, themes: [war], sources: [wikipedia:Trojan_War] }
+      - { id: mycenae-burns, date: c. 1180 BCE, label: "The palaces burn; writing is forgotten in Greece", prominence: 3, themes: [war], sources: [wikipedia:Late_Bronze_Age_collapse] }
+    sources: [wikipedia:Mycenaean_Greece]
+
+  - id: greek-dark-ages
+    name: Greek Dark Ages
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 3
+    span: c. 1100 – c. 800 BCE
+    relations:
+      - { type: becomes, lane: greek-poleis, at: c. 800 BCE }
+    events:
+      - { id: lefkandi, date: c. 950 BCE, label: "The hero's tomb at Lefkandi", prominence: 4, sources: [wikipedia:Lefkandi] }
+    sources: [wikipedia:Greek_Dark_Ages]

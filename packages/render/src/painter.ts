@@ -272,7 +272,7 @@ export class Painter {
       canvas.drawRect(dst, this.styled(INK_SOFT, alpha * 0.08, 'fill'));
       return;
     }
-    const p = this.styled('#000000', alpha, 'fill');
+    const p = this.styled('#000000', alpha, 'fill', 0, false, s, undefined, it.treatment === 'backdrop');
     canvas.drawImageRectOptions(img, ck.XYWHRect(0, 0, img.width(), img.height()), dst, ck.FilterMode.Linear, ck.MipmapMode.None, p);
   }
 

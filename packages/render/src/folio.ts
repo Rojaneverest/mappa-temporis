@@ -8,7 +8,7 @@ export interface FolioSource {
 
 export interface FolioEntry {
   id: string;
-  kind: 'lane' | 'event' | 'image' | 'thread';
+  kind: 'lane' | 'event' | 'image' | 'thread' | 'era' | 'climate' | 'population';
   title: string;
   /** Human-readable date or span. */
   dates: string;
@@ -24,6 +24,10 @@ export interface FolioEntry {
   wikidata?: string;
   /** Wikipedia article title for the live summary. */
   wikipedia?: string;
+  /** Our own short text (eras, climate, population). */
+  note?: string;
+  /** Forces at work (eras). */
+  forces?: string[];
   sources: FolioSource[];
   themes?: string[];
   segments?: { name: string; dates: string }[];

@@ -61,7 +61,7 @@ export class Panel {
   }
 
   private render(e: FolioEntry): string {
-    const kind = e.kind === 'lane' ? 'Civilization · state · period' : e.kind === 'event' ? 'Event' : e.kind === 'thread' ? 'Thread' : 'Object';
+    const kind = ({ lane: 'Civilization · state · period', event: 'Event', thread: 'Thread', image: 'Object', era: 'Era', climate: 'Climate', population: 'People' } as const)[e.kind];
     const parts: string[] = [];
     const laneLink = e.laneId ? ` · <a href="#" data-go="${esc(e.laneId)}">${esc(e.laneName)}</a>` : '';
     parts.push(`<div class="kicker">${kind} · ${esc(e.region)}${e.kind !== 'lane' ? laneLink : ''}</div>`);
@@ -76,6 +76,8 @@ export class Panel {
       const size = e.image.sizes.find((z) => z >= 900) ?? e.image.sizes[e.image.sizes.length - 1];
       parts.push(`<figure class="${e.image.treatment}"><img src="/img/${esc(e.id)}/${size}.webp" alt="${esc(e.image.caption)}"><figcaption>${esc(e.image.title)}<br><span>${esc(e.image.credit)} · ${esc(e.image.license)}</span></figcaption></figure>`);
     }
+    if (e.note) parts.push(`<p class="note">${esc(e.note)}</p>`);
+    if (e.forces?.length) parts.push('<div class="forces">' + e.forces.map((f) => `<span class="force ${esc(f)}">${esc(f)}</span>`).join('') + '</div>');
     if (e.wikipedia) parts.push('<div class="wiki"><p class="loading">Loading summary…</p></div>');
     if (e.segments?.length) {
       parts.push('<h3>Phases</h3><ul class="list">' + e.segments.map((s) => `<li><span>${esc(s.dates)}</span>${esc(s.name)}</li>`).join('') + '</ul>');

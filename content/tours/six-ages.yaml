@@ -1,0 +1,91 @@
+# The whole poster in six ages: what changed, and why each age ended.
+id: six-ages
+title: Twelve Thousand Years in Six Ages
+subtitle: From the first farmers to the Moon — what changed, and what turned each page.
+sheet: world
+steps:
+  - target: era:neolithic
+    zoom: 0.6
+    text: >-
+      For most of human existence everyone was a forager. Then, as the Ice Age ended and the climate
+      steadied, people in at least seven places began — independently — to farm. Notice how faint the
+      top of the chart is: few lanes, compressed time. This is the age before states.
+  - target: gobekli-pillars
+    text: >-
+      Göbekli Tepe, in southern Turkey, overturned the textbooks: hunters raised carved stone pillars
+      around 9500 BCE, before farming. Perhaps the need to feed gatherings at sites like this helped
+      push people toward cultivation.
+  - target: era:early-bronze
+    zoom: 0.6
+    text: >-
+      The second age: cities, kings, bronze and writing. Along the Tigris and Euphrates, the Nile and
+      the Indus, villages became states with temples, taxes and armies.
+  - target: cuneiform-first
+    text: >-
+      Writing began as accounting — tallies of grain and sheep pressed into clay at Uruk. Within a few
+      centuries it could record laws, letters and the first literature. History, strictly speaking, starts here.
+  - target: great-pyramid
+    text: >-
+      The Great Pyramid of Giza: for nearly 4,000 years the tallest building on Earth, raised by paid,
+      fed and organised workers — a measure of what a Bronze Age state could command.
+  - target: sea-peoples
+    text: >-
+      Around 1200 BCE the interconnected Bronze Age world fell apart: drought, earthquakes, raiders,
+      broken trade in tin. Within decades the Hittites, Mycenae and Ugarit were gone. Collapse turns the page.
+  - target: era:classical
+    zoom: 0.6
+    text: >-
+      The third age. Iron was cheaper than bronze and alphabets easier than cuneiform. Then, across
+      Eurasia, the Axial Age: new ideas about ethics and the self, and the first empires big enough to
+      join the continent end to end.
+  - target: buddha
+    text: >-
+      The Buddha in India, Confucius in China, Socrates in Greece, the prophets in Judah: thinkers who
+      never met asked the same questions, and their answers still shape billions of lives.
+  - target: augustus
+    text: >-
+      Rome and Han China — each holding about a quarter of humanity — were linked by the Silk Road,
+      though they barely knew of each other.
+  - target: era:middle-ages
+    zoom: 0.6
+    text: >-
+      The fourth age opens with catastrophe: volcanic winters in 536 and the Plague of Justinian.
+      Out of the disruption come new faiths and empires — and the climate ribbon in the right margin
+      shows how often the sky itself turned history.
+  - target: hijra
+    text: >-
+      In 622 Muhammad leaves Mecca for Medina. Within a century Islam stretches from Spain to the Indus,
+      and Baghdad becomes the world's centre of learning.
+  - target: black-death-europe
+    text: >-
+      The Black Death kills perhaps a third of Europe and the Middle East in five years. Look at the
+      population curve in the right margin: one of the only times it bends backwards.
+  - target: era:early-modern
+    zoom: 0.6
+    text: >-
+      The fifth age: ships join the oceans. The scale of the chart doubles here, because more is happening
+      in more places that suddenly affect one another.
+  - target: columbus-lands
+    text: >-
+      1492: two worlds meet. Crops, animals, silver and diseases cross the Atlantic. Tens of millions in
+      the Americas die of epidemics; millions of Africans are carried across in chains.
+  - target: gutenberg
+    text: >-
+      Printing makes ideas cheap. The Reformation, the Scientific Revolution and the newspaper all ride on it.
+  - target: era:industrial
+    zoom: 0.6
+    text: >-
+      The sixth age, still under way. Coal and steam break the old limits on energy; revolutions in
+      America, France and Haiti break the old limits on who may rule. Watch the population curve turn upward.
+  - target: watt
+    text: >-
+      Watt's improved steam engine. For the first time, sustained growth: within two centuries the average
+      person is richer than any king of the ages above.
+  - target: moon-landing
+    text: >-
+      1969: humans walk on the Moon — 12,000 years after the first farmers at the top of this chart.
+  - target: era:contemporary
+    zoom: 0.6
+    text: >-
+      And here we are: eight billion people, connected as never before, in a warming world. The chart
+      ends at today. What comes next is blank paper.

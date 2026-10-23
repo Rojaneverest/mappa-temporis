@@ -10,6 +10,7 @@ lanes:
     span: c. 1000 BCE – c. 1 CE
     events:
       - { id: bronze-drums, date: c. 500 BCE, label: "Great bronze drums are cast and traded across Southeast Asia", prominence: 2, themes: [art, trade], sources: [wikipedia:Dong_Son_drum] }
+      - { id: dong-son-drums, date: c. 500 BCE, label: "Đông Sơn bronze drums travel across the islands", prominence: 2, themes: [art, trade], sources: [wikipedia:Dong_Son_drum] }
     images:
       - { id: ngoc-lu-drum, source: "commons:File:Ngoc Lu.jpg", date: c. 500 BCE, prominence: 3, treatment: plate, caption: "The Ngọc Lũ bronze drum" }
     sources: [wikipedia:Đông_Sơn_culture]
@@ -23,6 +24,8 @@ lanes:
     span: 257 – 179 BCE
     relations:
       - { type: becomes, lane: nanyue, at: 179 BCE }
+    events:
+      - { id: co-loa, date: c. 250 BCE, label: "Cổ Loa, a spiral citadel", prominence: 4, sources: [wikipedia:Cổ_Loa_Citadel] }
     sources: [wikipedia:Âu_Lạc]
 
   - id: nanyue
@@ -35,6 +38,9 @@ lanes:
     span: 204 – 111 BCE
     relations:
       - { type: becomes, lane: jiaozhi, at: 111 BCE }
+    events:
+      - { id: zhao-tuo, date: 204 BCE, label: "Zhao Tuo, a Qin general, founds Nanyue", prominence: 4, sources: [wikipedia:Zhao_Tuo] }
+      - { id: nanyue-conquest, date: 111 BCE, label: "Han Wudi conquers Nanyue", prominence: 4, themes: [war], sources: [wikipedia:Han_conquest_of_Nanyue] }
     sources: [wikipedia:Nanyue]
 
   - id: jiaozhi
@@ -68,6 +74,9 @@ lanes:
     sphere: southeast-asian
     prominence: 3
     span: c. 550 – 802 CE
+    events:
+      - { id: sambor-prei-kuk, date: c. 620 CE, label: "Sambor Prei Kuk, Chenla's temple city", prominence: 3, themes: [art, religion], sources: [wikipedia:Sambor_Prei_Kuk] }
+      - { id: khmer-zero, date: 683 CE, label: "A Khmer inscription bears one of the oldest written zeros", prominence: 3, thread: numerals, sources: [wikipedia:Sambor_inscription] }
     sources: [wikipedia:Chenla]
 
   - id: champa
@@ -79,6 +88,8 @@ lanes:
     span: 192 – 1832 CE
     events:
       - { id: my-son, date: 4th c., label: "Mỹ Sơn sanctuary to Shiva is begun", prominence: 4, themes: [religion, art], sources: [wikipedia:Mỹ_Sơn] }
+      - { id: champa-rice, date: 1012 CE, label: "Champa rice, fast-ripening, is sent to Song China and feeds a boom", prominence: 3, themes: [technology], sources: [wikipedia:Champa_rice] }
+      - { id: vijaya-falls, date: 1471 CE, label: "Đại Việt takes the Cham capital Vijaya", prominence: 4, themes: [war], sources: [wikipedia:Cham–Vietnamese_War_(1471)] }
     sources: [wikipedia:Champa]
 
   - id: pyu
@@ -89,6 +100,9 @@ lanes:
     prominence: 3
     basis: archaeology
     span: c. 200 BCE – c. 1050 CE
+    events:
+      - { id: sri-ksetra, date: c. 800 CE, label: "Pyu city-states at Sri Ksetra and Halin", prominence: 4, sources: [wikipedia:Sri_Ksetra_Kingdom] }
+      - { id: pyu-buddhism, date: c. 500 CE, label: "Pyu cities embrace Buddhism", prominence: 4, themes: [religion], sources: [wikipedia:Pyu_city-states] }
     sources: [wikipedia:Pyu_city-states]
 
   - id: tarumanagara
@@ -101,6 +115,7 @@ lanes:
     cliopatria: ["Tarumanagara"]
     events:
       - { id: kutai-yupa, date: c. 400 CE, label: "Sanskrit pillar inscriptions at Kutai, the oldest in Indonesia", prominence: 4, thread: scripts, sources: [wikipedia:Kutai_Martadipura] }
+      - { id: tugu, date: c. 450 CE, label: "The Tugu inscription: a king's canal in Java", prominence: 4, themes: [technology], sources: [wikipedia:Tugu_inscription] }
     sources: [wikipedia:Tarumanagara]
 
   - id: srivijaya
@@ -112,4 +127,5 @@ lanes:
     span: c. 650 – 1377 CE
     events:
       - { id: yijing, date: 671 CE, label: "The Chinese monk Yijing studies Sanskrit at Srivijaya", prominence: 3, themes: [religion, ideas], sources: [wikipedia:Yijing_(monk)] }
+      - { id: srivijaya-straits, date: c. 800 CE, label: "Srivijaya controls the Strait of Malacca: Buddhist scholars study at Palembang", prominence: 3, themes: [trade, religion], sources: [wikipedia:Srivijaya] }
     sources: [wikipedia:Srivijaya]

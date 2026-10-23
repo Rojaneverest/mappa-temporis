@@ -1,0 +1,137 @@
+# East Asia to c. 800 BCE.
+lanes:
+  - id: early-neolithic-china
+    name: First farmers of China
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 3
+    basis: archaeology
+    span: c. 10000 – c. 5000 BCE
+    relations:
+      - { type: becomes, lane: yangshao, at: c. 5000 BCE }
+    events:
+      - { id: rice, date: c. 7000 BCE, label: "Rice is domesticated along the Yangtze, millet in the north", prominence: 1, themes: [technology], confidence: probable, sources: [wikipedia:Domestication_of_rice] }
+      - { id: jiahu, date: c. 6600 BCE, label: "Jiahu: bone flutes that can still be played", prominence: 4, themes: [art], sources: [wikipedia:Jiahu] }
+      - { id: millet-north, date: c. 8000 BCE, label: "Millet farming on the Yellow River loess", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Cishan_culture] }
+      - { id: xianrendong, date: c. 10000 BCE, label: "Pottery at Xianrendong cave — older than farming", prominence: 4, themes: [technology], sources: [wikipedia:Xianrendong_Cave] }
+    sources: [wikipedia:Neolithic_China]
+
+  - id: yangshao
+    name: Yangshao culture
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 2
+    basis: archaeology
+    span: c. 5000 – c. 3000 BCE
+    relations:
+      - { type: becomes, lane: longshan, at: c. 3000 BCE }
+    events:
+      - { id: yangshao-pottery, date: c. 4500 BCE, label: "Painted pottery villages along the Yellow River", prominence: 3, themes: [art], sources: [wikipedia:Yangshao_culture] }
+      - { id: banpo, date: c. 4500 BCE, label: "Banpo village: round houses, kilns, painted fish", prominence: 3, sources: [wikipedia:Banpo] }
+      - { id: silk-first, date: c. 3600 BCE, label: "Silkworms are cultivated", prominence: 3, thread: silk-road, themes: [technology], confidence: probable, sources: [wikipedia:Silk] }
+    sources: [wikipedia:Yangshao_culture]
+
+  - id: liangzhu
+    name: Liangzhu
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 3
+    basis: archaeology
+    span: c. 3300 – c. 2300 BCE
+    events:
+      - { id: liangzhu-dams, date: c. 3000 BCE, label: "Liangzhu's jade and dams: one of East Asia's first states", prominence: 3, themes: [technology], sources: [wikipedia:Liangzhu_culture] }
+      - { id: liangzhu-jade, date: c. 3000 BCE, label: "Jade cong tubes, symbols of power", prominence: 4, themes: [art], sources: [wikipedia:Cong_(vessel)] }
+    sources: [wikipedia:Liangzhu_culture]
+
+  - id: longshan
+    name: Longshan culture
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 3
+    basis: archaeology
+    span: c. 3000 – c. 1900 BCE
+    relations:
+      - { type: becomes, lane: xia, at: c. 1900 BCE }
+    events:
+      - { id: taosi, date: c. 2300 BCE, label: "Taosi: a walled city with a solar observatory", prominence: 3, themes: [sky], sources: [wikipedia:Taosi] }
+      - { id: shimao, date: c. 2000 BCE, label: "Shimao's stone walls, decorated with carved faces", prominence: 4, sources: [wikipedia:Shimao_(site)] }
+    sources: [wikipedia:Longshan_culture]
+
+  - id: xia
+    name: Xia · Erlitou
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 2
+    basis: legend
+    span: c. 2070 – c. 1600 BCE
+    relations:
+      - { type: becomes, lane: shang, at: c. 1600 BCE }
+    events:
+      - { id: yu-flood, date: c. 2070 BCE, label: "Yu the Great tames the flood and founds the Xia (tradition)", prominence: 3, confidence: legendary, sources: [wikipedia:Xia_dynasty] }
+      - { id: erlitou, date: c. 1800 BCE, label: "Erlitou: palaces and the first bronze ritual vessels", prominence: 3, sources: [wikipedia:Erlitou_culture] }
+    sources: [wikipedia:Xia_dynasty]
+
+  - id: sanxingdui
+    name: Sanxingdui
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 3
+    basis: archaeology
+    span: c. 1700 – c. 1150 BCE
+    events:
+      - { id: sanxingdui-masks, date: c. 1200 BCE, label: "Giant bronze masks with protruding eyes, unlike anything else in China", prominence: 3, themes: [art], sources: [wikipedia:Sanxingdui] }
+    sources: [wikipedia:Sanxingdui]
+
+  - id: shang
+    name: Shang dynasty
+    endonym: { text: 商, script: Hant, translit: Shāng }
+    wikidata: Q172852
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 1
+    span: c. 1600 – 1046 BCE
+    cliopatria: ["Shang Dynasty"]
+    relations:
+      - { type: becomes, lane: western-zhou, at: 1046 BCE }
+    events:
+      - { id: yinxu, date: c. 1300 BCE, label: "The capital moves to Yin (Anyang)", prominence: 3, sources: [wikipedia:Yinxu] }
+      - { id: oracle-bones, date: c. 1250 BCE, label: "Oracle bones: the first Chinese writing, questions put to the ancestors", prominence: 1, thread: scripts, themes: [religion, ideas], sources: [wikipedia:Oracle_bone_script] }
+      - { id: fu-hao, date: c. 1200 BCE, label: "Fu Hao, queen and general, buried with 1,600 objects", prominence: 2, themes: [women, war], sources: [wikipedia:Fu_Hao] }
+    sources: [wikipedia:Shang_dynasty]
+
+  - id: western-zhou
+    name: Western Zhou
+    endonym: { text: 周, script: Hant, translit: Zhōu }
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 2
+    span: 1046 – 771 BCE
+    cliopatria: ["Zhou Dynasty"]
+    relations:
+      - { type: becomes, lane: zhou-eastern, at: 770 BCE }
+    events:
+      - { id: muye, date: 1046 BCE, label: "Battle of Muye: Zhou overthrows the Shang", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Muye] }
+      - { id: mandate-heaven, date: c. 1046 BCE, label: "The Mandate of Heaven: rulers lose the right to rule when they rule badly", prominence: 2, themes: [ideas, government], sources: [wikipedia:Mandate_of_Heaven] }
+      - { id: zhou-bronzes, date: c. 900 BCE, label: "Long inscriptions cast inside Zhou bronzes", prominence: 3, thread: scripts, sources: [wikipedia:Chinese_bronze_inscriptions] }
+      - { id: haojing-falls, date: 771 BCE, label: "Nomads sack Haojing; the Zhou move east", prominence: 3, themes: [war], sources: [wikipedia:Western_Zhou] }
+    sources: [wikipedia:Western_Zhou]
+
+  - id: mumun
+    name: Mumun period
+    region: east-asia
+    group: korea
+    sphere: korean-japanese
+    prominence: 4
+    basis: archaeology
+    span: c. 1500 – c. 300 BCE
+    relations:
+      - { type: becomes, lane: gojoseon, at: c. 400 BCE }
+    sources: [wikipedia:Mumun_pottery_period]

@@ -1,3 +1,4 @@
+import { yearToYOf, yToYearOf, upyAt, type TimeSegment } from '../../core/src/timescale.ts';
 // The display list: the compiled chart. Every mark with its exact world position,
 // produced once by the build and drawn identically in the browser, print and video.
 // World units: 1 unit ≈ 1 screen pixel at "detail" zoom (scale 1).
@@ -92,7 +93,7 @@ export interface ImageItem extends Base {
   h: number;
   /** Available long-side pixel sizes, ascending. */
   sizes: number[];
-  treatment: 'cutout' | 'plate';
+  treatment: 'cutout' | 'plate' | 'backdrop';
 }
 
 export type Item = TextItem | PathItem | RectItem | LineItem | ImageItem;
@@ -104,18 +105,23 @@ export interface DisplayList {
   fonts: string;
   width: number;
   height: number;
-  /** y = y0 + (astronomicalYear - year0) * unitsPerYear */
-  time: { y0: number; year0: number; year1: number; unitsPerYear: number };
+  /** y = y0 + (astronomicalYear - year0) * unitsPerYear, or piecewise via `segments` when a prologue is compressed. */
+  time: { y0: number; year0: number; year1: number; unitsPerYear: number; segments?: TimeSegment[] };
   /** Column headers for the frozen HUD: [x0, x1, name]. */
-  regions: { x0: number; x1: number; name: string }[];
+  regions: { x0: number; x1: number; name: string; short?: string }[];
   items: Item[];
   stats: Record<string, number>;
 }
 
 export function yearToY(dl: Pick<DisplayList, 'time'>, year: number): number {
-  return dl.time.y0 + (year - dl.time.year0) * dl.time.unitsPerYear;
+  return dl.time.segments ? yearToYOf(dl.time.segments, year) : dl.time.y0 + (year - dl.time.year0) * dl.time.unitsPerYear;
 }
 
 export function yToYear(dl: Pick<DisplayList, 'time'>, y: number): number {
-  return dl.time.year0 + (y - dl.time.y0) / dl.time.unitsPerYear;
+  return dl.time.segments ? yToYearOf(dl.time.segments, y) : dl.time.year0 + (y - dl.time.y0) / dl.time.unitsPerYear;
+}
+
+/** Units per year around a given year (the prologue is compressed). */
+export function unitsPerYearAt(dl: Pick<DisplayList, 'time'>, year: number): number {
+  return dl.time.segments ? upyAt(dl.time.segments, year) : dl.time.unitsPerYear;
 }

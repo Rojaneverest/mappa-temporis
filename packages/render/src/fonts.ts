@@ -20,10 +20,20 @@ export const FONT_FILES: { family: string; file: string }[] = [
   { family: 'Noto Armenian', file: 'NotoSansArmenian.ttf' },
   { family: 'Noto Naskh Arabic', file: 'NotoNaskhArabic.ttf' },
   { family: 'Noto Brahmi', file: 'NotoSansBrahmi.ttf' },
+  { family: 'Noto Devanagari', file: 'NotoSerifDevanagari.ttf' },
+  { family: 'Noto Serif KR', file: 'NotoSerifKR.ttf' },
+  { family: 'Noto Thai', file: 'NotoSerifThai.ttf' },
+  { family: 'Noto Khmer', file: 'NotoSerifKhmer.ttf' },
+  { family: 'Noto Myanmar', file: 'NotoSerifMyanmar.ttf' },
+  { family: 'Noto Tibetan', file: 'NotoSerifTibetan.ttf' },
+  { family: 'Noto Gurmukhi', file: 'NotoSerifGurmukhi.ttf' },
+  { family: 'Noto Bengali', file: 'NotoSerifBengali.ttf' },
+  { family: 'Noto Tamil', file: 'NotoSerifTamil.ttf' },
+  { family: 'Noto Sinhala', file: 'NotoSerifSinhala.ttf' },
 ];
 
 /** Every role falls back through these so any script renders. */
-const FALLBACK = ['Noto Sans', 'Noto Serif TC', 'Noto Cuneiform', 'Noto Hieroglyphs', 'Noto Old Persian', 'Noto Ethiopic', 'Noto Phoenician', 'Noto Armenian', 'Noto Naskh Arabic', 'Noto Brahmi'];
+const FALLBACK = ['Noto Sans', 'Noto Serif TC', 'Noto Cuneiform', 'Noto Hieroglyphs', 'Noto Old Persian', 'Noto Ethiopic', 'Noto Phoenician', 'Noto Armenian', 'Noto Naskh Arabic', 'Noto Brahmi', 'Noto Devanagari', 'Noto Serif KR', 'Noto Thai', 'Noto Khmer', 'Noto Myanmar', 'Noto Tibetan', 'Noto Gurmukhi', 'Noto Bengali', 'Noto Tamil', 'Noto Sinhala'];
 
 export interface RoleStyle {
   families: string[];

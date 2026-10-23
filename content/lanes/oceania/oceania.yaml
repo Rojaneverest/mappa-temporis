@@ -9,7 +9,14 @@ lanes:
     basis: archaeology
     span: c. 65000 BCE – 2026 CE
     events:
+      - { id: budj-bim, date: c. 4600 BCE, label: "Budj Bim: the Gunditjmara build stone eel traps, among the oldest aquaculture", prominence: 3, themes: [technology], sources: [wikipedia:Budj_Bim_Cultural_Landscape] }
+      - { id: dingo, date: c. 1500 BCE, label: "The dingo arrives, brought by seafarers", prominence: 4, confidence: probable, sources: [wikipedia:Dingo] }
       - { id: songlines, date: c. 1 CE, label: "Songlines map a continent in story, as they have for tens of thousands of years", prominence: 3, confidence: probable, themes: [ideas], sources: [wikipedia:Songline] }
+      - { id: makassar-trepang, date: c. 1720 CE, label: "Makassan trepang fishers trade with the Yolŋu of Arnhem Land", prominence: 4, themes: [trade], sources: [wikipedia:Macassan_contact_with_Australia] }
+      - { id: stolen-generations, date: c. 1910 CE, label: "The Stolen Generations: children taken from their families", prominence: 3, sources: [wikipedia:Stolen_Generations] }
+      - { id: apology-2008, date: 2008 CE, label: "The national Apology to the Stolen Generations", prominence: 4, themes: [government], sources: [wikipedia:Apology_to_Australia's_Indigenous_peoples] }
+      - { id: mungo-man, date: c. 40000 BCE, label: "Lake Mungo: the oldest known cremation", prominence: 3, themes: [religion], sources: [wikipedia:Mungo_Man] }
+      - { id: cook-botany-bay, date: 1770 CE, label: "Cook lands at Botany Bay", prominence: 3, themes: [exploration], sources: [wikipedia:Botany_Bay] }
     sources: [wikipedia:Aboriginal_Australians]
 
   - id: lapita
@@ -24,6 +31,8 @@ lanes:
       - { type: becomes, lane: ancestral-polynesia, at: c. 500 BCE }
     events:
       - { id: lapita-tonga, date: c. 800 BCE, label: "Lapita canoes reach Tonga and Samoa — no humans had lived there before", prominence: 2, themes: [exploration, migration], sources: [wikipedia:Lapita_culture] }
+      - { id: lapita-bismarck, date: c. 1500 BCE, label: "Lapita pottery appears in the Bismarck Archipelago", prominence: 3, themes: [art], sources: [wikipedia:Lapita_culture] }
+      - { id: lapita-vanuatu, date: c. 1000 BCE, label: "The first people reach Vanuatu and Fiji", prominence: 3, themes: [migration], sources: [wikipedia:Teouma] }
     images:
       - { id: lapita-pot, source: "commons:File:PortVilaLapita.jpg", date: c. 800 BCE, prominence: 3, treatment: cutout, caption: "Lapita pottery with stamped designs, Vanuatu" }
     sources: [wikipedia:Lapita_culture]
@@ -38,4 +47,19 @@ lanes:
     span: c. 500 BCE – c. 1000 CE
     events:
       - { id: long-pause, date: c. 1 CE, label: "The 'Long Pause': Polynesian culture takes shape in Tonga and Samoa", prominence: 3, confidence: probable, themes: [migration], sources: [wikipedia:Polynesia] }
+      - { id: kava, date: c. 500 CE, label: "Kava, tapa and tattoo: Polynesian culture takes shape", prominence: 4, confidence: probable, sources: [wikipedia:Polynesian_culture] }
     sources: [wikipedia:Polynesians]
+
+  - id: new-guinea
+    name: New Guinea highland farmers
+    region: oceania
+    group: pacific
+    sphere: oceanian
+    prominence: 3
+    basis: archaeology
+    span: c. 8000 BCE – 2026 CE
+    events:
+      - { id: kuk, date: c. 7000 BCE, label: "Kuk swamp: farming invented independently, with taro and bananas", prominence: 2, themes: [technology], confidence: probable, sources: [wikipedia:Kuk_Swamp] }
+      - { id: sweet-potato-highlands, date: c. 1700 CE, label: "The sweet potato reaches the highlands; populations boom", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Ipomoean_revolution] }
+      - { id: highlands-contact, date: 1933 CE, label: "Outsiders first meet the million people of the highlands", prominence: 3, themes: [exploration], sources: [wikipedia:Mick_Leahy] }
+    sources: [wikipedia:Kuk_Swamp]

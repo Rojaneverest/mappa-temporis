@@ -13,6 +13,8 @@ lanes:
     events:
       - { id: nok-terracottas, date: c. 900 BCE, label: "Nok sculptors begin their great terracotta heads", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Nok_culture] }
       - { id: west-african-iron, date: c. 500 BCE, label: "Iron smelting in West Africa — perhaps invented independently", prominence: 2, confidence: disputed, themes: [technology], sources: [wikipedia:Iron_metallurgy_in_Africa] }
+      - { id: nok-furnaces, date: c. 550 BCE, label: "Nok smelting furnaces at Taruga, among Africa's earliest", prominence: 3, themes: [technology], sources: [wikipedia:Taruga] }
+      - { id: nok-fades, date: c. 1 CE, label: "Nok culture fades; its sculptural style may live on at Ife", prominence: 4, confidence: probable, sources: [wikipedia:Nok_culture] }
     images:
       - { id: nok-head, source: "commons:File:Nok sculpture Louvre 70-1998-11-1.jpg", date: c. 500 BCE, prominence: 2, treatment: cutout, caption: "Nok terracotta figure" }
     sources: [wikipedia:Nok_culture]
@@ -28,6 +30,9 @@ lanes:
     events:
       - { id: urewe, date: c. 500 BCE, label: "Iron-working Bantu farmers reach the Great Lakes", prominence: 3, themes: [migration, technology], confidence: probable, sources: [wikipedia:Urewe] }
       - { id: bantu-south, date: c. 300 CE, label: "Bantu-speaking farmers reach southern Africa", prominence: 3, themes: [migration], confidence: probable, sources: [wikipedia:Bantu_expansion] }
+      - { id: bantu-languages, date: c. 1000 BCE, label: "Bantu-speaking farmers spread from Cameroon: today 350 million speakers", prominence: 2, themes: [migration], sources: [wikipedia:Bantu_expansion] }
+      - { id: bantu-great-lakes, date: c. 500 BCE, label: "Bantu farmers reach the Great Lakes and learn iron-working", prominence: 3, themes: [migration, technology], confidence: probable, sources: [wikipedia:Bantu_expansion] }
+      - { id: bantu-banana, date: c. 300 CE, label: "Bananas from Southeast Asia reach African farmers", prominence: 4, themes: [trade], confidence: probable, sources: [wikipedia:Banana] }
     sources: [wikipedia:Bantu_expansion]
 
   - id: djenne-djenno
@@ -40,6 +45,8 @@ lanes:
     span: c. 250 BCE – c. 1400 CE
     events:
       - { id: djenne-city, date: c. 250 BCE, label: "One of the oldest cities south of the Sahara rises on the Niger", prominence: 3, sources: [wikipedia:Djenné-Djenno] }
+      - { id: djenne-moves, date: c. 1250 CE, label: "Old Jenne is abandoned for the new town nearby", prominence: 4, sources: [wikipedia:Djenné-Djenno] }
+      - { id: djenne-city-trade, date: c. 800 CE, label: "Jenne-jeno, 10,000 people, trades along the Niger without kings or palaces", prominence: 3, themes: [trade], confidence: probable, sources: [wikipedia:Djenné-Djenno] }
     sources: [wikipedia:Djenné-Djenno]
 
   - id: ghana-empire
@@ -51,6 +58,9 @@ lanes:
     span: c. 300 – 1200 CE
     events:
       - { id: camel-caravans, date: c. 300 CE, label: "Camel caravans open the trans-Saharan gold trade", prominence: 2, confidence: probable, themes: [trade], sources: [wikipedia:Trans-Saharan_trade] }
+      - { id: koumbi-saleh, date: 1068 CE, label: "Al-Bakri describes Ghana's gold and its twin capital", prominence: 3, themes: [trade], sources: [wikipedia:Koumbi_Saleh] }
+      - { id: ghana-gold-salt, date: c. 800 CE, label: "Wagadu trades gold for Saharan salt; Arab writers call it 'the land of gold'", prominence: 2, themes: [trade], sources: [wikipedia:Ghana_Empire] }
+      - { id: almoravid-ghana, date: 1076 CE, label: "The Almoravids attack Koumbi Saleh (disputed)", prominence: 4, themes: [war], confidence: disputed, sources: [wikipedia:Ghana_Empire] }
     sources: [wikipedia:Ghana_Empire]
 
   # ------------------------------------------------------------------ the middle nile & the horn
@@ -73,6 +83,7 @@ lanes:
       - { id: meroe-pyramids, date: c. 270 BCE, label: "Royal burials move to Meroë — more pyramids than all of Egypt", prominence: 2, themes: [art], sources: [wikipedia:Nubian_pyramids] }
       - { id: meroitic-script, date: 2nd c. BCE, label: "Meroitic script, still only partly understood", prominence: 3, thread: scripts, sources: [wikipedia:Meroitic_script] }
       - { id: amanirenas, date: c. 25 BCE, label: "Queen Amanirenas fights Rome to a negotiated peace", prominence: 3, themes: [women, war], sources: [wikipedia:Amanirenas] }
+      - { id: nastasen, date: c. 330 BCE, label: "King Nastasen's stela", prominence: 4, sources: [wikipedia:Nastasen] }
     images:
       - { id: kushite-king, source: "met:545027", date: c. 700 BCE, prominence: 2, treatment: cutout, caption: "Kneeling Kushite king of the 25th Dynasty" }
     sources: [wikipedia:Kingdom_of_Kush]
@@ -103,6 +114,7 @@ lanes:
       - { id: aksum-stelae, date: 4th c., label: "Giant stone stelae rise over Aksum's royal tombs", prominence: 3, themes: [art], sources: [wikipedia:Obelisk_of_Axum] }
       - { id: ezana, date: c. 330 CE, label: "King Ezana adopts Christianity", prominence: 2, themes: [religion], sources: [wikipedia:Ezana_of_Axum] }
       - { id: first-hijra, date: 615 CE, label: "Aksum shelters Muhammad's persecuted followers", prominence: 3, themes: [religion, migration], sources: [wikipedia:Migration_to_Abyssinia] }
+      - { id: aksum-decline, date: c. 800 CE, label: "Red Sea trade passes to Muslim merchants; Aksum fades inland", prominence: 4, themes: [trade], sources: [wikipedia:Kingdom_of_Aksum] }
     images:
       - { id: aksum-stele, source: "commons:File:Rome Stele.jpg", date: 4th c., prominence: 3, treatment: plate, caption: "The great stele of Aksum" }
     sources: [wikipedia:Kingdom_of_Aksum]
@@ -149,6 +161,8 @@ lanes:
     cliopatria: ["Kingdom of Numidia"]
     events:
       - { id: jugurtha, date: 112 BCE, label: "Jugurtha's war with Rome", prominence: 4, themes: [war], sources: [wikipedia:Jugurthine_War] }
+      - { id: masinissa, date: 202 BCE, label: "Masinissa unites Numidia as Rome's ally", prominence: 3, themes: [government], sources: [wikipedia:Masinissa] }
+      - { id: thapsus, date: 46 BCE, label: "Caesar wins at Thapsus; Numidia becomes a province", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Thapsus] }
     sources: [wikipedia:Numidia]
 
   - id: vandal-kingdom
@@ -161,4 +175,5 @@ lanes:
     events:
       - { id: vandals-carthage, date: 439 CE, label: "The Vandals seize Carthage", prominence: 3, themes: [war, migration], sources: [wikipedia:Vandal_Kingdom] }
       - { id: sack-455, date: 455 CE, label: "Vandals sack Rome", prominence: 3, themes: [war], sources: [wikipedia:Sack_of_Rome_(455)] }
+      - { id: belisarius-africa, date: 533 CE, label: "Belisarius reconquers Africa for Byzantium", prominence: 4, themes: [war], sources: [wikipedia:Vandalic_War] }
     sources: [wikipedia:Vandal_Kingdom]

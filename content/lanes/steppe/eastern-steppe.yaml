@@ -31,6 +31,7 @@ lanes:
         prominence: 4
         themes: [war]
         sources: [wikipedia:Battle_of_Ikh_Bayan]
+      - { id: heqin, date: 198 BCE, label: "Heqin: the Han pay tribute and send princesses north", prominence: 3, themes: [government], sources: [wikipedia:Heqin] }
     images:
       - id: xiongnu-buckle
         source: "met:322484"
@@ -48,6 +49,8 @@ lanes:
     span: c. 93 – 234 CE
     relations:
       - { type: succeeds, lane: xiongnu, at: c. 93 CE }
+    events:
+      - { id: tanshihuai, date: c. 156 CE, label: "Tanshihuai unites the Xianbei", prominence: 4, sources: [wikipedia:Tanshihuai] }
     sources: [wikipedia:Xianbei]
 
   - id: rouran
@@ -58,6 +61,8 @@ lanes:
     span: c. 330 – 555 CE
     relations:
       - { type: succeeds, lane: xianbei, at: c. 330 CE }
+    events:
+      - { id: khagan-title, date: 402 CE, label: "The Rouran rulers take the title khagan", prominence: 4, themes: [government], sources: [wikipedia:Rouran_Khaganate] }
     sources: [wikipedia:Rouran_Khaganate]
 
   - id: gokturks
@@ -80,6 +85,8 @@ lanes:
         prominence: 3
         confidence: probable
         sources: [wikipedia:Göktürk_civil_war]
+      - { id: orkhon, date: 732 CE, label: "The Orkhon inscriptions: the oldest Turkic writing", prominence: 3, thread: scripts, sources: [wikipedia:Orkhon_inscriptions] }
+      - { id: gokturk-split, date: 583 CE, label: "The Turkic Khaganate splits east and west", prominence: 4, sources: [wikipedia:Turkic_Khaganate] }
     sources: [wikipedia:Turkic_Khaganate]
 
   - id: southern-xiongnu
@@ -105,4 +112,5 @@ lanes:
         prominence: 4
         themes: [war]
         sources: [wikipedia:Battle_of_Herat_(484)]
+      - { id: hephthalite-peroz, date: 484 CE, label: "The Hephthalites kill the Persian king Peroz", prominence: 4, themes: [war], sources: [wikipedia:Peroz_I] }
     sources: [wikipedia:Hephthalites]
