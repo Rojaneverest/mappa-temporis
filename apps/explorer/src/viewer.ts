@@ -1,11 +1,14 @@
 // The deep-zoom viewer: camera, input, tile scheduling across a worker pool, GPU
-// compositing of paper + ink tiles, and the frozen HUD (year ruler, region headers).
+// compositing of paper + ink tiles, picking, and the frozen HUD (year ruler, region
+// and lane headers, minimap, status).
 import type { DisplayList } from '../../../packages/render/src/displaylist.ts';
 import { yToYear, yearToY } from '../../../packages/render/src/displaylist.ts';
+import type { Folio } from '../../../packages/render/src/folio.ts';
 import { paperPixels, MOTTLE_OCTAVES, mottleOpacity } from '../../../packages/render/src/painter.ts';
 import { PAPER, INK, INK_SOFT } from '../../../packages/core/src/palette.ts';
 import { formatYear, roundYears } from '../../../packages/core/src/dates.ts';
 import type { FromWorker, ToWorker } from './tile-worker.ts';
+import { Picker } from './picker.ts';
 
 /** Tile edge in CSS pixels. */
 const TILE = 256;
@@ -13,8 +16,14 @@ const MAX_SCALE = 2.5;
 const MAX_TILES = 260;
 const RULER_W = 64;
 const HEADER_H = 30;
+const LANE_HEADER_H = 22;
+const MINI_W = 150;
+const ACCENT = '#B8392D';
 
 interface CachedTile { bitmap: ImageBitmap; used: number }
+type Slot = { w: Worker; busy: boolean; ready: boolean };
+
+export interface ViewState { cx: number; cy: number; z: number }
 
 export class Viewer {
   private ctx: CanvasRenderingContext2D;
@@ -29,7 +38,7 @@ export class Viewer {
   /** Until the user moves the camera, keep the whole sheet fitted (also fixes loading in a hidden tab). */
   private userMoved = false;
 
-  private workers: { w: Worker; busy: boolean; ready: boolean }[] = [];
+  private workers: Slot[] = [];
   private cache = new Map<string, CachedTile>();
   private inflight = new Set<string>();
   private queue: { id: string; k: number; i: number; j: number; pri: number }[] = [];
@@ -42,12 +51,27 @@ export class Viewer {
   private patterns: { mottle: CanvasPattern; grain: CanvasPattern } | null = null;
   private status: HTMLElement;
   private dl: DisplayList;
+  private folio: Folio;
   private canvas: HTMLCanvasElement;
+  private picker: Picker;
+  private hover: string | null = null;
+  private selected: string | null = null;
+  private flight: number | null = null;
+  private mini: { bitmap: ImageBitmap; s: number; x: number; y: number; w: number; h: number } | null = null;
+  private miniRequested = false;
+  private showMini = true;
 
-  constructor(canvas: HTMLCanvasElement, dl: DisplayList, chartUrl: string, status: HTMLElement) {
+  /** Called when the user picks something on the chart (or empty paper: null). */
+  onPick: (ref: string | null) => void = () => {};
+  /** Called (debounced by the caller) whenever the camera settles somewhere new. */
+  onViewChange: (v: ViewState) => void = () => {};
+
+  constructor(canvas: HTMLCanvasElement, dl: DisplayList, folio: Folio, chartUrl: string, status: HTMLElement) {
     this.canvas = canvas;
     this.dl = dl;
+    this.folio = folio;
     this.status = status;
+    this.picker = new Picker(dl);
     this.ctx = canvas.getContext('2d', { alpha: false })!;
     this.resize();
     this.fit();
@@ -55,60 +79,129 @@ export class Viewer {
     const n = Math.max(2, Math.min(6, (navigator.hardwareConcurrency || 4) - 1));
     for (let i = 0; i < n; i++) {
       const w = new Worker(new URL('./tile-worker.ts', import.meta.url), { type: 'module' });
-      const slot = { w, busy: false, ready: false };
+      const slot: Slot = { w, busy: false, ready: false };
       w.onmessage = (e: MessageEvent<FromWorker>) => this.onWorker(slot, e.data);
       w.postMessage({ type: 'init', chartUrl } satisfies ToWorker);
       this.workers.push(slot);
     }
     this.bindInput();
-    window.addEventListener('resize', () => {
+    const onResize = () => {
+      // Keep the same world point centred at the same absolute scale.
+      const keep = this.userMoved ? { cx: this.x0 + this.cssW / 2 / this.s, cy: this.y0 + this.cssH / 2 / this.s } : null;
       this.resize();
-      if (!this.userMoved) this.fit();
+      if (keep) {
+        this.x0 = keep.cx - this.cssW / 2 / this.s;
+        this.y0 = keep.cy - this.cssH / 2 / this.s;
+      } else this.fit();
       this.dirty = true;
-    });
+    };
+    window.addEventListener('resize', onResize);
+    new ResizeObserver(onResize).observe(canvas);
     const loop = () => { this.tick(); requestAnimationFrame(loop); };
     requestAnimationFrame(loop);
   }
 
   // ------------------------------------------------------------------ camera
+  /** Window size changes also change the "fit" reference scale that zoom factors are measured against. */
   private resize() {
     this.cssW = Math.max(1, window.innerWidth);
     this.cssH = Math.max(1, window.innerHeight);
     this.canvas.width = Math.round(this.cssW * this.dpr);
     this.canvas.height = Math.round(this.cssH * this.dpr);
+    this.fitScale = Math.max(1e-4, Math.min((this.cssW - RULER_W - 20) / this.dl.width, (this.cssH - HEADER_H - 10) / this.dl.height));
   }
 
   fit() {
-    this.fitScale = Math.max(1e-4, Math.min((this.cssW - RULER_W - 20) / this.dl.width, (this.cssH - HEADER_H - 10) / this.dl.height));
     this.s = this.fitScale;
     this.x0 = -(RULER_W + (this.cssW - RULER_W - this.dl.width * this.s) / 2) / this.s;
     this.y0 = -(HEADER_H + (this.cssH - HEADER_H - this.dl.height * this.s) / 2) / this.s;
     this.dirty = true;
   }
 
-  private zoomAt(px: number, py: number, factor: number) {
+  get view(): ViewState {
+    return { cx: this.x0 + this.cssW / 2 / this.s, cy: this.y0 + this.cssH / 2 / this.s, z: this.s / this.fitScale };
+  }
+
+  setView(v: ViewState) {
+    this.s = Math.min(MAX_SCALE, Math.max(this.fitScale * 0.5, v.z * this.fitScale));
+    this.x0 = v.cx - this.cssW / 2 / this.s;
+    this.y0 = v.cy - this.cssH / 2 / this.s;
     this.userMoved = true;
+    this.dirty = true;
+  }
+
+  private moved() {
+    this.userMoved = true;
+    this.dirty = true;
+    this.onViewChange(this.view);
+  }
+
+  private zoomAt(px: number, py: number, factor: number) {
     const s = Math.min(MAX_SCALE, Math.max(this.fitScale * 0.5, this.s * factor));
     const wx = this.x0 + px / this.s;
     const wy = this.y0 + py / this.s;
     this.s = s;
     this.x0 = wx - px / s;
     this.y0 = wy - py / s;
-    this.dirty = true;
+    this.moved();
   }
 
   private panBy(dx: number, dy: number) {
-    this.userMoved = true;
     this.x0 -= dx / this.s;
     this.y0 -= dy / this.s;
+    this.moved();
+  }
+
+  /** Smoothly fly so that the world box [x, y, w, h] fills a comfortable part of the screen. */
+  flyTo(box: [number, number, number, number], opts: { maxZ?: number; panel?: boolean } = {}) {
+    const usableW = this.cssW - RULER_W - (opts.panel ? 400 : 0) - 80;
+    const usableH = this.cssH - HEADER_H - LANE_HEADER_H - 80;
+    let s = Math.min(usableW / Math.max(box[2], 1), usableH / Math.max(box[3], 1));
+    s = Math.min(MAX_SCALE, (opts.maxZ ?? 40) * this.fitScale, Math.max(this.fitScale, s));
+    const target = {
+      s,
+      cx: box[0] + box[2] / 2,
+      cy: box[1] + box[3] / 2,
+    };
+    const offsetX = (RULER_W - (opts.panel ? 400 : 0)) / 2;
+    const from = { s: this.s, cx: this.x0 + (this.cssW / 2 + offsetX) / this.s, cy: this.y0 + (this.cssH / 2) / this.s };
+    // Zoom out a little mid-flight when travelling far, like a map.
+    const dist = Math.hypot(target.cx - from.cx, target.cy - from.cy);
+    const peak = Math.min(from.s, target.s, (Math.min(this.cssW, this.cssH) * 0.9) / Math.max(dist, 1));
+    const start = performance.now();
+    const dur = Math.min(1400, 450 + Math.sqrt(dist * from.s) * 18);
+    if (this.flight) cancelAnimationFrame(this.flight);
+    const step = (now: number) => {
+      const t = Math.min(1, (now - start) / dur);
+      const e = t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
+      const logS = Math.log(from.s) * (1 - e) + Math.log(target.s) * e;
+      const dip = Math.sin(Math.PI * e) * Math.max(0, Math.log(Math.min(from.s, target.s)) - Math.log(peak));
+      this.s = Math.exp(logS - dip);
+      const cx = from.cx + (target.cx - from.cx) * e, cy = from.cy + (target.cy - from.cy) * e;
+      this.x0 = cx - (this.cssW / 2 + offsetX) / this.s;
+      this.y0 = cy - (this.cssH / 2) / this.s;
+      this.dirty = true;
+      if (t < 1) this.flight = requestAnimationFrame(step);
+      else { this.flight = null; this.moved(); }
+    };
+    this.flight = requestAnimationFrame(step);
+  }
+
+  select(ref: string | null) {
+    this.selected = ref;
     this.dirty = true;
   }
 
   // ------------------------------------------------------------------ input
+  private toWorld(px: number, py: number) {
+    return { x: this.x0 + px / this.s, y: this.y0 + py / this.s };
+  }
+
   private bindInput() {
     const c = this.canvas;
     c.addEventListener('wheel', (e) => {
       e.preventDefault();
+      if (this.flight) { cancelAnimationFrame(this.flight); this.flight = null; }
       const r = c.getBoundingClientRect();
       const px = e.clientX - r.left, py = e.clientY - r.top;
       const lines = e.deltaMode === 1 ? 33 : 1;
@@ -121,41 +214,70 @@ export class Viewer {
       }
     }, { passive: false });
 
-    let drag: { x: number; y: number; t: number } | null = null;
+    let drag: { x: number; y: number; t: number; sx: number; sy: number } | null = null;
     c.addEventListener('pointerdown', (e) => {
+      if (this.flight) { cancelAnimationFrame(this.flight); this.flight = null; }
+      const r = c.getBoundingClientRect();
+      if (this.miniHit(e.clientX - r.left, e.clientY - r.top)) {
+        this.miniJump(e.clientX - r.left, e.clientY - r.top);
+        c.setPointerCapture(e.pointerId);
+        drag = null;
+        (c as HTMLCanvasElement & { miniDrag?: boolean }).miniDrag = true;
+        return;
+      }
       c.setPointerCapture(e.pointerId);
-      drag = { x: e.clientX, y: e.clientY, t: performance.now() };
+      drag = { x: e.clientX, y: e.clientY, t: performance.now(), sx: e.clientX, sy: e.clientY };
       this.velocity = { x: 0, y: 0 };
       c.classList.add('dragging');
     });
     c.addEventListener('pointermove', (e) => {
       const r = c.getBoundingClientRect();
-      this.cursor = { x: e.clientX - r.left, y: e.clientY - r.top };
+      const px = e.clientX - r.left, py = e.clientY - r.top;
+      this.cursor = { x: px, y: py };
       this.dirty = true;
-      if (!drag) return;
+      if ((c as HTMLCanvasElement & { miniDrag?: boolean }).miniDrag) { this.miniJump(px, py); return; }
+      if (!drag) {
+        const w = this.toWorld(px, py);
+        const hit = px > RULER_W && py > HEADER_H && !this.miniHit(px, py) ? this.picker.pick(w.x, w.y, this.s) : null;
+        const ref = hit?.ref ?? null;
+        if (ref !== this.hover) { this.hover = ref; c.style.cursor = ref ? 'pointer' : ''; }
+        return;
+      }
       const now = performance.now();
       const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
       const dt = Math.max(1, now - drag.t);
       this.velocity = { x: 0.8 * (dx / dt) + 0.2 * this.velocity.x, y: 0.8 * (dy / dt) + 0.2 * this.velocity.y };
       this.panBy(dx, dy);
-      drag = { x: e.clientX, y: e.clientY, t: now };
+      drag = { ...drag, x: e.clientX, y: e.clientY, t: now };
     });
-    const end = () => {
-      if (drag && performance.now() - drag.t > 80) this.velocity = { x: 0, y: 0 };
+    const end = (e: PointerEvent) => {
+      (c as HTMLCanvasElement & { miniDrag?: boolean }).miniDrag = false;
+      if (drag) {
+        const still = Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy) < 4;
+        if (performance.now() - drag.t > 80 || still) this.velocity = { x: 0, y: 0 };
+        if (still && e.type === 'pointerup') {
+          const r = c.getBoundingClientRect();
+          const px = e.clientX - r.left, py = e.clientY - r.top;
+          const w = this.toWorld(px, py);
+          const hit = px > RULER_W && py > HEADER_H ? this.picker.pick(w.x, w.y, this.s) : null;
+          this.onPick(hit?.ref ?? null);
+        }
+      }
       drag = null;
       c.classList.remove('dragging');
     };
     c.addEventListener('pointerup', end);
     c.addEventListener('pointercancel', end);
-    c.addEventListener('pointerleave', () => { this.cursor = null; this.dirty = true; });
+    c.addEventListener('pointerleave', () => { this.cursor = null; this.hover = null; this.dirty = true; });
     c.addEventListener('dblclick', (e) => {
       const r = c.getBoundingClientRect();
       this.animateZoom(e.clientX - r.left, e.clientY - r.top, e.shiftKey ? 0.5 : 2);
     });
     window.addEventListener('keydown', (e) => {
+      if ((e.target as HTMLElement)?.closest?.('input, textarea')) return;
       const step = 120;
       const cx = this.cssW / 2, cy = this.cssH / 2;
-      if (e.key === '0') { this.fit(); this.userMoved = false; }
+      if (e.key === '0') { this.fit(); this.userMoved = false; this.onViewChange(this.view); }
       else if (e.key === '+' || e.key === '=') this.animateZoom(cx, cy, 2);
       else if (e.key === '-') this.animateZoom(cx, cy, 0.5);
       else if (e.key === 'ArrowLeft') this.panBy(step, 0);
@@ -163,6 +285,8 @@ export class Viewer {
       else if (e.key === 'ArrowUp') this.panBy(0, step);
       else if (e.key === 'ArrowDown') this.panBy(0, -step);
       else if (e.key === 'd' || e.key === 'D') { this.showStats = !this.showStats; this.dirty = true; }
+      else if (e.key === 'm' || e.key === 'M') { this.showMini = !this.showMini; this.dirty = true; }
+      else if (e.key === 'Escape') this.onPick(null);
     });
   }
 
@@ -192,7 +316,6 @@ export class Viewer {
     const j0 = Math.floor(this.y0 / tw), j1 = Math.floor((this.y0 + this.cssH / this.s) / tw);
     const out: { i: number; j: number }[] = [];
     for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) {
-      // Skip tiles entirely outside the chart.
       if ((i + 1) * tw < 0 || i * tw > this.dl.width || (j + 1) * tw < 0 || j * tw > this.dl.height) continue;
       out.push({ i, j });
     }
@@ -212,20 +335,36 @@ export class Viewer {
   private pump() {
     for (const slot of this.workers) {
       if (!slot.ready || slot.busy) continue;
+      if (!this.mini && !this.miniRequested) { this.requestMini(slot); continue; }
       const job = this.queue.shift();
       if (!job) return;
       const sDev = 2 ** job.k * this.dpr;
       const tw = TILE / 2 ** job.k;
+      const size = Math.round(TILE * this.dpr);
       slot.busy = true;
       this.inflight.add(job.id);
-      slot.w.postMessage({ type: 'tile', id: job.id, x0: job.i * tw, y0: job.j * tw, s: sDev, size: Math.round(TILE * this.dpr) } satisfies ToWorker);
+      slot.w.postMessage({ type: 'tile', id: job.id, x0: job.i * tw, y0: job.j * tw, s: sDev, w: size, h: size } satisfies ToWorker);
     }
   }
 
-  private onWorker(slot: { busy: boolean; ready: boolean }, msg: FromWorker) {
+  private requestMini(slot: Slot) {
+    this.miniRequested = true;
+    const s = (MINI_W * this.dpr) / this.dl.width;
+    slot.busy = true;
+    slot.w.postMessage({ type: 'tile', id: 'mini', x0: 0, y0: 0, s, w: Math.round(this.dl.width * s), h: Math.round(this.dl.height * s) } satisfies ToWorker);
+  }
+
+  private onWorker(slot: Slot, msg: FromWorker) {
     if (msg.type === 'ready') { slot.ready = true; document.getElementById('loading')?.remove(); this.dirty = true; this.pump(); return; }
     if (msg.type === 'error') { console.error('tile worker:', msg.message); slot.busy = false; return; }
     slot.busy = false;
+    if (msg.id === 'mini') {
+      const h = (MINI_W * this.dl.height) / this.dl.width;
+      this.mini = { bitmap: msg.bitmap, s: MINI_W / this.dl.width, x: 12, y: 0, w: MINI_W, h };
+      this.dirty = true;
+      this.pump();
+      return;
+    }
     this.inflight.delete(msg.id);
     this.cache.set(msg.id, { bitmap: msg.bitmap, used: this.frame });
     this.renderMs.push(msg.ms);
@@ -242,6 +381,29 @@ export class Viewer {
       t.bitmap.close();
       this.cache.delete(id);
     }
+  }
+
+  // ------------------------------------------------------------------ minimap
+  private miniRect() {
+    if (!this.mini || !this.showMini || this.s / this.fitScale < 1.6) return null;
+    const h = Math.min(this.mini.h, this.cssH * 0.45);
+    const w = (h / this.mini.h) * this.mini.w;
+    return { x: RULER_W + 12, y: this.cssH - h - 48, w, h };
+  }
+
+  private miniHit(px: number, py: number) {
+    const r = this.miniRect();
+    return !!r && px >= r.x && px <= r.x + r.w && py >= r.y && py <= r.y + r.h;
+  }
+
+  private miniJump(px: number, py: number) {
+    const r = this.miniRect();
+    if (!r) return;
+    const wx = ((px - r.x) / r.w) * this.dl.width;
+    const wy = ((py - r.y) / r.h) * this.dl.height;
+    this.x0 = wx - this.cssW / 2 / this.s;
+    this.y0 = wy - this.cssH / 2 / this.s;
+    this.moved();
   }
 
   // ------------------------------------------------------------------ drawing
@@ -286,7 +448,10 @@ export class Viewer {
     for (const { i, j } of tiles) this.drawTile(k, i, j);
 
     this.drawPaperTexture();
+    this.drawHighlight(this.hover, 0.45, 1.2);
+    this.drawHighlight(this.selected, 0.9, 2);
     this.drawHud(k);
+    this.drawMinimap();
   }
 
   /** Draw tile (k,i,j), or the best coarser ancestor's matching region while it renders. */
@@ -331,14 +496,38 @@ export class Viewer {
     ctx.fillRect(0, 0, this.cssW, this.cssH);
   }
 
+  private drawHighlight(ref: string | null, alpha: number, width: number) {
+    if (!ref) return;
+    const box = this.picker.boxOf(ref, this.s) ?? this.folio.entries[ref]?.box.map((v, i) => (i < 2 ? v : 0)) as [number, number, number, number] | undefined;
+    if (!box) return;
+    const pad = 6;
+    const x = (box[0] - this.x0) * this.s - pad, y = (box[1] - this.y0) * this.s - pad;
+    const w = (box[2] - box[0]) * this.s + 2 * pad, h = (box[3] - box[1]) * this.s + 2 * pad;
+    const { ctx } = this;
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = ACCENT;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    ctx.roundRect(x, y, w, h, 6);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
   private drawHud(k: number) {
     const { ctx } = this;
     const yOf = (year: number) => (yearToY(this.dl, year) - this.y0) * this.s;
 
-    // Frozen region headers.
-    ctx.globalAlpha = 0.92;
+    // Pinned lane headers: when a lane's own name has scrolled away, keep it at the top.
+    const z = this.s / this.fitScale;
+    const viewTop = this.y0 + (HEADER_H + LANE_HEADER_H) / this.s;
+    const viewBottom = this.y0 + this.cssH / this.s;
+    const laneHeads = z < 2.2 ? [] : this.folio.lanes.filter((l) =>
+      l.top < viewTop && l.bottom > viewTop + 40 / this.s && l.bottom < Infinity && l.top < viewBottom && l.prominence <= (z < 6 ? 2 : z < 15 ? 3 : 4));
+    const headerH = HEADER_H + (laneHeads.length ? LANE_HEADER_H : 0);
+
+    ctx.globalAlpha = 0.93;
     ctx.fillStyle = PAPER;
-    ctx.fillRect(0, 0, this.cssW, HEADER_H);
+    ctx.fillRect(0, 0, this.cssW, headerH);
     ctx.globalAlpha = 1;
     ctx.fillStyle = INK;
     ctx.font = '600 12px Georgia, serif';
@@ -350,20 +539,35 @@ export class Viewer {
       if (b - a < 60) continue;
       ctx.fillText(spaced(r.name.toUpperCase()), (a + b) / 2, HEADER_H / 2 + 1);
     }
+    if (laneHeads.length) {
+      ctx.font = '600 11px ui-sans-serif, -apple-system, sans-serif';
+      let lastRight = -Infinity;
+      for (const l of [...laneHeads].sort((a, b) => a.cx - b.cx)) {
+        const x = (l.cx - this.x0) * this.s;
+        if (x < RULER_W + 10 || x > this.cssW - 10) continue;
+        const w = ctx.measureText(l.name).width;
+        if (x - w / 2 < lastRight + 8) continue;
+        lastRight = x + w / 2;
+        ctx.fillStyle = l.prominence <= 2 ? INK : INK_SOFT;
+        ctx.fillText(l.name, x, HEADER_H + LANE_HEADER_H / 2);
+        ctx.fillRect(x - 0.5, HEADER_H + LANE_HEADER_H - 4, 1, 4);
+      }
+    }
     ctx.fillStyle = INK_SOFT;
-    ctx.fillRect(0, HEADER_H - 1, this.cssW, 1);
+    ctx.fillRect(0, headerH - 1, this.cssW, 1);
 
     // Frozen year ruler with steps that adapt to the zoom.
-    ctx.globalAlpha = 0.92;
+    ctx.globalAlpha = 0.93;
     ctx.fillStyle = PAPER;
-    ctx.fillRect(0, HEADER_H, RULER_W, this.cssH - HEADER_H);
+    ctx.fillRect(0, headerH, RULER_W, this.cssH - headerH);
     ctx.globalAlpha = 1;
     ctx.fillStyle = INK_SOFT;
-    ctx.fillRect(RULER_W - 1, HEADER_H, 1, this.cssH - HEADER_H);
+    ctx.fillRect(RULER_W - 1, headerH, 1, this.cssH - headerH);
     const pxPerYear = this.dl.time.unitsPerYear * this.s;
-    const step = [1, 5, 10, 25, 50, 100, 250, 500, 1000].find((st) => st * pxPerYear >= 46) ?? 1000;
-    const minor = [1, 5, 10, 25, 50, 100, 250, 500, 1000].find((st) => st * pxPerYear >= 9) ?? step;
-    const yTop = yToYear(this.dl, this.y0 + HEADER_H / this.s);
+    const steps = [1, 5, 10, 25, 50, 100, 250, 500, 1000];
+    const step = steps.find((st) => st * pxPerYear >= 46) ?? 1000;
+    const minor = steps.find((st) => st * pxPerYear >= 9) ?? step;
+    const yTop = yToYear(this.dl, this.y0 + headerH / this.s);
     const yBot = yToYear(this.dl, this.y0 + this.cssH / this.s);
     ctx.textAlign = 'right';
     ctx.font = '11px ui-sans-serif, -apple-system, sans-serif';
@@ -376,8 +580,7 @@ export class Viewer {
       ctx.fillRect(RULER_W - (major ? 10 : 5), py, major ? 10 : 5, 1);
       if (major) ctx.fillText(rulerLabel(yr), RULER_W - 13, py);
     }
-    // Cursor year.
-    if (this.cursor && this.cursor.y > HEADER_H) {
+    if (this.cursor && this.cursor.y > headerH) {
       const yr = Math.round(yToYear(this.dl, this.y0 + this.cursor.y / this.s));
       if (yr >= this.dl.time.year0 && yr <= this.dl.time.year1) {
         ctx.fillStyle = 'rgba(184, 57, 45, 0.9)';
@@ -386,11 +589,10 @@ export class Viewer {
       }
     }
 
-    // Status line.
-    const z = this.s / this.fitScale;
     const level = z < 2.5 ? 'The wall' : z < 7 ? 'The era' : z < 22 ? 'The century' : 'Detail';
     const cursorYear = this.cursor ? formatYear(Math.round(yToYear(this.dl, this.y0 + this.cursor.y / this.s))) : '';
-    let text = `${level} · ×${z < 10 ? z.toFixed(1) : Math.round(z)}${cursorYear ? ' · ' + cursorYear : ''}`;
+    const hoverName = this.hover ? this.folio.entries[this.hover]?.title : undefined;
+    let text = `${level} · ×${z < 10 ? z.toFixed(1) : Math.round(z)}${cursorYear ? ' · ' + cursorYear : ''}${hoverName ? ' · ' + hoverName : ''}`;
     if (this.showStats) {
       const sorted = [...this.renderMs].sort((a, b) => a - b);
       const med = sorted[Math.floor(sorted.length / 2)] ?? 0;
@@ -398,6 +600,32 @@ export class Viewer {
       text += `\nlevel ${k} · tiles ${this.cache.size} cached, ${this.inflight.size} rendering, ${this.queue.length} queued\nrender median ${med.toFixed(1)} ms · p95 ${p95.toFixed(1)} ms · ${this.workers.length} workers`;
     }
     if (this.status.textContent !== text) this.status.textContent = text;
+  }
+
+  private drawMinimap() {
+    const r = this.miniRect();
+    if (!r || !this.mini) return;
+    const { ctx } = this;
+    ctx.globalAlpha = 0.95;
+    ctx.fillStyle = PAPER;
+    ctx.fillRect(r.x - 4, r.y - 4, r.w + 8, r.h + 8);
+    ctx.globalAlpha = 1;
+    ctx.drawImage(this.mini.bitmap, r.x, r.y, r.w, r.h);
+    ctx.strokeStyle = INK_SOFT;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(r.x - 4, r.y - 4, r.w + 8, r.h + 8);
+    const k = r.w / this.dl.width;
+    const vx = r.x + this.x0 * k, vy = r.y + this.y0 * k, vw = (this.cssW / this.s) * k, vh = (this.cssH / this.s) * k;
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(r.x, r.y, r.w, r.h);
+    ctx.clip();
+    ctx.fillStyle = 'rgba(184, 57, 45, 0.12)';
+    ctx.fillRect(vx, vy, Math.max(3, vw), Math.max(3, vh));
+    ctx.strokeStyle = ACCENT;
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(vx, vy, Math.max(3, vw), Math.max(3, vh));
+    ctx.restore();
   }
 }
 

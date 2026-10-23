@@ -9,7 +9,7 @@ import { Painter, imageNeeds, type ImageStore } from '../../../packages/render/s
 
 export type ToWorker =
   | { type: 'init'; chartUrl: string }
-  | { type: 'tile'; id: string; x0: number; y0: number; s: number; size: number };
+  | { type: 'tile'; id: string; x0: number; y0: number; s: number; w: number; h: number };
 
 export type FromWorker =
   | { type: 'ready' }
@@ -26,7 +26,7 @@ const images: ImageStore = new Map();
 const loading = new Map<string, Promise<void>>();
 let index: Flatbush;
 let surface: Surface | null = null;
-let surfaceSize = 0;
+let surfaceKey = '';
 
 const post = (msg: FromWorker, transfer: Transferable[] = []) => (self as unknown as Worker).postMessage(msg, transfer);
 
@@ -77,26 +77,25 @@ function loadImage(key: string): Promise<void> {
 
 async function renderTile(job: Extract<ToWorker, { type: 'tile' }>) {
   const t0 = performance.now();
-  if (!surface || surfaceSize !== job.size) {
+  if (!surface || surfaceKey !== `${job.w}x${job.h}`) {
     surface?.delete();
-    surface = ck.MakeSurface(job.size, job.size);
-    surfaceSize = job.size;
+    surface = ck.MakeSurface(job.w, job.h);
+    surfaceKey = `${job.w}x${job.h}`;
   }
-  const worldSize = job.size / job.s;
   // Flatbush returns hits in arbitrary order; display-list order is z-order.
-  const hits = index.search(job.x0, job.y0, job.x0 + worldSize, job.y0 + worldSize).sort((a, b) => a - b);
+  const hits = index.search(job.x0, job.y0, job.x0 + job.w / job.s, job.y0 + job.h / job.s).sort((a, b) => a - b);
   // Images arrive before the tile is painted, so a tile is never drawn half-finished.
   const needed = imageNeeds(dl, hits, job.s).filter((k) => !images.has(k));
   if (needed.length) await Promise.all(needed.map(loadImage));
-  painter.paint(surface!.getCanvas(), { x0: job.x0, y0: job.y0, s: job.s, widthPx: job.size, heightPx: job.size }, hits, { paper: false });
+  painter.paint(surface!.getCanvas(), { x0: job.x0, y0: job.y0, s: job.s, widthPx: job.w, heightPx: job.h }, hits, { paper: false });
   surface!.flush();
   const snapshot = surface!.makeImageSnapshot();
   const pixels = snapshot.readPixels(0, 0, {
-    width: job.size, height: job.size,
+    width: job.w, height: job.h,
     colorType: ck.ColorType.RGBA_8888, alphaType: ck.AlphaType.Unpremul, colorSpace: ck.ColorSpace.SRGB,
   }) as Uint8Array;
   snapshot.delete();
-  const data = new ImageData(new Uint8ClampedArray(pixels.buffer as ArrayBuffer, pixels.byteOffset, pixels.byteLength), job.size, job.size);
+  const data = new ImageData(new Uint8ClampedArray(pixels.buffer as ArrayBuffer, pixels.byteOffset, pixels.byteLength), job.w, job.h);
   createImageBitmap(data).then((bitmap) => {
     post({ type: 'tile', id: job.id, bitmap, ms: performance.now() - t0, items: hits.length }, [bitmap]);
   });

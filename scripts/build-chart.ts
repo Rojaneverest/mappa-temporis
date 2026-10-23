@@ -15,7 +15,7 @@ import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
 import { LaneFile, Sheet, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
-import { parseDate, parseSpan, formatDate, formatYear, roundYears } from '../packages/core/src/dates.ts';
+import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
 import { FONT_FILES, registerFonts } from '../packages/render/src/fonts.ts';
 import { measure, type TextSpec } from '../packages/render/src/text.ts';
@@ -24,6 +24,7 @@ import type { DisplayList, Fade, ImageItem, Item, PathItem, TextItem, TextRole }
 import { assignTracks, flowTracks, type Flow, type RelationKind, type TrackLane } from '../packages/layout/src/tracks.ts';
 import { Grid } from '../packages/layout/src/grid.ts';
 import { overBudget, type BudgetMark } from '../packages/layout/src/budget.ts';
+import { sourceLink, type Folio, type FolioEntry } from '../packages/render/src/folio.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'apps/explorer/public');
@@ -77,7 +78,7 @@ const lanes: Lane[] = walk(join(ROOT, 'content/lanes')).flatMap((f) => {
 const laneById = new Map(lanes.map((l) => [l.id, l]));
 const groupOf = (l: Lane) => l.group ?? l.region;
 const manifestPath = join(OUT, 'img/manifest.json');
-const manifest: Record<string, { width: number; height: number; sizes: number[]; treatment: 'cutout' | 'plate'; credit: string; license: string; title: string }> =
+const manifest: Record<string, { width: number; height: number; sizes: number[]; treatment: 'cutout' | 'plate'; credit: string; license: string; title: string; url: string }> =
   existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
 lint();
 
@@ -283,6 +284,11 @@ for (const lane of visibleLanes) {
   for (let yr = Math.ceil(yearAt(top + rTop) / SAMPLE_YEARS) * SAMPLE_YEARS; Y(yr) < bottom - rBot; yr += SAMPLE_YEARS) if (Y(yr) > top + rTop) inner.push(yr);
   inner.push(yearAt(bottom - rBot));
   const wAt = (yr: number) => widthAtYear(Math.min(endY - 0.01, yr));
+  // Straight stretches need no intermediate points: keep only where width or position changes.
+  const sig = (yr: number) => `${r1(wAt(yr))}:${r1(cxAtYear(yr))}`;
+  for (let i = inner.length - 2; i >= 1; i--) {
+    if (sig(inner[i - 1]!) === sig(inner[i]!) && sig(inner[i]!) === sig(inner[i + 1]!)) inner.splice(i, 1);
+  }
   const right = inner.map((yr) => [cxAtYear(yr) + wAt(yr) / 2, Y(yr)] as [number, number]);
   const left = inner.map((yr) => [cxAtYear(yr) - wAt(yr) / 2, Y(yr)] as [number, number]).reverse();
   const cTop = cxAtYear(startY), cBot = cxAtYear(endY);
@@ -626,6 +632,48 @@ for (const p of placements) {
 const items: Item[] = [layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text].flat();
 for (const it of items) if (!it.b) throw new Error(`item without bbox: ${JSON.stringify(it).slice(0, 120)}`);
 
+// ---------------------------------------------------------------- folio (side-panel data)
+const folio: Folio = { entries: {}, lanes: [] };
+const placedBox = new Map(placements.map((p) => [p.id, p.box]));
+for (const lane of lanes) {
+  const p = placed.get(lane.id);
+  const region = sheet.regions.find((r) => r.id === lane.region)?.name ?? lane.region;
+  const wiki = lane.sources.find((s) => s.startsWith('wikipedia:'))?.slice(10);
+  const laneBox: [number, number, number, number] = p ? [p.cxAt(p.top) - 260, p.top, 1000, p.bottom - p.top] : [0, 0, 0, 0];
+  if (p) folio.lanes.push({ id: lane.id, name: lane.name, cx: p.cxAt(p.top), top: p.top, bottom: p.bottom, prominence: lane.prominence });
+  const entry: FolioEntry = {
+    id: lane.id, kind: 'lane', title: lane.name, dates: formatSpan(parseSpan(lane.span)), region, laneId: lane.id, laneName: lane.name,
+    prominence: lane.prominence, drawn: !!p, basis: lane.basis, endonym: lane.endonym, wikidata: lane.wikidata, wikipedia: wiki,
+    sources: [...lane.sources.map(sourceLink), ...(lane.wikidata ? [sourceLink(`wikidata:${lane.wikidata}`)] : [])],
+    segments: lane.segments.map((s) => ({ name: s.name, dates: formatSpan(parseSpan(s.span)) })),
+    relations: lane.relations.flatMap((r) => (r.lanes ?? (r.lane ? [r.lane] : [])).map((id) => ({ type: r.type, laneId: id, laneName: laneById.get(id)?.name ?? id, dates: formatDate(parseDate(r.at)) }))),
+    events: lane.events.map((e) => ({ id: e.id, dates: formatDate(parseDate(e.date)), label: e.label, drawn: placedBox.has(e.id) })),
+    images: lane.images.filter((i) => manifest[i.id]).map((i) => i.id),
+    box: laneBox,
+  };
+  folio.entries[lane.id] = entry;
+  for (const e of lane.events) {
+    const box = placedBox.get(e.id) ?? (p ? [p.cxAt(Y(parseDate(e.date).year)) - 200, Y(parseDate(e.date).year) - 100, 600, 200] as [number, number, number, number] : laneBox);
+    const ewiki = e.sources.find((s) => s.startsWith('wikipedia:'))?.slice(10);
+    folio.entries[e.id] = {
+      id: e.id, kind: 'event', title: e.label, dates: formatDate(parseDate(e.date)), region, laneId: lane.id, laneName: lane.name,
+      prominence: e.prominence, drawn: placedBox.has(e.id), confidence: e.confidence, themes: e.themes, wikipedia: ewiki,
+      sources: e.sources.map(sourceLink), box,
+    };
+  }
+  for (const i of lane.images) {
+    const a = manifest[i.id];
+    if (!a) continue;
+    folio.entries[i.id] = {
+      id: i.id, kind: 'image', title: i.caption, dates: formatDate(parseDate(i.date)), region, laneId: lane.id, laneName: lane.name,
+      prominence: i.prominence, drawn: placedBox.has(i.id),
+      sources: [{ label: a.credit, url: a.url }],
+      image: { caption: i.caption, title: a.title, credit: a.credit, license: a.license, url: a.url, sizes: a.sizes, width: a.width, height: a.height, treatment: a.treatment },
+      box: placedBox.get(i.id) ?? laneBox,
+    };
+  }
+}
+
 const dl: DisplayList = {
   version: 1,
   title: `${sheet.title} — ${sheet.subtitle}`,
@@ -641,6 +689,7 @@ mkdirSync(join(OUT, 'chart'), { recursive: true });
 mkdirSync(join(OUT, 'fonts'), { recursive: true });
 mkdirSync(join(OUT, 'canvaskit'), { recursive: true });
 writeFileSync(join(OUT, 'chart/proof-east-asia.json'), JSON.stringify(dl));
+writeFileSync(join(OUT, 'chart/proof-east-asia.folio.json'), JSON.stringify(folio));
 // Ship only the glyphs the chart uses (every font gets the same character set, so
 // font fallback behaves exactly as it did when the build measured the text).
 const used = new Set<string>(' 0123456789.,;:–—-·()[]’\'"?!/&BCEADc');

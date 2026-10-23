@@ -15,17 +15,48 @@
         pointer-events: none; white-space: pre; font-size: 12px;
       }
       #help {
-        position: fixed; left: 76px; bottom: 12px; padding: 6px 10px; border-radius: 8px;
+        position: fixed; left: 236px; bottom: 12px; padding: 6px 10px; border-radius: 8px;
         background: rgba(239, 230, 210, 0.86); color: #6b5f55; font-size: 12px; pointer-events: none;
       }
       #loading { position: fixed; inset: 0; display: grid; place-items: center; font: italic 18px Georgia, serif; color: #6b5f55; }
+      #folio {
+        position: fixed; top: 64px; right: 14px; bottom: 56px; width: 372px; overflow: auto;
+        background: #f7f1e3; border: 1px solid rgba(107, 95, 85, 0.35); border-radius: 10px;
+        box-shadow: 0 12px 32px rgba(60, 40, 20, 0.18); padding: 18px 20px 22px;
+        transform: translateX(420px); transition: transform 0.28s cubic-bezier(.2,.7,.2,1); z-index: 5;
+      }
+      #folio.open { transform: none; }
+      #folio .close { position: sticky; top: 0; float: right; margin: -8px -10px 0 0; border: 0; background: none; font-size: 22px; color: #6b5f55; cursor: pointer; }
+      #folio .kicker { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #8a7c6e; }
+      #folio .kicker a { color: inherit; }
+      #folio .endonym { font: 600 44px/1.1 'Songti SC', 'Noto Serif TC', serif; color: #b8392d; margin: 10px 0 2px; }
+      #folio .endonym span { font: italic 13px Georgia, serif; color: #8a7c6e; margin-left: 10px; vertical-align: middle; }
+      #folio h2 { font: 600 24px/1.2 Georgia, 'Times New Roman', serif; margin: 6px 0 6px; }
+      #folio h3 { font: 600 11px/1 ui-sans-serif, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #8a7c6e; margin: 20px 0 8px; border-top: 1px solid rgba(107,95,85,.2); padding-top: 14px; }
+      #folio .dates { color: #6b5f55; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+      #folio .badge { font-size: 11px; padding: 1px 7px; border-radius: 99px; background: rgba(107,95,85,.12); color: #6b5f55; }
+      #folio .badge.p1 { background: #b8392d; color: #fff8ee; } #folio .badge.p2 { background: rgba(184,57,45,.18); color: #7a2219; }
+      #folio .badge.warn { background: rgba(224,184,58,.28); color: #6b4d00; }
+      #folio .wiki p { font: 15px/1.55 Georgia, serif; margin: 14px 0 6px; }
+      #folio .wiki .attr, #folio .wiki .loading { font: 11px ui-sans-serif, sans-serif; color: #8a7c6e; }
+      #folio figure { margin: 14px 0 4px; } #folio figure img { width: 100%; display: block; }
+      #folio figure.plate img { border: 6px solid #fffaf0; box-shadow: 0 2px 8px rgba(60,40,20,.25); }
+      #folio figcaption { font: italic 13px/1.4 Georgia, serif; margin-top: 8px; } #folio figcaption span { font: 11px ui-sans-serif, sans-serif; color: #8a7c6e; font-style: normal; }
+      #folio .list { list-style: none; padding: 0; margin: 0; }
+      #folio .list li { padding: 4px 0; display: flex; gap: 10px; } #folio .list li span { flex: 0 0 104px; color: #8a7c6e; font-variant-numeric: tabular-nums; }
+      #folio .list a { color: inherit; text-decoration: none; display: flex; gap: 10px; } #folio .list a:hover { color: #b8392d; }
+      #folio .list em { color: #8a7c6e; font-size: 11px; }
+      #folio .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      #folio .thumbs img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #efe6d2; border-radius: 6px; }
+      #folio .sources { padding-left: 18px; margin: 0; } #folio .sources a { color: #7a2219; }
     </style>
   </head>
   <body>
     <canvas id="view"></canvas>
     <div id="status"></div>
-    <div id="help">Scroll or pinch to zoom · drag to pan · double-click to zoom in · 0 to fit · D for render stats</div>
+    <div id="help">Scroll or pinch to zoom · drag to pan · click anything for details · double-click to zoom · 0 to fit · M minimap · D stats</div>
     <div id="loading">Unrolling the map…</div>
+    <aside id="folio" aria-label="Details"></aside>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
