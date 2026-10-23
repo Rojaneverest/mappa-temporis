@@ -1,0 +1,22 @@
+# Phase 0 proof sheet: East Asia and the eastern steppe, 800 BCE – 700 CE.
+title: Proof sheet I
+subtitle: East Asia & the Eastern Steppe · 800 BCE – 700 CE
+window: 800 BCE – 700 CE
+regions:
+  - { id: steppe, name: The Eastern Steppe, columns: 3 }
+  - { id: east-asia, name: East Asia, columns: 12 }
+eras:
+  - id: iron-age
+    name: Iron Age
+    span: 1200 – 601 BCE
+    forces: [climate, migration, war]
+  - id: classical
+    name: Classical Antiquity
+    span: 600 BCE – 500 CE
+    forces: [ideas]
+    turningPoint: { label: The Axial Age — philosophies that still shape us, span: 600 – 500 BCE }
+  - id: middle-ages
+    name: Middle Ages
+    span: 501 – 1500
+    forces: [climate, migration, disease]
+    turningPoint: { label: Volcanic winters of 536 · Plague of Justinian, span: 536 – 549 CE }

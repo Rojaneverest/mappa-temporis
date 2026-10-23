@@ -1,0 +1,439 @@
+# China, 800 BCE – 700 CE. Columns 0–5 of East Asia; column 2 is the main line of succession.
+lanes:
+  - id: yan
+    name: Yan
+    endonym: { text: 燕, script: Hant, translit: Yān }
+    region: east-asia
+    sphere: sinic
+    prominence: 4
+    span: c. 1045 – 222 BCE
+    column: 0
+    sources: [wikipedia:Yan_(state)]
+
+  - id: qin-state
+    name: State of Qin
+    endonym: { text: 秦, script: Hant, translit: Qín }
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: c. 900 – 221 BCE
+    column: 1
+    relations:
+      - { type: becomes, lane: qin, at: 221 BCE }
+    events:
+      - id: shang-yang-reforms
+        date: 356 BCE
+        label: Shang Yang's Legalist reforms make Qin a war machine
+        prominence: 3
+        themes: [government]
+        sources: [wikipedia:Shang_Yang]
+      - id: changping
+        date: 260 BCE
+        label: Battle of Changping — Qin crushes Zhao
+        prominence: 4
+        themes: [war]
+        sources: [wikipedia:Battle_of_Changping]
+    sources: [wikipedia:Qin_(state)]
+
+  - id: zhou-eastern
+    name: Eastern Zhou
+    endonym: { text: 周, script: Hant, translit: Zhōu }
+    region: east-asia
+    sphere: sinic
+    prominence: 2
+    span: 770 – 256 BCE
+    column: 2
+    segments:
+      - { name: Spring and Autumn period, span: 770 – 476 BCE, weight: 4 }
+      - { name: Warring States period, span: 475 – 256 BCE, weight: 3 }
+    events:
+      - id: zhou-moves-east
+        date: 770 BCE
+        label: Zhou court flees east to Luoyang
+        prominence: 3
+        sources: [wikipedia:Eastern_Zhou]
+      - id: confucius
+        date: c. 500 BCE
+        label: Confucius teaches in Lu; his sayings become the Analects
+        prominence: 2
+        themes: [ideas]
+        sources: [wikipedia:Confucius]
+      - id: art-of-war
+        date: 5th c. BCE
+        label: The Art of War, attributed to Sunzi
+        prominence: 3
+        confidence: disputed
+        themes: [ideas, war]
+        sources: [wikipedia:The_Art_of_War]
+      - id: daodejing
+        date: 4th c. BCE
+        label: Daodejing compiled, attributed to Laozi
+        prominence: 3
+        confidence: disputed
+        themes: [ideas]
+        sources: [wikipedia:Tao_Te_Ching]
+      - id: zhou-ends
+        date: 256 BCE
+        label: Qin ends the Zhou royal line
+        prominence: 4
+        sources: [wikipedia:Zhou_dynasty]
+    sources: [wikipedia:Eastern_Zhou]
+
+  - id: qin
+    name: Qin
+    endonym: { text: 秦, script: Hant, translit: Qín }
+    wikidata: Q7183
+    region: east-asia
+    sphere: sinic
+    prominence: 2
+    span: 221 – 206 BCE
+    column: 2
+    events:
+      - id: qin-unifies
+        date: 221 BCE
+        label: The First Emperor unifies China — one script, one coinage, one set of weights
+        prominence: 1
+        themes: [government]
+        sources: [wikipedia:Qin_Shi_Huang]
+      - id: burning-books
+        date: 213 BCE
+        label: Burning of books and burying of scholars
+        prominence: 4
+        confidence: probable
+        sources: [wikipedia:Burning_of_books_and_burying_of_scholars]
+      - id: terracotta
+        date: 210 BCE
+        label: First Emperor dies, guarded by the Terracotta Army
+        prominence: 2
+        themes: [art]
+        sources: [wikipedia:Terracotta_Army]
+    sources: [wikipedia:Qin_dynasty]
+
+  - id: han
+    name: Han dynasty
+    endonym: { text: 漢, script: Hant, translit: Hàn }
+    wikidata: Q7209
+    region: east-asia
+    sphere: sinic
+    prominence: 1
+    span: 202 BCE – 220 CE
+    column: 2
+    segments:
+      - { name: Western Han, span: 202 BCE – 9 CE, weight: 6 }
+      - { name: Xin (Wang Mang), span: 9 – 23 CE, weight: 2, style: interregnum }
+      - { name: Eastern Han, span: 24 – 220 CE, weight: 5 }
+    relations:
+      - { type: splits-into, lanes: [cao-wei, shu-han, eastern-wu], at: 220 CE }
+      - { type: conquers, lane: gojoseon, at: 108 BCE }
+    events:
+      - id: wudi
+        date: 141 BCE
+        label: Emperor Wu begins a 54-year reign
+        prominence: 3
+        sources: [wikipedia:Emperor_Wu_of_Han]
+      - id: zhang-qian-west
+        date: c. 138 BCE
+        label: Zhang Qian's mission west opens the Silk Road
+        prominence: 1
+        thread: silk-road
+        themes: [trade, exploration]
+        sources: [wikipedia:Zhang_Qian, britannica:Zhang-Qian]
+      - id: confucian-orthodoxy
+        date: 136 BCE
+        label: Confucian classics become state orthodoxy
+        prominence: 4
+        confidence: probable
+        themes: [ideas]
+        sources: [wikipedia:Five_Classics]
+      - id: shiji
+        date: c. 94 BCE
+        label: Sima Qian completes the Records of the Grand Historian
+        prominence: 2
+        themes: [ideas]
+        sources: [wikipedia:Records_of_the_Grand_Historian]
+      - id: white-horse
+        date: c. 68 CE
+        label: White Horse Temple — Buddhism takes root in China
+        prominence: 3
+        confidence: probable
+        themes: [religion]
+        sources: [wikipedia:White_Horse_Temple]
+      - id: ban-zhao
+        date: c. 100 CE
+        label: Ban Zhao completes the Book of Han
+        prominence: 3
+        themes: [ideas, women]
+        sources: [wikipedia:Ban_Zhao]
+      - id: cai-lun-paper
+        date: 105 CE
+        label: Cai Lun presents improved papermaking to the court
+        prominence: 1
+        thread: paper
+        themes: [technology]
+        sources: [wikipedia:Cai_Lun]
+      - id: zhang-heng
+        date: 132 CE
+        label: Zhang Heng's seismoscope detects distant earthquakes
+        prominence: 4
+        themes: [technology]
+        sources: [wikipedia:Zhang_Heng]
+      - id: yellow-turbans
+        date: 184 CE
+        label: Yellow Turban Rebellion shakes the Han
+        prominence: 2
+        themes: [war]
+        sources: [wikipedia:Yellow_Turban_Rebellion]
+      - id: red-cliffs
+        date: 208 CE
+        label: Battle of Red Cliffs
+        prominence: 3
+        themes: [war]
+        sources: [wikipedia:Battle_of_Red_Cliffs]
+    sources: [wikipedia:Han_dynasty]
+
+  - id: cao-wei
+    name: Cao Wei
+    endonym: { text: 魏, script: Hant, translit: Wèi }
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: 220 – 266 CE
+    column: 2
+    events:
+      - id: wei-conquers-shu
+        date: 263 CE
+        label: Wei conquers Shu
+        prominence: 4
+        themes: [war]
+        sources: [wikipedia:Conquest_of_Shu_by_Wei]
+    sources: [wikipedia:Cao_Wei]
+
+  - id: western-jin
+    name: Western Jin
+    endonym: { text: 晉, script: Hant, translit: Jìn }
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: 266 – 316 CE
+    column: 2
+    relations:
+      - { type: becomes, lane: eastern-jin, at: 317 CE }
+    events:
+      - id: jin-reunifies
+        date: 280 CE
+        label: Jin conquers Wu and briefly reunites China
+        prominence: 3
+        sources: [wikipedia:Conquest_of_Wu_by_Jin]
+      - id: yongjia
+        date: 311 CE
+        label: Luoyang sacked; the north falls to steppe-led states
+        prominence: 3
+        themes: [war, migration]
+        sources: [wikipedia:Disaster_of_Yongjia]
+    sources: [wikipedia:Jin_dynasty_(266–420)]
+
+  - id: sui
+    name: Sui
+    endonym: { text: 隋, script: Hant, translit: Suí }
+    region: east-asia
+    sphere: sinic
+    prominence: 2
+    span: 581 – 618 CE
+    column: 2
+    events:
+      - id: sui-reunifies
+        date: 589 CE
+        label: Sui conquers the Chen — China reunited after 270 years
+        prominence: 2
+        sources: [wikipedia:Sui_dynasty]
+      - id: grand-canal
+        date: 605 CE
+        label: Grand Canal links the Yellow and Yangtze rivers
+        prominence: 2
+        themes: [technology, trade]
+        sources: [wikipedia:Grand_Canal_(China)]
+    sources: [wikipedia:Sui_dynasty]
+
+  - id: tang
+    name: Tang dynasty
+    endonym: { text: 唐, script: Hant, translit: Táng }
+    wikidata: Q9683
+    region: east-asia
+    sphere: sinic
+    prominence: 1
+    span: 618 – 907 CE
+    column: 2
+    events:
+      - id: xuanzang
+        date: 629 CE
+        label: Xuanzang sets out for India to collect Buddhist texts
+        prominence: 3
+        themes: [religion, exploration]
+        sources: [wikipedia:Xuanzang]
+      - id: wu-zetian
+        date: 690 CE
+        label: Wu Zetian becomes China's only reigning empress
+        prominence: 2
+        themes: [government, women]
+        sources: [wikipedia:Wu_Zetian]
+    sources: [wikipedia:Tang_dynasty]
+
+  - id: chu
+    name: Chu
+    endonym: { text: 楚, script: Hant, translit: Chǔ }
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: c. 1030 – 223 BCE
+    column: 3
+    events:
+      - id: qu-yuan
+        date: c. 278 BCE
+        label: The poet Qu Yuan drowns himself as Chu falls apart
+        prominence: 4
+        confidence: probable
+        themes: [art]
+        sources: [wikipedia:Qu_Yuan]
+    sources: [wikipedia:Chu_(state)]
+
+  - id: shu-han
+    name: Shu Han
+    endonym: { text: 蜀, script: Hant, translit: Shǔ }
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: 221 – 263 CE
+    column: 3
+    sources: [wikipedia:Shu_Han]
+
+  - id: eastern-jin
+    name: Eastern Jin
+    endonym: { text: 晉, script: Hant, translit: Jìn }
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: 317 – 420 CE
+    column: 3
+    events:
+      - id: lanting
+        date: 353 CE
+        label: Wang Xizhi writes the Orchid Pavilion Preface
+        prominence: 3
+        themes: [art]
+        sources: [wikipedia:Lantingji_Xu]
+      - id: faxian
+        date: 399 CE
+        label: Faxian walks to India for Buddhist scriptures
+        prominence: 3
+        themes: [religion, exploration]
+        sources: [wikipedia:Faxian]
+    sources: [wikipedia:Eastern_Jin]
+
+  - id: southern-dynasties
+    name: Southern dynasties
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: 420 – 589 CE
+    column: 3
+    segments:
+      - { name: Liu Song, span: 420 – 479 CE }
+      - { name: Southern Qi, span: 479 – 502 CE }
+      - { name: Liang, span: 502 – 557 CE }
+      - { name: Chen, span: 557 – 589 CE }
+    relations:
+      - { type: merges-into, lane: sui, at: 589 CE }
+    sources: [wikipedia:Southern_dynasties]
+
+  - id: qi
+    name: Qi
+    endonym: { text: 齊, script: Hant, translit: Qí }
+    region: east-asia
+    sphere: sinic
+    prominence: 4
+    span: 1046 – 221 BCE
+    column: 4
+    sources: [wikipedia:Qi_(state)]
+
+  - id: eastern-wu
+    name: Eastern Wu
+    endonym: { text: 吳, script: Hant, translit: Wú }
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: 222 – 280 CE
+    column: 4
+    sources: [wikipedia:Eastern_Wu]
+
+  - id: jin-state
+    name: Jin
+    endonym: { text: 晉, script: Hant, translit: Jìn }
+    region: east-asia
+    sphere: sinic
+    prominence: 4
+    span: c. 1042 – 403 BCE
+    column: 5
+    relations:
+      - { type: splits-into, lanes: [three-jin], at: 403 BCE }
+    sources: [wikipedia:Jin_(Chinese_state)]
+
+  - id: three-jin
+    name: Han, Zhao & Wei
+    region: east-asia
+    sphere: sinic
+    prominence: 4
+    span: 403 – 222 BCE
+    column: 5
+    sources: [wikipedia:Partition_of_Jin]
+
+  - id: sixteen-kingdoms
+    name: Sixteen Kingdoms
+    region: east-asia
+    sphere: sinic
+    prominence: 4
+    span: 304 – 439 CE
+    column: 0
+    sources: [wikipedia:Sixteen_Kingdoms]
+
+  - id: northern-wei
+    name: Northern Wei
+    endonym: { text: 魏, script: Hant, translit: Wèi }
+    region: east-asia
+    sphere: sinic
+    prominence: 3
+    span: 386 – 535 CE
+    column: 1
+    events:
+      - id: yungang
+        date: c. 460 CE
+        label: Yungang Grottoes carved
+        prominence: 3
+        themes: [art, religion]
+        sources: [wikipedia:Yungang_Grottoes]
+      - id: luoyang-494
+        date: 494 CE
+        label: Capital moves to Luoyang; Longmen Grottoes begun
+        prominence: 4
+        themes: [art, religion]
+        sources: [wikipedia:Longmen_Grottoes]
+    sources: [wikipedia:Northern_Wei]
+
+  - id: eastern-wei-qi
+    name: Eastern Wei · Northern Qi
+    region: east-asia
+    sphere: sinic
+    prominence: 4
+    span: 534 – 577 CE
+    column: 0
+    sources: [wikipedia:Northern_Qi]
+
+  - id: western-wei-zhou
+    name: Western Wei · Northern Zhou
+    region: east-asia
+    sphere: sinic
+    prominence: 4
+    span: 535 – 581 CE
+    column: 1
+    relations:
+      - { type: becomes, lane: sui, at: 581 CE }
+    sources: [wikipedia:Northern_Zhou]

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mappa Temporis</title>
+    <style>
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #efe6d2; }
+      body { font: 13px/1.4 ui-sans-serif, -apple-system, 'Helvetica Neue', sans-serif; color: #2b2420; }
+      #view { position: fixed; inset: 0; width: 100vw; height: 100vh; touch-action: none; cursor: grab; display: block; }
+      #view.dragging { cursor: grabbing; }
+      #status {
+        position: fixed; right: 14px; bottom: 12px; padding: 6px 10px; border-radius: 8px;
+        background: rgba(43, 36, 32, 0.78); color: #f3ead8; font-variant-numeric: tabular-nums;
+        pointer-events: none; white-space: pre; font-size: 12px;
+      }
+      #help {
+        position: fixed; left: 76px; bottom: 12px; padding: 6px 10px; border-radius: 8px;
+        background: rgba(239, 230, 210, 0.86); color: #6b5f55; font-size: 12px; pointer-events: none;
+      }
+      #loading { position: fixed; inset: 0; display: grid; place-items: center; font: italic 18px Georgia, serif; color: #6b5f55; }
+    </style>
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+    <div id="status"></div>
+    <div id="help">Scroll or pinch to zoom · drag to pan · double-click to zoom in · 0 to fit · D for render stats</div>
+    <div id="loading">Unrolling the map…</div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

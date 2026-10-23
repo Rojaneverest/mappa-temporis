@@ -1,0 +1,99 @@
+# The eastern steppe, 800 BCE – 700 CE.
+lanes:
+  - id: xiongnu
+    name: Xiongnu
+    region: steppe
+    sphere: steppe
+    prominence: 2
+    span: 209 BCE – 91 CE
+    column: 0
+    events:
+      - id: modu
+        date: 209 BCE
+        label: Modu Chanyu unites the Xiongnu tribes
+        prominence: 2
+        sources: [wikipedia:Modu_Chanyu]
+      - id: baideng
+        date: 200 BCE
+        label: Battle of Baideng — Xiongnu trap the first Han emperor
+        prominence: 3
+        themes: [war]
+        sources: [wikipedia:Battle_of_Baideng]
+      - id: xiongnu-split
+        date: 48 CE
+        label: Xiongnu split into northern and southern hordes
+        prominence: 3
+        sources: [wikipedia:Southern_Xiongnu]
+      - id: ikh-bayan
+        date: 89 CE
+        label: Han armies rout the Northern Xiongnu
+        prominence: 4
+        themes: [war]
+        sources: [wikipedia:Battle_of_Ikh_Bayan]
+    sources: [wikipedia:Xiongnu]
+
+  - id: xianbei
+    name: Xianbei
+    region: steppe
+    sphere: steppe
+    prominence: 3
+    span: c. 93 – 234 CE
+    column: 0
+    sources: [wikipedia:Xianbei]
+
+  - id: rouran
+    name: Rouran Khaganate
+    region: steppe
+    sphere: steppe
+    prominence: 3
+    span: c. 330 – 555 CE
+    column: 0
+    sources: [wikipedia:Rouran_Khaganate]
+
+  - id: gokturks
+    name: Göktürk Khaganate
+    region: steppe
+    sphere: steppe
+    prominence: 2
+    span: 552 – 744 CE
+    column: 1
+    relations:
+      - { type: conquers, lane: rouran, at: 552 CE }
+    events:
+      - id: bumin
+        date: 552 CE
+        label: Bumin Qaghan overthrows the Rouran — the first Turkic empire
+        prominence: 2
+        sources: [wikipedia:Bumin_Qaghan]
+      - id: turk-split
+        date: c. 583 CE
+        label: Khaganate splits into eastern and western halves
+        prominence: 3
+        confidence: probable
+        sources: [wikipedia:Göktürk_civil_war]
+    sources: [wikipedia:Turkic_Khaganate]
+
+  - id: southern-xiongnu
+    name: Southern Xiongnu
+    region: steppe
+    sphere: steppe
+    prominence: 4
+    span: 48 – 216 CE
+    column: 1
+    sources: [wikipedia:Southern_Xiongnu]
+
+  - id: hephthalites
+    name: Hephthalites
+    region: steppe
+    sphere: steppe
+    prominence: 4
+    span: c. 440 – c. 560 CE
+    column: 2
+    events:
+      - id: peroz
+        date: 484 CE
+        label: Hephthalites kill the Persian king Peroz
+        prominence: 4
+        themes: [war]
+        sources: [wikipedia:Battle_of_Herat_(484)]
+    sources: [wikipedia:Hephthalites]

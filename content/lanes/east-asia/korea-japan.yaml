@@ -1,0 +1,182 @@
+# Korea (columns 6–10) and Japan (column 11), 800 BCE – 700 CE.
+lanes:
+  - id: gojoseon
+    name: Gojoseon
+    endonym: { text: 古朝鮮, script: Hant, translit: Gojoseon }
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 3
+    span: c. 400 – 108 BCE
+    column: 6
+    sources: [wikipedia:Gojoseon]
+
+  - id: goguryeo
+    name: Goguryeo
+    endonym: { text: 高句麗, script: Hant, translit: Goguryeo }
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 2
+    span: 37 BCE – 668 CE
+    column: 6
+    relations:
+      - { type: conquers, lane: lelang, at: 313 CE }
+    events:
+      - id: jumong
+        date: 37 BCE
+        label: Jumong founds Goguryeo (traditional date)
+        prominence: 4
+        confidence: legendary
+        sources: [wikipedia:Dongmyeong_of_Goguryeo]
+      - id: buddhism-goguryeo
+        date: 372 CE
+        label: Buddhism reaches Korea
+        prominence: 3
+        themes: [religion]
+        sources: [wikipedia:Korean_Buddhism]
+      - id: gwanggaeto-stele
+        date: 414 CE
+        label: Gwanggaeto Stele raised to the great conqueror-king
+        prominence: 3
+        sources: [wikipedia:Gwanggaeto_Stele]
+    sources: [wikipedia:Goguryeo]
+
+  - id: lelang
+    name: Lelang commandery
+    region: east-asia
+    sphere: sinic
+    prominence: 4
+    span: 108 BCE – 313 CE
+    column: 7
+    sources: [wikipedia:Lelang_Commandery]
+
+  - id: baekje
+    name: Baekje
+    endonym: { text: 百濟, script: Hant, translit: Baekje }
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 3
+    span: 18 BCE – 660 CE
+    column: 8
+    relations:
+      - { type: influences, lane: kofun, at: 538 CE }
+    sources: [wikipedia:Baekje]
+
+  - id: silla
+    name: Silla
+    endonym: { text: 新羅, script: Hant, translit: Silla }
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 2
+    span: 57 BCE – 935 CE
+    column: 9
+    events:
+      - id: silla-buddhism
+        date: 527 CE
+        label: Silla adopts Buddhism after the martyrdom of Ichadon
+        prominence: 4
+        confidence: probable
+        themes: [religion]
+        sources: [wikipedia:Ichadon]
+      - id: silla-unifies
+        date: 668 CE
+        label: Silla, allied with Tang, unifies most of Korea
+        prominence: 2
+        themes: [war]
+        sources: [wikipedia:Unified_Silla]
+    sources: [wikipedia:Silla]
+
+  - id: gaya
+    name: Gaya
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 4
+    span: 42 – 562 CE
+    column: 10
+    sources: [wikipedia:Gaya_confederacy]
+
+  - id: jomon
+    name: Jōmon
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 3
+    basis: archaeology
+    span: c. 14000 – 300 BCE
+    column: 11
+    sources: [wikipedia:Jōmon_period]
+
+  - id: yayoi
+    name: Yayoi
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 3
+    basis: archaeology
+    span: c. 300 BCE – c. 300 CE
+    column: 11
+    events:
+      - id: rice-japan
+        date: c. 300 BCE
+        label: Wet-rice farming and bronze arrive from the mainland
+        prominence: 3
+        confidence: probable
+        themes: [technology, migration]
+        sources: [wikipedia:Yayoi_period]
+      - id: gold-seal
+        date: 57 CE
+        label: A king of Wa receives a gold seal from the Han
+        prominence: 3
+        themes: [diplomacy]
+        sources: [wikipedia:King_of_Na_gold_seal]
+      - id: himiko
+        date: 239 CE
+        label: Queen Himiko of Yamatai sends envoys to Wei
+        prominence: 2
+        themes: [women, diplomacy]
+        sources: [wikipedia:Himiko]
+    sources: [wikipedia:Yayoi_period]
+
+  - id: kofun
+    name: Kofun · Yamato
+    endonym: { text: 倭, script: Hant, translit: Wa }
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 3
+    span: c. 300 – 538 CE
+    column: 11
+    events:
+      - id: daisen
+        date: 5th c.
+        label: Daisen Kofun, a keyhole tomb larger than the Great Pyramid's base
+        prominence: 3
+        themes: [art]
+        sources: [wikipedia:Daisen_Kofun]
+      - id: buddhism-japan
+        date: 538 CE
+        label: Buddhism arrives from Baekje
+        prominence: 2
+        confidence: probable
+        themes: [religion]
+        sources: [wikipedia:Buddhism_in_Japan]
+    sources: [wikipedia:Kofun_period]
+
+  - id: asuka
+    name: Asuka
+    region: east-asia
+    sphere: korean-japanese
+    prominence: 3
+    span: 538 – 710 CE
+    column: 11
+    events:
+      - id: seventeen-articles
+        date: 604 CE
+        label: Prince Shōtoku's Seventeen-Article Constitution
+        prominence: 3
+        confidence: probable
+        themes: [government]
+        sources: [wikipedia:Seventeen-article_constitution]
+      - id: horyuji
+        date: 607 CE
+        label: Hōryū-ji temple founded
+        prominence: 4
+        themes: [art, religion]
+        sources: [wikipedia:Hōryū-ji]
+    sources: [wikipedia:Asuka_period]
