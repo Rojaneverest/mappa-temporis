@@ -12,6 +12,8 @@ lanes:
       - { id: stonehenge-begun, date: c. 3000 BCE, label: "Stonehenge begins as a circular ditch and bank", prominence: 3, themes: [religion], sources: [wikipedia:Stonehenge] }
       - { id: stonehenge-sarsens, date: c. 2500 BCE, label: "The great sarsen stones of Stonehenge are raised", prominence: 1, themes: [art, sky], sources: [wikipedia:Stonehenge] }
       - { id: beakers, date: c. 2450 BCE, label: "Bell Beaker newcomers replace most of Britain's ancestry", prominence: 3, themes: [migration], sources: [wikipedia:Bell_Beaker_culture] }
+    images:
+      - { id: stonehenge-view, source: "commons:File:Stonehenge2007 07 30.jpg", date: c. 2500 BCE, prominence: 2, treatment: plate, caption: "Stonehenge, aligned to the solstices" }
     sources: [wikipedia:Neolithic_British_Isles]
 
   - id: el-argar

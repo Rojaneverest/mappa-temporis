@@ -109,8 +109,15 @@ lanes:
       - { id: calakmul-tikal, date: 562 CE, label: "Calakmul's Snake Kingdom defeats Tikal", prominence: 3, themes: [war], sources: [wikipedia:Calakmul] }
       - { id: pakal, date: 615 CE, label: "Pakal the Great becomes king of Palenque at 12", prominence: 2, sources: [wikipedia:K'inich_Janaab'_Pakal] }
       - { id: pakal-tomb, date: 683 CE, label: "Pakal is buried in the Temple of the Inscriptions", prominence: 4, themes: [art], sources: [wikipedia:Temple_of_the_Inscriptions] }
+      - { id: classic-collapse, date: c. 900 CE, label: "The Classic Maya collapse: the southern cities empty in drought", prominence: 2, themes: [climate], confidence: probable, sources: [wikipedia:Classic_Maya_collapse] }
+      - { id: chichen-itza, date: c. 1000 CE, label: "Chichén Itzá and El Castillo", prominence: 1, themes: [art, sky], sources: [wikipedia:Chichen_Itza] }
+      - { id: dresden-codex, date: c. 1200 CE, label: "The Dresden Codex tracks Venus and eclipses", prominence: 3, themes: [sky, science], thread: calendars, sources: [wikipedia:Dresden_Codex] }
+      - { id: mani-auto-da-fe, date: 1562 CE, label: "Bishop Landa burns the Maya books at Maní", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Diego_de_Landa] }
+      - { id: nojpeten, date: 1697 CE, label: "Nojpetén, the last independent Maya city, falls", prominence: 3, themes: [war], sources: [wikipedia:Spanish_conquest_of_Petén] }
     images:
       - { id: maya-vessel, source: "met:662967", date: c. 700 CE, prominence: 2, treatment: cutout, caption: "Maya vessel with a mythological scene" }
+      - { id: tikal-temple, source: "commons:File:Tikal Temple I.jpg", date: 732 CE, prominence: 2, treatment: plate, caption: "Tikal, Temple I" }
+      - { id: chichen-itza-castillo, source: "commons:File:Chichen Itza 3.jpg", date: c. 1000 CE, prominence: 2, treatment: plate, caption: "El Castillo, Chichén Itzá" }
     sources: [wikipedia:Maya_civilization]
 
   # ------------------------------------------------------------------ andes
@@ -189,4 +196,6 @@ lanes:
     prominence: 3
     basis: archaeology
     span: c. 600 – c. 1000 CE
+    events:
+      - { id: wari-roads, date: c. 800 CE, label: "Wari roads and outposts: a first Andean empire", prominence: 4, themes: [government], sources: [wikipedia:Wari_culture] }
     sources: [wikipedia:Wari_culture]

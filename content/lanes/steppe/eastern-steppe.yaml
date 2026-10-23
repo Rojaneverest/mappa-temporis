@@ -80,6 +80,7 @@ lanes:
         prominence: 3
         confidence: probable
         sources: [wikipedia:Göktürk_civil_war]
+      - { id: orkhon, date: 732 CE, label: "The Orkhon inscriptions: the oldest Turkic writing", prominence: 3, thread: scripts, sources: [wikipedia:Orkhon_inscriptions] }
     sources: [wikipedia:Turkic_Khaganate]
 
   - id: southern-xiongnu

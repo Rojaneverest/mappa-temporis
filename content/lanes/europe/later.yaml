@@ -22,6 +22,8 @@ lanes:
       - { id: english-civil-war, date: 1642 CE, label: "Civil war; in 1649 King Charles I is beheaded", prominence: 3, themes: [war, government], sources: [wikipedia:English_Civil_War] }
       - { id: newton, date: 1687 CE, label: "Newton's Principia: one law of gravity for apples and planets", prominence: 1, themes: [ideas], sources: [wikipedia:Philosophiæ_Naturalis_Principia_Mathematica] }
       - { id: glorious-revolution, date: 1688 CE, label: "The Glorious Revolution: Parliament over the crown", prominence: 3, themes: [government], sources: [wikipedia:Glorious_Revolution] }
+    images:
+      - { id: hereford-mappa, source: "commons:File:Hereford-Karte.jpg", date: c. 1300 CE, prominence: 3, treatment: plate, caption: "The Hereford Mappa Mundi: Jerusalem at the centre of the world" }
     sources: [wikipedia:Kingdom_of_England]
 
   - id: scotland
@@ -57,6 +59,8 @@ lanes:
       - { id: nhs, date: 1948 CE, label: "The National Health Service", prominence: 4, themes: [government], sources: [wikipedia:National_Health_Service] }
       - { id: www, date: 1989 CE, label: "Tim Berners-Lee invents the World Wide Web (at CERN)", prominence: 1, themes: [technology], sources: [wikipedia:World_Wide_Web] }
       - { id: brexit, date: 2016 CE, label: "Britain votes to leave the European Union", prominence: 3, themes: [government], sources: [wikipedia:2016_United_Kingdom_European_Union_membership_referendum] }
+      - { id: penicillin, date: 1928 CE, label: "Fleming discovers penicillin", prominence: 2, themes: [science, disease], sources: [wikipedia:Penicillin] }
+      - { id: dna, date: 1953 CE, label: "Franklin, Watson and Crick: the double helix of DNA", prominence: 2, themes: [science], sources: [wikipedia:Nucleic_acid_double_helix] }
     sources: [wikipedia:United_Kingdom]
 
   - id: gaelic-ireland
@@ -89,6 +93,9 @@ lanes:
       - { id: cordoba-caliphate, date: 929 CE, label: "The Caliphate of Córdoba; its capital is Europe's greatest city", prominence: 2, sources: [wikipedia:Caliphate_of_Córdoba] }
       - { id: alhambra, date: c. 1350 CE, label: "The Alhambra palaces of Granada", prominence: 2, themes: [art], sources: [wikipedia:Alhambra] }
       - { id: granada-falls, date: 1492 CE, label: "Granada falls; Jews and later Muslims are expelled", prominence: 2, themes: [war, religion, migration], sources: [wikipedia:Fall_of_Granada] }
+    images:
+      - { id: cordoba-mezquita, source: "commons:File:Mezquita de Córdoba.jpg", date: c. 987 CE, prominence: 2, treatment: plate, caption: "The Great Mosque of Córdoba" }
+      - { id: alhambra-view, source: "commons:File:Alhambra evening panorama Mirador San Nicolas sRGB-1.jpg", date: c. 1350 CE, prominence: 3, treatment: plate, caption: "The Alhambra, Granada" }
     sources: [wikipedia:Al-Andalus]
 
   - id: castile
@@ -178,6 +185,10 @@ lanes:
       - { id: eiffel, date: 1889 CE, label: "The Eiffel Tower", prominence: 3, themes: [art, technology], sources: [wikipedia:Eiffel_Tower] }
       - { id: curie, date: 1898 CE, label: "Marie and Pierre Curie discover radium", prominence: 2, themes: [ideas, women], sources: [wikipedia:Marie_Curie] }
       - { id: france-falls, date: 1940 CE, label: "France falls to Germany in six weeks", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_France] }
+      - { id: paris-agreement, date: 2015 CE, label: "The Paris Agreement on climate", prominence: 3, themes: [climate, government], sources: [wikipedia:Paris_Agreement] }
+    images:
+      - { id: notre-dame-paris, source: "commons:File:Notre-Dame de Paris 2013-07-24.jpg", date: 1260 CE, prominence: 2, treatment: plate, caption: "Notre-Dame de Paris" }
+      - { id: eiffel-tower, source: "commons:File:Tour Eiffel Wikimedia Commons.jpg", date: 1889 CE, prominence: 3, treatment: plate, caption: "The Eiffel Tower, 1889" }
     sources: [wikipedia:France]
 
   - id: vikings
@@ -255,6 +266,8 @@ lanes:
       - { id: mona-lisa, date: 1503 CE, label: "Leonardo begins the Mona Lisa", prominence: 1, themes: [art], sources: [wikipedia:Mona_Lisa] }
       - { id: sistine, date: 1512 CE, label: "Michelangelo finishes the Sistine Chapel ceiling", prominence: 2, themes: [art], sources: [wikipedia:Sistine_Chapel_ceiling] }
       - { id: machiavelli, date: 1513 CE, label: "Machiavelli writes The Prince", prominence: 3, themes: [ideas], sources: [wikipedia:The_Prince] }
+    images:
+      - { id: mona-lisa-painting, source: "commons:File:Mona Lisa, by Leonardo da Vinci, from C2RMF retouched.jpg", date: 1503 CE, prominence: 1, treatment: plate, caption: "Leonardo's Mona Lisa" }
     sources: [wikipedia:Italian_city-states]
 
   - id: italy
@@ -293,6 +306,8 @@ lanes:
       - { id: thirty-years-war, date: 1618 CE, label: "The Thirty Years' War devastates central Europe", prominence: 2, themes: [war, religion], sources: [wikipedia:Thirty_Years'_War] }
       - { id: westphalia, date: 1648 CE, label: "The Peace of Westphalia and the idea of sovereign states", prominence: 3, themes: [government], sources: [wikipedia:Peace_of_Westphalia] }
       - { id: bach, date: 1727 CE, label: "Bach's St Matthew Passion", prominence: 4, themes: [art], sources: [wikipedia:St_Matthew_Passion] }
+    images:
+      - { id: gutenberg-bible, source: "commons:File:Gutenberg Bible, Lenox Copy, New York Public Library, 2009. Pic 01.jpg", date: c. 1455 CE, prominence: 2, treatment: plate, caption: "A Gutenberg Bible" }
     sources: [wikipedia:Holy_Roman_Empire]
 
   - id: germany
@@ -417,6 +432,8 @@ lanes:
       - { id: chernobyl, date: 1986 CE, label: "The Chernobyl disaster", prominence: 3, themes: [technology], sources: [wikipedia:Chernobyl_disaster] }
       - { id: ussr-ends, date: 1991 CE, label: "The Soviet Union dissolves into fifteen countries", prominence: 1, themes: [government], sources: [wikipedia:Dissolution_of_the_Soviet_Union] }
       - { id: ukraine-invasion, date: 2022 CE, label: "Russia launches a full-scale invasion of Ukraine", prominence: 2, themes: [war], sources: [wikipedia:Russian_invasion_of_Ukraine] }
+    images:
+      - { id: moscow-kremlin, source: "commons:File:Kremlin Moscow.jpg", date: c. 1500 CE, prominence: 3, treatment: plate, caption: "The Moscow Kremlin" }
     sources: [wikipedia:History_of_Russia]
 
   - id: lithuania

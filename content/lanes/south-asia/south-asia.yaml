@@ -187,6 +187,7 @@ lanes:
     cliopatria: ["Late Pallava Empire"]
     events:
       - { id: mamallapuram, date: 7th c., label: "Temples cut from living rock at Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Group_of_Monuments_at_Mahabalipuram] }
+      - { id: shore-temple, date: c. 700 CE, label: "The Shore Temple at Mamallapuram", prominence: 3, themes: [art, religion], sources: [wikipedia:Shore_Temple] }
     sources: [wikipedia:Pallava_dynasty]
 
   # ------------------------------------------------------------------ sri lanka
@@ -201,4 +202,6 @@ lanes:
     events:
       - { id: mahinda, date: c. 250 BCE, label: "Ashoka's son Mahinda brings Buddhism to Sri Lanka", prominence: 3, themes: [religion], sources: [wikipedia:Mahinda_(Buddhist_monk)] }
       - { id: sigiriya, date: c. 480 CE, label: "King Kashyapa builds his palace atop the rock of Sigiriya", prominence: 3, themes: [art], sources: [wikipedia:Sigiriya] }
+      - { id: abhayagiri, date: c. 800 CE, label: "Abhayagiri monastery houses 5,000 monks", prominence: 4, themes: [religion], sources: [wikipedia:Abhayagiri_vihāra] }
+      - { id: chola-conquest, date: 1017 CE, label: "Chola armies take Anuradhapura", prominence: 3, themes: [war], sources: [wikipedia:Chola_conquest_of_Anuradhapura] }
     sources: [wikipedia:Anuradhapura_Kingdom]

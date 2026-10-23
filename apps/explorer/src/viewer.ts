@@ -2,7 +2,7 @@
 // compositing of paper + ink tiles, picking, and the frozen HUD (year ruler, region
 // and lane headers, minimap, status).
 import type { DisplayList } from '../../../packages/render/src/displaylist.ts';
-import { yToYear, yearToY, unitsPerYearAt } from '../../../packages/render/src/displaylist.ts';
+import { yToYear, yearToY } from '../../../packages/render/src/displaylist.ts';
 import type { Folio } from '../../../packages/render/src/folio.ts';
 import { paperPixels, MOTTLE_OCTAVES, mottleOpacity } from '../../../packages/render/src/painter.ts';
 import { PAPER, INK, INK_SOFT } from '../../../packages/core/src/palette.ts';
@@ -604,23 +604,30 @@ export class Viewer {
     ctx.globalAlpha = 1;
     ctx.fillStyle = INK_SOFT;
     ctx.fillRect(RULER_W - 1, headerH, 1, this.cssH - headerH);
-    // Tick spacing follows the local scale (the prologue is compressed).
-    const pxPerYear = unitsPerYearAt(this.dl, yToYear(this.dl, this.y0 + this.cssH / 2 / this.s)) * this.s;
+    // Tick spacing follows the local scale: each stretch of the piecewise time axis gets its own steps.
     const steps = [1, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000];
-    const step = steps.find((st) => st * pxPerYear >= 46) ?? 1000;
-    const minor = steps.find((st) => st * pxPerYear >= 9) ?? step;
     const yTop = yToYear(this.dl, this.y0 + headerH / this.s);
     const yBot = yToYear(this.dl, this.y0 + this.cssH / this.s);
+    const t = this.dl.time;
+    const parts = t.segments ?? [{ year0: t.year0, year1: t.year1, upy: t.unitsPerYear }];
     ctx.textAlign = 'right';
     ctx.font = '11px ui-sans-serif, -apple-system, sans-serif';
-    const majors = new Set(roundYears(Math.ceil(yTop), Math.floor(yBot), step));
-    for (const yr of roundYears(Math.ceil(yTop), Math.floor(yBot), minor)) {
-      if (yr < this.dl.time.year0 || yr > this.dl.time.year1) continue;
-      const py = yOf(yr);
-      const major = majors.has(yr);
-      ctx.fillStyle = major ? INK : INK_SOFT;
-      ctx.fillRect(RULER_W - (major ? 10 : 5), py, major ? 10 : 5, 1);
-      if (major) ctx.fillText(rulerLabel(yr), RULER_W - 13, py);
+    let lastLabel = -Infinity;
+    for (const seg of parts) {
+      const a = Math.max(seg.year0, yTop, t.year0);
+      const b = Math.min(seg.year1 - 1e-9, yBot, t.year1);
+      if (b < a) continue;
+      const pxPerYear = seg.upy * this.s;
+      const step = steps.find((st) => st * pxPerYear >= 46) ?? 5000;
+      const minor = steps.find((st) => st * pxPerYear >= 9) ?? step;
+      const majors = new Set(roundYears(Math.ceil(a), Math.floor(b), step));
+      for (const yr of roundYears(Math.ceil(a), Math.floor(b), minor)) {
+        const py = yOf(yr);
+        const major = majors.has(yr) && py - lastLabel >= 16;
+        ctx.fillStyle = major ? INK : INK_SOFT;
+        ctx.fillRect(RULER_W - (major ? 10 : 5), py, major ? 10 : 5, 1);
+        if (major) { ctx.fillText(rulerLabel(yr), RULER_W - 13, py); lastLabel = py; }
+      }
     }
     if (this.cursor && this.cursor.y > headerH) {
       const yr = Math.round(yToYear(this.dl, this.y0 + this.cursor.y / this.s));

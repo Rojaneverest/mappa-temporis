@@ -124,6 +124,7 @@ lanes:
         prominence: 1
         treatment: plate
         caption: "The Terracotta Army, Pit 1, Xi’an"
+      - { id: terracotta-army, source: "commons:File:Terracotta Army, View of Pit 1.jpg", date: 210 BCE, prominence: 1, treatment: plate, caption: "The Terracotta Army guarding the First Emperor" }
     sources: [wikipedia:Qin_dynasty]
 
   - id: han
@@ -314,6 +315,10 @@ lanes:
         prominence: 2
         themes: [government, women]
         sources: [wikipedia:Wu_Zetian]
+      - { id: li-bai, date: c. 750 CE, label: "Li Bai and Du Fu: the golden age of Chinese poetry", prominence: 2, themes: [art], sources: [wikipedia:Li_Bai] }
+      - { id: an-lushan, date: 755 CE, label: "The An Lushan rebellion: the Tang never fully recover", prominence: 2, themes: [war], sources: [wikipedia:An_Lushan_rebellion] }
+      - { id: diamond-sutra, date: 868 CE, label: "The Diamond Sutra, the oldest dated printed book", prominence: 2, thread: paper, themes: [technology, religion], sources: [wikipedia:Diamond_Sutra] }
+      - { id: huang-chao, date: 878 CE, label: "Huang Chao's rebels massacre the foreign merchants of Guangzhou", prominence: 4, themes: [war, trade], sources: [wikipedia:Huang_Chao_rebellion] }
     images:
       - id: tang-lute-player
         source: "met:44801"

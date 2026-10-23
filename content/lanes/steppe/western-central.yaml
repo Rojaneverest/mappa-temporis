@@ -48,6 +48,8 @@ lanes:
     prominence: 4
     span: 567 – 822 CE
     cliopatria: ["Avar Khaganate"]
+    events:
+      - { id: avar-ring, date: 796 CE, label: "Charlemagne's armies plunder the Avar Ring", prominence: 4, themes: [war], sources: [wikipedia:Pannonian_Avars] }
     sources: [wikipedia:Pannonian_Avars]
 
   - id: greco-bactria

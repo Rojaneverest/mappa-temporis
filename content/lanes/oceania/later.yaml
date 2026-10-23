@@ -12,6 +12,8 @@ lanes:
       - { id: first-fleet, date: 1788 CE, label: "The First Fleet lands at Sydney Cove; smallpox follows", prominence: 2, themes: [migration, disease], sources: [wikipedia:First_Fleet] }
       - { id: federation-australia, date: 1901 CE, label: "Federation: the Commonwealth of Australia", prominence: 4, themes: [government], sources: [wikipedia:Federation_of_Australia] }
       - { id: mabo, date: 1992 CE, label: "The Mabo decision overturns 'terra nullius'", prominence: 3, themes: [government], sources: [wikipedia:Mabo_v_Queensland_(No_2)] }
+    images:
+      - { id: sydney-opera-house, source: "commons:File:Sydney Opera House - Dec 2008.jpg", date: 1973 CE, prominence: 3, treatment: plate, caption: "The Sydney Opera House, 1973" }
     sources: [wikipedia:History_of_Australia]
 
   - id: east-polynesia
@@ -80,6 +82,8 @@ lanes:
       - { id: moai, date: c. 1300 CE, label: "The moai: nearly 1,000 ancestor statues face inland", prominence: 1, themes: [art, religion], sources: [wikipedia:Moai] }
       - { id: rongorongo, date: c. 1800 CE, label: "Rongorongo glyphs, still undeciphered", prominence: 4, thread: scripts, confidence: disputed, sources: [wikipedia:Rongorongo] }
       - { id: rapa-nui-slavers, date: 1862 CE, label: "Peruvian slave raids and smallpox leave 111 islanders", prominence: 4, themes: [disease], sources: [wikipedia:Easter_Island] }
+    images:
+      - { id: moai-rano-raraku, source: "commons:File:Moai Rano raraku.jpg", date: c. 1300 CE, prominence: 1, treatment: plate, caption: "Moai at Rano Raraku, Rapa Nui" }
     sources: [wikipedia:Easter_Island]
 
   - id: maori

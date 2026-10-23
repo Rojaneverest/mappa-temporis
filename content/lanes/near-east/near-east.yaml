@@ -128,6 +128,8 @@ lanes:
     cliopatria: ["Nabataeans"]
     events:
       - { id: petra-treasury, date: 1st c., label: "Petra's Treasury is carved from the rose-red rock", prominence: 3, themes: [art, trade], sources: [wikipedia:Al-Khazneh] }
+    images:
+      - { id: petra-treasury-photo, source: "commons:File:Petra Jordan BW 21.JPG", date: c. 50 CE, prominence: 3, treatment: plate, caption: "Petra: tombs carved into rose-red rock" }
     sources: [wikipedia:Nabataean_Kingdom]
 
   - id: saba
@@ -194,6 +196,7 @@ lanes:
     events:
       - { id: karbala, date: 680 CE, label: "Husayn is killed at Karbala; Sunni and Shia diverge", prominence: 2, themes: [religion, war], sources: [wikipedia:Battle_of_Karbala] }
       - { id: dome-rock, date: 691 CE, label: "The Dome of the Rock is completed", prominence: 2, themes: [art, religion], sources: [wikipedia:Dome_of_the_Rock] }
+      - { id: tours, date: 732 CE, label: "Tours: the Arab advance into France is halted", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Tours] }
     images:
       - { id: dome-of-the-rock, source: "commons:File:Jerusalem-2013(2)-Temple Mount-Dome of the Rock (SE exposure).jpg", date: 691 CE, prominence: 2, treatment: plate, caption: "The Dome of the Rock, Jerusalem" }
     sources: [wikipedia:Umayyad_Caliphate]
@@ -288,6 +291,8 @@ lanes:
     events:
       - { id: carchemish, date: 605 BCE, label: "Nebuchadnezzar defeats Egypt at Carchemish", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Carchemish] }
       - { id: ishtar-gate, date: c. 575 BCE, label: "The blue-glazed Ishtar Gate of Babylon", prominence: 2, themes: [art], sources: [wikipedia:Ishtar_Gate] }
+    images:
+      - { id: ishtar-gate-photo, source: "commons:File:Ishtar gate in Pergamon museum.jpg", date: 575 BCE, prominence: 2, treatment: plate, caption: "The Ishtar Gate of Babylon, now in Berlin" }
     sources: [wikipedia:Neo-Babylonian_Empire]
 
   - id: media

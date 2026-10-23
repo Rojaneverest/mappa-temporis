@@ -40,6 +40,7 @@ lanes:
     span: c. 250 BCE – c. 1400 CE
     events:
       - { id: djenne-city, date: c. 250 BCE, label: "One of the oldest cities south of the Sahara rises on the Niger", prominence: 3, sources: [wikipedia:Djenné-Djenno] }
+      - { id: djenne-moves, date: c. 1250 CE, label: "Old Jenne is abandoned for the new town nearby", prominence: 4, sources: [wikipedia:Djenné-Djenno] }
     sources: [wikipedia:Djenné-Djenno]
 
   - id: ghana-empire
@@ -51,6 +52,7 @@ lanes:
     span: c. 300 – 1200 CE
     events:
       - { id: camel-caravans, date: c. 300 CE, label: "Camel caravans open the trans-Saharan gold trade", prominence: 2, confidence: probable, themes: [trade], sources: [wikipedia:Trans-Saharan_trade] }
+      - { id: koumbi-saleh, date: 1068 CE, label: "Al-Bakri describes Ghana's gold and its twin capital", prominence: 3, themes: [trade], sources: [wikipedia:Koumbi_Saleh] }
     sources: [wikipedia:Ghana_Empire]
 
   # ------------------------------------------------------------------ the middle nile & the horn
@@ -103,6 +105,7 @@ lanes:
       - { id: aksum-stelae, date: 4th c., label: "Giant stone stelae rise over Aksum's royal tombs", prominence: 3, themes: [art], sources: [wikipedia:Obelisk_of_Axum] }
       - { id: ezana, date: c. 330 CE, label: "King Ezana adopts Christianity", prominence: 2, themes: [religion], sources: [wikipedia:Ezana_of_Axum] }
       - { id: first-hijra, date: 615 CE, label: "Aksum shelters Muhammad's persecuted followers", prominence: 3, themes: [religion, migration], sources: [wikipedia:Migration_to_Abyssinia] }
+      - { id: aksum-decline, date: c. 800 CE, label: "Red Sea trade passes to Muslim merchants; Aksum fades inland", prominence: 4, themes: [trade], sources: [wikipedia:Kingdom_of_Aksum] }
     images:
       - { id: aksum-stele, source: "commons:File:Rome Stele.jpg", date: 4th c., prominence: 3, treatment: plate, caption: "The great stele of Aksum" }
     sources: [wikipedia:Kingdom_of_Aksum]

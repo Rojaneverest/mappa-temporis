@@ -14,7 +14,7 @@ import { createRequire } from 'node:module';
 import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
-import { LaneFile, Sheet, ThreadFile, Tour, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
+import { LaneFile, MarginsFile, Sheet, ThreadFile, Tour, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { makeTimescale, yearToYOf, yToYearOf, upyAt } from '../packages/core/src/timescale.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
@@ -37,8 +37,6 @@ const require = createRequire(import.meta.url);
 const UNITS_PER_YEAR = 12;
 const HEADER = 2400;
 const FOOTER = 900;
-const MARGIN_L = 1700;
-const MARGIN_R = 1100;
 const REGION_GAP = 300;
 /** Lane width per weight step. */
 const WEIGHT_W = [0, 16, 56, 96, 140, 190, 240];
@@ -70,6 +68,10 @@ function walk(dir: string): string[] {
 }
 
 const sheet = Sheet.parse(loadYaml(join(ROOT, `content/sheets/${SHEET_ID}.yaml`)));
+const margins = sheet.margins ? MarginsFile.parse(loadYaml(join(ROOT, 'content/margins.yaml'))) : undefined;
+/** The left margin carries years, era names and turning points; the right one years and, optionally, the margins. */
+const MARGIN_L = sheet.margins ? 3300 : 1700;
+const MARGIN_R = sheet.margins ? 4300 : 1100;
 const lanes: Lane[] = walk(join(ROOT, 'content/lanes')).flatMap((f) => {
   const parsed = LaneFile.safeParse(loadYaml(f));
   if (!parsed.success) {
@@ -81,7 +83,7 @@ const lanes: Lane[] = walk(join(ROOT, 'content/lanes')).flatMap((f) => {
 const laneById = new Map(lanes.map((l) => [l.id, l]));
 const groupOf = (l: Lane) => l.group ?? l.region;
 const manifestPath = join(OUT, 'img/manifest.json');
-const manifest: Record<string, { width: number; height: number; sizes: number[]; treatment: 'cutout' | 'plate'; credit: string; license: string; title: string; url: string }> =
+const manifest: Record<string, { width: number; height: number; sizes: number[]; treatment: 'cutout' | 'plate' | 'backdrop'; credit: string; license: string; title: string; url: string }> =
   existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
 lint();
 
@@ -102,10 +104,11 @@ fonts.enableFontFallback();
 const win = parseSpan(sheet.window);
 const year0 = win.start.year;
 const year1 = win.end.year;
-// Piecewise time: compressed stretches (the prologue) take 1/factor of the normal space per year.
+// Piecewise time: each scaled stretch takes `factor` times the main scale's space per year —
+// sparse deep time is squeezed, the crowded recent centuries are given room.
 const timeParts: { year0: number; year1: number; upy: number }[] = [];
 {
-  const cuts = sheet.compress.map((c) => { const sp = parseSpan(c.span); return { a: Math.max(year0, sp.start.year), b: Math.min(year1, sp.end.year + 1), upy: UNITS_PER_YEAR / c.factor }; })
+  const cuts = sheet.scale.map((c) => { const sp = parseSpan(c.span); return { a: Math.max(year0, sp.start.year), b: Math.min(year1, sp.end.year + 1), upy: UNITS_PER_YEAR * c.factor }; })
     .filter((c) => c.b > c.a).sort((p, q) => p.a - q.a);
   let at = year0;
   for (const c of cuts) {
@@ -189,7 +192,7 @@ const width = cursor - REGION_GAP + MARGIN_R;
 const regionById = new Map(regionLayouts.map((r) => [r.id, r]));
 
 const grid = new Grid(width, height, 16);
-const layers = { grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], threads: [] as Item[] };
+const layers = { substrate: [] as Item[], grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], threads: [] as Item[] };
 const stats = { lanes: visibleLanes.length, events: 0, drawnEvents: 0, images: 0, drawnImages: 0, slid: 0, demoted: 0, archived: 0, budgetDemotions: 0 };
 
 function text(spec: TextSpec & { x: number; y: number; rot?: 0 | -90; fade?: Fade; alpha?: number; ref?: string; layer?: string }): TextItem {
@@ -229,8 +232,8 @@ const fullX0 = MARGIN_L - 260;
 const fullX1 = width - MARGIN_R + 200;
 const majorCenturies = new Set(roundYears(year0, year1, 500));
 for (const seg of timeSegs) {
-  // Century lines in the normal scale; millennium lines where time is compressed.
-  const step = seg.upy * 100 >= 600 ? 100 : 1000;
+  // Century lines in the main scale; millennium lines where time is compressed; half-centuries where it is expanded.
+  const step = seg.upy * 100 < 600 ? 1000 : seg.upy * 50 >= 900 ? 50 : 100;
   for (const yr of roundYears(Math.ceil(seg.year0), Math.floor(seg.year1 - 1e-9), step)) {
     const yy = Y(yr);
     const major = step === 1000 || majorCenturies.has(yr);
@@ -240,42 +243,194 @@ for (const seg of timeSegs) {
     layers.text.push(text({ role: 'year', text: label, size: 64, color: INK_SOFT, align: 'left', w: 560, x: width - MARGIN_R + 260, y: yy - 38 }));
   }
 }
-// Scale breaks: a zig-zag rule where compressed time meets the equidistant chart.
-for (const c of sheet.compress) {
-  const sp = parseSpan(c.span);
-  for (const yr of [sp.start.year, sp.end.year + 1]) {
-    if (yr <= year0 || yr >= year1) continue;
-    const yy = Y(yr);
-    const zig: string[] = [`M ${fullX0 - 900} ${yy}`];
-    for (let x = fullX0 - 900, k = 0; x < fullX1 + 200; x += 120, k++) zig.push(`L ${x + 60} ${yy + (k % 2 ? 22 : -22)} L ${x + 120} ${yy}`);
-    layers.bands.push({ k: 'path', d: zig.join(' '), stroke: INK, sw: 6, alpha: 0.7, b: [fullX0 - 900, yy - 30, fullX1 + 260, yy + 30] });
-    if (c.label) layers.text.push(text({ role: 'caption', text: c.label, size: 54, color: INK_SOFT, align: 'right', w: 1400, x: MARGIN_L - 1580, y: yy + 50 }));
-  }
+// Scale breaks: a zig-zag rule wherever the space per year changes, with the new scale noted below it.
+for (let i = 1; i < timeSegs.length; i++) {
+  if (timeSegs[i]!.upy === timeSegs[i - 1]!.upy) continue;
+  const yy = timeSegs[i]!.y0;
+  const zig: string[] = [`M ${fullX0 - 900} ${yy}`];
+  for (let x = fullX0 - 900, k = 0; x < fullX1 + 200; x += 120, k++) zig.push(`L ${x + 60} ${yy + (k % 2 ? 22 : -22)} L ${x + 120} ${yy}`);
+  layers.bands.push({ k: 'path', d: zig.join(' '), stroke: INK, sw: 6, alpha: 0.7, b: [fullX0 - 900, yy - 30, fullX1 + 260, yy + 30] });
+}
+for (const c of sheet.scale) {
+  if (!c.label) continue;
+  const yy = Y(Math.max(parseSpan(c.span).start.year, year0));
+  layers.text.push(text({ role: 'caption', text: c.label, size: 54, color: INK_SOFT, align: 'right', w: 1400, x: sheet.margins ? MARGIN_L - 2400 : MARGIN_L - 1580, y: yy + 50 }));
 }
 
+/** The forces behind each turning point (docs/PLAN.md §3), each with its own quiet colour. */
+const FORCE_COLOR: Record<string, string> = {
+  climate: '#3C7A86', migration: '#8A6A34', disease: '#6E7F2E', war: '#9C2E2E', technology: '#4C5C7E', ideas: '#7A4C8C',
+};
+const eraBoxes: Record<string, [number, number, number, number]> = {};
+const TP_FADE: Fade = [0.07, 0.1];
+const eraMapEntries: FolioEntry[] = [];
 for (const era of sheet.eras) {
   const span = parseSpan(era.span);
   const a = Math.max(span.start.year, year0);
   const b = Math.min(span.end.year + 1, year1);
   if (b <= a) continue;
+  const ref = `era:${era.id}`;
+  eraBoxes[era.id] = [0, Y(a), width, Y(b) - Y(a)];
   if (span.start.year > year0) {
     layers.bands.push({ k: 'rect', x: fullX0 - 900, y: Y(a) - 9, w: fullX1 - fullX0 + 1100, h: 18, fill: INK, alpha: 0.82, b: [fullX0 - 900, Y(a) - 9, fullX1 + 200, Y(a) + 9] });
   }
   const len = Y(b) - Y(a);
+  let tpBottom: number | undefined;
+  // Substrate: each era tints the paper very faintly; neighbours cross-fade over a feathered seam.
+  if (era.tint) {
+    const F = Math.min(900, len * 0.2);
+    const top = a > year0 ? Y(a) - F : Y(a);
+    const bot = b < year1 ? Y(b) + F : Y(b);
+    const H = bot - top;
+    const fIn = a > year0 ? (2 * F) / H : 0;
+    const fOut = b < year1 ? (2 * F) / H : 0;
+    const light = era.tint.toUpperCase() === '#FFFFFF';
+    layers.substrate.push({
+      k: 'path', d: `M 0 ${top} H ${width} V ${bot} H 0 Z`, fill: era.tint, alpha: light ? 0.4 : 0.1, multiply: !light,
+      grad: { y0: top, y1: bot, stops: [[0, fIn ? 0 : 1], [fIn, 1], [1 - fOut, 1], [1, fOut ? 0 : 1]] },
+      b: [0, top, width, bot],
+    });
+  }
   const name = era.name.toUpperCase();
   const size = Math.min(300, len * 0.07);
   if (size > 60) {
     const w = Math.min(len - 200, fitWidth({ role: 'era', text: name, size, color: INK, align: 'center' }) + 40);
-    layers.text.push(text({ role: 'era', text: name, size, color: INK, align: 'center', w, x: 240, y: Y(a) + (len - w) / 2, rot: -90 }));
+    layers.text.push(text({ role: 'era', text: name, size, color: INK, align: 'center', w, x: 240, y: Y(a) + (len - w) / 2, rot: -90, ref }));
   }
   if (era.turningPoint) {
     const tp = parseSpan(era.turningPoint.span);
     const ta = Y(Math.max(tp.start.year, year0));
     const tb = Y(Math.min(tp.end.year + 1, year1));
-    layers.bands.push({ k: 'rect', x: fullX0, y: ta, w: fullX1 - fullX0, h: tb - ta, fill: '#7A6A58', alpha: 0.07, multiply: true, b: [fullX0, ta, fullX1, tb] });
-    // The caption sits in the left margin, out of the way of lanes.
-    layers.text.push(text({ role: 'caption', text: era.turningPoint.label, size: 46, color: INK_SOFT, align: 'right', w: 900, x: MARGIN_L - 1080, y: ta + 70, fade: [0.05, 0.09] }));
+    layers.bands.push({ k: 'rect', x: fullX0, y: ta, w: fullX1 - fullX0, h: tb - ta, fill: '#7A6A58', alpha: 0.075, multiply: true, b: [fullX0, ta, fullX1, tb] });
+    for (const yy of [ta, tb]) layers.bands.push({ k: 'line', x1: fullX0, y1: yy, x2: fullX1, y2: yy, stroke: '#7A6A58', sw: 1, hair: true, alpha: 0.45, b: [fullX0, yy - 2, fullX1, yy + 2] });
+    // The hinge, named in the left margin, with the forces that turned it as small coloured chips.
+    const colR = MARGIN_L - 1000;
+    const colW = sheet.margins ? 1700 : 700;
+    const head = text({ role: 'label-strong', text: era.turningPoint.label, size: 80, color: INK, align: 'right', w: colW, x: colR - colW, y: ta + 40, fade: TP_FADE, ref });
+    layers.text.push(head);
+    let cx = colR;
+    const chipY = ta + 40 + head.h + 22;
+    for (const f of [...era.forces].reverse()) {
+      const word = f.toUpperCase();
+      const tw = fitWidth({ role: 'label', text: word, size: 40, color: '#FFFFFF', align: 'left' });
+      const cw = tw + 48;
+      cx -= cw;
+      layers.text.push({ ...text({ role: 'label', text: word, size: 40, color: '#FFFDF6', align: 'center', w: cw, x: cx, y: chipY + 12, fade: TP_FADE, ref }) });
+      layers.bands.push({ k: 'rect', x: cx, y: chipY, w: cw, h: 68, r: 34, fill: FORCE_COLOR[f] ?? INK_SOFT, alpha: 0.9, fade: TP_FADE, ref, b: [cx, chipY, cx + cw, chipY + 68] });
+      cx -= 18;
+    }
+    tpBottom = chipY + 68;
   }
+  // "The world as they saw it": the era's map, printed into the left margin below the turning point.
+  const asset = era.map && sheet.margins ? manifest[era.map.id] : undefined;
+  if (era.map && asset) {
+    const colR = MARGIN_L - 1000;
+    const top = (tpBottom ?? Y(a) + 200) + 180;
+    const avail = Y(b) - 420 - top;
+    let w = 1700, h = (w * asset.height) / asset.width;
+    if (h > avail) { h = avail; w = (h * asset.width) / asset.height; }
+    if (h > 300) {
+      const x = colR - w;
+      const img: ImageItem = { k: 'image', id: era.map.id, x, y: top, w, h, sizes: asset.sizes, treatment: 'backdrop', alpha: 0.7, ref: era.map.id, b: [x, top, colR, top + h] };
+      layers.images.push(img);
+      const cap = text({ role: 'caption', text: `The world as they saw it — ${era.map.caption}`, size: 46, color: INK_SOFT, align: 'right', w: 1400, x: colR - 1400, y: top + h + 40, fade: TP_FADE, ref: era.map.id });
+      layers.text.push(cap);
+      eraMapEntries.push({
+        id: era.map.id, kind: 'image', title: era.map.caption, dates: formatDate(parseDate(era.map.date)), region: 'The whole world', laneId: '', laneName: '',
+        prominence: 2, drawn: true, sources: [{ label: asset.credit, url: asset.url }],
+        image: { caption: era.map.caption, title: asset.title, credit: asset.credit, license: asset.license, url: asset.url, sizes: asset.sizes, width: asset.width, height: asset.height, treatment: 'plate' },
+        box: [x, top, w, h + 40 + cap.h],
+      });
+    }
+  }
+}
+
+// ---------------------------------------------------------------- margins: people and climate
+const marginEntries: FolioEntry[] = [];
+if (margins) {
+  const xR = width - MARGIN_R;
+  const fadeLabels: Fade = [0.08, 0.12];
+  // Climate ribbons: overlapping episodes take side-by-side sub-ribbons; names stack beside them.
+  const CLIMATE_COLOR = { warm: '#C0623A', cold: '#3F74A8', dry: '#C49A4A', wet: '#3E8C78' } as const;
+  const ribX = xR + 960;
+  const RIB_W = 90;
+  const cols: number[] = [];
+  const eps = margins.climate.map((c) => ({ c, sp: parseSpan(c.span) }))
+    .map(({ c, sp }) => ({ c, a: Math.max(year0, sp.start.year), b: Math.min(year1, sp.end.year + 1) }))
+    .filter((e) => e.b > e.a).sort((p, q) => p.a - q.a);
+  let labelFloor = -Infinity;
+  layers.text.push(text({ role: 'region', text: 'CLIMATE', size: 64, color: INK, align: 'left', w: 900, x: ribX, y: yTop - 170 }));
+  for (const e of eps) {
+    let col = cols.findIndex((end) => end <= e.a);
+    if (col < 0) { col = cols.length; cols.push(0); }
+    cols[col] = e.b;
+    const ref = `climate:${e.c.id}`;
+    const y0 = Y(e.a);
+    const h = Math.max(Y(e.b) - y0, 60);
+    const x = ribX + col * (RIB_W + 16);
+    layers.bands.push({ k: 'rect', x, y: y0, w: RIB_W, h, r: 18, fill: CLIMATE_COLOR[e.c.kind], alpha: 0.55, ref, b: [x, y0, x + RIB_W, y0 + h] });
+    const ly = Math.max(y0, labelFloor + 20);
+    const lx = ribX + 3 * (RIB_W + 16) + 30;
+    const t = text({ role: 'label', text: e.c.name, size: 80, color: CLIMATE_COLOR[e.c.kind], align: 'left', w: 900, x: lx, y: ly, fade: fadeLabels, ref });
+    layers.text.push(t);
+    if (ly > y0 + 40) layers.bands.push({ k: 'line', x1: x + RIB_W, y1: y0 + 20, x2: lx - 8, y2: ly + 36, stroke: CLIMATE_COLOR[e.c.kind], sw: 1, hair: true, alpha: 0.6, fade: fadeLabels, b: [x + RIB_W, y0, lx, ly + 40] });
+    labelFloor = ly + t.h;
+    marginEntries.push({
+      id: ref, kind: 'climate', title: e.c.name, dates: formatSpan(parseSpan(e.c.span)), region: 'The whole world', laneId: '', laneName: '',
+      prominence: 2, drawn: true, note: e.c.note, wikipedia: e.c.sources.find((s) => s.startsWith('wikipedia:'))?.slice(10),
+      sources: e.c.sources.map(sourceLink), box: [x - 40, y0, lx + 820 - x, Math.max(h, t.h)],
+    });
+  }
+  // World population on a log scale, 1 million → 10 billion.
+  const popX0 = xR + 2350;
+  const POP_W = 1750;
+  const px = (m: number) => popX0 + (Math.log10(m) / 4) * POP_W;
+  const pts = margins.population.points.map(([d, m]) => ({ year: parseDate(d).year, m })).filter((p) => p.year >= year0 && p.year <= year1);
+  // Interpolate log-linearly every few years so the curve follows the time scale's changes.
+  const curve: [number, number][] = [];
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p = pts[i]!, q = pts[i + 1]!;
+    const steps = Math.max(1, Math.ceil((Y(q.year) - Y(p.year)) / 120));
+    for (let k = 0; k < steps; k++) {
+      const t = k / steps;
+      const yr = p.year + (q.year - p.year) * t;
+      curve.push([px(10 ** (Math.log10(p.m) + (Math.log10(q.m) - Math.log10(p.m)) * t)), Y(yr)]);
+    }
+  }
+  const last = pts[pts.length - 1]!;
+  curve.push([px(last.m), Y(last.year)]);
+  const r = (v: number) => Math.round(v);
+  const line = curve.map(([x, y], i) => `${i ? 'L' : 'M'} ${r(x)} ${r(y)}`).join(' ');
+  const yA = curve[0]![1], yB = curve[curve.length - 1]![1];
+  layers.bands.push({ k: 'path', d: `${line} L ${popX0} ${r(yB)} L ${popX0} ${r(yA)} Z`, fill: '#5A4A3A', alpha: 0.07, multiply: true, ref: 'population', b: [popX0, yA, popX0 + POP_W, yB] });
+  layers.bands.push({ k: 'path', d: line, stroke: INK, sw: 2.2, hair: true, alpha: 0.8, ref: 'population', b: [popX0, yA, popX0 + POP_W, yB] });
+  layers.text.push(text({ role: 'region', text: 'PEOPLE', size: 64, color: INK, align: 'left', w: 1400, x: popX0, y: yTop - 170, ref: 'population' }));
+  // Log gridlines, with their values repeated at the top of every era.
+  const ticks: [number, string][] = [[1, '1 M'], [10, '10 M'], [100, '100 M'], [1000, '1 B'], [10000, '10 B']];
+  for (const [m] of ticks) {
+    const x = px(m);
+    layers.grid.push({ k: 'line', x1: x, y1: yTop, x2: x, y2: yBottom, stroke: INK_SOFT, sw: 1, hair: true, alpha: 0.35, dash: [6, 10], b: [x - 2, yTop, x + 2, yBottom] });
+  }
+  for (const era of sheet.eras) {
+    const ya = Y(Math.max(parseSpan(era.span).start.year, year0));
+    for (const [m, lab] of ticks) layers.text.push(text({ role: 'year', text: lab, size: 44, color: INK_SOFT, align: 'center', w: 240, x: px(m) - 120, y: ya + 40, fade: [0.12, 0.18] }));
+  }
+  for (const c of margins.population.callouts) {
+    const yr = parseDate(c.year).year;
+    if (yr < year0 || yr > year1) continue;
+    const yy = Y(yr);
+    const near = curve.reduce((best, p) => (Math.abs(p[1] - yy) < Math.abs(best[1] - yy) ? p : best), curve[0]!);
+    // Beside the curve, on whichever side has room.
+    const left = near[0] - popX0 > 900;
+    const lx = left ? near[0] - 40 - 760 : near[0] + 40;
+    layers.bands.push({ k: 'path', d: `M ${r(near[0]) - 9} ${r(near[1])} a 9 9 0 1 0 18 0 a 9 9 0 1 0 -18 0`, fill: INK, alpha: 0.8, ref: 'population', b: [near[0] - 9, near[1] - 9, near[0] + 9, near[1] + 9] });
+    layers.text.push(text({ role: 'label', text: c.label, size: 56, color: INK, align: left ? 'right' : 'left', w: 760, x: lx, y: yy + 20, fade: fadeLabels, ref: 'population' }));
+  }
+  marginEntries.push({
+    id: 'population', kind: 'population', title: 'How many people?', dates: `${formatYear(pts[0]!.year)} – ${formatYear(last.year)}`, region: 'The whole world',
+    laneId: '', laneName: '', prominence: 2, drawn: true, note: margins.population.note, wikipedia: 'Estimates_of_historical_world_population',
+    sources: margins.population.sources.map(sourceLink), box: [popX0, yA, POP_W, yB - yA],
+  });
 }
 
 // ---------------------------------------------------------------- lanes
@@ -744,7 +899,7 @@ for (const th of threadDefs) {
 }
 
 // ---------------------------------------------------------------- assemble & write
-const items: Item[] = [layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.threads].flat();
+const items: Item[] = [layers.substrate, layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.threads].flat();
 for (const it of items) if (!it.b) throw new Error(`item without bbox: ${JSON.stringify(it).slice(0, 120)}`);
 
 // ---------------------------------------------------------------- folio (side-panel data)
@@ -790,6 +945,16 @@ for (const lane of lanes) {
 }
 
 folio.threads = threadsOut;
+for (const era of sheet.eras) {
+  if (!eraBoxes[era.id]) continue;
+  folio.entries[`era:${era.id}`] = {
+    id: `era:${era.id}`, kind: 'era', title: era.name, dates: formatSpan(parseSpan(era.span)), region: 'The whole world', laneId: '', laneName: '',
+    prominence: 1, drawn: true, forces: era.forces,
+    note: [era.turningPoint && `Turning point: ${era.turningPoint.label} (${formatSpan(parseSpan(era.turningPoint.span))}).`, era.note].filter(Boolean).join(' '),
+    sources: era.sources.map(sourceLink), wikipedia: era.sources.find((s) => s.startsWith('wikipedia:'))?.slice(10), box: eraBoxes[era.id]!,
+  };
+}
+for (const m of [...marginEntries, ...eraMapEntries]) folio.entries[m.id] = m;
 for (const th of threadsOut) {
   const evs = th.events.map((id) => folio.entries[id]!).filter(Boolean);
   folio.entries[`thread:${th.id}`] = {

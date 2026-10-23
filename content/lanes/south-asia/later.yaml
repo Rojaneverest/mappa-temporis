@@ -98,6 +98,8 @@ lanes:
       - { id: taj-mahal, date: 1653 CE, label: "The Taj Mahal is completed", prominence: 1, themes: [art], sources: [wikipedia:Taj_Mahal] }
       - { id: aurangzeb, date: 1707 CE, label: "Aurangzeb dies; the empire, at its largest, begins to fall apart", prominence: 3, themes: [government], sources: [wikipedia:Aurangzeb] }
       - { id: nader-delhi, date: 1739 CE, label: "Nader Shah carries off the Peacock Throne", prominence: 4, themes: [war], sources: [wikipedia:Nader_Shah's_invasion_of_India] }
+    images:
+      - { id: taj-mahal-view, source: "commons:File:Taj Mahal (Edited).jpeg", date: 1653 CE, prominence: 1, treatment: plate, caption: "The Taj Mahal, Agra" }
     sources: [wikipedia:Mughal_Empire]
 
   - id: sikh-empire
@@ -210,6 +212,8 @@ lanes:
       - { id: brihadeeswara, date: 1010 CE, label: "Rajaraja's Brihadeeswara temple at Thanjavur", prominence: 2, themes: [art, religion], sources: [wikipedia:Brihadisvara_Temple,_Thanjavur] }
       - { id: chola-bronzes, date: c. 1000 CE, label: "Chola bronzes: Shiva as Nataraja, lord of the dance", prominence: 2, themes: [art], sources: [wikipedia:Chola_art] }
       - { id: srivijaya-raid, date: 1025 CE, label: "A Chola fleet raids Srivijaya across the Bay of Bengal", prominence: 3, themes: [war, trade], sources: [wikipedia:Chola_invasion_of_Srivijaya] }
+    images:
+      - { id: thanjavur-temple, source: "commons:File:Thanjavur Big Temple.jpg", date: 1010 CE, prominence: 2, treatment: plate, caption: "The Brihadeeswara temple, Thanjavur" }
     sources: [wikipedia:Chola_dynasty]
 
   - id: vijayanagara
@@ -334,6 +338,8 @@ lanes:
       - { id: milarepa, date: c. 1100 CE, label: "Milarepa, yogi and poet", prominence: 4, themes: [religion, art], sources: [wikipedia:Milarepa] }
       - { id: potala, date: 1645 CE, label: "The Fifth Dalai Lama builds the Potala", prominence: 2, themes: [art, religion], sources: [wikipedia:Potala_Palace] }
       - { id: tibet-1950, date: 1950 CE, label: "The People's Liberation Army enters Tibet; in 1959 the Dalai Lama flees", prominence: 2, themes: [war], sources: [wikipedia:Annexation_of_Tibet_by_the_People's_Republic_of_China] }
+    images:
+      - { id: potala-palace, source: "commons:File:Potala Palace.jpg", date: 1645 CE, prominence: 2, treatment: plate, caption: "The Potala Palace, Lhasa" }
     sources: [wikipedia:History_of_Tibet]
 
   - id: licchavi
@@ -350,6 +356,8 @@ lanes:
     events:
       - { id: changu-narayan, date: 464 CE, label: "Manadeva's pillar at Changu Narayan, Nepal's oldest dated inscription", prominence: 3, thread: scripts, sources: [wikipedia:Changu_Narayan] }
       - { id: bhrikuti, date: c. 640 CE, label: "Princess Bhrikuti carries Buddhism to Tibet", prominence: 4, themes: [women, religion], confidence: disputed, sources: [wikipedia:Bhrikuti] }
+    images:
+      - { id: boudhanath, source: "commons:File:Boudhanath Stupa.jpg", date: c. 600 CE, prominence: 3, treatment: plate, caption: "Boudhanath stupa, Kathmandu (rebuilt many times)", ofItsTime: false }
     sources: [wikipedia:Licchavi_(kingdom)]
 
   - id: malla-nepal
@@ -369,6 +377,8 @@ lanes:
     events:
       - { id: araniko, date: 1260 CE, label: "Araniko of Patan takes Newar art to Kublai Khan — and the pagoda form to China", prominence: 3, themes: [art], sources: [wikipedia:Araniko] }
       - { id: three-durbar-squares, date: c. 1650 CE, label: "Kathmandu, Patan and Bhaktapur raise their palace squares", prominence: 2, themes: [art], sources: [wikipedia:Kathmandu_Valley] }
+    images:
+      - { id: patan-durbar, source: "commons:File:Patan Durbar Square.jpg", date: c. 1650 CE, prominence: 2, treatment: plate, caption: "Patan Durbar Square, Kathmandu Valley" }
     sources: [wikipedia:Malla_(Nepal)]
 
   - id: nepal

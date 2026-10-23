@@ -79,6 +79,8 @@ lanes:
     span: 192 – 1832 CE
     events:
       - { id: my-son, date: 4th c., label: "Mỹ Sơn sanctuary to Shiva is begun", prominence: 4, themes: [religion, art], sources: [wikipedia:Mỹ_Sơn] }
+      - { id: champa-rice, date: 1012 CE, label: "Champa rice, fast-ripening, is sent to Song China and feeds a boom", prominence: 3, themes: [technology], sources: [wikipedia:Champa_rice] }
+      - { id: vijaya-falls, date: 1471 CE, label: "Đại Việt takes the Cham capital Vijaya", prominence: 4, themes: [war], sources: [wikipedia:Cham–Vietnamese_War_(1471)] }
     sources: [wikipedia:Champa]
 
   - id: pyu
@@ -89,6 +91,8 @@ lanes:
     prominence: 3
     basis: archaeology
     span: c. 200 BCE – c. 1050 CE
+    events:
+      - { id: sri-ksetra, date: c. 800 CE, label: "Pyu city-states at Sri Ksetra and Halin", prominence: 4, sources: [wikipedia:Sri_Ksetra_Kingdom] }
     sources: [wikipedia:Pyu_city-states]
 
   - id: tarumanagara
@@ -112,4 +116,5 @@ lanes:
     span: c. 650 – 1377 CE
     events:
       - { id: yijing, date: 671 CE, label: "The Chinese monk Yijing studies Sanskrit at Srivijaya", prominence: 3, themes: [religion, ideas], sources: [wikipedia:Yijing_(monk)] }
+      - { id: srivijaya-straits, date: c. 800 CE, label: "Srivijaya controls the Strait of Malacca: Buddhist scholars study at Palembang", prominence: 3, themes: [trade, religion], sources: [wikipedia:Srivijaya] }
     sources: [wikipedia:Srivijaya]

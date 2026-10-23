@@ -16,6 +16,8 @@ lanes:
       - { id: sundiata, date: 1235 CE, label: "Sundiata Keita founds the Mali Empire", prominence: 2, sources: [wikipedia:Sundiata_Keita] }
       - { id: mansa-musa, date: 1324 CE, label: "Mansa Musa's pilgrimage to Mecca spends so much gold it depresses Cairo's prices", prominence: 1, themes: [trade, religion], thread: money, sources: [wikipedia:Mansa_Musa] }
       - { id: djinguereber, date: 1327 CE, label: "The Djinguereber Mosque, Timbuktu", prominence: 2, themes: [art, religion], sources: [wikipedia:Djinguereber_Mosque] }
+    images:
+      - { id: djenne-mosque, source: "commons:File:Great Mosque of Djenné 1.jpg", date: c. 1330 CE, prominence: 2, treatment: plate, caption: "The Great Mosque of Djenné (rebuilt 1907 in the old style)", ofItsTime: false }
     sources: [wikipedia:Mali_Empire]
 
   - id: songhai
@@ -105,6 +107,8 @@ lanes:
       - { type: becomes, lane: mutapa, at: 1450 CE }
     events:
       - { id: zimbabwe-walls, date: c. 1300 CE, label: "The great stone enclosures of Great Zimbabwe", prominence: 1, themes: [art], sources: [wikipedia:Great_Zimbabwe] }
+    images:
+      - { id: great-zimbabwe-ruins, source: "commons:File:Great Zimbabwe.jpg", date: c. 1300 CE, prominence: 2, treatment: plate, caption: "The Great Enclosure, Great Zimbabwe" }
     sources: [wikipedia:Great_Zimbabwe]
 
   - id: mutapa
@@ -204,6 +208,8 @@ lanes:
       - { type: becomes, lane: ethiopia, at: 1270 CE }
     events:
       - { id: lalibela, date: c. 1200 CE, label: "King Lalibela's churches carved down into the rock", prominence: 2, themes: [art, religion], sources: [wikipedia:Rock-hewn_Churches,_Lalibela] }
+    images:
+      - { id: lalibela-church, source: "commons:File:Lalibela, san giorgio, esterno 24.jpg", date: c. 1200 CE, prominence: 2, treatment: plate, caption: "Bete Giyorgis, cut down into the rock at Lalibela" }
     sources: [wikipedia:Zagwe_dynasty]
 
   - id: ethiopia
@@ -219,6 +225,7 @@ lanes:
       - { id: kebra-nagast, date: c. 1320 CE, label: "The Kebra Nagast traces the dynasty to Solomon and Sheba", prominence: 3, themes: [religion, art], sources: [wikipedia:Kebra_Nagast] }
       - { id: adwa, date: 1896 CE, label: "Ethiopia defeats Italy at Adwa and stays free", prominence: 1, themes: [war], sources: [wikipedia:Battle_of_Adwa] }
       - { id: haile-selassie, date: 1974 CE, label: "Haile Selassie is overthrown; the Derg rules", prominence: 4, themes: [government], sources: [wikipedia:Derg] }
+      - { id: smallpox-eradicated, date: 1977 CE, label: "The last natural case of smallpox, in Somalia: a disease is wiped out", prominence: 3, themes: [disease, science], sources: [wikipedia:Smallpox] }
     sources: [wikipedia:Ethiopian_Empire]
 
   # ------------------------------------------------------------------ the maghreb

@@ -116,6 +116,9 @@ lanes:
       - { id: great-wall-ming, date: c. 1570 CE, label: "The brick Great Wall we know today", prominence: 2, themes: [war, art], sources: [wikipedia:Great_Wall_of_China] }
       - { id: matteo-ricci, date: 1601 CE, label: "Matteo Ricci at the Ming court", prominence: 4, themes: [ideas, religion], sources: [wikipedia:Matteo_Ricci] }
       - { id: journey-west, date: 1592 CE, label: "Journey to the West is published", prominence: 4, themes: [art], sources: [wikipedia:Journey_to_the_West] }
+    images:
+      - { id: forbidden-city-view, source: "commons:File:The Forbidden City - View from Coal Hill.jpg", date: 1420 CE, prominence: 1, treatment: plate, caption: "The Forbidden City, Beijing" }
+      - { id: great-wall-view, source: "commons:File:Great Wall of China July 2006.JPG", date: c. 1570 CE, prominence: 2, treatment: plate, caption: "The Ming Great Wall" }
     sources: [wikipedia:Ming_dynasty]
 
   - id: qing
@@ -173,6 +176,7 @@ lanes:
       - { id: cultural-revolution, date: 1966 CE, label: "The Cultural Revolution", prominence: 2, themes: [ideas], sources: [wikipedia:Cultural_Revolution] }
       - { id: reform-opening, date: 1978 CE, label: "Deng Xiaoping's reforms: 800 million lifted from poverty", prominence: 1, themes: [trade], sources: [wikipedia:Reform_and_opening_up] }
       - { id: tiananmen, date: 1989 CE, label: "Tiananmen Square", prominence: 3, themes: [government], sources: [wikipedia:1989_Tiananmen_Square_protests_and_massacre] }
+      - { id: covid, date: 2020 CE, label: "COVID-19 becomes a pandemic", prominence: 2, themes: [disease], sources: [wikipedia:COVID-19_pandemic] }
     sources: [wikipedia:People's_Republic_of_China]
 
   # ------------------------------------------------------------------ korea
@@ -313,6 +317,8 @@ lanes:
       - { id: noh, date: c. 1400 CE, label: "Zeami perfects Noh theatre", prominence: 4, themes: [art], sources: [wikipedia:Zeami_Motokiyo] }
       - { id: tanegashima, date: 1543 CE, label: "Portuguese guns arrive at Tanegashima", prominence: 3, themes: [technology, war], sources: [wikipedia:Tanegashima_(Japanese_matchlock)] }
       - { id: nobunaga, date: 1582 CE, label: "Nobunaga, then Hideyoshi, reunite Japan by force", prominence: 3, themes: [war], sources: [wikipedia:Oda_Nobunaga] }
+    images:
+      - { id: kinkakuji, source: "commons:File:Kinkaku-ji the Golden Temple in Kyoto overlooking the lake - high rez.JPG", date: 1397 CE, prominence: 3, treatment: plate, caption: "Kinkaku-ji, the Golden Pavilion" }
     sources: [wikipedia:Kamakura_shogunate]
 
   - id: edo
@@ -332,6 +338,8 @@ lanes:
       - { id: basho, date: 1689 CE, label: "Bashō's Narrow Road to the Deep North", prominence: 4, themes: [art], sources: [wikipedia:Oku_no_Hosomichi] }
       - { id: great-wave, date: 1831 CE, label: "Hokusai's Great Wave off Kanagawa", prominence: 1, themes: [art], sources: [wikipedia:The_Great_Wave_off_Kanagawa] }
       - { id: perry, date: 1853 CE, label: "Perry's black ships force Japan open", prominence: 2, themes: [trade, war], sources: [wikipedia:Perry_Expedition] }
+    images:
+      - { id: great-wave-print, source: "commons:File:Tsunami by hokusai 19th century.jpg", date: 1831 CE, prominence: 1, treatment: plate, caption: "Hokusai, The Great Wave off Kanagawa" }
     sources: [wikipedia:Edo_period]
 
   - id: empire-japan

@@ -66,7 +66,8 @@ const out = join(OUT, `${SHEET_ID}.topo.json`);
 execFileSync('npx', ['mapshaper',
   '-i', join(CACHE, `${SHEET_ID}-polities.geojson`), LAND, 'combine-files',
   '-rename-layers', 'polities,land',
-  '-simplify', '7%', 'keep-shapes', 'target=*',
+  // Thousands of shapes on the world sheet: simplify harder so the inset map stays light.
+  '-simplify', features.length > 5000 ? '2.5%' : '7%', 'keep-shapes', 'target=*',
   '-o', 'format=topojson', 'quantization=20000', 'target=*', out,
 ], { stdio: 'pipe', cwd: ROOT });
 

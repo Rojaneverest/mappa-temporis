@@ -2,8 +2,15 @@
 title: Mappa Temporis
 subtitle: A map of time — from the first farmers to today
 window: 10000 BCE – 2026 CE
-compress:
-  - { span: 10000 – 3301 BCE, factor: 5, label: "Above this line, time is compressed: a century takes a fifth of the space" }
+# Progressive time: deep time is squeezed, the crowded recent centuries get room. Every change of scale is marked.
+margins: true
+scale:
+  - { span: 10000 – 3301 BCE, factor: 0.125, label: "Time compressed: a century takes an eighth of the main scale" }
+  - { span: 3300 – 1001 BCE, factor: 0.5, label: "A century takes half the main scale" }
+  - { span: 1000 BCE – 1499 CE, factor: 1, label: "The main scale" }
+  - { span: 1500 – 1799 CE, factor: 2, label: "A century takes twice the main scale" }
+  - { span: 1800 – 1899 CE, factor: 3, label: "A century takes three times the main scale" }
+  - { span: 1900 – 2026 CE, factor: 4, label: "A century takes four times the main scale" }
 regions:
   - { id: americas, name: The Americas, groups: [north-america, mesoamerica, caribbean, andes, south-america] }
   - { id: africa, name: Africa, groups: [west-africa, central-south, nile-horn, maghreb] }
@@ -20,48 +27,87 @@ eras:
     span: 10000 – 3301 BCE
     forces: [climate, migration]
     turningPoint: { label: Farming begins in the Fertile Crescent, span: 9600 – 9000 BCE }
+    tint: "#6F7F4A"
+    note: "Across the warm, stable Holocene, people in at least seven places independently begin to farm. Villages become towns; towns build temples, walls and granaries."
+    sources: [wikipedia:Neolithic_Revolution]
   - id: early-bronze
     name: Early Bronze Age
     span: 3300 – 2201 BCE
     forces: [ideas, technology]
     turningPoint: { label: Writing — history begins, span: 3300 – 3200 BCE }
+    map: { id: map-ga-sur, source: "commons:File:CD-001a-Tablette de Ga-Sur.jpg", date: c. 2300 BCE, prominence: 2, treatment: backdrop, caption: "The Ga-Sur tablet: hills and rivers around a Mesopotamian estate" }
+    tint: "#A3743E"
+    note: "Writing, kings, bronze and the first cities and states, along the Tigris and Euphrates, the Nile and the Indus."
+    sources: [wikipedia:Bronze_Age]
   - id: bronze
     name: Bronze Age
     span: 2200 – 1201 BCE
     forces: [climate, migration]
     turningPoint: { label: The 4.2-kiloyear event — a century of drought, span: 2200 – 2100 BCE }
+    map: { id: map-turin-papyrus, source: "commons:File:Turin Papyrus map part.jpg", date: c. 1160 BCE, prominence: 2, treatment: backdrop, caption: "The Turin Papyrus: an Egyptian map of quarries and gold mines" }
+    tint: "#A3743E"
+    note: "Great palace kingdoms bound together by trade in tin and copper: Egypt's New Kingdom, the Hittites, Mycenae, Babylon, and the Shang in China."
+    sources: [wikipedia:Bronze_Age]
   - id: iron-age
     name: Iron Age
     span: 1200 – 601 BCE
     forces: [climate, migration, war]
     turningPoint: { label: The Bronze Age collapse, span: 1200 – 1150 BCE }
+    map: { id: map-babylonian, source: "commons:File:Babylonian Map of the World, 700-500 BC.jpg", date: c. 600 BCE, prominence: 2, treatment: backdrop, caption: "The Babylonian Map of the World: Babylon at the centre, ocean all around" }
+    tint: "#5B6670"
+    note: "After the collapse, cheaper iron and new alphabets spread; Assyria and then Persia build the first world empires."
+    sources: [wikipedia:Iron_Age]
   - id: classical
     name: Classical Antiquity
     span: 600 BCE – 500 CE
     forces: [ideas]
     turningPoint: { label: The Axial Age — philosophies that still shape us, span: 600 – 500 BCE }
+    map: { id: map-ptolemy, source: "commons:File:1482 Ulm Ptolemy World Map.jpg", date: c. 150 CE, prominence: 2, treatment: backdrop, caption: "Ptolemy's world, as printed at Ulm in 1482", ofItsTime: false }
+    tint: "#C9B48A"
+    note: "Philosophers and prophets across Eurasia, then the great empires: Persia, Alexander, the Maurya, Rome and Han China, joined by the Silk Road."
+    sources: [wikipedia:Classical_antiquity]
   - id: middle-ages
     name: Middle Ages
     span: 501 – 1500
     forces: [climate, migration, disease]
     turningPoint: { label: Volcanic winters of 536 · Plague of Justinian, span: 536 – 549 CE }
+    map: { id: map-al-idrisi, source: "commons:File:TabulaRogeriana.jpg", date: 1154 CE, prominence: 2, treatment: backdrop, caption: "Al-Idrisi's Tabula Rogeriana, made for Roger II of Sicily — south is up" }
+    tint: "#8C6A4A"
+    note: "Plague, cold and new faiths at the start; the Islamic world, Tang and Song China and the Mongols in the middle; the Black Death at the end."
+    sources: [wikipedia:Post-classical_history]
   - id: early-modern
     name: Early Modern
     span: 1501 – 1760
     forces: [disease, technology]
     turningPoint: { label: The Black Death, printing, 1453 and 1492, span: 1347 – 1500 CE }
+    map: { id: map-kunyu, source: "commons:File:Kunyu Wanguo Quantu (坤輿萬國全圖).jpg", date: 1602 CE, prominence: 2, treatment: backdrop, caption: "Matteo Ricci's Kunyu Wanguo Quantu, printed in Beijing" }
+    tint: "#4F6F8F"
+    note: "Ships join the world's oceans: the Columbian Exchange, the Atlantic slave trade, gunpowder empires, printing and the Scientific Revolution."
+    sources: [wikipedia:Early_modern_period]
   - id: industrial
     name: Revolutions & Industry
     span: 1761 – 1914
     forces: [technology, ideas]
     turningPoint: { label: Steam power and the Atlantic revolutions, span: 1760 – 1800 CE }
+    map: { id: map-imperial-federation, source: "commons:File:Imperial Federation, map of the world showing the extent of the British Empire in 1886.jpg", date: 1886 CE, prominence: 2, treatment: backdrop, caption: "Imperial Federation: the British Empire in 1886, in pink" }
+    tint: "#4A4A4A"
+    note: "Steam and coal, revolutions in America, France and Haiti, nation states, and European empires that cover most of the planet."
+    sources: [wikipedia:Industrial_Revolution]
   - id: world-wars
     name: World Wars & Cold War
     span: 1915 – 1991
     forces: [war, technology]
     turningPoint: { label: World War I, span: 1914 – 1918 CE }
+    map: { id: map-blue-marble, source: "commons:File:The Earth seen from Apollo 17.jpg", date: 1972 CE, prominence: 2, treatment: backdrop, caption: "The Blue Marble: the whole Earth, photographed from Apollo 17", invert: true }
+    tint: "#6A5050"
+    note: "Two world wars, decolonisation, the atomic age and the Cold War."
+    sources: [wikipedia:20th_century]
   - id: contemporary
     name: Contemporary
     span: 1992 – 2026
     forces: [technology, climate]
     turningPoint: { label: The end of the Cold War and the Internet, span: 1989 – 1995 CE }
+    map: { id: map-earth-lights, source: "commons:File:Earth's City Lights by DMSP, 1994-1995 (large).jpg", date: 2000 CE, prominence: 2, treatment: backdrop, caption: "The Earth at night: where people live now, in light", invert: true }
+    tint: "#FFFFFF"
+    note: "A connected world of eight billion people: the Internet, globalisation, and a warming climate."
+    sources: [wikipedia:21st_century]

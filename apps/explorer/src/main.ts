@@ -7,8 +7,8 @@ import { Search } from './search.ts';
 import { Tours } from './tours.ts';
 import type { Tour } from '../../../packages/core/src/schema.ts';
 
-// ?sheet=<id> picks a sheet (default: the classical world); see content/sheets/.
-const SHEET = new URLSearchParams(location.search).get('sheet') ?? 'classical-world';
+// ?sheet=<id> picks a sheet (default: the whole world poster); see content/sheets/.
+const SHEET = new URLSearchParams(location.search).get('sheet') ?? 'world';
 const CHART = `/chart/${SHEET}`;
 
 const [dl, folio, tourList]: [DisplayList, Folio, Tour[]] = await Promise.all([

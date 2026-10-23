@@ -12,6 +12,9 @@ lanes:
       - { id: budj-bim, date: c. 4600 BCE, label: "Budj Bim: the Gunditjmara build stone eel traps, among the oldest aquaculture", prominence: 3, themes: [technology], sources: [wikipedia:Budj_Bim_Cultural_Landscape] }
       - { id: dingo, date: c. 1500 BCE, label: "The dingo arrives, brought by seafarers", prominence: 4, confidence: probable, sources: [wikipedia:Dingo] }
       - { id: songlines, date: c. 1 CE, label: "Songlines map a continent in story, as they have for tens of thousands of years", prominence: 3, confidence: probable, themes: [ideas], sources: [wikipedia:Songline] }
+      - { id: makassar-trepang, date: c. 1720 CE, label: "Makassan trepang fishers trade with the Yolŋu of Arnhem Land", prominence: 4, themes: [trade], sources: [wikipedia:Macassan_contact_with_Australia] }
+      - { id: stolen-generations, date: c. 1910 CE, label: "The Stolen Generations: children taken from their families", prominence: 3, sources: [wikipedia:Stolen_Generations] }
+      - { id: apology-2008, date: 2008 CE, label: "The national Apology to the Stolen Generations", prominence: 4, themes: [government], sources: [wikipedia:Apology_to_Australia's_Indigenous_peoples] }
     sources: [wikipedia:Aboriginal_Australians]
 
   - id: lapita
@@ -52,4 +55,6 @@ lanes:
     span: c. 8000 BCE – 2026 CE
     events:
       - { id: kuk, date: c. 7000 BCE, label: "Kuk swamp: farming invented independently, with taro and bananas", prominence: 2, themes: [technology], confidence: probable, sources: [wikipedia:Kuk_Swamp] }
+      - { id: sweet-potato-highlands, date: c. 1700 CE, label: "The sweet potato reaches the highlands; populations boom", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Ipomoean_revolution] }
+      - { id: highlands-contact, date: 1933 CE, label: "Outsiders first meet the million people of the highlands", prominence: 3, themes: [exploration], sources: [wikipedia:Mick_Leahy] }
     sources: [wikipedia:Kuk_Swamp]

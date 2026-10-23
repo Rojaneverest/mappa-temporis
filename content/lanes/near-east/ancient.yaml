@@ -44,6 +44,8 @@ lanes:
       - { id: great-pyramid, date: c. 2560 BCE, label: "The Great Pyramid of Giza — the tallest building on Earth for 3,800 years", prominence: 1, themes: [art, technology], sources: [wikipedia:Great_Pyramid_of_Giza] }
       - { id: sphinx, date: c. 2500 BCE, label: "The Great Sphinx is carved", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Great_Sphinx_of_Giza] }
       - { id: old-kingdom-collapse, date: c. 2181 BCE, label: "Low Nile floods and famine: the Old Kingdom collapses", prominence: 3, themes: [climate], confidence: probable, sources: [wikipedia:4.2-kiloyear_event] }
+    images:
+      - { id: giza-pyramids, source: "commons:File:All Gizah Pyramids.jpg", date: c. 2560 BCE, prominence: 1, treatment: plate, caption: "The pyramids of Giza" }
     sources: [wikipedia:Old_Kingdom_of_Egypt]
 
   - id: egypt-first-intermediate
@@ -171,6 +173,8 @@ lanes:
     span: c. 9600 – c. 8000 BCE
     events:
       - { id: gobekli-pillars, date: c. 9500 BCE, label: "Hunters raise carved stone pillars — monuments before farming", prominence: 1, themes: [art, religion], sources: [wikipedia:Göbekli_Tepe] }
+    images:
+      - { id: gobekli-pillars-photo, source: "commons:File:Göbekli Tepe, Urfa.jpg", date: c. 9500 BCE, prominence: 2, treatment: plate, caption: "Göbekli Tepe's carved pillars, built by foragers" }
     sources: [wikipedia:Göbekli_Tepe]
 
   - id: catalhoyuk
@@ -275,6 +279,8 @@ lanes:
     events:
       - { id: ur-nammu, date: c. 2100 BCE, label: "The Code of Ur-Nammu, the oldest surviving law code", prominence: 2, themes: [government], sources: [wikipedia:Code_of_Ur-Nammu] }
       - { id: ziggurat-ur, date: c. 2100 BCE, label: "The Great Ziggurat of Ur", prominence: 2, themes: [art, religion], sources: [wikipedia:Ziggurat_of_Ur] }
+    images:
+      - { id: ur-ziggurat, source: "commons:File:Ancient ziggurat at Ali Air Base Iraq 2005.jpg", date: c. 2100 BCE, prominence: 2, treatment: plate, caption: "The Ziggurat of Ur (restored facade)", ofItsTime: false }
     sources: [wikipedia:Third_Dynasty_of_Ur]
 
   - id: old-babylon

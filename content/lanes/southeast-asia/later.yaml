@@ -19,6 +19,8 @@ lanes:
       - { id: angkor-wat, date: c. 1150 CE, label: "Angkor Wat, the largest religious monument on Earth", prominence: 1, themes: [art, religion], sources: [wikipedia:Angkor_Wat] }
       - { id: bayon, date: c. 1190 CE, label: "Jayavarman VII's Bayon, its towers carved with smiling faces", prominence: 3, themes: [art], sources: [wikipedia:Bayon] }
       - { id: angkor-drought, date: c. 1400 CE, label: "Megadroughts break Angkor's waterworks", prominence: 3, themes: [climate], confidence: probable, sources: [wikipedia:Angkor] }
+    images:
+      - { id: angkor-wat-view, source: "commons:File:Angkor Wat.jpg", date: c. 1150 CE, prominence: 1, treatment: plate, caption: "Angkor Wat" }
     sources: [wikipedia:Khmer_Empire]
 
   - id: cambodia
@@ -55,6 +57,9 @@ lanes:
     events:
       - { id: bagan-temples, date: c. 1100 CE, label: "Bagan: over 10,000 temples on one plain", prominence: 2, themes: [art, religion], sources: [wikipedia:Bagan] }
       - { id: bayinnaung, date: 1555 CE, label: "Bayinnaung builds the largest empire in Southeast Asian history", prominence: 4, themes: [war], sources: [wikipedia:Bayinnaung] }
+    images:
+      - { id: bagan-plain, source: "commons:File:Bagan, Burma.jpg", date: c. 1100 CE, prominence: 2, treatment: plate, caption: "The temples of Bagan" }
+      - { id: shwedagon, source: "commons:File:Shwedagon Pagoda.jpg", date: c. 1800 CE, prominence: 3, treatment: plate, caption: "The Shwedagon Pagoda, Yangon" }
     sources: [wikipedia:History_of_Myanmar]
 
   - id: dai-viet
@@ -123,6 +128,8 @@ lanes:
     events:
       - { id: borobudur, date: c. 825 CE, label: "Borobudur, the largest Buddhist monument in the world", prominence: 1, themes: [art, religion], sources: [wikipedia:Borobudur] }
       - { id: prambanan, date: c. 850 CE, label: "Prambanan's Hindu temples rise nearby", prominence: 3, themes: [art, religion], sources: [wikipedia:Prambanan] }
+    images:
+      - { id: borobudur-view, source: "commons:File:Borobudur-Nothwest-view.jpg", date: c. 825 CE, prominence: 2, treatment: plate, caption: "Borobudur, Java" }
     sources: [wikipedia:Mataram_Kingdom]
 
   - id: majapahit

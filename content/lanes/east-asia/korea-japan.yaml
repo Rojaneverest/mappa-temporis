@@ -92,6 +92,8 @@ lanes:
         prominence: 2
         themes: [war]
         sources: [wikipedia:Unified_Silla]
+      - { id: seokguram, date: 774 CE, label: "The Seokguram grotto Buddha", prominence: 3, themes: [art, religion], sources: [wikipedia:Seokguram] }
+      - { id: jang-bogo, date: 828 CE, label: "Jang Bogo's fleet rules the Yellow Sea trade", prominence: 4, themes: [trade], sources: [wikipedia:Jang_Bogo] }
     images:
       - id: silla-crown
         source: "commons:File:Gold Crown of Silla Kingdom 01b.jpg"

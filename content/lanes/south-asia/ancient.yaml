@@ -32,6 +32,8 @@ lanes:
       - { id: indus-script, date: c. 2600 BCE, label: "The Indus script — still undeciphered", prominence: 2, thread: scripts, sources: [wikipedia:Indus_script] }
       - { id: meluhha, date: c. 2300 BCE, label: "Ships from 'Meluhha' trade carnelian and timber with Mesopotamia", prominence: 3, themes: [trade], sources: [wikipedia:Meluhha] }
       - { id: indus-decline, date: c. 1900 BCE, label: "As the monsoon weakens, the great cities empty", prominence: 2, themes: [climate, migration], confidence: probable, sources: [wikipedia:Indus_Valley_Civilisation] }
+    images:
+      - { id: mohenjo-daro-view, source: "commons:File:Mohenjo-daro.jpg", date: c. 2500 BCE, prominence: 2, treatment: plate, caption: "Mohenjo-daro: the Great Bath and the stupa mound" }
     sources: [wikipedia:Indus_Valley_Civilisation]
 
   - id: early-vedic

@@ -323,6 +323,10 @@ lanes:
       - { id: justinian-plague, date: 541 CE, label: "The Plague of Justinian — the first pandemic of bubonic plague", prominence: 2, themes: [disease], sources: [wikipedia:Plague_of_Justinian] }
       - { id: siege-626, date: 626 CE, label: "Constantinople survives an Avar and Persian siege", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Constantinople_(626)] }
       - { id: greek-fire, date: c. 674 CE, label: "Greek fire repels the first Arab siege of Constantinople", prominence: 3, themes: [war, technology], confidence: probable, sources: [wikipedia:Siege_of_Constantinople_(674–678)] }
+      - { id: iconoclasm, date: 726 CE, label: "Iconoclasm: Leo III orders the holy images destroyed", prominence: 3, themes: [religion, art], sources: [wikipedia:Byzantine_Iconoclasm] }
+      - { id: basil-ii, date: 1018 CE, label: "Basil II, 'the Bulgar-slayer', takes the empire to its medieval height", prominence: 4, themes: [war], sources: [wikipedia:Basil_II] }
+      - { id: fourth-crusade, date: 1204 CE, label: "The Fourth Crusade sacks Constantinople", prominence: 2, themes: [war], sources: [wikipedia:Sack_of_Constantinople] }
+      - { id: greek-scholars-italy, date: c. 1400 CE, label: "Greek scholars carry Plato to Florence", prominence: 4, themes: [ideas], sources: [wikipedia:Greek_scholars_in_the_Renaissance] }
     images:
       - { id: hagia-sophia-view, source: "commons:File:Hagia Sophia Mars 2013.jpg", date: 537 CE, prominence: 1, treatment: plate, caption: "Hagia Sophia, Constantinople" }
     sources: [wikipedia:Byzantine_Empire]
