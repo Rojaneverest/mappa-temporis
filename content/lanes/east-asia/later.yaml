@@ -1,0 +1,367 @@
+# East Asia from c. 700 CE to today.
+lanes:
+  # ------------------------------------------------------------------ china
+  - id: five-dynasties
+    name: Five Dynasties & Ten Kingdoms
+    endonym: { text: 五代十國, script: Hant, translit: Wǔdài Shíguó }
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 3
+    span: 907 – 979 CE
+    cliopatria: ["Later Liang", "Later Tang", "Later Jin", "Later Han", "Later Zhou", "Southern Tang", "Wuyue", "Former Shu", "Later Shu", "Southern Han", "Min"]
+    relations:
+      - { type: succeeds, lane: tang, at: 907 CE }
+      - { type: becomes, lane: song, at: 960 CE }
+    segments:
+      - { name: Five Dynasties & Ten Kingdoms, span: 907 – 979 CE, weight: 2, style: interregnum }
+    sources: [wikipedia:Five_Dynasties_and_Ten_Kingdoms_period]
+
+  - id: song
+    name: Song dynasty
+    endonym: { text: 宋, script: Hant, translit: Sòng }
+    wikidata: Q7462
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 1
+    span: 960 – 1279 CE
+    cliopatria: ["Song Dynasty", "Northern Song", "Southern Song"]
+    segments:
+      - { name: Northern Song, span: 960 – 1127 CE, weight: 5 }
+      - { name: Southern Song, span: 1127 – 1279 CE, weight: 4 }
+    events:
+      - { id: song-exams, date: c. 1000 CE, label: "Civil-service exams open office to talent: rule by scholars", prominence: 2, themes: [government, ideas], sources: [wikipedia:Imperial_examination] }
+      - { id: paper-money, date: 1024 CE, label: "The jiaozi: the world's first government paper money", prominence: 1, thread: money, themes: [trade], sources: [wikipedia:Jiaozi_(currency)] }
+      - { id: movable-type, date: c. 1040 CE, label: "Bi Sheng invents movable type", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Bi_Sheng] }
+      - { id: gunpowder-formula, date: 1044 CE, label: "The first written formula for gunpowder", prominence: 2, themes: [technology, war], sources: [wikipedia:Wujing_Zongyao] }
+      - { id: compass, date: c. 1088 CE, label: "Shen Kuo describes the magnetic compass", prominence: 2, themes: [technology, science], sources: [wikipedia:Shen_Kuo] }
+      - { id: qingming-scroll, date: c. 1100 CE, label: "Along the River During the Qingming Festival", prominence: 2, themes: [art], sources: [wikipedia:Along_the_River_During_the_Qingming_Festival] }
+      - { id: jingkang, date: 1127 CE, label: "The Jurchens take Kaifeng; the court flees south", prominence: 3, themes: [war], sources: [wikipedia:Jingkang_incident] }
+      - { id: zhu-xi, date: c. 1190 CE, label: "Zhu Xi's Neo-Confucianism shapes East Asia for 700 years", prominence: 3, themes: [ideas], sources: [wikipedia:Zhu_Xi] }
+      - { id: yamen, date: 1279 CE, label: "The Song fleet is destroyed at Yamen", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Yamen] }
+    sources: [wikipedia:Song_dynasty]
+
+  - id: liao
+    name: Liao dynasty (Khitan)
+    region: east-asia
+    group: china
+    sphere: steppe
+    prominence: 3
+    span: 916 – 1125 CE
+    cliopatria: ["Liao Dynasty", "Khitan Empire"]
+    relations:
+      - { type: becomes, lane: kara-khitai, at: 1124 CE }
+    events:
+      - { id: chanyuan, date: 1005 CE, label: "The Treaty of Chanyuan: Song pays Liao in silk for peace", prominence: 4, themes: [government], sources: [wikipedia:Chanyuan_Treaty] }
+    sources: [wikipedia:Liao_dynasty]
+
+  - id: western-xia
+    name: Western Xia (Tangut)
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 4
+    span: 1038 – 1227 CE
+    cliopatria: ["Western Xia", "Xi Xia"]
+    events:
+      - { id: tangut-script, date: 1038 CE, label: "A Tangut script of 6,000 invented characters", prominence: 4, thread: scripts, sources: [wikipedia:Tangut_script] }
+    sources: [wikipedia:Western_Xia]
+
+  - id: jin-jurchen
+    name: Jin dynasty (Jurchen)
+    region: east-asia
+    group: china
+    sphere: steppe
+    prominence: 3
+    span: 1115 – 1234 CE
+    cliopatria: ["Jin Dynasty (1115–1234)", "Jurchen Jin"]
+    relations:
+      - { type: conquers, lane: liao, at: 1125 CE }
+    sources: [wikipedia:Jin_dynasty_(1115–1234)]
+
+  - id: yuan
+    name: Yuan dynasty
+    endonym: { text: 元, script: Hant, translit: Yuán }
+    region: east-asia
+    group: china
+    sphere: steppe
+    prominence: 1
+    span: 1271 – 1368 CE
+    cliopatria: ["Yuan Dynasty"]
+    relations:
+      - { type: conquers, lane: song, at: 1279 CE }
+      - { type: becomes, lane: ming, at: 1368 CE }
+    events:
+      - { id: kublai, date: 1271 CE, label: "Kublai Khan proclaims the Yuan and builds Khanbaliq (Beijing)", prominence: 2, themes: [government], sources: [wikipedia:Kublai_Khan] }
+      - { id: kamikaze, date: 1281 CE, label: "Typhoons wreck the Mongol invasion of Japan", prominence: 3, themes: [war, climate], sources: [wikipedia:Mongol_invasions_of_Japan] }
+      - { id: red-turbans, date: 1351 CE, label: "The Red Turban rebellion", prominence: 4, themes: [war], sources: [wikipedia:Red_Turban_Rebellions] }
+    sources: [wikipedia:Yuan_dynasty]
+
+  - id: ming
+    name: Ming dynasty
+    endonym: { text: 明, script: Hant, translit: Míng }
+    wikidata: Q9903
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 1
+    span: 1368 – 1644 CE
+    cliopatria: ["Ming Dynasty"]
+    relations:
+      - { type: becomes, lane: qing, at: 1644 CE }
+    events:
+      - { id: forbidden-city, date: 1420 CE, label: "The Forbidden City is completed", prominence: 1, themes: [art], sources: [wikipedia:Forbidden_City] }
+      - { id: zheng-he, date: 1405 CE, label: "Zheng He's treasure fleets sail to Arabia and Africa", prominence: 1, themes: [exploration, trade], sources: [wikipedia:Zheng_He] }
+      - { id: great-wall-ming, date: c. 1570 CE, label: "The brick Great Wall we know today", prominence: 2, themes: [war, art], sources: [wikipedia:Great_Wall_of_China] }
+      - { id: matteo-ricci, date: 1601 CE, label: "Matteo Ricci at the Ming court", prominence: 4, themes: [ideas, religion], sources: [wikipedia:Matteo_Ricci] }
+      - { id: journey-west, date: 1592 CE, label: "Journey to the West is published", prominence: 4, themes: [art], sources: [wikipedia:Journey_to_the_West] }
+    sources: [wikipedia:Ming_dynasty]
+
+  - id: qing
+    name: Qing dynasty
+    endonym: { text: 清, script: Hant, translit: Qīng }
+    wikidata: Q8733
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 1
+    span: 1636 – 1912 CE
+    cliopatria: ["Qing Dynasty", "Later Jin (1616–1636)"]
+    relations:
+      - { type: conquers, lane: dzungars, at: 1758 CE }
+      - { type: becomes, lane: roc, at: 1912 CE }
+    events:
+      - { id: kangxi, date: 1661 CE, label: "The Kangxi Emperor's 61-year reign", prominence: 3, themes: [government], sources: [wikipedia:Kangxi_Emperor] }
+      - { id: macartney, date: 1793 CE, label: "Qianlong to Britain: 'we possess all things'", prominence: 3, themes: [trade], sources: [wikipedia:Macartney_Embassy] }
+      - { id: opium-war, date: 1839 CE, label: "The Opium War opens a 'century of humiliation'", prominence: 1, themes: [war, trade], sources: [wikipedia:First_Opium_War] }
+      - { id: taiping, date: 1850 CE, label: "The Taiping Rebellion: 20–30 million dead", prominence: 2, themes: [war, religion], sources: [wikipedia:Taiping_Rebellion] }
+      - { id: boxers, date: 1900 CE, label: "The Boxer uprising", prominence: 4, themes: [war], sources: [wikipedia:Boxer_Rebellion] }
+    sources: [wikipedia:Qing_dynasty]
+
+  - id: roc
+    name: Republic of China
+    endonym: { text: 中華民國, script: Hant, translit: Zhōnghuá Mínguó }
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 2
+    span: 1912 – 2026 CE
+    cliopatria: ["Republic of China", "Taiwan", "Republic of China (Taiwan)"]
+    segments:
+      - { name: Republic on the mainland, span: 1912 – 1949 CE, weight: 4 }
+      - { name: Taiwan, span: 1949 – 2026 CE, weight: 2 }
+    relations:
+      - { type: becomes, lane: prc, at: 1949 CE }
+    events:
+      - { id: may-fourth, date: 1919 CE, label: "The May Fourth Movement", prominence: 4, themes: [ideas], sources: [wikipedia:May_Fourth_Movement] }
+      - { id: nanjing-1937, date: 1937 CE, label: "Japan invades; the Nanjing Massacre", prominence: 2, themes: [war], sources: [wikipedia:Nanjing_Massacre] }
+    sources: [wikipedia:Republic_of_China_(1912–1949)]
+
+  - id: prc
+    name: People's Republic of China
+    endonym: { text: 中华人民共和国, script: Hans, translit: Zhōnghuá Rénmín Gònghéguó }
+    region: east-asia
+    group: china
+    sphere: sinic
+    prominence: 1
+    span: 1949 – 2026 CE
+    cliopatria: ["People's Republic of China", "China"]
+    events:
+      - { id: prc-founded, date: 1949 CE, label: "Mao proclaims the People's Republic", prominence: 1, themes: [government], sources: [wikipedia:Proclamation_of_the_People's_Republic_of_China] }
+      - { id: great-leap, date: 1959 CE, label: "The Great Leap Forward famine: perhaps 30 million die", prominence: 2, themes: [disease], sources: [wikipedia:Great_Chinese_Famine] }
+      - { id: cultural-revolution, date: 1966 CE, label: "The Cultural Revolution", prominence: 2, themes: [ideas], sources: [wikipedia:Cultural_Revolution] }
+      - { id: reform-opening, date: 1978 CE, label: "Deng Xiaoping's reforms: 800 million lifted from poverty", prominence: 1, themes: [trade], sources: [wikipedia:Reform_and_opening_up] }
+      - { id: tiananmen, date: 1989 CE, label: "Tiananmen Square", prominence: 3, themes: [government], sources: [wikipedia:1989_Tiananmen_Square_protests_and_massacre] }
+    sources: [wikipedia:People's_Republic_of_China]
+
+  # ------------------------------------------------------------------ korea
+  - id: balhae
+    name: Balhae
+    endonym: { text: 渤海, script: Hant, translit: Balhae }
+    region: east-asia
+    group: korea
+    sphere: korean-japanese
+    prominence: 4
+    span: 698 – 926 CE
+    cliopatria: ["Balhae", "Bohai"]
+    relations:
+      - { type: succeeds, lane: goguryeo, at: 698 CE }
+    sources: [wikipedia:Balhae]
+
+  - id: goryeo
+    name: Goryeo
+    endonym: { text: 고려, script: Kore, translit: Goryeo }
+    region: east-asia
+    group: korea
+    sphere: korean-japanese
+    prominence: 2
+    span: 918 – 1392 CE
+    cliopatria: ["Goryeo", "Koryo"]
+    relations:
+      - { type: succeeds, lane: silla, at: 935 CE }
+      - { type: becomes, lane: joseon, at: 1392 CE }
+    events:
+      - { id: celadon, date: c. 1150 CE, label: "Goryeo celadon, prized even in China", prominence: 3, themes: [art], sources: [wikipedia:Korean_celadon] }
+      - { id: tripitaka-koreana, date: 1251 CE, label: "The Tripitaka Koreana: 81,258 carved printing blocks", prominence: 3, thread: paper, themes: [religion, technology], sources: [wikipedia:Tripitaka_Koreana] }
+      - { id: jikji, date: 1377 CE, label: "Jikji, the oldest surviving book printed in metal type", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Jikji] }
+    sources: [wikipedia:Goryeo]
+
+  - id: joseon
+    name: Joseon
+    endonym: { text: 조선, script: Kore, translit: Joseon }
+    wikidata: Q28179
+    region: east-asia
+    group: korea
+    sphere: korean-japanese
+    prominence: 2
+    span: 1392 – 1897 CE
+    cliopatria: ["Joseon", "Joseon Dynasty"]
+    relations:
+      - { type: becomes, lane: korean-empire, at: 1897 CE }
+    events:
+      - { id: hangul, date: 1443 CE, label: "King Sejong's Hangul: an alphabet designed to be easy", prominence: 1, thread: alphabet, themes: [ideas], sources: [wikipedia:Hangul] }
+      - { id: imjin, date: 1592 CE, label: "The Imjin War: Admiral Yi's turtle ships defeat Japan", prominence: 2, themes: [war, technology], sources: [wikipedia:Imjin_War] }
+      - { id: hermit-kingdom, date: c. 1640 CE, label: "The 'Hermit Kingdom' closes itself to the world", prominence: 4, sources: [wikipedia:Hermit_kingdom] }
+    sources: [wikipedia:Joseon]
+
+  - id: korean-empire
+    name: Korean Empire & Japanese rule
+    region: east-asia
+    group: korea
+    sphere: korean-japanese
+    prominence: 4
+    span: 1897 – 1945 CE
+    cliopatria: ["Korean Empire", "Korea under Japanese rule", "Chosen"]
+    segments:
+      - { name: Korean Empire, span: 1897 – 1910 CE, weight: 2 }
+      - { name: Japanese rule, span: 1910 – 1945 CE, weight: 2, style: interregnum }
+    relations:
+      - { type: splits-into, lanes: [south-korea, north-korea], at: 1945 CE }
+    events:
+      - { id: march-first, date: 1919 CE, label: "The March First Movement for independence", prominence: 4, themes: [government], sources: [wikipedia:March_First_Movement] }
+    sources: [wikipedia:Korea_under_Japanese_rule]
+
+  - id: south-korea
+    name: South Korea
+    endonym: { text: 대한민국, script: Kore, translit: Daehan Minguk }
+    region: east-asia
+    group: korea
+    sphere: korean-japanese
+    prominence: 3
+    span: 1945 – 2026 CE
+    cliopatria: ["South Korea", "Republic of Korea"]
+    events:
+      - { id: korean-war, date: 1950 CE, label: "The Korean War", prominence: 2, themes: [war], sources: [wikipedia:Korean_War] }
+      - { id: han-miracle, date: c. 1970 CE, label: "The 'Miracle on the Han': one of the poorest countries becomes one of the richest", prominence: 3, themes: [trade], sources: [wikipedia:Miracle_on_the_Han_River] }
+    sources: [wikipedia:South_Korea]
+
+  - id: north-korea
+    name: North Korea
+    endonym: { text: 조선민주주의인민공화국, script: Kore, translit: Chosŏn }
+    region: east-asia
+    group: korea
+    sphere: korean-japanese
+    prominence: 4
+    span: 1945 – 2026 CE
+    cliopatria: ["North Korea", "Democratic People's Republic of Korea"]
+    sources: [wikipedia:North_Korea]
+
+  # ------------------------------------------------------------------ japan
+  - id: nara-heian
+    name: Nara & Heian Japan
+    endonym: { text: 平安, script: Jpan, translit: Heian }
+    region: east-asia
+    group: japan
+    sphere: korean-japanese
+    prominence: 2
+    span: 710 – 1185 CE
+    cliopatria: ["Japan", "Yamato", "Nara Japan", "Heian Japan"]
+    relations:
+      - { type: succeeds, lane: asuka, at: 710 CE }
+      - { type: becomes, lane: shogunate, at: 1185 CE }
+    segments:
+      - { name: Nara, span: 710 – 794 CE, weight: 3 }
+      - { name: Heian, span: 794 – 1185 CE, weight: 4 }
+    events:
+      - { id: kojiki, date: 712 CE, label: "The Kojiki, Japan's oldest chronicle", prominence: 3, themes: [religion, ideas], sources: [wikipedia:Kojiki] }
+      - { id: todaiji, date: 752 CE, label: "The Great Buddha of Tōdai-ji", prominence: 2, themes: [art, religion], sources: [wikipedia:Tōdai-ji] }
+      - { id: kana, date: c. 900 CE, label: "Kana: Japanese written in its own syllables", prominence: 3, thread: scripts, sources: [wikipedia:Kana] }
+      - { id: genji, date: c. 1010 CE, label: "Murasaki Shikibu's Tale of Genji, often called the first novel", prominence: 1, themes: [art, women], sources: [wikipedia:The_Tale_of_Genji] }
+      - { id: pillow-book, date: 1002 CE, label: "Sei Shōnagon's Pillow Book", prominence: 4, themes: [art, women], sources: [wikipedia:The_Pillow_Book] }
+      - { id: genpei, date: 1180 CE, label: "The Genpei War: samurai clans fight for the throne", prominence: 3, themes: [war], sources: [wikipedia:Genpei_War] }
+    sources: [wikipedia:Heian_period]
+
+  - id: shogunate
+    name: Kamakura & Muromachi shogunates
+    endonym: { text: 幕府, script: Jpan, translit: bakufu }
+    region: east-asia
+    group: japan
+    sphere: korean-japanese
+    prominence: 2
+    span: 1185 – 1600 CE
+    cliopatria: ["Kamakura Shogunate", "Ashikaga Shogunate", "Japan"]
+    segments:
+      - { name: Kamakura, span: 1185 – 1333 CE, weight: 4 }
+      - { name: Muromachi, span: 1336 – 1467 CE, weight: 3 }
+      - { name: Warring States, span: 1467 – 1590 CE, weight: 2, style: interregnum }
+    relations:
+      - { type: becomes, lane: edo, at: 1600 CE }
+    events:
+      - { id: zen, date: c. 1200 CE, label: "Zen Buddhism comes from China", prominence: 3, themes: [religion], sources: [wikipedia:Zen_in_Japan] }
+      - { id: golden-pavilion, date: 1397 CE, label: "The Golden Pavilion, Kyoto", prominence: 3, themes: [art], sources: [wikipedia:Kinkaku-ji] }
+      - { id: noh, date: c. 1400 CE, label: "Zeami perfects Noh theatre", prominence: 4, themes: [art], sources: [wikipedia:Zeami_Motokiyo] }
+      - { id: tanegashima, date: 1543 CE, label: "Portuguese guns arrive at Tanegashima", prominence: 3, themes: [technology, war], sources: [wikipedia:Tanegashima_(Japanese_matchlock)] }
+      - { id: nobunaga, date: 1582 CE, label: "Nobunaga, then Hideyoshi, reunite Japan by force", prominence: 3, themes: [war], sources: [wikipedia:Oda_Nobunaga] }
+    sources: [wikipedia:Kamakura_shogunate]
+
+  - id: edo
+    name: Tokugawa Japan (Edo)
+    endonym: { text: 江戸, script: Jpan, translit: Edo }
+    region: east-asia
+    group: japan
+    sphere: korean-japanese
+    prominence: 2
+    span: 1600 – 1868 CE
+    cliopatria: ["Tokugawa Shogunate", "Japan"]
+    relations:
+      - { type: becomes, lane: empire-japan, at: 1868 CE }
+    events:
+      - { id: sekigahara, date: 1600 CE, label: "Sekigahara: Tokugawa Ieyasu wins Japan", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Sekigahara] }
+      - { id: sakoku, date: 1639 CE, label: "Sakoku: Japan closes itself for two centuries", prominence: 2, themes: [trade], sources: [wikipedia:Sakoku] }
+      - { id: basho, date: 1689 CE, label: "Bashō's Narrow Road to the Deep North", prominence: 4, themes: [art], sources: [wikipedia:Oku_no_Hosomichi] }
+      - { id: great-wave, date: 1831 CE, label: "Hokusai's Great Wave off Kanagawa", prominence: 1, themes: [art], sources: [wikipedia:The_Great_Wave_off_Kanagawa] }
+      - { id: perry, date: 1853 CE, label: "Perry's black ships force Japan open", prominence: 2, themes: [trade, war], sources: [wikipedia:Perry_Expedition] }
+    sources: [wikipedia:Edo_period]
+
+  - id: empire-japan
+    name: Empire of Japan
+    endonym: { text: 大日本帝國, script: Jpan, translit: Dai Nippon Teikoku }
+    region: east-asia
+    group: japan
+    sphere: korean-japanese
+    prominence: 1
+    span: 1868 – 1947 CE
+    cliopatria: ["Empire of Japan", "Japan"]
+    relations:
+      - { type: becomes, lane: japan-postwar, at: 1947 CE }
+    events:
+      - { id: meiji, date: 1868 CE, label: "The Meiji Restoration: Japan industrialises in a generation", prominence: 1, themes: [technology, government], sources: [wikipedia:Meiji_Restoration] }
+      - { id: tsushima, date: 1905 CE, label: "Tsushima: an Asian power defeats a European one", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Tsushima] }
+      - { id: pearl-harbor, date: 1941 CE, label: "Pearl Harbor: the Pacific War", prominence: 2, themes: [war], sources: [wikipedia:Attack_on_Pearl_Harbor] }
+      - { id: hiroshima, date: 1945 CE, label: "Hiroshima and Nagasaki", prominence: 1, themes: [war, technology], sources: [wikipedia:Atomic_bombings_of_Hiroshima_and_Nagasaki] }
+    sources: [wikipedia:Empire_of_Japan]
+
+  - id: japan-postwar
+    name: Japan
+    endonym: { text: 日本, script: Jpan, translit: Nihon }
+    region: east-asia
+    group: japan
+    sphere: korean-japanese
+    prominence: 2
+    span: 1947 – 2026 CE
+    cliopatria: ["Japan", "State of Japan"]
+    events:
+      - { id: shinkansen, date: 1964 CE, label: "The bullet train and the Tokyo Olympics", prominence: 3, themes: [technology], sources: [wikipedia:Shinkansen] }
+      - { id: fukushima, date: 2011 CE, label: "Tsunami and the Fukushima meltdown", prominence: 3, themes: [technology], sources: [wikipedia:Fukushima_nuclear_accident] }
+    sources: [wikipedia:Post-occupation_Japan]

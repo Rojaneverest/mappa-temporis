@@ -1,0 +1,200 @@
+# Southeast Asia from c. 700 CE to today.
+lanes:
+  # ------------------------------------------------------------------ mainland
+  - id: khmer
+    name: Khmer Empire
+    endonym: { text: កម្ពុជា, script: Khmr, translit: Kampuchea }
+    wikidata: Q237381
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 1
+    span: 802 – 1431 CE
+    cliopatria: ["Khmer Empire", "Angkor"]
+    relations:
+      - { type: succeeds, lane: chenla, at: 802 CE }
+      - { type: becomes, lane: cambodia, at: 1431 CE }
+    events:
+      - { id: jayavarman-ii, date: 802 CE, label: "Jayavarman II declares himself universal king", prominence: 3, themes: [government], sources: [wikipedia:Jayavarman_II] }
+      - { id: angkor-wat, date: c. 1150 CE, label: "Angkor Wat, the largest religious monument on Earth", prominence: 1, themes: [art, religion], sources: [wikipedia:Angkor_Wat] }
+      - { id: bayon, date: c. 1190 CE, label: "Jayavarman VII's Bayon, its towers carved with smiling faces", prominence: 3, themes: [art], sources: [wikipedia:Bayon] }
+      - { id: angkor-drought, date: c. 1400 CE, label: "Megadroughts break Angkor's waterworks", prominence: 3, themes: [climate], confidence: probable, sources: [wikipedia:Angkor] }
+    sources: [wikipedia:Khmer_Empire]
+
+  - id: cambodia
+    name: Cambodia
+    endonym: { text: កម្ពុជា, script: Khmr, translit: Kampuchea }
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 4
+    span: 1431 – 2026 CE
+    cliopatria: ["Cambodia", "Kingdom of Cambodia", "Democratic Kampuchea"]
+    events:
+      - { id: khmer-rouge, date: 1975 CE, label: "The Khmer Rouge: a quarter of Cambodians die", prominence: 2, themes: [war], sources: [wikipedia:Cambodian_genocide] }
+    sources: [wikipedia:History_of_Cambodia]
+
+  - id: pagan
+    name: Pagan & Burma
+    endonym: { text: မြန်မာ, script: Mymr, translit: Myanma }
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 2
+    span: 849 – 2026 CE
+    cliopatria: ["Pagan Kingdom", "Toungoo Dynasty", "Konbaung Dynasty", "Burma", "Myanmar", "Ava"]
+    relations:
+      - { type: succeeds, lane: pyu, at: c. 1050 CE }
+    segments:
+      - { name: Pagan, span: 849 – 1297 CE, weight: 4 }
+      - { name: Ava, Pegu & the Shan states, span: 1297 – 1510 CE, weight: 2, style: interregnum }
+      - { name: Toungoo, span: 1510 – 1752 CE, weight: 4 }
+      - { name: Konbaung, span: 1752 – 1885 CE, weight: 3 }
+      - { name: British Burma, span: 1885 – 1948 CE, weight: 2 }
+      - { name: Myanmar, span: 1948 – 2026 CE, weight: 3 }
+    events:
+      - { id: bagan-temples, date: c. 1100 CE, label: "Bagan: over 10,000 temples on one plain", prominence: 2, themes: [art, religion], sources: [wikipedia:Bagan] }
+      - { id: bayinnaung, date: 1555 CE, label: "Bayinnaung builds the largest empire in Southeast Asian history", prominence: 4, themes: [war], sources: [wikipedia:Bayinnaung] }
+    sources: [wikipedia:History_of_Myanmar]
+
+  - id: dai-viet
+    name: Đại Việt & Vietnam
+    endonym: { text: Đại Việt, script: Latn, translit: Great Viet }
+    region: southeast-asia
+    group: mainland
+    sphere: sinic
+    prominence: 2
+    span: 939 – 2026 CE
+    cliopatria: ["Dai Viet", "Đại Việt", "Vietnam", "Nguyen Dynasty", "Ly Dynasty", "Tran Dynasty", "Le Dynasty", "Democratic Republic of Vietnam", "South Vietnam"]
+    relations:
+      - { type: succeeds, lane: jiaozhi, at: 939 CE }
+      - { type: conquers, lane: champa, at: 1832 CE }
+    segments:
+      - { name: Đại Việt, span: 939 – 1802 CE, weight: 4 }
+      - { name: Nguyễn dynasty, span: 1802 – 1887 CE, weight: 3 }
+      - { name: French Indochina, span: 1887 – 1954 CE, weight: 2 }
+      - { name: Vietnam, span: 1954 – 2026 CE, weight: 3 }
+    events:
+      - { id: bach-dang-938, date: 938 CE, label: "Ngô Quyền's stakes in the Bạch Đằng river end Chinese rule", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Bạch_Đằng_(938)] }
+      - { id: tran-mongols, date: 1288 CE, label: "Trần Hưng Đạo defeats the Mongols three times", prominence: 3, themes: [war], sources: [wikipedia:Mongol_invasions_of_Vietnam] }
+      - { id: dien-bien-phu, date: 1954 CE, label: "Điện Biên Phủ: French rule ends", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Dien_Bien_Phu] }
+      - { id: vietnam-war, date: 1965 CE, label: "The Vietnam War; Saigon falls in 1975", prominence: 1, themes: [war], sources: [wikipedia:Vietnam_War] }
+    sources: [wikipedia:History_of_Vietnam]
+
+  - id: siam
+    name: Sukhothai, Ayutthaya & Thailand
+    endonym: { text: สยาม, script: Thai, translit: Sayam }
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 2
+    span: 1238 – 2026 CE
+    cliopatria: ["Sukhothai Kingdom", "Ayutthaya Kingdom", "Rattanakosin Kingdom", "Siam", "Thailand", "Thonburi Kingdom"]
+    segments:
+      - { name: Sukhothai, span: 1238 – 1351 CE, weight: 3 }
+      - { name: Ayutthaya, span: 1351 – 1767 CE, weight: 5 }
+      - { name: Bangkok, span: 1782 – 1932 CE, weight: 4 }
+      - { name: Thailand, span: 1932 – 2026 CE, weight: 3 }
+    events:
+      - { id: thai-script, date: 1283 CE, label: "King Ramkhamhaeng creates the Thai script (tradition)", prominence: 3, thread: alphabet, confidence: disputed, sources: [wikipedia:Ram_Khamhaeng_Inscription] }
+      - { id: ayutthaya-falls, date: 1767 CE, label: "Burmese armies destroy Ayutthaya", prominence: 3, themes: [war], sources: [wikipedia:Burmese–Siamese_War_(1765–1767)] }
+      - { id: siam-uncolonised, date: c. 1896 CE, label: "Siam stays the one Southeast Asian kingdom never colonised", prominence: 3, themes: [government], sources: [wikipedia:Chulalongkorn] }
+    sources: [wikipedia:History_of_Thailand]
+
+  - id: lan-xang
+    name: Lan Xang & Laos
+    region: southeast-asia
+    group: mainland
+    sphere: southeast-asian
+    prominence: 4
+    span: 1353 – 2026 CE
+    cliopatria: ["Lan Xang", "Laos", "Kingdom of Luang Prabang", "Kingdom of Vientiane"]
+    sources: [wikipedia:Lan_Xang]
+
+  # ------------------------------------------------------------------ islands
+  - id: sailendra-mataram
+    name: Sailendra & Mataram
+    region: southeast-asia
+    group: islands
+    sphere: indic
+    prominence: 2
+    span: c. 716 – 1016 CE
+    cliopatria: ["Mataram Kingdom", "Medang Kingdom", "Sailendra"]
+    events:
+      - { id: borobudur, date: c. 825 CE, label: "Borobudur, the largest Buddhist monument in the world", prominence: 1, themes: [art, religion], sources: [wikipedia:Borobudur] }
+      - { id: prambanan, date: c. 850 CE, label: "Prambanan's Hindu temples rise nearby", prominence: 3, themes: [art, religion], sources: [wikipedia:Prambanan] }
+    sources: [wikipedia:Mataram_Kingdom]
+
+  - id: majapahit
+    name: Singhasari & Majapahit
+    region: southeast-asia
+    group: islands
+    sphere: indic
+    prominence: 2
+    span: 1222 – c. 1527 CE
+    cliopatria: ["Majapahit", "Singhasari", "Kediri Kingdom"]
+    relations:
+      - { type: succeeds, lane: srivijaya, at: c. 1377 CE }
+    events:
+      - { id: palapa-oath, date: 1336 CE, label: "Gajah Mada's oath to unite the archipelago", prominence: 3, themes: [government], sources: [wikipedia:Gajah_Mada] }
+    sources: [wikipedia:Majapahit]
+
+  - id: malacca
+    name: Malacca Sultanate
+    region: southeast-asia
+    group: islands
+    sphere: islamic
+    prominence: 3
+    span: c. 1400 – 1511 CE
+    cliopatria: ["Malacca Sultanate", "Melaka Sultanate"]
+    events:
+      - { id: malacca-trade, date: c. 1450 CE, label: "Malacca, where 84 languages were spoken: Islam spreads along the trade", prominence: 2, themes: [trade, religion], sources: [wikipedia:Malacca_Sultanate] }
+      - { id: portuguese-malacca, date: 1511 CE, label: "The Portuguese seize Malacca", prominence: 3, themes: [war, trade], sources: [wikipedia:Capture_of_Malacca_(1511)] }
+    sources: [wikipedia:Malacca_Sultanate]
+
+  - id: aceh-mataram
+    name: Aceh, Mataram & the Islamic sultanates
+    region: southeast-asia
+    group: islands
+    sphere: islamic
+    prominence: 4
+    span: c. 1496 – 1904 CE
+    cliopatria: ["Aceh Sultanate", "Mataram Sultanate", "Banten Sultanate", "Sultanate of Ternate", "Johor Sultanate", "Brunei"]
+    sources: [wikipedia:Aceh_Sultanate]
+
+  - id: dutch-east-indies
+    name: Dutch East Indies & Indonesia
+    region: southeast-asia
+    group: islands
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1602 – 2026 CE
+    cliopatria: ["Dutch East Indies", "Netherlands East Indies", "Indonesia", "Dutch East India Company"]
+    segments:
+      - { name: VOC, span: 1602 – 1799 CE, weight: 3 }
+      - { name: Dutch East Indies, span: 1800 – 1945 CE, weight: 4 }
+      - { name: Indonesia, span: 1945 – 2026 CE, weight: 5 }
+    events:
+      - { id: banda, date: 1621 CE, label: "The VOC massacres the Banda islanders for nutmeg", prominence: 3, themes: [war, trade], sources: [wikipedia:Dutch_conquest_of_the_Banda_Islands] }
+      - { id: tambora, date: 1815 CE, label: "Tambora erupts: the 'year without a summer' follows", prominence: 2, themes: [climate], sources: [wikipedia:1815_eruption_of_Mount_Tambora] }
+      - { id: krakatoa, date: 1883 CE, label: "Krakatoa explodes", prominence: 4, themes: [climate], sources: [wikipedia:1883_eruption_of_Krakatoa] }
+      - { id: indonesia-independence, date: 1945 CE, label: "Sukarno proclaims Indonesian independence", prominence: 3, themes: [government], sources: [wikipedia:Proclamation_of_Indonesian_Independence] }
+      - { id: bandung, date: 1955 CE, label: "The Bandung Conference of newly free nations", prominence: 3, themes: [government], sources: [wikipedia:Bandung_Conference] }
+    sources: [wikipedia:Dutch_East_Indies]
+
+  - id: philippines
+    name: The Philippines
+    region: southeast-asia
+    group: islands
+    sphere: italic
+    prominence: 3
+    span: 1565 – 2026 CE
+    cliopatria: ["Captaincy General of the Philippines", "Philippines", "Spanish East Indies", "Commonwealth of the Philippines"]
+    segments:
+      - { name: Spanish Philippines, span: 1565 – 1898 CE, weight: 3 }
+      - { name: American rule, span: 1898 – 1946 CE, weight: 2 }
+      - { name: Republic, span: 1946 – 2026 CE, weight: 3 }
+    events:
+      - { id: rizal, date: 1896 CE, label: "José Rizal is executed; the Philippine Revolution begins", prominence: 4, themes: [government], sources: [wikipedia:José_Rizal] }
+      - { id: people-power, date: 1986 CE, label: "People Power topples Marcos", prominence: 4, themes: [government], sources: [wikipedia:People_Power_Revolution] }
+    sources: [wikipedia:History_of_the_Philippines]

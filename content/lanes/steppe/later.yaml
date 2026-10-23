@@ -1,0 +1,268 @@
+# The steppe and Central Asia from c. 700 CE to today.
+lanes:
+  # ------------------------------------------------------------------ western steppe
+  - id: khazars
+    name: Khazar Khaganate
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 2
+    span: c. 650 – 969 CE
+    cliopatria: ["Khazar Khaganate", "Khazars"]
+    events:
+      - { id: khazar-judaism, date: c. 740 CE, label: "The Khazar elite converts to Judaism", prominence: 3, themes: [religion], confidence: probable, sources: [wikipedia:Khazars] }
+      - { id: sviatoslav, date: 969 CE, label: "Sviatoslav of Kiev destroys Itil", prominence: 4, themes: [war], sources: [wikipedia:Sviatoslav_I] }
+    sources: [wikipedia:Khazars]
+
+  - id: volga-bulgaria
+    name: Volga Bulgaria
+    region: steppe
+    group: western-steppe
+    sphere: islamic
+    prominence: 4
+    span: c. 900 – 1236 CE
+    cliopatria: ["Volga Bulgaria"]
+    events:
+      - { id: ibn-fadlan, date: 922 CE, label: "Ibn Fadlan's embassy meets the Rus on the Volga", prominence: 4, themes: [exploration], sources: [wikipedia:Ahmad_ibn_Fadlan] }
+    sources: [wikipedia:Volga_Bulgaria]
+
+  - id: cumans
+    name: Cumans & Kipchaks
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 3
+    span: c. 1050 – 1241 CE
+    cliopatria: ["Cumania", "Kipchaks", "Cuman-Kipchak Confederation"]
+    relations:
+      - { type: merges-into, lane: golden-horde, at: 1241 CE }
+    sources: [wikipedia:Cuman–Kipchak_confederation]
+
+  - id: golden-horde
+    name: Golden Horde
+    endonym: { text: Ulus of Jochi, script: Latn }
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 2
+    span: 1242 – 1502 CE
+    cliopatria: ["Golden Horde", "Ulus of Jochi"]
+    relations:
+      - { type: splits-into, lanes: [crimean-khanate, kazakh-khanate], at: c. 1440 CE }
+    events:
+      - { id: sarai, date: c. 1250 CE, label: "Sarai on the Volga, capital of the Horde", prominence: 4, sources: [wikipedia:Sarai_(city)] }
+      - { id: black-death-caffa, date: 1346 CE, label: "Plague at the siege of Caffa reaches the Black Sea ports", prominence: 2, themes: [disease], confidence: probable, sources: [wikipedia:Siege_of_Caffa] }
+      - { id: ugra, date: 1480 CE, label: "The Great Stand on the Ugra: Moscow stops paying tribute", prominence: 3, themes: [war], sources: [wikipedia:Great_Stand_on_the_Ugra_River] }
+    sources: [wikipedia:Golden_Horde]
+
+  - id: crimean-khanate
+    name: Crimean Khanate
+    region: steppe
+    group: western-steppe
+    sphere: islamic
+    prominence: 4
+    span: 1441 – 1783 CE
+    cliopatria: ["Crimean Khanate"]
+    sources: [wikipedia:Crimean_Khanate]
+
+  # ------------------------------------------------------------------ central asia
+  - id: samanids
+    name: Samanid Empire
+    region: steppe
+    group: central-asia
+    sphere: persian
+    prominence: 3
+    span: 819 – 999 CE
+    cliopatria: ["Samanid Empire", "Samanids"]
+    relations:
+      - { type: becomes, lane: ghaznavids, at: 977 CE }
+    events:
+      - { id: rudaki, date: c. 920 CE, label: "Rudaki in Bukhara: poetry in New Persian is born", prominence: 3, themes: [ideas, art], sources: [wikipedia:Rudaki] }
+    sources: [wikipedia:Samanid_Empire]
+
+  - id: ghaznavids
+    name: Ghaznavids
+    region: steppe
+    group: central-asia
+    sphere: islamic
+    prominence: 3
+    span: 977 – 1186 CE
+    cliopatria: ["Ghaznavid Empire", "Ghaznavids"]
+    events:
+      - { id: shahnameh, date: 1010 CE, label: "Ferdowsi finishes the Shahnameh, Iran's national epic", prominence: 2, themes: [art, ideas], sources: [wikipedia:Shahnameh] }
+      - { id: somnath, date: 1025 CE, label: "Mahmud of Ghazni sacks Somnath", prominence: 3, themes: [war], sources: [wikipedia:Somnath] }
+      - { id: al-biruni, date: 1030 CE, label: "Al-Biruni writes his great study of India", prominence: 4, themes: [ideas], sources: [wikipedia:Al-Biruni] }
+    sources: [wikipedia:Ghaznavids]
+
+  - id: kara-khanids
+    name: Kara-Khanids
+    region: steppe
+    group: central-asia
+    sphere: islamic
+    prominence: 4
+    span: 840 – 1212 CE
+    cliopatria: ["Kara-Khanid Khanate", "Karakhanids"]
+    events:
+      - { id: kashgari, date: 1072 CE, label: "Mahmud al-Kashgari's dictionary of the Turkic languages", prominence: 4, themes: [ideas], sources: [wikipedia:Dīwān_Lughāt_al-Turk] }
+    sources: [wikipedia:Kara-Khanid_Khanate]
+
+  - id: khwarazm
+    name: Khwarazmian Empire
+    region: steppe
+    group: central-asia
+    sphere: persian
+    prominence: 3
+    span: 1077 – 1231 CE
+    cliopatria: ["Khwarazmian Empire", "Khwarazm Shahs"]
+    events:
+      - { id: otrar, date: 1219 CE, label: "A massacre of Mongol envoys at Otrar brings Genghis Khan west", prominence: 3, themes: [war], sources: [wikipedia:Mongol_invasion_of_the_Khwarazmian_Empire] }
+    sources: [wikipedia:Khwarazmian_Empire]
+
+  - id: chagatai
+    name: Chagatai Khanate
+    region: steppe
+    group: central-asia
+    sphere: steppe
+    prominence: 3
+    span: 1225 – 1687 CE
+    cliopatria: ["Chagatai Khanate", "Moghulistan"]
+    relations:
+      - { type: becomes, lane: timurids, at: 1370 CE }
+    sources: [wikipedia:Chagatai_Khanate]
+
+  - id: timurids
+    name: Timurid Empire
+    region: steppe
+    group: central-asia
+    sphere: persian
+    prominence: 2
+    span: 1370 – 1507 CE
+    cliopatria: ["Timurid Empire", "Timurids"]
+    relations:
+      - { type: succeeds, lane: chagatai, at: 1370 CE }
+    events:
+      - { id: ankara-1402, date: 1402 CE, label: "Timur captures the Ottoman sultan at Ankara", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Ankara] }
+      - { id: ulugh-beg, date: 1420 CE, label: "Ulugh Beg's observatory in Samarkand maps 1,018 stars", prominence: 2, themes: [science, sky], sources: [wikipedia:Ulugh_Beg_Observatory] }
+      - { id: herat-painting, date: c. 1490 CE, label: "Bihzad's miniatures in Herat", prominence: 4, themes: [art], sources: [wikipedia:Kamāl_ud-Dīn_Behzād] }
+    sources: [wikipedia:Timurid_Empire]
+
+  - id: uzbek-khanates
+    name: Bukhara, Khiva & Kokand
+    region: steppe
+    group: central-asia
+    sphere: islamic
+    prominence: 4
+    span: 1500 – 1920 CE
+    cliopatria: ["Khanate of Bukhara", "Emirate of Bukhara", "Khanate of Khiva", "Khanate of Kokand", "Shaybanids"]
+    relations:
+      - { type: becomes, lane: central-asian-republics, at: 1920 CE }
+    sources: [wikipedia:Khanate_of_Bukhara]
+
+  - id: kazakh-khanate
+    name: Kazakh Khanate & Kazakhstan
+    region: steppe
+    group: central-asia
+    sphere: steppe
+    prominence: 3
+    span: 1465 – 2026 CE
+    cliopatria: ["Kazakh Khanate", "Kazakhstan", "Kazakh SSR"]
+    segments:
+      - { name: Kazakh Khanate, span: 1465 – 1847 CE, weight: 3 }
+      - { name: Russian rule, span: 1847 – 1991 CE, weight: 2 }
+      - { name: Kazakhstan, span: 1991 – 2026 CE, weight: 3 }
+    events:
+      - { id: asharshylyk, date: 1931 CE, label: "Soviet collectivisation: a famine kills a third of Kazakhs", prominence: 3, themes: [disease], sources: [wikipedia:Kazakh_famine_of_1930–1933] }
+      - { id: sputnik-baikonur, date: 1957 CE, label: "Sputnik launches from Baikonur", prominence: 1, themes: [technology, sky], sources: [wikipedia:Sputnik_1] }
+      - { id: aral-sea, date: c. 1990 CE, label: "The Aral Sea, drained for cotton, shrinks to a tenth", prominence: 3, themes: [climate], sources: [wikipedia:Aral_Sea] }
+    sources: [wikipedia:Kazakh_Khanate]
+
+  - id: central-asian-republics
+    name: Soviet & independent Central Asia
+    region: steppe
+    group: central-asia
+    sphere: islamic
+    prominence: 4
+    span: 1920 – 2026 CE
+    cliopatria: ["Uzbekistan", "Turkmenistan", "Tajikistan", "Kyrgyzstan", "Uzbek SSR", "Turkmen SSR", "Tajik SSR", "Kirghiz SSR"]
+    events:
+      - { id: central-asia-independence, date: 1991 CE, label: "The Soviet Union dissolves; five republics become independent", prominence: 3, themes: [government], sources: [wikipedia:Dissolution_of_the_Soviet_Union] }
+    sources: [wikipedia:Central_Asia]
+
+  # ------------------------------------------------------------------ eastern steppe
+  - id: uyghur-khaganate
+    name: Uyghur Khaganate
+    region: steppe
+    group: steppe
+    sphere: steppe
+    prominence: 2
+    span: 744 – 840 CE
+    cliopatria: ["Uyghur Khaganate", "Uighur Khaganate"]
+    relations:
+      - { type: succeeds, lane: gokturks, at: 744 CE }
+    events:
+      - { id: manichaean-uyghurs, date: 762 CE, label: "The khagan adopts Manichaeism — the only state ever to do so", prominence: 3, themes: [religion], sources: [wikipedia:Uyghur_Khaganate] }
+      - { id: kyrgyz-840, date: 840 CE, label: "The Kyrgyz sack Ordu-Baliq; Uyghurs flee to Turfan", prominence: 4, themes: [war, migration], sources: [wikipedia:Ordu-Baliq] }
+    sources: [wikipedia:Uyghur_Khaganate]
+
+  - id: kara-khitai
+    name: Kara Khitai
+    region: steppe
+    group: steppe
+    sphere: sinic
+    prominence: 4
+    span: 1124 – 1218 CE
+    cliopatria: ["Qara Khitai", "Western Liao", "Kara Khitai"]
+    sources: [wikipedia:Qara_Khitai]
+
+  - id: mongol-empire
+    name: Mongol Empire
+    endonym: { text: Yeke Mongγol Ulus, script: Latn, translit: Great Mongol Nation }
+    wikidata: Q12557
+    region: steppe
+    group: steppe
+    sphere: steppe
+    prominence: 1
+    span: 1206 – 1368 CE
+    cliopatria: ["Mongol Empire", "Yuan Dynasty"]
+    segments:
+      - { name: Great Mongol Empire, span: 1206 – 1260 CE, weight: 6 }
+      - { name: Northern Yuan heartland, span: 1260 – 1368 CE, weight: 3 }
+    relations:
+      - { type: conquers, lane: khwarazm, at: 1220 CE }
+      - { type: splits-into, lanes: [golden-horde, chagatai, ilkhanate, yuan], at: 1260 CE }
+      - { type: becomes, lane: mongolia, at: 1368 CE }
+    events:
+      - { id: genghis, date: 1206 CE, label: "Temüjin is proclaimed Genghis Khan", prominence: 1, themes: [government], sources: [wikipedia:Genghis_Khan] }
+      - { id: karakorum, date: 1235 CE, label: "Karakorum: a capital on the steppe", prominence: 4, sources: [wikipedia:Karakorum] }
+      - { id: mohi, date: 1241 CE, label: "Mongol armies reach Hungary and Poland", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Mohi] }
+      - { id: pax-mongolica, date: c. 1260 CE, label: "Pax Mongolica: one empire from Korea to Hungary — the largest land empire ever", prominence: 1, thread: silk-road, themes: [trade], sources: [wikipedia:Pax_Mongolica] }
+    sources: [wikipedia:Mongol_Empire]
+
+  - id: mongolia
+    name: Mongolia
+    endonym: { text: Монгол Улс, script: Cyrl, translit: Mongol Uls }
+    region: steppe
+    group: steppe
+    sphere: steppe
+    prominence: 3
+    span: 1368 – 2026 CE
+    cliopatria: ["Northern Yuan", "Mongolia", "Mongolian People's Republic", "Khalkha"]
+    segments:
+      - { name: Northern Yuan, span: 1368 – 1635 CE, weight: 3 }
+      - { name: Qing rule, span: 1691 – 1911 CE, weight: 2 }
+      - { name: Mongolia, span: 1911 – 2026 CE, weight: 3 }
+    events:
+      - { id: altan-khan, date: 1578 CE, label: "Altan Khan names the first Dalai Lama", prominence: 4, themes: [religion], sources: [wikipedia:Altan_Khan] }
+    sources: [wikipedia:History_of_Mongolia]
+
+  - id: dzungars
+    name: Dzungar Khanate
+    region: steppe
+    group: steppe
+    sphere: steppe
+    prominence: 3
+    span: 1634 – 1758 CE
+    cliopatria: ["Dzungar Khanate", "Zunghar Khanate"]
+    events:
+      - { id: dzungar-genocide, date: 1755 CE, label: "The Qing destroy the Dzungars — 'the last nomad empire'", prominence: 3, themes: [war], sources: [wikipedia:Dzungar_genocide] }
+    sources: [wikipedia:Dzungar_Khanate]

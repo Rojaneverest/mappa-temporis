@@ -161,6 +161,7 @@ lanes:
     relations:
       - { type: succeeds, lane: umayyad, at: 750 CE }
     events:
+      - { id: ibn-sina, date: 1025 CE, label: "Ibn Sina's Canon of Medicine, read in Europe for 600 years", prominence: 2, themes: [ideas, science], sources: [wikipedia:The_Canon_of_Medicine] }
       - { id: talas, date: 751 CE, label: "After Talas, papermaking reaches Samarkand", prominence: 3, thread: paper, themes: [technology], confidence: probable, sources: [wikipedia:Battle_of_Talas] }
       - { id: baghdad-founded, date: 762 CE, label: "Al-Mansur founds the round city of Baghdad", prominence: 2, sources: [wikipedia:Baghdad] }
       - { id: baghdad-paper, date: 794 CE, label: "Baghdad's first paper mill", prominence: 3, thread: paper, themes: [technology], sources: [wikipedia:History_of_paper] }

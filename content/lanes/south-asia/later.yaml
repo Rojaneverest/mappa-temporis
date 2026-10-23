@@ -1,0 +1,413 @@
+# South Asia from c. 700 CE to today.
+lanes:
+  # ------------------------------------------------------------------ northwest & the gangetic plain
+  - id: pratihara
+    name: Gurjara-Pratiharas
+    region: south-asia
+    group: northwest
+    sphere: indic
+    prominence: 4
+    span: c. 730 – 1036 CE
+    cliopatria: ["Gurjara-Pratihara Empire", "Pratiharas"]
+    sources: [wikipedia:Gurjara-Pratihara_dynasty]
+
+  - id: rajputs
+    name: Rajput kingdoms
+    region: south-asia
+    group: northwest
+    sphere: indic
+    prominence: 4
+    span: c. 1000 – 1818 CE
+    cliopatria: ["Mewar", "Marwar", "Chauhans", "Paramaras", "Chandelas"]
+    events:
+      - { id: khajuraho, date: c. 1000 CE, label: "The temples of Khajuraho", prominence: 3, themes: [art, religion], sources: [wikipedia:Khajuraho_Group_of_Monuments] }
+      - { id: chittor, date: 1568 CE, label: "Akbar storms Chittorgarh", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Chittorgarh_(1567–1568)] }
+    sources: [wikipedia:Rajput]
+
+  - id: pala
+    name: Pala Empire
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 3
+    span: c. 750 – 1161 CE
+    cliopatria: ["Pala Empire", "Palas"]
+    events:
+      - { id: vikramashila, date: c. 800 CE, label: "Nalanda and Vikramashila, Buddhist universities, at their height", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Vikramashila] }
+    sources: [wikipedia:Pala_Empire]
+
+  - id: ghurids
+    name: Ghurids
+    region: south-asia
+    group: northwest
+    sphere: islamic
+    prominence: 3
+    span: c. 1148 – 1215 CE
+    cliopatria: ["Ghurid Dynasty", "Ghurids"]
+    relations:
+      - { type: becomes, lane: delhi-sultanate, at: 1206 CE }
+    events:
+      - { id: tarain, date: 1192 CE, label: "Muhammad of Ghor defeats Prithviraj Chauhan at Tarain", prominence: 3, themes: [war], sources: [wikipedia:Second_Battle_of_Tarain] }
+      - { id: nalanda-burnt, date: c. 1193 CE, label: "Nalanda is sacked; Buddhism fades from its homeland", prominence: 3, themes: [religion], sources: [wikipedia:Nalanda_mahavihara] }
+      - { id: qutb-minar, date: 1199 CE, label: "The Qutb Minar rises over Delhi", prominence: 2, themes: [art], sources: [wikipedia:Qutb_Minar] }
+    sources: [wikipedia:Ghurid_dynasty]
+
+  - id: delhi-sultanate
+    name: Delhi Sultanate
+    endonym: { text: سلطنت دهلی, script: Arab, translit: Saltanat-e Dehli }
+    region: south-asia
+    group: gangetic
+    sphere: islamic
+    prominence: 2
+    span: 1206 – 1526 CE
+    cliopatria: ["Delhi Sultanate", "Mamluk Sultanate (Delhi)", "Khalji Dynasty", "Tughlaq Dynasty", "Lodi Dynasty", "Sayyid Dynasty"]
+    segments:
+      - { name: Mamluk dynasty, span: 1206 – 1290 CE, weight: 3 }
+      - { name: Khaljis, span: 1290 – 1320 CE, weight: 4 }
+      - { name: Tughlaqs, span: 1320 – 1414 CE, weight: 5 }
+      - { name: Sayyids & Lodis, span: 1414 – 1526 CE, weight: 3 }
+    relations:
+      - { type: becomes, lane: mughal, at: 1526 CE }
+    events:
+      - { id: guru-nanak, date: c. 1500 CE, label: "Guru Nanak's teaching: the Sikh faith begins", prominence: 2, themes: [religion], sources: [wikipedia:Guru_Nanak] }
+      - { id: razia, date: 1236 CE, label: "Razia Sultana, the only woman to rule Delhi", prominence: 3, themes: [women, government], sources: [wikipedia:Razia_Sultana] }
+      - { id: amir-khusrau, date: c. 1300 CE, label: "Amir Khusrau, poet and musician: qawwali and Hindavi", prominence: 4, themes: [art], sources: [wikipedia:Amir_Khusrau] }
+      - { id: ibn-battuta-delhi, date: 1334 CE, label: "Ibn Battuta serves as a judge in Delhi", prominence: 4, themes: [exploration], sources: [wikipedia:Ibn_Battuta] }
+      - { id: timur-delhi, date: 1398 CE, label: "Timur sacks Delhi", prominence: 3, themes: [war], sources: [wikipedia:Sack_of_Delhi_(1398)] }
+    sources: [wikipedia:Delhi_Sultanate]
+
+  - id: mughal
+    name: Mughal Empire
+    endonym: { text: مغلیہ سلطنت, script: Arab, translit: Mughliyah Saltanat }
+    wikidata: Q33296
+    region: south-asia
+    group: gangetic
+    sphere: islamic
+    prominence: 1
+    span: 1526 – 1857 CE
+    cliopatria: ["Mughal Empire"]
+    segments:
+      - { name: Babur & Humayun, span: 1526 – 1556 CE, weight: 3 }
+      - { name: Akbar to Aurangzeb, span: 1556 – 1707 CE, weight: 6 }
+      - { name: Later Mughals, span: 1707 – 1857 CE, weight: 2 }
+    relations:
+      - { type: becomes, lane: british-raj, at: 1857 CE }
+    events:
+      - { id: panipat-1526, date: 1526 CE, label: "Babur wins at Panipat with cannon", prominence: 2, themes: [war, technology], sources: [wikipedia:First_Battle_of_Panipat] }
+      - { id: akbar, date: 1556 CE, label: "Akbar the Great: tolerance, the Din-i Ilahi, a debating house of faiths", prominence: 1, themes: [ideas, religion, government], sources: [wikipedia:Akbar] }
+      - { id: taj-mahal, date: 1653 CE, label: "The Taj Mahal is completed", prominence: 1, themes: [art], sources: [wikipedia:Taj_Mahal] }
+      - { id: aurangzeb, date: 1707 CE, label: "Aurangzeb dies; the empire, at its largest, begins to fall apart", prominence: 3, themes: [government], sources: [wikipedia:Aurangzeb] }
+      - { id: nader-delhi, date: 1739 CE, label: "Nader Shah carries off the Peacock Throne", prominence: 4, themes: [war], sources: [wikipedia:Nader_Shah's_invasion_of_India] }
+    sources: [wikipedia:Mughal_Empire]
+
+  - id: sikh-empire
+    name: Sikh Empire
+    endonym: { text: ਸਰਕਾਰ-ਏ-ਖ਼ਾਲਸਾ, script: Guru, translit: Sarkar-i-Khalsa }
+    region: south-asia
+    group: northwest
+    sphere: indic
+    prominence: 3
+    span: 1799 – 1849 CE
+    cliopatria: ["Sikh Empire"]
+    events:
+      - { id: ranjit-singh, date: 1799 CE, label: "Ranjit Singh takes Lahore", prominence: 3, sources: [wikipedia:Ranjit_Singh] }
+    sources: [wikipedia:Sikh_Empire]
+
+  - id: british-raj
+    name: Company rule & the British Raj
+    region: south-asia
+    group: gangetic
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1757 – 1947 CE
+    cliopatria: ["British Raj", "British India", "East India Company", "Company Rule in India"]
+    segments:
+      - { name: East India Company, span: 1757 – 1858 CE, weight: 3 }
+      - { name: British Raj, span: 1858 – 1947 CE, weight: 5 }
+    relations:
+      - { type: splits-into, lanes: [india, pakistan], at: 1947 CE }
+    events:
+      - { id: plassey, date: 1757 CE, label: "Plassey: the East India Company takes Bengal", prominence: 2, themes: [war, trade], sources: [wikipedia:Battle_of_Plassey] }
+      - { id: bengal-famine-1770, date: 1770 CE, label: "The Bengal famine kills millions under Company rule", prominence: 3, themes: [disease], sources: [wikipedia:Great_Bengal_famine_of_1770] }
+      - { id: rebellion-1857, date: 1857 CE, label: "The great uprising of 1857; the Crown takes over India", prominence: 1, themes: [war], sources: [wikipedia:Indian_Rebellion_of_1857] }
+      - { id: congress, date: 1885 CE, label: "The Indian National Congress is founded", prominence: 4, themes: [government], sources: [wikipedia:Indian_National_Congress] }
+      - { id: tagore-nobel, date: 1913 CE, label: "Tagore, the first non-European Nobel laureate in literature", prominence: 4, themes: [art], sources: [wikipedia:Rabindranath_Tagore] }
+      - { id: salt-march, date: 1930 CE, label: "Gandhi's Salt March", prominence: 1, themes: [government], sources: [wikipedia:Salt_March] }
+    sources: [wikipedia:British_Raj]
+
+  - id: india
+    name: India
+    endonym: { text: भारत, script: Deva, translit: Bhārat }
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 1
+    span: 1947 – 2026 CE
+    cliopatria: ["India", "Republic of India", "Dominion of India"]
+    events:
+      - { id: partition, date: 1947 CE, label: "Independence and Partition: some 15 million people uprooted", prominence: 1, themes: [migration, government], sources: [wikipedia:Partition_of_India] }
+      - { id: indian-constitution, date: 1950 CE, label: "The world's largest democracy adopts its constitution", prominence: 3, themes: [government], sources: [wikipedia:Constitution_of_India] }
+      - { id: green-revolution, date: 1966 CE, label: "The Green Revolution ends famine", prominence: 3, themes: [technology], sources: [wikipedia:Green_Revolution_in_India] }
+      - { id: chandrayaan-3, date: 2023 CE, label: "Chandrayaan-3 lands near the Moon's south pole", prominence: 4, themes: [technology, sky], sources: [wikipedia:Chandrayaan-3] }
+    sources: [wikipedia:History_of_India_(1947–present)]
+
+  - id: pakistan
+    name: Pakistan
+    endonym: { text: پاکستان, script: Arab }
+    region: south-asia
+    group: northwest
+    sphere: islamic
+    prominence: 3
+    span: 1947 – 2026 CE
+    cliopatria: ["Pakistan", "Dominion of Pakistan", "Islamic Republic of Pakistan"]
+    relations:
+      - { type: splits-into, lanes: [bangladesh], at: 1971 CE }
+    sources: [wikipedia:Pakistan]
+
+  - id: bangladesh
+    name: Bangladesh
+    endonym: { text: বাংলাদেশ, script: Beng }
+    region: south-asia
+    group: gangetic
+    sphere: indic
+    prominence: 3
+    span: 1971 – 2026 CE
+    cliopatria: ["Bangladesh"]
+    events:
+      - { id: bangladesh-war, date: 1971 CE, label: "The Liberation War: Bangladesh is born", prominence: 3, themes: [war], sources: [wikipedia:Bangladesh_Liberation_War] }
+    sources: [wikipedia:Bangladesh]
+
+  # ------------------------------------------------------------------ deccan & the south
+  - id: rashtrakuta
+    name: Chalukyas & Rashtrakutas
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 3
+    span: 543 – 1189 CE
+    cliopatria: ["Chalukya Dynasty", "Rashtrakuta Dynasty", "Western Chalukya Empire"]
+    segments:
+      - { name: Badami Chalukyas, span: 543 – 753 CE, weight: 3 }
+      - { name: Rashtrakutas, span: 753 – 982 CE, weight: 4 }
+      - { name: Western Chalukyas, span: 973 – 1189 CE, weight: 3 }
+    events:
+      - { id: kailasa, date: c. 760 CE, label: "The Kailasa temple at Ellora, carved down from a single rock", prominence: 2, themes: [art, religion], sources: [wikipedia:Kailasa_temple,_Ellora] }
+    sources: [wikipedia:Rashtrakuta_dynasty]
+
+  - id: chola
+    name: Chola Empire
+    endonym: { text: சோழர், script: Taml, translit: Cōḻar }
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 2
+    span: 848 – 1279 CE
+    cliopatria: ["Chola Empire", "Cholas"]
+    relations:
+      - { type: succeeds, lane: pallava, at: 897 CE }
+      - { type: conquers, lane: anuradhapura, at: 1017 CE }
+    events:
+      - { id: brihadeeswara, date: 1010 CE, label: "Rajaraja's Brihadeeswara temple at Thanjavur", prominence: 2, themes: [art, religion], sources: [wikipedia:Brihadisvara_Temple,_Thanjavur] }
+      - { id: chola-bronzes, date: c. 1000 CE, label: "Chola bronzes: Shiva as Nataraja, lord of the dance", prominence: 2, themes: [art], sources: [wikipedia:Chola_art] }
+      - { id: srivijaya-raid, date: 1025 CE, label: "A Chola fleet raids Srivijaya across the Bay of Bengal", prominence: 3, themes: [war, trade], sources: [wikipedia:Chola_invasion_of_Srivijaya] }
+    sources: [wikipedia:Chola_dynasty]
+
+  - id: vijayanagara
+    name: Vijayanagara Empire
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 2
+    span: 1336 – 1646 CE
+    cliopatria: ["Vijayanagara Empire"]
+    events:
+      - { id: hampi, date: c. 1500 CE, label: "Hampi, perhaps the second-largest city in the world", prominence: 2, themes: [art], confidence: probable, sources: [wikipedia:Hampi] }
+      - { id: talikota, date: 1565 CE, label: "Defeat at Talikota; Hampi is sacked", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Talikota] }
+    sources: [wikipedia:Vijayanagara_Empire]
+
+  - id: bahmani
+    name: Bahmani & Deccan sultanates
+    region: south-asia
+    group: deccan-south
+    sphere: islamic
+    prominence: 4
+    span: 1347 – 1687 CE
+    cliopatria: ["Bahmani Sultanate", "Bijapur Sultanate", "Golconda Sultanate", "Ahmadnagar Sultanate"]
+    events:
+      - { id: golconda, date: c. 1600 CE, label: "Golconda's diamond mines", prominence: 4, themes: [trade], sources: [wikipedia:Golconda] }
+    sources: [wikipedia:Bahmani_Sultanate]
+
+  - id: maratha
+    name: Maratha Confederacy
+    endonym: { text: मराठा साम्राज्य, script: Deva, translit: Marāṭhā Sāmrājya }
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 2
+    span: 1674 – 1818 CE
+    cliopatria: ["Maratha Empire", "Maratha Confederacy"]
+    events:
+      - { id: shivaji, date: 1674 CE, label: "Shivaji is crowned at Raigad", prominence: 2, themes: [government], sources: [wikipedia:Shivaji] }
+      - { id: panipat-1761, date: 1761 CE, label: "Third Panipat: the Afghans halt the Marathas", prominence: 3, themes: [war], sources: [wikipedia:Third_Battle_of_Panipat] }
+    sources: [wikipedia:Maratha_Confederacy]
+
+  - id: mysore
+    name: Kingdom of Mysore
+    region: south-asia
+    group: deccan-south
+    sphere: indic
+    prominence: 4
+    span: 1399 – 1950 CE
+    cliopatria: ["Kingdom of Mysore", "Mysore"]
+    events:
+      - { id: mysore-rockets, date: 1792 CE, label: "Tipu Sultan's iron rockets inspire Britain's Congreve rockets", prominence: 4, themes: [technology, war], sources: [wikipedia:Mysorean_rockets] }
+    sources: [wikipedia:Kingdom_of_Mysore]
+
+  # ------------------------------------------------------------------ lanka
+  - id: polonnaruwa
+    name: Polonnaruwa & later Lankan kingdoms
+    endonym: { text: ලංකාව, script: Sinh, translit: Lankava }
+    region: south-asia
+    group: lanka
+    sphere: indic
+    prominence: 3
+    span: 1055 – 1815 CE
+    cliopatria: ["Kingdom of Polonnaruwa", "Kingdom of Kandy", "Kingdom of Kotte", "Jaffna Kingdom", "Kingdom of Dambadeniya"]
+    relations:
+      - { type: succeeds, lane: anuradhapura, at: 1055 CE }
+      - { type: becomes, lane: sri-lanka, at: 1815 CE }
+    segments:
+      - { name: Polonnaruwa, span: 1055 – 1232 CE, weight: 4 }
+      - { name: Kotte & Jaffna, span: 1232 – 1597 CE, weight: 2 }
+      - { name: Kandy, span: 1597 – 1815 CE, weight: 3 }
+    events:
+      - { id: parakramabahu, date: 1153 CE, label: "Parakramabahu I builds the Sea of Parakrama reservoir", prominence: 3, themes: [technology], sources: [wikipedia:Parakrama_Samudra] }
+      - { id: tooth-relic, date: 1592 CE, label: "Kandy keeps the Tooth Relic against the Portuguese and Dutch", prominence: 4, themes: [religion], sources: [wikipedia:Temple_of_the_Tooth] }
+    sources: [wikipedia:Polonnaruwa_Kingdom]
+
+  - id: sri-lanka
+    name: Ceylon & Sri Lanka
+    region: south-asia
+    group: lanka
+    sphere: indic
+    prominence: 3
+    span: 1815 – 2026 CE
+    cliopatria: ["British Ceylon", "Ceylon", "Sri Lanka"]
+    events:
+      - { id: bandaranaike, date: 1960 CE, label: "Sirimavo Bandaranaike, the world's first woman prime minister", prominence: 3, themes: [women, government], sources: [wikipedia:Sirimavo_Bandaranaike] }
+      - { id: lanka-war, date: 1983 CE, label: "A 26-year civil war begins", prominence: 4, themes: [war], sources: [wikipedia:Sri_Lankan_Civil_War] }
+      - { id: tsunami-2004, date: 2004 CE, label: "The Indian Ocean tsunami kills 230,000 across 14 countries", prominence: 3, sources: [wikipedia:2004_Indian_Ocean_earthquake_and_tsunami] }
+    sources: [wikipedia:Sri_Lanka]
+
+  # ------------------------------------------------------------------ himalaya
+  - id: tibetan-empire
+    name: Tibetan Empire
+    endonym: { text: བོད་ཆེན་པོ, script: Tibt, translit: Bod chen po }
+    region: south-asia
+    group: himalaya
+    sphere: indic
+    prominence: 2
+    span: 618 – 842 CE
+    cliopatria: ["Tibetan Empire"]
+    relations:
+      - { type: becomes, lane: tibet, at: 842 CE }
+    events:
+      - { id: songtsen-gampo, date: c. 641 CE, label: "Songtsen Gampo marries Chinese and Nepali princesses; Buddhism arrives", prominence: 3, themes: [religion], sources: [wikipedia:Songtsen_Gampo] }
+      - { id: tibet-changan, date: 763 CE, label: "Tibetan armies briefly take Chang'an", prominence: 4, themes: [war], sources: [wikipedia:Tibetan_Empire] }
+      - { id: samye, date: c. 779 CE, label: "Samye, Tibet's first monastery", prominence: 4, themes: [religion], sources: [wikipedia:Samye] }
+    sources: [wikipedia:Tibetan_Empire]
+
+  - id: tibet
+    name: Tibet
+    endonym: { text: བོད་, script: Tibt, translit: Bod }
+    region: south-asia
+    group: himalaya
+    sphere: indic
+    prominence: 3
+    span: 842 – 1951 CE
+    cliopatria: ["Tibet", "Ganden Phodrang", "Phagmodrupa Dynasty", "Sakya"]
+    segments:
+      - { name: Era of fragmentation, span: 842 – 1244 CE, weight: 2, style: interregnum }
+      - { name: Sakya & Phagmodrupa, span: 1244 – 1642 CE, weight: 3 }
+      - { name: Ganden Phodrang, span: 1642 – 1951 CE, weight: 3 }
+    events:
+      - { id: milarepa, date: c. 1100 CE, label: "Milarepa, yogi and poet", prominence: 4, themes: [religion, art], sources: [wikipedia:Milarepa] }
+      - { id: potala, date: 1645 CE, label: "The Fifth Dalai Lama builds the Potala", prominence: 2, themes: [art, religion], sources: [wikipedia:Potala_Palace] }
+      - { id: tibet-1950, date: 1950 CE, label: "The People's Liberation Army enters Tibet; in 1959 the Dalai Lama flees", prominence: 2, themes: [war], sources: [wikipedia:Annexation_of_Tibet_by_the_People's_Republic_of_China] }
+    sources: [wikipedia:History_of_Tibet]
+
+  - id: licchavi
+    name: Licchavis of Nepal
+    endonym: { text: लिच्छवि, script: Deva, translit: Licchavi }
+    region: south-asia
+    group: himalaya
+    sphere: indic
+    prominence: 3
+    span: c. 400 – c. 879 CE
+    cliopatria: ["Licchavi Kingdom", "Licchavi (Kingdom)"]
+    relations:
+      - { type: becomes, lane: malla-nepal, at: c. 879 CE }
+    events:
+      - { id: changu-narayan, date: 464 CE, label: "Manadeva's pillar at Changu Narayan, Nepal's oldest dated inscription", prominence: 3, thread: scripts, sources: [wikipedia:Changu_Narayan] }
+      - { id: bhrikuti, date: c. 640 CE, label: "Princess Bhrikuti carries Buddhism to Tibet", prominence: 4, themes: [women, religion], confidence: disputed, sources: [wikipedia:Bhrikuti] }
+    sources: [wikipedia:Licchavi_(kingdom)]
+
+  - id: malla-nepal
+    name: Kathmandu Valley kingdoms
+    endonym: { text: नेपाल मण्डल, script: Deva, translit: Nepāl Maṇḍala }
+    region: south-asia
+    group: himalaya
+    sphere: indic
+    prominence: 3
+    span: c. 879 – 1768 CE
+    cliopatria: ["Malla Kingdom", "Kantipur", "Lalitpur", "Bhaktapur", "Thakuri Dynasty"]
+    segments:
+      - { name: Thakuri kings, span: c. 879 – 1200 CE, weight: 2 }
+      - { name: Malla kings, span: 1201 – 1768 CE, weight: 4 }
+    relations:
+      - { type: becomes, lane: nepal, at: 1768 CE }
+    events:
+      - { id: araniko, date: 1260 CE, label: "Araniko of Patan takes Newar art to Kublai Khan — and the pagoda form to China", prominence: 3, themes: [art], sources: [wikipedia:Araniko] }
+      - { id: three-durbar-squares, date: c. 1650 CE, label: "Kathmandu, Patan and Bhaktapur raise their palace squares", prominence: 2, themes: [art], sources: [wikipedia:Kathmandu_Valley] }
+    sources: [wikipedia:Malla_(Nepal)]
+
+  - id: nepal
+    name: Nepal
+    endonym: { text: नेपाल, script: Deva, translit: Nepāl }
+    wikidata: Q837
+    region: south-asia
+    group: himalaya
+    sphere: indic
+    prominence: 2
+    span: 1768 – 2026 CE
+    cliopatria: ["Gorkha Kingdom", "Kingdom of Nepal", "Nepal"]
+    segments:
+      - { name: Gorkha unification, span: 1768 – 1846 CE, weight: 4 }
+      - { name: Rana rule, span: 1846 – 1951 CE, weight: 3 }
+      - { name: Kingdom of Nepal, span: 1951 – 2008 CE, weight: 3 }
+      - { name: Federal Republic, span: 2008 – 2026 CE, weight: 3 }
+    events:
+      - { id: prithvi-narayan, date: 1768 CE, label: "Prithvi Narayan Shah takes Kathmandu and unifies Nepal", prominence: 2, themes: [war, government], sources: [wikipedia:Prithvi_Narayan_Shah] }
+      - { id: bhimsen-thapa, date: 1806 CE, label: "Bhimsen Thapa becomes Mukhtiyar — 31 years at the helm of Nepal", prominence: 3, themes: [government], sources: [wikipedia:Bhimsen_Thapa] }
+      - { id: anglo-nepal-war, date: 1814 CE, label: "The Anglo-Nepalese War; the Treaty of Sugauli fixes Nepal's borders", prominence: 3, themes: [war], sources: [wikipedia:Anglo-Nepalese_War] }
+      - { id: gurkhas, date: 1815 CE, label: "Gurkha soldiers begin to serve in the British army", prominence: 4, themes: [war, migration], sources: [wikipedia:Gurkha] }
+      - { id: kot-massacre, date: 1846 CE, label: "The Kot massacre: Jung Bahadur Rana seizes power", prominence: 4, themes: [government], sources: [wikipedia:Kot_massacre] }
+      - { id: everest-1953, date: 1953 CE, label: "Tenzing Norgay and Edmund Hillary reach the top of Everest", prominence: 1, themes: [exploration], sources: [wikipedia:1953_British_Mount_Everest_expedition] }
+      - { id: nepal-1990, date: 1990 CE, label: "The People's Movement restores multiparty democracy", prominence: 4, themes: [government], sources: [wikipedia:1990_People's_Movement] }
+      - { id: nepal-republic, date: 2008 CE, label: "Nepal abolishes its monarchy and becomes a republic", prominence: 2, themes: [government], sources: [wikipedia:Federal_Democratic_Republic_of_Nepal] }
+      - { id: gorkha-quake, date: 2015 CE, label: "The Gorkha earthquake", prominence: 4, sources: [wikipedia:April_2015_Nepal_earthquake] }
+    sources: [wikipedia:History_of_Nepal]
+
+  - id: bhutan
+    name: Bhutan
+    endonym: { text: འབྲུག་ཡུལ, script: Tibt, translit: Druk Yul }
+    region: south-asia
+    group: himalaya
+    sphere: indic
+    prominence: 4
+    span: 1616 – 2026 CE
+    cliopatria: ["Bhutan"]
+    events:
+      - { id: zhabdrung, date: 1616 CE, label: "The Zhabdrung unifies Bhutan", prominence: 4, sources: [wikipedia:Ngawang_Namgyal] }
+      - { id: gross-national-happiness, date: 1972 CE, label: "Gross National Happiness", prominence: 4, themes: [ideas], sources: [wikipedia:Gross_National_Happiness] }
+    sources: [wikipedia:History_of_Bhutan]
