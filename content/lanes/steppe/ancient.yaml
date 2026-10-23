@@ -1,0 +1,61 @@
+# The steppe and Central Asia to c. 800 BCE.
+lanes:
+  - id: yamnaya
+    name: Yamnaya herders
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 2
+    basis: archaeology
+    span: c. 3300 – c. 2600 BCE
+    relations:
+      - { type: influences, lane: neolithic-europe, at: c. 2900 BCE }
+    events:
+      - { id: steppe-wagons, date: c. 3000 BCE, label: "Wagon-dwelling herders roam the Pontic steppe — likely speakers of Proto-Indo-European", prominence: 2, themes: [migration, technology], confidence: probable, sources: [wikipedia:Yamnaya_culture] }
+    sources: [wikipedia:Yamnaya_culture]
+
+  - id: botai
+    name: Botai
+    region: steppe
+    group: central-asia
+    sphere: steppe
+    prominence: 4
+    basis: archaeology
+    span: c. 3700 – c. 3100 BCE
+    events:
+      - { id: botai-horses, date: c. 3500 BCE, label: "Among the earliest people to keep horses", prominence: 3, confidence: disputed, themes: [technology], sources: [wikipedia:Botai_culture] }
+    sources: [wikipedia:Botai_culture]
+
+  - id: bmac
+    name: Oxus civilization (BMAC)
+    region: steppe
+    group: central-asia
+    sphere: persian
+    prominence: 3
+    basis: archaeology
+    span: c. 2300 – c. 1700 BCE
+    sources: [wikipedia:Bactria–Margiana_Archaeological_Complex]
+
+  - id: sintashta-andronovo
+    name: Sintashta & Andronovo
+    region: steppe
+    group: central-asia
+    sphere: steppe
+    prominence: 3
+    basis: archaeology
+    span: c. 2100 – c. 900 BCE
+    relations:
+      - { type: influences, lane: early-vedic, at: c. 1500 BCE }
+    events:
+      - { id: chariot, date: c. 2000 BCE, label: "The spoked-wheel war chariot", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture] }
+    sources: [wikipedia:Andronovo_culture]
+
+  - id: afanasievo
+    name: Afanasievo
+    region: steppe
+    group: steppe
+    sphere: steppe
+    prominence: 4
+    basis: archaeology
+    span: c. 3300 – c. 2500 BCE
+    sources: [wikipedia:Afanasievo_culture]

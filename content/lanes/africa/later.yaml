@@ -1,0 +1,260 @@
+# Africa from c. 700 CE to today.
+lanes:
+  # ------------------------------------------------------------------ west africa
+  - id: mali
+    name: Mali Empire
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 1
+    span: 1235 – 1670 CE
+    cliopatria: ["Mali Empire"]
+    relations:
+      - { type: succeeds, lane: ghana-empire, at: 1235 CE }
+      - { type: becomes, lane: songhai, at: 1464 CE }
+    events:
+      - { id: sundiata, date: 1235 CE, label: "Sundiata Keita founds the Mali Empire", prominence: 2, sources: [wikipedia:Sundiata_Keita] }
+      - { id: mansa-musa, date: 1324 CE, label: "Mansa Musa's pilgrimage to Mecca spends so much gold it depresses Cairo's prices", prominence: 1, themes: [trade, religion], thread: money, sources: [wikipedia:Mansa_Musa] }
+      - { id: djinguereber, date: 1327 CE, label: "The Djinguereber Mosque, Timbuktu", prominence: 2, themes: [art, religion], sources: [wikipedia:Djinguereber_Mosque] }
+    sources: [wikipedia:Mali_Empire]
+
+  - id: songhai
+    name: Songhai Empire
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 2
+    span: 1464 – 1591 CE
+    cliopatria: ["Songhai Empire"]
+    events:
+      - { id: timbuktu-scholars, date: c. 1500 CE, label: "Timbuktu's scholars and manuscripts at their height", prominence: 3, themes: [ideas], sources: [wikipedia:Timbuktu_Manuscripts] }
+      - { id: tondibi, date: 1591 CE, label: "Moroccan guns defeat Songhai at Tondibi", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Tondibi] }
+    sources: [wikipedia:Songhai_Empire]
+
+  - id: kanem-bornu
+    name: Kanem–Bornu
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 3
+    span: c. 700 – 1893 CE
+    cliopatria: ["Kanem Empire", "Bornu Empire", "Kanem-Bornu Empire"]
+    sources: [wikipedia:Kanem–Bornu_Empire]
+
+  - id: ife-benin
+    name: Ife & Benin
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 2
+    span: c. 1100 – 1897 CE
+    cliopatria: ["Kingdom of Benin", "Benin Empire", "Ife"]
+    events:
+      - { id: ife-heads, date: c. 1300 CE, label: "Ife's naturalistic bronze and terracotta heads", prominence: 2, themes: [art], sources: [wikipedia:Ife_Head] }
+      - { id: benin-bronzes, date: c. 1550 CE, label: "The Benin Bronzes record the court of the Oba", prominence: 2, themes: [art], sources: [wikipedia:Benin_Bronzes] }
+      - { id: benin-1897, date: 1897 CE, label: "A British expedition sacks Benin City and loots its bronzes", prominence: 3, themes: [war], sources: [wikipedia:Benin_Expedition_of_1897] }
+    sources: [wikipedia:Kingdom_of_Benin]
+
+  - id: ashanti
+    name: Asante & Ghana
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 3
+    span: 1701 – 2026 CE
+    cliopatria: ["Ashanti Empire", "Ghana"]
+    events:
+      - { id: ghana-independence, date: 1957 CE, label: "Ghana: the first sub-Saharan colony to win independence", prominence: 2, themes: [government], sources: [wikipedia:Ghana] }
+    sources: [wikipedia:Ashanti_Empire]
+
+  - id: nigeria
+    name: Sokoto & Nigeria
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 3
+    span: 1804 – 2026 CE
+    cliopatria: ["Sokoto Caliphate", "Nigeria"]
+    events:
+      - { id: nigeria-independence, date: 1960 CE, label: "Nigeria — Africa's most populous country — becomes independent", prominence: 3, themes: [government], sources: [wikipedia:Nigeria] }
+    sources: [wikipedia:Nigeria]
+
+  # ------------------------------------------------------------------ central & southern africa
+  - id: swahili
+    name: Swahili coast
+    region: africa
+    group: central-south
+    sphere: african
+    prominence: 2
+    span: c. 800 – 1500 CE
+    cliopatria: ["Kilwa Sultanate"]
+    events:
+      - { id: kilwa, date: c. 1300 CE, label: "Kilwa's merchants trade gold for Chinese porcelain across the Indian Ocean", prominence: 2, themes: [trade], sources: [wikipedia:Kilwa_Kisiwani] }
+    sources: [wikipedia:Swahili_coast]
+
+  - id: great-zimbabwe
+    name: Great Zimbabwe
+    region: africa
+    group: central-south
+    sphere: african
+    prominence: 2
+    basis: archaeology
+    span: c. 1100 – c. 1450 CE
+    cliopatria: ["Kingdom of Zimbabwe", "Great Zimbabwe"]
+    relations:
+      - { type: becomes, lane: mutapa, at: 1450 CE }
+    events:
+      - { id: zimbabwe-walls, date: c. 1300 CE, label: "The great stone enclosures of Great Zimbabwe", prominence: 1, themes: [art], sources: [wikipedia:Great_Zimbabwe] }
+    sources: [wikipedia:Great_Zimbabwe]
+
+  - id: mutapa
+    name: Mutapa
+    region: africa
+    group: central-south
+    sphere: african
+    prominence: 3
+    span: 1450 – 1760 CE
+    cliopatria: ["Kingdom of Mutapa"]
+    sources: [wikipedia:Kingdom_of_Mutapa]
+
+  - id: kongo
+    name: Kingdom of Kongo
+    region: africa
+    group: central-south
+    sphere: african
+    prominence: 2
+    span: c. 1390 – 1914 CE
+    cliopatria: ["Kingdom of Kongo"]
+    events:
+      - { id: kongo-baptism, date: 1491 CE, label: "Kongo's king is baptised; his son Afonso later protests the slave trade to Portugal", prominence: 3, themes: [religion], sources: [wikipedia:Afonso_I_of_Kongo] }
+    sources: [wikipedia:Kingdom_of_Kongo]
+
+  - id: zulu
+    name: Zulu Kingdom
+    region: africa
+    group: central-south
+    sphere: african
+    prominence: 3
+    span: 1816 – 1897 CE
+    cliopatria: ["Zulu Kingdom"]
+    events:
+      - { id: isandlwana, date: 1879 CE, label: "The Zulu army destroys a British force at Isandlwana", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Isandlwana] }
+    sources: [wikipedia:Zulu_Kingdom]
+
+  - id: south-africa
+    name: South Africa
+    region: africa
+    group: central-south
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1652 – 2026 CE
+    cliopatria: ["Dutch Cape Colony", "Cape Colony", "Union of South Africa", "South Africa"]
+    events:
+      - { id: cape-colony, date: 1652 CE, label: "The Dutch found a supply station at the Cape", prominence: 3, themes: [migration], sources: [wikipedia:Dutch_Cape_Colony] }
+      - { id: apartheid, date: 1948 CE, label: "Apartheid becomes law", prominence: 2, themes: [government], sources: [wikipedia:Apartheid] }
+      - { id: mandela, date: 1994 CE, label: "Free elections: Nelson Mandela becomes president", prominence: 1, themes: [government], sources: [wikipedia:1994_South_African_general_election] }
+    sources: [wikipedia:History_of_South_Africa]
+
+  - id: colonial-africa
+    name: Colonial Africa
+    region: africa
+    group: central-south
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1884 – 1975 CE
+    events:
+      - { id: berlin-conference, date: 1884 CE, label: "The Berlin Conference: Europe divides Africa on paper", prominence: 1, themes: [government, war], sources: [wikipedia:Berlin_Conference] }
+      - { id: congo-free-state, date: 1885 CE, label: "Leopold II's Congo Free State: millions die for rubber", prominence: 2, sources: [wikipedia:Congo_Free_State] }
+      - { id: year-of-africa, date: 1960 CE, label: "The Year of Africa: seventeen nations win independence", prominence: 2, themes: [government], sources: [wikipedia:Year_of_Africa] }
+    sources: [wikipedia:Scramble_for_Africa]
+
+  - id: rwanda
+    name: Rwanda
+    region: africa
+    group: central-south
+    sphere: african
+    prominence: 4
+    span: 1962 – 2026 CE
+    events:
+      - { id: rwanda-genocide, date: 1994 CE, label: "The Rwandan genocide: 800,000 killed in 100 days", prominence: 2, themes: [war], sources: [wikipedia:Rwandan_genocide] }
+    sources: [wikipedia:Rwanda]
+
+  # ------------------------------------------------------------------ the nile & the horn
+  - id: makuria
+    name: Christian Nubia (Makuria)
+    region: africa
+    group: nile-horn
+    sphere: african
+    prominence: 3
+    span: c. 340 – 1312 CE
+    cliopatria: ["Makuria", "Nobatia", "Alodia"]
+    events:
+      - { id: baqt, date: 652 CE, label: "The Baqt treaty: Nubia holds off the Arab armies for six centuries", prominence: 3, themes: [diplomacy], sources: [wikipedia:Baqt] }
+    sources: [wikipedia:Makuria]
+
+  - id: zagwe
+    name: Zagwe dynasty
+    region: africa
+    group: nile-horn
+    sphere: african
+    prominence: 3
+    span: c. 900 – 1270 CE
+    cliopatria: ["Zagwe Dynasty"]
+    relations:
+      - { type: becomes, lane: ethiopia, at: 1270 CE }
+    events:
+      - { id: lalibela, date: c. 1200 CE, label: "King Lalibela's churches carved down into the rock", prominence: 2, themes: [art, religion], sources: [wikipedia:Rock-hewn_Churches,_Lalibela] }
+    sources: [wikipedia:Zagwe_dynasty]
+
+  - id: ethiopia
+    name: Ethiopia
+    endonym: { text: ኢትዮጵያ, script: Ethi, translit: Ityopya }
+    region: africa
+    group: nile-horn
+    sphere: african
+    prominence: 2
+    span: 1270 – 2026 CE
+    cliopatria: ["Ethiopian Empire", "Ethiopia"]
+    events:
+      - { id: kebra-nagast, date: c. 1320 CE, label: "The Kebra Nagast traces the dynasty to Solomon and Sheba", prominence: 3, themes: [religion, art], sources: [wikipedia:Kebra_Nagast] }
+      - { id: adwa, date: 1896 CE, label: "Ethiopia defeats Italy at Adwa and stays free", prominence: 1, themes: [war], sources: [wikipedia:Battle_of_Adwa] }
+      - { id: haile-selassie, date: 1974 CE, label: "Haile Selassie is overthrown; the Derg rules", prominence: 4, themes: [government], sources: [wikipedia:Derg] }
+    sources: [wikipedia:Ethiopian_Empire]
+
+  # ------------------------------------------------------------------ the maghreb
+  - id: almoravids
+    name: Almoravids & Almohads
+    region: africa
+    group: maghreb
+    sphere: islamic
+    prominence: 3
+    span: 1040 – 1269 CE
+    cliopatria: ["Almoravid dynasty", "Almohad Caliphate", "Almoravid Empire"]
+    relations:
+      - { type: becomes, lane: morocco, at: 1269 CE }
+    events:
+      - { id: averroes, date: c. 1180 CE, label: "Ibn Rushd (Averroes) comments on Aristotle", prominence: 3, themes: [ideas], sources: [wikipedia:Averroes] }
+    sources: [wikipedia:Almohad_Caliphate]
+
+  - id: morocco
+    name: Morocco
+    region: africa
+    group: maghreb
+    sphere: islamic
+    prominence: 3
+    span: 1269 – 2026 CE
+    cliopatria: ["Marinid Sultanate", "Saadi Sultanate", "Alaouite Sultanate", "Morocco"]
+    events:
+      - { id: ibn-battuta, date: 1325 CE, label: "Ibn Battuta leaves Tangier; he will travel 120,000 km", prominence: 2, themes: [exploration], sources: [wikipedia:Ibn_Battuta] }
+    sources: [wikipedia:History_of_Morocco]
+
+  - id: algeria
+    name: Algeria
+    region: africa
+    group: maghreb
+    sphere: islamic
+    prominence: 4
+    span: 1962 – 2026 CE
+    events:
+      - { id: algeria-war, date: 1962 CE, label: "After a brutal war, Algeria wins independence from France", prominence: 3, themes: [war], sources: [wikipedia:Algerian_War] }
+    sources: [wikipedia:Algeria]

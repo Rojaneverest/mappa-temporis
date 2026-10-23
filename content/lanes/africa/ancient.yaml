@@ -1,0 +1,53 @@
+# Africa from the Green Sahara to c. 800 BCE.
+lanes:
+  - id: green-sahara
+    name: Green Sahara herders
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 3
+    basis: archaeology
+    span: c. 9000 – c. 3000 BCE
+    events:
+      - { id: sahara-cattle, date: c. 7000 BCE, label: "Herders and their cattle cross a green Sahara of lakes and grassland", prominence: 3, themes: [climate, migration], sources: [wikipedia:African_humid_period] }
+      - { id: tassili-art, date: c. 6000 BCE, label: "Rock paintings at Tassili n'Ajjer show herds, swimmers and dancers", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Tassili_n'Ajjer] }
+      - { id: sahara-dries, date: c. 3500 BCE, label: "The Sahara dries into desert; people move to the Nile and the Sahel", prominence: 2, themes: [climate, migration], confidence: probable, sources: [wikipedia:African_humid_period] }
+    sources: [wikipedia:African_humid_period]
+
+  - id: tichitt
+    name: Tichitt tradition
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 4
+    basis: archaeology
+    span: c. 2200 – c. 200 BCE
+    events:
+      - { id: tichitt-villages, date: c. 1600 BCE, label: "Stone-walled villages on the cliffs of Mauritania", prominence: 4, sources: [wikipedia:Tichitt_culture] }
+    sources: [wikipedia:Tichitt_culture]
+
+  - id: san
+    name: San peoples
+    region: africa
+    group: central-south
+    sphere: african
+    prominence: 3
+    basis: archaeology
+    span: c. 10000 BCE – 2026 CE
+    events:
+      - { id: san-rock-art, date: c. 1000 BCE, label: "Rock paintings across southern Africa record trance dances and eland", prominence: 3, themes: [art, religion], confidence: probable, sources: [wikipedia:San_rock_art] }
+    sources: [wikipedia:San_people]
+
+  - id: kerma
+    name: Kingdom of Kerma
+    region: africa
+    group: nile-horn
+    sphere: african
+    prominence: 2
+    span: c. 2500 – c. 1500 BCE
+    cliopatria: ["Kerma"]
+    relations:
+      - { type: becomes, lane: kush, at: c. 1070 BCE }
+    events:
+      - { id: kerma-peak, date: c. 1700 BCE, label: "Kerma, Africa's first great city south of Egypt, rivals its northern neighbour", prominence: 2, sources: [wikipedia:Kerma_culture] }
+    sources: [wikipedia:Kerma_culture]

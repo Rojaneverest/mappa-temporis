@@ -206,7 +206,7 @@ museum images  ──┘    validate, layout,  tiled, binary, ├──► print
 | QA | Vitest; Playwright visual snapshots of ~50 fixed views; perf budgets |
 | Hosting | Local / private first; Cloudflare Pages + R2 if ever shared |
 
-**Performance budgets:** first view < 2 s; 60 fps pan/zoom on Apple Silicon; median tile render < 30 ms; < 5 MB before first view (excl. images); capped tile cache (iPad-safe).
+**Performance budgets:** first view < 2 s; 60 fps pan/zoom on Apple Silicon; median tile render < 30 ms; < 5 MB before first view (excl. images); capped tile cache. Desktop browsers only (decision 21).
 
 **The Atelier** (local editor mode): click to edit; drag lanes/labels/images → saved as "pins" in YAML; live warnings (collisions, budgets, missing sources/credits); coverage heatmap; before/after visual diffs.
 

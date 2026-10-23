@@ -60,7 +60,7 @@ lanes:
   - id: anglo-saxons
     name: Anglo-Saxon kingdoms
     region: europe
-    group: north-europe
+    group: british-isles
     sphere: celtic-germanic
     prominence: 4
     span: c. 450 – 927 CE
@@ -72,7 +72,7 @@ lanes:
   - id: visigoths
     name: Visigothic kingdom
     region: europe
-    group: north-europe
+    group: iberia
     sphere: celtic-germanic
     prominence: 3
     span: 418 – 721 CE

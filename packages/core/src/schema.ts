@@ -110,6 +110,8 @@ export const Sheet = z.object({
   title: z.string(),
   subtitle: z.string(),
   window: SpanText,
+  /** Compressed stretches (e.g. the Neolithic prologue): `factor` 5 = a fifth of the normal space per year. */
+  compress: z.array(z.object({ span: SpanText, factor: z.number().min(1), label: z.string().optional() })).default([]),
   regions: z.array(Region),
   eras: z.array(Era),
 });

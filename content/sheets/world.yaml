@@ -1,0 +1,67 @@
+# The whole chart: from the first farmers to today, every region. Phase 2 skeleton.
+title: Mappa Temporis
+subtitle: A map of time — from the first farmers to today
+window: 10000 BCE – 2026 CE
+compress:
+  - { span: 10000 – 3301 BCE, factor: 5, label: "Above this line, time is compressed: a century takes a fifth of the space" }
+regions:
+  - { id: americas, name: The Americas, groups: [north-america, mesoamerica, caribbean, andes, south-america] }
+  - { id: africa, name: Africa, groups: [west-africa, central-south, nile-horn, maghreb] }
+  - { id: europe, name: Europe, groups: [british-isles, iberia, north-europe, italy, central-europe, eastern-europe, greece] }
+  - { id: near-east, name: The Mediterranean & Near East, groups: [egypt, levant, anatolia, iran] }
+  - { id: steppe, name: The Steppe & Central Asia, groups: [western-steppe, central-asia, steppe] }
+  - { id: south-asia, name: South Asia, groups: [northwest, gangetic, deccan-south, lanka, himalaya] }
+  - { id: east-asia, name: East Asia, groups: [china, korea, japan] }
+  - { id: southeast-asia, name: Southeast Asia, groups: [mainland, islands] }
+  - { id: oceania, name: Oceania, groups: [australia, pacific] }
+eras:
+  - id: neolithic
+    name: The Neolithic
+    span: 10000 – 3301 BCE
+    forces: [climate, migration]
+    turningPoint: { label: Farming begins in the Fertile Crescent, span: 9600 – 9000 BCE }
+  - id: early-bronze
+    name: Early Bronze Age
+    span: 3300 – 2201 BCE
+    forces: [ideas, technology]
+    turningPoint: { label: Writing — history begins, span: 3300 – 3200 BCE }
+  - id: bronze
+    name: Bronze Age
+    span: 2200 – 1201 BCE
+    forces: [climate, migration]
+    turningPoint: { label: The 4.2-kiloyear event — a century of drought, span: 2200 – 2100 BCE }
+  - id: iron-age
+    name: Iron Age
+    span: 1200 – 601 BCE
+    forces: [climate, migration, war]
+    turningPoint: { label: The Bronze Age collapse, span: 1200 – 1150 BCE }
+  - id: classical
+    name: Classical Antiquity
+    span: 600 BCE – 500 CE
+    forces: [ideas]
+    turningPoint: { label: The Axial Age — philosophies that still shape us, span: 600 – 500 BCE }
+  - id: middle-ages
+    name: Middle Ages
+    span: 501 – 1500
+    forces: [climate, migration, disease]
+    turningPoint: { label: Volcanic winters of 536 · Plague of Justinian, span: 536 – 549 CE }
+  - id: early-modern
+    name: Early Modern
+    span: 1501 – 1760
+    forces: [disease, technology]
+    turningPoint: { label: The Black Death, printing, 1453 and 1492, span: 1347 – 1500 CE }
+  - id: industrial
+    name: Revolutions & Industry
+    span: 1761 – 1914
+    forces: [technology, ideas]
+    turningPoint: { label: Steam power and the Atlantic revolutions, span: 1760 – 1800 CE }
+  - id: world-wars
+    name: World Wars & Cold War
+    span: 1915 – 1991
+    forces: [war, technology]
+    turningPoint: { label: World War I, span: 1914 – 1918 CE }
+  - id: contemporary
+    name: Contemporary
+    span: 1992 – 2026
+    forces: [technology, climate]
+    turningPoint: { label: The end of the Cold War and the Internet, span: 1989 – 1995 CE }

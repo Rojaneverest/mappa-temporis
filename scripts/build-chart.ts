@@ -16,6 +16,7 @@ import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
 import { LaneFile, Sheet, ThreadFile, Tour, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
+import { makeTimescale, yearToYOf, yToYearOf, upyAt } from '../packages/core/src/timescale.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
 import { FONT_FILES, registerFonts } from '../packages/render/src/fonts.ts';
 import { measure, type TextSpec } from '../packages/render/src/text.ts';
@@ -101,8 +102,23 @@ fonts.enableFontFallback();
 const win = parseSpan(sheet.window);
 const year0 = win.start.year;
 const year1 = win.end.year;
-const Y = (year: number) => HEADER + (year - year0) * UNITS_PER_YEAR;
-const yearAt = (y: number) => year0 + (y - HEADER) / UNITS_PER_YEAR;
+// Piecewise time: compressed stretches (the prologue) take 1/factor of the normal space per year.
+const timeParts: { year0: number; year1: number; upy: number }[] = [];
+{
+  const cuts = sheet.compress.map((c) => { const sp = parseSpan(c.span); return { a: Math.max(year0, sp.start.year), b: Math.min(year1, sp.end.year + 1), upy: UNITS_PER_YEAR / c.factor }; })
+    .filter((c) => c.b > c.a).sort((p, q) => p.a - q.a);
+  let at = year0;
+  for (const c of cuts) {
+    if (c.a > at) timeParts.push({ year0: at, year1: c.a, upy: UNITS_PER_YEAR });
+    timeParts.push({ year0: c.a, year1: c.b, upy: c.upy });
+    at = c.b;
+  }
+  if (at < year1) timeParts.push({ year0: at, year1, upy: UNITS_PER_YEAR });
+}
+const timeSegs = makeTimescale(HEADER, timeParts);
+const Y = (year: number) => yearToYOf(timeSegs, year);
+const yearAt = (y: number) => yToYearOf(timeSegs, y);
+const upy = (year: number) => upyAt(timeSegs, year);
 const yTop = Y(year0);
 const yBottom = Y(year1);
 const height = yBottom + FOOTER;
@@ -212,13 +228,29 @@ grid.mark(width - MARGIN_R + 10, yTop, MARGIN_R, yBottom - yTop);
 const fullX0 = MARGIN_L - 260;
 const fullX1 = width - MARGIN_R + 200;
 const majorCenturies = new Set(roundYears(year0, year1, 500));
-for (const yr of roundYears(year0, year1, 100)) {
-  const yy = Y(yr);
-  const major = majorCenturies.has(yr);
-  layers.grid.push({ k: 'line', x1: fullX0, y1: yy, x2: fullX1, y2: yy, stroke: '#FFFDF6', sw: major ? 2.2 : 1.4, hair: true, alpha: 0.85, b: [fullX0, yy - 2, fullX1, yy + 2] });
-  const label = formatYear(yr, { forceEra: true });
-  layers.text.push(text({ role: 'year', text: label, size: 64, color: INK_SOFT, align: 'right', w: 560, x: MARGIN_L - 860, y: yy - 38 }));
-  layers.text.push(text({ role: 'year', text: label, size: 64, color: INK_SOFT, align: 'left', w: 560, x: width - MARGIN_R + 260, y: yy - 38 }));
+for (const seg of timeSegs) {
+  // Century lines in the normal scale; millennium lines where time is compressed.
+  const step = seg.upy * 100 >= 600 ? 100 : 1000;
+  for (const yr of roundYears(Math.ceil(seg.year0), Math.floor(seg.year1 - 1e-9), step)) {
+    const yy = Y(yr);
+    const major = step === 1000 || majorCenturies.has(yr);
+    layers.grid.push({ k: 'line', x1: fullX0, y1: yy, x2: fullX1, y2: yy, stroke: '#FFFDF6', sw: major ? 2.2 : 1.4, hair: true, alpha: 0.85, b: [fullX0, yy - 2, fullX1, yy + 2] });
+    const label = formatYear(yr, { forceEra: true });
+    layers.text.push(text({ role: 'year', text: label, size: 64, color: INK_SOFT, align: 'right', w: 560, x: MARGIN_L - 860, y: yy - 38 }));
+    layers.text.push(text({ role: 'year', text: label, size: 64, color: INK_SOFT, align: 'left', w: 560, x: width - MARGIN_R + 260, y: yy - 38 }));
+  }
+}
+// Scale breaks: a zig-zag rule where compressed time meets the equidistant chart.
+for (const c of sheet.compress) {
+  const sp = parseSpan(c.span);
+  for (const yr of [sp.start.year, sp.end.year + 1]) {
+    if (yr <= year0 || yr >= year1) continue;
+    const yy = Y(yr);
+    const zig: string[] = [`M ${fullX0 - 900} ${yy}`];
+    for (let x = fullX0 - 900, k = 0; x < fullX1 + 200; x += 120, k++) zig.push(`L ${x + 60} ${yy + (k % 2 ? 22 : -22)} L ${x + 120} ${yy}`);
+    layers.bands.push({ k: 'path', d: zig.join(' '), stroke: INK, sw: 6, alpha: 0.7, b: [fullX0 - 900, yy - 30, fullX1 + 260, yy + 30] });
+    if (c.label) layers.text.push(text({ role: 'caption', text: c.label, size: 54, color: INK_SOFT, align: 'right', w: 1400, x: MARGIN_L - 1580, y: yy + 50 }));
+  }
 }
 
 for (const era of sheet.eras) {
@@ -334,8 +366,8 @@ for (const lane of visibleLanes) {
   const xs = [...right, ...left].map((p) => p[0]);
   const bbox: [number, number, number, number] = [Math.min(...xs), top, Math.max(...xs), bottom];
 
-  const fadeTop = clippedTop ? 300 : span.start.circa ? Math.max(120, (span.start.year - span.start.earliest) * UNITS_PER_YEAR * 2) : 0;
-  const fadeBot = clippedBottom ? 300 : span.end.circa ? Math.max(120, (span.end.latest - span.end.year) * UNITS_PER_YEAR * 2) : 0;
+  const fadeTop = clippedTop ? 300 : span.start.circa ? Math.max(120, (span.start.year - span.start.earliest) * upy(span.start.year) * 2) : 0;
+  const fadeBot = clippedBottom ? 300 : span.end.circa ? Math.max(120, (span.end.latest - span.end.year) * upy(span.end.year) * 2) : 0;
   const len = bottom - top;
   const color = laneColor(lane.sphere, lane.prominence);
   const lanePath: PathItem = { k: 'path', d, fill: color, multiply: true, ref: lane.id, alpha: lane.basis === 'archaeology' ? 0.62 : 1, b: bbox };
@@ -774,7 +806,7 @@ const dl: DisplayList = {
   fonts: `/fonts/${SHEET_ID}/`,
   width,
   height,
-  time: { y0: HEADER, year0, year1, unitsPerYear: UNITS_PER_YEAR },
+  time: { y0: HEADER, year0, year1, unitsPerYear: UNITS_PER_YEAR, segments: timeSegs.length > 1 ? timeSegs : undefined },
   regions: regionLayouts.map((r) => ({ x0: r.x0, x1: r.x0 + r.width, name: r.name })),
   items,
   stats: { ...stats, items: items.length },

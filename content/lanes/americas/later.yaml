@@ -1,0 +1,261 @@
+# The Americas from c. 700 CE to today.
+lanes:
+  # ------------------------------------------------------------------ north america
+  - id: mississippian
+    name: Mississippian culture
+    region: americas
+    group: north-america
+    sphere: north-american
+    prominence: 2
+    basis: archaeology
+    span: c. 800 – c. 1600 CE
+    relations:
+      - { type: succeeds, lane: hopewell, at: c. 800 CE }
+    events:
+      - { id: cahokia, date: c. 1050 CE, label: "Cahokia: a city of 15,000 around Monks Mound, the largest north of Mexico", prominence: 1, themes: [art], sources: [wikipedia:Cahokia] }
+    sources: [wikipedia:Mississippian_culture]
+
+  - id: ancestral-puebloans
+    name: Ancestral Puebloans & Pueblo peoples
+    region: americas
+    group: north-america
+    sphere: north-american
+    prominence: 3
+    span: 750 – 2026 CE
+    relations:
+      - { type: succeeds, lane: basketmaker, at: 750 CE }
+    events:
+      - { id: chaco, date: c. 1050 CE, label: "The great houses of Chaco Canyon, aligned to sun and moon", prominence: 2, themes: [art, sky], sources: [wikipedia:Chaco_Culture_National_Historical_Park] }
+      - { id: sn-1054, date: 1054 CE, label: "A supernova blazes in the sky — perhaps painted at Chaco, recorded in China", prominence: 4, themes: [sky], confidence: probable, sources: [wikipedia:SN_1054] }
+      - { id: mesa-verde, date: c. 1190 CE, label: "Cliff dwellings at Mesa Verde", prominence: 3, themes: [art], sources: [wikipedia:Mesa_Verde_National_Park] }
+      - { id: pueblo-revolt, date: 1680 CE, label: "The Pueblo Revolt drives the Spanish from New Mexico", prominence: 3, themes: [war], sources: [wikipedia:Pueblo_Revolt] }
+    sources: [wikipedia:Ancestral_Puebloans]
+
+  - id: haudenosaunee
+    name: Haudenosaunee Confederacy
+    region: americas
+    group: north-america
+    sphere: north-american
+    prominence: 3
+    span: c. 1450 – 2026 CE
+    events:
+      - { id: great-law, date: c. 1450 CE, label: "The Great Law of Peace unites five nations", prominence: 3, confidence: disputed, themes: [government], sources: [wikipedia:Great_Law_of_Peace] }
+    sources: [wikipedia:Iroquois]
+
+  - id: british-america
+    name: British North America
+    region: americas
+    group: north-america
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1607 – 1776 CE
+    cliopatria: ["Thirteen Colonies", "British America"]
+    relations:
+      - { type: becomes, lane: united-states, at: 1776 CE }
+    events:
+      - { id: jamestown, date: 1607 CE, label: "Jamestown, the first lasting English colony", prominence: 3, themes: [migration], sources: [wikipedia:Jamestown,_Virginia] }
+      - { id: virginia-1619, date: 1619 CE, label: "Enslaved Africans arrive in Virginia", prominence: 2, themes: [migration], sources: [wikipedia:1619_Project] }
+    sources: [wikipedia:Thirteen_Colonies]
+
+  - id: united-states
+    name: United States
+    region: americas
+    group: north-america
+    sphere: celtic-germanic
+    prominence: 1
+    span: 1776 – 2026 CE
+    cliopatria: ["United States of America", "United States"]
+    events:
+      - { id: declaration, date: 1776 CE, label: "The Declaration of Independence", prominence: 1, themes: [government], sources: [wikipedia:United_States_Declaration_of_Independence] }
+      - { id: constitution, date: 1787 CE, label: "The US Constitution", prominence: 2, themes: [government], sources: [wikipedia:Constitution_of_the_United_States] }
+      - { id: trail-of-tears, date: 1830 CE, label: "The Indian Removal Act and the Trail of Tears", prominence: 2, themes: [migration], sources: [wikipedia:Trail_of_Tears] }
+      - { id: civil-war, date: 1861 CE, label: "The Civil War; in 1865 slavery is abolished", prominence: 1, themes: [war, government], sources: [wikipedia:American_Civil_War] }
+      - { id: wright, date: 1903 CE, label: "The Wright brothers fly", prominence: 1, themes: [technology], sources: [wikipedia:Wright_Flyer] }
+      - { id: crash-1929, date: 1929 CE, label: "The Wall Street Crash and the Great Depression", prominence: 2, themes: [trade], sources: [wikipedia:Wall_Street_crash_of_1929] }
+      - { id: trinity, date: 1945 CE, label: "The first atomic bomb is tested in New Mexico", prominence: 2, themes: [technology, war], sources: [wikipedia:Trinity_(nuclear_test)] }
+      - { id: dream, date: 1963 CE, label: "Martin Luther King: 'I have a dream'", prominence: 2, themes: [government], sources: [wikipedia:I_Have_a_Dream] }
+      - { id: moon-landing, date: 1969 CE, label: "Apollo 11: humans walk on the Moon", prominence: 1, themes: [technology, sky], sources: [wikipedia:Apollo_11] }
+      - { id: internet-born, date: 1983 CE, label: "ARPANET switches to TCP/IP — the Internet is born", prominence: 2, themes: [technology], sources: [wikipedia:ARPANET] }
+      - { id: nine-eleven, date: 2001 CE, label: "The September 11 attacks", prominence: 2, themes: [war], sources: [wikipedia:September_11_attacks] }
+      - { id: iphone, date: 2007 CE, label: "The smartphone era begins", prominence: 3, themes: [technology], sources: [wikipedia:IPhone_(1st_generation)] }
+    sources: [wikipedia:United_States]
+
+  - id: new-france-canada
+    name: New France & Canada
+    region: americas
+    group: north-america
+    sphere: celtic-germanic
+    prominence: 3
+    span: 1534 – 2026 CE
+    cliopatria: ["New France", "Canada", "Province of Quebec", "Dominion of Canada"]
+    events:
+      - { id: quebec, date: 1608 CE, label: "Champlain founds Quebec", prominence: 4, sources: [wikipedia:Quebec_City] }
+      - { id: confederation, date: 1867 CE, label: "Canadian Confederation", prominence: 3, themes: [government], sources: [wikipedia:Canadian_Confederation] }
+    sources: [wikipedia:History_of_Canada]
+
+  # ------------------------------------------------------------------ mesoamerica
+  - id: toltecs
+    name: Toltecs
+    region: americas
+    group: mesoamerica
+    sphere: mesoamerican
+    prominence: 3
+    span: c. 900 – c. 1168 CE
+    cliopatria: ["Toltec Empire"]
+    sources: [wikipedia:Toltec]
+
+  - id: aztec
+    name: Aztec Empire
+    endonym: { text: Mēxihcah, script: Latn, translit: Mexica }
+    region: americas
+    group: mesoamerica
+    sphere: mesoamerican
+    prominence: 1
+    span: 1325 – 1521 CE
+    cliopatria: ["Aztec Empire", "Aztec Triple Alliance"]
+    relations:
+      - { type: becomes, lane: new-spain, at: 1521 CE }
+    events:
+      - { id: tenochtitlan, date: 1325 CE, label: "The Mexica found Tenochtitlan on an island in Lake Texcoco", prominence: 2, sources: [wikipedia:Tenochtitlan] }
+      - { id: triple-alliance, date: 1428 CE, label: "The Triple Alliance: the Aztec Empire is born", prominence: 3, themes: [government], sources: [wikipedia:Aztec_Triple_Alliance] }
+      - { id: cortes, date: 1521 CE, label: "Tenochtitlan falls to Cortés, his Tlaxcalan allies and smallpox", prominence: 1, themes: [war, disease], sources: [wikipedia:Fall_of_Tenochtitlan] }
+    sources: [wikipedia:Aztec_Empire]
+
+  - id: new-spain
+    name: New Spain & Mexico
+    region: americas
+    group: mesoamerica
+    sphere: italic
+    prominence: 2
+    span: 1521 – 2026 CE
+    cliopatria: ["New Spain", "Viceroyalty of New Spain", "Mexico", "Mexican Empire"]
+    segments:
+      - { name: Viceroyalty of New Spain, span: 1521 – 1821 CE, weight: 4 }
+      - { name: Mexico, span: 1821 – 2026 CE, weight: 4 }
+    events:
+      - { id: cocoliztli, date: 1545 CE, label: "Epidemics kill perhaps 90% of Mexico's people within a century", prominence: 2, themes: [disease], sources: [wikipedia:Cocoliztli_epidemics] }
+      - { id: manila-galleon, date: 1565 CE, label: "The Manila galleons link Acapulco and Asia: the first global trade route", prominence: 2, themes: [trade], sources: [wikipedia:Manila_galleon] }
+      - { id: mexican-independence, date: 1821 CE, label: "Mexico wins independence", prominence: 3, themes: [government], sources: [wikipedia:Mexican_War_of_Independence] }
+      - { id: us-mexico-war, date: 1846 CE, label: "The US takes half of Mexico", prominence: 3, themes: [war], sources: [wikipedia:Mexican–American_War] }
+      - { id: mexican-revolution, date: 1910 CE, label: "The Mexican Revolution", prominence: 3, themes: [war], sources: [wikipedia:Mexican_Revolution] }
+    sources: [wikipedia:New_Spain]
+
+  # ------------------------------------------------------------------ caribbean
+  - id: taino
+    name: Taíno
+    region: americas
+    group: caribbean
+    sphere: mesoamerican
+    prominence: 3
+    span: c. 500 BCE – c. 1550 CE
+    events:
+      - { id: columbus-lands, date: 1492 CE, label: "Columbus lands in the Bahamas: two worlds meet — the Columbian Exchange begins", prominence: 1, themes: [exploration, disease, trade], sources: [wikipedia:Columbian_exchange] }
+    sources: [wikipedia:Taíno]
+
+  - id: haiti
+    name: Saint-Domingue & Haiti
+    region: americas
+    group: caribbean
+    sphere: celtic-germanic
+    prominence: 3
+    span: 1697 – 2026 CE
+    cliopatria: ["Saint-Domingue", "Haiti"]
+    events:
+      - { id: haitian-revolution, date: 1791 CE, label: "The Haitian Revolution: enslaved people free themselves", prominence: 1, themes: [war, government], sources: [wikipedia:Haitian_Revolution] }
+      - { id: haiti-2010, date: 2010 CE, label: "An earthquake devastates Haiti", prominence: 4, sources: [wikipedia:2010_Haiti_earthquake] }
+    sources: [wikipedia:Haiti]
+
+  - id: cuba
+    name: Cuba
+    region: americas
+    group: caribbean
+    sphere: italic
+    prominence: 3
+    span: 1902 – 2026 CE
+    cliopatria: ["Cuba", "Republic of Cuba"]
+    events:
+      - { id: cuban-revolution, date: 1959 CE, label: "The Cuban Revolution", prominence: 3, themes: [government], sources: [wikipedia:Cuban_Revolution] }
+      - { id: missile-crisis, date: 1962 CE, label: "The Cuban Missile Crisis — the closest the world came to nuclear war", prominence: 2, themes: [war], sources: [wikipedia:Cuban_Missile_Crisis] }
+    sources: [wikipedia:Cuba]
+
+  # ------------------------------------------------------------------ andes & south america
+  - id: chimu
+    name: Chimú
+    region: americas
+    group: andes
+    sphere: andean
+    prominence: 3
+    span: c. 900 – 1470 CE
+    cliopatria: ["Chimor", "Chimú Empire"]
+    events:
+      - { id: chan-chan, date: c. 1300 CE, label: "Chan Chan, the largest adobe city in the Americas", prominence: 3, themes: [art], sources: [wikipedia:Chan_Chan] }
+    sources: [wikipedia:Chimor]
+
+  - id: inca
+    name: Inca Empire
+    endonym: { text: Tawantinsuyu, script: Latn, translit: the four parts together }
+    region: americas
+    group: andes
+    sphere: andean
+    prominence: 1
+    span: c. 1200 – 1533 CE
+    cliopatria: ["Inca Empire", "Kingdom of Cusco"]
+    segments:
+      - { name: Kingdom of Cusco, span: c. 1200 – 1438 CE, weight: 3 }
+      - { name: Tawantinsuyu, span: 1438 – 1533 CE, weight: 6 }
+    relations:
+      - { type: conquers, lane: chimu, at: c. 1470 CE }
+      - { type: becomes, lane: peru, at: 1533 CE }
+    events:
+      - { id: pachacuti, date: 1438 CE, label: "Pachacuti turns Cusco into an empire", prominence: 2, sources: [wikipedia:Pachacuti] }
+      - { id: machu-picchu, date: c. 1450 CE, label: "Machu Picchu is built", prominence: 1, themes: [art], sources: [wikipedia:Machu_Picchu] }
+      - { id: quipu, date: c. 1450 CE, label: "Knotted quipu strings keep the empire's accounts", prominence: 3, thread: scripts, sources: [wikipedia:Quipu] }
+      - { id: cajamarca, date: 1532 CE, label: "Pizarro seizes Atahualpa at Cajamarca", prominence: 1, themes: [war], sources: [wikipedia:Battle_of_Cajamarca] }
+    sources: [wikipedia:Inca_Empire]
+
+  - id: peru
+    name: Peru & the Andean republics
+    region: americas
+    group: andes
+    sphere: italic
+    prominence: 2
+    span: 1533 – 2026 CE
+    cliopatria: ["Viceroyalty of Peru", "Peru", "Bolivia", "Gran Colombia", "Viceroyalty of New Granada"]
+    segments:
+      - { name: Viceroyalty of Peru, span: 1533 – 1824 CE, weight: 4 }
+      - { name: Andean republics, span: 1824 – 2026 CE, weight: 3 }
+    events:
+      - { id: potosi, date: 1545 CE, label: "Silver at Potosí floods the world's markets", prominence: 2, thread: money, themes: [trade], sources: [wikipedia:Potosí] }
+      - { id: tupac-amaru, date: 1780 CE, label: "Túpac Amaru II's great rebellion", prominence: 3, themes: [war], sources: [wikipedia:Rebellion_of_Túpac_Amaru_II] }
+      - { id: bolivar, date: 1824 CE, label: "Bolívar and Sucre win Ayacucho: Spanish South America is free", prominence: 2, themes: [war, government], sources: [wikipedia:Battle_of_Ayacucho] }
+    sources: [wikipedia:Viceroyalty_of_Peru]
+
+  - id: brazil
+    name: Brazil
+    region: americas
+    group: south-america
+    sphere: italic
+    prominence: 2
+    span: 1500 – 2026 CE
+    cliopatria: ["Colonial Brazil", "Empire of Brazil", "Brazil", "United Kingdom of Portugal, Brazil and the Algarves"]
+    segments:
+      - { name: Portuguese Brazil, span: 1500 – 1822 CE, weight: 4 }
+      - { name: Empire of Brazil, span: 1822 – 1889 CE, weight: 4 }
+      - { name: Republic of Brazil, span: 1889 – 2026 CE, weight: 4 }
+    events:
+      - { id: cabral, date: 1500 CE, label: "Cabral claims Brazil for Portugal", prominence: 3, themes: [exploration], sources: [wikipedia:Pedro_Álvares_Cabral] }
+      - { id: abolition-brazil, date: 1888 CE, label: "Brazil is the last country in the Americas to abolish slavery", prominence: 2, themes: [government], sources: [wikipedia:Lei_Áurea] }
+      - { id: brasilia, date: 1960 CE, label: "Brasília, a capital built from scratch", prominence: 4, themes: [art], sources: [wikipedia:Brasília] }
+    sources: [wikipedia:History_of_Brazil]
+
+  - id: argentina
+    name: Río de la Plata & Argentina
+    region: americas
+    group: south-america
+    sphere: italic
+    prominence: 3
+    span: 1776 – 2026 CE
+    cliopatria: ["Viceroyalty of the Río de la Plata", "Argentina", "United Provinces of the Río de la Plata"]
+    events:
+      - { id: argentine-independence, date: 1816 CE, label: "Argentina declares independence; San Martín crosses the Andes", prominence: 3, themes: [war], sources: [wikipedia:Argentine_Declaration_of_Independence] }
+    sources: [wikipedia:History_of_Argentina]

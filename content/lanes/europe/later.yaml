@@ -1,0 +1,481 @@
+# Europe from c. 700 CE to today.
+lanes:
+  # ------------------------------------------------------------------ british isles
+  - id: england
+    name: Kingdom of England
+    region: europe
+    group: british-isles
+    sphere: celtic-germanic
+    prominence: 2
+    span: 927 – 1707 CE
+    cliopatria: ["Kingdom of England", "England"]
+    relations:
+      - { type: succeeds, lane: anglo-saxons, at: 927 CE }
+      - { type: becomes, lane: united-kingdom, at: 1707 CE }
+    events:
+      - { id: beowulf, date: c. 1000 CE, label: "Beowulf is written down", prominence: 3, themes: [art], sources: [wikipedia:Beowulf] }
+      - { id: hastings, date: 1066 CE, label: "William of Normandy conquers England at Hastings", prominence: 1, themes: [war], sources: [wikipedia:Norman_Conquest] }
+      - { id: magna-carta, date: 1215 CE, label: "Magna Carta: even the king is under the law", prominence: 1, themes: [government], sources: [wikipedia:Magna_Carta] }
+      - { id: peasants-revolt, date: 1381 CE, label: "The Peasants' Revolt", prominence: 4, sources: [wikipedia:Peasants'_Revolt] }
+      - { id: shakespeare, date: c. 1600 CE, label: "Shakespeare writes Hamlet", prominence: 2, themes: [art], sources: [wikipedia:Hamlet] }
+      - { id: armada, date: 1588 CE, label: "The Spanish Armada is wrecked", prominence: 3, themes: [war], sources: [wikipedia:Spanish_Armada] }
+      - { id: english-civil-war, date: 1642 CE, label: "Civil war; in 1649 King Charles I is beheaded", prominence: 3, themes: [war, government], sources: [wikipedia:English_Civil_War] }
+      - { id: newton, date: 1687 CE, label: "Newton's Principia: one law of gravity for apples and planets", prominence: 1, themes: [ideas], sources: [wikipedia:Philosophiæ_Naturalis_Principia_Mathematica] }
+      - { id: glorious-revolution, date: 1688 CE, label: "The Glorious Revolution: Parliament over the crown", prominence: 3, themes: [government], sources: [wikipedia:Glorious_Revolution] }
+    sources: [wikipedia:Kingdom_of_England]
+
+  - id: scotland
+    name: Kingdom of Scotland
+    region: europe
+    group: british-isles
+    sphere: celtic-germanic
+    prominence: 3
+    span: 843 – 1707 CE
+    cliopatria: ["Kingdom of Scotland", "Scotland"]
+    relations:
+      - { type: merges-into, lane: united-kingdom, at: 1707 CE }
+    events:
+      - { id: bannockburn, date: 1314 CE, label: "Robert the Bruce wins at Bannockburn", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Bannockburn] }
+    sources: [wikipedia:Kingdom_of_Scotland]
+
+  - id: united-kingdom
+    name: United Kingdom
+    region: europe
+    group: british-isles
+    sphere: celtic-germanic
+    prominence: 1
+    span: 1707 – 2026 CE
+    cliopatria: ["Kingdom of Great Britain", "United Kingdom", "United Kingdom of Great Britain and Ireland"]
+    events:
+      - { id: watt, date: 1769 CE, label: "James Watt's steam engine — the Industrial Revolution gathers speed", prominence: 1, themes: [technology], sources: [wikipedia:Watt_steam_engine] }
+      - { id: wealth-of-nations, date: 1776 CE, label: "Adam Smith's Wealth of Nations", prominence: 3, themes: [ideas], sources: [wikipedia:The_Wealth_of_Nations] }
+      - { id: abolition-trade, date: 1807 CE, label: "Britain abolishes the slave trade", prominence: 2, themes: [government], sources: [wikipedia:Slave_Trade_Act_1807] }
+      - { id: railway, date: 1825 CE, label: "The first public steam railway", prominence: 2, themes: [technology], sources: [wikipedia:Stockton_and_Darlington_Railway] }
+      - { id: darwin, date: 1859 CE, label: "Darwin's On the Origin of Species", prominence: 1, themes: [ideas], sources: [wikipedia:On_the_Origin_of_Species] }
+      - { id: suffrage-uk, date: 1918 CE, label: "Women (over 30) win the vote", prominence: 3, themes: [women, government], sources: [wikipedia:Representation_of_the_People_Act_1918] }
+      - { id: battle-britain, date: 1940 CE, label: "The Battle of Britain", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Britain] }
+      - { id: nhs, date: 1948 CE, label: "The National Health Service", prominence: 4, themes: [government], sources: [wikipedia:National_Health_Service] }
+      - { id: www, date: 1989 CE, label: "Tim Berners-Lee invents the World Wide Web (at CERN)", prominence: 1, themes: [technology], sources: [wikipedia:World_Wide_Web] }
+      - { id: brexit, date: 2016 CE, label: "Britain votes to leave the European Union", prominence: 3, themes: [government], sources: [wikipedia:2016_United_Kingdom_European_Union_membership_referendum] }
+    sources: [wikipedia:United_Kingdom]
+
+  - id: gaelic-ireland
+    name: Ireland
+    region: europe
+    group: british-isles
+    sphere: celtic-germanic
+    prominence: 3
+    span: c. 400 – 2026 CE
+    events:
+      - { id: book-of-kells, date: c. 800 CE, label: "Monks illuminate the Book of Kells", prominence: 3, themes: [art, religion], sources: [wikipedia:Book_of_Kells] }
+      - { id: irish-famine, date: 1845 CE, label: "The Great Famine: a million die, a million emigrate", prominence: 2, themes: [disease, migration], sources: [wikipedia:Great_Famine_(Ireland)] }
+      - { id: irish-independence, date: 1922 CE, label: "The Irish Free State", prominence: 3, themes: [government], sources: [wikipedia:Irish_Free_State] }
+    sources: [wikipedia:History_of_Ireland]
+
+  # ------------------------------------------------------------------ iberia
+  - id: al-andalus
+    name: Al-Andalus
+    endonym: { text: الأندلس, script: Arab, translit: al-Andalus }
+    region: europe
+    group: iberia
+    sphere: islamic
+    prominence: 2
+    span: 711 – 1492 CE
+    cliopatria: ["Emirate of Cordoba", "Caliphate of Cordoba", "Emirate of Granada"]
+    relations:
+      - { type: conquers, lane: visigoths, at: 711 CE }
+    events:
+      - { id: tariq, date: 711 CE, label: "Tariq ibn Ziyad crosses at Gibraltar", prominence: 2, themes: [war, migration], sources: [wikipedia:Umayyad_conquest_of_Hispania] }
+      - { id: cordoba-caliphate, date: 929 CE, label: "The Caliphate of Córdoba; its capital is Europe's greatest city", prominence: 2, sources: [wikipedia:Caliphate_of_Córdoba] }
+      - { id: alhambra, date: c. 1350 CE, label: "The Alhambra palaces of Granada", prominence: 2, themes: [art], sources: [wikipedia:Alhambra] }
+      - { id: granada-falls, date: 1492 CE, label: "Granada falls; Jews and later Muslims are expelled", prominence: 2, themes: [war, religion, migration], sources: [wikipedia:Fall_of_Granada] }
+    sources: [wikipedia:Al-Andalus]
+
+  - id: castile
+    name: Asturias, León & Castile
+    region: europe
+    group: iberia
+    sphere: italic
+    prominence: 3
+    span: 718 – 1479 CE
+    cliopatria: ["Kingdom of Castile", "Kingdom of León", "Kingdom of Asturias", "Crown of Castile"]
+    relations:
+      - { type: becomes, lane: spain, at: 1479 CE }
+    events:
+      - { id: toledo-1085, date: 1085 CE, label: "Castile takes Toledo and its libraries of Arabic learning", prominence: 3, themes: [ideas], sources: [wikipedia:Toledo_School_of_Translators] }
+    sources: [wikipedia:Crown_of_Castile]
+
+  - id: spain
+    name: Spain
+    region: europe
+    group: iberia
+    sphere: italic
+    prominence: 1
+    span: 1479 – 2026 CE
+    cliopatria: ["Spanish Empire", "Spain", "Kingdom of Spain"]
+    events:
+      - { id: columbus-sails, date: 1492 CE, label: "Columbus sails west for Castile", prominence: 1, themes: [exploration], sources: [wikipedia:Voyages_of_Christopher_Columbus] }
+      - { id: magellan, date: 1519 CE, label: "Magellan's fleet sets out — the first voyage around the world", prominence: 2, themes: [exploration], sources: [wikipedia:Magellan_expedition] }
+      - { id: don-quixote, date: 1605 CE, label: "Cervantes publishes Don Quixote", prominence: 3, themes: [art], sources: [wikipedia:Don_Quixote] }
+      - { id: spanish-civil-war, date: 1936 CE, label: "The Spanish Civil War", prominence: 2, themes: [war], sources: [wikipedia:Spanish_Civil_War] }
+      - { id: franco-dies, date: 1975 CE, label: "Franco dies; Spain becomes a democracy", prominence: 3, themes: [government], sources: [wikipedia:Spanish_transition_to_democracy] }
+    sources: [wikipedia:Spain]
+
+  - id: portugal
+    name: Portugal
+    region: europe
+    group: iberia
+    sphere: italic
+    prominence: 2
+    span: 1139 – 2026 CE
+    cliopatria: ["Kingdom of Portugal", "Portugal", "Portuguese Empire"]
+    events:
+      - { id: dias, date: 1488 CE, label: "Dias rounds the Cape of Good Hope", prominence: 3, themes: [exploration], sources: [wikipedia:Bartolomeu_Dias] }
+      - { id: da-gama, date: 1498 CE, label: "Vasco da Gama reaches India by sea", prominence: 1, themes: [exploration, trade], sources: [wikipedia:Vasco_da_Gama] }
+      - { id: slave-voyage, date: 1526 CE, label: "The first direct slave voyage from Africa to the Americas: 12 million will follow", prominence: 1, themes: [migration, trade], sources: [wikipedia:Atlantic_slave_trade] }
+      - { id: lisbon-quake, date: 1755 CE, label: "An earthquake and tsunami destroy Lisbon", prominence: 3, sources: [wikipedia:1755_Lisbon_earthquake] }
+      - { id: carnation, date: 1974 CE, label: "The Carnation Revolution ends dictatorship and empire", prominence: 4, themes: [government], sources: [wikipedia:Carnation_Revolution] }
+    sources: [wikipedia:Portugal]
+
+  # ------------------------------------------------------------------ north
+  - id: carolingians
+    name: Carolingian Empire
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 1
+    span: 751 – 843 CE
+    cliopatria: ["Carolingian Empire"]
+    relations:
+      - { type: succeeds, lane: franks, at: 751 CE }
+      - { type: splits-into, lanes: [france, holy-roman-empire], at: 843 CE }
+    events:
+      - { id: charlemagne, date: 800 CE, label: "Charlemagne is crowned emperor in Rome", prominence: 1, themes: [government, religion], sources: [wikipedia:Charlemagne] }
+    sources: [wikipedia:Carolingian_Empire]
+
+  - id: france
+    name: France
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 1
+    span: 843 – 2026 CE
+    cliopatria: ["Kingdom of France", "France", "French Empire", "West Francia", "French Republic"]
+    segments:
+      - { name: West Francia & Kingdom of France, span: 843 – 1792 CE, weight: 5 }
+      - { name: Revolution & Napoleon, span: 1792 – 1815 CE, weight: 6 }
+      - { name: Monarchies & Second Empire, span: 1815 – 1870 CE, weight: 4 }
+      - { name: The Republics, span: 1870 – 2026 CE, weight: 5 }
+    events:
+      - { id: hugh-capet, date: 987 CE, label: "Hugh Capet founds the Capetian dynasty", prominence: 4, sources: [wikipedia:Hugh_Capet] }
+      - { id: notre-dame, date: 1163 CE, label: "Notre-Dame de Paris is begun — the Gothic age", prominence: 2, themes: [art, religion], sources: [wikipedia:Notre-Dame_de_Paris] }
+      - { id: hundred-years-war, date: 1337 CE, label: "The Hundred Years' War with England", prominence: 3, themes: [war], sources: [wikipedia:Hundred_Years'_War] }
+      - { id: joan-of-arc, date: 1429 CE, label: "Joan of Arc lifts the siege of Orléans", prominence: 2, themes: [women, war], sources: [wikipedia:Joan_of_Arc] }
+      - { id: versailles, date: 1682 CE, label: "Louis XIV moves his court to Versailles", prominence: 3, themes: [art, government], sources: [wikipedia:Palace_of_Versailles] }
+      - { id: french-revolution, date: 1789 CE, label: "The French Revolution: liberty, equality, fraternity", prominence: 1, themes: [government, ideas], sources: [wikipedia:French_Revolution] }
+      - { id: napoleon, date: 1804 CE, label: "Napoleon crowns himself emperor", prominence: 2, themes: [war, government], sources: [wikipedia:Napoleon] }
+      - { id: waterloo, date: 1815 CE, label: "Waterloo", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Waterloo] }
+      - { id: eiffel, date: 1889 CE, label: "The Eiffel Tower", prominence: 3, themes: [art, technology], sources: [wikipedia:Eiffel_Tower] }
+      - { id: curie, date: 1898 CE, label: "Marie and Pierre Curie discover radium", prominence: 2, themes: [ideas, women], sources: [wikipedia:Marie_Curie] }
+      - { id: france-falls, date: 1940 CE, label: "France falls to Germany in six weeks", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_France] }
+    sources: [wikipedia:France]
+
+  - id: vikings
+    name: Vikings
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 2
+    span: 793 – 1066 CE
+    cliopatria: ["Norse"]
+    relations:
+      - { type: becomes, lane: scandinavia, at: 1066 CE }
+    events:
+      - { id: lindisfarne, date: 793 CE, label: "Vikings raid the monastery of Lindisfarne", prominence: 2, themes: [war], sources: [wikipedia:Lindisfarne] }
+      - { id: iceland, date: c. 874 CE, label: "Norse settlers reach Iceland; its parliament, the Althing, meets in 930", prominence: 3, themes: [migration, government], sources: [wikipedia:Settlement_of_Iceland] }
+      - { id: vinland, date: c. 1000 CE, label: "Leif Erikson reaches North America — Vinland", prominence: 2, themes: [exploration], sources: [wikipedia:L'Anse_aux_Meadows] }
+    sources: [wikipedia:Vikings]
+
+  - id: scandinavia
+    name: Scandinavian kingdoms
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 3
+    span: 1066 – 2026 CE
+    cliopatria: ["Kingdom of Denmark", "Kingdom of Sweden", "Kingdom of Norway", "Kalmar Union", "Swedish Empire", "Denmark", "Sweden", "Norway"]
+    events:
+      - { id: kalmar, date: 1397 CE, label: "The Kalmar Union joins Denmark, Norway and Sweden", prominence: 4, sources: [wikipedia:Kalmar_Union] }
+      - { id: swedish-empire, date: 1611 CE, label: "Gustavus Adolphus makes Sweden a great power", prominence: 4, sources: [wikipedia:Swedish_Empire] }
+    sources: [wikipedia:Scandinavia]
+
+  - id: dutch
+    name: Netherlands
+    region: europe
+    group: north-europe
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1581 – 2026 CE
+    cliopatria: ["Dutch Republic", "Netherlands", "Kingdom of the Netherlands"]
+    events:
+      - { id: voc, date: 1602 CE, label: "The Dutch East India Company — the first company to sell shares", prominence: 2, themes: [trade], sources: [wikipedia:Dutch_East_India_Company] }
+      - { id: night-watch, date: 1642 CE, label: "Rembrandt paints The Night Watch", prominence: 3, themes: [art], sources: [wikipedia:The_Night_Watch] }
+    sources: [wikipedia:Dutch_Republic]
+
+  # ------------------------------------------------------------------ italy
+  - id: papal-states
+    name: Papal States
+    region: europe
+    group: italy
+    sphere: roman
+    prominence: 3
+    span: 754 – 1870 CE
+    cliopatria: ["Papal States"]
+    events:
+      - { id: great-schism, date: 1054 CE, label: "The Great Schism: Catholic and Orthodox churches split", prominence: 2, themes: [religion], sources: [wikipedia:East–West_Schism] }
+      - { id: first-crusade, date: 1095 CE, label: "Pope Urban II calls the First Crusade", prominence: 2, themes: [religion, war], sources: [wikipedia:First_Crusade] }
+      - { id: galileo, date: 1633 CE, label: "Galileo is tried for teaching that the Earth moves", prominence: 2, themes: [ideas, religion], sources: [wikipedia:Galileo_affair] }
+    sources: [wikipedia:Papal_States]
+
+  - id: italian-cities
+    name: Italian city-states
+    region: europe
+    group: italy
+    sphere: italic
+    prominence: 2
+    span: c. 1000 – 1797 CE
+    cliopatria: ["Republic of Venice", "Republic of Florence", "Republic of Genoa", "Duchy of Milan", "Grand Duchy of Tuscany"]
+    relations:
+      - { type: becomes, lane: italy, at: 1861 CE }
+    events:
+      - { id: marco-polo, date: 1271 CE, label: "Marco Polo sets out for the court of Kublai Khan", prominence: 2, thread: silk-road, themes: [exploration, trade], sources: [wikipedia:Marco_Polo] }
+      - { id: dante, date: c. 1320 CE, label: "Dante completes the Divine Comedy", prominence: 3, themes: [art], sources: [wikipedia:Divine_Comedy] }
+      - { id: black-death-europe, date: 1347 CE, label: "The Black Death arrives in Italy on Genoese ships; a third of Europe dies", prominence: 1, themes: [disease], sources: [wikipedia:Black_Death] }
+      - { id: brunelleschi, date: 1436 CE, label: "Brunelleschi's dome crowns Florence — the Renaissance", prominence: 2, themes: [art, technology], sources: [wikipedia:Florence_Cathedral] }
+      - { id: mona-lisa, date: 1503 CE, label: "Leonardo begins the Mona Lisa", prominence: 1, themes: [art], sources: [wikipedia:Mona_Lisa] }
+      - { id: sistine, date: 1512 CE, label: "Michelangelo finishes the Sistine Chapel ceiling", prominence: 2, themes: [art], sources: [wikipedia:Sistine_Chapel_ceiling] }
+      - { id: machiavelli, date: 1513 CE, label: "Machiavelli writes The Prince", prominence: 3, themes: [ideas], sources: [wikipedia:The_Prince] }
+    sources: [wikipedia:Italian_city-states]
+
+  - id: italy
+    name: Italy
+    region: europe
+    group: italy
+    sphere: italic
+    prominence: 2
+    span: 1861 – 2026 CE
+    cliopatria: ["Kingdom of Italy", "Italy"]
+    events:
+      - { id: garibaldi, date: 1861 CE, label: "Italy is unified", prominence: 3, themes: [government], sources: [wikipedia:Italian_unification] }
+      - { id: mussolini, date: 1922 CE, label: "Mussolini's March on Rome: the first fascist state", prominence: 2, themes: [government], sources: [wikipedia:March_on_Rome] }
+    sources: [wikipedia:Italy]
+
+  # ------------------------------------------------------------------ central europe
+  - id: holy-roman-empire
+    name: Holy Roman Empire
+    region: europe
+    group: central-europe
+    sphere: celtic-germanic
+    prominence: 1
+    span: 843 – 1806 CE
+    cliopatria: ["Holy Roman Empire", "East Francia"]
+    segments:
+      - { name: East Francia, span: 843 – 962 CE, weight: 4 }
+      - { name: Holy Roman Empire, span: 962 – 1806 CE, weight: 5 }
+    relations:
+      - { type: becomes, lane: germany, at: 1806 CE }
+    events:
+      - { id: otto, date: 962 CE, label: "Otto I is crowned emperor", prominence: 3, sources: [wikipedia:Otto_the_Great] }
+      - { id: canossa, date: 1077 CE, label: "The emperor kneels in the snow at Canossa", prominence: 4, themes: [religion, government], sources: [wikipedia:Road_to_Canossa] }
+      - { id: hildegard, date: c. 1150 CE, label: "Hildegard of Bingen: visions, music and medicine", prominence: 3, themes: [women, art, ideas], sources: [wikipedia:Hildegard_of_Bingen] }
+      - { id: gutenberg, date: c. 1450 CE, label: "Gutenberg's printing press", prominence: 1, themes: [technology, ideas], sources: [wikipedia:Printing_press] }
+      - { id: luther, date: 1517 CE, label: "Luther's 95 Theses start the Reformation", prominence: 1, themes: [religion], sources: [wikipedia:Ninety-five_Theses] }
+      - { id: thirty-years-war, date: 1618 CE, label: "The Thirty Years' War devastates central Europe", prominence: 2, themes: [war, religion], sources: [wikipedia:Thirty_Years'_War] }
+      - { id: westphalia, date: 1648 CE, label: "The Peace of Westphalia and the idea of sovereign states", prominence: 3, themes: [government], sources: [wikipedia:Peace_of_Westphalia] }
+      - { id: bach, date: 1727 CE, label: "Bach's St Matthew Passion", prominence: 4, themes: [art], sources: [wikipedia:St_Matthew_Passion] }
+    sources: [wikipedia:Holy_Roman_Empire]
+
+  - id: germany
+    name: Germany
+    region: europe
+    group: central-europe
+    sphere: celtic-germanic
+    prominence: 1
+    span: 1806 – 2026 CE
+    cliopatria: ["Kingdom of Prussia", "German Confederation", "German Empire", "Weimar Republic", "Nazi Germany", "West Germany", "Germany"]
+    segments:
+      - { name: Prussia & the German states, span: 1806 – 1871 CE, weight: 4 }
+      - { name: German Empire, span: 1871 – 1918 CE, weight: 5 }
+      - { name: Weimar Republic, span: 1918 – 1933 CE, weight: 3 }
+      - { name: Nazi Germany, span: 1933 – 1945 CE, weight: 6 }
+      - { name: East and West Germany, span: 1945 – 1990 CE, weight: 3 }
+      - { name: Federal Republic of Germany, span: 1990 – 2026 CE, weight: 4 }
+    events:
+      - { id: marx, date: 1848 CE, label: "Marx and Engels publish the Communist Manifesto", prominence: 2, themes: [ideas], sources: [wikipedia:The_Communist_Manifesto] }
+      - { id: german-unification, date: 1871 CE, label: "Bismarck unifies Germany", prominence: 2, themes: [government], sources: [wikipedia:Unification_of_Germany] }
+      - { id: einstein, date: 1905 CE, label: "Einstein's miracle year: relativity and light quanta", prominence: 1, themes: [ideas], sources: [wikipedia:Annus_mirabilis_papers] }
+      - { id: hitler, date: 1933 CE, label: "Hitler takes power", prominence: 2, themes: [government], sources: [wikipedia:Adolf_Hitler's_rise_to_power] }
+      - { id: invasion-poland, date: 1939 CE, label: "Germany invades Poland: the Second World War begins", prominence: 1, themes: [war], sources: [wikipedia:Invasion_of_Poland] }
+      - { id: holocaust, date: 1942 CE, label: "The Holocaust: six million Jews murdered", prominence: 1, themes: [war, religion], sources: [wikipedia:The_Holocaust] }
+      - { id: berlin-wall, date: 1989 CE, label: "The Berlin Wall falls", prominence: 1, themes: [government], sources: [wikipedia:Fall_of_the_Berlin_Wall] }
+    sources: [wikipedia:Germany]
+
+  - id: habsburg-austria
+    name: Habsburg Austria
+    region: europe
+    group: central-europe
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1526 – 1918 CE
+    cliopatria: ["Habsburg Monarchy", "Austrian Empire", "Austria-Hungary", "Archduchy of Austria"]
+    events:
+      - { id: mozart, date: 1786 CE, label: "Mozart's Marriage of Figaro in Vienna", prominence: 3, themes: [art], sources: [wikipedia:The_Marriage_of_Figaro] }
+      - { id: sarajevo, date: 1914 CE, label: "An archduke is shot in Sarajevo — the First World War begins", prominence: 1, themes: [war], sources: [wikipedia:Assassination_of_Archduke_Franz_Ferdinand] }
+    sources: [wikipedia:Habsburg_monarchy]
+
+  - id: hungary
+    name: Hungary
+    region: europe
+    group: central-europe
+    sphere: steppe
+    prominence: 3
+    span: 895 – 2026 CE
+    cliopatria: ["Kingdom of Hungary", "Hungary", "Principality of Hungary"]
+    events:
+      - { id: magyars, date: 895 CE, label: "Magyar horsemen settle the Carpathian Basin", prominence: 3, themes: [migration], sources: [wikipedia:Hungarian_conquest_of_the_Carpathian_Basin] }
+      - { id: mohacs, date: 1526 CE, label: "The Ottomans crush Hungary at Mohács", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Mohács] }
+    sources: [wikipedia:History_of_Hungary]
+
+  - id: poland
+    name: Poland
+    region: europe
+    group: central-europe
+    sphere: celtic-germanic
+    prominence: 2
+    span: 966 – 2026 CE
+    cliopatria: ["Kingdom of Poland", "Polish-Lithuanian Commonwealth", "Poland", "Second Polish Republic"]
+    events:
+      - { id: copernicus, date: 1543 CE, label: "Copernicus puts the Sun at the centre", prominence: 1, themes: [ideas, sky], sources: [wikipedia:De_revolutionibus_orbium_coelestium] }
+      - { id: lublin, date: 1569 CE, label: "The Polish–Lithuanian Commonwealth, Europe's largest state", prominence: 3, themes: [government], sources: [wikipedia:Union_of_Lublin] }
+      - { id: partitions, date: 1795 CE, label: "Poland is partitioned out of existence", prominence: 3, sources: [wikipedia:Partitions_of_Poland] }
+      - { id: solidarity, date: 1980 CE, label: "Solidarity: a free trade union behind the Iron Curtain", prominence: 3, themes: [government], sources: [wikipedia:Solidarity_(Polish_trade_union)] }
+    sources: [wikipedia:History_of_Poland]
+
+  - id: european-union
+    name: European Union
+    region: europe
+    group: central-europe
+    sphere: celtic-germanic
+    prominence: 2
+    span: 1951 – 2026 CE
+    events:
+      - { id: ecsc, date: 1951 CE, label: "Coal and steel pooled to make war between France and Germany impossible", prominence: 3, themes: [government], sources: [wikipedia:European_Coal_and_Steel_Community] }
+      - { id: euro, date: 1999 CE, label: "The euro", prominence: 3, themes: [trade], thread: money, sources: [wikipedia:Euro] }
+    sources: [wikipedia:European_Union]
+
+  # ------------------------------------------------------------------ eastern europe
+  - id: rus
+    name: Kievan Rus'
+    region: europe
+    group: eastern-europe
+    sphere: celtic-germanic
+    prominence: 2
+    span: 862 – 1240 CE
+    cliopatria: ["Kievan Rus'", "Kievan Rus", "Rus' Khaganate"]
+    relations:
+      - { type: becomes, lane: muscovy, at: 1283 CE }
+    events:
+      - { id: rurik, date: 862 CE, label: "The Varangian Rurik rules at Novgorod (tradition)", prominence: 4, confidence: legendary, sources: [wikipedia:Rurik] }
+      - { id: vladimir-baptism, date: 988 CE, label: "Vladimir of Kiev is baptised — Orthodox Christianity for the Rus'", prominence: 2, themes: [religion], sources: [wikipedia:Christianization_of_Kievan_Rus'] }
+      - { id: kiev-sacked, date: 1240 CE, label: "The Mongols sack Kiev", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Kiev_(1240)] }
+    sources: [wikipedia:Kievan_Rus']
+
+  - id: muscovy
+    name: Russia
+    region: europe
+    group: eastern-europe
+    sphere: celtic-germanic
+    prominence: 1
+    span: 1283 – 2026 CE
+    cliopatria: ["Grand Duchy of Moscow", "Tsardom of Russia", "Russian Empire", "Soviet Union", "Russia", "Russian Federation", "Russian SFSR"]
+    segments:
+      - { name: Grand Duchy of Moscow, span: 1283 – 1547 CE, weight: 3 }
+      - { name: Tsardom of Russia, span: 1547 – 1721 CE, weight: 4 }
+      - { name: Russian Empire, span: 1721 – 1917 CE, weight: 6 }
+      - { name: Soviet Union, span: 1917 – 1991 CE, weight: 6 }
+      - { name: Russian Federation, span: 1991 – 2026 CE, weight: 4 }
+    events:
+      - { id: ivan-terrible, date: 1547 CE, label: "Ivan the Terrible is crowned the first tsar", prominence: 3, sources: [wikipedia:Ivan_the_Terrible] }
+      - { id: st-petersburg, date: 1703 CE, label: "Peter the Great founds St Petersburg, a window on Europe", prominence: 2, sources: [wikipedia:Saint_Petersburg] }
+      - { id: catherine, date: 1762 CE, label: "Catherine the Great", prominence: 3, themes: [women, government], sources: [wikipedia:Catherine_the_Great] }
+      - { id: moscow-1812, date: 1812 CE, label: "Napoleon takes Moscow — and loses his army in the winter", prominence: 2, themes: [war], sources: [wikipedia:French_invasion_of_Russia] }
+      - { id: serfs-freed, date: 1861 CE, label: "The serfs are freed", prominence: 3, themes: [government], sources: [wikipedia:Emancipation_reform_of_1861] }
+      - { id: russian-revolution, date: 1917 CE, label: "The Russian Revolution: Lenin and the Bolsheviks take power", prominence: 1, themes: [government, war], sources: [wikipedia:Russian_Revolution] }
+      - { id: barbarossa, date: 1941 CE, label: "Germany invades the Soviet Union; Stalingrad follows", prominence: 1, themes: [war], sources: [wikipedia:Operation_Barbarossa] }
+      - { id: sputnik, date: 1957 CE, label: "Sputnik — the first satellite", prominence: 1, themes: [technology, sky], sources: [wikipedia:Sputnik_1] }
+      - { id: gagarin, date: 1961 CE, label: "Yuri Gagarin, the first human in space", prominence: 2, themes: [technology, sky], sources: [wikipedia:Yuri_Gagarin] }
+      - { id: chernobyl, date: 1986 CE, label: "The Chernobyl disaster", prominence: 3, themes: [technology], sources: [wikipedia:Chernobyl_disaster] }
+      - { id: ussr-ends, date: 1991 CE, label: "The Soviet Union dissolves into fifteen countries", prominence: 1, themes: [government], sources: [wikipedia:Dissolution_of_the_Soviet_Union] }
+      - { id: ukraine-invasion, date: 2022 CE, label: "Russia launches a full-scale invasion of Ukraine", prominence: 2, themes: [war], sources: [wikipedia:Russian_invasion_of_Ukraine] }
+    sources: [wikipedia:History_of_Russia]
+
+  - id: lithuania
+    name: Grand Duchy of Lithuania
+    region: europe
+    group: eastern-europe
+    sphere: celtic-germanic
+    prominence: 3
+    span: 1236 – 1795 CE
+    cliopatria: ["Grand Duchy of Lithuania"]
+    events:
+      - { id: grunwald, date: 1410 CE, label: "Poland–Lithuania defeats the Teutonic Knights at Grunwald", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Grunwald] }
+    sources: [wikipedia:Grand_Duchy_of_Lithuania]
+
+  # ------------------------------------------------------------------ balkans
+  - id: bulgaria
+    name: Bulgarian Empire
+    region: europe
+    group: greece
+    sphere: steppe
+    prominence: 3
+    span: 681 – 1396 CE
+    cliopatria: ["First Bulgarian Empire", "Second Bulgarian Empire"]
+    events:
+      - { id: cyrillic, date: c. 893 CE, label: "The Cyrillic alphabet is created at Preslav", prominence: 2, thread: alphabet, sources: [wikipedia:Cyrillic_script] }
+    sources: [wikipedia:Bulgarian_Empire]
+
+  - id: serbia
+    name: Serbia
+    region: europe
+    group: greece
+    sphere: roman
+    prominence: 4
+    span: 1166 – 2026 CE
+    cliopatria: ["Serbian Empire", "Grand Principality of Serbia", "Serbia", "Kingdom of Serbia"]
+    events:
+      - { id: kosovo-1389, date: 1389 CE, label: "The Battle of Kosovo", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Kosovo] }
+    sources: [wikipedia:History_of_Serbia]
+
+  - id: greece-modern
+    name: Greece
+    region: europe
+    group: greece
+    sphere: hellenic
+    prominence: 3
+    span: 1821 – 2026 CE
+    cliopatria: ["Kingdom of Greece", "Greece", "Hellenic Republic"]
+    events:
+      - { id: greek-independence, date: 1821 CE, label: "The Greek War of Independence", prominence: 3, themes: [war], sources: [wikipedia:Greek_War_of_Independence] }
+    sources: [wikipedia:Greece]
+
+  - id: yugoslavia
+    name: Yugoslavia
+    region: europe
+    group: greece
+    sphere: roman
+    prominence: 3
+    span: 1918 – 1992 CE
+    cliopatria: ["Yugoslavia", "Kingdom of Yugoslavia", "Socialist Federal Republic of Yugoslavia"]
+    events:
+      - { id: yugoslav-wars, date: 1991 CE, label: "Yugoslavia breaks apart in war; Srebrenica, 1995", prominence: 3, themes: [war], sources: [wikipedia:Yugoslav_Wars] }
+    sources: [wikipedia:Yugoslavia]

@@ -3,12 +3,12 @@ title: The Classical World
 subtitle: Every region of the Earth · 800 BCE – 700 CE
 window: 800 BCE – 700 CE
 regions:
-  - { id: americas, name: The Americas, groups: [north-america, mesoamerica, andes] }
-  - { id: africa, name: Africa, groups: [west-africa, nile-horn, maghreb] }
-  - { id: europe, name: Europe, groups: [north-europe, italy, greece] }
+  - { id: americas, name: The Americas, groups: [north-america, mesoamerica, caribbean, andes, south-america] }
+  - { id: africa, name: Africa, groups: [west-africa, central-south, nile-horn, maghreb] }
+  - { id: europe, name: Europe, groups: [british-isles, iberia, north-europe, italy, central-europe, eastern-europe, greece] }
   - { id: near-east, name: The Mediterranean & Near East, groups: [egypt, levant, anatolia, iran] }
   - { id: steppe, name: The Steppe & Central Asia, groups: [western-steppe, central-asia, steppe] }
-  - { id: south-asia, name: South Asia, groups: [northwest, gangetic, deccan-south, lanka] }
+  - { id: south-asia, name: South Asia, groups: [northwest, gangetic, deccan-south, lanka, himalaya] }
   - { id: east-asia, name: East Asia, groups: [china, korea, japan] }
   - { id: southeast-asia, name: Southeast Asia, groups: [mainland, islands] }
   - { id: oceania, name: Oceania, groups: [australia, pacific] }

@@ -22,3 +22,4 @@
 | 18 | 2026-10-23 | Tracks are as wide as their widest lane plus the labels they actually carry | The classical world sheet went 77k → 51k units wide with no labels lost |
 | 19 | 2026-10-23 | Threads (Silk Road, alphabet, writing, numerals, money) are optional layers, off by default | Calm first; journeys across regions on demand |
 | 20 | 2026-10-23 | Atlas uses Cliopatria matched by hand-picked names, then exact names, then Wikidata IDs | Cliopatria tags "Roman Empire" with Byzantium's QID, so IDs alone mislink |
+| 21 | 2026-10-23 | **Desktop only** (Mac / computer browsers). No phone or tablet layouts, no touch work, no iPad testing | Personal project used on a Mac |

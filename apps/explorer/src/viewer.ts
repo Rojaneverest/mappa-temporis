@@ -2,7 +2,7 @@
 // compositing of paper + ink tiles, picking, and the frozen HUD (year ruler, region
 // and lane headers, minimap, status).
 import type { DisplayList } from '../../../packages/render/src/displaylist.ts';
-import { yToYear, yearToY } from '../../../packages/render/src/displaylist.ts';
+import { yToYear, yearToY, unitsPerYearAt } from '../../../packages/render/src/displaylist.ts';
 import type { Folio } from '../../../packages/render/src/folio.ts';
 import { paperPixels, MOTTLE_OCTAVES, mottleOpacity } from '../../../packages/render/src/painter.ts';
 import { PAPER, INK, INK_SOFT } from '../../../packages/core/src/palette.ts';
@@ -604,8 +604,9 @@ export class Viewer {
     ctx.globalAlpha = 1;
     ctx.fillStyle = INK_SOFT;
     ctx.fillRect(RULER_W - 1, headerH, 1, this.cssH - headerH);
-    const pxPerYear = this.dl.time.unitsPerYear * this.s;
-    const steps = [1, 5, 10, 25, 50, 100, 250, 500, 1000];
+    // Tick spacing follows the local scale (the prologue is compressed).
+    const pxPerYear = unitsPerYearAt(this.dl, yToYear(this.dl, this.y0 + this.cssH / 2 / this.s)) * this.s;
+    const steps = [1, 5, 10, 25, 50, 100, 250, 500, 1000, 2500, 5000];
     const step = steps.find((st) => st * pxPerYear >= 46) ?? 1000;
     const minor = steps.find((st) => st * pxPerYear >= 9) ?? step;
     const yTop = yToYear(this.dl, this.y0 + headerH / this.s);

@@ -1,0 +1,230 @@
+# The Mediterranean & Near East from c. 700 CE to today.
+lanes:
+  # ------------------------------------------------------------------ egypt
+  - id: fatimids
+    name: Fatimid Caliphate
+    region: near-east
+    group: egypt
+    sphere: islamic
+    prominence: 2
+    span: 909 – 1171 CE
+    cliopatria: ["Fatimid Caliphate"]
+    relations:
+      - { type: becomes, lane: ayyubids, at: 1171 CE }
+    events:
+      - { id: cairo-founded, date: 969 CE, label: "The Fatimids found Cairo; al-Azhar follows in 970", prominence: 2, sources: [wikipedia:Cairo] }
+      - { id: ibn-al-haytham, date: c. 1021 CE, label: "Ibn al-Haytham's Book of Optics: experiment as the test of truth", prominence: 2, themes: [ideas], sources: [wikipedia:Book_of_Optics] }
+    sources: [wikipedia:Fatimid_Caliphate]
+
+  - id: ayyubids
+    name: Ayyubids
+    region: near-east
+    group: egypt
+    sphere: islamic
+    prominence: 2
+    span: 1171 – 1250 CE
+    cliopatria: ["Ayyubid Sultanate", "Ayyubid Dynasty"]
+    relations:
+      - { type: becomes, lane: mamluks, at: 1250 CE }
+      - { type: conquers, lane: crusader-states, at: 1187 CE }
+    events:
+      - { id: saladin, date: 1187 CE, label: "Saladin retakes Jerusalem", prominence: 2, themes: [war, religion], sources: [wikipedia:Siege_of_Jerusalem_(1187)] }
+    sources: [wikipedia:Ayyubid_dynasty]
+
+  - id: mamluks
+    name: Mamluk Sultanate
+    region: near-east
+    group: egypt
+    sphere: islamic
+    prominence: 2
+    span: 1250 – 1517 CE
+    cliopatria: ["Mamluk Sultanate"]
+    events:
+      - { id: ain-jalut, date: 1260 CE, label: "The Mamluks stop the Mongols at Ain Jalut", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Ain_Jalut] }
+      - { id: ibn-khaldun, date: 1377 CE, label: "Ibn Khaldun's Muqaddimah: a science of history and society", prominence: 3, themes: [ideas], sources: [wikipedia:Muqaddimah] }
+    sources: [wikipedia:Mamluk_Sultanate]
+
+  - id: modern-egypt
+    name: Egypt
+    region: near-east
+    group: egypt
+    sphere: egyptian
+    prominence: 2
+    span: 1805 – 2026 CE
+    cliopatria: ["Khedivate of Egypt", "Sultanate of Egypt", "Kingdom of Egypt", "Egypt", "United Arab Republic"]
+    events:
+      - { id: muhammad-ali, date: 1805 CE, label: "Muhammad Ali modernises Egypt", prominence: 4, sources: [wikipedia:Muhammad_Ali_of_Egypt] }
+      - { id: suez, date: 1869 CE, label: "The Suez Canal opens", prominence: 2, themes: [trade, technology], sources: [wikipedia:Suez_Canal] }
+      - { id: nasser, date: 1956 CE, label: "Nasser nationalises the Suez Canal", prominence: 3, themes: [government], sources: [wikipedia:Suez_Crisis] }
+      - { id: arab-spring, date: 2011 CE, label: "The Arab Spring: Tahrir Square", prominence: 3, themes: [government], sources: [wikipedia:Arab_Spring] }
+    sources: [wikipedia:History_of_Egypt]
+
+  # ------------------------------------------------------------------ levant & arabia
+  - id: crusader-states
+    name: Crusader states
+    region: near-east
+    group: levant
+    sphere: roman
+    prominence: 3
+    span: 1098 – 1291 CE
+    cliopatria: ["Kingdom of Jerusalem", "County of Tripoli", "Principality of Antioch", "County of Edessa"]
+    events:
+      - { id: jerusalem-1099, date: 1099 CE, label: "Crusaders take Jerusalem and massacre its people", prominence: 2, themes: [war, religion], sources: [wikipedia:Siege_of_Jerusalem_(1099)] }
+      - { id: acre-falls, date: 1291 CE, label: "Acre falls: the end of the Crusader states", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Acre_(1291)] }
+    sources: [wikipedia:Crusader_states]
+
+  - id: saudi
+    name: Saudi Arabia
+    region: near-east
+    group: levant
+    sphere: islamic
+    prominence: 3
+    span: 1727 – 2026 CE
+    cliopatria: ["Emirate of Diriyah", "Emirate of Nejd", "Saudi Arabia", "Kingdom of Saudi Arabia"]
+    events:
+      - { id: saudi-oil, date: 1938 CE, label: "Oil is struck in Arabia", prominence: 3, themes: [trade, technology], sources: [wikipedia:Dammam_No._7] }
+    sources: [wikipedia:History_of_Saudi_Arabia]
+
+  - id: israel
+    name: Israel & Palestine
+    region: near-east
+    group: levant
+    sphere: hebrew
+    prominence: 2
+    span: 1948 – 2026 CE
+    cliopatria: ["Israel"]
+    events:
+      - { id: israel-founded, date: 1948 CE, label: "The State of Israel; 700,000 Palestinians flee or are expelled — the Nakba", prominence: 2, themes: [war, migration], sources: [wikipedia:1948_Arab–Israeli_War] }
+      - { id: six-day-war, date: 1967 CE, label: "The Six-Day War", prominence: 3, themes: [war], sources: [wikipedia:Six-Day_War] }
+      - { id: oslo, date: 1993 CE, label: "The Oslo Accords", prominence: 4, themes: [diplomacy], sources: [wikipedia:Oslo_Accords] }
+    sources: [wikipedia:Israel]
+
+  # ------------------------------------------------------------------ anatolia
+  - id: rum
+    name: Sultanate of Rum
+    region: near-east
+    group: anatolia
+    sphere: islamic
+    prominence: 3
+    span: 1077 – 1308 CE
+    cliopatria: ["Sultanate of Rum"]
+    events:
+      - { id: rumi, date: c. 1258 CE, label: "Rumi composes the Masnavi in Konya", prominence: 3, themes: [art, religion], sources: [wikipedia:Masnavi] }
+    sources: [wikipedia:Sultanate_of_Rum]
+
+  - id: ottoman
+    name: Ottoman Empire
+    endonym: { text: دولت عليه عثمانيه, script: Arab, translit: Devlet-i ʿAlīye-i ʿOsmānīye }
+    wikidata: Q12560
+    region: near-east
+    group: anatolia
+    sphere: islamic
+    prominence: 1
+    span: 1299 – 1922 CE
+    cliopatria: ["Ottoman Empire", "Ottoman Beylik"]
+    relations:
+      - { type: conquers, lane: eastern-roman, at: 1453 CE }
+      - { type: conquers, lane: mamluks, at: 1517 CE }
+      - { type: becomes, lane: turkey, at: 1923 CE }
+    events:
+      - { id: osman, date: 1299 CE, label: "Osman I founds a frontier principality in Anatolia", prominence: 3, sources: [wikipedia:Osman_I] }
+      - { id: constantinople-1453, date: 1453 CE, label: "Mehmed II takes Constantinople", prominence: 1, themes: [war], sources: [wikipedia:Fall_of_Constantinople] }
+      - { id: suleiman, date: 1520 CE, label: "Suleiman the Magnificent; Sinan builds his great mosques", prominence: 2, themes: [art, government], sources: [wikipedia:Suleiman_the_Magnificent] }
+      - { id: vienna-1683, date: 1683 CE, label: "The siege of Vienna fails", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Vienna] }
+      - { id: tanzimat, date: 1839 CE, label: "The Tanzimat reforms", prominence: 4, themes: [government], sources: [wikipedia:Tanzimat] }
+      - { id: armenian-genocide, date: 1915 CE, label: "The Armenian genocide", prominence: 2, themes: [war], sources: [wikipedia:Armenian_genocide] }
+    sources: [wikipedia:Ottoman_Empire]
+
+  - id: turkey
+    name: Turkey
+    region: near-east
+    group: anatolia
+    sphere: islamic
+    prominence: 2
+    span: 1923 – 2026 CE
+    cliopatria: ["Turkey", "Republic of Turkey"]
+    events:
+      - { id: ataturk, date: 1923 CE, label: "Atatürk's republic: Latin alphabet, secular law", prominence: 2, thread: alphabet, themes: [government], sources: [wikipedia:Mustafa_Kemal_Atatürk] }
+    sources: [wikipedia:Turkey]
+
+  # ------------------------------------------------------------------ mesopotamia & iran
+  - id: abbasid
+    name: Abbasid Caliphate
+    endonym: { text: الخلافة العباسية, script: Arab, translit: al-Khilāfa al-ʿAbbāsiyya }
+    wikidata: Q12536
+    region: near-east
+    group: iran
+    sphere: islamic
+    prominence: 1
+    span: 750 – 1258 CE
+    cliopatria: ["Abbasid Caliphate"]
+    relations:
+      - { type: succeeds, lane: umayyad, at: 750 CE }
+    events:
+      - { id: talas, date: 751 CE, label: "After Talas, papermaking reaches Samarkand", prominence: 3, thread: paper, themes: [technology], confidence: probable, sources: [wikipedia:Battle_of_Talas] }
+      - { id: baghdad-founded, date: 762 CE, label: "Al-Mansur founds the round city of Baghdad", prominence: 2, sources: [wikipedia:Baghdad] }
+      - { id: baghdad-paper, date: 794 CE, label: "Baghdad's first paper mill", prominence: 3, thread: paper, themes: [technology], sources: [wikipedia:History_of_paper] }
+      - { id: al-khwarizmi, date: c. 820 CE, label: "Al-Khwarizmi's algebra; 'algorithm' is his name", prominence: 1, thread: numerals, themes: [ideas], sources: [wikipedia:Al-Khwarizmi] }
+      - { id: thousand-nights, date: c. 900 CE, label: "The Thousand and One Nights take shape", prominence: 3, themes: [art], sources: [wikipedia:One_Thousand_and_One_Nights] }
+      - { id: baghdad-1258, date: 1258 CE, label: "The Mongols sack Baghdad and its libraries", prominence: 1, themes: [war], sources: [wikipedia:Siege_of_Baghdad_(1258)] }
+    sources: [wikipedia:Abbasid_Caliphate]
+
+  - id: seljuks
+    name: Seljuk Empire
+    region: near-east
+    group: iran
+    sphere: islamic
+    prominence: 2
+    span: 1037 – 1194 CE
+    cliopatria: ["Seljuk Empire", "Great Seljuk Empire"]
+    relations:
+      - { type: conquers, lane: eastern-roman, at: 1071 CE }
+    events:
+      - { id: manzikert, date: 1071 CE, label: "Victory at Manzikert opens Anatolia to the Turks", prominence: 2, themes: [war, migration], sources: [wikipedia:Battle_of_Manzikert] }
+      - { id: khayyam, date: 1079 CE, label: "Omar Khayyam's solar calendar — and his quatrains", prominence: 3, thread: calendars, themes: [ideas, art], sources: [wikipedia:Omar_Khayyam] }
+    sources: [wikipedia:Seljuk_Empire]
+
+  - id: ilkhanate
+    name: Ilkhanate
+    region: near-east
+    group: iran
+    sphere: steppe
+    prominence: 2
+    span: 1256 – 1335 CE
+    cliopatria: ["Ilkhanate"]
+    events:
+      - { id: rashid-al-din, date: c. 1307 CE, label: "Rashid al-Din's Compendium of Chronicles: the first world history", prominence: 3, themes: [ideas], sources: [wikipedia:Jami'_al-tawarikh] }
+    sources: [wikipedia:Ilkhanate]
+
+  - id: safavids
+    name: Iran (Safavids to today)
+    endonym: { text: ایران, script: Arab, translit: Īrān }
+    region: near-east
+    group: iran
+    sphere: persian
+    prominence: 1
+    span: 1501 – 2026 CE
+    cliopatria: ["Safavid Empire", "Afsharid Empire", "Zand Dynasty", "Qajar Iran", "Pahlavi Iran", "Iran", "Persia"]
+    segments:
+      - { name: Safavid Empire, span: 1501 – 1736 CE, weight: 5 }
+      - { name: Afsharids & Zands, span: 1736 – 1789 CE, weight: 3 }
+      - { name: Qajar Iran, span: 1789 – 1925 CE, weight: 4 }
+      - { name: Pahlavi Iran, span: 1925 – 1979 CE, weight: 4 }
+      - { name: Islamic Republic, span: 1979 – 2026 CE, weight: 4 }
+    events:
+      - { id: shia-iran, date: 1501 CE, label: "Ismail I makes Shi'ism the faith of Iran", prominence: 2, themes: [religion], sources: [wikipedia:Ismail_I] }
+      - { id: isfahan, date: 1598 CE, label: "Shah Abbas rebuilds Isfahan — 'half the world'", prominence: 2, themes: [art], sources: [wikipedia:Isfahan] }
+      - { id: iran-revolution, date: 1979 CE, label: "The Iranian Revolution", prominence: 2, themes: [government, religion], sources: [wikipedia:Iranian_revolution] }
+    sources: [wikipedia:History_of_Iran]
+
+  - id: iraq
+    name: Iraq
+    region: near-east
+    group: iran
+    sphere: islamic
+    prominence: 3
+    span: 1932 – 2026 CE
+    cliopatria: ["Iraq", "Kingdom of Iraq"]
+    events:
+      - { id: iraq-war, date: 2003 CE, label: "A US-led invasion topples Saddam Hussein", prominence: 2, themes: [war], sources: [wikipedia:Iraq_War] }
+    sources: [wikipedia:Iraq]
