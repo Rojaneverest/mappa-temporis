@@ -12,6 +12,7 @@ lanes:
     events:
       - { id: khazar-judaism, date: c. 740 CE, label: "The Khazar elite converts to Judaism", prominence: 3, themes: [religion], confidence: probable, sources: [wikipedia:Khazars] }
       - { id: sviatoslav, date: 969 CE, label: "Sviatoslav of Kiev destroys Itil", prominence: 4, themes: [war], sources: [wikipedia:Sviatoslav_I] }
+      - { id: khazar-arab-wars, date: 737 CE, label: "Arab armies push to the Volga; the Khazars hold", prominence: 4, themes: [war], sources: [wikipedia:Arab–Khazar_wars] }
     sources: [wikipedia:Khazars]
 
   - id: volga-bulgaria
@@ -36,6 +37,9 @@ lanes:
     cliopatria: ["Cumania", "Kipchaks", "Cuman-Kipchak Confederation"]
     relations:
       - { type: merges-into, lane: golden-horde, at: 1241 CE }
+    events:
+      - { id: kalka, date: 1223 CE, label: "The Kalka River: the Mongols' first blow against Rus' and Cumans", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Kalka_River] }
+      - { id: cumans-hungary, date: 1239 CE, label: "Fleeing Cumans settle in Hungary", prominence: 4, themes: [migration], sources: [wikipedia:Cumans] }
     sources: [wikipedia:Cuman–Kipchak_confederation]
 
   - id: golden-horde
@@ -53,6 +57,8 @@ lanes:
       - { id: sarai, date: c. 1250 CE, label: "Sarai on the Volga, capital of the Horde", prominence: 4, sources: [wikipedia:Sarai_(city)] }
       - { id: black-death-caffa, date: 1346 CE, label: "Plague at the siege of Caffa reaches the Black Sea ports", prominence: 2, themes: [disease], confidence: probable, sources: [wikipedia:Siege_of_Caffa] }
       - { id: ugra, date: 1480 CE, label: "The Great Stand on the Ugra: Moscow stops paying tribute", prominence: 3, themes: [war], sources: [wikipedia:Great_Stand_on_the_Ugra_River] }
+      - { id: ozbeg-islam, date: 1313 CE, label: "Özbeg Khan makes Islam the Horde's faith", prominence: 4, themes: [religion], sources: [wikipedia:Öz_Beg_Khan] }
+      - { id: kulikovo, date: 1380 CE, label: "Kulikovo: Moscow defeats the Horde", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Kulikovo] }
     sources: [wikipedia:Golden_Horde]
 
   - id: crimean-khanate
@@ -63,6 +69,9 @@ lanes:
     prominence: 4
     span: 1441 – 1783 CE
     cliopatria: ["Crimean Khanate"]
+    events:
+      - { id: moscow-burned-1571, date: 1571 CE, label: "Crimean Tatars burn Moscow", prominence: 4, themes: [war], sources: [wikipedia:Russo-Crimean_War_(1571)] }
+      - { id: crimea-annexed-1783, date: 1783 CE, label: "Catherine the Great annexes Crimea", prominence: 4, themes: [war], sources: [wikipedia:Annexation_of_the_Crimean_Khanate_by_the_Russian_Empire] }
     sources: [wikipedia:Crimean_Khanate]
 
   # ------------------------------------------------------------------ central asia
@@ -78,6 +87,7 @@ lanes:
       - { type: becomes, lane: ghaznavids, at: 977 CE }
     events:
       - { id: rudaki, date: c. 920 CE, label: "Rudaki in Bukhara: poetry in New Persian is born", prominence: 3, themes: [ideas, art], sources: [wikipedia:Rudaki] }
+      - { id: bukhara-capital, date: c. 900 CE, label: "Bukhara, 'the dome of Islam', and its libraries", prominence: 3, themes: [ideas], sources: [wikipedia:Bukhara] }
     sources: [wikipedia:Samanid_Empire]
 
   - id: ghaznavids
@@ -104,6 +114,7 @@ lanes:
     cliopatria: ["Kara-Khanid Khanate", "Karakhanids"]
     events:
       - { id: kashgari, date: 1072 CE, label: "Mahmud al-Kashgari's dictionary of the Turkic languages", prominence: 4, themes: [ideas], sources: [wikipedia:Dīwān_Lughāt_al-Turk] }
+      - { id: kutadgu-bilig, date: 1069 CE, label: "Kutadgu Bilig, the first great poem in Turkic", prominence: 4, themes: [art], sources: [wikipedia:Kutadgu_Bilig] }
     sources: [wikipedia:Kara-Khanid_Khanate]
 
   - id: khwarazm
@@ -116,6 +127,7 @@ lanes:
     cliopatria: ["Khwarazmian Empire", "Khwarazm Shahs"]
     events:
       - { id: otrar, date: 1219 CE, label: "A massacre of Mongol envoys at Otrar brings Genghis Khan west", prominence: 3, themes: [war], sources: [wikipedia:Mongol_invasion_of_the_Khwarazmian_Empire] }
+      - { id: urgench, date: 1221 CE, label: "The Mongols flood Urgench; Khwarazm is destroyed", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Gurganj] }
     sources: [wikipedia:Khwarazmian_Empire]
 
   - id: chagatai
@@ -128,6 +140,9 @@ lanes:
     cliopatria: ["Chagatai Khanate", "Moghulistan"]
     relations:
       - { type: becomes, lane: timurids, at: 1370 CE }
+    events:
+      - { id: chagatai-split, date: 1347 CE, label: "The khanate splits; Moghulistan in the east", prominence: 4, sources: [wikipedia:Moghulistan] }
+      - { id: chagatai-language, date: c. 1500 CE, label: "Chagatai Turkic: Babur writes his memoirs in it", prominence: 4, themes: [art], sources: [wikipedia:Chagatai_language] }
     sources: [wikipedia:Chagatai_Khanate]
 
   - id: timurids
@@ -144,6 +159,8 @@ lanes:
       - { id: ankara-1402, date: 1402 CE, label: "Timur captures the Ottoman sultan at Ankara", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Ankara] }
       - { id: ulugh-beg, date: 1420 CE, label: "Ulugh Beg's observatory in Samarkand maps 1,018 stars", prominence: 2, themes: [science, sky], sources: [wikipedia:Ulugh_Beg_Observatory] }
       - { id: herat-painting, date: c. 1490 CE, label: "Bihzad's miniatures in Herat", prominence: 4, themes: [art], sources: [wikipedia:Kamāl_ud-Dīn_Behzād] }
+      - { id: samarkand-built, date: c. 1400 CE, label: "Timur fills Samarkand with blue-domed mosques", prominence: 2, themes: [art], sources: [wikipedia:Samarkand] }
+      - { id: navoi, date: c. 1490 CE, label: "Alisher Navoi writes Turkic poetry at Herat", prominence: 4, themes: [art], sources: [wikipedia:Ali-Shir_Nava'i] }
     sources: [wikipedia:Timurid_Empire]
 
   - id: uzbek-khanates
@@ -156,6 +173,10 @@ lanes:
     cliopatria: ["Khanate of Bukhara", "Emirate of Bukhara", "Khanate of Khiva", "Khanate of Kokand", "Shaybanids"]
     relations:
       - { type: becomes, lane: central-asian-republics, at: 1920 CE }
+    events:
+      - { id: great-game, date: c. 1840 CE, label: "The Great Game: Britain and Russia vie for Central Asia", prominence: 3, themes: [war], sources: [wikipedia:The_Great_Game] }
+      - { id: tashkent-1865, date: 1865 CE, label: "Russia takes Tashkent", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Tashkent] }
+      - { id: basmachi, date: 1918 CE, label: "The Basmachi revolt against Soviet rule", prominence: 4, themes: [war], sources: [wikipedia:Basmachi_movement] }
     sources: [wikipedia:Khanate_of_Bukhara]
 
   - id: kazakh-khanate
@@ -174,6 +195,8 @@ lanes:
       - { id: asharshylyk, date: 1931 CE, label: "Soviet collectivisation: a famine kills a third of Kazakhs", prominence: 3, themes: [disease], sources: [wikipedia:Kazakh_famine_of_1930–1933] }
       - { id: sputnik-baikonur, date: 1957 CE, label: "Sputnik launches from Baikonur", prominence: 1, themes: [technology, sky], sources: [wikipedia:Sputnik_1] }
       - { id: aral-sea, date: c. 1990 CE, label: "The Aral Sea, drained for cotton, shrinks to a tenth", prominence: 3, themes: [climate], sources: [wikipedia:Aral_Sea] }
+      - { id: kazakh-hordes, date: c. 1718 CE, label: "The Dzungar wars split the Kazakhs into three hordes", prominence: 4, themes: [war], sources: [wikipedia:Kazakh_Khanate] }
+      - { id: semipalatinsk, date: 1949 CE, label: "Semipalatinsk: 456 nuclear tests on the steppe", prominence: 4, themes: [war, technology], sources: [wikipedia:Semipalatinsk_Test_Site] }
     sources: [wikipedia:Kazakh_Khanate]
 
   - id: central-asian-republics
@@ -202,6 +225,7 @@ lanes:
     events:
       - { id: manichaean-uyghurs, date: 762 CE, label: "The khagan adopts Manichaeism — the only state ever to do so", prominence: 3, themes: [religion], sources: [wikipedia:Uyghur_Khaganate] }
       - { id: kyrgyz-840, date: 840 CE, label: "The Kyrgyz sack Ordu-Baliq; Uyghurs flee to Turfan", prominence: 4, themes: [war, migration], sources: [wikipedia:Ordu-Baliq] }
+      - { id: tang-uyghur-alliance, date: 757 CE, label: "Uyghur cavalry help the Tang retake Chang'an", prominence: 3, themes: [war], sources: [wikipedia:An_Lushan_rebellion] }
     sources: [wikipedia:Uyghur_Khaganate]
 
   - id: kara-khitai
@@ -236,6 +260,9 @@ lanes:
       - { id: karakorum, date: 1235 CE, label: "Karakorum: a capital on the steppe", prominence: 4, sources: [wikipedia:Karakorum] }
       - { id: mohi, date: 1241 CE, label: "Mongol armies reach Hungary and Poland", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Mohi] }
       - { id: pax-mongolica, date: c. 1260 CE, label: "Pax Mongolica: one empire from Korea to Hungary — the largest land empire ever", prominence: 1, thread: silk-road, themes: [trade], sources: [wikipedia:Pax_Mongolica] }
+      - { id: secret-history, date: c. 1240 CE, label: "The Secret History of the Mongols", prominence: 4, themes: [ideas], sources: [wikipedia:The_Secret_History_of_the_Mongols] }
+      - { id: yam, date: c. 1235 CE, label: "The Yam: relay stations every 40 km", prominence: 3, themes: [technology, government], sources: [wikipedia:Yam_(route)] }
+      - { id: baghdad-mongols, date: 1258 CE, label: "Hülegü sacks Baghdad", prominence: 2, themes: [war], sources: [wikipedia:Siege_of_Baghdad_(1258)] }
     sources: [wikipedia:Mongol_Empire]
 
   - id: mongolia
@@ -253,6 +280,8 @@ lanes:
       - { name: Mongolia, span: 1911 – 2026 CE, weight: 3 }
     events:
       - { id: altan-khan, date: 1578 CE, label: "Altan Khan names the first Dalai Lama", prominence: 4, themes: [religion], sources: [wikipedia:Altan_Khan] }
+      - { id: mongolia-1921, date: 1921 CE, label: "A Soviet-backed revolution in Mongolia", prominence: 4, themes: [government], sources: [wikipedia:Mongolian_Revolution_of_1921] }
+      - { id: mongolia-1990, date: 1990 CE, label: "Peaceful democratic revolution", prominence: 4, themes: [government], sources: [wikipedia:Mongolian_Revolution_of_1990] }
     sources: [wikipedia:History_of_Mongolia]
 
   - id: dzungars
@@ -265,4 +294,5 @@ lanes:
     cliopatria: ["Dzungar Khanate", "Zunghar Khanate"]
     events:
       - { id: dzungar-genocide, date: 1755 CE, label: "The Qing destroy the Dzungars — 'the last nomad empire'", prominence: 3, themes: [war], sources: [wikipedia:Dzungar_genocide] }
+      - { id: galdan, date: 1688 CE, label: "Galdan Boshugtu invades Khalkha", prominence: 4, themes: [war], sources: [wikipedia:Galdan_Boshugtu_Khan] }
     sources: [wikipedia:Dzungar_Khanate]

@@ -152,7 +152,7 @@ function laneMaxW(l: Lane): number {
   return Math.max(base, ...l.segments.map((s) => (s.weight ? WEIGHT_W[s.weight]! : base)));
 }
 
-interface RegionLayout { id: string; name: string; x0: number; width: number; flow: Flow; trackOf: Map<string, number>; trackLaneW: number[] }
+interface RegionLayout { id: string; name: string; short?: string; x0: number; width: number; flow: Flow; trackOf: Map<string, number>; trackLaneW: number[] }
 const regionLayouts: RegionLayout[] = [];
 let cursor = MARGIN_L;
 for (const r of sheet.regions) {
@@ -184,7 +184,7 @@ for (const r of sheet.regions) {
     }),
     year0, year1, step: 10, groupGap: 180, pad: 120,
   });
-  regionLayouts.push({ id: r.id, name: r.name, x0: cursor, width: flow.width, flow, trackOf: assignment.trackOf, trackLaneW });
+  regionLayouts.push({ id: r.id, name: r.name, short: r.short, x0: cursor, width: flow.width, flow, trackOf: assignment.trackOf, trackLaneW });
   if (process.env.VERBOSE) console.log(`  region ${r.id}: ${assignment.tracks.length} tracks, ${Math.round(flow.width)} wide`);
   cursor += flow.width + REGION_GAP;
 }
@@ -254,7 +254,10 @@ for (let i = 1; i < timeSegs.length; i++) {
 for (const c of sheet.scale) {
   if (!c.label) continue;
   const yy = Y(Math.max(parseSpan(c.span).start.year, year0));
-  layers.text.push(text({ role: 'caption', text: c.label, size: 54, color: INK_SOFT, align: 'right', w: 1400, x: sheet.margins ? MARGIN_L - 2400 : MARGIN_L - 1580, y: yy + 50 }));
+  // Under the year labels, so it never sits beneath an era map.
+  layers.text.push(sheet.margins
+    ? text({ role: 'caption', text: c.label, size: 40, color: INK_SOFT, align: 'right', w: 560, x: MARGIN_L - 860, y: yy + 40 })
+    : text({ role: 'caption', text: c.label, size: 54, color: INK_SOFT, align: 'right', w: 1400, x: MARGIN_L - 1580, y: yy + 50 }));
 }
 
 /** The forces behind each turning point (docs/PLAN.md §3), each with its own quiet colour. */
@@ -403,7 +406,7 @@ if (margins) {
   const line = curve.map(([x, y], i) => `${i ? 'L' : 'M'} ${r(x)} ${r(y)}`).join(' ');
   const yA = curve[0]![1], yB = curve[curve.length - 1]![1];
   layers.bands.push({ k: 'path', d: `${line} L ${popX0} ${r(yB)} L ${popX0} ${r(yA)} Z`, fill: '#5A4A3A', alpha: 0.07, multiply: true, ref: 'population', b: [popX0, yA, popX0 + POP_W, yB] });
-  layers.bands.push({ k: 'path', d: line, stroke: INK, sw: 2.2, hair: true, alpha: 0.8, ref: 'population', b: [popX0, yA, popX0 + POP_W, yB] });
+  layers.bands.push({ k: 'path', d: line, stroke: '#5A4A3A', sw: 1.8, hair: true, alpha: 0.6, ref: 'population', b: [popX0, yA, popX0 + POP_W, yB] });
   layers.text.push(text({ role: 'region', text: 'PEOPLE', size: 64, color: INK, align: 'left', w: 1400, x: popX0, y: yTop - 170, ref: 'population' }));
   // Log gridlines, with their values repeated at the top of every era.
   const ticks: [number, string][] = [[1, '1 M'], [10, '10 M'], [100, '100 M'], [1000, '1 B'], [10000, '10 B']];
@@ -972,7 +975,7 @@ const dl: DisplayList = {
   width,
   height,
   time: { y0: HEADER, year0, year1, unitsPerYear: UNITS_PER_YEAR, segments: timeSegs.length > 1 ? timeSegs : undefined },
-  regions: regionLayouts.map((r) => ({ x0: r.x0, x1: r.x0 + r.width, name: r.name })),
+  regions: regionLayouts.map((r) => ({ x0: r.x0, x1: r.x0 + r.width, name: r.name, short: r.short })),
   items,
   stats: { ...stats, items: items.length },
 };

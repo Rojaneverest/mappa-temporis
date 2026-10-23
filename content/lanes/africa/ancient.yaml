@@ -12,6 +12,7 @@ lanes:
       - { id: sahara-cattle, date: c. 7000 BCE, label: "Herders and their cattle cross a green Sahara of lakes and grassland", prominence: 3, themes: [climate, migration], sources: [wikipedia:African_humid_period] }
       - { id: tassili-art, date: c. 6000 BCE, label: "Rock paintings at Tassili n'Ajjer show herds, swimmers and dancers", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Tassili_n'Ajjer] }
       - { id: sahara-dries, date: c. 3500 BCE, label: "The Sahara dries into desert; people move to the Nile and the Sahel", prominence: 2, themes: [climate, migration], confidence: probable, sources: [wikipedia:African_humid_period] }
+      - { id: gobero, date: c. 7700 BCE, label: "Gobero: fishers bury their dead beside a lake in today's Niger desert", prominence: 3, themes: [climate], sources: [wikipedia:Gobero] }
     sources: [wikipedia:African_humid_period]
 
   - id: tichitt
@@ -36,6 +37,8 @@ lanes:
     span: c. 10000 BCE – 2026 CE
     events:
       - { id: san-rock-art, date: c. 1000 BCE, label: "Rock paintings across southern Africa record trance dances and eland", prominence: 3, themes: [art, religion], confidence: probable, sources: [wikipedia:San_rock_art] }
+      - { id: drakensberg-art, date: c. 1000 CE, label: "San painters cover the Drakensberg with eland and trance dancers", prominence: 3, themes: [art, religion], confidence: probable, sources: [wikipedia:Drakensberg] }
+      - { id: san-dispossessed, date: c. 1800 CE, label: "Settlers and herders push the San into the Kalahari", prominence: 4, themes: [migration], sources: [wikipedia:San_people] }
     sources: [wikipedia:San_people]
 
   - id: kerma
@@ -50,4 +53,6 @@ lanes:
       - { type: becomes, lane: kush, at: c. 1070 BCE }
     events:
       - { id: kerma-peak, date: c. 1700 BCE, label: "Kerma, Africa's first great city south of Egypt, rivals its northern neighbour", prominence: 2, sources: [wikipedia:Kerma_culture] }
+      - { id: kerma-deffufa, date: c. 2000 BCE, label: "The Western Deffufa, a mudbrick temple of Kerma", prominence: 3, themes: [art, religion], sources: [wikipedia:Deffufa] }
+      - { id: kerma-falls, date: c. 1500 BCE, label: "Thutmose I destroys Kerma; Egypt rules Nubia", prominence: 3, themes: [war], sources: [wikipedia:Kerma_culture] }
     sources: [wikipedia:Kerma_culture]

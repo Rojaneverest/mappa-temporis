@@ -116,12 +116,19 @@ async function resolve(img: LaneImage): Promise<ImageMeta> {
 
 async function download(meta: ImageMeta): Promise<string> {
   const path = join(CACHE, 'raw', `${meta.id}.img`);
-  if (existsSync(path) && !FORCE) return path;
-  let r = await fetch(meta.downloadUrl, { headers: { 'User-Agent': UA } });
+  if (existsSync(path + '.jpg') && !FORCE) return path + '.jpg';
+  // Originals are throttled hardest; a standard-width Commons thumbnail is plenty for the chart.
+  const thumb = meta.downloadUrl.match(/^(https:\/\/upload\.wikimedia\.org\/wikipedia\/commons)\/(\w)\/(\w\w)\/([^?]+)/);
+  let url = meta.downloadUrl;
+  let r = await fetch(url, { headers: { 'User-Agent': UA } });
   for (let attempt = 1; r.status === 429 && attempt <= 5; attempt++) {
-    console.warn(`  … download throttled, retrying in ${attempt * 15}s`);
+    if (thumb && attempt === 1) {
+      const [, base, a, ab, name] = thumb;
+      url = `${base}/thumb/${a}/${ab}/${name}/1920px-${name}${/\.tiff?$/i.test(name!) ? '.jpg' : ''}`;
+      console.warn('  … original throttled, using the 1920px thumbnail');
+    } else console.warn(`  … download throttled, retrying in ${attempt * 15}s`);
     await sleep(attempt * 15000);
-    r = await fetch(meta.downloadUrl, { headers: { 'User-Agent': UA } });
+    r = await fetch(url, { headers: { 'User-Agent': UA } });
   }
   if (!r.ok) throw new Error(`${r.status} downloading ${meta.downloadUrl}`);
   // Normalise everything to a PNG/JPEG the Vision tool can read.
@@ -132,6 +139,13 @@ async function download(meta: ImageMeta): Promise<string> {
 }
 
 /** Lift the subject and give it a soft contact shadow, as if the object sits on the paper. */
+/** The subject alone, on transparency (cached). */
+function liftPath(img: LaneImage, rawPath: string): string {
+  const cutPath = join(CACHE, 'cut', `${img.id}.png`);
+  if (!existsSync(cutPath) || FORCE) execFileSync(CUTOUT, [rawPath, cutPath], { stdio: 'pipe' });
+  return cutPath;
+}
+
 async function cutout(img: LaneImage, rawPath: string): Promise<Buffer> {
   const cutPath = join(CACHE, 'cut', `${img.id}.png`);
   if (!existsSync(cutPath) || FORCE) execFileSync(CUTOUT, [rawPath, cutPath], { stdio: 'pipe' });
@@ -176,7 +190,7 @@ for (const img of images) {
     const meta = await resolve(img);
     const rawPath = await download(meta);
     let buf = img.treatment === 'cutout' ? await cutout(img, rawPath)
-      : img.treatment === 'backdrop' ? await inkPrint(rawPath, img.invert)
+      : img.treatment === 'backdrop' ? await inkPrint(img.lift ? liftPath(img, rawPath) : rawPath, img.invert)
       : await sharp(rawPath).png().toBuffer();
     // Cap the master at 2048 on the long side.
     buf = await sharp(buf).resize({ width: 2048, height: 2048, fit: 'inside', withoutEnlargement: true }).png().toBuffer();

@@ -16,6 +16,9 @@ lanes:
       - { id: sundiata, date: 1235 CE, label: "Sundiata Keita founds the Mali Empire", prominence: 2, sources: [wikipedia:Sundiata_Keita] }
       - { id: mansa-musa, date: 1324 CE, label: "Mansa Musa's pilgrimage to Mecca spends so much gold it depresses Cairo's prices", prominence: 1, themes: [trade, religion], thread: money, sources: [wikipedia:Mansa_Musa] }
       - { id: djinguereber, date: 1327 CE, label: "The Djinguereber Mosque, Timbuktu", prominence: 2, themes: [art, religion], sources: [wikipedia:Djinguereber_Mosque] }
+      - { id: kurukan-fuga, date: 1236 CE, label: "The Kouroukan Fouga charter of Mali (oral tradition)", prominence: 3, confidence: legendary, themes: [government], sources: [wikipedia:Kouroukan_Fouga] }
+      - { id: abu-bakr-ii, date: c. 1311 CE, label: "Abu Bakr II sails into the Atlantic, never to return (tradition)", prominence: 4, confidence: legendary, themes: [exploration], sources: [wikipedia:Abu_Bakr_II] }
+      - { id: catalan-atlas, date: 1375 CE, label: "The Catalan Atlas pictures Mansa Musa holding a gold nugget", prominence: 3, themes: [art], sources: [wikipedia:Catalan_Atlas] }
     images:
       - { id: djenne-mosque, source: "commons:File:Great Mosque of Djenné 1.jpg", date: c. 1330 CE, prominence: 2, treatment: plate, caption: "The Great Mosque of Djenné (rebuilt 1907 in the old style)", ofItsTime: false }
     sources: [wikipedia:Mali_Empire]
@@ -31,6 +34,8 @@ lanes:
     events:
       - { id: timbuktu-scholars, date: c. 1500 CE, label: "Timbuktu's scholars and manuscripts at their height", prominence: 3, themes: [ideas], sources: [wikipedia:Timbuktu_Manuscripts] }
       - { id: tondibi, date: 1591 CE, label: "Moroccan guns defeat Songhai at Tondibi", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Tondibi] }
+      - { id: sonni-ali, date: 1468 CE, label: "Sonni Ali takes Timbuktu", prominence: 3, themes: [war], sources: [wikipedia:Sonni_Ali] }
+      - { id: askia-muhammad, date: 1495 CE, label: "Askia Muhammad's pilgrimage to Mecca; Songhai at its height", prominence: 3, themes: [religion, government], sources: [wikipedia:Askia_Muhammad_I] }
     sources: [wikipedia:Songhai_Empire]
 
   - id: kanem-bornu
@@ -41,6 +46,10 @@ lanes:
     prominence: 3
     span: c. 700 – 1893 CE
     cliopatria: ["Kanem Empire", "Bornu Empire", "Kanem-Bornu Empire"]
+    events:
+      - { id: kanem-islam, date: c. 1085 CE, label: "Mai Hummay of Kanem converts to Islam", prominence: 3, themes: [religion], sources: [wikipedia:Kanem–Bornu_Empire] }
+      - { id: idris-alooma, date: 1571 CE, label: "Idris Alooma's musketeers make Bornu a great power", prominence: 3, themes: [war, technology], sources: [wikipedia:Idris_Alooma] }
+      - { id: rabih, date: 1893 CE, label: "Rabih az-Zubayr overthrows Bornu", prominence: 4, themes: [war], sources: [wikipedia:Rabih_az-Zubayr] }
     sources: [wikipedia:Kanem–Bornu_Empire]
 
   - id: ife-benin
@@ -67,6 +76,8 @@ lanes:
     cliopatria: ["Ashanti Empire", "Ghana"]
     events:
       - { id: ghana-independence, date: 1957 CE, label: "Ghana: the first sub-Saharan colony to win independence", prominence: 2, themes: [government], sources: [wikipedia:Ghana] }
+      - { id: golden-stool, date: c. 1701 CE, label: "The Golden Stool descends from the sky to unite the Asante", prominence: 3, confidence: legendary, themes: [religion, government], sources: [wikipedia:Golden_Stool] }
+      - { id: yaa-asantewaa, date: 1900 CE, label: "Queen Mother Yaa Asantewaa leads the War of the Golden Stool", prominence: 3, themes: [women, war], sources: [wikipedia:Yaa_Asantewaa] }
     sources: [wikipedia:Ashanti_Empire]
 
   - id: nigeria
@@ -79,6 +90,11 @@ lanes:
     cliopatria: ["Sokoto Caliphate", "Nigeria"]
     events:
       - { id: nigeria-independence, date: 1960 CE, label: "Nigeria — Africa's most populous country — becomes independent", prominence: 3, themes: [government], sources: [wikipedia:Nigeria] }
+      - { id: sokoto, date: 1804 CE, label: "Usman dan Fodio's jihad founds the Sokoto Caliphate", prominence: 3, themes: [religion, war], sources: [wikipedia:Sokoto_Caliphate] }
+      - { id: lagos-colony, date: 1861 CE, label: "Britain annexes Lagos", prominence: 4, themes: [government], sources: [wikipedia:Lagos_Colony] }
+      - { id: biafra, date: 1967 CE, label: "The Biafran War", prominence: 3, themes: [war], sources: [wikipedia:Nigerian_Civil_War] }
+      - { id: things-fall-apart, date: 1958 CE, label: "Chinua Achebe's Things Fall Apart", prominence: 3, themes: [art], sources: [wikipedia:Things_Fall_Apart] }
+      - { id: soyinka, date: 1986 CE, label: "Wole Soyinka, the first African Nobel laureate in literature", prominence: 4, themes: [art], sources: [wikipedia:Wole_Soyinka] }
     sources: [wikipedia:Nigeria]
 
   # ------------------------------------------------------------------ central & southern africa
@@ -92,6 +108,9 @@ lanes:
     cliopatria: ["Kilwa Sultanate"]
     events:
       - { id: kilwa, date: c. 1300 CE, label: "Kilwa's merchants trade gold for Chinese porcelain across the Indian Ocean", prominence: 2, themes: [trade], sources: [wikipedia:Kilwa_Kisiwani] }
+      - { id: swahili-coast, date: c. 1000 CE, label: "Swahili stone towns link Africa to Arabia, India and China", prominence: 2, themes: [trade], sources: [wikipedia:Swahili_coast] }
+      - { id: kilwa-coins, date: c. 1100 CE, label: "Kilwa mints copper coins", prominence: 4, thread: money, sources: [wikipedia:Kilwa_Sultanate] }
+      - { id: da-gama-mombasa, date: 1498 CE, label: "Da Gama reaches Mombasa and Malindi", prominence: 3, themes: [exploration], sources: [wikipedia:Malindi] }
     sources: [wikipedia:Swahili_coast]
 
   - id: great-zimbabwe
@@ -107,6 +126,8 @@ lanes:
       - { type: becomes, lane: mutapa, at: 1450 CE }
     events:
       - { id: zimbabwe-walls, date: c. 1300 CE, label: "The great stone enclosures of Great Zimbabwe", prominence: 1, themes: [art], sources: [wikipedia:Great_Zimbabwe] }
+      - { id: zimbabwe-gold, date: c. 1250 CE, label: "Gold from the Zimbabwe plateau reaches Kilwa and the Indian Ocean", prominence: 3, themes: [trade], sources: [wikipedia:Great_Zimbabwe] }
+      - { id: zimbabwe-abandoned, date: c. 1450 CE, label: "Great Zimbabwe is abandoned", prominence: 4, confidence: probable, sources: [wikipedia:Great_Zimbabwe] }
     images:
       - { id: great-zimbabwe-ruins, source: "commons:File:Great Zimbabwe.jpg", date: c. 1300 CE, prominence: 2, treatment: plate, caption: "The Great Enclosure, Great Zimbabwe" }
     sources: [wikipedia:Great_Zimbabwe]
@@ -119,6 +140,9 @@ lanes:
     prominence: 3
     span: 1450 – 1760 CE
     cliopatria: ["Kingdom of Mutapa"]
+    events:
+      - { id: mutapa-founded, date: c. 1450 CE, label: "Nyatsimba Mutota founds the Mutapa state", prominence: 3, confidence: probable, sources: [wikipedia:Kingdom_of_Mutapa] }
+      - { id: mutapa-portuguese, date: 1629 CE, label: "Mutapa becomes a Portuguese vassal", prominence: 4, themes: [government], sources: [wikipedia:Kingdom_of_Mutapa] }
     sources: [wikipedia:Kingdom_of_Mutapa]
 
   - id: kongo
@@ -131,6 +155,9 @@ lanes:
     cliopatria: ["Kingdom of Kongo"]
     events:
       - { id: kongo-baptism, date: 1491 CE, label: "Kongo's king is baptised; his son Afonso later protests the slave trade to Portugal", prominence: 3, themes: [religion], sources: [wikipedia:Afonso_I_of_Kongo] }
+      - { id: afonso-kongo, date: 1526 CE, label: "Afonso I of Kongo protests the slave trade to the king of Portugal", prominence: 3, themes: [government], sources: [wikipedia:Afonso_I_of_Kongo] }
+      - { id: mbwila, date: 1665 CE, label: "Defeat at Mbwila; Kongo splinters", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Mbwila] }
+      - { id: kimpa-vita, date: 1704 CE, label: "Kimpa Vita's movement to restore Kongo", prominence: 4, themes: [women, religion], sources: [wikipedia:Beatriz_Kimpa_Vita] }
     sources: [wikipedia:Kingdom_of_Kongo]
 
   - id: zulu
@@ -143,6 +170,8 @@ lanes:
     cliopatria: ["Zulu Kingdom"]
     events:
       - { id: isandlwana, date: 1879 CE, label: "The Zulu army destroys a British force at Isandlwana", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Isandlwana] }
+      - { id: shaka, date: 1816 CE, label: "Shaka builds the Zulu kingdom", prominence: 3, themes: [war, government], sources: [wikipedia:Shaka] }
+      - { id: blood-river, date: 1838 CE, label: "Blood River: Boer trekkers defeat the Zulu", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Blood_River] }
     sources: [wikipedia:Zulu_Kingdom]
 
   - id: south-africa
@@ -157,6 +186,12 @@ lanes:
       - { id: cape-colony, date: 1652 CE, label: "The Dutch found a supply station at the Cape", prominence: 3, themes: [migration], sources: [wikipedia:Dutch_Cape_Colony] }
       - { id: apartheid, date: 1948 CE, label: "Apartheid becomes law", prominence: 2, themes: [government], sources: [wikipedia:Apartheid] }
       - { id: mandela, date: 1994 CE, label: "Free elections: Nelson Mandela becomes president", prominence: 1, themes: [government], sources: [wikipedia:1994_South_African_general_election] }
+      - { id: great-trek, date: 1836 CE, label: "The Great Trek", prominence: 3, themes: [migration], sources: [wikipedia:Great_Trek] }
+      - { id: kimberley, date: 1871 CE, label: "Diamonds at Kimberley, gold on the Witwatersrand in 1886", prominence: 3, themes: [trade], sources: [wikipedia:Kimberley_Mine] }
+      - { id: boer-war, date: 1899 CE, label: "The Boer War and British concentration camps", prominence: 3, themes: [war], sources: [wikipedia:Second_Boer_War] }
+      - { id: sharpeville, date: 1960 CE, label: "The Sharpeville massacre", prominence: 4, themes: [government], sources: [wikipedia:Sharpeville_massacre] }
+      - { id: soweto, date: 1976 CE, label: "The Soweto uprising", prominence: 4, themes: [government], sources: [wikipedia:Soweto_uprising] }
+      - { id: truth-commission, date: 1996 CE, label: "The Truth and Reconciliation Commission", prominence: 4, themes: [government], sources: [wikipedia:Truth_and_Reconciliation_Commission_(South_Africa)] }
     sources: [wikipedia:History_of_South_Africa]
 
   - id: colonial-africa
@@ -170,6 +205,12 @@ lanes:
       - { id: berlin-conference, date: 1884 CE, label: "The Berlin Conference: Europe divides Africa on paper", prominence: 1, themes: [government, war], sources: [wikipedia:Berlin_Conference] }
       - { id: congo-free-state, date: 1885 CE, label: "Leopold II's Congo Free State: millions die for rubber", prominence: 2, sources: [wikipedia:Congo_Free_State] }
       - { id: year-of-africa, date: 1960 CE, label: "The Year of Africa: seventeen nations win independence", prominence: 2, themes: [government], sources: [wikipedia:Year_of_Africa] }
+      - { id: herero-genocide, date: 1904 CE, label: "Germany's genocide of the Herero and Nama", prominence: 3, themes: [war], sources: [wikipedia:Herero_and_Nama_genocide] }
+      - { id: maji-maji, date: 1905 CE, label: "The Maji Maji rebellion in German East Africa", prominence: 4, themes: [war], sources: [wikipedia:Maji_Maji_Rebellion] }
+      - { id: mau-mau, date: 1952 CE, label: "The Mau Mau uprising in Kenya", prominence: 4, themes: [war], sources: [wikipedia:Mau_Mau_rebellion] }
+      - { id: oau, date: 1963 CE, label: "The Organisation of African Unity is founded", prominence: 4, themes: [government], sources: [wikipedia:Organisation_of_African_Unity] }
+      - { id: suez-crisis, date: 1956 CE, label: "The Suez Crisis", prominence: 4, themes: [war], sources: [wikipedia:Suez_Crisis] }
+      - { id: lumumba, date: 1961 CE, label: "Patrice Lumumba is murdered", prominence: 4, sources: [wikipedia:Patrice_Lumumba] }
     sources: [wikipedia:Scramble_for_Africa]
 
   - id: rwanda
@@ -181,6 +222,7 @@ lanes:
     span: 1962 – 2026 CE
     events:
       - { id: rwanda-genocide, date: 1994 CE, label: "The Rwandan genocide: 800,000 killed in 100 days", prominence: 2, themes: [war], sources: [wikipedia:Rwandan_genocide] }
+      - { id: rwanda-recovery, date: 2003 CE, label: "Rwanda's parliament: the first with a female majority (2008)", prominence: 4, themes: [women, government], sources: [wikipedia:Women_in_Rwanda] }
     sources: [wikipedia:Rwanda]
 
   # ------------------------------------------------------------------ the nile & the horn
@@ -194,6 +236,7 @@ lanes:
     cliopatria: ["Makuria", "Nobatia", "Alodia"]
     events:
       - { id: baqt, date: 652 CE, label: "The Baqt treaty: Nubia holds off the Arab armies for six centuries", prominence: 3, themes: [diplomacy], sources: [wikipedia:Baqt] }
+      - { id: faras-paintings, date: c. 1000 CE, label: "The painted cathedral of Faras", prominence: 3, themes: [art, religion], sources: [wikipedia:Faras] }
     sources: [wikipedia:Makuria]
 
   - id: zagwe
@@ -208,6 +251,7 @@ lanes:
       - { type: becomes, lane: ethiopia, at: 1270 CE }
     events:
       - { id: lalibela, date: c. 1200 CE, label: "King Lalibela's churches carved down into the rock", prominence: 2, themes: [art, religion], sources: [wikipedia:Rock-hewn_Churches,_Lalibela] }
+      - { id: zagwe-rise, date: c. 1137 CE, label: "The Zagwe dynasty takes power in the highlands", prominence: 4, confidence: probable, sources: [wikipedia:Zagwe_dynasty] }
     images:
       - { id: lalibela-church, source: "commons:File:Lalibela, san giorgio, esterno 24.jpg", date: c. 1200 CE, prominence: 2, treatment: plate, caption: "Bete Giyorgis, cut down into the rock at Lalibela" }
     sources: [wikipedia:Zagwe_dynasty]
@@ -226,6 +270,13 @@ lanes:
       - { id: adwa, date: 1896 CE, label: "Ethiopia defeats Italy at Adwa and stays free", prominence: 1, themes: [war], sources: [wikipedia:Battle_of_Adwa] }
       - { id: haile-selassie, date: 1974 CE, label: "Haile Selassie is overthrown; the Derg rules", prominence: 4, themes: [government], sources: [wikipedia:Derg] }
       - { id: smallpox-eradicated, date: 1977 CE, label: "The last natural case of smallpox, in Somalia: a disease is wiped out", prominence: 3, themes: [disease, science], sources: [wikipedia:Smallpox] }
+      - { id: amda-seyon, date: 1314 CE, label: "Amda Seyon's conquests", prominence: 4, themes: [war], sources: [wikipedia:Amda_Seyon_I] }
+      - { id: adal-war, date: 1529 CE, label: "Ahmad Gran's invasion; Portuguese musketeers help repel it", prominence: 3, themes: [war], sources: [wikipedia:Ethiopian–Adal_war] }
+      - { id: gondar, date: 1636 CE, label: "Gondar, the castle capital", prominence: 3, themes: [art], sources: [wikipedia:Gondar] }
+      - { id: tewodros, date: 1855 CE, label: "Tewodros II reunifies Ethiopia", prominence: 4, themes: [government], sources: [wikipedia:Tewodros_II] }
+      - { id: italo-ethiopian, date: 1935 CE, label: "Mussolini invades with poison gas", prominence: 3, themes: [war], sources: [wikipedia:Second_Italo-Ethiopian_War] }
+      - { id: ethiopia-famine, date: 1984 CE, label: "The Ethiopian famine and Live Aid", prominence: 4, themes: [disease], sources: [wikipedia:1983–1985_famine_in_Ethiopia] }
+      - { id: lucy-found, date: 1974 CE, label: "'Lucy', a 3.2-million-year-old ancestor, is found", prominence: 4, themes: [science], sources: [wikipedia:Lucy_(Australopithecus)] }
     sources: [wikipedia:Ethiopian_Empire]
 
   # ------------------------------------------------------------------ the maghreb
@@ -241,6 +292,9 @@ lanes:
       - { type: becomes, lane: morocco, at: 1269 CE }
     events:
       - { id: averroes, date: c. 1180 CE, label: "Ibn Rushd (Averroes) comments on Aristotle", prominence: 3, themes: [ideas], sources: [wikipedia:Averroes] }
+      - { id: marrakesh-founded, date: 1070 CE, label: "The Almoravids found Marrakesh", prominence: 3, sources: [wikipedia:Marrakesh] }
+      - { id: sagrajas, date: 1086 CE, label: "Almoravid victory at Sagrajas saves al-Andalus", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Sagrajas] }
+      - { id: almohads, date: 1147 CE, label: "The Almohads take Marrakesh", prominence: 3, themes: [religion, war], sources: [wikipedia:Almohad_Caliphate] }
     sources: [wikipedia:Almohad_Caliphate]
 
   - id: morocco
@@ -253,6 +307,10 @@ lanes:
     cliopatria: ["Marinid Sultanate", "Saadi Sultanate", "Alaouite Sultanate", "Morocco"]
     events:
       - { id: ibn-battuta, date: 1325 CE, label: "Ibn Battuta leaves Tangier; he will travel 120,000 km", prominence: 2, themes: [exploration], sources: [wikipedia:Ibn_Battuta] }
+      - { id: three-kings, date: 1578 CE, label: "The Battle of the Three Kings; Portugal's king dies", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Alcácer_Quibir] }
+      - { id: moroccan-independence, date: 1956 CE, label: "Morocco regains independence", prominence: 4, themes: [government], sources: [wikipedia:Morocco] }
+      - { id: morocco-recognises-us, date: 1777 CE, label: "Morocco is the first state to recognise the United States", prominence: 4, themes: [government], sources: [wikipedia:Morocco–United_States_relations] }
+      - { id: green-march, date: 1975 CE, label: "The Green March into Western Sahara", prominence: 4, sources: [wikipedia:Green_March] }
     sources: [wikipedia:History_of_Morocco]
 
   - id: algeria
@@ -264,4 +322,5 @@ lanes:
     span: 1962 – 2026 CE
     events:
       - { id: algeria-war, date: 1962 CE, label: "After a brutal war, Algeria wins independence from France", prominence: 3, themes: [war], sources: [wikipedia:Algerian_War] }
+      - { id: algeria-civil-war, date: 1991 CE, label: "The Algerian Civil War", prominence: 4, themes: [war], sources: [wikipedia:Algerian_Civil_War] }
     sources: [wikipedia:Algeria]

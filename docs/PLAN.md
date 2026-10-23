@@ -30,7 +30,7 @@ Lineage we study and quietly cite inside the chart: Priestley, *A New Chart of H
 | Zoom levels | 5 + doorway | **4 + doorway** |
 | Printed with legible fine print | ~15 × 30 m | **~7 × 15 m** |
 
-**Time span.** 3300 BCE → today, equidistant. Above it, a compressed **Neolithic prologue** (10,000–3300 BCE) behind a clearly marked scale break. (Deep-time spiral title piece: later, optional.) The bottom edge is *today* — the "now" line moves daily, then fades into blank paper and a question mark.
+**Time span.** 10,000 BCE → today on a **progressive scale** (decision 22): the Neolithic prologue at ⅛ of the main scale, 3300–1000 BCE at ½, 1000 BCE–1500 CE at the main scale, then 2×, 3× and 4× for the crowded centuries since 1500. Every change of scale is a zig-zag rule with a note in the margin. (Deep-time spiral title piece: later, optional.) The bottom edge is *today* — the "now" line moves daily, then fades into blank paper and a question mark.
 
 **Columns, west → east:** The Americas (North America · Mesoamerica · Andes) │ Sub-Saharan Africa │ Europe │ Mediterranean & Near East (Egypt beside Mesopotamia) │ Steppe & Central Asia │ South Asia │ East Asia │ Southeast Asia │ Oceania — framed by two slim data margins. Column widths change smoothly by century to fit their lanes (dividers curve gently, like rivers). An optimizer keeps important neighbours adjacent; cross-column relationships (Kush → Egypt, the Mongols) are drawn as arcs.
 
@@ -231,7 +231,7 @@ mappa-temporis/
 |---|---|---|
 | **0. Prove it** *(done — see `docs/phase-0/`)* | (a) Renderer spike: Skia tiles in workers + deep-zoom viewer, multi-script text, a pigment lane on paper, greeking, prominence styling. (b) Layout spike on one region × era from real data. (c) 20 images through the full pipeline with credits. Output: a proof sheet of East Asia 600 BCE–600 CE at every zoom level | 60 fps, sharp everywhere, calm at every zoom, and Rojan says "that's the look" |
 | **1. Vertical slice** *(done — see `docs/phase-1/`)* | Classical Antiquity across all regions, with Folio, Atlas, search, frozen headers, Silk Road thread, one tour | You'd hang it on a wall |
-| **2. Skeleton** | All eras/regions at P1–P3 (~400 lanes, ~2,500 events), substrates, era maps, turning-point bands, margins | The poster exists end to end |
+| **2. Skeleton** *(done — see `docs/phase-2/`)* | All eras/regions at P1–P3 (~400 lanes, ~2,500 events), substrates, era maps, turning-point bands, margins | The poster exists end to end |
 | **3. Depth** | Era-by-era P3–P5 fill, people, voices, daily life, coins, native names; balance audits | Coverage targets met within density budgets |
 | **4. Experience & editions** | Tours + video, lenses, threads, Meanwhile, layers, print editions, offline, accessibility | Launch (private) |
 

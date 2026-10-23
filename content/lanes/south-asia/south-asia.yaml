@@ -49,6 +49,8 @@ lanes:
       - { type: becomes, lane: magadha, at: c. 600 BCE }
     events:
       - { id: upanishads, date: c. 700 BCE, label: "The first Upanishads: karma, rebirth and the self", prominence: 2, confidence: probable, themes: [ideas, religion], sources: [wikipedia:Upanishads] }
+      - { id: iron-ganges, date: c. 1000 BCE, label: "Iron tools clear the Ganges forests", prominence: 3, themes: [technology], sources: [wikipedia:Iron_Age_in_India] }
+      - { id: varna, date: c. 900 BCE, label: "The varna order takes shape", prominence: 4, themes: [government, religion], confidence: probable, sources: [wikipedia:Varna_(Hinduism)] }
     sources: [wikipedia:Vedic_period]
 
   - id: magadha
@@ -65,6 +67,7 @@ lanes:
       - { id: buddha, date: 5th c. BCE, label: "Siddhartha Gautama, the Buddha, teaches", prominence: 1, confidence: disputed, themes: [religion, ideas], sources: [wikipedia:The_Buddha] }
       - { id: mahavira, date: 5th c. BCE, label: "Mahavira teaches non-violence: the Jain way", prominence: 3, confidence: disputed, themes: [religion], sources: [wikipedia:Mahavira] }
       - { id: panini, date: c. 450 BCE, label: "Pāṇini writes the grammar of Sanskrit", prominence: 3, confidence: disputed, themes: [ideas], sources: [wikipedia:Pāṇini] }
+      - { id: rajagriha, date: c. 540 BCE, label: "Bimbisara rules Magadha from Rajagriha", prominence: 4, sources: [wikipedia:Bimbisara] }
     sources: [wikipedia:Magadha]
 
   - id: nanda
@@ -76,6 +79,8 @@ lanes:
     span: c. 345 – 322 BCE
     relations:
       - { type: becomes, lane: maurya, at: 322 BCE }
+    events:
+      - { id: nanda-wealth, date: c. 340 BCE, label: "The Nandas' vast army deters Alexander's men from crossing the Beas", prominence: 3, themes: [war], confidence: probable, sources: [wikipedia:Nanda_Empire] }
     sources: [wikipedia:Nanda_Empire]
 
   - id: maurya
@@ -106,6 +111,9 @@ lanes:
     prominence: 3
     span: 185 – 73 BCE
     cliopatria: ["Shunga Empire"]
+    events:
+      - { id: sanchi-railing, date: c. 150 BCE, label: "Sanchi's stone railings and gateways", prominence: 3, themes: [art, religion], sources: [wikipedia:Sanchi] }
+      - { id: patanjali, date: c. 150 BCE, label: "Patañjali's grammar commentary; the Yoga Sutras follow later", prominence: 4, themes: [ideas], confidence: probable, sources: [wikipedia:Patanjali] }
     sources: [wikipedia:Shunga_Empire]
 
   - id: gupta
@@ -137,6 +145,7 @@ lanes:
     span: 606 – 647 CE
     events:
       - { id: brahmagupta, date: 628 CE, label: "Brahmagupta writes down the rules of arithmetic with zero", prominence: 2, thread: numerals, themes: [ideas], note: "Brahmagupta worked at Bhillamala, outside Harsha's realm, in the same years.", sources: [wikipedia:Brahmagupta] }
+      - { id: xuanzang-harsha, date: 643 CE, label: "Xuanzang attends Harsha's great assembly", prominence: 3, themes: [religion], sources: [wikipedia:Xuanzang] }
     sources: [wikipedia:Harsha]
 
   # ------------------------------------------------------------------ deccan & the south
@@ -150,6 +159,7 @@ lanes:
     cliopatria: ["Satavahana Dynasty"]
     events:
       - { id: sanchi, date: 1st c. BCE, label: "The carved gateways of the Great Stupa at Sanchi", prominence: 2, themes: [art, religion], sources: [wikipedia:Sanchi] }
+      - { id: karla-caves, date: c. 100 CE, label: "The rock-cut hall at Karla", prominence: 4, themes: [art, religion], sources: [wikipedia:Karla_Caves] }
     sources: [wikipedia:Satavahana_dynasty]
 
   - id: vakataka
@@ -188,6 +198,7 @@ lanes:
     events:
       - { id: mamallapuram, date: 7th c., label: "Temples cut from living rock at Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Group_of_Monuments_at_Mahabalipuram] }
       - { id: shore-temple, date: c. 700 CE, label: "The Shore Temple at Mamallapuram", prominence: 3, themes: [art, religion], sources: [wikipedia:Shore_Temple] }
+      - { id: mamallapuram-rathas, date: c. 650 CE, label: "The rock-cut rathas of Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Pancha_Rathas] }
     sources: [wikipedia:Pallava_dynasty]
 
   # ------------------------------------------------------------------ sri lanka

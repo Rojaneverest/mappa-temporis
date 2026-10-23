@@ -34,6 +34,8 @@ lanes:
         prominence: 4
         themes: [war]
         sources: [wikipedia:Battle_of_Changping]
+      - { id: shang-yang, date: 356 BCE, label: "Shang Yang's Legalist reforms make Qin a war machine", prominence: 3, themes: [government], sources: [wikipedia:Shang_Yang] }
+      - { id: dujiangyan, date: 256 BCE, label: "Dujiangyan irrigation, still working today", prominence: 3, themes: [technology], sources: [wikipedia:Dujiangyan] }
     sources: [wikipedia:Qin_(state)]
 
   - id: zhou-eastern
@@ -79,6 +81,10 @@ lanes:
         label: Qin ends the Zhou royal line
         prominence: 4
         sources: [wikipedia:Zhou_dynasty]
+      - { id: spring-autumn, date: 722 BCE, label: "The Spring and Autumn Annals begin", prominence: 3, themes: [ideas], sources: [wikipedia:Spring_and_Autumn_Annals] }
+      - { id: sunzi, date: c. 500 BCE, label: "Sunzi's Art of War", prominence: 2, themes: [war, ideas], confidence: probable, sources: [wikipedia:The_Art_of_War] }
+      - { id: mencius, date: c. 320 BCE, label: "Mencius: human nature is good", prominence: 3, themes: [ideas], sources: [wikipedia:Mencius] }
+      - { id: crossbow, date: c. 400 BCE, label: "The crossbow transforms warfare", prominence: 4, themes: [technology, war], sources: [wikipedia:Crossbow] }
     images:
       - id: dragon-mirror
         source: "met:61403"
@@ -117,6 +123,8 @@ lanes:
         prominence: 2
         themes: [art]
         sources: [wikipedia:Terracotta_Army]
+      - { id: unification-standards, date: 221 BCE, label: "One script, one currency, one axle width: China unified", prominence: 1, themes: [government], thread: scripts, sources: [wikipedia:Qin_dynasty] }
+      - { id: book-burning, date: 213 BCE, label: "The burning of books", prominence: 3, themes: [ideas], confidence: disputed, sources: [wikipedia:Burning_of_books_and_burying_of_scholars] }
     images:
       - id: terracotta-pit-1
         source: "commons:File:Qin Terracotta Army, Pit 1 04.jpg"
@@ -209,6 +217,7 @@ lanes:
         prominence: 3
         themes: [war]
         sources: [wikipedia:Battle_of_Red_Cliffs]
+      - { id: cai-lun, date: 105 CE, label: "Cai Lun presents paper to the court", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Cai_Lun] }
     images:
       - id: han-lacquer-bowl
         source: "met:36449"
@@ -265,6 +274,7 @@ lanes:
         prominence: 3
         themes: [war, migration]
         sources: [wikipedia:Disaster_of_Yongjia]
+      - { id: eight-princes, date: 291 CE, label: "The War of the Eight Princes", prominence: 4, themes: [war], sources: [wikipedia:War_of_the_Eight_Princes] }
     sources: [wikipedia:Jin_dynasty_(266–420)]
 
   - id: sui
@@ -290,6 +300,7 @@ lanes:
         prominence: 2
         themes: [technology, trade]
         sources: [wikipedia:Grand_Canal_(China)]
+      - { id: sui-exams, date: 605 CE, label: "The first imperial examinations", prominence: 3, themes: [government], sources: [wikipedia:Imperial_examination] }
     sources: [wikipedia:Sui_dynasty]
 
   - id: tang
@@ -319,6 +330,8 @@ lanes:
       - { id: an-lushan, date: 755 CE, label: "The An Lushan rebellion: the Tang never fully recover", prominence: 2, themes: [war], sources: [wikipedia:An_Lushan_rebellion] }
       - { id: diamond-sutra, date: 868 CE, label: "The Diamond Sutra, the oldest dated printed book", prominence: 2, thread: paper, themes: [technology, religion], sources: [wikipedia:Diamond_Sutra] }
       - { id: huang-chao, date: 878 CE, label: "Huang Chao's rebels massacre the foreign merchants of Guangzhou", prominence: 4, themes: [war, trade], sources: [wikipedia:Huang_Chao_rebellion] }
+      - { id: changan-largest, date: c. 700 CE, label: "Chang'an, perhaps the world's largest city", prominence: 2, themes: [trade], sources: [wikipedia:Chang'an] }
+      - { id: tang-buddhism-ban, date: 845 CE, label: "The great anti-Buddhist persecution", prominence: 4, themes: [religion], sources: [wikipedia:Great_Anti-Buddhist_Persecution] }
     images:
       - id: tang-lute-player
         source: "met:44801"
@@ -361,6 +374,8 @@ lanes:
     sphere: sinic
     prominence: 3
     span: 221 – 263 CE
+    events:
+      - { id: zhuge-liang, date: 227 CE, label: "Zhuge Liang's northern campaigns", prominence: 4, themes: [war], sources: [wikipedia:Zhuge_Liang] }
     sources: [wikipedia:Shu_Han]
 
   - id: eastern-jin
@@ -386,6 +401,7 @@ lanes:
         prominence: 3
         themes: [religion, exploration]
         sources: [wikipedia:Faxian]
+      - { id: wang-xizhi, date: 353 CE, label: "Wang Xizhi's Orchid Pavilion calligraphy", prominence: 3, themes: [art], sources: [wikipedia:Lantingji_Xu] }
     images:
       - id: admonitions-scroll
         source: "commons:File:Gu Kaizhi 002.jpg"
@@ -410,6 +426,9 @@ lanes:
       - { name: Chen, span: 557 – 589 CE }
     relations:
       - { type: merges-into, lane: sui, at: 589 CE }
+    events:
+      - { id: tao-yuanming, date: c. 420 CE, label: "Tao Yuanming, poet of fields and gardens", prominence: 4, themes: [art], sources: [wikipedia:Tao_Yuanming] }
+      - { id: zu-chongzhi, date: c. 480 CE, label: "Zu Chongzhi computes π to seven digits", prominence: 3, themes: [science], sources: [wikipedia:Zu_Chongzhi] }
     sources: [wikipedia:Southern_dynasties]
 
   - id: qi
@@ -430,6 +449,8 @@ lanes:
     sphere: sinic
     prominence: 3
     span: 222 – 280 CE
+    events:
+      - { id: wu-navy, date: c. 230 CE, label: "Wu fleets explore Taiwan and reach Funan", prominence: 4, themes: [exploration], sources: [wikipedia:Eastern_Wu] }
     sources: [wikipedia:Eastern_Wu]
 
   - id: jin-state

@@ -570,10 +570,11 @@ export class Viewer {
       const a = Math.max(RULER_W + 8, (r.x0 - this.x0) * this.s);
       const b = Math.min(this.cssW - 8, (r.x1 - this.x0) * this.s);
       if (b - a < 40) continue;
-      const label = spaced(r.name.toUpperCase());
+      let label = spaced(r.name.toUpperCase());
       let size = 12;
       ctx.font = `600 ${size}px Georgia, serif`;
       let w = ctx.measureText(label).width;
+      if (r.short && w * 8 / 12 > b - a - 6) { label = spaced(r.short.toUpperCase()); w = ctx.measureText(label).width; }
       if (w > b - a - 6) { size = Math.max(8, Math.floor((size * (b - a - 6)) / w)); ctx.font = `600 ${size}px Georgia, serif`; w = ctx.measureText(label).width; }
       const cx = (a + b) / 2;
       if (w > b - a + 4 || cx - w / 2 < lastRight + 6) continue;

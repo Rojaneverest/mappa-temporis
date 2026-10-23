@@ -12,6 +12,8 @@ lanes:
       - { type: influences, lane: neolithic-europe, at: c. 2900 BCE }
     events:
       - { id: steppe-wagons, date: c. 3000 BCE, label: "Wagon-dwelling herders roam the Pontic steppe — likely speakers of Proto-Indo-European", prominence: 2, themes: [migration, technology], confidence: probable, sources: [wikipedia:Yamnaya_culture] }
+      - { id: yamnaya-wagons, date: c. 3000 BCE, label: "Wagons and herds let Yamnaya herders roam the open steppe", prominence: 3, themes: [technology, migration], sources: [wikipedia:Yamnaya_culture] }
+      - { id: yamnaya-europe, date: c. 2800 BCE, label: "Steppe ancestry floods into Europe — and Indo-European languages with it", prominence: 2, themes: [migration], confidence: probable, sources: [wikipedia:Indo-European_migrations] }
     sources: [wikipedia:Yamnaya_culture]
 
   - id: botai
@@ -34,6 +36,9 @@ lanes:
     prominence: 3
     basis: archaeology
     span: c. 2300 – c. 1700 BCE
+    events:
+      - { id: gonur-depe, date: c. 2200 BCE, label: "Gonur Depe, walled city of the Oxus civilization", prominence: 3, sources: [wikipedia:Gonur_Depe] }
+      - { id: bmac-seals, date: c. 2000 BCE, label: "Oxus seals and goods reach Mesopotamia and the Indus", prominence: 4, themes: [trade], sources: [wikipedia:Bactria–Margiana_Archaeological_Complex] }
     sources: [wikipedia:Bactria–Margiana_Archaeological_Complex]
 
   - id: sintashta-andronovo
@@ -48,6 +53,8 @@ lanes:
       - { type: influences, lane: early-vedic, at: c. 1500 BCE }
     events:
       - { id: chariot, date: c. 2000 BCE, label: "The spoked-wheel war chariot", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture] }
+      - { id: sintashta-chariots, date: c. 2000 BCE, label: "Sintashta: the first spoked-wheel chariots", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture] }
+      - { id: arkaim, date: c. 1900 BCE, label: "Arkaim, a fortified ring settlement", prominence: 4, sources: [wikipedia:Arkaim] }
     sources: [wikipedia:Andronovo_culture]
 
   - id: afanasievo
@@ -58,4 +65,6 @@ lanes:
     prominence: 4
     basis: archaeology
     span: c. 3300 – c. 2500 BCE
+    events:
+      - { id: afanasievo-altai, date: c. 3000 BCE, label: "Herders reach the Altai, 2,000 km east of the Yamnaya", prominence: 4, themes: [migration], sources: [wikipedia:Afanasievo_culture] }
     sources: [wikipedia:Afanasievo_culture]

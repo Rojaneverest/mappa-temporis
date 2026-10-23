@@ -19,6 +19,8 @@ lanes:
       - { id: angkor-wat, date: c. 1150 CE, label: "Angkor Wat, the largest religious monument on Earth", prominence: 1, themes: [art, religion], sources: [wikipedia:Angkor_Wat] }
       - { id: bayon, date: c. 1190 CE, label: "Jayavarman VII's Bayon, its towers carved with smiling faces", prominence: 3, themes: [art], sources: [wikipedia:Bayon] }
       - { id: angkor-drought, date: c. 1400 CE, label: "Megadroughts break Angkor's waterworks", prominence: 3, themes: [climate], confidence: probable, sources: [wikipedia:Angkor] }
+      - { id: zhou-daguan, date: 1296 CE, label: "Zhou Daguan's eyewitness account of Angkor", prominence: 4, sources: [wikipedia:Zhou_Daguan] }
+      - { id: angkor-thom, date: c. 1200 CE, label: "Angkor Thom; Jayavarman VII builds 102 hospitals", prominence: 3, sources: [wikipedia:Angkor_Thom] }
     images:
       - { id: angkor-wat-view, source: "commons:File:Angkor Wat.jpg", date: c. 1150 CE, prominence: 1, treatment: plate, caption: "Angkor Wat" }
     sources: [wikipedia:Khmer_Empire]
@@ -34,6 +36,7 @@ lanes:
     cliopatria: ["Cambodia", "Kingdom of Cambodia", "Democratic Kampuchea"]
     events:
       - { id: khmer-rouge, date: 1975 CE, label: "The Khmer Rouge: a quarter of Cambodians die", prominence: 2, themes: [war], sources: [wikipedia:Cambodian_genocide] }
+      - { id: angkor-rediscovered, date: 1860 CE, label: "Mouhot's drawings bring Angkor to Europe", prominence: 4, sources: [wikipedia:Henri_Mouhot] }
     sources: [wikipedia:History_of_Cambodia]
 
   - id: pagan
@@ -57,6 +60,10 @@ lanes:
     events:
       - { id: bagan-temples, date: c. 1100 CE, label: "Bagan: over 10,000 temples on one plain", prominence: 2, themes: [art, religion], sources: [wikipedia:Bagan] }
       - { id: bayinnaung, date: 1555 CE, label: "Bayinnaung builds the largest empire in Southeast Asian history", prominence: 4, themes: [war], sources: [wikipedia:Bayinnaung] }
+      - { id: anawrahta, date: 1044 CE, label: "Anawrahta unites Burma under Theravada Buddhism", prominence: 3, themes: [religion], sources: [wikipedia:Anawrahta] }
+      - { id: mongols-pagan, date: 1287 CE, label: "Mongol invasions break Pagan", prominence: 4, themes: [war], sources: [wikipedia:First_Mongol_invasion_of_Burma] }
+      - { id: anglo-burmese, date: 1885 CE, label: "Britain takes Mandalay", prominence: 4, themes: [war], sources: [wikipedia:Third_Anglo-Burmese_War] }
+      - { id: aung-san-suu-kyi, date: 1991 CE, label: "Aung San Suu Kyi wins the Nobel Peace Prize under house arrest", prominence: 4, themes: [women, government], sources: [wikipedia:Aung_San_Suu_Kyi] }
     images:
       - { id: bagan-plain, source: "commons:File:Bagan, Burma.jpg", date: c. 1100 CE, prominence: 2, treatment: plate, caption: "The temples of Bagan" }
       - { id: shwedagon, source: "commons:File:Shwedagon Pagoda.jpg", date: c. 1800 CE, prominence: 3, treatment: plate, caption: "The Shwedagon Pagoda, Yangon" }
@@ -84,6 +91,11 @@ lanes:
       - { id: tran-mongols, date: 1288 CE, label: "Trần Hưng Đạo defeats the Mongols three times", prominence: 3, themes: [war], sources: [wikipedia:Mongol_invasions_of_Vietnam] }
       - { id: dien-bien-phu, date: 1954 CE, label: "Điện Biên Phủ: French rule ends", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Dien_Bien_Phu] }
       - { id: vietnam-war, date: 1965 CE, label: "The Vietnam War; Saigon falls in 1975", prominence: 1, themes: [war], sources: [wikipedia:Vietnam_War] }
+      - { id: ly-dynasty, date: 1010 CE, label: "The Lý dynasty founds Thăng Long (Hanoi)", prominence: 3, sources: [wikipedia:Lý_dynasty] }
+      - { id: tale-kieu, date: 1820 CE, label: "Nguyễn Du's Tale of Kiều", prominence: 4, themes: [art], sources: [wikipedia:The_Tale_of_Kieu] }
+      - { id: tet, date: 1968 CE, label: "The Tet Offensive", prominence: 3, themes: [war], sources: [wikipedia:Tet_Offensive] }
+      - { id: doi-moi, date: 1986 CE, label: "Đổi Mới reforms", prominence: 4, themes: [trade], sources: [wikipedia:Đổi_Mới] }
+      - { id: boat-people, date: 1978 CE, label: "The boat people flee Vietnam", prominence: 4, themes: [migration], sources: [wikipedia:Vietnamese_boat_people] }
     sources: [wikipedia:History_of_Vietnam]
 
   - id: siam
@@ -104,6 +116,9 @@ lanes:
       - { id: thai-script, date: 1283 CE, label: "King Ramkhamhaeng creates the Thai script (tradition)", prominence: 3, thread: alphabet, confidence: disputed, sources: [wikipedia:Ram_Khamhaeng_Inscription] }
       - { id: ayutthaya-falls, date: 1767 CE, label: "Burmese armies destroy Ayutthaya", prominence: 3, themes: [war], sources: [wikipedia:Burmese–Siamese_War_(1765–1767)] }
       - { id: siam-uncolonised, date: c. 1896 CE, label: "Siam stays the one Southeast Asian kingdom never colonised", prominence: 3, themes: [government], sources: [wikipedia:Chulalongkorn] }
+      - { id: ayutthaya-trade, date: c. 1600 CE, label: "Ayutthaya, a cosmopolitan port of a million", prominence: 3, themes: [trade], confidence: probable, sources: [wikipedia:Ayutthaya_Kingdom] }
+      - { id: chakri, date: 1782 CE, label: "The Chakri dynasty founds Bangkok", prominence: 4, sources: [wikipedia:Chakri_dynasty] }
+      - { id: siam-1932, date: 1932 CE, label: "The revolution ends absolute monarchy", prominence: 4, themes: [government], sources: [wikipedia:Siamese_revolution_of_1932] }
     sources: [wikipedia:History_of_Thailand]
 
   - id: lan-xang
@@ -114,6 +129,9 @@ lanes:
     prominence: 4
     span: 1353 – 2026 CE
     cliopatria: ["Lan Xang", "Laos", "Kingdom of Luang Prabang", "Kingdom of Vientiane"]
+    events:
+      - { id: fa-ngum, date: 1353 CE, label: "Fa Ngum founds Lan Xang, 'a million elephants'", prominence: 4, sources: [wikipedia:Fa_Ngum] }
+      - { id: laos-bombing, date: 1964 CE, label: "Laos becomes the most-bombed country per person", prominence: 4, themes: [war], sources: [wikipedia:Laotian_Civil_War] }
     sources: [wikipedia:Lan_Xang]
 
   # ------------------------------------------------------------------ islands
@@ -128,6 +146,7 @@ lanes:
     events:
       - { id: borobudur, date: c. 825 CE, label: "Borobudur, the largest Buddhist monument in the world", prominence: 1, themes: [art, religion], sources: [wikipedia:Borobudur] }
       - { id: prambanan, date: c. 850 CE, label: "Prambanan's Hindu temples rise nearby", prominence: 3, themes: [art, religion], sources: [wikipedia:Prambanan] }
+      - { id: merapi, date: c. 929 CE, label: "Mataram moves to East Java, perhaps after Merapi erupts", prominence: 4, themes: [climate], confidence: disputed, sources: [wikipedia:Mataram_Kingdom] }
     images:
       - { id: borobudur-view, source: "commons:File:Borobudur-Nothwest-view.jpg", date: c. 825 CE, prominence: 2, treatment: plate, caption: "Borobudur, Java" }
     sources: [wikipedia:Mataram_Kingdom]
@@ -144,6 +163,8 @@ lanes:
       - { type: succeeds, lane: srivijaya, at: c. 1377 CE }
     events:
       - { id: palapa-oath, date: 1336 CE, label: "Gajah Mada's oath to unite the archipelago", prominence: 3, themes: [government], sources: [wikipedia:Gajah_Mada] }
+      - { id: nagarakretagama, date: 1365 CE, label: "The Nagarakretagama praises Majapahit's realm", prominence: 3, themes: [art], sources: [wikipedia:Nagarakretagama] }
+      - { id: majapahit-bali, date: c. 1520 CE, label: "Majapahit's court culture lives on in Bali", prominence: 4, sources: [wikipedia:Majapahit] }
     sources: [wikipedia:Majapahit]
 
   - id: malacca
@@ -157,6 +178,7 @@ lanes:
     events:
       - { id: malacca-trade, date: c. 1450 CE, label: "Malacca, where 84 languages were spoken: Islam spreads along the trade", prominence: 2, themes: [trade, religion], sources: [wikipedia:Malacca_Sultanate] }
       - { id: portuguese-malacca, date: 1511 CE, label: "The Portuguese seize Malacca", prominence: 3, themes: [war, trade], sources: [wikipedia:Capture_of_Malacca_(1511)] }
+      - { id: parameswara, date: c. 1400 CE, label: "Parameswara founds Malacca", prominence: 4, sources: [wikipedia:Parameswara_(king)] }
     sources: [wikipedia:Malacca_Sultanate]
 
   - id: aceh-mataram
@@ -187,6 +209,10 @@ lanes:
       - { id: krakatoa, date: 1883 CE, label: "Krakatoa explodes", prominence: 4, themes: [climate], sources: [wikipedia:1883_eruption_of_Krakatoa] }
       - { id: indonesia-independence, date: 1945 CE, label: "Sukarno proclaims Indonesian independence", prominence: 3, themes: [government], sources: [wikipedia:Proclamation_of_Indonesian_Independence] }
       - { id: bandung, date: 1955 CE, label: "The Bandung Conference of newly free nations", prominence: 3, themes: [government], sources: [wikipedia:Bandung_Conference] }
+      - { id: cultivation-system, date: 1830 CE, label: "The Cultivation System: Javanese forced to grow export crops", prominence: 4, themes: [trade], sources: [wikipedia:Cultivation_System] }
+      - { id: kartini, date: 1899 CE, label: "Kartini's letters on women's education", prominence: 4, themes: [women, ideas], sources: [wikipedia:Kartini] }
+      - { id: java-war, date: 1825 CE, label: "Diponegoro's Java War", prominence: 4, themes: [war], sources: [wikipedia:Java_War] }
+      - { id: indonesia-1965, date: 1965 CE, label: "The mass killings of 1965", prominence: 3, themes: [war], sources: [wikipedia:Indonesian_mass_killings_of_1965–66] }
     sources: [wikipedia:Dutch_East_Indies]
 
   - id: philippines
@@ -204,4 +230,7 @@ lanes:
     events:
       - { id: rizal, date: 1896 CE, label: "José Rizal is executed; the Philippine Revolution begins", prominence: 4, themes: [government], sources: [wikipedia:José_Rizal] }
       - { id: people-power, date: 1986 CE, label: "People Power topples Marcos", prominence: 4, themes: [government], sources: [wikipedia:People_Power_Revolution] }
+      - { id: manila-founded, date: 1571 CE, label: "Legazpi founds Spanish Manila", prominence: 3, sources: [wikipedia:Manila] }
+      - { id: philippine-american-war, date: 1899 CE, label: "The Philippine–American War", prominence: 3, themes: [war], sources: [wikipedia:Philippine–American_War] }
+      - { id: pinatubo, date: 1991 CE, label: "Pinatubo erupts and cools the planet", prominence: 4, themes: [climate], sources: [wikipedia:1991_eruption_of_Mount_Pinatubo] }
     sources: [wikipedia:History_of_the_Philippines]

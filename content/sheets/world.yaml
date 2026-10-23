@@ -12,14 +12,14 @@ scale:
   - { span: 1800 – 1899 CE, factor: 3, label: "A century takes three times the main scale" }
   - { span: 1900 – 2026 CE, factor: 4, label: "A century takes four times the main scale" }
 regions:
-  - { id: americas, name: The Americas, groups: [north-america, mesoamerica, caribbean, andes, south-america] }
+  - { id: americas, name: The Americas, short: Americas, groups: [north-america, mesoamerica, caribbean, andes, south-america] }
   - { id: africa, name: Africa, groups: [west-africa, central-south, nile-horn, maghreb] }
   - { id: europe, name: Europe, groups: [british-isles, iberia, north-europe, italy, central-europe, eastern-europe, greece] }
-  - { id: near-east, name: The Mediterranean & Near East, groups: [egypt, levant, anatolia, iran] }
-  - { id: steppe, name: The Steppe & Central Asia, groups: [western-steppe, central-asia, steppe] }
-  - { id: south-asia, name: South Asia, groups: [northwest, gangetic, deccan-south, lanka, himalaya] }
-  - { id: east-asia, name: East Asia, groups: [china, korea, japan] }
-  - { id: southeast-asia, name: Southeast Asia, groups: [mainland, islands] }
+  - { id: near-east, name: The Mediterranean & Near East, short: Near East, groups: [egypt, levant, anatolia, iran] }
+  - { id: steppe, name: The Steppe & Central Asia, short: Steppe, groups: [western-steppe, central-asia, steppe] }
+  - { id: south-asia, name: South Asia, short: S. Asia, groups: [northwest, gangetic, deccan-south, lanka, himalaya] }
+  - { id: east-asia, name: East Asia, short: E. Asia, groups: [china, korea, japan] }
+  - { id: southeast-asia, name: Southeast Asia, short: SE Asia, groups: [mainland, islands] }
   - { id: oceania, name: Oceania, groups: [australia, pacific] }
 eras:
   - id: neolithic
@@ -35,7 +35,7 @@ eras:
     span: 3300 – 2201 BCE
     forces: [ideas, technology]
     turningPoint: { label: Writing — history begins, span: 3300 – 3200 BCE }
-    map: { id: map-ga-sur, source: "commons:File:CD-001a-Tablette de Ga-Sur.jpg", date: c. 2300 BCE, prominence: 2, treatment: backdrop, caption: "The Ga-Sur tablet: hills and rivers around a Mesopotamian estate" }
+    map: { id: map-ga-sur, source: "commons:File:CD-001a-Tablette de Ga-Sur.jpg", date: c. 2300 BCE, prominence: 2, treatment: backdrop, caption: "The Ga-Sur tablet: hills and rivers around a Mesopotamian estate", lift: true }
     tint: "#A3743E"
     note: "Writing, kings, bronze and the first cities and states, along the Tigris and Euphrates, the Nile and the Indus."
     sources: [wikipedia:Bronze_Age]
@@ -53,7 +53,7 @@ eras:
     span: 1200 – 601 BCE
     forces: [climate, migration, war]
     turningPoint: { label: The Bronze Age collapse, span: 1200 – 1150 BCE }
-    map: { id: map-babylonian, source: "commons:File:Babylonian Map of the World, 700-500 BC.jpg", date: c. 600 BCE, prominence: 2, treatment: backdrop, caption: "The Babylonian Map of the World: Babylon at the centre, ocean all around" }
+    map: { id: map-babylonian, source: "commons:File:Babylonian Map of the World, 700-500 BC.jpg", date: c. 600 BCE, prominence: 2, treatment: backdrop, caption: "The Babylonian Map of the World: Babylon at the centre, ocean all around", lift: true }
     tint: "#5B6670"
     note: "After the collapse, cheaper iron and new alphabets spread; Assyria and then Persia build the first world empires."
     sources: [wikipedia:Iron_Age]

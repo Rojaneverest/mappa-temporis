@@ -13,6 +13,8 @@ lanes:
       - { type: succeeds, lane: hopewell, at: c. 800 CE }
     events:
       - { id: cahokia, date: c. 1050 CE, label: "Cahokia: a city of 15,000 around Monks Mound, the largest north of Mexico", prominence: 1, themes: [art], sources: [wikipedia:Cahokia] }
+      - { id: moundville, date: c. 1200 CE, label: "Moundville, Alabama", prominence: 4, sources: [wikipedia:Moundville_Archaeological_Site] }
+      - { id: de-soto, date: 1540 CE, label: "De Soto's expedition spreads epidemics through the Southeast", prominence: 3, themes: [disease, exploration], sources: [wikipedia:Hernando_de_Soto] }
     images:
       - { id: monks-mound, source: "commons:File:Cahokia Monks Mound.jpg", date: c. 1050 CE, prominence: 3, treatment: plate, caption: "Monks Mound, Cahokia" }
     sources: [wikipedia:Mississippian_culture]
@@ -31,6 +33,7 @@ lanes:
       - { id: sn-1054, date: 1054 CE, label: "A supernova blazes in the sky — perhaps painted at Chaco, recorded in China", prominence: 4, themes: [sky], confidence: probable, sources: [wikipedia:SN_1054] }
       - { id: mesa-verde, date: c. 1190 CE, label: "Cliff dwellings at Mesa Verde", prominence: 3, themes: [art], sources: [wikipedia:Mesa_Verde_National_Park] }
       - { id: pueblo-revolt, date: 1680 CE, label: "The Pueblo Revolt drives the Spanish from New Mexico", prominence: 3, themes: [war], sources: [wikipedia:Pueblo_Revolt] }
+      - { id: great-drought, date: 1276 CE, label: "The Great Drought: the Four Corners are abandoned", prominence: 3, themes: [climate, migration], sources: [wikipedia:Ancestral_Puebloans] }
     sources: [wikipedia:Ancestral_Puebloans]
 
   - id: haudenosaunee
@@ -42,6 +45,7 @@ lanes:
     span: c. 1450 – 2026 CE
     events:
       - { id: great-law, date: c. 1450 CE, label: "The Great Law of Peace unites five nations", prominence: 3, confidence: disputed, themes: [government], sources: [wikipedia:Great_Law_of_Peace] }
+      - { id: two-row-wampum, date: 1613 CE, label: "The Two Row Wampum treaty with the Dutch (tradition)", prominence: 4, confidence: disputed, sources: [wikipedia:Two_Row_Wampum_Treaty] }
     sources: [wikipedia:Iroquois]
 
   - id: british-america
@@ -57,6 +61,9 @@ lanes:
     events:
       - { id: jamestown, date: 1607 CE, label: "Jamestown, the first lasting English colony", prominence: 3, themes: [migration], sources: [wikipedia:Jamestown,_Virginia] }
       - { id: virginia-1619, date: 1619 CE, label: "Enslaved Africans arrive in Virginia", prominence: 2, themes: [migration], sources: [wikipedia:1619_Project] }
+      - { id: plymouth, date: 1620 CE, label: "The Mayflower lands at Plymouth", prominence: 3, themes: [migration, religion], sources: [wikipedia:Plymouth_Colony] }
+      - { id: salem, date: 1692 CE, label: "The Salem witch trials", prominence: 4, themes: [religion], sources: [wikipedia:Salem_witch_trials] }
+      - { id: seven-years-america, date: 1754 CE, label: "The French and Indian War", prominence: 4, themes: [war], sources: [wikipedia:French_and_Indian_War] }
     sources: [wikipedia:Thirteen_Colonies]
 
   - id: united-states
@@ -85,6 +92,26 @@ lanes:
       - { id: transistor, date: 1947 CE, label: "The transistor is invented at Bell Labs", prominence: 3, themes: [technology], sources: [wikipedia:Transistor] }
       - { id: human-genome, date: 2003 CE, label: "The human genome is read", prominence: 3, themes: [science], sources: [wikipedia:Human_Genome_Project] }
       - { id: llms, date: 2022 CE, label: "Large language models reach the public", prominence: 4, themes: [technology], sources: [wikipedia:Large_language_model] }
+      - { id: louisiana-purchase, date: 1803 CE, label: "The Louisiana Purchase doubles the US", prominence: 3, themes: [government], sources: [wikipedia:Louisiana_Purchase] }
+      - { id: seneca-falls, date: 1848 CE, label: "Seneca Falls: the women's rights movement", prominence: 3, themes: [women], sources: [wikipedia:Seneca_Falls_Convention] }
+      - { id: gold-rush, date: 1849 CE, label: "The California Gold Rush", prominence: 3, themes: [migration, trade], sources: [wikipedia:California_Gold_Rush] }
+      - { id: transcontinental, date: 1869 CE, label: "The transcontinental railroad", prominence: 3, themes: [technology], sources: [wikipedia:First_transcontinental_railroad] }
+      - { id: wounded-knee, date: 1890 CE, label: "Wounded Knee", prominence: 3, themes: [war], sources: [wikipedia:Wounded_Knee_Massacre] }
+      - { id: ellis-island, date: 1892 CE, label: "Ellis Island: 12 million immigrants pass through", prominence: 3, themes: [migration], sources: [wikipedia:Ellis_Island] }
+      - { id: model-t, date: 1908 CE, label: "Ford's Model T and the assembly line", prominence: 3, themes: [technology], sources: [wikipedia:Ford_Model_T] }
+      - { id: womens-suffrage-us, date: 1920 CE, label: "The 19th Amendment: women vote", prominence: 3, themes: [women, government], sources: [wikipedia:Nineteenth_Amendment_to_the_United_States_Constitution] }
+      - { id: eniac, date: 1945 CE, label: "ENIAC, an early electronic computer", prominence: 3, themes: [technology], sources: [wikipedia:ENIAC] }
+      - { id: brown-v-board, date: 1954 CE, label: "Brown v. Board of Education ends legal school segregation", prominence: 3, themes: [government], sources: [wikipedia:Brown_v._Board_of_Education] }
+      - { id: civil-rights-act, date: 1964 CE, label: "The Civil Rights Act", prominence: 3, themes: [government], sources: [wikipedia:Civil_Rights_Act_of_1964] }
+      - { id: crash-2008, date: 2008 CE, label: "The global financial crisis", prominence: 3, themes: [trade], sources: [wikipedia:2008_financial_crisis] }
+      - { id: edison, date: 1879 CE, label: "Edison's light bulb; electric power grids follow", prominence: 3, themes: [technology], sources: [wikipedia:Thomas_Edison] }
+      - { id: telephone, date: 1876 CE, label: "Bell's telephone", prominence: 3, themes: [technology], sources: [wikipedia:Invention_of_the_telephone] }
+      - { id: hubble, date: 1929 CE, label: "Hubble: the universe is expanding", prominence: 3, themes: [science, sky], sources: [wikipedia:Hubble's_law] }
+      - { id: marshall-plan, date: 1948 CE, label: "The Marshall Plan", prominence: 4, themes: [trade], sources: [wikipedia:Marshall_Plan] }
+      - { id: polio-vaccine, date: 1955 CE, label: "Salk's polio vaccine", prominence: 3, themes: [science, disease], sources: [wikipedia:Polio_vaccine] }
+      - { id: silent-spring, date: 1962 CE, label: "Silent Spring and the environmental movement", prominence: 3, themes: [climate, ideas], sources: [wikipedia:Silent_Spring] }
+      - { id: gps, date: 1993 CE, label: "GPS reaches full operation", prominence: 4, themes: [technology], sources: [wikipedia:Global_Positioning_System] }
+      - { id: obama, date: 2008 CE, label: "Barack Obama is elected", prominence: 4, themes: [government], sources: [wikipedia:Barack_Obama] }
     images:
       - { id: statue-of-liberty, source: "commons:File:Liberty-statue-from-below.jpg", date: 1886 CE, prominence: 3, treatment: plate, caption: "The Statue of Liberty, 1886" }
       - { id: earthrise, source: "commons:File:NASA-Apollo8-Dec24-Earthrise.jpg", date: 1968 CE, prominence: 1, treatment: plate, caption: "Earthrise, photographed from Apollo 8" }
@@ -101,6 +128,9 @@ lanes:
     events:
       - { id: quebec, date: 1608 CE, label: "Champlain founds Quebec", prominence: 4, sources: [wikipedia:Quebec_City] }
       - { id: confederation, date: 1867 CE, label: "Canadian Confederation", prominence: 3, themes: [government], sources: [wikipedia:Canadian_Confederation] }
+      - { id: plains-abraham, date: 1759 CE, label: "The Plains of Abraham: Britain takes Quebec", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Plains_of_Abraham] }
+      - { id: residential-schools, date: 1883 CE, label: "Residential schools take Indigenous children from their families", prominence: 4, sources: [wikipedia:Canadian_Indian_residential_school_system] }
+      - { id: insulin, date: 1922 CE, label: "Banting and Best: insulin", prominence: 3, themes: [science, disease], sources: [wikipedia:Insulin] }
     sources: [wikipedia:History_of_Canada]
 
   # ------------------------------------------------------------------ mesoamerica
@@ -112,6 +142,10 @@ lanes:
     prominence: 3
     span: c. 900 – c. 1168 CE
     cliopatria: ["Toltec Empire"]
+    events:
+      - { id: tula, date: c. 950 CE, label: "Tula and its Atlantean warrior columns", prominence: 3, themes: [art], sources: [wikipedia:Tula_(Mesoamerican_site)] }
+      - { id: quetzalcoatl-legend, date: c. 980 CE, label: "Topiltzin Quetzalcoatl, priest-king of legend, is driven from Tula", prominence: 4, confidence: legendary, sources: [wikipedia:Topiltzin_Quetzalcoatl] }
+      - { id: tula-falls, date: c. 1150 CE, label: "Tula is burned and abandoned", prominence: 4, sources: [wikipedia:Toltec] }
     sources: [wikipedia:Toltec]
 
   - id: aztec
@@ -129,6 +163,9 @@ lanes:
       - { id: tenochtitlan, date: 1325 CE, label: "The Mexica found Tenochtitlan on an island in Lake Texcoco", prominence: 2, sources: [wikipedia:Tenochtitlan] }
       - { id: triple-alliance, date: 1428 CE, label: "The Triple Alliance: the Aztec Empire is born", prominence: 3, themes: [government], sources: [wikipedia:Aztec_Triple_Alliance] }
       - { id: cortes, date: 1521 CE, label: "Tenochtitlan falls to Cortés, his Tlaxcalan allies and smallpox", prominence: 1, themes: [war, disease], sources: [wikipedia:Fall_of_Tenochtitlan] }
+      - { id: chinampas, date: c. 1400 CE, label: "Chinampas: floating gardens feed a city of 200,000", prominence: 3, themes: [technology], sources: [wikipedia:Chinampa] }
+      - { id: templo-mayor, date: 1487 CE, label: "The Templo Mayor is rededicated", prominence: 3, themes: [religion], sources: [wikipedia:Templo_Mayor] }
+      - { id: nezahualcoyotl, date: 1431 CE, label: "Nezahualcoyotl, poet-king of Texcoco", prominence: 4, themes: [art], sources: [wikipedia:Nezahualcoyotl_(tlatoani)] }
     sources: [wikipedia:Aztec_Empire]
 
   - id: new-spain
@@ -148,6 +185,13 @@ lanes:
       - { id: mexican-independence, date: 1821 CE, label: "Mexico wins independence", prominence: 3, themes: [government], sources: [wikipedia:Mexican_War_of_Independence] }
       - { id: us-mexico-war, date: 1846 CE, label: "The US takes half of Mexico", prominence: 3, themes: [war], sources: [wikipedia:Mexican–American_War] }
       - { id: mexican-revolution, date: 1910 CE, label: "The Mexican Revolution", prominence: 3, themes: [war], sources: [wikipedia:Mexican_Revolution] }
+      - { id: guadalupe, date: 1531 CE, label: "The Virgin of Guadalupe appears to Juan Diego (tradition)", prominence: 3, confidence: legendary, themes: [religion], sources: [wikipedia:Our_Lady_of_Guadalupe] }
+      - { id: sor-juana, date: 1691 CE, label: "Sor Juana Inés de la Cruz defends women's right to learn", prominence: 3, themes: [women, ideas], sources: [wikipedia:Juana_Inés_de_la_Cruz] }
+      - { id: benito-juarez, date: 1861 CE, label: "Benito Juárez, a Zapotec, becomes president; the French invade", prominence: 4, themes: [government], sources: [wikipedia:Benito_Juárez] }
+      - { id: frida-kahlo, date: 1939 CE, label: "Frida Kahlo's The Two Fridas", prominence: 4, themes: [art, women], sources: [wikipedia:The_Two_Fridas] }
+      - { id: florentine-codex, date: 1577 CE, label: "Sahagún's Florentine Codex records Nahua life in Nahuatl", prominence: 4, themes: [ideas], sources: [wikipedia:Florentine_Codex] }
+      - { id: tlatelolco, date: 1968 CE, label: "The Tlatelolco massacre", prominence: 4, sources: [wikipedia:Tlatelolco_massacre] }
+      - { id: nafta, date: 1994 CE, label: "NAFTA; the Zapatista uprising", prominence: 4, themes: [trade], sources: [wikipedia:Zapatista_Army_of_National_Liberation] }
     sources: [wikipedia:New_Spain]
 
   # ------------------------------------------------------------------ caribbean
@@ -160,6 +204,8 @@ lanes:
     span: c. 500 BCE – c. 1550 CE
     events:
       - { id: columbus-lands, date: 1492 CE, label: "Columbus lands in the Bahamas: two worlds meet — the Columbian Exchange begins", prominence: 1, themes: [exploration, disease, trade], sources: [wikipedia:Columbian_exchange] }
+      - { id: taino-cemis, date: c. 1200 CE, label: "Taíno villages, ball courts and zemí spirits", prominence: 4, themes: [religion], sources: [wikipedia:Zemi] }
+      - { id: hispaniola-collapse, date: 1518 CE, label: "Smallpox reaches Hispaniola; the Taíno population collapses", prominence: 3, themes: [disease], sources: [wikipedia:Taíno_genocide] }
     sources: [wikipedia:Taíno]
 
   - id: haiti
@@ -173,6 +219,8 @@ lanes:
     events:
       - { id: haitian-revolution, date: 1791 CE, label: "The Haitian Revolution: enslaved people free themselves", prominence: 1, themes: [war, government], sources: [wikipedia:Haitian_Revolution] }
       - { id: haiti-2010, date: 2010 CE, label: "An earthquake devastates Haiti", prominence: 4, sources: [wikipedia:2010_Haiti_earthquake] }
+      - { id: haiti-independence, date: 1804 CE, label: "Haiti, the first Black republic, declares independence", prominence: 2, themes: [government], sources: [wikipedia:Haitian_Declaration_of_Independence] }
+      - { id: haiti-indemnity, date: 1825 CE, label: "France forces Haiti to pay for its own freedom", prominence: 4, themes: [trade], sources: [wikipedia:Haiti_indemnity_controversy] }
     sources: [wikipedia:Haiti]
 
   - id: cuba
@@ -186,6 +234,7 @@ lanes:
     events:
       - { id: cuban-revolution, date: 1959 CE, label: "The Cuban Revolution", prominence: 3, themes: [government], sources: [wikipedia:Cuban_Revolution] }
       - { id: missile-crisis, date: 1962 CE, label: "The Cuban Missile Crisis — the closest the world came to nuclear war", prominence: 2, themes: [war], sources: [wikipedia:Cuban_Missile_Crisis] }
+      - { id: cuba-sugar, date: 1902 CE, label: "An independent Cuba under US influence", prominence: 4, themes: [government], sources: [wikipedia:Republic_of_Cuba_(1902–1959)] }
     sources: [wikipedia:Cuba]
 
   # ------------------------------------------------------------------ andes & south america
@@ -199,6 +248,7 @@ lanes:
     cliopatria: ["Chimor", "Chimú Empire"]
     events:
       - { id: chan-chan, date: c. 1300 CE, label: "Chan Chan, the largest adobe city in the Americas", prominence: 3, themes: [art], sources: [wikipedia:Chan_Chan] }
+      - { id: chimu-gold, date: c. 1400 CE, label: "Chimú goldsmiths; their craftsmen later serve the Inca", prominence: 4, themes: [art], sources: [wikipedia:Chimú_culture] }
     sources: [wikipedia:Chimor]
 
   - id: inca
@@ -221,6 +271,8 @@ lanes:
       - { id: machu-picchu, date: c. 1450 CE, label: "Machu Picchu is built", prominence: 1, themes: [art], sources: [wikipedia:Machu_Picchu] }
       - { id: quipu, date: c. 1450 CE, label: "Knotted quipu strings keep the empire's accounts", prominence: 3, thread: scripts, sources: [wikipedia:Quipu] }
       - { id: cajamarca, date: 1532 CE, label: "Pizarro seizes Atahualpa at Cajamarca", prominence: 1, themes: [war], sources: [wikipedia:Battle_of_Cajamarca] }
+      - { id: qhapaq-nan, date: c. 1470 CE, label: "The Qhapaq Ñan: 40,000 km of roads, runners and storehouses", prominence: 2, themes: [technology, government], sources: [wikipedia:Inca_road_system] }
+      - { id: inca-civil-war, date: 1529 CE, label: "Smallpox kills Huayna Capac; his sons fight a civil war", prominence: 3, themes: [disease, war], sources: [wikipedia:Inca_Civil_War] }
     images:
       - { id: machu-picchu-view, source: "commons:File:Machu Picchu, Peru.jpg", date: c. 1450 CE, prominence: 1, treatment: plate, caption: "Machu Picchu" }
     sources: [wikipedia:Inca_Empire]
@@ -240,6 +292,12 @@ lanes:
       - { id: potosi, date: 1545 CE, label: "Silver at Potosí floods the world's markets", prominence: 2, thread: money, themes: [trade], sources: [wikipedia:Potosí] }
       - { id: tupac-amaru, date: 1780 CE, label: "Túpac Amaru II's great rebellion", prominence: 3, themes: [war], sources: [wikipedia:Rebellion_of_Túpac_Amaru_II] }
       - { id: bolivar, date: 1824 CE, label: "Bolívar and Sucre win Ayacucho: Spanish South America is free", prominence: 2, themes: [war, government], sources: [wikipedia:Battle_of_Ayacucho] }
+      - { id: guaman-poma, date: 1615 CE, label: "Guaman Poma's illustrated chronicle of Andean life", prominence: 4, themes: [art, ideas], sources: [wikipedia:Felipe_Guaman_Poma_de_Ayala] }
+      - { id: guano, date: c. 1845 CE, label: "The guano age: bird droppings fertilise Europe", prominence: 4, themes: [trade], sources: [wikipedia:Guano_Era] }
+      - { id: war-pacific, date: 1879 CE, label: "The War of the Pacific: Bolivia loses its coast", prominence: 4, themes: [war], sources: [wikipedia:War_of_the_Pacific] }
+      - { id: vilcabamba, date: 1572 CE, label: "Túpac Amaru, the last Inca, is executed", prominence: 4, themes: [war], sources: [wikipedia:Túpac_Amaru] }
+      - { id: chile-coup, date: 1973 CE, label: "Pinochet's coup in Chile", prominence: 4, themes: [government], sources: [wikipedia:1973_Chilean_coup_d'état] }
+      - { id: hiram-bingham, date: 1911 CE, label: "Machu Picchu reaches the world's newspapers", prominence: 4, sources: [wikipedia:Hiram_Bingham_III] }
     sources: [wikipedia:Viceroyalty_of_Peru]
 
   - id: brazil
@@ -258,6 +316,12 @@ lanes:
       - { id: cabral, date: 1500 CE, label: "Cabral claims Brazil for Portugal", prominence: 3, themes: [exploration], sources: [wikipedia:Pedro_Álvares_Cabral] }
       - { id: abolition-brazil, date: 1888 CE, label: "Brazil is the last country in the Americas to abolish slavery", prominence: 2, themes: [government], sources: [wikipedia:Lei_Áurea] }
       - { id: brasilia, date: 1960 CE, label: "Brasília, a capital built from scratch", prominence: 4, themes: [art], sources: [wikipedia:Brasília] }
+      - { id: palmares, date: 1605 CE, label: "Palmares, a free state of escaped slaves, lasts nearly a century", prominence: 3, themes: [government], sources: [wikipedia:Quilombo_dos_Palmares] }
+      - { id: minas-gold, date: 1693 CE, label: "Gold in Minas Gerais", prominence: 4, themes: [trade], sources: [wikipedia:Brazilian_Gold_Rush] }
+      - { id: brazil-independence, date: 1822 CE, label: "Pedro I declares Brazil independent", prominence: 3, themes: [government], sources: [wikipedia:Independence_of_Brazil] }
+      - { id: brazil-dictatorship, date: 1964 CE, label: "A military coup; dictatorship until 1985", prominence: 4, themes: [government], sources: [wikipedia:Military_dictatorship_in_Brazil] }
+      - { id: brazil-coffee, date: c. 1850 CE, label: "Brazil grows half the world's coffee", prominence: 4, themes: [trade], sources: [wikipedia:Coffee_production_in_Brazil] }
+      - { id: rio-summit, date: 1992 CE, label: "The Rio Earth Summit", prominence: 4, themes: [climate], sources: [wikipedia:Earth_Summit] }
     sources: [wikipedia:History_of_Brazil]
 
   - id: argentina
@@ -270,4 +334,7 @@ lanes:
     cliopatria: ["Viceroyalty of the Río de la Plata", "Argentina", "United Provinces of the Río de la Plata"]
     events:
       - { id: argentine-independence, date: 1816 CE, label: "Argentina declares independence; San Martín crosses the Andes", prominence: 3, themes: [war], sources: [wikipedia:Argentine_Declaration_of_Independence] }
+      - { id: conquest-desert, date: 1878 CE, label: "The 'Conquest of the Desert' seizes Patagonia", prominence: 4, themes: [war], sources: [wikipedia:Conquest_of_the_Desert] }
+      - { id: peron, date: 1946 CE, label: "Juan and Eva Perón", prominence: 4, themes: [government], sources: [wikipedia:Juan_Perón] }
+      - { id: falklands, date: 1982 CE, label: "The Falklands War", prominence: 4, themes: [war], sources: [wikipedia:Falklands_War] }
     sources: [wikipedia:History_of_Argentina]

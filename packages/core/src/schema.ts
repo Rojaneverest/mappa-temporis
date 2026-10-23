@@ -62,6 +62,8 @@ export const LaneImage = z.object({
   ofItsTime: z.boolean().default(true),
   /** Backdrops only: print light as ink (photographs of Earth against black space). */
   invert: z.boolean().default(false),
+  /** Backdrops only: lift the object off its photo's background (Apple Vision) before printing. */
+  lift: z.boolean().default(false),
 });
 export type LaneImage = z.infer<typeof LaneImage>;
 
@@ -111,6 +113,8 @@ export type Era = z.infer<typeof Era>;
 export const Region = z.object({
   id: z.string(),
   name: z.string(),
+  /** Used in the frozen header when the full name doesn't fit. */
+  short: z.string().optional(),
   /** Sub-regions, west to east. Lanes without a group use the region id. */
   groups: z.array(z.string()).default([]),
 });

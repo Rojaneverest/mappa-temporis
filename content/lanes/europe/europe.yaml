@@ -13,6 +13,7 @@ lanes:
       - { type: becomes, lane: la-tene, at: c. 450 BCE }
     events:
       - { id: hallstatt-salt, date: c. 700 BCE, label: "Salt mines at Hallstatt make Alpine chiefs rich", prominence: 4, themes: [trade], sources: [wikipedia:Hallstatt_culture] }
+      - { id: vix-krater, date: c. 500 BCE, label: "The Vix krater, a Greek bronze in a Celtic princess's grave", prominence: 3, themes: [women, trade], sources: [wikipedia:Vix_Grave] }
     sources: [wikipedia:Hallstatt_culture]
 
   - id: la-tene
@@ -25,6 +26,7 @@ lanes:
     events:
       - { id: celts-delphi, date: 279 BCE, label: "Celtic war-bands invade Greece and attack Delphi", prominence: 4, themes: [war, migration], sources: [wikipedia:Gallic_invasion_of_the_Balkans] }
       - { id: alesia, date: 52 BCE, label: "Vercingetorix surrenders to Caesar at Alesia", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Alesia] }
+      - { id: brennus, date: 390 BCE, label: "Gauls sack Rome", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Allia] }
     images:
       - { id: battersea-shield, source: "commons:File:British Museum Battersea Shield.jpg", date: c. 300 BCE, prominence: 2, treatment: cutout, caption: "The Battersea Shield, Celtic bronze" }
     sources: [wikipedia:La_Tène_culture, wikipedia:Celts]
@@ -55,6 +57,7 @@ lanes:
     cliopatria: ["Kingdom of the Franks", "Merovingian Empire"]
     events:
       - { id: clovis-baptism, date: c. 496 CE, label: "Clovis, king of the Franks, is baptised", prominence: 3, confidence: probable, themes: [religion], sources: [wikipedia:Clovis_I] }
+      - { id: poitiers-franks, date: 732 CE, label: "Charles Martel at Tours", prominence: 4, themes: [war], sources: [wikipedia:Charles_Martel] }
     sources: [wikipedia:Merovingian_dynasty]
 
   - id: anglo-saxons
@@ -76,6 +79,9 @@ lanes:
     sphere: celtic-germanic
     prominence: 3
     span: 418 – 721 CE
+    events:
+      - { id: toledo-councils, date: 589 CE, label: "Reccared converts; Toledo becomes the capital of Hispania", prominence: 4, themes: [religion], sources: [wikipedia:Third_Council_of_Toledo] }
+      - { id: isidore, date: c. 625 CE, label: "Isidore of Seville's Etymologies", prominence: 3, themes: [ideas], sources: [wikipedia:Etymologiae] }
     sources: [wikipedia:Visigothic_Kingdom]
 
   # ------------------------------------------------------------------ italy
@@ -88,6 +94,7 @@ lanes:
     span: c. 900 – 27 BCE
     events:
       - { id: etruscan-league, date: c. 600 BCE, label: "Twelve Etruscan cities at the height of their power", prominence: 4, sources: [wikipedia:Etruscan_civilization] }
+      - { id: etruscan-tombs, date: c. 600 BCE, label: "Painted tombs of Tarquinia", prominence: 3, themes: [art], sources: [wikipedia:Tarquinia] }
     sources: [wikipedia:Etruscan_civilization]
 
   - id: roman-kingdom
@@ -103,6 +110,7 @@ lanes:
       - { type: becomes, lane: roman-republic, at: 509 BCE }
     events:
       - { id: founding-rome, date: 753 BCE, label: "Romulus founds Rome (traditional date)", prominence: 3, confidence: legendary, sources: [wikipedia:Founding_of_Rome] }
+      - { id: tarquin-expelled, date: 509 BCE, label: "The last king is expelled", prominence: 3, themes: [government], confidence: legendary, sources: [wikipedia:Tarquinius_Superbus] }
     sources: [wikipedia:Roman_Kingdom]
 
   - id: roman-republic
@@ -174,6 +182,8 @@ lanes:
     events:
       - { id: sack-410, date: 410 CE, label: "Alaric's Visigoths sack Rome", prominence: 2, themes: [war], sources: [wikipedia:Sack_of_Rome_(410)] }
       - { id: fall-west, date: 476 CE, label: "Odoacer deposes the last western emperor", prominence: 1, themes: [government], sources: [wikipedia:Fall_of_the_Western_Roman_Empire] }
+      - { id: alaric, date: 410 CE, label: "Alaric's Goths sack Rome", prominence: 2, themes: [war], sources: [wikipedia:Sack_of_Rome_(410)] }
+      - { id: city-of-god, date: 426 CE, label: "Augustine's City of God", prominence: 3, themes: [ideas, religion], sources: [wikipedia:The_City_of_God] }
     sources: [wikipedia:Western_Roman_Empire]
 
   - id: ostrogoths
@@ -269,6 +279,8 @@ lanes:
     cliopatria: ["Macedonian Empire"]
     relations:
       - { type: becomes, lane: alexander-empire, at: 336 BCE }
+    events:
+      - { id: philip-ii, date: 359 BCE, label: "Philip II builds the Macedonian phalanx", prominence: 3, themes: [war], sources: [wikipedia:Philip_II_of_Macedon] }
     sources: [wikipedia:Macedonia_(ancient_kingdom)]
 
   - id: alexander-empire

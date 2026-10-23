@@ -12,6 +12,8 @@ lanes:
       - { type: becomes, lane: indus-valley, at: c. 3300 BCE }
     events:
       - { id: mehrgarh-farming, date: c. 7000 BCE, label: "Farming villages with barley, wheat and cattle at the foot of the Bolan Pass", prominence: 3, themes: [technology], sources: [wikipedia:Mehrgarh] }
+      - { id: mehrgarh-dentistry, date: c. 5500 BCE, label: "Mehrgarh: teeth drilled with flint bits — the oldest dentistry", prominence: 3, themes: [science], sources: [wikipedia:Mehrgarh] }
+      - { id: mehrgarh-cotton, date: c. 5000 BCE, label: "Cotton is cultivated in the Indus borderlands", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Cotton] }
     sources: [wikipedia:Mehrgarh]
 
   - id: indus-valley
@@ -32,6 +34,8 @@ lanes:
       - { id: indus-script, date: c. 2600 BCE, label: "The Indus script — still undeciphered", prominence: 2, thread: scripts, sources: [wikipedia:Indus_script] }
       - { id: meluhha, date: c. 2300 BCE, label: "Ships from 'Meluhha' trade carnelian and timber with Mesopotamia", prominence: 3, themes: [trade], sources: [wikipedia:Meluhha] }
       - { id: indus-decline, date: c. 1900 BCE, label: "As the monsoon weakens, the great cities empty", prominence: 2, themes: [climate, migration], confidence: probable, sources: [wikipedia:Indus_Valley_Civilisation] }
+      - { id: indus-weights, date: c. 2600 BCE, label: "Standard weights, baked bricks, drains in every street", prominence: 3, themes: [technology, government], sources: [wikipedia:Indus_Valley_Civilisation] }
+      - { id: lothal, date: c. 2400 BCE, label: "Lothal's dock; Indus seals turn up in Mesopotamia", prominence: 3, themes: [trade], sources: [wikipedia:Lothal] }
     images:
       - { id: mohenjo-daro-view, source: "commons:File:Mohenjo-daro.jpg", date: c. 2500 BCE, prominence: 2, treatment: plate, caption: "Mohenjo-daro: the Great Bath and the stupa mound" }
     sources: [wikipedia:Indus_Valley_Civilisation]

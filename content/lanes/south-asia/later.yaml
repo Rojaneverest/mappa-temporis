@@ -34,6 +34,7 @@ lanes:
     cliopatria: ["Pala Empire", "Palas"]
     events:
       - { id: vikramashila, date: c. 800 CE, label: "Nalanda and Vikramashila, Buddhist universities, at their height", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Vikramashila] }
+      - { id: atisha, date: 1042 CE, label: "Atiśa leaves Vikramashila to revive Buddhism in Tibet", prominence: 4, themes: [religion], sources: [wikipedia:Atiśa] }
     sources: [wikipedia:Pala_Empire]
 
   - id: ghurids
@@ -74,6 +75,8 @@ lanes:
       - { id: amir-khusrau, date: c. 1300 CE, label: "Amir Khusrau, poet and musician: qawwali and Hindavi", prominence: 4, themes: [art], sources: [wikipedia:Amir_Khusrau] }
       - { id: ibn-battuta-delhi, date: 1334 CE, label: "Ibn Battuta serves as a judge in Delhi", prominence: 4, themes: [exploration], sources: [wikipedia:Ibn_Battuta] }
       - { id: timur-delhi, date: 1398 CE, label: "Timur sacks Delhi", prominence: 3, themes: [war], sources: [wikipedia:Sack_of_Delhi_(1398)] }
+      - { id: alauddin-mongols, date: 1303 CE, label: "Alauddin Khalji turns back the Mongols", prominence: 3, themes: [war], sources: [wikipedia:Alauddin_Khalji] }
+      - { id: kabir, date: c. 1450 CE, label: "Kabir's poems bridge Hindu and Muslim devotion", prominence: 3, themes: [religion, art], sources: [wikipedia:Kabir] }
     sources: [wikipedia:Delhi_Sultanate]
 
   - id: mughal
@@ -98,6 +101,11 @@ lanes:
       - { id: taj-mahal, date: 1653 CE, label: "The Taj Mahal is completed", prominence: 1, themes: [art], sources: [wikipedia:Taj_Mahal] }
       - { id: aurangzeb, date: 1707 CE, label: "Aurangzeb dies; the empire, at its largest, begins to fall apart", prominence: 3, themes: [government], sources: [wikipedia:Aurangzeb] }
       - { id: nader-delhi, date: 1739 CE, label: "Nader Shah carries off the Peacock Throne", prominence: 4, themes: [war], sources: [wikipedia:Nader_Shah's_invasion_of_India] }
+      - { id: humayun-tomb, date: 1572 CE, label: "Humayun's Tomb, model for the Taj", prominence: 3, themes: [art], sources: [wikipedia:Humayun's_Tomb] }
+      - { id: fatehpur-sikri, date: 1571 CE, label: "Akbar's new city, Fatehpur Sikri", prominence: 4, themes: [art], sources: [wikipedia:Fatehpur_Sikri] }
+      - { id: jahangir-nur-jahan, date: 1611 CE, label: "Nur Jahan, empress and power behind the throne", prominence: 3, themes: [women, government], sources: [wikipedia:Nur_Jahan] }
+      - { id: east-india-company-arrives, date: 1608 CE, label: "The East India Company lands at Surat", prominence: 3, themes: [trade], sources: [wikipedia:Surat] }
+      - { id: india-share-world, date: c. 1700 CE, label: "Mughal India produces about a quarter of the world's goods", prominence: 2, themes: [trade], confidence: probable, sources: [wikipedia:Economy_of_the_Mughal_Empire] }
     images:
       - { id: taj-mahal-view, source: "commons:File:Taj Mahal (Edited).jpeg", date: 1653 CE, prominence: 1, treatment: plate, caption: "The Taj Mahal, Agra" }
     sources: [wikipedia:Mughal_Empire]
@@ -113,6 +121,8 @@ lanes:
     cliopatria: ["Sikh Empire"]
     events:
       - { id: ranjit-singh, date: 1799 CE, label: "Ranjit Singh takes Lahore", prominence: 3, sources: [wikipedia:Ranjit_Singh] }
+      - { id: golden-temple, date: 1830 CE, label: "Ranjit Singh gilds the Harmandir Sahib: the Golden Temple", prominence: 3, themes: [art, religion], sources: [wikipedia:Golden_Temple] }
+      - { id: anglo-sikh, date: 1849 CE, label: "Britain annexes the Punjab", prominence: 4, themes: [war], sources: [wikipedia:Second_Anglo-Sikh_War] }
     sources: [wikipedia:Sikh_Empire]
 
   - id: british-raj
@@ -135,6 +145,13 @@ lanes:
       - { id: congress, date: 1885 CE, label: "The Indian National Congress is founded", prominence: 4, themes: [government], sources: [wikipedia:Indian_National_Congress] }
       - { id: tagore-nobel, date: 1913 CE, label: "Tagore, the first non-European Nobel laureate in literature", prominence: 4, themes: [art], sources: [wikipedia:Rabindranath_Tagore] }
       - { id: salt-march, date: 1930 CE, label: "Gandhi's Salt March", prominence: 1, themes: [government], sources: [wikipedia:Salt_March] }
+      - { id: railways-india, date: 1853 CE, label: "India's first railway, Bombay to Thane", prominence: 3, themes: [technology], sources: [wikipedia:History_of_rail_transport_in_India] }
+      - { id: famine-1876, date: 1876 CE, label: "The Great Famine kills millions as grain is exported", prominence: 3, themes: [disease, climate], sources: [wikipedia:Great_Famine_of_1876–1878] }
+      - { id: amritsar, date: 1919 CE, label: "The Amritsar massacre", prominence: 3, themes: [war], sources: [wikipedia:Jallianwala_Bagh_massacre] }
+      - { id: bengal-famine-1943, date: 1943 CE, label: "The Bengal famine of 1943", prominence: 3, themes: [disease], sources: [wikipedia:Bengal_famine_of_1943] }
+      - { id: ram-mohan-roy, date: 1828 CE, label: "Ram Mohan Roy founds the Brahmo Samaj", prominence: 4, themes: [ideas, religion], sources: [wikipedia:Ram_Mohan_Roy] }
+      - { id: partition-bengal, date: 1905 CE, label: "The partition of Bengal and the Swadeshi movement", prominence: 4, sources: [wikipedia:Partition_of_Bengal_(1905)] }
+      - { id: quit-india, date: 1942 CE, label: "Quit India", prominence: 3, themes: [government], sources: [wikipedia:Quit_India_Movement] }
     sources: [wikipedia:British_Raj]
 
   - id: india
@@ -151,6 +168,12 @@ lanes:
       - { id: indian-constitution, date: 1950 CE, label: "The world's largest democracy adopts its constitution", prominence: 3, themes: [government], sources: [wikipedia:Constitution_of_India] }
       - { id: green-revolution, date: 1966 CE, label: "The Green Revolution ends famine", prominence: 3, themes: [technology], sources: [wikipedia:Green_Revolution_in_India] }
       - { id: chandrayaan-3, date: 2023 CE, label: "Chandrayaan-3 lands near the Moon's south pole", prominence: 4, themes: [technology, sky], sources: [wikipedia:Chandrayaan-3] }
+      - { id: gandhi-killed, date: 1948 CE, label: "Gandhi is assassinated", prominence: 3, sources: [wikipedia:Assassination_of_Mahatma_Gandhi] }
+      - { id: india-1991, date: 1991 CE, label: "Economic liberalisation", prominence: 4, themes: [trade], sources: [wikipedia:Economic_liberalisation_in_India] }
+      - { id: india-nuclear, date: 1974 CE, label: "India tests a nuclear device", prominence: 4, themes: [technology], sources: [wikipedia:Smiling_Buddha] }
+      - { id: india-most-populous, date: 2023 CE, label: "India becomes the most populous country", prominence: 3, sources: [wikipedia:Demographics_of_India] }
+      - { id: bhopal, date: 1984 CE, label: "The Bhopal gas disaster", prominence: 4, sources: [wikipedia:Bhopal_disaster] }
+      - { id: indira, date: 1966 CE, label: "Indira Gandhi becomes prime minister", prominence: 3, themes: [women, government], sources: [wikipedia:Indira_Gandhi] }
     sources: [wikipedia:History_of_India_(1947–present)]
 
   - id: pakistan
@@ -164,6 +187,10 @@ lanes:
     cliopatria: ["Pakistan", "Dominion of Pakistan", "Islamic Republic of Pakistan"]
     relations:
       - { type: splits-into, lanes: [bangladesh], at: 1971 CE }
+    events:
+      - { id: jinnah, date: 1947 CE, label: "Jinnah founds Pakistan", prominence: 3, themes: [government], sources: [wikipedia:Muhammad_Ali_Jinnah] }
+      - { id: bhutto, date: 1988 CE, label: "Benazir Bhutto, first woman to lead a Muslim-majority democracy", prominence: 4, themes: [women, government], sources: [wikipedia:Benazir_Bhutto] }
+      - { id: malala, date: 2014 CE, label: "Malala Yousafzai wins the Nobel Peace Prize", prominence: 4, themes: [women, ideas], sources: [wikipedia:Malala_Yousafzai] }
     sources: [wikipedia:Pakistan]
 
   - id: bangladesh
@@ -177,6 +204,7 @@ lanes:
     cliopatria: ["Bangladesh"]
     events:
       - { id: bangladesh-war, date: 1971 CE, label: "The Liberation War: Bangladesh is born", prominence: 3, themes: [war], sources: [wikipedia:Bangladesh_Liberation_War] }
+      - { id: grameen, date: 1983 CE, label: "Grameen Bank and microcredit", prominence: 4, thread: money, sources: [wikipedia:Grameen_Bank] }
     sources: [wikipedia:Bangladesh]
 
   # ------------------------------------------------------------------ deccan & the south
@@ -194,6 +222,8 @@ lanes:
       - { name: Western Chalukyas, span: 973 – 1189 CE, weight: 3 }
     events:
       - { id: kailasa, date: c. 760 CE, label: "The Kailasa temple at Ellora, carved down from a single rock", prominence: 2, themes: [art, religion], sources: [wikipedia:Kailasa_temple,_Ellora] }
+      - { id: aihole, date: 634 CE, label: "The Aihole inscription of Pulakeshin II", prominence: 4, sources: [wikipedia:Aihole_inscription] }
+      - { id: brahmagupta-zero, date: 628 CE, label: "Brahmagupta's rules for zero and negative numbers", prominence: 2, themes: [science], thread: numerals, sources: [wikipedia:Brahmagupta] }
     sources: [wikipedia:Rashtrakuta_dynasty]
 
   - id: chola
@@ -212,6 +242,7 @@ lanes:
       - { id: brihadeeswara, date: 1010 CE, label: "Rajaraja's Brihadeeswara temple at Thanjavur", prominence: 2, themes: [art, religion], sources: [wikipedia:Brihadisvara_Temple,_Thanjavur] }
       - { id: chola-bronzes, date: c. 1000 CE, label: "Chola bronzes: Shiva as Nataraja, lord of the dance", prominence: 2, themes: [art], sources: [wikipedia:Chola_art] }
       - { id: srivijaya-raid, date: 1025 CE, label: "A Chola fleet raids Srivijaya across the Bay of Bengal", prominence: 3, themes: [war, trade], sources: [wikipedia:Chola_invasion_of_Srivijaya] }
+      - { id: rajendra-ganges, date: 1023 CE, label: "Rajendra Chola marches to the Ganges", prominence: 4, themes: [war], sources: [wikipedia:Rajendra_I] }
     images:
       - { id: thanjavur-temple, source: "commons:File:Thanjavur Big Temple.jpg", date: 1010 CE, prominence: 2, treatment: plate, caption: "The Brihadeeswara temple, Thanjavur" }
     sources: [wikipedia:Chola_dynasty]
@@ -227,6 +258,8 @@ lanes:
     events:
       - { id: hampi, date: c. 1500 CE, label: "Hampi, perhaps the second-largest city in the world", prominence: 2, themes: [art], confidence: probable, sources: [wikipedia:Hampi] }
       - { id: talikota, date: 1565 CE, label: "Defeat at Talikota; Hampi is sacked", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Talikota] }
+      - { id: krishnadevaraya, date: 1509 CE, label: "Krishnadevaraya, the empire's greatest king", prominence: 3, sources: [wikipedia:Krishnadevaraya] }
+      - { id: purandara-dasa, date: c. 1520 CE, label: "Purandara Dasa, father of Carnatic music", prominence: 4, themes: [art], sources: [wikipedia:Purandara_Dasa] }
     sources: [wikipedia:Vijayanagara_Empire]
 
   - id: bahmani
@@ -239,6 +272,7 @@ lanes:
     cliopatria: ["Bahmani Sultanate", "Bijapur Sultanate", "Golconda Sultanate", "Ahmadnagar Sultanate"]
     events:
       - { id: golconda, date: c. 1600 CE, label: "Golconda's diamond mines", prominence: 4, themes: [trade], sources: [wikipedia:Golconda] }
+      - { id: gol-gumbaz, date: 1656 CE, label: "The Gol Gumbaz, Bijapur", prominence: 4, themes: [art], sources: [wikipedia:Gol_Gumbaz] }
     sources: [wikipedia:Bahmani_Sultanate]
 
   - id: maratha
@@ -253,6 +287,8 @@ lanes:
     events:
       - { id: shivaji, date: 1674 CE, label: "Shivaji is crowned at Raigad", prominence: 2, themes: [government], sources: [wikipedia:Shivaji] }
       - { id: panipat-1761, date: 1761 CE, label: "Third Panipat: the Afghans halt the Marathas", prominence: 3, themes: [war], sources: [wikipedia:Third_Battle_of_Panipat] }
+      - { id: peshwas, date: 1720 CE, label: "The Peshwas rule from Pune", prominence: 4, sources: [wikipedia:Peshwa] }
+      - { id: anglo-maratha, date: 1818 CE, label: "The last Anglo-Maratha war: Britain dominates India", prominence: 3, themes: [war], sources: [wikipedia:Third_Anglo-Maratha_War] }
     sources: [wikipedia:Maratha_Confederacy]
 
   - id: mysore
@@ -287,6 +323,7 @@ lanes:
     events:
       - { id: parakramabahu, date: 1153 CE, label: "Parakramabahu I builds the Sea of Parakrama reservoir", prominence: 3, themes: [technology], sources: [wikipedia:Parakrama_Samudra] }
       - { id: tooth-relic, date: 1592 CE, label: "Kandy keeps the Tooth Relic against the Portuguese and Dutch", prominence: 4, themes: [religion], sources: [wikipedia:Temple_of_the_Tooth] }
+      - { id: gal-vihara, date: c. 1150 CE, label: "The Gal Vihara Buddhas", prominence: 3, themes: [art, religion], sources: [wikipedia:Gal_Vihara] }
     sources: [wikipedia:Polonnaruwa_Kingdom]
 
   - id: sri-lanka
@@ -301,6 +338,7 @@ lanes:
       - { id: bandaranaike, date: 1960 CE, label: "Sirimavo Bandaranaike, the world's first woman prime minister", prominence: 3, themes: [women, government], sources: [wikipedia:Sirimavo_Bandaranaike] }
       - { id: lanka-war, date: 1983 CE, label: "A 26-year civil war begins", prominence: 4, themes: [war], sources: [wikipedia:Sri_Lankan_Civil_War] }
       - { id: tsunami-2004, date: 2004 CE, label: "The Indian Ocean tsunami kills 230,000 across 14 countries", prominence: 3, sources: [wikipedia:2004_Indian_Ocean_earthquake_and_tsunami] }
+      - { id: ceylon-tea, date: 1867 CE, label: "Tea planting begins in Ceylon", prominence: 4, themes: [trade], sources: [wikipedia:Tea_production_in_Sri_Lanka] }
     sources: [wikipedia:Sri_Lanka]
 
   # ------------------------------------------------------------------ himalaya
@@ -338,6 +376,7 @@ lanes:
       - { id: milarepa, date: c. 1100 CE, label: "Milarepa, yogi and poet", prominence: 4, themes: [religion, art], sources: [wikipedia:Milarepa] }
       - { id: potala, date: 1645 CE, label: "The Fifth Dalai Lama builds the Potala", prominence: 2, themes: [art, religion], sources: [wikipedia:Potala_Palace] }
       - { id: tibet-1950, date: 1950 CE, label: "The People's Liberation Army enters Tibet; in 1959 the Dalai Lama flees", prominence: 2, themes: [war], sources: [wikipedia:Annexation_of_Tibet_by_the_People's_Republic_of_China] }
+      - { id: tsongkhapa, date: 1409 CE, label: "Tsongkhapa founds the Gelug school", prominence: 4, themes: [religion], sources: [wikipedia:Je_Tsongkhapa] }
     images:
       - { id: potala-palace, source: "commons:File:Potala Palace.jpg", date: 1645 CE, prominence: 2, treatment: plate, caption: "The Potala Palace, Lhasa" }
     sources: [wikipedia:History_of_Tibet]
@@ -356,6 +395,7 @@ lanes:
     events:
       - { id: changu-narayan, date: 464 CE, label: "Manadeva's pillar at Changu Narayan, Nepal's oldest dated inscription", prominence: 3, thread: scripts, sources: [wikipedia:Changu_Narayan] }
       - { id: bhrikuti, date: c. 640 CE, label: "Princess Bhrikuti carries Buddhism to Tibet", prominence: 4, themes: [women, religion], confidence: disputed, sources: [wikipedia:Bhrikuti] }
+      - { id: amshuverma, date: c. 605 CE, label: "Amshuverma builds the Kailashkut palace", prominence: 4, sources: [wikipedia:Amshuverma] }
     images:
       - { id: boudhanath, source: "commons:File:Boudhanath Stupa.jpg", date: c. 600 CE, prominence: 3, treatment: plate, caption: "Boudhanath stupa, Kathmandu (rebuilt many times)", ofItsTime: false }
     sources: [wikipedia:Licchavi_(kingdom)]
@@ -377,6 +417,8 @@ lanes:
     events:
       - { id: araniko, date: 1260 CE, label: "Araniko of Patan takes Newar art to Kublai Khan — and the pagoda form to China", prominence: 3, themes: [art], sources: [wikipedia:Araniko] }
       - { id: three-durbar-squares, date: c. 1650 CE, label: "Kathmandu, Patan and Bhaktapur raise their palace squares", prominence: 2, themes: [art], sources: [wikipedia:Kathmandu_Valley] }
+      - { id: jayasthiti, date: 1382 CE, label: "Jayasthiti Malla codifies Newar society", prominence: 4, themes: [government], sources: [wikipedia:Jayasthiti_Malla] }
+      - { id: valley-split, date: 1482 CE, label: "The valley splits into Kathmandu, Patan and Bhaktapur", prominence: 4, sources: [wikipedia:Malla_(Nepal)] }
     images:
       - { id: patan-durbar, source: "commons:File:Patan Durbar Square.jpg", date: c. 1650 CE, prominence: 2, treatment: plate, caption: "Patan Durbar Square, Kathmandu Valley" }
     sources: [wikipedia:Malla_(Nepal)]
@@ -406,6 +448,10 @@ lanes:
       - { id: nepal-1990, date: 1990 CE, label: "The People's Movement restores multiparty democracy", prominence: 4, themes: [government], sources: [wikipedia:1990_People's_Movement] }
       - { id: nepal-republic, date: 2008 CE, label: "Nepal abolishes its monarchy and becomes a republic", prominence: 2, themes: [government], sources: [wikipedia:Federal_Democratic_Republic_of_Nepal] }
       - { id: gorkha-quake, date: 2015 CE, label: "The Gorkha earthquake", prominence: 4, sources: [wikipedia:April_2015_Nepal_earthquake] }
+      - { id: nepal-tibet-war, date: 1788 CE, label: "Nepal's wars with Tibet and Qing China", prominence: 4, themes: [war], sources: [wikipedia:Sino-Nepalese_War] }
+      - { id: nepal-1951, date: 1951 CE, label: "The Ranas fall; Nepal opens to the world", prominence: 3, themes: [government], sources: [wikipedia:Revolution_of_1951_(Nepal)] }
+      - { id: royal-massacre, date: 2001 CE, label: "The royal palace massacre", prominence: 4, sources: [wikipedia:Nepalese_royal_massacre] }
+      - { id: nepal-civil-war, date: 1996 CE, label: "The Maoist insurgency (to 2006)", prominence: 4, themes: [war], sources: [wikipedia:Nepalese_Civil_War] }
     sources: [wikipedia:History_of_Nepal]
 
   - id: bhutan

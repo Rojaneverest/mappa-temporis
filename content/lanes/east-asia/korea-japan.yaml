@@ -10,6 +10,9 @@ lanes:
     span: c. 400 – 108 BCE
     relations:
       - { type: becomes, lane: lelang, at: 108 BCE }
+    events:
+      - { id: gojoseon-dolmens, date: c. 300 BCE, label: "Korea's dolmens, a third of the world's", prominence: 4, sources: [wikipedia:Dolmen] }
+      - { id: wiman, date: c. 194 BCE, label: "Wiman seizes Gojoseon", prominence: 4, sources: [wikipedia:Wiman_Joseon] }
     sources: [wikipedia:Gojoseon]
 
   - id: goguryeo
@@ -40,6 +43,8 @@ lanes:
         label: Gwanggaeto Stele raised to the great conqueror-king
         prominence: 3
         sources: [wikipedia:Gwanggaeto_Stele]
+      - { id: gwanggaeto, date: 414 CE, label: "The Gwanggaeto Stele", prominence: 3, sources: [wikipedia:Gwanggaeto_Stele] }
+      - { id: salsu, date: 612 CE, label: "Eulji Mundeok destroys a Sui army at the Salsu River", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Salsu] }
     images:
       - id: goguryeo-mural
         source: "commons:File:Goguryeo tomb mural.jpg"
@@ -68,6 +73,9 @@ lanes:
     span: 18 BCE – 660 CE
     relations:
       - { type: influences, lane: kofun, at: 538 CE }
+    events:
+      - { id: baekje-buddhism-japan, date: 552 CE, label: "Baekje sends Buddhist images to Japan", prominence: 3, themes: [religion], sources: [wikipedia:Baekje] }
+      - { id: baekje-incense, date: c. 600 CE, label: "The gilt-bronze incense burner of Baekje", prominence: 4, themes: [art], sources: [wikipedia:Gilt-bronze_Incense_Burner_of_Baekje] }
     sources: [wikipedia:Baekje]
 
   - id: silla
@@ -94,6 +102,8 @@ lanes:
         sources: [wikipedia:Unified_Silla]
       - { id: seokguram, date: 774 CE, label: "The Seokguram grotto Buddha", prominence: 3, themes: [art, religion], sources: [wikipedia:Seokguram] }
       - { id: jang-bogo, date: 828 CE, label: "Jang Bogo's fleet rules the Yellow Sea trade", prominence: 4, themes: [trade], sources: [wikipedia:Jang_Bogo] }
+      - { id: silla-unification, date: 668 CE, label: "Silla, allied with Tang, unifies Korea", prominence: 2, themes: [war], sources: [wikipedia:Unified_Silla] }
+      - { id: cheomseongdae, date: c. 640 CE, label: "Cheomseongdae, an early observatory", prominence: 3, themes: [sky], sources: [wikipedia:Cheomseongdae] }
     images:
       - id: silla-crown
         source: "commons:File:Gold Crown of Silla Kingdom 01b.jpg"
@@ -123,6 +133,9 @@ lanes:
     span: c. 14000 – 300 BCE
     relations:
       - { type: becomes, lane: yayoi, at: c. 300 BCE }
+    events:
+      - { id: jomon-pottery, date: c. 14000 BCE, label: "Jōmon pottery, among the oldest in the world", prominence: 2, themes: [technology, art], sources: [wikipedia:Jōmon_pottery] }
+      - { id: sannai-maruyama, date: c. 3500 BCE, label: "Sannai-Maruyama, a large Jōmon village", prominence: 3, sources: [wikipedia:Sannai-Maruyama_site] }
     sources: [wikipedia:Jōmon_period]
 
   - id: yayoi
@@ -155,6 +168,7 @@ lanes:
         prominence: 2
         themes: [women, diplomacy]
         sources: [wikipedia:Himiko]
+      - { id: yayoi-rice, date: c. 300 BCE, label: "Wet rice and bronze arrive from Korea", prominence: 2, themes: [migration, technology], sources: [wikipedia:Yayoi_period] }
     sources: [wikipedia:Yayoi_period]
 
   - id: kofun
@@ -181,6 +195,7 @@ lanes:
         confidence: probable
         themes: [religion]
         sources: [wikipedia:Buddhism_in_Japan]
+      - { id: daisen-kofun, date: c. 450 CE, label: "Daisen Kofun, a keyhole tomb larger than the Great Pyramid's base", prominence: 3, sources: [wikipedia:Daisen_Kofun] }
     images:
       - id: haniwa-warrior
         source: "met:45545"
@@ -212,4 +227,5 @@ lanes:
         prominence: 4
         themes: [art, religion]
         sources: [wikipedia:Hōryū-ji]
+      - { id: shotoku, date: 604 CE, label: "Prince Shōtoku's Seventeen-Article Constitution", prominence: 3, themes: [government], sources: [wikipedia:Seventeen-article_constitution] }
     sources: [wikipedia:Asuka_period]

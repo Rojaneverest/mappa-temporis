@@ -14,6 +14,8 @@ lanes:
       - { id: scythian-raids, date: c. 650 BCE, label: "Scythian horsemen raid deep into the Near East", prominence: 4, themes: [war, migration], confidence: probable, sources: [wikipedia:Scythians] }
       - { id: darius-scythia, date: c. 513 BCE, label: "Darius invades Scythia and finds no one to fight", prominence: 3, themes: [war], sources: [wikipedia:Darius_I's_European_Scythian_campaign] }
       - { id: herodotus-scythians, date: c. 440 BCE, label: "Herodotus describes Scythian burials, horses and gold", prominence: 4, themes: [ideas], sources: [wikipedia:Scythians] }
+      - { id: arzhan, date: c. 800 BCE, label: "The Arzhan kurgan: the earliest Scythian royal tomb", prominence: 3, sources: [wikipedia:Arzhan_(kurgan)] }
+      - { id: pazyryk, date: c. 300 BCE, label: "Pazyryk: tattooed chiefs and the world's oldest pile carpet, frozen in ice", prominence: 3, themes: [art], sources: [wikipedia:Pazyryk_burials] }
     sources: [wikipedia:Scythians]
 
   - id: sarmatians
@@ -23,6 +25,9 @@ lanes:
     sphere: steppe
     prominence: 3
     span: c. 500 BCE – c. 400 CE
+    events:
+      - { id: sarmatian-women, date: c. 400 BCE, label: "Warrior women in Sarmatian graves — the Amazons of Greek myth?", prominence: 3, themes: [women, war], confidence: probable, sources: [wikipedia:Sarmatians] }
+      - { id: sarmatian-cataphracts, date: c. 100 CE, label: "Armoured lancers that Rome copies", prominence: 4, themes: [war], sources: [wikipedia:Sarmatians] }
     sources: [wikipedia:Sarmatians]
 
   - id: huns
@@ -50,6 +55,7 @@ lanes:
     cliopatria: ["Avar Khaganate"]
     events:
       - { id: avar-ring, date: 796 CE, label: "Charlemagne's armies plunder the Avar Ring", prominence: 4, themes: [war], sources: [wikipedia:Pannonian_Avars] }
+      - { id: avar-stirrup, date: c. 570 CE, label: "The Avars bring the stirrup to Europe", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Stirrup] }
     sources: [wikipedia:Pannonian_Avars]
 
   - id: greco-bactria
@@ -75,6 +81,7 @@ lanes:
       - { type: conquers, lane: greco-bactria, at: c. 130 BCE }
     events:
       - { id: yuezhi-west, date: c. 176 BCE, label: "Driven west by the Xiongnu, the Yuezhi migrate to Bactria", prominence: 3, themes: [migration], sources: [wikipedia:Yuezhi] }
+      - { id: zhang-qian, date: 138 BCE, label: "Zhang Qian travels west to find the Yuezhi", prominence: 3, thread: silk-road, themes: [exploration], sources: [wikipedia:Zhang_Qian] }
     sources: [wikipedia:Yuezhi]
 
   - id: sogdians

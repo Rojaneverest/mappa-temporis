@@ -11,6 +11,9 @@ lanes:
     cliopatria: ["Twenty-second Dynasty of Egypt", "Twenty-third Dynasty of Egypt"]
     relations:
       - { type: becomes, lane: egypt-late-period, at: 664 BCE }
+    events:
+      - { id: tanis, date: c. 1000 BCE, label: "The silver-coffined kings of Tanis", prominence: 4, sources: [wikipedia:Tanis] }
+      - { id: libyan-pharaohs, date: c. 943 BCE, label: "Libyan pharaohs: Shoshenq I raids Judah", prominence: 4, themes: [war], sources: [wikipedia:Shoshenq_I] }
     sources: [wikipedia:Third_Intermediate_Period_of_Egypt]
 
   - id: egypt-late-period
@@ -31,6 +34,7 @@ lanes:
       - { id: psamtik, date: 664 BCE, label: "Psamtik I reunites Egypt", prominence: 3, sources: [wikipedia:Psamtik_I] }
       - { id: necho-africa, date: c. 600 BCE, label: "Phoenician sailors sent by Necho II circle Africa (as Herodotus tells it)", prominence: 4, confidence: disputed, themes: [exploration], sources: [wikipedia:Necho_II] }
       - { id: pelusium, date: 525 BCE, label: "Cambyses II conquers Egypt for Persia", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Pelusium_(525_BC)] }
+      - { id: necho-canal, date: c. 600 BCE, label: "Necho II's Phoenicians sail around Africa (Herodotus)", prominence: 4, themes: [exploration], confidence: disputed, sources: [wikipedia:Necho_II] }
     sources: [wikipedia:Late_Period_of_ancient_Egypt]
 
   - id: ptolemaic
@@ -68,6 +72,8 @@ lanes:
     events:
       - { id: tyre-siege-573, date: 573 BCE, label: "Tyre survives Nebuchadnezzar's 13-year siege", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Tyre_(586–573_BC)] }
       - { id: tyre-siege-332, date: 332 BCE, label: "Alexander takes Tyre after a seven-month siege", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Tyre_(332_BC)] }
+      - { id: purple-dye, date: c. 1000 BCE, label: "Tyrian purple, the dye of kings", prominence: 3, themes: [trade], sources: [wikipedia:Tyrian_purple] }
+      - { id: alexander-tyre, date: 332 BCE, label: "Alexander besieges Tyre", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Tyre_(332_BC)] }
     sources: [wikipedia:Phoenicia]
 
   - id: israel-kingdom
@@ -94,6 +100,7 @@ lanes:
     events:
       - { id: sennacherib-jerusalem, date: 701 BCE, label: "Sennacherib besieges Jerusalem", prominence: 4, themes: [war], sources: [wikipedia:Sennacherib's_campaign_in_the_Levant] }
       - { id: first-temple-destroyed, date: 587 BCE, label: "Babylon destroys Jerusalem and the First Temple; exile begins", prominence: 2, themes: [war, migration, religion], sources: [wikipedia:Siege_of_Jerusalem_(587_BC)] }
+      - { id: siloam, date: c. 700 BCE, label: "Hezekiah's tunnel and the Siloam inscription", prominence: 4, themes: [technology], sources: [wikipedia:Siloam_inscription] }
     sources: [wikipedia:Kingdom_of_Judah]
 
   - id: second-temple-judea
@@ -128,6 +135,7 @@ lanes:
     cliopatria: ["Nabataeans"]
     events:
       - { id: petra-treasury, date: 1st c., label: "Petra's Treasury is carved from the rose-red rock", prominence: 3, themes: [art, trade], sources: [wikipedia:Al-Khazneh] }
+      - { id: nabataean-script, date: c. 100 BCE, label: "The Nabataean script, ancestor of Arabic", prominence: 3, thread: alphabet, sources: [wikipedia:Nabataean_alphabet] }
     images:
       - { id: petra-treasury-photo, source: "commons:File:Petra Jordan BW 21.JPG", date: c. 50 CE, prominence: 3, treatment: plate, caption: "Petra: tombs carved into rose-red rock" }
     sources: [wikipedia:Nabataean_Kingdom]
@@ -168,6 +176,7 @@ lanes:
     events:
       - { id: hijra, date: 622 CE, label: "The Hijra: Muhammad moves to Medina — year 1 of the Islamic calendar", prominence: 1, themes: [religion], sources: [wikipedia:Hijrah] }
       - { id: mecca-630, date: 630 CE, label: "Muhammad returns to Mecca", prominence: 3, themes: [religion], sources: [wikipedia:Conquest_of_Mecca] }
+      - { id: first-revelation, date: 610 CE, label: "Muhammad's first revelation on Mount Hira", prominence: 2, themes: [religion], sources: [wikipedia:Muhammad's_first_revelation] }
     sources: [wikipedia:Muhammad]
 
   - id: rashidun
@@ -184,6 +193,7 @@ lanes:
     events:
       - { id: yarmouk, date: 636 CE, label: "Arab armies defeat Byzantium at the Yarmouk", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Yarmuk] }
       - { id: egypt-641, date: 641 CE, label: "Egypt falls to the caliphate", prominence: 3, themes: [war], sources: [wikipedia:Muslim_conquest_of_Egypt] }
+      - { id: quran-compiled, date: c. 650 CE, label: "Uthman's standard text of the Quran", prominence: 3, themes: [religion], sources: [wikipedia:History_of_the_Quran] }
     sources: [wikipedia:Rashidun_Caliphate]
 
   - id: umayyad
@@ -247,6 +257,7 @@ lanes:
     events:
       - { id: armenia-christian, date: 301 CE, label: "Armenia becomes the first Christian kingdom", prominence: 2, confidence: probable, themes: [religion], sources: [wikipedia:Christianization_of_Armenia] }
       - { id: armenian-alphabet, date: 405 CE, label: "Mesrop Mashtots invents the Armenian alphabet", prominence: 3, thread: alphabet, themes: [ideas], sources: [wikipedia:Armenian_alphabet] }
+      - { id: tigranes, date: 80 BCE, label: "Tigranes the Great's short-lived empire", prominence: 4, sources: [wikipedia:Tigranes_the_Great] }
     sources: [wikipedia:Kingdom_of_Armenia_(antiquity)]
 
   - id: pergamon
@@ -291,6 +302,7 @@ lanes:
     events:
       - { id: carchemish, date: 605 BCE, label: "Nebuchadnezzar defeats Egypt at Carchemish", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Carchemish] }
       - { id: ishtar-gate, date: c. 575 BCE, label: "The blue-glazed Ishtar Gate of Babylon", prominence: 2, themes: [art], sources: [wikipedia:Ishtar_Gate] }
+      - { id: nebuchadnezzar, date: 587 BCE, label: "Nebuchadnezzar destroys Jerusalem", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Jerusalem_(587_BC)] }
     images:
       - { id: ishtar-gate-photo, source: "commons:File:Ishtar gate in Pergamon museum.jpg", date: 575 BCE, prominence: 2, treatment: plate, caption: "The Ishtar Gate of Babylon, now in Berlin" }
     sources: [wikipedia:Neo-Babylonian_Empire]
@@ -305,6 +317,8 @@ lanes:
     cliopatria: ["Median Kingdom"]
     relations:
       - { type: becomes, lane: achaemenid, at: 550 BCE }
+    events:
+      - { id: eclipse-battle, date: 585 BCE, label: "A solar eclipse halts a battle between Medes and Lydians", prominence: 3, themes: [sky, war], sources: [wikipedia:Battle_of_the_Eclipse] }
     sources: [wikipedia:Medes]
 
   - id: achaemenid
@@ -341,6 +355,7 @@ lanes:
     events:
       - { id: seleucid-elephants, date: c. 303 BCE, label: "Seleucus trades India's borderlands to Chandragupta for 500 elephants", prominence: 4, sources: [wikipedia:Seleucid–Mauryan_war] }
       - { id: antiochus-temple, date: 167 BCE, label: "Antiochus IV desecrates the Jerusalem Temple", prominence: 4, themes: [religion], sources: [wikipedia:Antiochus_IV_Epiphanes] }
+      - { id: antiochus-maccabees, date: 167 BCE, label: "The Maccabean revolt", prominence: 3, themes: [religion, war], sources: [wikipedia:Maccabean_Revolt] }
     sources: [wikipedia:Seleucid_Empire]
 
   - id: parthian

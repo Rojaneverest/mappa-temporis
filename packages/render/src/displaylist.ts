@@ -108,7 +108,7 @@ export interface DisplayList {
   /** y = y0 + (astronomicalYear - year0) * unitsPerYear, or piecewise via `segments` when a prologue is compressed. */
   time: { y0: number; year0: number; year1: number; unitsPerYear: number; segments?: TimeSegment[] };
   /** Column headers for the frozen HUD: [x0, x1, name]. */
-  regions: { x0: number; x1: number; name: string }[];
+  regions: { x0: number; x1: number; name: string; short?: string }[];
   items: Item[];
   stats: Record<string, number>;
 }

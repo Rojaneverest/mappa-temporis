@@ -23,3 +23,9 @@
 | 19 | 2026-10-23 | Threads (Silk Road, alphabet, writing, numerals, money) are optional layers, off by default | Calm first; journeys across regions on demand |
 | 20 | 2026-10-23 | Atlas uses Cliopatria matched by hand-picked names, then exact names, then Wikidata IDs | Cliopatria tags "Roman Empire" with Byzantium's QID, so IDs alone mislink |
 | 21 | 2026-10-23 | **Desktop only** (Mac / computer browsers). No phone or tablet layouts, no touch work, no iPad testing | Personal project used on a Mac |
+| 22 | 2026-10-23 | **Progressive time scale** on the world sheet: ⅛ (10,000–3300 BCE), ½ (3300–1000 BCE), 1 (1000 BCE–1500 CE), 2 (1500–1800), 3 (1800–1900), 4 (1900–today); each change is marked. Supersedes the "equidistant" part of decision 2 | Equidistant squeezed 1500 → today into a sliver while the sparse Bronze Age took a third of the sheet |
+| 23 | 2026-10-23 | The **left margin** carries era names, turning points (with coloured force chips) and era maps; the **right margin** carries climate ribbons and the world population curve (log scale) | Margins are context, so they stay out of the lanes' way |
+| 24 | 2026-10-23 | Era maps are **ink-printed**: the pipeline turns darkness into sepia ink and light into transparency; photographs of Earth are inverted first | Tiles are transparent, so a true multiply onto the paper is impossible; this is mathematically the same look |
+| 25 | 2026-10-23 | Phase 2 ships with ~1,400 events (the plan estimated ~2,500); the remaining fill moves to Phase 3, under the density budgets | Every region and era is covered end to end; quality and checks over raw count |
+| 26 | 2026-10-23 | The world sheet is the default view (`?sheet=classical-world` still opens the slice) | The poster now exists end to end |
+| 27 | 2026-10-23 | Commons downloads fall back to the 1920 px thumbnail when the original is throttled | Wikimedia rate-limits full-size originals hard; 1920 px is plenty for the chart |
