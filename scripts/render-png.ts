@@ -8,7 +8,7 @@ import { createRequire } from 'node:module';
 import type { CanvasKit } from 'canvaskit-wasm';
 import type { DisplayList } from '../packages/render/src/displaylist.ts';
 import { FONT_FILES, registerFonts } from '../packages/render/src/fonts.ts';
-import { Painter } from '../packages/render/src/painter.ts';
+import { Painter, type ImageStore } from '../packages/render/src/painter.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
@@ -30,7 +30,17 @@ fonts.enableFontFallback();
 const s = Number(scaleArg ?? 1600 / dl.width);
 const [x0 = 0, y0 = 0, wPx = Math.ceil(dl.width * s), hPx = Math.ceil(dl.height * s)] = rest.map(Number);
 const surface = ck.MakeSurface(wPx, hPx)!;
-const painter = new Painter(ck, fonts, dl);
+// Load every image size from the web build (fine for local renders).
+const images: ImageStore = new Map();
+for (const it of dl.items) {
+  if (it.k !== 'image') continue;
+  for (const z of it.sizes) {
+    const bytes = readFileSync(join(ROOT, 'apps/explorer/public/img', it.id, `${z}.webp`));
+    const img = ck.MakeImageFromEncoded(bytes);
+    if (img) images.set(`${it.id}/${z}`, img);
+  }
+}
+const painter = new Painter(ck, fonts, dl, images);
 const x1 = x0 + wPx / s, y1 = y0 + hPx / s;
 const visible = dl.items.map((it, i) => [it, i] as const).filter(([it]) => it.b![2] >= x0 && it.b![0] <= x1 && it.b![3] >= y0 && it.b![1] <= y1).map(([, i]) => i);
 // Paint a few times: the first pass builds paragraph/path caches, later passes show steady-state cost.

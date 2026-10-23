@@ -26,6 +26,8 @@ export class Viewer {
   private y0 = 0;
   private s = 0.05;
   private fitScale = 0.05;
+  /** Until the user moves the camera, keep the whole sheet fitted (also fixes loading in a hidden tab). */
+  private userMoved = false;
 
   private workers: { w: Worker; busy: boolean; ready: boolean }[] = [];
   private cache = new Map<string, CachedTile>();
@@ -59,21 +61,25 @@ export class Viewer {
       this.workers.push(slot);
     }
     this.bindInput();
-    window.addEventListener('resize', () => { this.resize(); this.dirty = true; });
+    window.addEventListener('resize', () => {
+      this.resize();
+      if (!this.userMoved) this.fit();
+      this.dirty = true;
+    });
     const loop = () => { this.tick(); requestAnimationFrame(loop); };
     requestAnimationFrame(loop);
   }
 
   // ------------------------------------------------------------------ camera
   private resize() {
-    this.cssW = window.innerWidth;
-    this.cssH = window.innerHeight;
+    this.cssW = Math.max(1, window.innerWidth);
+    this.cssH = Math.max(1, window.innerHeight);
     this.canvas.width = Math.round(this.cssW * this.dpr);
     this.canvas.height = Math.round(this.cssH * this.dpr);
   }
 
   fit() {
-    this.fitScale = Math.min((this.cssW - RULER_W - 20) / this.dl.width, (this.cssH - HEADER_H - 10) / this.dl.height);
+    this.fitScale = Math.max(1e-4, Math.min((this.cssW - RULER_W - 20) / this.dl.width, (this.cssH - HEADER_H - 10) / this.dl.height));
     this.s = this.fitScale;
     this.x0 = -(RULER_W + (this.cssW - RULER_W - this.dl.width * this.s) / 2) / this.s;
     this.y0 = -(HEADER_H + (this.cssH - HEADER_H - this.dl.height * this.s) / 2) / this.s;
@@ -81,6 +87,7 @@ export class Viewer {
   }
 
   private zoomAt(px: number, py: number, factor: number) {
+    this.userMoved = true;
     const s = Math.min(MAX_SCALE, Math.max(this.fitScale * 0.5, this.s * factor));
     const wx = this.x0 + px / this.s;
     const wy = this.y0 + py / this.s;
@@ -91,6 +98,7 @@ export class Viewer {
   }
 
   private panBy(dx: number, dy: number) {
+    this.userMoved = true;
     this.x0 -= dx / this.s;
     this.y0 -= dy / this.s;
     this.dirty = true;
@@ -147,7 +155,7 @@ export class Viewer {
     window.addEventListener('keydown', (e) => {
       const step = 120;
       const cx = this.cssW / 2, cy = this.cssH / 2;
-      if (e.key === '0') this.fit();
+      if (e.key === '0') { this.fit(); this.userMoved = false; }
       else if (e.key === '+' || e.key === '=') this.animateZoom(cx, cy, 2);
       else if (e.key === '-') this.animateZoom(cx, cy, 0.5);
       else if (e.key === 'ArrowLeft') this.panBy(step, 0);

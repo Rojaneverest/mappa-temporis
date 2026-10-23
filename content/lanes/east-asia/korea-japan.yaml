@@ -1,23 +1,25 @@
-# Korea (columns 6–10) and Japan (column 11), 800 BCE – 700 CE.
+# Korea and Japan, 800 BCE – 700 CE.
 lanes:
   - id: gojoseon
+    group: korea
     name: Gojoseon
     endonym: { text: 古朝鮮, script: Hant, translit: Gojoseon }
     region: east-asia
     sphere: korean-japanese
     prominence: 3
     span: c. 400 – 108 BCE
-    column: 6
+    relations:
+      - { type: becomes, lane: lelang, at: 108 BCE }
     sources: [wikipedia:Gojoseon]
 
   - id: goguryeo
+    group: korea
     name: Goguryeo
     endonym: { text: 高句麗, script: Hant, translit: Goguryeo }
     region: east-asia
     sphere: korean-japanese
     prominence: 2
     span: 37 BCE – 668 CE
-    column: 6
     relations:
       - { type: conquers, lane: lelang, at: 313 CE }
     events:
@@ -38,37 +40,44 @@ lanes:
         label: Gwanggaeto Stele raised to the great conqueror-king
         prominence: 3
         sources: [wikipedia:Gwanggaeto_Stele]
+    images:
+      - id: goguryeo-mural
+        source: "commons:File:Goguryeo tomb mural.jpg"
+        date: c. 450 CE
+        prominence: 3
+        treatment: plate
+        caption: "Goguryeo tomb mural"
     sources: [wikipedia:Goguryeo]
 
   - id: lelang
+    group: korea
     name: Lelang commandery
     region: east-asia
     sphere: sinic
     prominence: 4
     span: 108 BCE – 313 CE
-    column: 7
     sources: [wikipedia:Lelang_Commandery]
 
   - id: baekje
+    group: korea
     name: Baekje
     endonym: { text: 百濟, script: Hant, translit: Baekje }
     region: east-asia
     sphere: korean-japanese
     prominence: 3
     span: 18 BCE – 660 CE
-    column: 8
     relations:
       - { type: influences, lane: kofun, at: 538 CE }
     sources: [wikipedia:Baekje]
 
   - id: silla
+    group: korea
     name: Silla
     endonym: { text: 新羅, script: Hant, translit: Silla }
     region: east-asia
     sphere: korean-japanese
     prominence: 2
     span: 57 BCE – 935 CE
-    column: 9
     events:
       - id: silla-buddhism
         date: 527 CE
@@ -83,35 +92,46 @@ lanes:
         prominence: 2
         themes: [war]
         sources: [wikipedia:Unified_Silla]
+    images:
+      - id: silla-crown
+        source: "commons:File:Gold Crown of Silla Kingdom 01b.jpg"
+        date: c. 500 CE
+        prominence: 2
+        treatment: cutout
+        caption: "Gold crown of Silla"
     sources: [wikipedia:Silla]
 
   - id: gaya
+    group: korea
     name: Gaya
     region: east-asia
     sphere: korean-japanese
     prominence: 4
     span: 42 – 562 CE
-    column: 10
     sources: [wikipedia:Gaya_confederacy]
 
   - id: jomon
+    group: japan
     name: Jōmon
     region: east-asia
     sphere: korean-japanese
     prominence: 3
     basis: archaeology
     span: c. 14000 – 300 BCE
-    column: 11
+    relations:
+      - { type: becomes, lane: yayoi, at: c. 300 BCE }
     sources: [wikipedia:Jōmon_period]
 
   - id: yayoi
+    group: japan
     name: Yayoi
     region: east-asia
     sphere: korean-japanese
     prominence: 3
     basis: archaeology
     span: c. 300 BCE – c. 300 CE
-    column: 11
+    relations:
+      - { type: becomes, lane: kofun, at: c. 300 CE }
     events:
       - id: rice-japan
         date: c. 300 BCE
@@ -135,13 +155,15 @@ lanes:
     sources: [wikipedia:Yayoi_period]
 
   - id: kofun
+    group: japan
     name: Kofun · Yamato
     endonym: { text: 倭, script: Hant, translit: Wa }
     region: east-asia
     sphere: korean-japanese
     prominence: 3
     span: c. 300 – 538 CE
-    column: 11
+    relations:
+      - { type: becomes, lane: asuka, at: 538 CE }
     events:
       - id: daisen
         date: 5th c.
@@ -156,15 +178,22 @@ lanes:
         confidence: probable
         themes: [religion]
         sources: [wikipedia:Buddhism_in_Japan]
+    images:
+      - id: haniwa-warrior
+        source: "met:45545"
+        date: c. 530 CE
+        prominence: 2
+        treatment: cutout
+        caption: "Haniwa figure of a warrior"
     sources: [wikipedia:Kofun_period]
 
   - id: asuka
+    group: japan
     name: Asuka
     region: east-asia
     sphere: korean-japanese
     prominence: 3
     span: 538 – 710 CE
-    column: 11
     events:
       - id: seventeen-articles
         date: 604 CE

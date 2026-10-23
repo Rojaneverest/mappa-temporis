@@ -5,7 +5,7 @@ import type { CanvasKit, Surface } from 'canvaskit-wasm';
 import Flatbush from 'flatbush';
 import type { DisplayList } from '../../../packages/render/src/displaylist.ts';
 import { FONT_FILES, registerFonts } from '../../../packages/render/src/fonts.ts';
-import { Painter } from '../../../packages/render/src/painter.ts';
+import { Painter, imageNeeds, type ImageStore } from '../../../packages/render/src/painter.ts';
 
 export type ToWorker =
   | { type: 'init'; chartUrl: string }
@@ -21,6 +21,9 @@ const CanvasKitInit = CanvasKitModule as unknown as (opts: { locateFile: (f: str
 
 let ck: CanvasKit;
 let painter: Painter;
+let dl: DisplayList;
+const images: ImageStore = new Map();
+const loading = new Map<string, Promise<void>>();
 let index: Flatbush;
 let surface: Surface | null = null;
 let surfaceSize = 0;
@@ -31,19 +34,20 @@ self.onmessage = async (e: MessageEvent<ToWorker>) => {
   const msg = e.data;
   try {
     if (msg.type === 'init') await init(msg.chartUrl);
-    else if (msg.type === 'tile') renderTile(msg);
+    else if (msg.type === 'tile') await renderTile(msg);
   } catch (err) {
     post({ type: 'error', message: String((err as Error)?.stack ?? err) });
   }
 };
 
 async function init(chartUrl: string) {
-  const [kit, dl, ...fontBufs] = await Promise.all([
+  const [kit, chart, ...fontBufs] = await Promise.all([
     CanvasKitInit({ locateFile: (f: string) => `/canvaskit/${f}` }),
     fetch(chartUrl).then((r) => r.json() as Promise<DisplayList>),
     ...FONT_FILES.map((f) => fetch(`/fonts/${f.file}`).then((r) => r.arrayBuffer())),
   ]);
   ck = kit;
+  dl = chart;
   const buffers = new Map(FONT_FILES.map((f, i) => [f.file, fontBufs[i]!] as const));
   const fonts = ck.FontCollection.Make();
   fonts.setDefaultFontManager(registerFonts(ck, buffers));
@@ -51,11 +55,27 @@ async function init(chartUrl: string) {
   index = new Flatbush(dl.items.length);
   for (const it of dl.items) index.add(it.b![0], it.b![1], it.b![2], it.b![3]);
   index.finish();
-  painter = new Painter(ck, fonts, dl);
+  painter = new Painter(ck, fonts, dl, images);
   post({ type: 'ready' });
 }
 
-function renderTile(job: Extract<ToWorker, { type: 'tile' }>) {
+/** Fetch and decode one image size ("<id>/<size>") once per worker. */
+function loadImage(key: string): Promise<void> {
+  let p = loading.get(key);
+  if (!p) {
+    p = fetch(`/img/${key}.webp`)
+      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error(`${r.status} /img/${key}.webp`))))
+      .then((buf) => {
+        const img = ck.MakeImageFromEncoded(new Uint8Array(buf));
+        if (img) images.set(key, img);
+      })
+      .catch((err) => console.warn('image', key, err));
+    loading.set(key, p);
+  }
+  return p;
+}
+
+async function renderTile(job: Extract<ToWorker, { type: 'tile' }>) {
   const t0 = performance.now();
   if (!surface || surfaceSize !== job.size) {
     surface?.delete();
@@ -65,6 +85,9 @@ function renderTile(job: Extract<ToWorker, { type: 'tile' }>) {
   const worldSize = job.size / job.s;
   // Flatbush returns hits in arbitrary order; display-list order is z-order.
   const hits = index.search(job.x0, job.y0, job.x0 + worldSize, job.y0 + worldSize).sort((a, b) => a - b);
+  // Images arrive before the tile is painted, so a tile is never drawn half-finished.
+  const needed = imageNeeds(dl, hits, job.s).filter((k) => !images.has(k));
+  if (needed.length) await Promise.all(needed.map(loadImage));
   painter.paint(surface!.getCanvas(), { x0: job.x0, y0: job.y0, s: job.s, widthPx: job.size, heightPx: job.size }, hits, { paper: false });
   surface!.flush();
   const snapshot = surface!.makeImageSnapshot();

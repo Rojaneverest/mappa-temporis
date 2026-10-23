@@ -47,6 +47,21 @@ export const Event = z.object({
   note: z.string().optional(),
 });
 
+export const LaneImage = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  /** met:<objectID> (Met Open Access) or commons:File:<name> (Wikimedia Commons). */
+  source: z.string().regex(/^(met:\d+|commons:File:.+)$/),
+  /** Where on the time axis the image belongs. */
+  date: DateText,
+  prominence: Prominence,
+  /** cutout: object lifted from its photo with a soft shadow; plate: framed rectangle (paintings, scenes). */
+  treatment: z.enum(['cutout', 'plate']),
+  caption: z.string().max(80),
+  /** Made in the era it illustrates (vs. a later depiction). */
+  ofItsTime: z.boolean().default(true),
+});
+export type LaneImage = z.infer<typeof LaneImage>;
+
 export const Lane = z.object({
   id: z.string(),
   name: z.string(),
@@ -57,11 +72,14 @@ export const Lane = z.object({
   prominence: Prominence,
   basis: Basis.default('texts'),
   span: SpanText,
-  /** Hand-pinned column within the region (the layout engine will propose these later). */
-  column: z.number().int().min(0),
+  /** Sub-region the lane belongs to (e.g. china, korea); groups are laid out in the order the sheet lists them. */
+  group: z.string().optional(),
+  /** Optional hand pin: fixed track position within the group. Normally the layout engine decides. */
+  column: z.number().int().min(0).optional(),
   segments: z.array(Segment).default([]),
   relations: z.array(Relation).default([]),
   events: z.array(Event).default([]),
+  images: z.array(LaneImage).default([]),
   sources: z.array(z.string()).default([]),
 });
 export type Lane = z.infer<typeof Lane>;
@@ -81,7 +99,8 @@ export type Era = z.infer<typeof Era>;
 export const Region = z.object({
   id: z.string(),
   name: z.string(),
-  columns: z.number().int().min(1),
+  /** Sub-regions, west to east. Lanes without a group use the region id. */
+  groups: z.array(z.string()).default([]),
 });
 export type Region = z.infer<typeof Region>;
 

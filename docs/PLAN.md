@@ -229,7 +229,7 @@ mappa-temporis/
 
 | Phase | Deliverable | Done when |
 |---|---|---|
-| **0. Prove it** *(in progress — 0a renderer & viewer done, see `docs/phase-0/`)* | (a) Renderer spike: Skia tiles in workers + deep-zoom viewer, multi-script text, a pigment lane on paper, greeking, prominence styling. (b) Layout spike on one region × era from real data. (c) 20 images through the full pipeline with credits. Output: a proof sheet of East Asia 600 BCE–600 CE at every zoom level | 60 fps, sharp everywhere, calm at every zoom, and Rojan says "that's the look" |
+| **0. Prove it** *(in progress — 0a renderer & viewer and 0b layout & images done, see `docs/phase-0/`)* | (a) Renderer spike: Skia tiles in workers + deep-zoom viewer, multi-script text, a pigment lane on paper, greeking, prominence styling. (b) Layout spike on one region × era from real data. (c) 20 images through the full pipeline with credits. Output: a proof sheet of East Asia 600 BCE–600 CE at every zoom level | 60 fps, sharp everywhere, calm at every zoom, and Rojan says "that's the look" |
 | **1. Vertical slice** | Classical Antiquity across all regions, with Folio, Atlas, search, frozen headers, Silk Road thread, one tour | You'd hang it on a wall |
 | **2. Skeleton** | All eras/regions at P1–P3 (~400 lanes, ~2,500 events), substrates, era maps, turning-point bands, margins | The poster exists end to end |
 | **3. Depth** | Era-by-era P3–P5 fill, people, voices, daily life, coins, native names; balance audits | Coverage targets met within density budgets |

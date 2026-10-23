@@ -6,7 +6,8 @@ lanes:
     sphere: steppe
     prominence: 2
     span: 209 BCE – 91 CE
-    column: 0
+    relations:
+      - { type: splits-into, lanes: [southern-xiongnu], at: 48 CE }
     events:
       - id: modu
         date: 209 BCE
@@ -30,6 +31,13 @@ lanes:
         prominence: 4
         themes: [war]
         sources: [wikipedia:Battle_of_Ikh_Bayan]
+    images:
+      - id: xiongnu-buckle
+        source: "met:322484"
+        date: c. 200 BCE
+        prominence: 2
+        treatment: cutout
+        caption: "Belt buckle: felines attacking ibexes"
     sources: [wikipedia:Xiongnu]
 
   - id: xianbei
@@ -38,7 +46,8 @@ lanes:
     sphere: steppe
     prominence: 3
     span: c. 93 – 234 CE
-    column: 0
+    relations:
+      - { type: succeeds, lane: xiongnu, at: c. 93 CE }
     sources: [wikipedia:Xianbei]
 
   - id: rouran
@@ -47,7 +56,8 @@ lanes:
     sphere: steppe
     prominence: 3
     span: c. 330 – 555 CE
-    column: 0
+    relations:
+      - { type: succeeds, lane: xianbei, at: c. 330 CE }
     sources: [wikipedia:Rouran_Khaganate]
 
   - id: gokturks
@@ -56,7 +66,6 @@ lanes:
     sphere: steppe
     prominence: 2
     span: 552 – 744 CE
-    column: 1
     relations:
       - { type: conquers, lane: rouran, at: 552 CE }
     events:
@@ -79,7 +88,6 @@ lanes:
     sphere: steppe
     prominence: 4
     span: 48 – 216 CE
-    column: 1
     sources: [wikipedia:Southern_Xiongnu]
 
   - id: hephthalites
@@ -88,7 +96,6 @@ lanes:
     sphere: steppe
     prominence: 4
     span: c. 440 – c. 560 CE
-    column: 2
     events:
       - id: peroz
         date: 484 CE

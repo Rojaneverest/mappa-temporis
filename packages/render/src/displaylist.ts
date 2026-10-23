@@ -80,7 +80,20 @@ export interface LineItem extends Base {
   dash?: number[];
 }
 
-export type Item = TextItem | PathItem | RectItem | LineItem;
+export interface ImageItem extends Base {
+  k: 'image';
+  /** Asset id: files live at /img/<id>/<size>.webp */
+  id: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  /** Available long-side pixel sizes, ascending. */
+  sizes: number[];
+  treatment: 'cutout' | 'plate';
+}
+
+export type Item = TextItem | PathItem | RectItem | LineItem | ImageItem;
 
 export interface DisplayList {
   version: 1;

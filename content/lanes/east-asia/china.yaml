@@ -1,23 +1,23 @@
-# China, 800 BCE – 700 CE. Columns 0–5 of East Asia; column 2 is the main line of succession.
+# China, 800 BCE – 700 CE.
 lanes:
   - id: yan
     name: Yan
     endonym: { text: 燕, script: Hant, translit: Yān }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 4
     span: c. 1045 – 222 BCE
-    column: 0
     sources: [wikipedia:Yan_(state)]
 
   - id: qin-state
     name: State of Qin
     endonym: { text: 秦, script: Hant, translit: Qín }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: c. 900 – 221 BCE
-    column: 1
     relations:
       - { type: becomes, lane: qin, at: 221 BCE }
     events:
@@ -39,10 +39,10 @@ lanes:
     name: Eastern Zhou
     endonym: { text: 周, script: Hant, translit: Zhōu }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 2
     span: 770 – 256 BCE
-    column: 2
     segments:
       - { name: Spring and Autumn period, span: 770 – 476 BCE, weight: 4 }
       - { name: Warring States period, span: 475 – 256 BCE, weight: 3 }
@@ -77,6 +77,13 @@ lanes:
         label: Qin ends the Zhou royal line
         prominence: 4
         sources: [wikipedia:Zhou_dynasty]
+    images:
+      - id: dragon-mirror
+        source: "met:61403"
+        date: c. 400 BCE
+        prominence: 3
+        treatment: cutout
+        caption: "Bronze mirror with interlaced dragons"
     sources: [wikipedia:Eastern_Zhou]
 
   - id: qin
@@ -84,10 +91,10 @@ lanes:
     endonym: { text: 秦, script: Hant, translit: Qín }
     wikidata: Q7183
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 2
     span: 221 – 206 BCE
-    column: 2
     events:
       - id: qin-unifies
         date: 221 BCE
@@ -107,6 +114,13 @@ lanes:
         prominence: 2
         themes: [art]
         sources: [wikipedia:Terracotta_Army]
+    images:
+      - id: terracotta-pit-1
+        source: "commons:File:Qin Terracotta Army, Pit 1 04.jpg"
+        date: 210 BCE
+        prominence: 1
+        treatment: plate
+        caption: "The Terracotta Army, Pit 1, Xi’an"
     sources: [wikipedia:Qin_dynasty]
 
   - id: han
@@ -114,15 +128,16 @@ lanes:
     endonym: { text: 漢, script: Hant, translit: Hàn }
     wikidata: Q7209
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 1
     span: 202 BCE – 220 CE
-    column: 2
     segments:
       - { name: Western Han, span: 202 BCE – 9 CE, weight: 6 }
       - { name: Xin (Wang Mang), span: 9 – 23 CE, weight: 2, style: interregnum }
       - { name: Eastern Han, span: 24 – 220 CE, weight: 5 }
     relations:
+      - { type: succeeds, lane: qin, at: 202 BCE }
       - { type: splits-into, lanes: [cao-wei, shu-han, eastern-wu], at: 220 CE }
       - { type: conquers, lane: gojoseon, at: 108 BCE }
     events:
@@ -189,16 +204,31 @@ lanes:
         prominence: 3
         themes: [war]
         sources: [wikipedia:Battle_of_Red_Cliffs]
+    images:
+      - id: han-lacquer-bowl
+        source: "met:36449"
+        date: c. 150 BCE
+        prominence: 3
+        treatment: cutout
+        caption: "Lacquer bowl with geometric designs"
+      - id: han-dog
+        source: "met:42361"
+        date: c. 120 CE
+        prominence: 3
+        treatment: cutout
+        caption: "Tomb figure of a dog"
     sources: [wikipedia:Han_dynasty]
 
   - id: cao-wei
     name: Cao Wei
     endonym: { text: 魏, script: Hant, translit: Wèi }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: 220 – 266 CE
-    column: 2
+    relations:
+      - { type: becomes, lane: western-jin, at: 266 CE }
     events:
       - id: wei-conquers-shu
         date: 263 CE
@@ -212,10 +242,10 @@ lanes:
     name: Western Jin
     endonym: { text: 晉, script: Hant, translit: Jìn }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: 266 – 316 CE
-    column: 2
     relations:
       - { type: becomes, lane: eastern-jin, at: 317 CE }
     events:
@@ -236,10 +266,12 @@ lanes:
     name: Sui
     endonym: { text: 隋, script: Hant, translit: Suí }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 2
     span: 581 – 618 CE
-    column: 2
+    relations:
+      - { type: becomes, lane: tang, at: 618 CE }
     events:
       - id: sui-reunifies
         date: 589 CE
@@ -259,10 +291,10 @@ lanes:
     endonym: { text: 唐, script: Hant, translit: Táng }
     wikidata: Q9683
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 1
     span: 618 – 907 CE
-    column: 2
     events:
       - id: xuanzang
         date: 629 CE
@@ -276,16 +308,23 @@ lanes:
         prominence: 2
         themes: [government, women]
         sources: [wikipedia:Wu_Zetian]
+    images:
+      - id: tang-lute-player
+        source: "met:44801"
+        date: c. 680 CE
+        prominence: 3
+        treatment: cutout
+        caption: "Female musician with lute"
     sources: [wikipedia:Tang_dynasty]
 
   - id: chu
     name: Chu
     endonym: { text: 楚, script: Hant, translit: Chǔ }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: c. 1030 – 223 BCE
-    column: 3
     events:
       - id: qu-yuan
         date: c. 278 BCE
@@ -294,26 +333,35 @@ lanes:
         confidence: probable
         themes: [art]
         sources: [wikipedia:Qu_Yuan]
+    images:
+      - id: zheng-bell
+        source: "met:61289"
+        date: c. 350 BCE
+        prominence: 3
+        treatment: cutout
+        caption: "Bronze bell (zheng)"
     sources: [wikipedia:Chu_(state)]
 
   - id: shu-han
     name: Shu Han
     endonym: { text: 蜀, script: Hant, translit: Shǔ }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: 221 – 263 CE
-    column: 3
     sources: [wikipedia:Shu_Han]
 
   - id: eastern-jin
     name: Eastern Jin
     endonym: { text: 晉, script: Hant, translit: Jìn }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: 317 – 420 CE
-    column: 3
+    relations:
+      - { type: becomes, lane: southern-dynasties, at: 420 CE }
     events:
       - id: lanting
         date: 353 CE
@@ -327,15 +375,22 @@ lanes:
         prominence: 3
         themes: [religion, exploration]
         sources: [wikipedia:Faxian]
+    images:
+      - id: admonitions-scroll
+        source: "commons:File:Gu Kaizhi 002.jpg"
+        date: c. 380 CE
+        prominence: 2
+        treatment: plate
+        caption: "Admonitions Scroll (detail), attributed to Gu Kaizhi"
     sources: [wikipedia:Eastern_Jin]
 
   - id: southern-dynasties
     name: Southern dynasties
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: 420 – 589 CE
-    column: 3
     segments:
       - { name: Liu Song, span: 420 – 479 CE }
       - { name: Southern Qi, span: 479 – 502 CE }
@@ -349,30 +404,30 @@ lanes:
     name: Qi
     endonym: { text: 齊, script: Hant, translit: Qí }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 4
     span: 1046 – 221 BCE
-    column: 4
     sources: [wikipedia:Qi_(state)]
 
   - id: eastern-wu
     name: Eastern Wu
     endonym: { text: 吳, script: Hant, translit: Wú }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: 222 – 280 CE
-    column: 4
     sources: [wikipedia:Eastern_Wu]
 
   - id: jin-state
     name: Jin
     endonym: { text: 晉, script: Hant, translit: Jìn }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 4
     span: c. 1042 – 403 BCE
-    column: 5
     relations:
       - { type: splits-into, lanes: [three-jin], at: 403 BCE }
     sources: [wikipedia:Jin_(Chinese_state)]
@@ -380,29 +435,31 @@ lanes:
   - id: three-jin
     name: Han, Zhao & Wei
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 4
     span: 403 – 222 BCE
-    column: 5
     sources: [wikipedia:Partition_of_Jin]
 
   - id: sixteen-kingdoms
     name: Sixteen Kingdoms
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 4
     span: 304 – 439 CE
-    column: 0
     sources: [wikipedia:Sixteen_Kingdoms]
 
   - id: northern-wei
     name: Northern Wei
     endonym: { text: 魏, script: Hant, translit: Wèi }
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 3
     span: 386 – 535 CE
-    column: 1
+    relations:
+      - { type: splits-into, lanes: [western-wei-zhou, eastern-wei-qi], at: 535 CE }
     events:
       - id: yungang
         date: c. 460 CE
@@ -416,24 +473,38 @@ lanes:
         prominence: 4
         themes: [art, religion]
         sources: [wikipedia:Longmen_Grottoes]
+    images:
+      - id: maitreya-486
+        source: "met:42733"
+        date: 486 CE
+        prominence: 2
+        treatment: cutout
+        caption: "Buddha Maitreya, dated 486"
     sources: [wikipedia:Northern_Wei]
 
   - id: eastern-wei-qi
     name: Eastern Wei · Northern Qi
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 4
     span: 534 – 577 CE
-    column: 0
+    images:
+      - id: northern-qi-camel
+        source: "met:44795"
+        date: c. 560 CE
+        prominence: 3
+        treatment: cutout
+        caption: "Tomb figure of a camel"
     sources: [wikipedia:Northern_Qi]
 
   - id: western-wei-zhou
     name: Western Wei · Northern Zhou
     region: east-asia
+    group: china
     sphere: sinic
     prominence: 4
     span: 535 – 581 CE
-    column: 1
     relations:
       - { type: becomes, lane: sui, at: 581 CE }
     sources: [wikipedia:Northern_Zhou]

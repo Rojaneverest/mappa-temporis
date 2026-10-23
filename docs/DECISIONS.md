@@ -15,3 +15,7 @@
 | 11 | 2026-10-23 | Rendering: Skia (CanvasKit) tiles in workers; benchmark against native canvas in Phase 0 | Identical text metrics, effects, one renderer for screen/print/video |
 | 12 | 2026-10-23 | Paper texture is composited by the viewer on the GPU; tiles are transparent ink | Skia-in-wasm paper cost 45 ms/tile; ink-only tiles render in ~2 ms |
 | 13 | 2026-10-23 | Custom deep-zoom viewer for the chart; OpenSeadragon kept for IIIF doorways | Frozen HUD, tile fallback and paper compositing were simpler with our own camera |
+| 14 | 2026-10-23 | Lanes sit in **stable straight tracks**, assigned automatically from succession chains and relations; "flowing" tracks kept as an option only | Flowing tracks made lanes swing sideways and read as restless — the opposite of calm |
+| 15 | 2026-10-23 | Placement order: words before pictures (P1–P2 labels, P1–P2 images, P3 labels, P3 images, P4 labels) | Images placed first crowded out key labels |
+| 16 | 2026-10-23 | Cut-outs via Apple Vision subject lifting (Swift CLI); Met Open Access + Wikimedia Commons as first image sources; credits generated into docs/CREDITS.md | Clean masks on museum photos, no ML setup needed on this Mac |
+| 17 | 2026-10-23 | Fonts are subset at build time to the characters the chart uses | 28 MB → ~1 MB |

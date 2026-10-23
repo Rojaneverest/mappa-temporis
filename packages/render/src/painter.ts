@@ -1,9 +1,9 @@
 // Draws a window of the display list onto a Skia canvas. Shared by the browser tile
 // workers and the Node print/video path.
 import type { Canvas, CanvasKit, FontCollection, Image, Paint, Paragraph, Path } from 'canvaskit-wasm';
-import type { DisplayList, Item, TextItem } from './displaylist.ts';
+import type { DisplayList, ImageItem, Item, TextItem } from './displaylist.ts';
 import { buildParagraph } from './text.ts';
-import { PAPER } from '../../core/src/palette.ts';
+import { PAPER, INK_SOFT } from '../../core/src/palette.ts';
 
 /** Below this on-screen size text is drawn as soft grey lines ("greeking"). */
 export const GREEK_BELOW_PX = 3.4;
@@ -85,6 +85,26 @@ function makePaperImages(ck: CanvasKit) {
   };
 }
 
+/** Decoded images by "<id>/<size>". The caller loads what `imageNeeds` asks for before painting. */
+export type ImageStore = Map<string, Image>;
+
+/** The smallest stored size that is at least as sharp as the screen needs (largest if none is). */
+export function pickImageSize(item: ImageItem, s: number): number {
+  const px = Math.max(item.w, item.h) * s;
+  return item.sizes.find((z) => z >= px) ?? item.sizes[item.sizes.length - 1]!;
+}
+
+/** Image files ("<id>/<size>") a view will draw. */
+export function imageNeeds(dl: DisplayList, indices: Iterable<number>, s: number): string[] {
+  const out: string[] = [];
+  for (const i of indices) {
+    const it = dl.items[i]!;
+    if (it.k !== 'image' || fadeAt(it.fade, s) <= 0.01 || Math.max(it.w, it.h) * s < 2) continue;
+    out.push(`${it.id}/${pickImageSize(it, s)}`);
+  }
+  return out;
+}
+
 export interface View {
   /** World coordinates of the tile's top-left corner. */
   x0: number;
@@ -105,11 +125,13 @@ export class Painter {
   private ck: CanvasKit;
   private fonts: FontCollection;
   private dl: DisplayList;
+  private images: ImageStore;
 
-  constructor(ck: CanvasKit, fonts: FontCollection, dl: DisplayList) {
+  constructor(ck: CanvasKit, fonts: FontCollection, dl: DisplayList, images: ImageStore = new Map()) {
     this.ck = ck;
     this.fonts = fonts;
     this.dl = dl;
+    this.images = images;
     this.paper = makePaperImages(ck);
     this.pen = new ck.Paint();
     this.pen.setAntiAlias(true);
@@ -133,6 +155,7 @@ export class Painter {
       if (alpha <= 0.01) continue;
       switch (item.k) {
         case 'text': this.drawText(canvas, i, item, alpha, view.s); break;
+        case 'image': this.drawImage(canvas, item, alpha, view.s); break;
         case 'rect': {
           const p = this.styled(item.fill ?? item.stroke!, alpha, item.fill ? 'fill' : 'stroke', item.sw, item.hair, view.s, undefined, item.multiply);
           const rect = ck.XYWHRect(item.x, item.y, item.w, item.h);
@@ -219,6 +242,29 @@ export class Painter {
     p.setBlendMode(multiply ? ck.BlendMode.Multiply : ck.BlendMode.SrcOver);
     p.setPathEffect(dash ? ck.PathEffect.MakeDash(hair ? dash.map((d) => d / s) : dash, 0) : null);
     return p;
+  }
+
+  private drawImage(canvas: Canvas, it: ImageItem, alpha: number, s: number) {
+    const ck = this.ck;
+    if (Math.max(it.w, it.h) * s < 2) return;
+    const img = this.images.get(`${it.id}/${pickImageSize(it, s)}`)
+      // Any loaded size beats a hole while the right one arrives.
+      ?? it.sizes.map((z) => this.images.get(`${it.id}/${z}`)).find(Boolean);
+    const dst = ck.XYWHRect(it.x, it.y, it.w, it.h);
+    if (it.treatment === 'plate') {
+      // A plate tipped into the book: soft shadow, a pale mount, a hairline frame.
+      const m = Math.max(it.w, it.h) * 0.035;
+      const mount = ck.XYWHRect(it.x - m, it.y - m, it.w + 2 * m, it.h + 2 * m);
+      canvas.drawRect(ck.XYWHRect(it.x - m + m * 0.5, it.y - m + m * 0.8, it.w + 2 * m, it.h + 2 * m), this.styled('#5C4630', alpha * 0.18, 'fill'));
+      canvas.drawRect(mount, this.styled('#F7F1E3', alpha, 'fill'));
+      canvas.drawRect(mount, this.styled(INK_SOFT, alpha * 0.6, 'stroke', 1, true, s));
+    }
+    if (!img) {
+      canvas.drawRect(dst, this.styled(INK_SOFT, alpha * 0.08, 'fill'));
+      return;
+    }
+    const p = this.styled('#000000', alpha, 'fill');
+    canvas.drawImageRectOptions(img, ck.XYWHRect(0, 0, img.width(), img.height()), dst, ck.FilterMode.Linear, ck.MipmapMode.None, p);
   }
 
   private drawText(canvas: Canvas, i: number, t: TextItem, alpha: number, s: number) {

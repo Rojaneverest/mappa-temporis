@@ -14,5 +14,5 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["packages/*/src", "scripts", "apps/*/src"]
+  "include": ["packages/*/src", "scripts", "apps/*/src", "types"]
 }
