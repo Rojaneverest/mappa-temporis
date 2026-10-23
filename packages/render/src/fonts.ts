@@ -16,10 +16,14 @@ export const FONT_FILES: { family: string; file: string }[] = [
   { family: 'Noto Hieroglyphs', file: 'NotoSansEgyptianHieroglyphs.ttf' },
   { family: 'Noto Old Persian', file: 'NotoSansOldPersian.ttf' },
   { family: 'Noto Ethiopic', file: 'NotoSansEthiopic.ttf' },
+  { family: 'Noto Phoenician', file: 'NotoSansPhoenician.ttf' },
+  { family: 'Noto Armenian', file: 'NotoSansArmenian.ttf' },
+  { family: 'Noto Naskh Arabic', file: 'NotoNaskhArabic.ttf' },
+  { family: 'Noto Brahmi', file: 'NotoSansBrahmi.ttf' },
 ];
 
 /** Every role falls back through these so any script renders. */
-const FALLBACK = ['Noto Sans', 'Noto Serif TC', 'Noto Cuneiform', 'Noto Hieroglyphs', 'Noto Old Persian', 'Noto Ethiopic'];
+const FALLBACK = ['Noto Sans', 'Noto Serif TC', 'Noto Cuneiform', 'Noto Hieroglyphs', 'Noto Old Persian', 'Noto Ethiopic', 'Noto Phoenician', 'Noto Armenian', 'Noto Naskh Arabic', 'Noto Brahmi'];
 
 export interface RoleStyle {
   families: string[];

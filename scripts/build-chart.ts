@@ -42,10 +42,10 @@ const REGION_GAP = 300;
 /** Lane width per weight step. */
 const WEIGHT_W = [0, 16, 56, 96, 140, 190, 240];
 const DEFAULT_WEIGHT: Record<Prominence, number> = { 1: 6, 2: 4, 3: 3, 4: 1, 5: 1 };
-/** A track holds its lane (centred LANE_CX from the track's left edge) and then its label space. */
-const LANE_CX = 50 + WEIGHT_W[6]! / 2;
-const LANE_ZONE = 50 + WEIGHT_W[6]! + 30;
-const LABEL_SPACE: Record<Prominence, number> = { 1: 780, 2: 680, 3: 540, 4: 240, 5: 0 };
+/** A track is: margin, its widest lane, a gap, then label space. Thin lanes get thin tracks. */
+const TRACK_MARGIN = 40;
+const TRACK_GAP = 30;
+const LABEL_SPACE: Record<Prominence, number> = { 1: 700, 2: 600, 3: 460, 4: 200, 5: 0 };
 const LABEL_SIZE: Record<Prominence, number> = { 1: 54, 2: 40, 3: 25, 4: 13, 5: 0 };
 const LABEL_MAX_W: Record<Prominence, number> = { 1: 640, 2: 580, 3: 470, 4: 360, 5: 0 };
 const IMAGE_LONG: Record<Prominence, number> = { 1: 900, 2: 540, 3: 310, 4: 0, 5: 0 };
@@ -123,11 +123,17 @@ function labelDemand(l: Lane): number {
     const long = IMAGE_LONG[i.prominence];
     return a.width >= a.height ? long : long * (a.width / a.height);
   }));
-  const forLabels = shown === 0 ? 60 : Math.min(LABEL_SPACE[l.prominence], 260 + 90 * shown);
+  const forLabels = shown === 0 ? 40 : Math.min(LABEL_SPACE[l.prominence], 200 + 70 * shown);
   return Math.max(forLabels, bigImage + 80, l.prominence === 4 ? 120 : 0);
 }
 
-interface RegionLayout { id: string; name: string; x0: number; width: number; flow: Flow; trackOf: Map<string, number> }
+/** Widest width a lane reaches in any of its segments. */
+function laneMaxW(l: Lane): number {
+  const base = WEIGHT_W[DEFAULT_WEIGHT[l.prominence]]!;
+  return Math.max(base, ...l.segments.map((s) => (s.weight ? WEIGHT_W[s.weight]! : base)));
+}
+
+interface RegionLayout { id: string; name: string; x0: number; width: number; flow: Flow; trackOf: Map<string, number>; trackLaneW: number[] }
 const regionLayouts: RegionLayout[] = [];
 let cursor = MARGIN_L;
 for (const r of sheet.regions) {
@@ -143,21 +149,23 @@ for (const r of sheet.regions) {
     };
   });
   const assignment = assignTracks(tl, groupOrder);
+  // Lanes chained in one track share a centre line, so the track is as wide as its widest lane.
+  const trackLaneW = assignment.tracks.map((ids) => Math.max(...ids.map((id) => laneMaxW(laneById.get(id)!))));
   const flow = flowTracks({
-    tracks: assignment.tracks.map((ids) => {
+    tracks: assignment.tracks.map((ids, t) => {
       const first = laneById.get(ids[0]!)!;
       return {
         group: groupOf(first),
         lanes: ids.map((id) => {
           const l = laneById.get(id)!;
           const s = parseSpan(l.span);
-          return { start: s.start.year, end: s.end.year + 1, need: LANE_ZONE + labelDemand(l) };
+          return { start: s.start.year, end: s.end.year + 1, need: TRACK_MARGIN + trackLaneW[t]! + TRACK_GAP + labelDemand(l) };
         }),
       };
     }),
     year0, year1, step: 10, groupGap: 180, pad: 120,
   });
-  regionLayouts.push({ id: r.id, name: r.name, x0: cursor, width: flow.width, flow, trackOf: assignment.trackOf });
+  regionLayouts.push({ id: r.id, name: r.name, x0: cursor, width: flow.width, flow, trackOf: assignment.trackOf, trackLaneW });
   if (process.env.VERBOSE) console.log(`  region ${r.id}: ${assignment.tracks.length} tracks, ${Math.round(flow.width)} wide`);
   cursor += flow.width + REGION_GAP;
 }
@@ -289,7 +297,7 @@ for (const lane of visibleLanes) {
     if (prev && yr < s.a + TAPER) return prev.w + (s.w - prev.w) * smooth01((yr - (s.a - TAPER)) / (2 * TAPER));
     return s.w;
   };
-  const cxAtYear = (yr: number) => region.x0 + region.flow.x(track, yr) + LANE_CX;
+  const cxAtYear = (yr: number) => region.x0 + region.flow.x(track, yr) + TRACK_MARGIN + region.trackLaneW[track]! / 2;
   const cxAt = (y: number) => cxAtYear(yearAt(y));
   const halfAt = (y: number) => widthAtYear(Math.min(endY - 0.01, Math.max(startY, yearAt(y)))) / 2;
   const limitAt = (y: number) => region.x0 + region.flow.x(track, yearAt(y)) + region.flow.w(track, yearAt(y));
@@ -336,7 +344,7 @@ for (const lane of visibleLanes) {
   }
   layers.lanes.push(lanePath);
   if (lane.basis !== 'texts') {
-    layers.lanes.push({ k: 'path', d, stroke: mix(PIGMENTS[lane.sphere]!.hex, INK, 0.3), sw: 1.4, hair: true, dash: [6, 5], alpha: 0.7, b: bbox });
+    layers.lanes.push({ k: 'path', d, stroke: mix(PIGMENTS[lane.sphere]!.hex, INK, 0.3), sw: 1.1, hair: true, dash: [4, 6], alpha: 0.45, b: bbox });
   }
   for (const s of segs.filter((s) => s.style === 'interregnum')) {
     const a = Y(s.a), b = Y(s.b), c = cxAt((a + b) / 2);
@@ -363,6 +371,15 @@ for (const lane of visibleLanes) {
     layers.marks.push({ k: 'rect', x: sx, y: sy, w: sealW, h: sealH, r: size * 0.12, fill: PAPER, stroke: mix(pigment, INK, 0.2), sw: size * 0.06, alpha: 0.95, ref: lane.id, b: [sx, sy, sx + sealW, sy + sealH] });
     layers.text.push(text({ role: 'endonym', text: chars.join('\n'), size, color: mix(pigment, INK, 0.2), align: 'center', w: sealW, x: sx, y: sy + size * 0.22, ref: lane.id }));
     reservedTop = sy + sealH + 40;
+  } else if (lane.endonym && !/\p{Script=Han}/u.test(lane.endonym.text) && wTop >= 56 && !clippedTop) {
+    // Other scripts: the name as its people wrote it, set vertically at the head of the lane.
+    const size = Math.min(wTop * 0.4, 52);
+    const w = fitWidth({ role: 'endonym', text: lane.endonym.text, size, color: onLane, align: 'center' }) + 10;
+    const at = top + Math.max(rTop, 30) + 20;
+    if (len > w * 3 + 400) {
+      layers.text.push(text({ role: 'endonym', text: lane.endonym.text, size, color: onLane, align: 'center', w, x: cxAt(at + w / 2) - size * 0.6, y: at, rot: -90, alpha: 0.85, fade: [0.06, 0.1], ref: lane.id }));
+      reservedTop = at + w + 50;
+    }
   }
 
   /** The stretch of [a, b] of length `need` where the lane drifts least, so straight vertical text stays inside it. */
@@ -453,7 +470,13 @@ for (const p of placed.values()) {
         const mid = (ya + yb) / 2 + 140;
         const w = Math.max(14, Math.min(p.halfAt(ya), t.halfAt(yb)) * 0.7);
         const d = `M ${xa} ${ya - 80} C ${xa} ${mid} ${xb} ${mid - 140} ${xb} ${yb + 80}`;
-        layers.links.push({ k: 'path', d, stroke: color, sw: w, alpha: 0.55, multiply: true, b: [Math.min(xa, xb) - w, ya - 100, Math.max(xa, xb) + w, yb + 100] });
+        // Long ribbons (e.g. Alexander's empire to the Seleucids) become thin threads that appear up close.
+        const far = Math.abs(xb - xa) > 2500;
+        layers.links.push({
+          k: 'path', d, stroke: color, sw: far ? 3 : w, hair: far, alpha: far ? 0.6 : 0.55, multiply: true,
+          fade: far ? [0.07, 0.11] : undefined, b: [Math.min(xa, xb) - w, ya - 100, Math.max(xa, xb) + w, yb + 100],
+        });
+        if (far) continue;
         for (let k = 0; k <= 12; k++) {
           const t2 = k / 12, u = 1 - t2;
           const bx = u ** 3 * xa + 3 * u * u * t2 * xa + 3 * u * t2 * t2 * xb + t2 ** 3 * xb;
