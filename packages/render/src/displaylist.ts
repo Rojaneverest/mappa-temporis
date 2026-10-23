@@ -17,6 +17,8 @@ interface Base {
   alpha?: number;
   /** Stable id of the content item this mark belongs to (for picking / the Folio). */
   ref?: string;
+  /** Optional layer (e.g. "thread:silk-road"): drawn only when the viewer switches it on. */
+  layer?: string;
 }
 
 export interface TextItem extends Base {

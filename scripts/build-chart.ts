@@ -14,7 +14,7 @@ import { createRequire } from 'node:module';
 import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
-import { LaneFile, Sheet, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
+import { LaneFile, Sheet, ThreadFile, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
 import { FONT_FILES, registerFonts } from '../packages/render/src/fonts.ts';
@@ -173,10 +173,10 @@ const width = cursor - REGION_GAP + MARGIN_R;
 const regionById = new Map(regionLayouts.map((r) => [r.id, r]));
 
 const grid = new Grid(width, height, 16);
-const layers = { grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[] };
+const layers = { grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], threads: [] as Item[] };
 const stats = { lanes: visibleLanes.length, events: 0, drawnEvents: 0, images: 0, drawnImages: 0, slid: 0, demoted: 0, archived: 0, budgetDemotions: 0 };
 
-function text(spec: TextSpec & { x: number; y: number; rot?: 0 | -90; fade?: Fade; alpha?: number; ref?: string }): TextItem {
+function text(spec: TextSpec & { x: number; y: number; rot?: 0 | -90; fade?: Fade; alpha?: number; ref?: string; layer?: string }): TextItem {
   const m = measure(ck, fonts, spec);
   const t: TextItem = { k: 'text', ...spec, lines: m.lines, lineH: m.lineH, h: m.h };
   t.b = spec.rot === -90 ? [spec.x, spec.y, spec.x + m.h, spec.y + spec.w] : [spec.x, spec.y, spec.x + spec.w, spec.y + m.h];
@@ -684,12 +684,39 @@ for (const p of placements) {
   for (const it of p.emit(p.prom)) (it.k === 'image' ? layers.images : it.k === 'text' ? layers.text : layers.marks).push(it);
 }
 
+// ---------------------------------------------------------------- threads (optional layers)
+const threadDefs = ThreadFile.parse(loadYaml(join(ROOT, 'content/threads.yaml'))).threads;
+const threadsOut: { id: string; name: string; color: string; events: string[]; box: [number, number, number, number] }[] = [];
+for (const th of threadDefs) {
+  // Each stop is where the event touches its lane: right edge, at its date.
+  const stops = [...placed.values()].flatMap((p) => p.lane.events
+    .filter((e) => e.thread === th.id && parseDate(e.date).year >= year0 && parseDate(e.date).year <= year1)
+    .map((e) => { const yy = Y(parseDate(e.date).year); return { id: e.id, x: p.cxAt(yy) + p.halfAt(yy), y: yy }; }))
+    .sort((a, b) => a.y - b.y);
+  if (stops.length < 2) continue;
+  const layer = `thread:${th.id}`;
+  const d = [`M ${r1(stops[0]!.x)} ${r1(stops[0]!.y)}`, ...stops.slice(1).map((st, i) => {
+    const prev = stops[i]!;
+    const my = (prev.y + st.y) / 2;
+    return `C ${r1(prev.x)} ${r1(my)} ${r1(st.x)} ${r1(my)} ${r1(st.x)} ${r1(st.y)}`;
+  })].join(' ');
+  const xs = stops.map((st) => st.x), ys = stops.map((st) => st.y);
+  const box: [number, number, number, number] = [Math.min(...xs) - 40, Math.min(...ys) - 40, Math.max(...xs) + 40, Math.max(...ys) + 40];
+  layers.threads.push({ k: 'path', d, stroke: th.color, sw: 3, hair: true, dash: [12, 7], alpha: 0.9, layer, ref: layer, b: box });
+  for (const st of stops) {
+    layers.threads.push({ k: 'rect', x: st.x - 22, y: st.y - 22, w: 44, h: 44, r: 22, fill: th.color, stroke: PAPER, sw: 6, alpha: 0.95, layer, ref: st.id, b: [st.x - 25, st.y - 25, st.x + 25, st.y + 25] });
+  }
+  const first = stops[0]!;
+  layers.threads.push(text({ role: 'caption', text: th.name, size: 64, color: th.color, align: 'left', w: 900, x: first.x + 40, y: first.y - 110, layer, ref: layer } as Parameters<typeof text>[0]));
+  threadsOut.push({ id: th.id, name: th.name, color: th.color, events: stops.map((st) => st.id), box: [box[0], box[1], box[2] - box[0], box[3] - box[1]] });
+}
+
 // ---------------------------------------------------------------- assemble & write
-const items: Item[] = [layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text].flat();
+const items: Item[] = [layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.threads].flat();
 for (const it of items) if (!it.b) throw new Error(`item without bbox: ${JSON.stringify(it).slice(0, 120)}`);
 
 // ---------------------------------------------------------------- folio (side-panel data)
-const folio: Folio = { entries: {}, lanes: [] };
+const folio: Folio = { entries: {}, lanes: [], threads: [] };
 const placedBox = new Map(placements.map((p) => [p.id, p.box]));
 for (const lane of lanes) {
   const p = placed.get(lane.id);
@@ -728,6 +755,17 @@ for (const lane of lanes) {
       box: placedBox.get(i.id) ?? laneBox,
     };
   }
+}
+
+folio.threads = threadsOut;
+for (const th of threadsOut) {
+  const evs = th.events.map((id) => folio.entries[id]!).filter(Boolean);
+  folio.entries[`thread:${th.id}`] = {
+    id: `thread:${th.id}`, kind: 'thread', title: th.name, dates: `${evs[0]?.dates} – ${evs[evs.length - 1]?.dates}`,
+    region: 'Across regions', laneId: '', laneName: '', prominence: 2, drawn: true, sources: [],
+    events: evs.map((e) => ({ id: e.id, dates: e.dates, label: `${e.title} (${e.laneName})`, drawn: e.drawn })),
+    box: th.box,
+  };
 }
 
 const dl: DisplayList = {

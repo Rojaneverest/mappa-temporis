@@ -1,0 +1,10 @@
+# Threads: journeys of goods and ideas that cross regions. Events opt in with `thread: <id>`.
+# Drawn as optional layers (off by default — calm first).
+threads:
+  - { id: silk-road, name: The Silk Road, color: "#9A6B1F" }
+  - { id: alphabet, name: The alphabet's journey, color: "#3D78BE" }
+  - { id: scripts, name: Writing systems, color: "#6C2D5F" }
+  - { id: numerals, name: Numerals & zero, color: "#DD7F2E" }
+  - { id: money, name: Money, color: "#A88432" }
+  - { id: paper, name: Paper, color: "#B8392D" }
+  - { id: calendars, name: Calendars, color: "#2E8A5C" }

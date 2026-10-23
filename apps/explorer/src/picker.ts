@@ -5,6 +5,8 @@ import { fadeAt } from '../../../packages/render/src/painter.ts';
 
 /** Text, images and marks beat the lane they sit on. */
 const KIND_RANK: Record<Item['k'], number> = { text: 3, image: 3, rect: 2, line: 1, path: 0 };
+/** Marks on an optional layer sit on top of everything, so they win ties. */
+const rankOf = (it: Item) => KIND_RANK[it.k] + (it.layer ? 4 : 0);
 
 export class Picker {
   private index: Flatbush;
@@ -24,6 +26,9 @@ export class Picker {
   }
 
   /** The ref under world point (wx, wy) at scale s (CSS px per unit), or null. */
+  /** Optional layers currently switched on (items on other layers can't be picked). */
+  layers: ReadonlySet<string> = new Set();
+
   pick(wx: number, wy: number, s: number): { ref: string; item: Item } | null {
     const tol = 4 / s;
     let best: { ref: string; item: Item; rank: number; i: number } | null = null;
@@ -31,10 +36,11 @@ export class Picker {
       const i = this.ids[hit];
       if (i === undefined) continue;
       const it = this.dl.items[i]!;
+      if (it.layer && !this.layers.has(it.layer)) continue;
       if (fadeAt(it.fade, s) < 0.3) continue;
       if (it.k === 'text' && it.size * s < 3) continue;
       if (it.k === 'image' && Math.max(it.w, it.h) * s < 8) continue;
-      const rank = KIND_RANK[it.k];
+      const rank = rankOf(it);
       if (!best || rank > best.rank || (rank === best.rank && i > best.i)) best = { ref: it.ref!, item: it, rank, i };
     }
     return best && { ref: best.ref, item: best.item };
@@ -45,7 +51,7 @@ export class Picker {
     let box: [number, number, number, number] | null = null;
     for (const i of this.ids) {
       const it = this.dl.items[i]!;
-      if (it.ref !== ref || fadeAt(it.fade, s) < 0.3) continue;
+      if (it.ref !== ref || fadeAt(it.fade, s) < 0.3 || (it.layer && !this.layers.has(it.layer))) continue;
       if (it.k === 'path' && it.stroke && !it.fill) continue;
       const b = it.b!;
       box = box ? [Math.min(box[0], b[0]), Math.min(box[1], b[1]), Math.max(box[2], b[2]), Math.max(box[3], b[3])] : [...b];

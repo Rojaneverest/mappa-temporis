@@ -49,14 +49,32 @@
       #folio .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
       #folio .thumbs img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #efe6d2; border-radius: 6px; }
       #folio .sources { padding-left: 18px; margin: 0; } #folio .sources a { color: #7a2219; }
+      #layers-btn {
+        position: fixed; top: 64px; left: 76px; z-index: 4; border: 1px solid rgba(107,95,85,.35); border-radius: 8px;
+        background: rgba(247,241,227,.95); color: #2b2420; font: 600 12px ui-sans-serif, sans-serif; padding: 6px 10px; cursor: pointer;
+      }
+      #layers {
+        position: fixed; top: 100px; left: 76px; z-index: 4; width: 240px; padding: 12px 14px; display: none;
+        background: #f7f1e3; border: 1px solid rgba(107,95,85,.35); border-radius: 10px; box-shadow: 0 10px 28px rgba(60,40,20,.16);
+        font: 13px/1.4 ui-sans-serif, sans-serif; color: #2b2420;
+      }
+      #layers.open { display: block; }
+      #layers h4 { margin: 0 0 8px; font: 600 11px ui-sans-serif, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #8a7c6e; }
+      #layers label { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; }
+      #layers .swatch { width: 18px; height: 4px; border-radius: 2px; }
+      #layers .go { margin-left: auto; color: #8a7c6e; text-decoration: none; font-size: 12px; }
+      #layers .go:hover { color: #b8392d; }
+      #layers p { margin: 8px 0 0; font-size: 11px; color: #8a7c6e; }
     </style>
   </head>
   <body>
     <canvas id="view"></canvas>
     <div id="status"></div>
-    <div id="help">Scroll or pinch to zoom · drag to pan · click anything for details · double-click to zoom · 0 to fit · M minimap · D stats</div>
+    <div id="help">Scroll or pinch to zoom · drag to pan · click anything for details · double-click to zoom · L layers · 0 to fit · M minimap · D stats</div>
     <div id="loading">Unrolling the map…</div>
     <aside id="folio" aria-label="Details"></aside>
+    <button id="layers-btn" aria-expanded="false">Layers</button>
+    <div id="layers" role="dialog" aria-label="Layers"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

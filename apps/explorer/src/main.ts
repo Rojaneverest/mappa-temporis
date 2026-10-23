@@ -23,8 +23,8 @@ function select(id: string | null, fly = false) {
     const e = folio.entries[id]!;
     // Land with some surroundings in view: about a century around an event, more around a lane.
     const [x, y, w, h] = e.box;
-    const pad = e.kind === 'lane' ? [400, 200] : [900, 700];
-    viewer.flyTo([x - pad[0]!, y - pad[1]!, w + 2 * pad[0]!, h + 2 * pad[1]!], { panel: true, maxZ: e.kind === 'lane' ? 6 : 14 });
+    const pad = e.kind === 'lane' || e.kind === 'thread' ? [400, 200] : [900, 700];
+    viewer.flyTo([x - pad[0]!, y - pad[1]!, w + 2 * pad[0]!, h + 2 * pad[1]!], { panel: true, maxZ: e.kind === 'event' || e.kind === 'image' ? 14 : 6 });
   }
   writeHash();
 }
@@ -54,6 +54,38 @@ function readHash() {
 readHash();
 // Pasted links and back/forward (our own replaceState writes don't fire this).
 window.addEventListener('hashchange', readHash);
+
+// ---- layers: optional threads (off by default — calm first). Remembered per browser.
+const layersEl = document.getElementById('layers')!;
+const layersBtn = document.getElementById('layers-btn')!;
+const stored = (() => { try { return JSON.parse(localStorage.getItem('mt-layers') ?? '[]') as string[]; } catch { return []; } })();
+const on = new Set(stored.filter((l) => folio.threads.some((t) => `thread:${t.id}` === l)));
+layersEl.innerHTML = '<h4>Threads</h4>' + folio.threads.map((t) => `
+  <label><input type="checkbox" data-layer="thread:${t.id}" ${on.has(`thread:${t.id}`) ? 'checked' : ''}>
+  <span class="swatch" style="background:${t.color}"></span>${t.name}
+  <a href="#" class="go" data-go="thread:${t.id}" title="Show the whole thread">view ↗</a></label>`).join('')
+  + '<p>Journeys of goods and ideas across regions.</p>';
+viewer.setLayers(on);
+layersEl.addEventListener('change', (e) => {
+  const box = e.target as HTMLInputElement;
+  if (box.checked) on.add(box.dataset.layer!); else on.delete(box.dataset.layer!);
+  viewer.setLayers(on);
+  try { localStorage.setItem('mt-layers', JSON.stringify([...on])); } catch { /* private mode: not remembered */ }
+});
+layersEl.addEventListener('click', (e) => {
+  const a = (e.target as HTMLElement).closest('[data-go]') as HTMLElement | null;
+  if (!a) return;
+  e.preventDefault();
+  const id = a.dataset.go!;
+  if (!on.has(id)) { on.add(id); viewer.setLayers(on); (layersEl.querySelector(`[data-layer="${id}"]`) as HTMLInputElement).checked = true; }
+  select(id, true);
+});
+const toggleLayers = () => {
+  const open = layersEl.classList.toggle('open');
+  layersBtn.setAttribute('aria-expanded', String(open));
+};
+layersBtn.addEventListener('click', toggleLayers);
+window.addEventListener('keydown', (e) => { if ((e.key === 'l' || e.key === 'L') && !(e.target as HTMLElement).closest?.('input')) toggleLayers(); });
 
 // Handy for debugging from the console.
 (window as unknown as { viewer: Viewer }).viewer = viewer;

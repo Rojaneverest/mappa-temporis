@@ -60,6 +60,11 @@ export class Viewer {
   private mini: { bitmap: ImageBitmap; s: number; x: number; y: number; w: number; h: number } | null = null;
   private miniRequested = false;
   private showMini = true;
+  /** Optional layers switched on, and a generation counter so tiles from an older state are ignored. */
+  private layers = new Set<string>();
+  private gen = 0;
+  /** Tiles from before the last layer switch, shown until their replacements arrive. */
+  private stale = new Map<string, CachedTile>();
 
   /** Called when the user picks something on the chart (or empty paper: null). */
   onPick: (ref: string | null) => void = () => {};
@@ -185,6 +190,19 @@ export class Viewer {
       else { this.flight = null; this.moved(); }
     };
     this.flight = requestAnimationFrame(step);
+  }
+
+  setLayers(layers: Iterable<string>) {
+    this.layers = new Set(layers);
+    this.picker.layers = this.layers;
+    this.gen++;
+    for (const t of this.stale.values()) t.bitmap.close();
+    // Re-key current tiles without their generation so drawTile can still find them.
+    this.stale = new Map([...this.cache].map(([id, t]) => [id.slice(id.indexOf('/') + 1), t]));
+    this.cache.clear();
+    this.inflight.clear();
+    this.queue = [];
+    this.dirty = true;
   }
 
   select(ref: string | null) {
@@ -326,7 +344,7 @@ export class Viewer {
     const cx = this.x0 + this.cssW / this.s / 2, cy = this.y0 + this.cssH / this.s / 2;
     const tw = TILE / 2 ** k;
     this.queue = tiles
-      .map(({ i, j }) => ({ id: `${k}/${i}/${j}`, k, i, j, pri: Math.hypot((i + 0.5) * tw - cx, (j + 0.5) * tw - cy) }))
+      .map(({ i, j }) => ({ id: `${this.gen}/${k}/${i}/${j}`, k, i, j, pri: Math.hypot((i + 0.5) * tw - cx, (j + 0.5) * tw - cy) }))
       .filter((t) => !this.cache.has(t.id) && !this.inflight.has(t.id))
       .sort((a, b) => a.pri - b.pri);
     this.pump();
@@ -343,7 +361,7 @@ export class Viewer {
       const size = Math.round(TILE * this.dpr);
       slot.busy = true;
       this.inflight.add(job.id);
-      slot.w.postMessage({ type: 'tile', id: job.id, x0: job.i * tw, y0: job.j * tw, s: sDev, zoom: 2 ** job.k, w: size, h: size } satisfies ToWorker);
+      slot.w.postMessage({ type: 'tile', id: job.id, x0: job.i * tw, y0: job.j * tw, s: sDev, zoom: 2 ** job.k, w: size, h: size, layers: [...this.layers] } satisfies ToWorker);
     }
   }
 
@@ -351,7 +369,7 @@ export class Viewer {
     this.miniRequested = true;
     const s = (MINI_W * this.dpr) / this.dl.width;
     slot.busy = true;
-    slot.w.postMessage({ type: 'tile', id: 'mini', x0: 0, y0: 0, s, zoom: s / this.dpr, w: Math.round(this.dl.width * s), h: Math.round(this.dl.height * s) } satisfies ToWorker);
+    slot.w.postMessage({ type: 'tile', id: 'mini', x0: 0, y0: 0, s, zoom: s / this.dpr, w: Math.round(this.dl.width * s), h: Math.round(this.dl.height * s), layers: [] } satisfies ToWorker);
   }
 
   private onWorker(slot: Slot, msg: FromWorker) {
@@ -366,6 +384,7 @@ export class Viewer {
       return;
     }
     this.inflight.delete(msg.id);
+    if (!msg.id.startsWith(`${this.gen}/`)) { msg.bitmap.close(); this.pump(); return; }
     this.cache.set(msg.id, { bitmap: msg.bitmap, used: this.frame });
     this.renderMs.push(msg.ms);
     if (this.renderMs.length > 200) this.renderMs.shift();
@@ -460,16 +479,21 @@ export class Viewer {
     const sx = (i * tw - this.x0) * this.s, sy = (j * tw - this.y0) * this.s;
     const ex = ((i + 1) * tw - this.x0) * this.s, ey = ((j + 1) * tw - this.y0) * this.s;
     const x = Math.floor(sx), y = Math.floor(sy), w = Math.ceil(ex) - x, h = Math.ceil(ey) - y;
-    const own = this.cache.get(`${k}/${i}/${j}`);
+    const own = this.cache.get(`${this.gen}/${k}/${i}/${j}`);
     if (own) {
       own.used = this.frame;
       this.ctx.drawImage(own.bitmap, x, y, w, h);
       return;
     }
+    const old = this.stale.get(`${k}/${i}/${j}`);
+    if (old) {
+      this.ctx.drawImage(old.bitmap, x, y, w, h);
+      return;
+    }
     for (let up = 1; up <= 6; up++) {
       const f = 2 ** up;
       const pi = Math.floor(i / f), pj = Math.floor(j / f);
-      const parent = this.cache.get(`${k - up}/${pi}/${pj}`);
+      const parent = this.cache.get(`${this.gen}/${k - up}/${pi}/${pj}`);
       if (!parent) continue;
       parent.used = this.frame;
       const src = parent.bitmap.width / f;

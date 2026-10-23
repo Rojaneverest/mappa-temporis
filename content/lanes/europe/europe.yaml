@@ -144,6 +144,7 @@ lanes:
       - { type: conquers, lane: nabataea, at: 106 CE }
     events:
       - { id: augustus, date: 27 BCE, label: "Octavian becomes Augustus, the first emperor", prominence: 2, themes: [government], sources: [wikipedia:Augustus] }
+      - { id: roman-silk, date: c. 77 CE, label: "Pliny complains of the gold Rome pays for Chinese silk", prominence: 4, thread: silk-road, themes: [trade], sources: [wikipedia:Silk_Road] }
       - { id: great-fire, date: 64 CE, label: "The Great Fire of Rome", prominence: 4, sources: [wikipedia:Great_Fire_of_Rome] }
       - { id: pompeii, date: 79 CE, label: "Vesuvius buries Pompeii and Herculaneum", prominence: 2, sources: [wikipedia:Eruption_of_Mount_Vesuvius_in_79_AD] }
       - { id: colosseum, date: 80 CE, label: "The Colosseum opens with 100 days of games", prominence: 2, themes: [art], sources: [wikipedia:Colosseum] }
@@ -306,6 +307,7 @@ lanes:
     events:
       - { id: justinian-code, date: 529 CE, label: "Justinian's Code gathers a thousand years of Roman law", prominence: 3, themes: [government], sources: [wikipedia:Corpus_Juris_Civilis] }
       - { id: hagia-sophia, date: 537 CE, label: "Hagia Sophia is consecrated", prominence: 1, themes: [art, religion], sources: [wikipedia:Hagia_Sophia] }
+      - { id: silkworms, date: c. 552 CE, label: "Monks smuggle silkworm eggs to Constantinople", prominence: 3, thread: silk-road, themes: [trade, technology], sources: [wikipedia:Sericulture] }
       - { id: justinian-plague, date: 541 CE, label: "The Plague of Justinian — the first pandemic of bubonic plague", prominence: 2, themes: [disease], sources: [wikipedia:Plague_of_Justinian] }
       - { id: siege-626, date: 626 CE, label: "Constantinople survives an Avar and Persian siege", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Constantinople_(626)] }
       - { id: greek-fire, date: c. 674 CE, label: "Greek fire repels the first Arab siege of Constantinople", prominence: 3, themes: [war, technology], confidence: probable, sources: [wikipedia:Siege_of_Constantinople_(674–678)] }

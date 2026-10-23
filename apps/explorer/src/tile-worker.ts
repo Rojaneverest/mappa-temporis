@@ -9,7 +9,7 @@ import { Painter, imageNeeds, type ImageStore } from '../../../packages/render/s
 
 export type ToWorker =
   | { type: 'init'; chartUrl: string }
-  | { type: 'tile'; id: string; x0: number; y0: number; s: number; zoom: number; w: number; h: number };
+  | { type: 'tile'; id: string; x0: number; y0: number; s: number; zoom: number; w: number; h: number; layers: string[] };
 
 export type FromWorker =
   | { type: 'ready' }
@@ -86,7 +86,7 @@ async function renderTile(job: Extract<ToWorker, { type: 'tile' }>) {
   // Images arrive before the tile is painted, so a tile is never drawn half-finished.
   const needed = imageNeeds(dl, hits, job.s, job.zoom).filter((k) => !images.has(k));
   if (needed.length) await Promise.all(needed.map(loadImage));
-  painter.paint(surface!.getCanvas(), { x0: job.x0, y0: job.y0, s: job.s, zoom: job.zoom, widthPx: job.w, heightPx: job.h }, hits, { paper: false });
+  painter.paint(surface!.getCanvas(), { x0: job.x0, y0: job.y0, s: job.s, zoom: job.zoom, widthPx: job.w, heightPx: job.h, layers: new Set(job.layers) }, hits, { paper: false });
   surface!.flush();
   const snapshot = surface!.makeImageSnapshot();
   const pixels = snapshot.readPixels(0, 0, {

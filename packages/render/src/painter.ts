@@ -116,6 +116,8 @@ export interface View {
    * Defaults to `s`; on a Retina screen the browser passes s / devicePixelRatio.
    */
   zoom?: number;
+  /** Optional layers switched on; items with a `layer` not in this set are skipped. */
+  layers?: ReadonlySet<string>;
   widthPx: number;
   heightPx: number;
 }
@@ -157,6 +159,7 @@ export class Painter {
     const zoom = view.zoom ?? view.s;
     for (const i of indices) {
       const item = this.dl.items[i]!;
+      if (item.layer && !view.layers?.has(item.layer)) continue;
       const alpha = (item.alpha ?? 1) * fadeAt(item.fade, zoom);
       if (alpha <= 0.01) continue;
       switch (item.k) {

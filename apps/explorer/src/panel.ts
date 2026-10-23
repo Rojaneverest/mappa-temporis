@@ -61,9 +61,10 @@ export class Panel {
   }
 
   private render(e: FolioEntry): string {
-    const kind = e.kind === 'lane' ? 'Civilization · state · period' : e.kind === 'event' ? 'Event' : 'Object';
+    const kind = e.kind === 'lane' ? 'Civilization · state · period' : e.kind === 'event' ? 'Event' : e.kind === 'thread' ? 'Thread' : 'Object';
     const parts: string[] = [];
-    parts.push(`<div class="kicker">${kind} · ${esc(e.region)}${e.kind !== 'lane' ? ` · <a href="#" data-go="${esc(e.laneId)}">${esc(e.laneName)}</a>` : ''}</div>`);
+    const laneLink = e.laneId ? ` · <a href="#" data-go="${esc(e.laneId)}">${esc(e.laneName)}</a>` : '';
+    parts.push(`<div class="kicker">${kind} · ${esc(e.region)}${e.kind !== 'lane' ? laneLink : ''}</div>`);
     if (e.endonym) parts.push(`<div class="endonym">${esc(e.endonym.text)}${e.endonym.translit ? `<span>${esc(e.endonym.translit)}</span>` : ''}</div>`);
     parts.push(`<h2>${esc(e.title)}</h2>`);
     const badges = [`<span class="badge p${e.prominence}">${PROMINENCE[e.prominence]}</span>`];
@@ -80,7 +81,7 @@ export class Panel {
       parts.push('<h3>Phases</h3><ul class="list">' + e.segments.map((s) => `<li><span>${esc(s.dates)}</span>${esc(s.name)}</li>`).join('') + '</ul>');
     }
     if (e.events?.length) {
-      parts.push('<h3>Events</h3><ul class="list events">' + e.events.map((ev) =>
+      parts.push(`<h3>${e.kind === 'thread' ? 'Stops along the way' : 'Events'}</h3><ul class="list events">` + e.events.map((ev) =>
         `<li><a href="#" data-go="${esc(ev.id)}"><span>${esc(ev.dates)}</span>${esc(ev.label)}</a>${ev.drawn ? '' : ' <em>(off the chart)</em>'}</li>`).join('') + '</ul>');
     }
     if (e.images?.length) {

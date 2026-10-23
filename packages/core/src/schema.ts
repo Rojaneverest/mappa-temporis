@@ -112,3 +112,11 @@ export const Sheet = z.object({
   eras: z.array(Era),
 });
 export type Sheet = z.infer<typeof Sheet>;
+
+export const Thread = z.object({
+  id: z.string(),
+  name: z.string(),
+  color: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
+});
+export const ThreadFile = z.object({ threads: z.array(Thread) });
+export type Thread = z.infer<typeof Thread>;
