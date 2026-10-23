@@ -73,6 +73,19 @@
       }
       #atlas.hidden { display: none; }
       #atlas canvas { display: block; }
+      #search { position: fixed; top: 64px; left: 50%; transform: translateX(-50%); z-index: 6; width: min(560px, 70vw); display: none; }
+      #search.open { display: block; }
+      #search input { width: 100%; box-sizing: border-box; font: 16px Georgia, serif; padding: 12px 16px; border-radius: 10px;
+        border: 1px solid rgba(107,95,85,.45); background: #fffaf0; color: #2b2420; box-shadow: 0 14px 36px rgba(60,40,20,.2); outline: none; }
+      #search ul { list-style: none; margin: 6px 0 0; padding: 4px; background: #f7f1e3; border-radius: 10px; border: 1px solid rgba(107,95,85,.3);
+        box-shadow: 0 14px 36px rgba(60,40,20,.18); max-height: 60vh; overflow: auto; }
+      #search ul:empty { display: none; }
+      #search li { padding: 8px 12px; border-radius: 7px; cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
+      #search li.on, #search li:hover { background: rgba(184,57,45,.1); }
+      #search li .t { font: 15px Georgia, serif; color: #2b2420; } #search li .m { font: 11px ui-sans-serif, sans-serif; color: #8a7c6e; }
+      #search li.none { color: #8a7c6e; cursor: default; }
+      #search-btn { position: fixed; top: 64px; left: 214px; z-index: 4; border: 1px solid rgba(107,95,85,.35); border-radius: 8px;
+        background: rgba(247,241,227,.95); color: #6b5f55; font: 12px ui-sans-serif, sans-serif; padding: 6px 10px; cursor: pointer; }
       #atlas .caption { font: 600 12px ui-sans-serif, sans-serif; color: #2b2420; padding: 6px 2px 0; font-variant-numeric: tabular-nums; }
     </style>
   </head>
@@ -85,6 +98,8 @@
     <button id="layers-btn" aria-expanded="false">Layers</button>
     <div id="layers" role="dialog" aria-label="Layers"></div>
     <button id="atlas-btn" aria-pressed="true">Atlas</button>
+    <button id="search-btn">Search ⌘K</button>
+    <div id="search"></div>
     <div id="atlas" aria-label="Atlas: the world in the year under the cursor"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>

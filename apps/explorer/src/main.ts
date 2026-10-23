@@ -3,6 +3,7 @@ import type { Folio } from '../../../packages/render/src/folio.ts';
 import { Viewer, type ViewState } from './viewer.ts';
 import { Panel } from './panel.ts';
 import { Atlas } from './atlas.ts';
+import { Search } from './search.ts';
 
 // ?sheet=<id> picks a sheet (default: the classical world); see content/sheets/.
 const SHEET = new URLSearchParams(location.search).get('sheet') ?? 'classical-world';
@@ -108,6 +109,14 @@ const setAtlas = (open: boolean) => {
 setAtlas((() => { try { return localStorage.getItem('mt-atlas') !== '0'; } catch { return true; } })());
 atlasBtn.addEventListener('click', () => setAtlas(atlasEl.classList.contains('hidden')));
 window.addEventListener('keydown', (e) => { if ((e.key === 'a' || e.key === 'A') && !(e.target as HTMLElement).closest?.('input')) setAtlas(atlasEl.classList.contains('hidden')); });
+
+// ---- search
+const search = new Search(document.getElementById('search')!, folio, (id) => {
+  const e = folio.entries[id]!;
+  if (e.kind === 'thread' && !on.has(id)) { on.add(id); viewer.setLayers(on); (layersEl.querySelector(`[data-layer="${id}"]`) as HTMLInputElement | null)?.setAttribute('checked', ''); }
+  select(id, true);
+});
+document.getElementById('search-btn')!.addEventListener('click', () => search.open());
 
 // Handy for debugging from the console.
 (window as unknown as { viewer: Viewer }).viewer = viewer;
