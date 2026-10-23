@@ -122,3 +122,18 @@ export const Thread = z.object({
 });
 export const ThreadFile = z.object({ threads: z.array(Thread) });
 export type Thread = z.infer<typeof Thread>;
+
+export const Tour = z.object({
+  id: z.string(),
+  title: z.string(),
+  subtitle: z.string().default(''),
+  sheet: z.string(),
+  steps: z.array(z.object({
+    /** A lane, event, image or "thread:<id>". */
+    target: z.string(),
+    text: z.string().max(400),
+    /** Optional cap on the zoom for this step (× the fit scale). */
+    zoom: z.number().positive().optional(),
+  })).min(1),
+});
+export type Tour = z.infer<typeof Tour>;
