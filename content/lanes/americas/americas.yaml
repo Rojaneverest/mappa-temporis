@@ -26,6 +26,8 @@ lanes:
     events:
       - { id: hopewell-trade, date: c. 100 CE, label: "Trade spans a continent: Rockies obsidian, Gulf shells, Lake Superior copper", prominence: 2, themes: [trade], sources: [wikipedia:Hopewell_tradition] }
       - { id: newark-earthworks, date: c. 250 CE, label: "The Newark Earthworks, aligned to the 18.6-year cycle of the Moon", prominence: 3, confidence: probable, themes: [sky, art], sources: [wikipedia:Newark_Earthworks] }
+    images:
+      - { id: hopewell-falcon, source: "commons:File:Hopewell culture falcon.jpg", date: c. 200 CE, prominence: 2, treatment: cutout, caption: "Hopewell falcon cut from sheet copper" }
     sources: [wikipedia:Hopewell_tradition]
 
   - id: basketmaker
@@ -145,6 +147,8 @@ lanes:
     span: c. 100 BCE – c. 800 CE
     events:
       - { id: nazca-lines, date: c. 200 CE, label: "Giant lines and figures are drawn across the desert, visible whole only from the air", prominence: 1, themes: [art, religion], sources: [wikipedia:Nazca_Lines] }
+    images:
+      - { id: nazca-hummingbird, source: "commons:File:Nazca colibri.jpg", date: c. 200 CE, prominence: 2, treatment: plate, caption: "The hummingbird of the Nazca Lines, from the air" }
     sources: [wikipedia:Nazca_culture]
 
   - id: moche

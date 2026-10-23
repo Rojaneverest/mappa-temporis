@@ -25,6 +25,8 @@ lanes:
     events:
       - { id: celts-delphi, date: 279 BCE, label: "Celtic war-bands invade Greece and attack Delphi", prominence: 4, themes: [war, migration], sources: [wikipedia:Gallic_invasion_of_the_Balkans] }
       - { id: alesia, date: 52 BCE, label: "Vercingetorix surrenders to Caesar at Alesia", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Alesia] }
+    images:
+      - { id: battersea-shield, source: "commons:File:British Museum Battersea Shield.jpg", date: c. 300 BCE, prominence: 2, treatment: cutout, caption: "The Battersea Shield, Celtic bronze" }
     sources: [wikipedia:La_Tène_culture, wikipedia:Celts]
 
   - id: germanic-peoples

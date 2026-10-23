@@ -132,6 +132,8 @@ lanes:
       - { id: hannibal-alps, date: 218 BCE, label: "Hannibal crosses the Alps with his elephants", prominence: 1, themes: [war], sources: [wikipedia:Hannibal's_crossing_of_the_Alps] }
       - { id: cannae, date: 216 BCE, label: "Cannae: Hannibal's masterpiece", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Cannae] }
       - { id: zama, date: 202 BCE, label: "Scipio defeats Hannibal at Zama", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Zama] }
+    images:
+      - { id: carthage-tanit, source: "commons:File:Dekadrachm, Carthage, Goddess Tanit, c. 260 BC - National Museum of American History - DSC00261.jpg", date: c. 260 BCE, prominence: 3, treatment: cutout, caption: "Carthaginian dekadrachm with the goddess Tanit" }
     sources: [wikipedia:Ancient_Carthage]
 
   - id: numidia
