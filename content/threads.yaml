@@ -1,10 +1,17 @@
-# Threads: journeys of goods and ideas that cross regions. Events opt in with `thread: <id>`.
-# Drawn as optional layers (off by default — calm first).
+# Threads: journeys of goods, ideas and forces across regions. Events opt in with `thread: <id>`
+# or `threads: [<id>, …]`. Drawn as optional layers, off by default; the Threads menu turns one on
+# and lets you follow it stop by stop.
 threads:
-  - { id: silk-road, name: The Silk Road, color: "#9A6B1F" }
-  - { id: alphabet, name: The alphabet's journey, color: "#3D78BE" }
-  - { id: scripts, name: Writing systems, color: "#6C2D5F" }
-  - { id: numerals, name: Numerals & zero, color: "#DD7F2E" }
-  - { id: money, name: Money, color: "#A88432" }
-  - { id: paper, name: Paper, color: "#B8392D" }
-  - { id: calendars, name: Calendars, color: "#2E8A5C" }
+  - { id: silk-road, name: The Silk Road, color: "#9A6B1F", note: "Silk west, silver and glass east, and with them faiths, stories and plague." }
+  - { id: alphabet, name: The alphabet's journey, color: "#3D78BE", note: "From Sinai miners' signs to Phoenician, Greek, Latin and Cyrillic letters." }
+  - { id: scripts, name: Writing systems, color: "#6C2D5F", note: "Each invention of writing, and the scripts that grew from them." }
+  - { id: numerals, name: Numerals & zero, color: "#DD7F2E", note: "Place value and zero, from India through Baghdad to the whole world." }
+  - { id: money, name: Money, color: "#A88432", note: "Coins, paper money, silver flows and banking." }
+  - { id: paper, name: Paper, color: "#B8392D", note: "From the Han court to Samarkand, Baghdad and Europe's printing presses." }
+  - { id: calendars, name: Calendars, color: "#2E8A5C", note: "How peoples counted days, months and years." }
+  - { id: buddhism, name: Buddhism's journey, color: "#C47F1A", note: "From the Ganges plain to Sri Lanka, Central Asia, China, Korea, Japan, Tibet and Southeast Asia." }
+  - { id: columbian-exchange, name: The Columbian Exchange, color: "#4F7F3A", note: "Maize, potatoes and silver out of the Americas; horses, wheat and smallpox into them." }
+  - { id: gunpowder, name: Gunpowder, color: "#5C5C5C", note: "From a Chinese formula to fire lances, cannon, muskets and machine guns." }
+  - { id: printing, name: Printing, color: "#7A4E9C", note: "Woodblocks, movable type and the press: how texts multiplied." }
+  - { id: pandemics, name: Pandemics, color: "#8B3A3A", note: "The great plagues and epidemics, and the vaccine that ended smallpox." }
+  - { id: horse, name: The horse, color: "#8C6A4A", note: "Domesticated on the steppe, then the chariot, mounted archers and cavalry everywhere." }

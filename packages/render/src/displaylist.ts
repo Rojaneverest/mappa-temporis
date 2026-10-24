@@ -22,6 +22,10 @@ interface Base {
   ref?: string;
   /** Optional layer (e.g. "thread:silk-road"): drawn only when the viewer switches it on. */
   layer?: string;
+  /** How a lens treats this mark: labels and images not in the lens fade hard, lanes a little. */
+  lk?: 'label' | 'lane' | 'image';
+  /** Lenses this mark belongs to (stays bright when one of them is on). */
+  lens?: string[];
 }
 
 export interface TextItem extends Base {
@@ -71,6 +75,8 @@ export interface RectItem extends Base {
   hair?: boolean;
   r?: number;
   multiply?: boolean;
+  /** A dot of this radius in screen pixels, centred on (x, y), the same size at every zoom (lens marks). */
+  dot?: number;
 }
 
 export interface LineItem extends Base {
@@ -111,6 +117,8 @@ export interface DisplayList {
   time: { y0: number; year0: number; year1: number; unitsPerYear: number; segments?: TimeSegment[] };
   /** Column headers for the frozen HUD: [x0, x1, name]. */
   regions: { x0: number; x1: number; name: string; short?: string }[];
+  /** Lenses offered by the viewer, with how many drawn labels each lights up. */
+  lenses?: { id: string; name: string; color: string; note: string; count: number }[];
   items: Item[];
   stats: Record<string, number>;
 }

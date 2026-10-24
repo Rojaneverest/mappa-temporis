@@ -129,7 +129,7 @@ lanes:
       - { id: waitangi, date: 1840 CE, label: "The Treaty of Waitangi", prominence: 2, themes: [government], sources: [wikipedia:Treaty_of_Waitangi] }
       - { id: women-vote, date: 1893 CE, label: "New Zealand: the first country where women vote", prominence: 2, themes: [women, government], sources: [wikipedia:Women's_suffrage_in_New_Zealand] }
       - { id: aotearoa-settled, date: c. 1280 CE, label: "Polynesian voyagers settle Aotearoa — the last major land reached by humans", prominence: 2, themes: [migration], sources: [wikipedia:Māori_people] }
-      - { id: musket-wars, date: 1807 CE, label: "The Musket Wars", prominence: 4, themes: [war], sources: [wikipedia:Musket_Wars] }
+      - { id: musket-wars, date: 1807 CE, label: "The Musket Wars", prominence: 4, themes: [war], sources: [wikipedia:Musket_Wars], threads: [gunpowder] }
       - { id: new-zealand-wars, date: 1845 CE, label: "The New Zealand Wars over land", prominence: 4, themes: [war], sources: [wikipedia:New_Zealand_Wars] }
       - { id: maori-language-act, date: 1987 CE, label: "Te reo Māori becomes an official language", prominence: 4, sources: [wikipedia:Māori_Language_Act_1987] }
       - { id: rainbow-warrior, date: 1985 CE, label: "French agents sink the Rainbow Warrior in Auckland", prominence: 4, themes: [war], sources: [wikipedia:Sinking_of_the_Rainbow_Warrior] }

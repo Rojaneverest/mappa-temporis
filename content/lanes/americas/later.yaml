@@ -88,7 +88,7 @@ lanes:
       - { id: internet-born, date: 1983 CE, label: "ARPANET switches to TCP/IP — the Internet is born", prominence: 2, themes: [technology], sources: [wikipedia:ARPANET] }
       - { id: nine-eleven, date: 2001 CE, label: "The September 11 attacks", prominence: 2, themes: [war], sources: [wikipedia:September_11_attacks] }
       - { id: iphone, date: 2007 CE, label: "The smartphone era begins", prominence: 3, themes: [technology], sources: [wikipedia:IPhone_(1st_generation)] }
-      - { id: spanish-flu, date: 1918 CE, label: "The 1918 influenza kills perhaps 50 million worldwide", prominence: 2, themes: [disease], sources: [wikipedia:Spanish_flu] }
+      - { id: spanish-flu, date: 1918 CE, label: "The 1918 influenza kills perhaps 50 million worldwide", prominence: 2, themes: [disease], sources: [wikipedia:Spanish_flu], threads: [pandemics] }
       - { id: united-nations, date: 1945 CE, label: "The United Nations is founded", prominence: 2, themes: [government], sources: [wikipedia:United_Nations] }
       - { id: transistor, date: 1947 CE, label: "The transistor is invented at Bell Labs", prominence: 3, themes: [technology], sources: [wikipedia:Transistor] }
       - { id: human-genome, date: 2003 CE, label: "The human genome is read", prominence: 3, themes: [science], sources: [wikipedia:Human_Genome_Project] }
@@ -165,7 +165,7 @@ lanes:
     events:
       - { id: tenochtitlan, date: 1325 CE, label: "The Mexica found Tenochtitlan on an island in Lake Texcoco", prominence: 2, sources: [wikipedia:Tenochtitlan] }
       - { id: triple-alliance, date: 1428 CE, label: "The Triple Alliance: the Aztec Empire is born", prominence: 3, themes: [government], sources: [wikipedia:Aztec_Triple_Alliance] }
-      - { id: cortes, date: 1521 CE, label: "Tenochtitlan falls to Cortés, his Tlaxcalan allies and smallpox", prominence: 1, themes: [war, disease], sources: [wikipedia:Fall_of_Tenochtitlan] }
+      - { id: cortes, date: 1521 CE, label: "Tenochtitlan falls to Cortés, his Tlaxcalan allies and smallpox", prominence: 1, themes: [war, disease], sources: [wikipedia:Fall_of_Tenochtitlan], threads: [columbian-exchange] }
       - { id: chinampas, date: c. 1400 CE, label: "Chinampas: floating gardens feed a city of 200,000", prominence: 3, themes: [technology], sources: [wikipedia:Chinampa] }
       - { id: templo-mayor, date: 1487 CE, label: "The Templo Mayor is rededicated", prominence: 3, themes: [religion], sources: [wikipedia:Templo_Mayor] }
       - { id: nezahualcoyotl, date: 1431 CE, label: "Nezahualcoyotl, poet-king of Texcoco", prominence: 4, themes: [art], sources: [wikipedia:Nezahualcoyotl_(tlatoani)] }
@@ -184,8 +184,8 @@ lanes:
       - { name: Viceroyalty of New Spain, span: 1521 – 1821 CE, weight: 4 }
       - { name: Mexico, span: 1821 – 2026 CE, weight: 4 }
     events:
-      - { id: cocoliztli, date: 1545 CE, label: "Epidemics kill perhaps 90% of Mexico's people within a century", prominence: 2, themes: [disease], sources: [wikipedia:Cocoliztli_epidemics] }
-      - { id: manila-galleon, date: 1565 CE, label: "The Manila galleons link Acapulco and Asia: the first global trade route", prominence: 2, themes: [trade], sources: [wikipedia:Manila_galleon] }
+      - { id: cocoliztli, date: 1545 CE, label: "Epidemics kill perhaps 90% of Mexico's people within a century", prominence: 2, themes: [disease], sources: [wikipedia:Cocoliztli_epidemics], threads: [pandemics] }
+      - { id: manila-galleon, date: 1565 CE, label: "The Manila galleons link Acapulco and Asia: the first global trade route", prominence: 2, themes: [trade], sources: [wikipedia:Manila_galleon], threads: [columbian-exchange] }
       - { id: mexican-independence, date: 1821 CE, label: "Mexico wins independence", prominence: 3, themes: [government], sources: [wikipedia:Mexican_War_of_Independence] }
       - { id: us-mexico-war, date: 1846 CE, label: "The US takes half of Mexico", prominence: 3, themes: [war], sources: [wikipedia:Mexican–American_War] }
       - { id: mexican-revolution, date: 1910 CE, label: "The Mexican Revolution", prominence: 3, themes: [war], sources: [wikipedia:Mexican_Revolution] }
@@ -207,9 +207,9 @@ lanes:
     prominence: 3
     span: c. 500 BCE – c. 1550 CE
     events:
-      - { id: columbus-lands, date: 1492 CE, label: "Columbus lands in the Bahamas: two worlds meet — the Columbian Exchange begins", prominence: 1, themes: [exploration, disease, trade], sources: [wikipedia:Columbian_exchange], people: [p-columbus] }
+      - { id: columbus-lands, date: 1492 CE, label: "Columbus lands in the Bahamas: two worlds meet — the Columbian Exchange begins", prominence: 1, themes: [exploration, disease, trade], sources: [wikipedia:Columbian_exchange], people: [p-columbus], threads: [columbian-exchange] }
       - { id: taino-cemis, date: c. 1200 CE, label: "Taíno villages, ball courts and zemí spirits", prominence: 4, themes: [religion], sources: [wikipedia:Zemi] }
-      - { id: hispaniola-collapse, date: 1518 CE, label: "Smallpox reaches Hispaniola; the Taíno population collapses", prominence: 3, themes: [disease], sources: [wikipedia:Taíno_genocide] }
+      - { id: hispaniola-collapse, date: 1518 CE, label: "Smallpox reaches Hispaniola; the Taíno population collapses", prominence: 3, themes: [disease], sources: [wikipedia:Taíno_genocide], threads: [columbian-exchange, pandemics] }
       - { id: saladoid, date: c. 500 BCE, label: "Saladoid potters from the Orinoco settle the Antilles", prominence: 3, themes: [migration], sources: [wikipedia:Saladoid] }
     sources: [wikipedia:Taíno]
 

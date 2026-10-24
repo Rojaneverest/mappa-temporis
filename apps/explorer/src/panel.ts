@@ -28,6 +28,11 @@ export class Panel {
   private folio: Folio;
   private onSelect: (id: string, fly: boolean) => void;
   current: string | null = null;
+  /** The thread being followed stop by stop, if any. */
+  following: string | null = null;
+  /** Called with a year when a Meanwhile link is clicked; with a thread id to follow (or null to stop). */
+  onMeanwhile: (year: number) => void = () => {};
+  onFollow: (threadId: string | null) => void = () => {};
 
   constructor(el: HTMLElement, folio: Folio, onSelect: (id: string, fly: boolean) => void) {
     this.el = el;
@@ -37,7 +42,12 @@ export class Panel {
     this.body = el.querySelector('.body')!;
     el.querySelector('.close')!.addEventListener('click', () => this.onSelect('', false));
     el.addEventListener('click', (e) => {
-      const a = (e.target as HTMLElement).closest('[data-go]') as HTMLElement | null;
+      const t = e.target as HTMLElement;
+      const mw = t.closest('[data-mw]') as HTMLElement | null;
+      if (mw) { e.preventDefault(); this.onMeanwhile(Number(mw.dataset.mw)); return; }
+      const fl = t.closest('[data-follow]') as HTMLElement | null;
+      if (fl) { e.preventDefault(); this.onFollow(fl.dataset.follow || null); return; }
+      const a = t.closest('[data-go]') as HTMLElement | null;
       if (a) { e.preventDefault(); this.onSelect(a.dataset.go!, true); }
     });
   }
@@ -60,9 +70,30 @@ export class Panel {
     }
   }
 
+  /** Show ready-made HTML (Meanwhile) under an id of its own, so deep links can name it. */
+  showHtml(id: string, html: string) {
+    this.current = id;
+    this.el.classList.add('open');
+    this.body.innerHTML = html;
+    this.body.scrollTop = 0;
+  }
+
+  /** While following a thread: where this stop sits, with the previous and next stops. */
+  private followBar(e: FolioEntry): string {
+    const th = this.following ? this.folio.threads.find((t) => t.id === this.following) : undefined;
+    const i = th ? th.events.indexOf(e.id) : -1;
+    if (!th || i < 0) return '';
+    const prev = th.events[i - 1], next = th.events[i + 1];
+    return `<div class="follow"><span class="bar" style="background:${th.color}"></span><a href="#" data-go="thread:${esc(th.id)}">${esc(th.name)}</a>
+      <span class="stop">${i + 1} / ${th.events.length}</span>
+      <button ${prev ? `data-go="${esc(prev)}"` : 'disabled'} aria-label="Previous stop">◀</button>
+      <button ${next ? `data-go="${esc(next)}"` : 'disabled'} aria-label="Next stop">▶</button>
+      <button data-follow="" aria-label="Stop following">✕</button></div>`;
+  }
+
   private render(e: FolioEntry): string {
     const kind = ({ lane: 'Civilization · state · period', event: 'Event', thread: 'Thread', image: 'Object', era: 'Era', climate: 'Climate', population: 'People', person: 'Person', voice: 'Voice', daily: 'Daily life' } as const)[e.kind];
-    const parts: string[] = [];
+    const parts: string[] = [this.followBar(e)];
     const laneLink = e.laneId ? ` · <a href="#" data-go="${esc(e.laneId)}">${esc(e.laneName)}</a>` : '';
     parts.push(`<div class="kicker">${kind} · ${esc(e.region)}${e.kind !== 'lane' ? laneLink : ''}</div>`);
     if (e.endonym) parts.push(`<div class="endonym">${esc(e.endonym.text)}${e.endonym.translit ? `<span>${esc(e.endonym.translit)}</span>` : ''}</div>`);
@@ -87,6 +118,7 @@ export class Panel {
     if (e.segments?.length) {
       parts.push('<h3>Phases</h3><ul class="list">' + e.segments.map((s) => `<li><span>${esc(s.dates)}</span>${esc(s.name)}</li>`).join('') + '</ul>');
     }
+    if (e.kind === 'thread' && e.events?.length) parts.push(`<button class="start" data-follow="${esc(e.id.slice('thread:'.length))}">Follow this thread, stop by stop ▶</button>`);
     if (e.events?.length) {
       parts.push(`<h3>${e.kind === 'thread' ? 'Stops along the way' : 'Events'}</h3><ul class="list events">` + e.events.map((ev) =>
         `<li><a href="#" data-go="${esc(ev.id)}"><span>${esc(ev.dates)}</span>${esc(ev.label)}</a>${ev.drawn ? '' : ' <em>(off the chart)</em>'}</li>`).join('') + '</ul>');

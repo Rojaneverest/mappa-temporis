@@ -12,6 +12,8 @@ export interface FolioEntry {
   title: string;
   /** Human-readable date or span. */
   dates: string;
+  /** The same as astronomical years [from, to] (1 BCE = 0), for "Meanwhile…". */
+  years?: [number, number];
   region: string;
   laneId: string;
   laneName: string;
@@ -52,7 +54,7 @@ export interface Folio {
   /** Lanes with their fixed centre line, for the pinned lane headers. */
   lanes: { id: string; name: string; cx: number; top: number; bottom: number; prominence: number }[];
   /** Threads drawn on this sheet (optional layers "thread:<id>"), with the events they pass through. */
-  threads: { id: string; name: string; color: string; events: string[]; box: [number, number, number, number] }[];
+  threads: { id: string; name: string; color: string; note?: string; events: string[]; box: [number, number, number, number] }[];
 }
 
 export function sourceLink(key: string): FolioSource {

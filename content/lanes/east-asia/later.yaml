@@ -16,7 +16,7 @@ lanes:
     segments:
       - { name: Five Dynasties & Ten Kingdoms, span: 907 – 979 CE, weight: 2, style: interregnum }
     events:
-      - { id: woodblock-classics, date: 953 CE, label: "The Confucian classics are printed in full", prominence: 4, thread: paper, sources: [wikipedia:Woodblock_printing] }
+      - { id: woodblock-classics, date: 953 CE, label: "The Confucian classics are printed in full", prominence: 4, thread: paper, sources: [wikipedia:Woodblock_printing], threads: [printing] }
     sources: [wikipedia:Five_Dynasties_and_Ten_Kingdoms_period]
 
   - id: song
@@ -35,8 +35,8 @@ lanes:
     events:
       - { id: song-exams, date: c. 1000 CE, label: "Civil-service exams open office to talent: rule by scholars", prominence: 2, themes: [government, ideas], sources: [wikipedia:Imperial_examination] }
       - { id: paper-money, date: 1024 CE, label: "The jiaozi: the world's first government paper money", prominence: 1, thread: money, themes: [trade], sources: [wikipedia:Jiaozi_(currency)] }
-      - { id: movable-type, date: c. 1040 CE, label: "Bi Sheng invents movable type", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Bi_Sheng] }
-      - { id: gunpowder-formula, date: 1044 CE, label: "The first written formula for gunpowder", prominence: 2, themes: [technology, war], sources: [wikipedia:Wujing_Zongyao] }
+      - { id: movable-type, date: c. 1040 CE, label: "Bi Sheng invents movable type", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Bi_Sheng], threads: [printing] }
+      - { id: gunpowder-formula, date: 1044 CE, label: "The first written formula for gunpowder", prominence: 2, themes: [technology, war], sources: [wikipedia:Wujing_Zongyao], threads: [gunpowder] }
       - { id: compass, date: c. 1088 CE, label: "Shen Kuo describes the magnetic compass", prominence: 2, themes: [technology, science], sources: [wikipedia:Shen_Kuo] }
       - { id: qingming-scroll, date: c. 1100 CE, label: "Along the River During the Qingming Festival", prominence: 2, themes: [art], sources: [wikipedia:Along_the_River_During_the_Qingming_Festival] }
       - { id: jingkang, date: 1127 CE, label: "The Jurchens take Kaifeng; the court flees south", prominence: 3, themes: [war], sources: [wikipedia:Jingkang_incident] }
@@ -86,7 +86,7 @@ lanes:
       - { type: conquers, lane: liao, at: 1125 CE }
     events:
       - { id: zhongdu-falls, date: 1215 CE, label: "The Mongols take Zhongdu (Beijing)", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Zhongdu] }
-      - { id: jin-fire-lance, date: 1232 CE, label: "Jin defenders use fire lances and bombs against the Mongols", prominence: 4, themes: [technology, war], sources: [wikipedia:Siege_of_Kaifeng_(1232)] }
+      - { id: jin-fire-lance, date: 1232 CE, label: "Jin defenders use fire lances and bombs against the Mongols", prominence: 4, themes: [technology, war], sources: [wikipedia:Siege_of_Kaifeng_(1232)], threads: [gunpowder] }
     sources: [wikipedia:Jin_dynasty_(1115–1234)]
 
   - id: yuan
@@ -106,7 +106,7 @@ lanes:
       - { id: kamikaze, date: 1281 CE, label: "Typhoons wreck the Mongol invasion of Japan", prominence: 3, themes: [war, climate], sources: [wikipedia:Mongol_invasions_of_Japan] }
       - { id: red-turbans, date: 1351 CE, label: "The Red Turban rebellion", prominence: 4, themes: [war], sources: [wikipedia:Red_Turban_Rebellions] }
       - { id: yuan-drama, date: c. 1300 CE, label: "Yuan drama flourishes", prominence: 4, themes: [art], sources: [wikipedia:Zaju] }
-      - { id: black-death-china, date: 1331 CE, label: "Plague and famine in Hebei", prominence: 4, themes: [disease], confidence: disputed, sources: [wikipedia:Black_Death] }
+      - { id: black-death-china, date: 1331 CE, label: "Plague and famine in Hebei", prominence: 4, themes: [disease], confidence: disputed, sources: [wikipedia:Black_Death], threads: [pandemics] }
     sources: [wikipedia:Yuan_dynasty]
 
   - id: ming
@@ -129,7 +129,7 @@ lanes:
       - { id: journey-west, date: 1592 CE, label: "Journey to the West is published", prominence: 4, themes: [art], sources: [wikipedia:Journey_to_the_West] }
       - { id: yongle-encyclopedia, date: 1408 CE, label: "The Yongle Encyclopedia: 11,000 volumes", prominence: 3, themes: [ideas], sources: [wikipedia:Yongle_Encyclopedia] }
       - { id: wang-yangming, date: c. 1510 CE, label: "Wang Yangming: knowledge and action are one", prominence: 4, themes: [ideas], sources: [wikipedia:Wang_Yangming] }
-      - { id: ming-silver, date: c. 1580 CE, label: "American silver floods Ming China", prominence: 3, thread: money, themes: [trade], sources: [wikipedia:Single_whip_law] }
+      - { id: ming-silver, date: c. 1580 CE, label: "American silver floods Ming China", prominence: 3, thread: money, themes: [trade], sources: [wikipedia:Single_whip_law], threads: [columbian-exchange] }
       - { id: macau, date: 1557 CE, label: "The Portuguese settle Macau", prominence: 4, themes: [trade], sources: [wikipedia:Portuguese_Macau] }
       - { id: single-whip, date: c. 1580 CE, label: "The Single Whip reform: taxes paid in New World silver", prominence: 3, themes: [trade, government], sources: [wikipedia:Single_whip_law] }
       - { id: ming-falls, date: 1644 CE, label: "Rebels take Beijing; the last Ming emperor hangs himself", prominence: 2, themes: [war], sources: [wikipedia:Chongzhen_Emperor] }
@@ -226,7 +226,7 @@ lanes:
       - { id: cultural-revolution, date: 1966 CE, label: "The Cultural Revolution", prominence: 2, themes: [ideas], sources: [wikipedia:Cultural_Revolution] }
       - { id: reform-opening, date: 1978 CE, label: "Deng Xiaoping's reforms: 800 million lifted from poverty", prominence: 1, themes: [trade], sources: [wikipedia:Reform_and_opening_up] }
       - { id: tiananmen, date: 1989 CE, label: "Tiananmen Square", prominence: 3, themes: [government], sources: [wikipedia:1989_Tiananmen_Square_protests_and_massacre] }
-      - { id: covid, date: 2020 CE, label: "COVID-19 becomes a pandemic", prominence: 2, themes: [disease], sources: [wikipedia:COVID-19_pandemic] }
+      - { id: covid, date: 2020 CE, label: "COVID-19 becomes a pandemic", prominence: 2, themes: [disease], sources: [wikipedia:COVID-19_pandemic], threads: [pandemics] }
       - { id: three-gorges, date: 2006 CE, label: "The Three Gorges Dam", prominence: 4, themes: [technology], sources: [wikipedia:Three_Gorges_Dam] }
       - { id: hong-kong-1997, date: 1997 CE, label: "Hong Kong returns to China", prominence: 4, themes: [government], sources: [wikipedia:Handover_of_Hong_Kong] }
       - { id: one-child, date: 1980 CE, label: "The one-child policy", prominence: 3, sources: [wikipedia:One-child_policy] }
@@ -267,8 +267,8 @@ lanes:
       - { type: becomes, lane: joseon, at: 1392 CE }
     events:
       - { id: celadon, date: c. 1150 CE, label: "Goryeo celadon, prized even in China", prominence: 3, themes: [art], sources: [wikipedia:Korean_celadon] }
-      - { id: tripitaka-koreana, date: 1251 CE, label: "The Tripitaka Koreana: 81,258 carved printing blocks", prominence: 3, thread: paper, themes: [religion, technology], sources: [wikipedia:Tripitaka_Koreana] }
-      - { id: jikji, date: 1377 CE, label: "Jikji, the oldest surviving book printed in metal type", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Jikji] }
+      - { id: tripitaka-koreana, date: 1251 CE, label: "The Tripitaka Koreana: 81,258 carved printing blocks", prominence: 3, thread: paper, themes: [religion, technology], sources: [wikipedia:Tripitaka_Koreana], threads: [printing] }
+      - { id: jikji, date: 1377 CE, label: "Jikji, the oldest surviving book printed in metal type", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Jikji], threads: [printing] }
     sources: [wikipedia:Goryeo]
 
   - id: joseon
@@ -371,7 +371,7 @@ lanes:
       - { name: Heian, span: 794 – 1185 CE, weight: 4 }
     events:
       - { id: kojiki, date: 712 CE, label: "The Kojiki, Japan's oldest chronicle", prominence: 3, themes: [religion, ideas], sources: [wikipedia:Kojiki] }
-      - { id: todaiji, date: 752 CE, label: "The Great Buddha of Tōdai-ji", prominence: 2, themes: [art, religion], sources: [wikipedia:Tōdai-ji] }
+      - { id: todaiji, date: 752 CE, label: "The Great Buddha of Tōdai-ji", prominence: 2, themes: [art, religion], sources: [wikipedia:Tōdai-ji], threads: [buddhism] }
       - { id: kana, date: c. 900 CE, label: "Kana: Japanese written in its own syllables", prominence: 3, thread: scripts, sources: [wikipedia:Kana] }
       - { id: genji, date: c. 1010 CE, label: "Murasaki Shikibu's Tale of Genji, often called the first novel", prominence: 1, themes: [art, women], sources: [wikipedia:The_Tale_of_Genji] }
       - { id: pillow-book, date: 1002 CE, label: "Sei Shōnagon's Pillow Book", prominence: 4, themes: [art, women], sources: [wikipedia:The_Pillow_Book] }
@@ -394,10 +394,10 @@ lanes:
     relations:
       - { type: becomes, lane: edo, at: 1600 CE }
     events:
-      - { id: zen, date: c. 1200 CE, label: "Zen Buddhism comes from China", prominence: 3, themes: [religion], sources: [wikipedia:Zen_in_Japan] }
+      - { id: zen, date: c. 1200 CE, label: "Zen Buddhism comes from China", prominence: 3, themes: [religion], sources: [wikipedia:Zen_in_Japan], threads: [buddhism] }
       - { id: golden-pavilion, date: 1397 CE, label: "The Golden Pavilion, Kyoto", prominence: 3, themes: [art], sources: [wikipedia:Kinkaku-ji] }
       - { id: noh, date: c. 1400 CE, label: "Zeami perfects Noh theatre", prominence: 4, themes: [art], sources: [wikipedia:Zeami_Motokiyo] }
-      - { id: tanegashima, date: 1543 CE, label: "Portuguese guns arrive at Tanegashima", prominence: 3, themes: [technology, war], sources: [wikipedia:Tanegashima_(Japanese_matchlock)] }
+      - { id: tanegashima, date: 1543 CE, label: "Portuguese guns arrive at Tanegashima", prominence: 3, themes: [technology, war], sources: [wikipedia:Tanegashima_(Japanese_matchlock)], threads: [gunpowder] }
       - { id: nobunaga, date: 1582 CE, label: "Nobunaga, then Hideyoshi, reunite Japan by force", prominence: 3, themes: [war], sources: [wikipedia:Oda_Nobunaga] }
       - { id: francis-xavier, date: 1549 CE, label: "Francis Xavier brings Christianity to Japan", prominence: 3, themes: [religion], sources: [wikipedia:Francis_Xavier] }
       - { id: sword-hunt, date: 1588 CE, label: "Hideyoshi's sword hunt disarms the peasants", prominence: 4, themes: [government], sources: [wikipedia:Sword_hunt] }
@@ -425,7 +425,7 @@ lanes:
       - { id: kabuki, date: 1603 CE, label: "Izumo no Okuni begins kabuki", prominence: 4, themes: [art, women], sources: [wikipedia:Izumo_no_Okuni] }
       - { id: edo-largest, date: c. 1720 CE, label: "Edo, a million people, may be the world's largest city", prominence: 3, sources: [wikipedia:Edo] }
       - { id: rangaku, date: 1774 CE, label: "Rangaku: Dutch learning and the first Western anatomy in Japanese", prominence: 4, themes: [science], sources: [wikipedia:Rangaku] }
-      - { id: ukiyo-e, date: c. 1765 CE, label: "Full-colour woodblock prints: ukiyo-e", prominence: 3, themes: [art], sources: [wikipedia:Ukiyo-e] }
+      - { id: ukiyo-e, date: c. 1765 CE, label: "Full-colour woodblock prints: ukiyo-e", prominence: 3, themes: [art], sources: [wikipedia:Ukiyo-e], threads: [printing] }
       - { id: shimabara, date: 1637 CE, label: "The Shimabara Rebellion of Christian peasants", prominence: 4, themes: [war, religion], sources: [wikipedia:Shimabara_Rebellion] }
       - { id: genroku, date: c. 1690 CE, label: "Genroku: kabuki and woodblock prints flourish in Edo and Osaka", prominence: 4, themes: [art], sources: [wikipedia:Genroku] }
       - { id: forty-seven-ronin, date: 1703 CE, label: "The 47 rōnin avenge their lord", prominence: 4, themes: [war], sources: [wikipedia:Forty-seven_rōnin] }

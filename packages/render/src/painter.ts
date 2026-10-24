@@ -157,15 +157,23 @@ export class Painter {
     canvas.scale(view.s, view.s);
     canvas.translate(-view.x0, -view.y0);
     const zoom = view.zoom ?? view.s;
+    const lens = lensOf(view.layers);
     for (const i of indices) {
       const item = this.dl.items[i]!;
       if (item.layer && !view.layers?.has(item.layer)) continue;
-      const alpha = (item.alpha ?? 1) * fadeAt(item.fade, zoom) * (item.fadeOut ? 1 - fadeAt(item.fadeOut, zoom) : 1);
+      const alpha = (item.alpha ?? 1) * fadeAt(item.fade, zoom) * (item.fadeOut ? 1 - fadeAt(item.fadeOut, zoom) : 1) * lensDim(item, lens);
       if (alpha <= 0.01) continue;
       switch (item.k) {
         case 'text': this.drawText(canvas, i, item, alpha, view.s); break;
         case 'image': this.drawImage(canvas, item, alpha, view.s); break;
         case 'rect': {
+          if (item.dot) {
+            // Radius in CSS pixels, so a dot is the same size on any screen.
+            const r = item.dot / zoom;
+            canvas.drawCircle(item.x, item.y, r, this.styled(item.fill!, alpha, 'fill', 0, false, view.s));
+            if (item.stroke) canvas.drawCircle(item.x, item.y, r, this.styled(item.stroke, alpha, 'stroke', item.sw, true, view.s));
+            break;
+          }
           const p = this.styled(item.fill ?? item.stroke!, alpha, item.fill ? 'fill' : 'stroke', item.sw, item.hair, view.s, undefined, item.multiply);
           const rect = ck.XYWHRect(item.x, item.y, item.w, item.h);
           if (item.r) canvas.drawRRect(ck.RRectXY(rect, item.r, item.r), p);
@@ -328,6 +336,19 @@ export class Painter {
       this.paragraphs.delete(k);
     }
   }
+}
+
+/** The lens switched on, if any (the viewer passes it as the layer "lens:<id>"). */
+export function lensOf(layers: ReadonlySet<string> | undefined): string | null {
+  if (layers) for (const l of layers) if (l.startsWith('lens:')) return l.slice(5);
+  return null;
+}
+
+/** Under a lens: matching labels stay full; everything else steps back. */
+export function lensDim(item: Item, lens: string | null): number {
+  if (!lens || !item.lk) return 1;
+  if (item.lk === 'label') return item.lens?.includes(lens) ? 1 : 0.13;
+  return item.lk === 'image' ? 0.3 : 0.45;
 }
 
 export function fadeAt(fade: [number, number] | undefined, s: number): number {

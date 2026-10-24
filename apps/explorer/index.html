@@ -58,24 +58,54 @@
       #folio .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
       #folio .thumbs img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #efe6d2; border-radius: 6px; }
       #folio .sources { padding-left: 18px; margin: 0; } #folio .sources a { color: #7a2219; }
-      #layers-btn {
-        position: fixed; top: 64px; left: 76px; z-index: 4; border: 1px solid rgba(107,95,85,.35); border-radius: 8px;
-        background: rgba(247,241,227,.95); color: #2b2420; font: 600 12px ui-sans-serif, sans-serif; padding: 6px 10px; cursor: pointer;
-      }
-      #layers {
-        position: fixed; top: 100px; left: 76px; z-index: 4; width: 240px; padding: 12px 14px; display: none;
+      #toolbar { position: fixed; top: 64px; left: 76px; z-index: 4; display: flex; gap: 8px; }
+      #toolbar button { border: 1px solid rgba(107,95,85,.35); border-radius: 8px; background: rgba(247,241,227,.95); color: #2b2420;
+        font: 600 12px ui-sans-serif, sans-serif; padding: 6px 10px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
+      #toolbar button:hover { border-color: rgba(107,95,85,.6); }
+      #toolbar #search-btn { color: #6b5f55; font-weight: 400; }
+      #toolbar .dot { width: 9px; height: 9px; border-radius: 50%; display: none; }
+      #toolbar .dot.on { display: inline-block; }
+      .menu, #layers {
+        position: fixed; top: 100px; left: 76px; z-index: 6; width: 300px; max-height: calc(100vh - 150px); overflow: auto; padding: 12px 14px; display: none;
         background: #f7f1e3; border: 1px solid rgba(107,95,85,.35); border-radius: 10px; box-shadow: 0 10px 28px rgba(60,40,20,.16);
         font: 13px/1.4 ui-sans-serif, sans-serif; color: #2b2420;
       }
-      #layers.open { display: block; }
+      #layers.open, .menu.open { display: block; }
+      .menu h4 { margin: 0 0 8px; font: 600 11px ui-sans-serif, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #8a7c6e; }
+      .menu label, .menu .row { display: flex; align-items: center; gap: 8px; padding: 5px 4px; cursor: pointer; border-radius: 6px; }
+      .menu .row:hover, .menu label:hover { background: rgba(184,57,45,.07); }
+      .menu .row.on { background: rgba(184,57,45,.12); }
+      .menu .swatch { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+      .menu .bar { width: 18px; height: 4px; border-radius: 2px; flex: none; }
+      .menu .n { margin-left: auto; color: #8a7c6e; font-size: 11px; font-variant-numeric: tabular-nums; white-space: nowrap; text-decoration: none; }
+      .menu a.n:hover { color: #b8392d; }
+      .menu p { margin: 8px 0 0; font-size: 11px; color: #8a7c6e; }
+      .menu .desc { display: block; font-size: 11px; color: #8a7c6e; margin-top: 1px; }
+      #lens-chip { display: none; align-items: center; gap: 8px;
+        padding: 4px 6px 4px 10px; border-radius: 16px; background: rgba(247,241,227,.97); border: 1px solid rgba(107,95,85,.35);
+        box-shadow: 0 6px 18px rgba(60,40,20,.14); font: 600 12px ui-sans-serif, sans-serif; color: #2b2420; }
+      #lens-chip.on { display: flex; }
+      #lens-chip .swatch { width: 10px; height: 10px; border-radius: 50%; }
+      #lens-chip span.n { font-weight: 400; color: #8a7c6e; }
+      #lens-chip button { border: 0; background: none; font-size: 16px; line-height: 1; color: #6b5f55; cursor: pointer; padding: 0 4px; }
+      #folio .follow { display: flex; align-items: center; gap: 8px; margin: -4px 0 12px; padding: 8px 10px; border-radius: 8px; background: rgba(184,57,45,.07); font: 12px ui-sans-serif, sans-serif; }
+      #folio .follow .bar { width: 18px; height: 4px; border-radius: 2px; }
+      #folio .follow button { border: 1px solid rgba(107,95,85,.35); background: #fffaf0; border-radius: 6px; padding: 3px 8px; cursor: pointer; font: 600 12px ui-sans-serif, sans-serif; }
+      #folio .follow button:disabled { opacity: .35; cursor: default; }
+      #folio .follow .stop { margin-left: auto; color: #8a7c6e; font-variant-numeric: tabular-nums; }
+      #folio button.start { border: 1px solid rgba(107,95,85,.35); background: #fffaf0; border-radius: 8px; padding: 6px 12px; cursor: pointer; font: 600 12px ui-sans-serif, sans-serif; margin: 4px 0 8px; }
+      #folio .mw-nav { display: flex; gap: 6px; margin: 6px 0 4px; }
+      #folio .mw-nav button { border: 1px solid rgba(107,95,85,.35); background: #fffaf0; border-radius: 6px; padding: 3px 8px; cursor: pointer; font: 12px ui-sans-serif, sans-serif; }
+      #folio .mw-region { margin-top: 16px; padding-top: 10px; border-top: 1px solid rgba(107,95,85,.2); }
+      #folio .mw-region h3 { margin-top: 0; }
+      #folio .mw-states { font: 13px/1.5 Georgia, serif; } #folio .mw-states a { color: inherit; text-decoration: none; } #folio .mw-states a:hover { color: #b8392d; }
+      #folio .mw-off { color: #8a7c6e; font-size: 11px; }
       #layers h4 { margin: 0 0 8px; font: 600 11px ui-sans-serif, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #8a7c6e; }
       #layers label { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; }
       #layers .swatch { width: 18px; height: 4px; border-radius: 2px; }
       #layers .go { margin-left: auto; color: #8a7c6e; text-decoration: none; font-size: 12px; }
       #layers .go:hover { color: #b8392d; }
       #layers p { margin: 8px 0 0; font-size: 11px; color: #8a7c6e; }
-      #atlas-btn { position: fixed; top: 64px; left: 148px; z-index: 4; border: 1px solid rgba(107,95,85,.35); border-radius: 8px;
-        background: rgba(247,241,227,.95); color: #2b2420; font: 600 12px ui-sans-serif, sans-serif; padding: 6px 10px; cursor: pointer; }
       #atlas {
         position: fixed; left: 76px; bottom: 48px; z-index: 3; padding: 8px 8px 6px; border-radius: 10px;
         background: rgba(247,241,227,.96); border: 1px solid rgba(107,95,85,.35); box-shadow: 0 10px 28px rgba(60,40,20,.14);
@@ -93,11 +123,7 @@
       #search li.on, #search li:hover { background: rgba(184,57,45,.1); }
       #search li .t { font: 15px Georgia, serif; color: #2b2420; } #search li .m { font: 11px ui-sans-serif, sans-serif; color: #8a7c6e; }
       #search li.none { color: #8a7c6e; cursor: default; }
-      #search-btn { position: fixed; top: 64px; left: 214px; z-index: 4; border: 1px solid rgba(107,95,85,.35); border-radius: 8px;
-        background: rgba(247,241,227,.95); color: #6b5f55; font: 12px ui-sans-serif, sans-serif; padding: 6px 10px; cursor: pointer; }
-      #tours-btn { position: fixed; top: 64px; left: 304px; z-index: 4; border: 1px solid rgba(107,95,85,.35); border-radius: 8px;
-        background: rgba(247,241,227,.95); color: #2b2420; font: 600 12px ui-sans-serif, sans-serif; padding: 6px 10px; cursor: pointer; }
-      #tours-menu { position: fixed; top: 100px; left: 304px; z-index: 6; width: 300px; padding: 12px; display: none;
+      #tours-menu { position: fixed; top: 100px; left: 76px; z-index: 6; width: 300px; padding: 12px; display: none;
         background: #f7f1e3; border: 1px solid rgba(107,95,85,.35); border-radius: 10px; box-shadow: 0 10px 28px rgba(60,40,20,.16); }
       #tours-menu.open { display: block; }
       #tours-menu h4 { margin: 0 0 8px; font: 600 11px ui-sans-serif, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #8a7c6e; }
@@ -120,14 +146,22 @@
   <body>
     <canvas id="view"></canvas>
     <div id="status"></div>
-    <div id="help">Scroll or pinch to zoom · drag to pan · click anything for details · double-click to zoom · L layers · A atlas · 0 to fit · M minimap · D stats</div>
+    <div id="help">Scroll or pinch to zoom · drag to pan · click anything for details · double-click to zoom · K lenses · T threads · Y meanwhile · L layers · A atlas · 0 to fit</div>
     <div id="loading">Unrolling the map…</div>
     <aside id="folio" aria-label="Details"></aside>
-    <button id="layers-btn" aria-expanded="false">Layers</button>
+    <nav id="toolbar" aria-label="Tools">
+      <button id="layers-btn" aria-expanded="false">Layers</button>
+      <button id="lenses-btn" aria-expanded="false"><span class="dot"></span>Lenses</button>
+      <button id="threads-btn" aria-expanded="false">Threads</button>
+      <button id="meanwhile-btn" title="Everything happening at one year (Y, or click the year ruler)">Meanwhile</button>
+      <button id="atlas-btn" aria-pressed="true">Atlas</button>
+      <button id="search-btn">Search ⌘K</button>
+      <button id="tours-btn">Tours</button>
+      <div id="lens-chip" role="status"></div>
+    </nav>
     <div id="layers" role="dialog" aria-label="Layers"></div>
-    <button id="atlas-btn" aria-pressed="true">Atlas</button>
-    <button id="search-btn">Search ⌘K</button>
-    <button id="tours-btn">Tours</button>
+    <div id="lenses-menu" class="menu" role="dialog" aria-label="Lenses"></div>
+    <div id="threads-menu" class="menu" role="dialog" aria-label="Threads"></div>
     <div id="tours-menu"></div>
     <div id="tour-card" role="dialog" aria-label="Tour"></div>
     <div id="search"></div>

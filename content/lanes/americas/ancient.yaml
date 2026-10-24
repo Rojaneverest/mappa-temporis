@@ -43,7 +43,7 @@ lanes:
       - { type: becomes, lane: olmec, at: c. 1200 BCE }
     events:
       - { id: squash, date: c. 8000 BCE, label: "Squash is domesticated in Oaxaca", prominence: 3, themes: [technology], sources: [wikipedia:Guilá_Naquitz_Cave] }
-      - { id: maize, date: c. 7000 BCE, label: "Teosinte becomes maize — the grain that will feed the Americas", prominence: 1, themes: [technology], confidence: probable, sources: [wikipedia:Maize] }
+      - { id: maize, date: c. 7000 BCE, label: "Teosinte becomes maize — the grain that will feed the Americas", prominence: 1, themes: [technology], confidence: probable, sources: [wikipedia:Maize], threads: [columbian-exchange] }
       - { id: guila-naquitz, date: c. 8000 BCE, label: "Guilá Naquitz cave: the first squash seeds", prominence: 4, sources: [wikipedia:Guilá_Naquitz_Cave] }
       - { id: mesoamerica-pottery, date: c. 1900 BCE, label: "The first pottery in Mesoamerica", prominence: 4, themes: [technology], sources: [wikipedia:Mesoamerican_chronology] }
     sources: [wikipedia:Archaic_period_in_the_Americas]
@@ -59,7 +59,7 @@ lanes:
     relations:
       - { type: becomes, lane: norte-chico, at: c. 3500 BCE }
     events:
-      - { id: potato, date: c. 8000 BCE, label: "The potato is domesticated near Lake Titicaca", prominence: 2, themes: [technology], confidence: probable, sources: [wikipedia:Potato] }
+      - { id: potato, date: c. 8000 BCE, label: "The potato is domesticated near Lake Titicaca", prominence: 2, themes: [technology], confidence: probable, sources: [wikipedia:Potato], threads: [columbian-exchange] }
       - { id: chinchorro, date: c. 5000 BCE, label: "The Chinchorro mummify their dead, 2,000 years before Egypt", prominence: 3, themes: [religion], sources: [wikipedia:Chinchorro_mummies] }
       - { id: llama, date: c. 4000 BCE, label: "Llamas and alpacas are domesticated in the Andes", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Llama] }
     sources: [wikipedia:Andean_preceramic]

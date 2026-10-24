@@ -1,43 +1,43 @@
 # People of the Mediterranean & Near East.
 people:
-  - { id: p-imhotep, name: Imhotep, lane: egypt-old-kingdom, life: "c. 2650 – c. 2600 BCE", role: "architect of the Step Pyramid", prominence: 3, sources: [wikipedia:Imhotep] }
-  - { id: p-sargon, name: Sargon of Akkad, lane: akkad, life: "c. 2350 – c. 2279 BCE", role: "founder of the first empire", prominence: 2, sources: [wikipedia:Sargon_of_Akkad] }
-  - { id: p-enheduanna, name: Enheduanna, lane: akkad, life: "c. 2285 – c. 2250 BCE", role: "priestess, the first named author", prominence: 3, sources: [wikipedia:Enheduanna] }
-  - { id: p-hammurabi, name: Hammurabi, lane: old-babylon, life: "c. 1810 – 1750 BCE", role: "king of Babylon, lawgiver", prominence: 2, sources: [wikipedia:Hammurabi] }
-  - { id: p-hatshepsut, name: Hatshepsut, lane: egypt-new-kingdom, life: "c. 1507 – 1458 BCE", role: "woman who ruled as pharaoh", prominence: 2, sources: [wikipedia:Hatshepsut] }
-  - { id: p-akhenaten, name: Akhenaten, lane: egypt-new-kingdom, life: "c. 1380 – c. 1336 BCE", role: "pharaoh who worshipped one god, the Aten", prominence: 3, sources: [wikipedia:Akhenaten] }
-  - { id: p-tutankhamun, name: Tutankhamun, lane: egypt-new-kingdom, life: "c. 1341 – 1323 BCE", role: "boy pharaoh", prominence: 4, sources: [wikipedia:Tutankhamun] }
-  - { id: p-ramesses-ii, name: Ramesses II, lane: egypt-new-kingdom, life: "c. 1303 – 1213 BCE", role: "pharaoh of Abu Simbel", prominence: 2, sources: [wikipedia:Ramesses_II] }
-  - { id: p-ashurbanipal, name: Ashurbanipal, lane: neo-assyria, life: "c. 685 – c. 631 BCE", role: "king, collector of the library at Nineveh", prominence: 3, sources: [wikipedia:Ashurbanipal] }
-  - { id: p-croesus, name: Croesus, lane: lydia, life: "c. 595 – c. 546 BCE", role: "king of Lydia, proverbially rich", prominence: 4, sources: [wikipedia:Croesus] }
-  - { id: p-nebuchadnezzar-ii, name: Nebuchadnezzar II, lane: neo-babylonian, life: "c. 642 – 562 BCE", role: "king of Babylon", prominence: 2, sources: [wikipedia:Nebuchadnezzar_II] }
-  - { id: p-cyrus, name: Cyrus the Great, lane: achaemenid, life: "c. 600 – 530 BCE", role: "founder of the Persian empire", prominence: 2, endonym: { text: "𐎤𐎢𐎽𐎢𐏁", script: Xpeo, translit: Kūruš }, sources: [wikipedia:Cyrus_the_Great] }
-  - { id: p-darius-i, name: Darius I, lane: achaemenid, life: "c. 550 – 486 BCE", role: "king of kings of Persia", prominence: 3, sources: [wikipedia:Darius_the_Great] }
-  - { id: p-euclid, name: Euclid, lane: ptolemaic, life: "c. 325 – c. 270 BCE", role: "geometer of Alexandria", prominence: 3, sources: [wikipedia:Euclid] }
-  - { id: p-eratosthenes, name: Eratosthenes, lane: ptolemaic, life: "c. 276 – c. 194 BCE", role: "measured the size of the Earth", prominence: 3, sources: [wikipedia:Eratosthenes] }
-  - { id: p-cleopatra, name: Cleopatra VII, lane: ptolemaic, life: "69 – 30 BCE", role: "last queen of Ptolemaic Egypt", prominence: 2, sources: [wikipedia:Cleopatra] }
-  - { id: p-jesus, name: Jesus of Nazareth, lane: second-temple-judea, life: "c. 4 BCE – c. 30 CE", role: "preacher; Christianity grew from his followers", prominence: 2, sources: [wikipedia:Jesus] }
-  - { id: p-paul-apostle, name: Paul of Tarsus, lane: second-temple-judea, life: "c. 5 – c. 65 CE", role: "apostle and letter-writer", prominence: 3, sources: [wikipedia:Paul_the_Apostle] }
-  - { id: p-shapur-i, name: Shapur I, lane: sasanian, life: "c. 215 – 270 CE", role: "Persian king who captured a Roman emperor", prominence: 3, sources: [wikipedia:Shapur_I] }
-  - { id: p-mani, name: Mani, lane: sasanian, life: "216 – 274 CE", role: "prophet of Manichaeism", prominence: 4, sources: [wikipedia:Mani_(prophet)] }
-  - { id: p-zenobia, name: Zenobia, lane: palmyra, life: "c. 240 – c. 274 CE", role: "queen of Palmyra who defied Rome", prominence: 3, sources: [wikipedia:Zenobia] }
-  - { id: p-khadija, name: Khadija, lane: early-islam, life: "c. 555 – 619 CE", role: "merchant, Muhammad's first wife and first believer", prominence: 4, sources: [wikipedia:Khadija_bint_Khuwaylid] }
-  - { id: p-muhammad, name: Muhammad, lane: early-islam, life: "c. 570 – 632 CE", role: "prophet of Islam", prominence: 2, endonym: { text: "مُحَمَّد", script: Arab, translit: Muḥammad }, sources: [wikipedia:Muhammad] }
-  - { id: p-ali, name: Ali ibn Abi Talib, lane: rashidun, life: "c. 600 – 661 CE", role: "fourth caliph, first imam of the Shia", prominence: 3, sources: [wikipedia:Ali] }
-  - { id: p-aisha, name: Aisha, lane: rashidun, life: "c. 613 – 678 CE", role: "scholar of the Prophet's sayings", prominence: 4, sources: [wikipedia:Aisha] }
-  - { id: p-al-khwarizmi, name: Al-Khwarizmi, lane: abbasid, life: "c. 780 – c. 850 CE", role: "mathematician, father of algebra", prominence: 3, sources: [wikipedia:Muhammad_ibn_Musa_al-Khwarizmi] }
-  - { id: p-ibn-sina, name: Ibn Sina (Avicenna), lane: abbasid, life: "980 – 1037 CE", role: "physician and philosopher", prominence: 2, sources: [wikipedia:Avicenna] }
-  - { id: p-omar-khayyam, name: Omar Khayyam, lane: seljuks, life: "1048 – 1131 CE", role: "poet and mathematician", prominence: 3, sources: [wikipedia:Omar_Khayyam] }
-  - { id: p-saladin, name: Saladin, lane: ayyubids, life: "1137 – 1193 CE", role: "sultan who retook Jerusalem", prominence: 2, sources: [wikipedia:Saladin] }
-  - { id: p-rumi, name: Rumi, lane: rum, life: "1207 – 1273 CE", role: "Sufi poet", prominence: 3, sources: [wikipedia:Rumi] }
-  - { id: p-ibn-khaldun, name: Ibn Khaldun, lane: mamluks, life: "1332 – 1406 CE", role: "historian and social thinker", prominence: 3, sources: [wikipedia:Ibn_Khaldun] }
-  - { id: p-mehmed-ii, name: Mehmed II, lane: ottoman, life: "1432 – 1481 CE", role: "sultan who took Constantinople", prominence: 2, sources: [wikipedia:Mehmed_II] }
-  - { id: p-sinan, name: Mimar Sinan, lane: ottoman, life: "c. 1490 – 1588 CE", role: "architect of over 300 buildings", prominence: 3, sources: [wikipedia:Mimar_Sinan] }
-  - { id: p-suleiman, name: Suleiman the Magnificent, lane: ottoman, life: "1494 – 1566 CE", role: "sultan at the empire's height", prominence: 2, sources: [wikipedia:Suleiman_the_Magnificent] }
-  - { id: p-hurrem, name: Hürrem Sultan, lane: ottoman, life: "c. 1502 – 1558 CE", role: "Suleiman's wife and adviser", prominence: 4, sources: [wikipedia:Hurrem_Sultan] }
-  - { id: p-shah-abbas-i, name: Shah Abbas I, lane: safavids, life: "1571 – 1629 CE", role: "shah who rebuilt Isfahan", prominence: 3, sources: [wikipedia:Abbas_the_Great] }
-  - { id: p-ataturk, name: Mustafa Kemal Atatürk, lane: turkey, life: "1881 – 1938 CE", role: "founder of the Turkish republic", prominence: 2, sources: [wikipedia:Mustafa_Kemal_Atatürk] }
-  - { id: p-ben-gurion, name: David Ben-Gurion, lane: israel, life: "1886 – 1973 CE", role: "Israel's first prime minister", prominence: 3, sources: [wikipedia:David_Ben-Gurion] }
-  - { id: p-umm-kulthum, name: Umm Kulthum, lane: modern-egypt, life: "1898 – 1975 CE", role: "singer, the voice of the Arab world", prominence: 4, sources: [wikipedia:Umm_Kulthum] }
-  - { id: p-khomeini, name: Ruhollah Khomeini, lane: safavids, life: "1902 – 1989 CE", role: "leader of the Iranian Revolution", prominence: 3, sources: [wikipedia:Ruhollah_Khomeini] }
-  - { id: p-nasser, name: Gamal Abdel Nasser, lane: modern-egypt, life: "1918 – 1970 CE", role: "president of Egypt, voice of Arab nationalism", prominence: 3, sources: [wikipedia:Gamal_Abdel_Nasser] }
+  - { id: p-imhotep, name: Imhotep, lane: egypt-old-kingdom, life: "c. 2650 – c. 2600 BCE", role: "architect of the Step Pyramid", themes: [technology], prominence: 3, sources: [wikipedia:Imhotep] }
+  - { id: p-sargon, name: Sargon of Akkad, lane: akkad, life: "c. 2350 – c. 2279 BCE", role: "founder of the first empire", themes: [government], prominence: 2, sources: [wikipedia:Sargon_of_Akkad] }
+  - { id: p-enheduanna, name: Enheduanna, lane: akkad, life: "c. 2285 – c. 2250 BCE", role: "priestess, the first named author", themes: [art, religion, women], prominence: 3, sources: [wikipedia:Enheduanna] }
+  - { id: p-hammurabi, name: Hammurabi, lane: old-babylon, life: "c. 1810 – 1750 BCE", role: "king of Babylon, lawgiver", themes: [ideas, government], prominence: 2, sources: [wikipedia:Hammurabi] }
+  - { id: p-hatshepsut, name: Hatshepsut, lane: egypt-new-kingdom, life: "c. 1507 – 1458 BCE", role: "woman who ruled as pharaoh", themes: [government, women], prominence: 2, sources: [wikipedia:Hatshepsut] }
+  - { id: p-akhenaten, name: Akhenaten, lane: egypt-new-kingdom, life: "c. 1380 – c. 1336 BCE", role: "pharaoh who worshipped one god, the Aten", themes: [government, religion], prominence: 3, sources: [wikipedia:Akhenaten] }
+  - { id: p-tutankhamun, name: Tutankhamun, lane: egypt-new-kingdom, life: "c. 1341 – 1323 BCE", role: "boy pharaoh", themes: [government], prominence: 4, sources: [wikipedia:Tutankhamun] }
+  - { id: p-ramesses-ii, name: Ramesses II, lane: egypt-new-kingdom, life: "c. 1303 – 1213 BCE", role: "pharaoh of Abu Simbel", themes: [government], prominence: 2, sources: [wikipedia:Ramesses_II] }
+  - { id: p-ashurbanipal, name: Ashurbanipal, lane: neo-assyria, life: "c. 685 – c. 631 BCE", role: "king, collector of the library at Nineveh", themes: [government], prominence: 3, sources: [wikipedia:Ashurbanipal] }
+  - { id: p-croesus, name: Croesus, lane: lydia, life: "c. 595 – c. 546 BCE", role: "king of Lydia, proverbially rich", themes: [government, trade], prominence: 4, sources: [wikipedia:Croesus] }
+  - { id: p-nebuchadnezzar-ii, name: Nebuchadnezzar II, lane: neo-babylonian, life: "c. 642 – 562 BCE", role: "king of Babylon", themes: [government], prominence: 2, sources: [wikipedia:Nebuchadnezzar_II] }
+  - { id: p-cyrus, name: Cyrus the Great, lane: achaemenid, life: "c. 600 – 530 BCE", role: "founder of the Persian empire", themes: [government], prominence: 2, endonym: { text: "𐎤𐎢𐎽𐎢𐏁", script: Xpeo, translit: Kūruš }, sources: [wikipedia:Cyrus_the_Great] }
+  - { id: p-darius-i, name: Darius I, lane: achaemenid, life: "c. 550 – 486 BCE", role: "king of kings of Persia", themes: [government], prominence: 3, sources: [wikipedia:Darius_the_Great] }
+  - { id: p-euclid, name: Euclid, lane: ptolemaic, life: "c. 325 – c. 270 BCE", role: "geometer of Alexandria", themes: [science], prominence: 3, sources: [wikipedia:Euclid] }
+  - { id: p-eratosthenes, name: Eratosthenes, lane: ptolemaic, life: "c. 276 – c. 194 BCE", role: "measured the size of the Earth", themes: [science], prominence: 3, sources: [wikipedia:Eratosthenes] }
+  - { id: p-cleopatra, name: Cleopatra VII, lane: ptolemaic, life: "69 – 30 BCE", role: "last queen of Ptolemaic Egypt", themes: [government, women], prominence: 2, sources: [wikipedia:Cleopatra] }
+  - { id: p-jesus, name: Jesus of Nazareth, lane: second-temple-judea, life: "c. 4 BCE – c. 30 CE", role: "preacher; Christianity grew from his followers", themes: [religion], prominence: 2, sources: [wikipedia:Jesus] }
+  - { id: p-paul-apostle, name: Paul of Tarsus, lane: second-temple-judea, life: "c. 5 – c. 65 CE", role: "apostle and letter-writer", themes: [art, religion], prominence: 3, sources: [wikipedia:Paul_the_Apostle] }
+  - { id: p-shapur-i, name: Shapur I, lane: sasanian, life: "c. 215 – 270 CE", role: "Persian king who captured a Roman emperor", themes: [government], prominence: 3, sources: [wikipedia:Shapur_I] }
+  - { id: p-mani, name: Mani, lane: sasanian, life: "216 – 274 CE", role: "prophet of Manichaeism", themes: [religion], prominence: 4, sources: [wikipedia:Mani_(prophet)] }
+  - { id: p-zenobia, name: Zenobia, lane: palmyra, life: "c. 240 – c. 274 CE", role: "queen of Palmyra who defied Rome", themes: [government, war, women], prominence: 3, sources: [wikipedia:Zenobia] }
+  - { id: p-khadija, name: Khadija, lane: early-islam, life: "c. 555 – 619 CE", role: "merchant, Muhammad's first wife and first believer", themes: [trade, women], prominence: 4, sources: [wikipedia:Khadija_bint_Khuwaylid] }
+  - { id: p-muhammad, name: Muhammad, lane: early-islam, life: "c. 570 – 632 CE", role: "prophet of Islam", themes: [religion], prominence: 2, endonym: { text: "مُحَمَّد", script: Arab, translit: Muḥammad }, sources: [wikipedia:Muhammad] }
+  - { id: p-ali, name: Ali ibn Abi Talib, lane: rashidun, life: "c. 600 – 661 CE", role: "fourth caliph, first imam of the Shia", themes: [government, religion], prominence: 3, sources: [wikipedia:Ali] }
+  - { id: p-aisha, name: Aisha, lane: rashidun, life: "c. 613 – 678 CE", role: "scholar of the Prophet's sayings", themes: [ideas, religion, women], prominence: 4, sources: [wikipedia:Aisha] }
+  - { id: p-al-khwarizmi, name: Al-Khwarizmi, lane: abbasid, life: "c. 780 – c. 850 CE", role: "mathematician, father of algebra", themes: [science, government], prominence: 3, sources: [wikipedia:Muhammad_ibn_Musa_al-Khwarizmi] }
+  - { id: p-ibn-sina, name: Ibn Sina (Avicenna), lane: abbasid, life: "980 – 1037 CE", role: "physician and philosopher", themes: [ideas, science], prominence: 2, sources: [wikipedia:Avicenna] }
+  - { id: p-omar-khayyam, name: Omar Khayyam, lane: seljuks, life: "1048 – 1131 CE", role: "poet and mathematician", themes: [art, science], prominence: 3, sources: [wikipedia:Omar_Khayyam] }
+  - { id: p-saladin, name: Saladin, lane: ayyubids, life: "1137 – 1193 CE", role: "sultan who retook Jerusalem", themes: [government], prominence: 2, sources: [wikipedia:Saladin] }
+  - { id: p-rumi, name: Rumi, lane: rum, life: "1207 – 1273 CE", role: "Sufi poet", themes: [art, religion], prominence: 3, sources: [wikipedia:Rumi] }
+  - { id: p-ibn-khaldun, name: Ibn Khaldun, lane: mamluks, life: "1332 – 1406 CE", role: "historian and social thinker", themes: [art, ideas], prominence: 3, sources: [wikipedia:Ibn_Khaldun] }
+  - { id: p-mehmed-ii, name: Mehmed II, lane: ottoman, life: "1432 – 1481 CE", role: "sultan who took Constantinople", themes: [government], prominence: 2, sources: [wikipedia:Mehmed_II] }
+  - { id: p-sinan, name: Mimar Sinan, lane: ottoman, life: "c. 1490 – 1588 CE", role: "architect of over 300 buildings", themes: [technology], prominence: 3, sources: [wikipedia:Mimar_Sinan] }
+  - { id: p-suleiman, name: Suleiman the Magnificent, lane: ottoman, life: "1494 – 1566 CE", role: "sultan at the empire's height", themes: [government], prominence: 2, sources: [wikipedia:Suleiman_the_Magnificent] }
+  - { id: p-hurrem, name: Hürrem Sultan, lane: ottoman, life: "c. 1502 – 1558 CE", role: "Suleiman's wife and adviser", themes: [women], prominence: 4, sources: [wikipedia:Hurrem_Sultan] }
+  - { id: p-shah-abbas-i, name: Shah Abbas I, lane: safavids, life: "1571 – 1629 CE", role: "shah who rebuilt Isfahan", themes: [government], prominence: 3, sources: [wikipedia:Abbas_the_Great] }
+  - { id: p-ataturk, name: Mustafa Kemal Atatürk, lane: turkey, life: "1881 – 1938 CE", role: "founder of the Turkish republic", themes: [government], prominence: 2, sources: [wikipedia:Mustafa_Kemal_Atatürk] }
+  - { id: p-ben-gurion, name: David Ben-Gurion, lane: israel, life: "1886 – 1973 CE", role: "Israel's first prime minister", themes: [government], prominence: 3, sources: [wikipedia:David_Ben-Gurion] }
+  - { id: p-umm-kulthum, name: Umm Kulthum, lane: modern-egypt, life: "1898 – 1975 CE", role: "singer, the voice of the Arab world", themes: [art, women], prominence: 4, sources: [wikipedia:Umm_Kulthum] }
+  - { id: p-khomeini, name: Ruhollah Khomeini, lane: safavids, life: "1902 – 1989 CE", role: "leader of the Iranian Revolution", themes: [science, government], prominence: 3, sources: [wikipedia:Ruhollah_Khomeini] }
+  - { id: p-nasser, name: Gamal Abdel Nasser, lane: modern-egypt, life: "1918 – 1970 CE", role: "president of Egypt, voice of Arab nationalism", themes: [government], prominence: 3, sources: [wikipedia:Gamal_Abdel_Nasser] }

@@ -121,7 +121,7 @@ Default **off** (Layers menu): sky events (Halley's returns, the 585 BCE eclipse
 - **Folio (side panel):** native name, dates + uncertainty, predecessors/successors, key facts, short summary, voices, gallery, people, events (click to fly), sources; "Read more" loads the Wikipedia summary live with attribution. P5 items live here.
 - **Atlas:** synced world map from Cliopatria (Seshat; 1,600+ polities 3400 BCE–2024 CE, CC BY 4.0, with Wikidata IDs) at the year under the cursor; hovered lane's territory lights up; scrub to watch borders move.
 - **Doorways:** click an image → the museum's high-res scan via IIIF.
-- **Search (⌘K)**, **"Meanwhile…"** (click a year → what was happening everywhere, including P5 items), **Threads** (paper, numerals & zero, the alphabet, Buddhism, the Columbian Exchange, gunpowder, printing), **Lenses** (religion, science, art, war, trade, climate & disease, women in history), **Tours** (narrated camera flights, exportable as 4K video), time-distance tool, deep links, offline use, accessible outline view.
+- **Search (⌘K)**, **"Meanwhile…"** (click a year → what was happening everywhere, including P5 items), **Threads** (paper, numerals & zero, the alphabet, Buddhism, the Columbian Exchange, gunpowder, printing), **Lenses** (religion, science, art, war, trade, climate & disease, women in history), time-distance tool, deep links, offline use, accessible outline view.
 
 ## 7. Content
 
@@ -233,7 +233,8 @@ mappa-temporis/
 | **1. Vertical slice** *(done — see `docs/phase-1/`)* | Classical Antiquity across all regions, with Folio, Atlas, search, frozen headers, Silk Road thread, one tour | You'd hang it on a wall |
 | **2. Skeleton** *(done — see `docs/phase-2/`)* | All eras/regions at P1–P3 (~400 lanes, ~2,500 events), substrates, era maps, turning-point bands, margins | The poster exists end to end |
 | **3. Depth** *(done — see `docs/phase-3/`)* | Era-by-era P3–P5 fill, people, voices, daily life, coins, native names; balance audits | Coverage targets met within density budgets |
-| **4. Experience & editions** | Tours + video, lenses, threads, Meanwhile, layers, print editions, offline, accessibility | Launch (private) |
+| **4. Explore** *(done — see `docs/phase-4/`)* | Lenses (theme highlighting), threads (follow a story across regions), Meanwhile (everything at one year) | Each works from the toolbar at every zoom |
+| **5. Layers & editions** | Optional layers (sky, calendars, curiosities, your lifetime), print editions, offline, accessibility | Launch (private) |
 
 Real time estimates come after Phase 0.
 

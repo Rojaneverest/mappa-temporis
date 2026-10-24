@@ -24,7 +24,7 @@ lanes:
     basis: archaeology
     span: c. 3700 – c. 3100 BCE
     events:
-      - { id: botai-horses, date: c. 3500 BCE, label: "Among the earliest people to keep horses", prominence: 3, confidence: disputed, themes: [technology], sources: [wikipedia:Botai_culture] }
+      - { id: botai-horses, date: c. 3500 BCE, label: "Among the earliest people to keep horses", prominence: 3, confidence: disputed, themes: [technology], sources: [wikipedia:Botai_culture], threads: [horse] }
     sources: [wikipedia:Botai_culture]
 
   - id: bmac
@@ -51,7 +51,7 @@ lanes:
     relations:
       - { type: influences, lane: early-vedic, at: c. 1500 BCE }
     events:
-      - { id: chariot, date: c. 2000 BCE, label: "The spoked-wheel war chariot", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture] }
+      - { id: chariot, date: c. 2000 BCE, label: "The spoked-wheel war chariot", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture], threads: [horse] }
       - { id: arkaim, date: c. 1900 BCE, label: "Arkaim, a fortified ring settlement", prominence: 4, sources: [wikipedia:Arkaim] }
       - { id: andronovo-spread, date: c. 1800 BCE, label: "Andronovo herders spread across Kazakhstan to the Altai", prominence: 4, themes: [migration], sources: [wikipedia:Andronovo_culture] }
     sources: [wikipedia:Andronovo_culture]
@@ -79,7 +79,7 @@ lanes:
     span: c. 5000 – c. 3300 BCE
     events:
       - { id: khvalynsk, date: c. 4700 BCE, label: "Khvalynsk: Volga herders bury their dead with copper and horse bones", prominence: 4, themes: [religion], sources: [wikipedia:Khvalynsk_culture] }
-      - { id: sredny-stog, date: c. 4500 BCE, label: "Sredny Stog: early horse-keeping on the Dnieper", prominence: 4, themes: [technology], confidence: disputed, sources: [wikipedia:Sredny_Stog_culture] }
+      - { id: sredny-stog, date: c. 4500 BCE, label: "Sredny Stog: early horse-keeping on the Dnieper", prominence: 4, themes: [technology], confidence: disputed, sources: [wikipedia:Sredny_Stog_culture], threads: [horse] }
       - { id: maikop, date: c. 3700 BCE, label: "Maikop chiefs of the north Caucasus are buried under kurgans full of gold", prominence: 3, themes: [art], sources: [wikipedia:Maykop_culture] }
     sources: [wikipedia:Khvalynsk_culture]
 

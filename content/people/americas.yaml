@@ -1,29 +1,29 @@
 # People of the Americas.
 people:
-  - { id: p-moctezuma-ii, name: Moctezuma II, lane: aztec, life: "c. 1466 – 1520 CE", role: "Aztec emperor when Cortés came", prominence: 3, sources: [wikipedia:Moctezuma_II] }
-  - { id: p-cortes, name: Hernán Cortés, lane: new-spain, life: "1485 – 1547 CE", role: "conqueror of the Aztec empire", prominence: 3, sources: [wikipedia:Hernán_Cortés] }
-  - { id: p-malinche, name: Malintzin, lane: new-spain, life: "c. 1500 – c. 1529 CE", role: "Nahua interpreter for Cortés", prominence: 4, sources: [wikipedia:La_Malinche] }
-  - { id: p-atahualpa, name: Atahualpa, lane: inca, life: "c. 1502 – 1533 CE", role: "last Inca emperor", prominence: 3, sources: [wikipedia:Atahualpa] }
-  - { id: p-guaman-poma, name: Guaman Poma de Ayala, lane: peru, life: "c. 1535 – c. 1616 CE", role: "Andean chronicler and artist", prominence: 4, sources: [wikipedia:Felipe_Guaman_Poma_de_Ayala] }
-  - { id: p-pocahontas, name: Pocahontas, lane: british-america, life: "c. 1596 – 1617 CE", role: "Powhatan woman who went to London", prominence: 4, sources: [wikipedia:Pocahontas] }
-  - { id: p-sor-juana, name: Sor Juana Inés de la Cruz, lane: new-spain, life: "1648 – 1695 CE", role: "poet and scholar-nun", prominence: 3, sources: [wikipedia:Juana_Inés_de_la_Cruz] }
-  - { id: p-franklin, name: Benjamin Franklin, lane: british-america, life: "1706 – 1790 CE", role: "printer, scientist, diplomat", prominence: 3, sources: [wikipedia:Benjamin_Franklin] }
-  - { id: p-washington, name: George Washington, lane: united-states, life: "1732 – 1799 CE", role: "first president of the United States", prominence: 2, sources: [wikipedia:George_Washington] }
-  - { id: p-tupac-amaru-ii, name: Túpac Amaru II, lane: peru, life: "1738 – 1781 CE", role: "leader of the great Andean rising", prominence: 4, sources: [wikipedia:Túpac_Amaru_II] }
-  - { id: p-toussaint, name: Toussaint Louverture, lane: haiti, life: "c. 1743 – 1803 CE", role: "leader of the Haitian Revolution", prominence: 2, sources: [wikipedia:Toussaint_Louverture] }
-  - { id: p-jefferson, name: Thomas Jefferson, lane: united-states, life: "1743 – 1826 CE", role: "author of the Declaration of Independence", prominence: 3, sources: [wikipedia:Thomas_Jefferson] }
-  - { id: p-tecumseh, name: Tecumseh, lane: united-states, life: "1768 – 1813 CE", role: "Shawnee leader of a Native alliance", prominence: 4, sources: [wikipedia:Tecumseh] }
-  - { id: p-san-martin, name: José de San Martín, lane: argentina, life: "1778 – 1850 CE", role: "liberator of Argentina, Chile and Peru", prominence: 3, sources: [wikipedia:José_de_San_Martín] }
-  - { id: p-bolivar, name: Simón Bolívar, lane: peru, life: "1783 – 1830 CE", role: "the Liberator of South America", prominence: 2, sources: [wikipedia:Simón_Bolívar] }
-  - { id: p-juarez, name: Benito Juárez, lane: new-spain, life: "1806 – 1872 CE", role: "Zapotec president of Mexico", prominence: 3, sources: [wikipedia:Benito_Juárez] }
-  - { id: p-lincoln, name: Abraham Lincoln, lane: united-states, life: "1809 – 1865 CE", role: "president who ended slavery", prominence: 2, sources: [wikipedia:Abraham_Lincoln] }
-  - { id: p-douglass, name: Frederick Douglass, lane: united-states, life: "c. 1818 – 1895 CE", role: "escaped slave and abolitionist", prominence: 3, sources: [wikipedia:Frederick_Douglass] }
-  - { id: p-tubman, name: Harriet Tubman, lane: united-states, life: "c. 1822 – 1913 CE", role: "led people out of slavery", prominence: 4, sources: [wikipedia:Harriet_Tubman] }
-  - { id: p-pedro-ii, name: Pedro II, lane: brazil, life: "1825 – 1891 CE", role: "last emperor of Brazil", prominence: 4, sources: [wikipedia:Pedro_II_of_Brazil] }
-  - { id: p-sitting-bull, name: Sitting Bull, lane: united-states, life: "c. 1831 – 1890 CE", role: "Lakota leader", prominence: 4, sources: [wikipedia:Sitting_Bull] }
-  - { id: p-edison, name: Thomas Edison, lane: united-states, life: "1847 – 1931 CE", role: "inventor", prominence: 4, sources: [wikipedia:Thomas_Edison] }
-  - { id: p-fdr, name: Franklin D. Roosevelt, lane: united-states, life: "1882 – 1945 CE", role: "president through Depression and war", prominence: 3, sources: [wikipedia:Franklin_D._Roosevelt] }
-  - { id: p-frida-kahlo, name: Frida Kahlo, lane: new-spain, life: "1907 – 1954 CE", role: "painter", prominence: 4, sources: [wikipedia:Frida_Kahlo] }
-  - { id: p-eva-peron, name: Eva Perón, lane: argentina, life: "1919 – 1952 CE", role: "first lady and champion of the poor", prominence: 4, sources: [wikipedia:Eva_Perón] }
-  - { id: p-castro, name: Fidel Castro, lane: cuba, life: "1926 – 2016 CE", role: "leader of the Cuban Revolution", prominence: 3, sources: [wikipedia:Fidel_Castro] }
-  - { id: p-mlk, name: Martin Luther King Jr., lane: united-states, life: "1929 – 1968 CE", role: "leader of the civil rights movement", prominence: 2, sources: [wikipedia:Martin_Luther_King_Jr.] }
+  - { id: p-moctezuma-ii, name: Moctezuma II, lane: aztec, life: "c. 1466 – 1520 CE", role: "Aztec emperor when Cortés came", themes: [government], prominence: 3, sources: [wikipedia:Moctezuma_II] }
+  - { id: p-cortes, name: Hernán Cortés, lane: new-spain, life: "1485 – 1547 CE", role: "conqueror of the Aztec empire", themes: [war], prominence: 3, sources: [wikipedia:Hernán_Cortés] }
+  - { id: p-malinche, name: Malintzin, lane: new-spain, life: "c. 1500 – c. 1529 CE", role: "Nahua interpreter for Cortés", themes: [women], prominence: 4, sources: [wikipedia:La_Malinche] }
+  - { id: p-atahualpa, name: Atahualpa, lane: inca, life: "c. 1502 – 1533 CE", role: "last Inca emperor", themes: [government], prominence: 3, sources: [wikipedia:Atahualpa] }
+  - { id: p-guaman-poma, name: Guaman Poma de Ayala, lane: peru, life: "c. 1535 – c. 1616 CE", role: "Andean chronicler and artist", themes: [art], prominence: 4, sources: [wikipedia:Felipe_Guaman_Poma_de_Ayala] }
+  - { id: p-pocahontas, name: Pocahontas, lane: british-america, life: "c. 1596 – 1617 CE", role: "Powhatan woman who went to London", themes: [exploration, women], prominence: 4, sources: [wikipedia:Pocahontas] }
+  - { id: p-sor-juana, name: Sor Juana Inés de la Cruz, lane: new-spain, life: "1648 – 1695 CE", role: "poet and scholar-nun", themes: [art, ideas, religion, women], prominence: 3, sources: [wikipedia:Juana_Inés_de_la_Cruz] }
+  - { id: p-franklin, name: Benjamin Franklin, lane: british-america, life: "1706 – 1790 CE", role: "printer, scientist, diplomat", themes: [trade, technology], prominence: 3, sources: [wikipedia:Benjamin_Franklin] }
+  - { id: p-washington, name: George Washington, lane: united-states, life: "1732 – 1799 CE", role: "first president of the United States", themes: [government], prominence: 2, sources: [wikipedia:George_Washington] }
+  - { id: p-tupac-amaru-ii, name: Túpac Amaru II, lane: peru, life: "1738 – 1781 CE", role: "leader of the great Andean rising", themes: [government, war], prominence: 4, sources: [wikipedia:Túpac_Amaru_II] }
+  - { id: p-toussaint, name: Toussaint Louverture, lane: haiti, life: "c. 1743 – 1803 CE", role: "leader of the Haitian Revolution", themes: [science, government], prominence: 2, sources: [wikipedia:Toussaint_Louverture] }
+  - { id: p-jefferson, name: Thomas Jefferson, lane: united-states, life: "1743 – 1826 CE", role: "author of the Declaration of Independence", themes: [art, ideas], prominence: 3, sources: [wikipedia:Thomas_Jefferson] }
+  - { id: p-tecumseh, name: Tecumseh, lane: united-states, life: "1768 – 1813 CE", role: "Shawnee leader of a Native alliance", themes: [government], prominence: 4, sources: [wikipedia:Tecumseh] }
+  - { id: p-san-martin, name: José de San Martín, lane: argentina, life: "1778 – 1850 CE", role: "liberator of Argentina, Chile and Peru", themes: [government], prominence: 3, sources: [wikipedia:José_de_San_Martín] }
+  - { id: p-bolivar, name: Simón Bolívar, lane: peru, life: "1783 – 1830 CE", role: "the Liberator of South America", themes: [government], prominence: 2, sources: [wikipedia:Simón_Bolívar] }
+  - { id: p-juarez, name: Benito Juárez, lane: new-spain, life: "1806 – 1872 CE", role: "Zapotec president of Mexico", themes: [government], prominence: 3, sources: [wikipedia:Benito_Juárez] }
+  - { id: p-lincoln, name: Abraham Lincoln, lane: united-states, life: "1809 – 1865 CE", role: "president who ended slavery", themes: [government], prominence: 2, sources: [wikipedia:Abraham_Lincoln] }
+  - { id: p-douglass, name: Frederick Douglass, lane: united-states, life: "c. 1818 – 1895 CE", role: "escaped slave and abolitionist", themes: [government], prominence: 3, sources: [wikipedia:Frederick_Douglass] }
+  - { id: p-tubman, name: Harriet Tubman, lane: united-states, life: "c. 1822 – 1913 CE", role: "led people out of slavery", themes: [women], prominence: 4, sources: [wikipedia:Harriet_Tubman] }
+  - { id: p-pedro-ii, name: Pedro II, lane: brazil, life: "1825 – 1891 CE", role: "last emperor of Brazil", themes: [government], prominence: 4, sources: [wikipedia:Pedro_II_of_Brazil] }
+  - { id: p-sitting-bull, name: Sitting Bull, lane: united-states, life: "c. 1831 – 1890 CE", role: "Lakota leader", themes: [government], prominence: 4, sources: [wikipedia:Sitting_Bull] }
+  - { id: p-edison, name: Thomas Edison, lane: united-states, life: "1847 – 1931 CE", role: "inventor", themes: [science, technology], prominence: 4, sources: [wikipedia:Thomas_Edison] }
+  - { id: p-fdr, name: Franklin D. Roosevelt, lane: united-states, life: "1882 – 1945 CE", role: "president through Depression and war", themes: [government, war], prominence: 3, sources: [wikipedia:Franklin_D._Roosevelt] }
+  - { id: p-frida-kahlo, name: Frida Kahlo, lane: new-spain, life: "1907 – 1954 CE", role: "painter", themes: [art, women], prominence: 4, sources: [wikipedia:Frida_Kahlo] }
+  - { id: p-eva-peron, name: Eva Perón, lane: argentina, life: "1919 – 1952 CE", role: "first lady and champion of the poor", themes: [government, women], prominence: 4, sources: [wikipedia:Eva_Perón] }
+  - { id: p-castro, name: Fidel Castro, lane: cuba, life: "1926 – 2016 CE", role: "leader of the Cuban Revolution", themes: [science, government], prominence: 3, sources: [wikipedia:Fidel_Castro] }
+  - { id: p-mlk, name: Martin Luther King Jr., lane: united-states, life: "1929 – 1968 CE", role: "leader of the civil rights movement", themes: [government], prominence: 2, sources: [wikipedia:Martin_Luther_King_Jr.] }

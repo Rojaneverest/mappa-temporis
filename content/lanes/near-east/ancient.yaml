@@ -29,6 +29,7 @@ lanes:
     events:
       - { id: narmer-palette, date: c. 3100 BCE, label: "The Narmer Palette: Upper and Lower Egypt united", prominence: 1, themes: [government, art], sources: [wikipedia:Narmer_Palette] }
       - { id: abydos-tombs, date: c. 3000 BCE, label: "Royal tombs at Abydos", prominence: 4, sources: [wikipedia:Umm_El_Qa'ab] }
+      - { id: egyptian-civil-calendar, date: c. 2900 BCE, label: "Egypt's civil calendar: 12 months of 30 days, plus 5 extra", prominence: 4, themes: [sky, government], confidence: probable, thread: calendars, sources: [wikipedia:Egyptian_calendar] }
     sources: [wikipedia:Early_Dynastic_Period_(Egypt)]
 
   - id: egypt-old-kingdom
@@ -91,8 +92,7 @@ lanes:
     relations:
       - { type: becomes, lane: egypt-new-kingdom, at: 1550 BCE }
     events:
-      - { id: hyksos, date: c. 1650 BCE, label: "The Hyksos rule the Nile Delta, bringing horse and chariot", prominence: 3, themes: [migration, technology], sources: [wikipedia:Hyksos] }
-      - { id: hyksos-chariot, date: c. 1600 BCE, label: "The Hyksos bring the horse and chariot to Egypt", prominence: 3, themes: [technology, war], sources: [wikipedia:Hyksos] }
+      - { id: hyksos, date: c. 1650 BCE, label: "The Hyksos rule the Nile Delta, bringing horse and chariot", prominence: 3, themes: [migration, technology], sources: [wikipedia:Hyksos], threads: [horse] }
     sources: [wikipedia:Second_Intermediate_Period_of_Egypt]
 
   - id: egypt-new-kingdom
@@ -358,7 +358,7 @@ lanes:
     span: c. 1550 – c. 1260 BCE
     cliopatria: ["Mitanni"]
     events:
-      - { id: kikkuli, date: c. 1400 BCE, label: "Kikkuli's horse-training manual", prominence: 4, themes: [technology], sources: [wikipedia:Kikkuli] }
+      - { id: kikkuli, date: c. 1400 BCE, label: "Kikkuli's horse-training manual", prominence: 4, themes: [technology], sources: [wikipedia:Kikkuli], threads: [horse] }
       - { id: mitanni-gods, date: c. 1380 BCE, label: "A treaty invokes Mitra and Varuna — Indo-Aryan gods in Syria", prominence: 3, themes: [religion], sources: [wikipedia:Mitanni] }
     sources: [wikipedia:Mitanni]
 

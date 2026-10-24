@@ -1,0 +1,13 @@
+# Lenses: one theme lit up across the whole chart, everything else dimmed (Phase 4).
+# A lens gathers events, people and voices whose `themes` include any of its themes.
+lenses:
+  - { id: religion, name: Faith & belief, color: "#7B3F8C", themes: [religion], note: "Prophets, temples, councils and schisms: how belief spread and divided." }
+  - { id: science, name: Science & technology, color: "#2C7A99", themes: [science, technology, sky], note: "Inventions, discoveries and the instruments behind them." }
+  - { id: art, name: Art & literature, color: "#C0642E", themes: [art], note: "Monuments, paintings, poems and the people who made them." }
+  - { id: ideas, name: Ideas & learning, color: "#3D6E3A", themes: [ideas], note: "Philosophies, laws, schools and books that changed minds." }
+  - { id: war, name: War & conquest, color: "#9E2B25", themes: [war], note: "Battles, conquests and the empires they built and broke." }
+  - { id: power, name: Power & government, color: "#5A5F73", themes: [government, diplomacy], note: "Kings, republics, treaties and revolutions." }
+  - { id: trade, name: Trade & exploration, color: "#A88432", themes: [trade, exploration], note: "Roads, sea lanes, money and the people who travelled them." }
+  - { id: migration, name: Migration, color: "#4F8A8B", themes: [migration], note: "Peoples on the move: herders, settlers, refugees and the enslaved." }
+  - { id: climate-disease, name: Climate & disease, color: "#6F7B3A", themes: [climate, disease], note: "Droughts, eruptions, plagues and famines: when nature set the terms." }
+  - { id: women, name: Women in history, color: "#B4436C", themes: [women], note: "Rulers, writers, scientists and rebels, and the lives of ordinary women." }

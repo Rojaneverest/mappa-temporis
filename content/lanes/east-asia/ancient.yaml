@@ -111,7 +111,7 @@ lanes:
       - { id: oracle-bones, date: c. 1250 BCE, label: "Oracle bones: the first Chinese writing, questions put to the ancestors", prominence: 1, thread: scripts, themes: [religion, ideas], sources: [wikipedia:Oracle_bone_script] }
       - { id: fu-hao, date: c. 1200 BCE, label: "Fu Hao, queen and general, buried with 1,600 objects", prominence: 2, themes: [women, war], sources: [wikipedia:Fu_Hao] }
       - { id: erligang, date: c. 1600 BCE, label: "Erligang: a walled Shang capital at Zhengzhou", prominence: 3, sources: [wikipedia:Erligang_culture] }
-      - { id: chariots-china, date: c. 1200 BCE, label: "Horse chariots reach China from the steppe", prominence: 3, themes: [technology, war], sources: [wikipedia:Chariot] }
+      - { id: chariots-china, date: c. 1200 BCE, label: "Horse chariots reach China from the steppe", prominence: 3, themes: [technology, war], sources: [wikipedia:Chariot], threads: [horse] }
     sources: [wikipedia:Shang_dynasty]
 
   - id: western-zhou

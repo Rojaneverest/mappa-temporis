@@ -1,23 +1,23 @@
 # People of Africa.
 people:
-  - { id: p-masinissa, name: Masinissa, lane: numidia, life: "c. 238 – 148 BCE", role: "first king of a united Numidia", prominence: 4, sources: [wikipedia:Masinissa] }
-  - { id: p-hannibal, name: Hannibal, lane: carthage, life: "247 – c. 183 BCE", role: "general who crossed the Alps", prominence: 2, sources: [wikipedia:Hannibal] }
-  - { id: p-jugurtha, name: Jugurtha, lane: numidia, life: "c. 160 – 104 BCE", role: "Numidian king who fought Rome", prominence: 4, sources: [wikipedia:Jugurtha] }
-  - { id: p-ezana, name: Ezana, lane: aksum, life: "c. 310 – c. 360 CE", role: "first Christian king of Aksum", prominence: 3, sources: [wikipedia:Ezana_of_Axum] }
-  - { id: p-lalibela, name: Gebre Mesqel Lalibela, lane: zagwe, life: "c. 1162 – 1221 CE", role: "king of the rock-hewn churches", prominence: 3, sources: [wikipedia:Gebre_Mesqel_Lalibela] }
-  - { id: p-sundiata, name: Sundiata Keita, lane: mali, life: "c. 1217 – c. 1255 CE", role: "founder of the Mali Empire", prominence: 2, sources: [wikipedia:Sundiata_Keita] }
-  - { id: p-mansa-musa, name: Mansa Musa, lane: mali, life: "c. 1280 – c. 1337 CE", role: "king whose gold dazzled Cairo", prominence: 2, sources: [wikipedia:Mansa_Musa] }
-  - { id: p-ibn-battuta, name: Ibn Battuta, lane: morocco, life: "1304 – c. 1369 CE", role: "traveller of 120,000 km", prominence: 3, sources: [wikipedia:Ibn_Battuta] }
-  - { id: p-zara-yaqob, name: Zara Yaqob, lane: ethiopia, life: "1399 – 1468 CE", role: "emperor and church reformer", prominence: 4, sources: [wikipedia:Zara_Yaqob] }
-  - { id: p-askia-muhammad, name: Askia Muhammad, lane: songhai, life: "c. 1443 – 1538 CE", role: "emperor of Songhai at its height", prominence: 3, sources: [wikipedia:Askia_Muhammad_I] }
-  - { id: p-afonso-i, name: Afonso I of Kongo, lane: kongo, life: "c. 1456 – 1542 CE", role: "Christian king who protested the slave trade", prominence: 3, sources: [wikipedia:Afonso_I_of_Kongo] }
-  - { id: p-osei-tutu, name: Osei Tutu, lane: ashanti, life: "c. 1660 – 1717 CE", role: "founder of the Asante kingdom", prominence: 4, sources: [wikipedia:Osei_Kofi_Tutu_I] }
-  - { id: p-ranavalona-i, name: Ranavalona I, lane: merina-madagascar, life: "c. 1778 – 1861 CE", role: "queen who closed Madagascar to Europe", prominence: 4, sources: [wikipedia:Ranavalona_I] }
-  - { id: p-moshoeshoe, name: Moshoeshoe I, lane: south-africa, life: "c. 1786 – 1870 CE", role: "founder of Lesotho", prominence: 4, sources: [wikipedia:Moshoeshoe_I] }
-  - { id: p-tippu-tip, name: Tippu Tip, lane: oman-zanzibar, life: "c. 1832 – 1905 CE", role: "Zanzibari ivory and slave trader", prominence: 4, sources: [wikipedia:Tippu_Tip] }
-  - { id: p-menelik-ii, name: Menelik II, lane: ethiopia, life: "1844 – 1913 CE", role: "emperor who won at Adwa", prominence: 3, sources: [wikipedia:Menelik_II] }
-  - { id: p-the-mahdi, name: Muhammad Ahmad, lane: sudan, life: "1844 – 1885 CE", role: "the Mahdi of Sudan", prominence: 3, sources: [wikipedia:Muhammad_Ahmad] }
-  - { id: p-haile-selassie, name: Haile Selassie, lane: ethiopia, life: "1892 – 1975 CE", role: "last emperor of Ethiopia", prominence: 3, sources: [wikipedia:Haile_Selassie] }
-  - { id: p-nkrumah, name: Kwame Nkrumah, lane: ashanti, life: "1909 – 1972 CE", role: "Ghana's first leader, pan-Africanist", prominence: 3, sources: [wikipedia:Kwame_Nkrumah] }
-  - { id: p-mandela, name: Nelson Mandela, lane: south-africa, life: "1918 – 2013 CE", role: "prisoner for 27 years, then president", prominence: 2, sources: [wikipedia:Nelson_Mandela] }
-  - { id: p-tutu, name: Desmond Tutu, lane: south-africa, life: "1931 – 2021 CE", role: "archbishop against apartheid", prominence: 4, sources: [wikipedia:Desmond_Tutu] }
+  - { id: p-masinissa, name: Masinissa, lane: numidia, life: "c. 238 – 148 BCE", role: "first king of a united Numidia", themes: [government], prominence: 4, sources: [wikipedia:Masinissa] }
+  - { id: p-hannibal, name: Hannibal, lane: carthage, life: "247 – c. 183 BCE", role: "general who crossed the Alps", themes: [war], prominence: 2, sources: [wikipedia:Hannibal] }
+  - { id: p-jugurtha, name: Jugurtha, lane: numidia, life: "c. 160 – 104 BCE", role: "Numidian king who fought Rome", themes: [government, war], prominence: 4, sources: [wikipedia:Jugurtha] }
+  - { id: p-ezana, name: Ezana, lane: aksum, life: "c. 310 – c. 360 CE", role: "first Christian king of Aksum", themes: [government, religion], prominence: 3, sources: [wikipedia:Ezana_of_Axum] }
+  - { id: p-lalibela, name: Gebre Mesqel Lalibela, lane: zagwe, life: "c. 1162 – 1221 CE", role: "king of the rock-hewn churches", themes: [government], prominence: 3, sources: [wikipedia:Gebre_Mesqel_Lalibela] }
+  - { id: p-sundiata, name: Sundiata Keita, lane: mali, life: "c. 1217 – c. 1255 CE", role: "founder of the Mali Empire", themes: [government], prominence: 2, sources: [wikipedia:Sundiata_Keita] }
+  - { id: p-mansa-musa, name: Mansa Musa, lane: mali, life: "c. 1280 – c. 1337 CE", role: "king whose gold dazzled Cairo", themes: [government, trade], prominence: 2, sources: [wikipedia:Mansa_Musa] }
+  - { id: p-ibn-battuta, name: Ibn Battuta, lane: morocco, life: "1304 – c. 1369 CE", role: "traveller of 120,000 km", themes: [exploration], prominence: 3, sources: [wikipedia:Ibn_Battuta] }
+  - { id: p-zara-yaqob, name: Zara Yaqob, lane: ethiopia, life: "1399 – 1468 CE", role: "emperor and church reformer", themes: [government], prominence: 4, sources: [wikipedia:Zara_Yaqob] }
+  - { id: p-askia-muhammad, name: Askia Muhammad, lane: songhai, life: "c. 1443 – 1538 CE", role: "emperor of Songhai at its height", themes: [government], prominence: 3, sources: [wikipedia:Askia_Muhammad_I] }
+  - { id: p-afonso-i, name: Afonso I of Kongo, lane: kongo, life: "c. 1456 – 1542 CE", role: "Christian king who protested the slave trade", themes: [government, religion], prominence: 3, sources: [wikipedia:Afonso_I_of_Kongo] }
+  - { id: p-osei-tutu, name: Osei Tutu, lane: ashanti, life: "c. 1660 – 1717 CE", role: "founder of the Asante kingdom", themes: [government], prominence: 4, sources: [wikipedia:Osei_Kofi_Tutu_I] }
+  - { id: p-ranavalona-i, name: Ranavalona I, lane: merina-madagascar, life: "c. 1778 – 1861 CE", role: "queen who closed Madagascar to Europe", themes: [government, women], prominence: 4, sources: [wikipedia:Ranavalona_I] }
+  - { id: p-moshoeshoe, name: Moshoeshoe I, lane: south-africa, life: "c. 1786 – 1870 CE", role: "founder of Lesotho", themes: [government], prominence: 4, sources: [wikipedia:Moshoeshoe_I] }
+  - { id: p-tippu-tip, name: Tippu Tip, lane: oman-zanzibar, life: "c. 1832 – 1905 CE", role: "Zanzibari ivory and slave trader", themes: [trade], prominence: 4, sources: [wikipedia:Tippu_Tip] }
+  - { id: p-menelik-ii, name: Menelik II, lane: ethiopia, life: "1844 – 1913 CE", role: "emperor who won at Adwa", themes: [government], prominence: 3, sources: [wikipedia:Menelik_II] }
+  - { id: p-the-mahdi, name: Muhammad Ahmad, lane: sudan, life: "1844 – 1885 CE", role: "the Mahdi of Sudan", themes: [religion], prominence: 3, sources: [wikipedia:Muhammad_Ahmad] }
+  - { id: p-haile-selassie, name: Haile Selassie, lane: ethiopia, life: "1892 – 1975 CE", role: "last emperor of Ethiopia", themes: [government], prominence: 3, sources: [wikipedia:Haile_Selassie] }
+  - { id: p-nkrumah, name: Kwame Nkrumah, lane: ashanti, life: "1909 – 1972 CE", role: "Ghana's first leader, pan-Africanist", themes: [government], prominence: 3, sources: [wikipedia:Kwame_Nkrumah] }
+  - { id: p-mandela, name: Nelson Mandela, lane: south-africa, life: "1918 – 2013 CE", role: "prisoner for 27 years, then president", themes: [government], prominence: 2, sources: [wikipedia:Nelson_Mandela] }
+  - { id: p-tutu, name: Desmond Tutu, lane: south-africa, life: "1931 – 2021 CE", role: "archbishop against apartheid", themes: [religion], prominence: 4, sources: [wikipedia:Desmond_Tutu] }
