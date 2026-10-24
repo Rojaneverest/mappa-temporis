@@ -68,4 +68,4 @@ Classical sheet era views: 5 → 45 readable labels, 2.8 → 6.2 pictures, 84% �
   - They cluster on dense short lanes: the United States, the Ottomans, Tonga, Fiji, Mali, England, Athens.
   - They stay in the Folio. Shorter labels (the 5e lint) and 5c's structure should bring them back.
 - **Engravings.** 26 of 31 still find room; 4 don't (they're decoration).
-- **First paint is slow in the browser pane** (several seconds before tiles appear on a cold load). This needs a look before merging.
+- **First paint in the browser pane took several seconds** on a cold dev-server load. It isn't a rendering regression: the whole wall view draws in 155 ms in Node, against 151 ms on `main`.
