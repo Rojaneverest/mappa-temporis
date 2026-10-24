@@ -106,7 +106,7 @@ export class Panel {
     parts.push(`<div class="dates">${esc(e.dates)} ${badges.join(' ')}</div>`);
     if (e.image) {
       const size = e.image.sizes.find((z) => z >= 900) ?? e.image.sizes[e.image.sizes.length - 1];
-      parts.push(`<figure class="${e.image.treatment}"><img src="/img/${esc(e.id)}/${size}.webp" alt="${esc(e.image.caption)}"><figcaption>${esc(e.image.title)}<br><span>${esc(e.image.credit)} · ${esc(e.image.license)}</span></figcaption></figure>`);
+      parts.push(`<figure class="${e.image.treatment}"><img src="${import.meta.env.BASE_URL}img/${esc(e.id)}/${size}.webp" alt="${esc(e.image.caption)}"><figcaption>${esc(e.image.title)}<br><span>${esc(e.image.credit)} · ${esc(e.image.license)}</span></figcaption></figure>`);
     }
     if (e.role) parts.push(`<p class="note">${esc(e.role[0]!.toUpperCase() + e.role.slice(1))}.</p>`);
     if (e.quote) {
@@ -138,7 +138,7 @@ export class Panel {
     if (e.images?.length) {
       parts.push('<h3>Objects</h3><div class="thumbs">' + e.images.map((id) => {
         const img = this.folio.entries[id]?.image;
-        return img ? `<a href="#" data-go="${esc(id)}" title="${esc(img.caption)}"><img src="/img/${esc(id)}/256.webp" alt="${esc(img.caption)}"></a>` : '';
+        return img ? `<a href="#" data-go="${esc(id)}" title="${esc(img.caption)}"><img src="${import.meta.env.BASE_URL}img/${esc(id)}/256.webp" alt="${esc(img.caption)}"></a>` : '';
       }).join('') + '</div>');
     }
     if (e.relations?.length) {

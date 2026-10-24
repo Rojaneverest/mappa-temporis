@@ -14,7 +14,7 @@ import { createRequire } from 'node:module';
 import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
-import { AtmosphereFile, DailyFile, LaneFile, LensFile, MarginsFile, PeopleFile, Sheet, ThreadFile, Tour, VoicesFile, type Lane, type LaneImage, type Person, type Prominence, type Voice } from '../packages/core/src/schema.ts';
+import { AtmosphereFile, DailyFile, LaneFile, LensFile, MarginsFile, PeopleFile, Sheet, ThreadFile, VoicesFile, type Lane, type LaneImage, type Person, type Prominence, type Voice } from '../packages/core/src/schema.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { makeTimescale, yearToYOf, yToYearOf, upyAt } from '../packages/core/src/timescale.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
@@ -1163,7 +1163,7 @@ for (const th of threadsOut) {
 const dl: DisplayList = {
   version: 1,
   title: `${sheet.title} — ${sheet.subtitle}`,
-  fonts: `/fonts/${SHEET_ID}/`,
+  fonts: `fonts/${SHEET_ID}/`,
   width,
   height,
   time: { y0: HEADER, year0, year1, unitsPerYear: UNITS_PER_YEAR, segments: timeSegs.length > 1 ? timeSegs : undefined },
@@ -1178,10 +1178,6 @@ mkdirSync(join(OUT, 'fonts', SHEET_ID), { recursive: true });
 mkdirSync(join(OUT, 'canvaskit'), { recursive: true });
 writeFileSync(join(OUT, `chart/${SHEET_ID}.json`), JSON.stringify(dl));
 writeFileSync(join(OUT, `chart/${SHEET_ID}.folio.json`), JSON.stringify(folio));
-// Tours for this sheet; every step must point at something in the Folio.
-const tours = walk(join(ROOT, 'content/tours')).map((f) => Tour.parse(loadYaml(f))).filter((t) => t.sheet === SHEET_ID);
-for (const t of tours) for (const st of t.steps) if (!folio.entries[st.target]) { console.error(`✗ tour ${t.id}: unknown target "${st.target}"`); process.exit(1); }
-writeFileSync(join(OUT, `chart/${SHEET_ID}.tours.json`), JSON.stringify(tours));
 // Ship only the glyphs the chart uses (every font gets the same character set, so
 // font fallback behaves exactly as it did when the build measured the text).
 const used = new Set<string>(' 0123456789.,;:–—-·()[]’\'"?!/&BCEADc');

@@ -6,6 +6,13 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--filter", "explorer", "dev"],
       "port": 5317
+    },
+    {
+      "name": "pages-preview",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "explorer", "preview", "--port", "5318", "--strictPort"],
+      "env": { "BASE_PATH": "/mappa-temporis/" },
+      "port": 5318
     }
   ]
 }

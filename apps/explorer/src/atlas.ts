@@ -53,7 +53,9 @@ export class Atlas {
   private current: (typeof this.chunks)[number] | null = null;
 
   async load(indexUrl: string) {
-    this.chunks = (await fetch(indexUrl).then((r) => r.json()) as { chunks: { from: number; to: number; url: string }[] }).chunks;
+    const base = new URL(indexUrl.replace(/\.atlas\.json$/, '/'), location.href);
+    this.chunks = (await fetch(indexUrl, { cache: 'no-cache' }).then((r) => r.json()) as { chunks: { from: number; to: number; url: string }[] }).chunks
+      .map((c) => ({ ...c, url: new URL(c.url, base).href }));
     await this.ensure(this.year);
   }
 
