@@ -1,7 +1,0 @@
-# The world sheet with deep time unfolded: the Neolithic prologue from 10,000 BCE, on the ⅛ scale
-# (decision 49). Everything else comes from world.yaml.
-extends: world
-subtitle: A map of time — from the first farmers to today
-window: 10000 BCE – 2026 CE
-atlas: world
-fold: { sheet: world, label: "Fold deep time away · start at 3300 BCE" }

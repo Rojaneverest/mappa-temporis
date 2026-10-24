@@ -155,14 +155,6 @@ export class Viewer {
     return { cx: this.x0 + this.cssW / 2 / this.s, cy: this.y0 + this.cssH / 2 / this.s, z: this.s / this.fitScale };
   }
 
-  /** Current scale (CSS px per world unit). */
-  get scale(): number { return this.s; }
-
-  /** Centre the view on a world point at an absolute scale. */
-  setScaleView(cx: number, cy: number, s: number) {
-    this.setView({ cx, cy, z: s / this.fitScale });
-  }
-
   setView(v: ViewState) {
     this.s = Math.min(MAX_SCALE, Math.max(this.fitScale, v.z * this.fitScale));
     this.x0 = v.cx - this.cssW / 2 / this.s;

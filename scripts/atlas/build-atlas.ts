@@ -29,7 +29,6 @@ const walk = (dir: string): string[] => readdirSync(dir).flatMap((f) => {
   return statSync(p).isDirectory() ? walk(p) : f.endsWith('.yaml') ? [p] : [];
 });
 const sheet = loadSheet(ROOT, SHEET_ID);
-if (sheet.atlas && sheet.atlas !== SHEET_ID) { console.log(`· ${SHEET_ID} uses the ${sheet.atlas} Atlas`); process.exit(0); }
 const regions = new Set(sheet.regions.map((r) => r.id));
 const lanes: Lane[] = walk(join(ROOT, 'content/lanes'))
   .flatMap((f) => LaneFile.parse(YAML.parse(readFileSync(f, 'utf8'))).lanes)

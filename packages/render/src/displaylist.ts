@@ -109,8 +109,6 @@ export type Item = TextItem | PathItem | RectItem | LineItem | ImageItem;
 export interface DisplayList {
   version: 1;
   title: string;
-  /** Which sheet this is, the sheet its fold strip switches to (decision 49), and whose Atlas it uses. */
-  sheet?: { id: string; fold?: { sheet: string; label: string }; atlas: string };
   /** Path of this sheet's subset fonts, relative to the site root. */
   fonts: string;
   width: number;

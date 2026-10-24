@@ -1,9 +1,7 @@
-# The whole chart: from the first writing to today, every region (decision 49). The deep-time
-# variant, world-deep.yaml, extends this sheet with the Neolithic prologue from 10,000 BCE.
+# The whole chart: from the first farmers to today, every region. Phase 2 skeleton.
 title: Mappa Temporis
-subtitle: A map of time — from the first writing to today
-window: 3300 BCE – 2026 CE
-fold: { sheet: world-deep, label: "Before writing · 10,000 – 3300 BCE" }
+subtitle: A map of time — from the first farmers to today
+window: 10000 BCE – 2026 CE
 # Progressive time: deep time is squeezed, the crowded recent centuries get room. Every change of scale is marked.
 margins: true
 scale:

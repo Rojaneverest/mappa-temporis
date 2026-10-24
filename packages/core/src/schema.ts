@@ -137,10 +137,6 @@ export const Sheet = z.object({
   margins: z.boolean().default(false),
   regions: z.array(Region),
   eras: z.array(Era),
-  /** Use another sheet's Atlas files (a variant of that sheet with a different window). */
-  atlas: z.string().optional(),
-  /** A fold strip at the top of the sheet that switches to a sheet with more (or less) deep time (decision 49). */
-  fold: z.object({ sheet: z.string(), label: z.string() }).optional(),
 });
 export type Sheet = z.infer<typeof Sheet>;
 

@@ -14,12 +14,6 @@
         background: rgba(43, 36, 32, 0.78); color: #f3ead8; font-variant-numeric: tabular-nums;
         pointer-events: none; white-space: pre; font-size: 12px;
       }
-      #fold { position: fixed; top: 112px; left: 50%; transform: translateX(-50%); display: none; z-index: 4;
-        padding: 5px 14px; border-radius: 999px; border: 1px solid rgba(107, 95, 85, 0.45); background: rgba(247, 241, 227, 0.94);
-        color: #4a3f37; font: 600 12px ui-sans-serif, -apple-system, sans-serif; letter-spacing: .03em; cursor: pointer;
-        box-shadow: 0 4px 14px rgba(60, 40, 20, 0.12); }
-      #fold.shown { display: block; }
-      #fold:hover { background: #fffaf0; }
       #loading { position: fixed; inset: 0; display: grid; place-items: center; font: italic 18px Georgia, serif; color: #6b5f55; }
       #folio {
         position: fixed; top: 64px; right: 14px; bottom: 56px; width: 372px; overflow: auto;
@@ -131,7 +125,6 @@
   <body>
     <canvas id="view"></canvas>
     <div id="status"></div>
-    <button id="fold" title="Switch between the chart from 3300 BCE and deep time from 10,000 BCE"></button>
     <div id="loading">Unrolling the map…</div>
     <aside id="folio" aria-label="Details"></aside>
     <nav id="toolbar" aria-label="Tools">

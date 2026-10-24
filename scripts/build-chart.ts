@@ -674,10 +674,6 @@ for (const lane of visibleLanes) {
     const a = Y(s.a), b = Y(s.b), c = cxAt((a + b) / 2);
     layers.lanes.push({ k: 'rect', x: c - s.w / 2, y: a, w: s.w, h: b - a, fill: PAPER, alpha: 0.55, b: [c - s.w / 2, a, c + s.w / 2, b] });
   }
-  // Lanes older than the sheet's window: say where they really begin (the deep-time sheet shows it).
-  if (clippedTop && sheet.fold) {
-    layers.text.push(text({ role: 'whisper', text: `from ${formatYear(span.start.year)}`, size: 60, color: INK_SOFT, align: 'center', w: 700, x: cxAt(top) - 350, y: top - 10 + 20, alpha: 0.9, ref: lane.id }));
-  }
   for (let yy = top; yy < bottom; yy += 48) {
     const h = Math.min(48, bottom - yy), half = halfAt(yy + h / 2), c = cxAt(yy + h / 2);
     grid.mark(c - half, yy, half * 2, h, 14);
@@ -1280,7 +1276,6 @@ for (const th of threadsOut) {
 const dl: DisplayList = {
   version: 1,
   title: `${sheet.title} — ${sheet.subtitle}`,
-  sheet: { id: SHEET_ID, fold: sheet.fold, atlas: sheet.atlas ?? SHEET_ID },
   fonts: `fonts/${SHEET_ID}/`,
   width,
   height,
