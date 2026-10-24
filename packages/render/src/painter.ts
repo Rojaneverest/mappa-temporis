@@ -160,7 +160,7 @@ export class Painter {
     for (const i of indices) {
       const item = this.dl.items[i]!;
       if (item.layer && !view.layers?.has(item.layer)) continue;
-      const alpha = (item.alpha ?? 1) * fadeAt(item.fade, zoom);
+      const alpha = (item.alpha ?? 1) * fadeAt(item.fade, zoom) * (item.fadeOut ? 1 - fadeAt(item.fadeOut, zoom) : 1);
       if (alpha <= 0.01) continue;
       switch (item.k) {
         case 'text': this.drawText(canvas, i, item, alpha, view.s); break;
@@ -189,18 +189,25 @@ export class Painter {
             if (!path) continue;
             this.paths.set(i, path);
           }
+          const ramp = (p: Paint, color: string) => {
+            if (!item.grad) return;
+            const { y0, y1, stops } = item.grad;
+            const base = ck.parseColorString(color);
+            const colors = stops.map(([, a]) => ck.Color4f(base[0]!, base[1]!, base[2]!, a * alpha));
+            p.setShader(ck.Shader.MakeLinearGradient([0, y0], [0, y1], colors, stops.map(([t]) => t), ck.TileMode.Clamp));
+          };
           if (item.fill) {
             const p = this.styled(item.fill, alpha, 'fill', 0, false, view.s, undefined, item.multiply);
-            if (item.grad) {
-              const { y0, y1, stops } = item.grad;
-              const base = ck.parseColorString(item.fill);
-              const colors = stops.map(([, a]) => ck.Color4f(base[0]!, base[1]!, base[2]!, a * alpha));
-              p.setShader(ck.Shader.MakeLinearGradient([0, y0], [0, y1], colors, stops.map(([t]) => t), ck.TileMode.Clamp));
-            }
+            ramp(p, item.fill);
             canvas.drawPath(path, p);
             p.setShader(null);
           }
-          if (item.stroke) canvas.drawPath(path, this.styled(item.stroke, alpha, 'stroke', item.sw, item.hair, view.s, item.dash));
+          if (item.stroke) {
+            const p = this.styled(item.stroke, alpha, 'stroke', item.sw, item.hair, view.s, item.dash);
+            if (!item.fill) ramp(p, item.stroke);
+            canvas.drawPath(path, p);
+            p.setShader(null);
+          }
           break;
         }
       }

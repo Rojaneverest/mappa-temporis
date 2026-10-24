@@ -41,6 +41,8 @@ const REGION_GAP = 300;
 /** Lane width per weight step. */
 const WEIGHT_W = [0, 16, 56, 96, 140, 190, 240];
 const DEFAULT_WEIGHT: Record<Prominence, number> = { 1: 6, 2: 4, 3: 3, 4: 1, 5: 1 };
+/** Screen width (CSS px) landmark lanes never drop below when zoomed out (decision 29). */
+const LANE_MIN_PX: Partial<Record<Prominence, number>> = { 1: 7, 2: 3.5 };
 /** A track is: margin, its widest lane, a gap, then label space. Thin lanes get thin tracks. */
 const TRACK_MARGIN = 40;
 const TRACK_GAP = 30;
@@ -533,6 +535,18 @@ for (const lane of visibleLanes) {
     lanePath.grad = { y0: top, y1: bottom, stops: [[0, fadeTop ? 0 : 1], [Math.min(0.45, fadeTop / len), 1], [Math.max(0.55, 1 - fadeBot / len), 1], [1, fadeBot ? 0 : 1]] };
   }
   layers.lanes.push(lanePath);
+  // Zoomed out, a centre stroke keeps the lane at its minimum screen width; it fades once the lane is wider.
+  const minPx = LANE_MIN_PX[lane.prominence];
+  if (minPx) {
+    const narrowest = Math.min(...segs.filter((s) => s.style !== 'interregnum').map((s) => s.w));
+    const centres = inner.map((yr) => [cxAtYear(yr), Y(yr)] as [number, number]);
+    const pad = 300;
+    layers.lanes.push({
+      k: 'path', d: `M ${r1(centres[0]![0])} ${r1(centres[0]![1])} ${spline(centres)}`, stroke: color, sw: minPx, hair: true,
+      alpha: lanePath.alpha, grad: lanePath.grad, fadeOut: [minPx / narrowest, (minPx / narrowest) * 1.6],
+      b: [bbox[0] - pad, top, bbox[2] + pad, bottom],
+    });
+  }
   if (lane.basis !== 'texts') {
     layers.lanes.push({ k: 'path', d, stroke: mix(PIGMENTS[lane.sphere]!.hex, INK, 0.3), sw: 1.1, hair: true, dash: [4, 6], alpha: 0.45, b: bbox });
   }
