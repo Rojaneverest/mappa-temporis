@@ -3,6 +3,7 @@ lanes:
   # ------------------------------------------------------------------ egypt
   - id: fatimids
     name: Fatimid Caliphate
+    endonym: { text: "الدولة الفاطمية", script: Arab, translit: "ad-Dawla al-Fāṭimiyya" }
     region: near-east
     group: egypt
     sphere: islamic
@@ -15,10 +16,12 @@ lanes:
       - { id: cairo-founded, date: 969 CE, label: "The Fatimids found Cairo; al-Azhar follows in 970", prominence: 2, sources: [wikipedia:Cairo] }
       - { id: ibn-al-haytham, date: c. 1021 CE, label: "Ibn al-Haytham's Book of Optics: experiment as the test of truth", prominence: 2, themes: [ideas], sources: [wikipedia:Book_of_Optics] }
       - { id: al-azhar, date: 970 CE, label: "Al-Azhar, one of the oldest universities", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Al-Azhar_University] }
+      - { id: holy-sepulchre-1009, date: 1009 CE, label: "Caliph al-Hakim orders the Church of the Holy Sepulchre destroyed", prominence: 4, themes: [religion], sources: [wikipedia:Church_of_the_Holy_Sepulchre] }
     sources: [wikipedia:Fatimid_Caliphate]
 
   - id: ayyubids
     name: Ayyubids
+    endonym: { text: "الأيوبيون", script: Arab, translit: "al-Ayyūbiyyūn" }
     region: near-east
     group: egypt
     sphere: islamic
@@ -29,12 +32,13 @@ lanes:
       - { type: becomes, lane: mamluks, at: 1250 CE }
       - { type: conquers, lane: crusader-states, at: 1187 CE }
     events:
-      - { id: saladin, date: 1187 CE, label: "Saladin retakes Jerusalem", prominence: 2, themes: [war, religion], sources: [wikipedia:Siege_of_Jerusalem_(1187)] }
+      - { id: saladin, date: 1187 CE, label: "Saladin retakes Jerusalem", prominence: 2, themes: [war, religion], sources: [wikipedia:Siege_of_Jerusalem_(1187)], people: [p-saladin] }
       - { id: hattin, date: 1187 CE, label: "Hattin: Saladin destroys the crusader army", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Hattin] }
     sources: [wikipedia:Ayyubid_dynasty]
 
   - id: mamluks
     name: Mamluk Sultanate
+    endonym: { text: "المماليك", script: Arab, translit: "al-Mamālīk" }
     region: near-east
     group: egypt
     sphere: islamic
@@ -45,10 +49,13 @@ lanes:
       - { id: ain-jalut, date: 1260 CE, label: "The Mamluks stop the Mongols at Ain Jalut", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Ain_Jalut] }
       - { id: ibn-khaldun, date: 1377 CE, label: "Ibn Khaldun's Muqaddimah: a science of history and society", prominence: 3, themes: [ideas], sources: [wikipedia:Muqaddimah] }
       - { id: mamluk-plague, date: 1348 CE, label: "The Black Death kills a third of Cairo", prominence: 3, themes: [disease], sources: [wikipedia:Black_Death_in_the_Middle_East] }
+      - { id: sultan-hassan, date: 1363 CE, label: "The Mosque-Madrasa of Sultan Hassan rises in Cairo", prominence: 4, themes: [art, religion], sources: [wikipedia:Mosque-Madrasa_of_Sultan_Hassan] }
+      - { id: timur-damascus, date: 1400 CE, label: "Timur sacks Damascus", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Damascus_(1400)] }
     sources: [wikipedia:Mamluk_Sultanate]
 
   - id: modern-egypt
     name: Egypt
+    endonym: { text: "مصر", script: Arab, translit: "Miṣr" }
     region: near-east
     group: egypt
     sphere: egyptian
@@ -68,11 +75,17 @@ lanes:
       - { id: egypt-1919, date: 1919 CE, label: "The 1919 revolution against British rule", prominence: 4, themes: [government], sources: [wikipedia:Egyptian_revolution_of_1919] }
       - { id: muslim-brotherhood, date: 1928 CE, label: "Hassan al-Banna founds the Muslim Brotherhood", prominence: 3, themes: [religion, ideas], sources: [wikipedia:Muslim_Brotherhood] }
       - { id: free-officers, date: 1952 CE, label: "The Free Officers overthrow the monarchy", prominence: 3, themes: [government], sources: [wikipedia:Egyptian_revolution_of_1952] }
+      - { id: citadel-massacre, date: 1811 CE, label: "Muhammad Ali massacres the Mamluks at the Citadel", prominence: 4, themes: [government], sources: [wikipedia:Massacre_of_the_Citadel] }
+      - { id: egypt-syria-1831, date: 1831 CE, label: "Egypt's army seizes Syria from the sultan", prominence: 4, themes: [war], sources: [wikipedia:Egyptian–Ottoman_War_(1831–1833)] }
+      - { id: egypt-railway, date: 1854 CE, label: "Africa's first railway: Alexandria to Cairo", prominence: 4, themes: [technology], sources: [wikipedia:Egyptian_National_Railways] }
+      - { id: denshawai, date: 1906 CE, label: "The Denshawai incident inflames Egyptian nationalism", prominence: 4, themes: [government], sources: [wikipedia:Denshawai_incident] }
+      - { id: morsi-ousted, date: 2013 CE, label: "The army ousts President Morsi", prominence: 4, themes: [government], sources: [wikipedia:2013_Egyptian_coup_d'état] }
     sources: [wikipedia:History_of_Egypt]
 
   # ------------------------------------------------------------------ levant & arabia
   - id: crusader-states
     name: Crusader states
+    endonym: { text: "Outremer", script: Latn }
     region: near-east
     group: levant
     sphere: roman
@@ -83,10 +96,12 @@ lanes:
       - { id: jerusalem-1099, date: 1099 CE, label: "Crusaders take Jerusalem and massacre its people", prominence: 2, themes: [war, religion], sources: [wikipedia:Siege_of_Jerusalem_(1099)] }
       - { id: acre-falls, date: 1291 CE, label: "Acre falls: the end of the Crusader states", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Acre_(1291)] }
       - { id: krak, date: c. 1170 CE, label: "Krak des Chevaliers", prominence: 4, themes: [war, art], sources: [wikipedia:Krak_des_Chevaliers] }
+      - { id: edessa-1144, date: 1144 CE, label: "Edessa falls; the Second Crusade sets out", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Edessa_(1144)] }
     sources: [wikipedia:Crusader_states]
 
   - id: saudi
     name: Saudi Arabia
+    endonym: { text: "السعودية", script: Arab, translit: "as-Saʿūdiyya" }
     region: near-east
     group: levant
     sphere: islamic
@@ -102,6 +117,10 @@ lanes:
       - { id: diriyah-falls, date: 1818 CE, label: "Egyptian armies destroy Diriyah, the first Saudi capital", prominence: 4, themes: [war], sources: [wikipedia:Ottoman–Wahhabi_war] }
       - { id: riyadh-1902, date: 1902 CE, label: "Ibn Saud retakes Riyadh", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Riyadh_(1902)] }
       - { id: saudi-women-drive, date: 2018 CE, label: "Saudi women win the right to drive", prominence: 4, themes: [women], sources: [wikipedia:Women_to_drive_movement] }
+      - { id: diriyah-founded, date: 1727 CE, label: "The Emirate of Diriyah is founded", prominence: 4, themes: [government], sources: [wikipedia:Emirate_of_Diriyah] }
+      - { id: second-saudi-state, date: 1824 CE, label: "The second Saudi state rules from Riyadh", prominence: 4, themes: [government], sources: [wikipedia:Emirate_of_Nejd] }
+      - { id: grand-mosque-seizure, date: 1979 CE, label: "Militants seize the Grand Mosque of Mecca", prominence: 4, themes: [religion], sources: [wikipedia:Grand_Mosque_seizure] }
+      - { id: vision-2030, date: 2016 CE, label: "Vision 2030: Saudi Arabia plans for life after oil", prominence: 4, themes: [trade], sources: [wikipedia:Saudi_Vision_2030] }
     sources: [wikipedia:History_of_Saudi_Arabia]
 
   - id: israel
@@ -119,11 +138,13 @@ lanes:
       - { id: yom-kippur, date: 1973 CE, label: "The Yom Kippur War", prominence: 4, themes: [war], sources: [wikipedia:Yom_Kippur_War] }
       - { id: gaza-war, date: 2023 CE, label: "October 7 and the war in Gaza", prominence: 3, themes: [war], sources: [wikipedia:Gaza_war] }
       - { id: camp-david, date: 1978 CE, label: "Camp David: Egypt and Israel agree to make peace", prominence: 3, themes: [diplomacy], sources: [wikipedia:Camp_David_Accords] }
+      - { id: gaza-disengagement, date: 2005 CE, label: "Israel withdraws its settlers from Gaza", prominence: 4, themes: [government], sources: [wikipedia:Israeli_disengagement_from_Gaza] }
     sources: [wikipedia:Israel]
 
   # ------------------------------------------------------------------ anatolia
   - id: rum
     name: Sultanate of Rum
+    endonym: { text: "سلجوقیان روم", script: Arab, translit: "Saljūqiyān-i Rūm" }
     region: near-east
     group: anatolia
     sphere: islamic
@@ -133,6 +154,7 @@ lanes:
     events:
       - { id: rumi, date: c. 1258 CE, label: "Rumi composes the Masnavi in Konya", prominence: 3, themes: [art, religion], sources: [wikipedia:Masnavi] }
       - { id: myriokephalon, date: 1176 CE, label: "Myriokephalon: Byzantium loses Anatolia for good", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Myriokephalon] }
+      - { id: kose-dag, date: 1243 CE, label: "Köse Dağ: the Mongols make Rum a vassal", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Köse_Dağ] }
     sources: [wikipedia:Sultanate_of_Rum]
 
   - id: ottoman
@@ -151,7 +173,7 @@ lanes:
       - { type: becomes, lane: turkey, at: 1923 CE }
     events:
       - { id: osman, date: 1299 CE, label: "Osman I founds a frontier principality in Anatolia", prominence: 3, sources: [wikipedia:Osman_I] }
-      - { id: constantinople-1453, date: 1453 CE, label: "Mehmed II takes Constantinople", prominence: 1, themes: [war], sources: [wikipedia:Fall_of_Constantinople] }
+      - { id: constantinople-1453, date: 1453 CE, label: "Mehmed II takes Constantinople", prominence: 1, themes: [war], sources: [wikipedia:Fall_of_Constantinople], people: [p-mehmed-ii] }
       - { id: suleiman, date: 1520 CE, label: "Suleiman the Magnificent; Sinan builds his great mosques", prominence: 2, themes: [art, government], sources: [wikipedia:Suleiman_the_Magnificent] }
       - { id: vienna-1683, date: 1683 CE, label: "The siege of Vienna fails", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Vienna] }
       - { id: tanzimat, date: 1839 CE, label: "The Tanzimat reforms", prominence: 4, themes: [government], sources: [wikipedia:Tanzimat] }
@@ -172,10 +194,34 @@ lanes:
       - { id: ottoman-constitution, date: 1876 CE, label: "The first Ottoman constitution and parliament", prominence: 4, themes: [government], sources: [wikipedia:Ottoman_constitution_of_1876] }
       - { id: young-turks, date: 1908 CE, label: "The Young Turk Revolution restores the constitution", prominence: 3, themes: [government], sources: [wikipedia:Young_Turk_Revolution] }
       - { id: sultanate-abolished, date: 1922 CE, label: "The sultanate is abolished", prominence: 3, themes: [government], sources: [wikipedia:Abolition_of_the_Ottoman_sultanate] }
+      - { id: baghdad-1534, date: 1534 CE, label: "Suleiman takes Baghdad from the Safavids", prominence: 4, themes: [war], sources: [wikipedia:Ottoman–Safavid_War_(1532–1555)] }
+      - { id: preveza, date: 1538 CE, label: "Preveza: Ottoman fleets master the Mediterranean", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Preveza] }
+      - { id: szigetvar, date: 1566 CE, label: "Suleiman dies on campaign at Szigetvár", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Szigetvár] }
+      - { id: blue-mosque, date: 1616 CE, label: "The Sultan Ahmed (Blue) Mosque is completed", prominence: 3, themes: [art, religion], sources: [wikipedia:Sultan_Ahmed_Mosque] }
+      - { id: osman-ii, date: 1622 CE, label: "The Janissaries kill Sultan Osman II", prominence: 4, themes: [government], sources: [wikipedia:Osman_II] }
+      - { id: evliya-celebi, date: 1640 CE, label: "Evliya Çelebi begins forty years of travels", prominence: 4, themes: [exploration], sources: [wikipedia:Evliya_Çelebi] }
+      - { id: koprulu, date: 1656 CE, label: "The Köprülü grand viziers restore Ottoman power", prominence: 4, themes: [government], sources: [wikipedia:Köprülü_era] }
+      - { id: sabbatai-zevi, date: 1666 CE, label: "Sabbatai Zevi, the would-be messiah, converts to Islam", prominence: 4, themes: [religion], sources: [wikipedia:Sabbatai_Zevi] }
+      - { id: candia, date: 1669 CE, label: "Crete falls to the Ottomans after a 21-year siege", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Candia] }
+      - { id: auspicious-incident, date: 1826 CE, label: "Mahmud II destroys the Janissaries", prominence: 3, themes: [government], sources: [wikipedia:Auspicious_Incident] }
+      - { id: lebanon-1860, date: 1860 CE, label: "Civil war in Mount Lebanon; massacre in Damascus", prominence: 4, themes: [war, religion], sources: [wikipedia:1860_civil_conflict_in_Mount_Lebanon_and_Damascus] }
+      - { id: congress-berlin, date: 1878 CE, label: "The Congress of Berlin strips the Ottomans of most of the Balkans", prominence: 3, themes: [diplomacy], sources: [wikipedia:Congress_of_Berlin] }
+      - { id: hamidian-massacres, date: 1894 CE, label: "The Hamidian massacres of Armenians", prominence: 3, themes: [war], sources: [wikipedia:Hamidian_massacres] }
+      - { id: hejaz-railway, date: 1908 CE, label: "The Hejaz Railway reaches Medina", prominence: 4, themes: [technology], sources: [wikipedia:Hejaz_railway] }
+      - { id: tel-aviv, date: 1909 CE, label: "Tel Aviv is founded on the dunes north of Jaffa", prominence: 4, themes: [migration], sources: [wikipedia:Tel_Aviv] }
+      - { id: arab-revolt, date: 1916 CE, label: "The Arab Revolt against Ottoman rule", prominence: 3, themes: [war], sources: [wikipedia:Arab_Revolt] }
+      - { id: sykes-picot, date: 1916 CE, label: "Sykes–Picot: Britain and France secretly divide the Arab lands", prominence: 3, themes: [diplomacy], sources: [wikipedia:Sykes–Picot_Agreement] }
+      - { id: balfour, date: 1917 CE, label: "The Balfour Declaration promises a Jewish 'national home' in Palestine", prominence: 3, themes: [diplomacy], sources: [wikipedia:Balfour_Declaration] }
+      - { id: celali-revolts, date: c. 1600 CE, label: "The Celali revolts ravage Anatolia", prominence: 4, themes: [war], sources: [wikipedia:Celali_rebellions] }
+      - { id: patrona-halil, date: 1730 CE, label: "The Patrona Halil revolt ends the Tulip Era", prominence: 4, themes: [government], sources: [wikipedia:Patrona_Halil_revolt] }
+      - { id: algiers-1830, date: 1830 CE, label: "France invades Ottoman Algiers", prominence: 3, themes: [war], sources: [wikipedia:French_invasion_of_Algiers_(1830)] }
+      - { id: tunisia-1881, date: 1881 CE, label: "France takes Tunisia", prominence: 4, themes: [war], sources: [wikipedia:French_conquest_of_Tunisia] }
+      - { id: italo-turkish, date: 1911 CE, label: "Italy seizes Libya", prominence: 4, themes: [war], sources: [wikipedia:Italo-Turkish_War] }
     sources: [wikipedia:Ottoman_Empire]
 
   - id: turkey
     name: Turkey
+    endonym: { text: "Türkiye", script: Latn }
     region: near-east
     group: anatolia
     sphere: islamic
@@ -188,6 +234,8 @@ lanes:
       - { id: turkey-women-vote, date: 1934 CE, label: "Turkish women win the vote", prominence: 4, themes: [women, government], sources: [wikipedia:Women's_suffrage_in_Turkey] }
       - { id: turkey-nato, date: 1952 CE, label: "Turkey joins NATO", prominence: 4, themes: [diplomacy], sources: [wikipedia:NATO] }
       - { id: turkey-syria-quake, date: 2023 CE, label: "Earthquakes in Turkey and Syria kill over 50,000", prominence: 3, themes: [climate], sources: [wikipedia:2023_Turkey–Syria_earthquakes] }
+      - { id: cyprus-1974, date: 1974 CE, label: "Turkey invades Cyprus; the island is divided", prominence: 4, themes: [war], sources: [wikipedia:Turkish_invasion_of_Cyprus] }
+      - { id: turkey-coup-2016, date: 2016 CE, label: "A failed coup attempt in Turkey", prominence: 4, themes: [government], sources: [wikipedia:2016_Turkish_coup_attempt] }
     sources: [wikipedia:Turkey]
 
   # ------------------------------------------------------------------ mesopotamia & iran
@@ -211,10 +259,16 @@ lanes:
       - { id: al-khwarizmi, date: c. 820 CE, label: "Al-Khwarizmi's algebra; 'algorithm' is his name", prominence: 1, thread: numerals, themes: [ideas], sources: [wikipedia:Al-Khwarizmi] }
       - { id: thousand-nights, date: c. 900 CE, label: "The Thousand and One Nights take shape", prominence: 3, themes: [art], sources: [wikipedia:One_Thousand_and_One_Nights] }
       - { id: baghdad-1258, date: 1258 CE, label: "The Mongols sack Baghdad and its libraries", prominence: 1, themes: [war], sources: [wikipedia:Siege_of_Baghdad_(1258)] }
+      - { id: harun-al-rashid, date: 786 CE, label: "Hārūn al-Rashīd: Baghdad at its height", prominence: 3, themes: [government], sources: [wikipedia:Harun_al-Rashid] }
+      - { id: house-of-wisdom, date: c. 830 CE, label: "The House of Wisdom translates Greek science into Arabic", prominence: 2, themes: [science, ideas], sources: [wikipedia:House_of_Wisdom] }
+      - { id: al-kindi, date: c. 850 CE, label: "Al-Kindi, 'the philosopher of the Arabs'", prominence: 4, themes: [ideas], sources: [wikipedia:Al-Kindi] }
+      - { id: al-razi, date: c. 900 CE, label: "Al-Razi tells smallpox from measles", prominence: 3, themes: [science, disease], sources: [wikipedia:Abu_Bakr_al-Razi] }
+      - { id: buyids-baghdad, date: 945 CE, label: "The Buyids take Baghdad; the caliphs become figureheads", prominence: 4, themes: [government], sources: [wikipedia:Buyid_dynasty] }
     sources: [wikipedia:Abbasid_Caliphate]
 
   - id: seljuks
     name: Seljuk Empire
+    endonym: { text: "سلجوقیان", script: Arab, translit: "Saljūqiyān" }
     region: near-east
     group: iran
     sphere: islamic
@@ -228,10 +282,12 @@ lanes:
       - { id: khayyam, date: 1079 CE, label: "Omar Khayyam's solar calendar — and his quatrains", prominence: 3, thread: calendars, themes: [ideas, art], sources: [wikipedia:Omar_Khayyam] }
       - { id: nizamiyya, date: 1067 CE, label: "Nizam al-Mulk's madrasas", prominence: 4, themes: [ideas], sources: [wikipedia:Nizamiyya] }
       - { id: al-ghazali, date: c. 1100 CE, label: "Al-Ghazali's Incoherence of the Philosophers", prominence: 4, themes: [ideas], sources: [wikipedia:Al-Ghazali] }
+      - { id: nizam-assassinated, date: 1092 CE, label: "The Assassins kill the vizier Nizam al-Mulk", prominence: 4, themes: [government], sources: [wikipedia:Order_of_Assassins] }
     sources: [wikipedia:Seljuk_Empire]
 
   - id: ilkhanate
     name: Ilkhanate
+    endonym: { text: "ایلخانان", script: Arab, translit: "Īlkhānān" }
     region: near-east
     group: iran
     sphere: steppe
@@ -241,6 +297,7 @@ lanes:
     events:
       - { id: rashid-al-din, date: c. 1307 CE, label: "Rashid al-Din's Compendium of Chronicles: the first world history", prominence: 3, themes: [ideas], sources: [wikipedia:Jami'_al-tawarikh] }
       - { id: maragheh, date: 1259 CE, label: "Al-Tusi's observatory at Maragheh", prominence: 3, themes: [science, sky], sources: [wikipedia:Maragheh_observatory] }
+      - { id: ghazan-islam, date: 1295 CE, label: "Ghazan Khan converts to Islam", prominence: 4, themes: [religion], sources: [wikipedia:Ghazan] }
     sources: [wikipedia:Ilkhanate]
 
   - id: safavids
@@ -274,10 +331,23 @@ lanes:
       - { id: iran-iraq-war, date: 1980 CE, label: "Iraq invades Iran: eight years of trench war", prominence: 2, themes: [war], sources: [wikipedia:Iran–Iraq_War] }
       - { id: green-movement, date: 2009 CE, label: "The Green Movement protests a disputed election", prominence: 4, themes: [government], sources: [wikipedia:2009_Iranian_presidential_election_protests] }
       - { id: woman-life-freedom, date: 2022 CE, label: "'Woman, Life, Freedom': protests after Mahsa Amini's death", prominence: 3, themes: [women, government], sources: [wikipedia:Mahsa_Amini_protests] }
+      - { id: tahmasp-shahnameh, date: c. 1530 CE, label: "The Shahnameh of Shah Tahmasp, a summit of Persian painting", prominence: 3, themes: [art], sources: [wikipedia:Shahnameh_of_Shah_Tahmasp] }
+      - { id: amasya, date: 1555 CE, label: "The Peace of Amasya divides the Caucasus and Iraq", prominence: 4, themes: [diplomacy], sources: [wikipedia:Peace_of_Amasya] }
+      - { id: hormuz-1622, date: 1622 CE, label: "Shah Abbas and the English take Hormuz from Portugal", prominence: 4, themes: [war, trade], sources: [wikipedia:Capture_of_Ormuz_(1622)] }
+      - { id: zuhab, date: 1639 CE, label: "The Treaty of Zuhab draws today's Iran–Iraq border", prominence: 3, themes: [diplomacy], sources: [wikipedia:Treaty_of_Zuhab] }
+      - { id: isfahan-1722, date: 1722 CE, label: "Afghan rebels besiege and take Isfahan", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Isfahan] }
+      - { id: nader-killed, date: 1747 CE, label: "Nader Shah is assassinated", prominence: 4, themes: [government], sources: [wikipedia:Nader_Shah] }
+      - { id: karim-khan, date: 1751 CE, label: "Karim Khan Zand rules Iran from Shiraz", prominence: 4, themes: [government], sources: [wikipedia:Karim_Khan_Zand] }
+      - { id: the-bab, date: 1844 CE, label: "The Báb proclaims a new faith in Shiraz", prominence: 3, themes: [religion], sources: [wikipedia:Báb] }
+      - { id: tobacco-protest, date: 1891 CE, label: "The tobacco protest forces the shah to cancel a British monopoly", prominence: 3, themes: [trade, government], sources: [wikipedia:Tobacco_Protest] }
+      - { id: jcpoa, date: 2015 CE, label: "The Iran nuclear deal", prominence: 4, themes: [diplomacy], sources: [wikipedia:Joint_Comprehensive_Plan_of_Action] }
+      - { id: new-julfa, date: 1606 CE, label: "Shah Abbas resettles Armenian merchants at New Julfa", prominence: 4, themes: [trade, migration], sources: [wikipedia:New_Julfa] }
+      - { id: persian-famine, date: 1870 CE, label: "Famine kills a large share of Iran's people", prominence: 4, themes: [climate, disease], sources: [wikipedia:Persian_famine_of_1870–1872] }
     sources: [wikipedia:History_of_Iran]
 
   - id: iraq
     name: Iraq
+    endonym: { text: "العراق", script: Arab, translit: "al-ʿIrāq" }
     region: near-east
     group: iran
     sphere: islamic
@@ -291,4 +361,24 @@ lanes:
       - { id: iraq-1958, date: 1958 CE, label: "The 14 July Revolution ends Iraq's monarchy", prominence: 4, themes: [government], sources: [wikipedia:14_July_Revolution] }
       - { id: opec, date: 1960 CE, label: "OPEC is founded in Baghdad", prominence: 3, themes: [trade], sources: [wikipedia:OPEC] }
       - { id: halabja, date: 1988 CE, label: "Halabja: Saddam's chemical attack on the Kurds", prominence: 3, themes: [war], sources: [wikipedia:Halabja_massacre] }
+      - { id: mosul-2017, date: 2017 CE, label: "ISIS is driven out of Mosul", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Mosul_(2016–2017)] }
     sources: [wikipedia:Iraq]
+
+  - id: syria-lebanon
+    name: Syria & Lebanon
+    endonym: { text: "سوريا · لبنان", script: Arab, translit: "Sūriyā · Lubnān" }
+    region: near-east
+    group: levant
+    sphere: islamic
+    prominence: 3
+    span: 1920 – 2026 CE
+    events:
+      - { id: french-mandate-syria, date: 1920 CE, label: "France takes the mandate for Syria and Lebanon", prominence: 3, themes: [government], sources: [wikipedia:Mandate_for_Syria_and_the_Lebanon] }
+      - { id: lebanon-independence, date: 1943 CE, label: "Lebanon becomes independent", prominence: 4, themes: [government], sources: [wikipedia:Lebanon] }
+      - { id: hafez-assad, date: 1970 CE, label: "Hafez al-Assad seizes power in Syria", prominence: 4, themes: [government], sources: [wikipedia:Hafez_al-Assad] }
+      - { id: lebanese-civil-war, date: 1975 CE, label: "The Lebanese civil war begins: fifteen years of fighting", prominence: 3, themes: [war], sources: [wikipedia:Lebanese_Civil_War] }
+      - { id: hama-1982, date: 1982 CE, label: "The Hama massacre", prominence: 4, themes: [war], sources: [wikipedia:1982_Hama_massacre] }
+      - { id: syrian-civil-war, date: 2011 CE, label: "Syria's civil war: half the population driven from their homes", prominence: 2, themes: [war, migration], sources: [wikipedia:Syrian_civil_war] }
+      - { id: beirut-explosion, date: 2020 CE, label: "The Beirut port explosion", prominence: 4, sources: [wikipedia:2020_Beirut_explosion] }
+      - { id: assad-falls, date: 2024 CE, label: "The Assad regime falls", prominence: 3, themes: [government], sources: [wikipedia:Fall_of_the_Assad_regime] }
+    sources: [wikipedia:History_of_Syria]

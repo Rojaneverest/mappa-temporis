@@ -14,6 +14,7 @@ lanes:
       - { id: beakers, date: c. 2450 BCE, label: "Bell Beaker newcomers replace most of Britain's ancestry", prominence: 3, themes: [migration], sources: [wikipedia:Bell_Beaker_culture] }
       - { id: skara-brae, date: c. 3100 BCE, label: "Skara Brae, a stone village in Orkney", prominence: 3, sources: [wikipedia:Skara_Brae] }
       - { id: amesbury-archer, date: c. 2300 BCE, label: "The Amesbury Archer, buried near Stonehenge, came from the Alps", prominence: 4, themes: [migration], sources: [wikipedia:Amesbury_Archer] }
+      - { id: seahenge, date: 2049 BCE, label: "Seahenge: a timber circle on the Norfolk coast", prominence: 4, themes: [religion], sources: [wikipedia:Seahenge] }
     images:
       - { id: stonehenge-view, source: "commons:File:Stonehenge2007 07 30.jpg", date: c. 2500 BCE, prominence: 2, treatment: plate, caption: "Stonehenge, aligned to the solstices" }
     sources: [wikipedia:Neolithic_British_Isles]
@@ -28,6 +29,7 @@ lanes:
     span: c. 2200 – c. 1550 BCE
     events:
       - { id: argar-women, date: c. 1800 BCE, label: "El Argar's richest graves belong to women", prominence: 4, themes: [women], sources: [wikipedia:Argaric_culture] }
+      - { id: argaric-towns, date: c. 2200 BCE, label: "El Argar: fortified hilltop towns in south-east Spain", prominence: 4, sources: [wikipedia:Argaric_culture] }
     sources: [wikipedia:Argaric_culture]
 
   - id: neolithic-europe
@@ -115,7 +117,6 @@ lanes:
       - { id: linear-a, date: c. 1800 BCE, label: "Linear A, still undeciphered", prominence: 3, thread: scripts, sources: [wikipedia:Linear_A] }
       - { id: thera, date: c. 1600 BCE, label: "The Thera eruption buries Akrotiri — perhaps the seed of the Atlantis story", prominence: 2, confidence: disputed, themes: [climate], sources: [wikipedia:Minoan_eruption] }
       - { id: knossos-taken, date: c. 1450 BCE, label: "Mycenaean Greeks take over Knossos", prominence: 3, themes: [war], sources: [wikipedia:Minoan_civilization] }
-      - { id: knossos-palace, date: c. 1900 BCE, label: "The palace of Knossos", prominence: 2, themes: [art], sources: [wikipedia:Knossos] }
     sources: [wikipedia:Minoan_civilization]
 
   - id: mycenaeans
@@ -132,6 +133,7 @@ lanes:
       - { id: linear-b, date: c. 1450 BCE, label: "Linear B: the oldest written Greek", prominence: 3, thread: scripts, sources: [wikipedia:Linear_B] }
       - { id: troy, date: c. 1180 BCE, label: "The fall of Troy, as Homer will tell it", prominence: 2, confidence: legendary, themes: [war], sources: [wikipedia:Trojan_War] }
       - { id: mycenae-burns, date: c. 1180 BCE, label: "The palaces burn; writing is forgotten in Greece", prominence: 3, themes: [war], sources: [wikipedia:Late_Bronze_Age_collapse] }
+      - { id: mask-agamemnon, date: c. 1550 BCE, label: "Gold death masks in the shaft graves of Mycenae", prominence: 3, themes: [art], sources: [wikipedia:Mask_of_Agamemnon] }
     sources: [wikipedia:Mycenaean_Greece]
 
   - id: greek-dark-ages

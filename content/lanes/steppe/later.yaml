@@ -79,6 +79,7 @@ lanes:
   # ------------------------------------------------------------------ central asia
   - id: samanids
     name: Samanid Empire
+    endonym: { text: "سامانیان", script: Arab, translit: "Sāmāniyān" }
     region: steppe
     group: central-asia
     sphere: persian
@@ -94,6 +95,7 @@ lanes:
 
   - id: ghaznavids
     name: Ghaznavids
+    endonym: { text: "غزنویان", script: Arab, translit: "Ghaznaviyān" }
     region: steppe
     group: central-asia
     sphere: islamic
@@ -121,6 +123,7 @@ lanes:
 
   - id: khwarazm
     name: Khwarazmian Empire
+    endonym: { text: "خوارزمشاهیان", script: Arab, translit: "Khwārazmshāhiyān" }
     region: steppe
     group: central-asia
     sphere: persian
@@ -134,6 +137,7 @@ lanes:
 
   - id: chagatai
     name: Chagatai Khanate
+    endonym: { text: "اولوس چغتای", script: Arab, translit: "Ulus-i Chaghatay" }
     region: steppe
     group: central-asia
     sphere: steppe
@@ -149,6 +153,7 @@ lanes:
 
   - id: timurids
     name: Timurid Empire
+    endonym: { text: "تیموریان", script: Arab, translit: "Tīmūriyān" }
     region: steppe
     group: central-asia
     sphere: persian
@@ -186,10 +191,16 @@ lanes:
       - { id: bukhara-protectorate, date: 1868 CE, label: "Bukhara becomes a Russian protectorate", prominence: 3, themes: [war, government], sources: [wikipedia:Emirate_of_Bukhara] }
       - { id: khiva-1873, date: 1873 CE, label: "Russia conquers Khiva", prominence: 4, themes: [war], sources: [wikipedia:Khiva_campaign_of_1873] }
       - { id: kokand-annexed, date: 1876 CE, label: "Russia annexes Kokand", prominence: 4, themes: [war], sources: [wikipedia:Khanate_of_Kokand] }
+      - { id: abdullah-ii, date: 1598 CE, label: "Abdullah Khan II dies; Bukhara's Shaybanid line ends", prominence: 4, themes: [government], sources: [wikipedia:Abdullah_Khan_II] }
+      - { id: khiva-1839, date: 1839 CE, label: "A Russian winter march on Khiva fails", prominence: 4, themes: [war], sources: [wikipedia:Khivan_campaign_of_1839] }
+      - { id: stoddart-conolly, date: 1842 CE, label: "Bukhara's emir executes two British envoys", prominence: 4, themes: [diplomacy], sources: [wikipedia:Charles_Stoddart] }
+      - { id: turkestan, date: 1867 CE, label: "Russian Turkestan is governed from Tashkent", prominence: 4, themes: [government], sources: [wikipedia:Russian_Turkestan] }
+      - { id: geok-tepe, date: 1881 CE, label: "Geok Tepe: Russia conquers the Turkmen", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Geok_Tepe_(1881)] }
     sources: [wikipedia:Khanate_of_Bukhara]
 
   - id: kazakh-khanate
     name: Kazakh Khanate & Kazakhstan
+    endonym: { text: "Қазақ хандығы", script: Cyrl, translit: "Qazaq handyğy" }
     region: steppe
     group: central-asia
     sphere: steppe
@@ -210,6 +221,11 @@ lanes:
       - { id: kenesary, date: 1847 CE, label: "Kenesary Khan's revolt, the last great Kazakh rising, is crushed", prominence: 4, themes: [war], sources: [wikipedia:Kenesary_Kasymov] }
       - { id: astana-capital, date: 1997 CE, label: "Kazakhstan moves its capital to Astana on the open steppe", prominence: 4, themes: [government], sources: [wikipedia:Astana] }
       - { id: kazakh-unrest, date: 2022 CE, label: "Fuel-price protests turn into deadly unrest in Kazakhstan", prominence: 4, themes: [government], sources: [wikipedia:2022_Kazakh_unrest] }
+      - { id: tauke-khan, date: c. 1680 CE, label: "Tauke Khan's law code, the 'Seven Charters'", prominence: 4, themes: [government], sources: [wikipedia:Tauke_Khan] }
+      - { id: middle-horde-abolished, date: 1822 CE, label: "Russia abolishes the khans of the Middle Horde", prominence: 4, themes: [government], sources: [wikipedia:Kazakh_Khanate] }
+      - { id: revolt-1916, date: 1916 CE, label: "Central Asia rises against conscription by the tsar", prominence: 3, themes: [war], sources: [wikipedia:Central_Asian_revolt_of_1916] }
+      - { id: virgin-lands, date: 1954 CE, label: "Khrushchev's Virgin Lands campaign ploughs the steppe", prominence: 4, themes: [technology], sources: [wikipedia:Virgin_Lands_campaign] }
+      - { id: jeltoqsan, date: 1986 CE, label: "The Jeltoqsan protests in Almaty", prominence: 4, themes: [government], sources: [wikipedia:Jeltoqsan] }
     sources: [wikipedia:Kazakh_Khanate]
 
   - id: central-asian-republics
@@ -226,6 +242,7 @@ lanes:
       - { id: tajik-civil-war, date: 1992 CE, label: "Civil war in Tajikistan", prominence: 4, themes: [war], sources: [wikipedia:Tajikistani_Civil_War] }
       - { id: tulip-revolution, date: 2005 CE, label: "The Tulip Revolution topples Kyrgyzstan's president", prominence: 4, themes: [government], sources: [wikipedia:Tulip_Revolution] }
       - { id: andijan, date: 2005 CE, label: "Troops fire on protesters at Andijan, Uzbekistan", prominence: 4, themes: [government], sources: [wikipedia:Andijan_massacre] }
+      - { id: tashkent-quake, date: 1966 CE, label: "An earthquake levels old Tashkent", prominence: 4, themes: [climate], sources: [wikipedia:1966_Tashkent_earthquake] }
     sources: [wikipedia:Central_Asia]
 
   # ------------------------------------------------------------------ eastern steppe
@@ -303,10 +320,14 @@ lanes:
       - { id: dolon-nor, date: 1691 CE, label: "At Dolon Nor the Khalkha Mongols submit to the Qing", prominence: 4, themes: [government], sources: [wikipedia:Dolon_Nor] }
       - { id: mongolia-1911, date: 1911 CE, label: "Mongolia declares independence as the Qing fall", prominence: 3, themes: [government], sources: [wikipedia:Bogd_Khanate_of_Mongolia] }
       - { id: khalkhin-gol, date: 1939 CE, label: "Khalkhin Gol: Soviet and Mongolian forces defeat Japan", prominence: 4, themes: [war], sources: [wikipedia:Battles_of_Khalkhin_Gol] }
+      - { id: chahar-submit, date: 1635 CE, label: "The Chahar Mongols submit to the Manchus", prominence: 4, themes: [government], sources: [wikipedia:Ligdan_Khan] }
+      - { id: mongolian-peoples-republic, date: 1924 CE, label: "The Mongolian People's Republic, the second communist state", prominence: 4, themes: [government], sources: [wikipedia:Mongolian_People's_Republic] }
+      - { id: mongolia-purges, date: 1937 CE, label: "Stalinist purges kill thousands of Mongolian monks", prominence: 4, themes: [religion], sources: [wikipedia:Stalinist_repressions_in_Mongolia] }
     sources: [wikipedia:History_of_Mongolia]
 
   - id: dzungars
     name: Dzungar Khanate
+    endonym: { text: "Зүүнгар", script: Cyrl, translit: "Züüngar" }
     region: steppe
     group: steppe
     sphere: steppe
@@ -318,4 +339,25 @@ lanes:
       - { id: galdan, date: 1688 CE, label: "Galdan Boshugtu invades Khalkha", prominence: 4, themes: [war], sources: [wikipedia:Galdan_Boshugtu_Khan] }
       - { id: dzungars-lhasa, date: 1717 CE, label: "Dzungar raiders invade Tibet and sack Lhasa", prominence: 4, themes: [war], sources: [wikipedia:Dzungar_Khanate] }
       - { id: barefoot-flight, date: 1723 CE, label: "The 'Barefoot Flight': Dzungars rout the Kazakhs", prominence: 4, themes: [war, migration], sources: [wikipedia:Kazakh–Dzungar_Wars] }
+      - { id: galdan-tarim, date: 1680 CE, label: "Galdan takes the Tarim Basin cities", prominence: 4, themes: [war], sources: [wikipedia:Galdan_Boshugtu_Khan] }
     sources: [wikipedia:Dzungar_Khanate]
+
+  - id: afghanistan
+    name: Durrani Empire & Afghanistan
+    endonym: { text: "افغانستان", script: Arab, translit: Afghānistān }
+    region: steppe
+    group: central-asia
+    sphere: persian
+    prominence: 3
+    span: 1747 – 2026 CE
+    events:
+      - { id: ahmad-shah-durrani, date: 1747 CE, label: "Ahmad Shah Durrani founds the Afghan state", prominence: 3, themes: [government], sources: [wikipedia:Durrani_Empire] }
+      - { id: kabul-retreat-1842, date: 1842 CE, label: "A British army is destroyed retreating from Kabul", prominence: 3, themes: [war], sources: [wikipedia:1842_retreat_from_Kabul] }
+      - { id: durand-line, date: 1893 CE, label: "The Durand Line splits the Pashtun lands", prominence: 4, themes: [diplomacy], sources: [wikipedia:Durand_Line] }
+      - { id: afghan-independence, date: 1919 CE, label: "Afghanistan wins full independence from Britain", prominence: 4, themes: [war, government], sources: [wikipedia:Third_Anglo-Afghan_War] }
+      - { id: soviet-afghan-war, date: 1979 CE, label: "The Soviet Union invades Afghanistan", prominence: 2, themes: [war], sources: [wikipedia:Soviet–Afghan_War] }
+      - { id: taliban-1996, date: 1996 CE, label: "The Taliban take Kabul", prominence: 3, themes: [war, religion], sources: [wikipedia:Taliban] }
+      - { id: afghanistan-2001, date: 2001 CE, label: "A US-led invasion topples the Taliban", prominence: 3, themes: [war], sources: ["wikipedia:War_in_Afghanistan_(2001–2021)"] }
+      - { id: kabul-2021, date: 2021 CE, label: "The Taliban return as US forces leave", prominence: 3, themes: [war], sources: ["wikipedia:Fall_of_Kabul_(2021)"] }
+      - { id: iron-amir, date: 1880 CE, label: "Abdur Rahman Khan, the 'Iron Amir', centralises Afghanistan", prominence: 4, themes: [government], sources: [wikipedia:Abdur_Rahman_Khan] }
+    sources: [wikipedia:History_of_Afghanistan]

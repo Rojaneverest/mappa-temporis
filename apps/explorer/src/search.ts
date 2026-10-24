@@ -1,8 +1,8 @@
-// Search (⌘K / Ctrl-K / "/"): every lane, event, object and thread in the Folio — including
+// Search (⌘K / Ctrl-K / "/"): every lane, event, person, voice, object and thread in the Folio — including
 // the ones archived off the canvas for calm. Small enough to search in memory, instantly.
 import type { Folio, FolioEntry } from '../../../packages/render/src/folio.ts';
 
-const KIND: Record<FolioEntry['kind'], string> = { lane: 'Civilization', event: 'Event', image: 'Object', thread: 'Thread', era: 'Era', climate: 'Climate', population: 'People' };
+const KIND: Record<FolioEntry['kind'], string> = { lane: 'Civilization', event: 'Event', image: 'Object', thread: 'Thread', era: 'Era', climate: 'Climate', population: 'People', person: 'Person', voice: 'Voice', daily: 'Daily life' };
 const fold = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
@@ -22,7 +22,7 @@ export class Search {
     this.onPick = onPick;
     this.docs = Object.values(folio.entries).map((e) => {
       const title = fold(e.title);
-      return { e, title, words: title.split(/[^a-z0-9]+/).filter(Boolean), extra: fold(`${e.laneName} ${e.region} ${e.endonym?.translit ?? ''} ${e.dates}`) };
+      return { e, title, words: title.split(/[^a-z0-9]+/).filter(Boolean), extra: fold(`${e.laneName} ${e.region} ${e.endonym?.translit ?? ''} ${e.dates} ${e.role ?? ''} ${e.quote ? `${e.quote.speaker} ${e.quote.text}` : ''}`) };
     });
     el.innerHTML = '<input type="search" placeholder="Search people, empires, events, objects…" aria-label="Search the chart"><ul role="listbox"></ul>';
     this.input = el.querySelector('input')!;

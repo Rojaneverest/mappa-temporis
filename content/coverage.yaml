@@ -23,6 +23,20 @@ regions:
   east-asia: 1.3
   southeast-asia: 0.8
   oceania: 0.5
+# Cells where the record itself is thin: the target is what archaeology can honestly offer at
+# this scale, not the region weight. Revisit as new lanes are justified.
+overrides:
+  africa/early-bronze: 3       # West and East African Neolithic sites only; Egypt and Kerma count elsewhere
+  africa/bronze: 6
+  southeast-asia/neolithic: 3
+  southeast-asia/early-bronze: 2
+  southeast-asia/bronze: 5
+  southeast-asia/iron-age: 4
+  oceania/early-bronze: 1      # Australia and New Guinea before the Lapita voyages
+  oceania/iron-age: 3
+  oceania/classical: 7         # the Polynesian 'Long Pause'; few dated events anywhere in Oceania
+  oceania/middle-ages: 19
+  oceania/early-modern: 12
 # Pairs the duplicate check flags that are really different events.
 distinct:
   - [cuban-revolution, missile-crisis]
@@ -31,3 +45,10 @@ distinct:
   - [battle-britain, india-independence-uk]
   - [ataturk, turkish-alphabet]
   - [isfahan, shah-abbas]
+  - [gateway-sun, titicaca-fields]
+  - [pokhran-ii, chagai]
+  - [tasman, tasman-fiji]
+  - [muhammad-ali, citadel-massacre]
+  - [isis, mosul-2017]
+  - [nigeria-independence, madagascar-independence]
+  - [khiva-1873, geok-tepe]

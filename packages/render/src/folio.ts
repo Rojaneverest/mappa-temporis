@@ -8,7 +8,7 @@ export interface FolioSource {
 
 export interface FolioEntry {
   id: string;
-  kind: 'lane' | 'event' | 'image' | 'thread' | 'era' | 'climate' | 'population';
+  kind: 'lane' | 'event' | 'image' | 'thread' | 'era' | 'climate' | 'population' | 'person' | 'voice' | 'daily';
   title: string;
   /** Human-readable date or span. */
   dates: string;
@@ -33,6 +33,14 @@ export interface FolioEntry {
   segments?: { name: string; dates: string }[];
   relations?: { type: string; laneId: string; laneName: string; dates: string }[];
   events?: { id: string; dates: string; label: string; drawn: boolean }[];
+  /** Lanes: the people, voices and daily-life cards that belong to it. */
+  people?: { id: string; dates: string; name: string; role: string; drawn: boolean }[];
+  voices?: { id: string; dates: string; text: string; speaker: string }[];
+  daily?: { id: string; dates: string; title: string }[];
+  /** People: what they did. */
+  role?: string;
+  /** Voices: the words and who said them. */
+  quote?: { text: string; speaker: string; work: string; translation?: string };
   images?: string[];
   image?: { caption: string; title: string; credit: string; license: string; url: string; sizes: number[]; width: number; height: number; treatment: string };
   /** World box to fly to: [x, y, w, h]. */

@@ -13,6 +13,8 @@ lanes:
       - { id: tassili-art, date: c. 6000 BCE, label: "Rock paintings at Tassili n'Ajjer show herds, swimmers and dancers", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Tassili_n'Ajjer] }
       - { id: sahara-dries, date: c. 3500 BCE, label: "The Sahara dries into desert; people move to the Nile and the Sahel", prominence: 2, themes: [climate, migration], confidence: probable, sources: [wikipedia:African_humid_period] }
       - { id: gobero, date: c. 7700 BCE, label: "Gobero: fishers bury their dead beside a lake in today's Niger desert", prominence: 3, themes: [climate], sources: [wikipedia:Gobero] }
+      - { id: donkey-domesticated, date: c. 5000 BCE, label: "Donkeys are domesticated in north-east Africa", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Donkey] }
+      - { id: nabta-playa, date: c. 5000 BCE, label: "Nabta Playa: a stone circle aligned to the summer solstice", prominence: 3, themes: [sky, religion], confidence: probable, sources: [wikipedia:Nabta_Playa] }
     sources: [wikipedia:African_humid_period]
 
   - id: tichitt
@@ -55,4 +57,33 @@ lanes:
       - { id: kerma-peak, date: c. 1700 BCE, label: "Kerma, Africa's first great city south of Egypt, rivals its northern neighbour", prominence: 2, sources: [wikipedia:Kerma_culture] }
       - { id: kerma-deffufa, date: c. 2000 BCE, label: "The Western Deffufa, a mudbrick temple of Kerma", prominence: 3, themes: [art, religion], sources: [wikipedia:Deffufa] }
       - { id: kerma-falls, date: c. 1500 BCE, label: "Thutmose I destroys Kerma; Egypt rules Nubia", prominence: 3, themes: [war], sources: [wikipedia:Kerma_culture] }
+      - { id: kerma-culture, date: c. 2500 BCE, label: "The Kerma culture rises at the Nile's Third Cataract", prominence: 3, sources: [wikipedia:Kerma_culture] }
+      - { id: kerma-hyksos, date: c. 1550 BCE, label: "A Hyksos king seeks Kush's help against Thebes", prominence: 4, themes: [diplomacy, war], sources: [wikipedia:Kerma_culture] }
     sources: [wikipedia:Kerma_culture]
+
+  - id: sahel-farmers
+    name: Sahel & forest-edge farmers
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 4
+    basis: archaeology
+    span: c. 2500 BCE – c. 300 CE
+    events:
+      - { id: pearl-millet, date: c. 2500 BCE, label: "Pearl millet is domesticated in the Sahel", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Pearl_millet] }
+      - { id: kintampo, date: c. 2000 BCE, label: "Kintampo villagers at the forest edge of Ghana farm and herd goats", prominence: 4, confidence: probable, sources: [wikipedia:Kintampo_complex] }
+      - { id: jenne-jeno, date: c. 250 BCE, label: "Jenne-Jeno, one of West Africa's first cities", prominence: 3, themes: [trade], sources: [wikipedia:Djenné-Djenno] }
+    sources: [wikipedia:Kintampo_complex]
+
+  - id: east-african-herders
+    name: East African herders
+    region: africa
+    group: nile-horn
+    sphere: african
+    prominence: 4
+    basis: archaeology
+    span: c. 3000 BCE – c. 700 CE
+    events:
+      - { id: lothagam-north, date: c. 3000 BCE, label: "Lothagam North: herders raise a monumental cemetery by Lake Turkana", prominence: 3, themes: [religion], sources: [wikipedia:Lothagam_North_Pillar_Site] }
+      - { id: savanna-pastoral, date: c. 1000 BCE, label: "Savanna Pastoral Neolithic herders spread through Kenya and Tanzania", prominence: 4, themes: [migration], sources: [wikipedia:Savanna_Pastoral_Neolithic] }
+    sources: [wikipedia:Pastoral_Neolithic]

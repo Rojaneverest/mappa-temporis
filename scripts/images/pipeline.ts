@@ -216,7 +216,7 @@ for (const img of images) {
   try {
     const meta = await resolve(img);
     const rawPath = await download(meta);
-    let buf = img.treatment === 'cutout' ? await cutout(img, rawPath)
+    let buf = img.treatment === 'cutout' || img.treatment === 'coin' ? await cutout(img, rawPath)
       : engravings.has(img.id) ? await engrave(rawPath, img.invert, engravings.get(img.id)!.crop)
       : img.treatment === 'backdrop' ? await inkPrint(img.lift ? liftPath(img, rawPath) : rawPath, img.invert)
       : await sharp(rawPath).png().toBuffer();

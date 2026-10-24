@@ -15,6 +15,7 @@ lanes:
       - { id: watson-brake, date: c. 3500 BCE, label: "Watson Brake, Louisiana: earth mounds older than the pyramids", prominence: 3, themes: [art], sources: [wikipedia:Watson_Brake] }
       - { id: monte-verde, date: c. 10000 BCE, label: "Hunters across both continents; Monte Verde in Chile is older still", prominence: 3, themes: [migration], sources: [wikipedia:Monte_Verde] }
       - { id: eastern-agricultural, date: c. 2000 BCE, label: "Sunflower, squash and goosefoot domesticated in the Eastern Woodlands", prominence: 3, themes: [technology], sources: [wikipedia:Eastern_Agricultural_Complex] }
+      - { id: old-copper, date: c. 3000 BCE, label: "Great Lakes peoples hammer native copper into tools", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Old_Copper_Complex] }
     sources: [wikipedia:Archaic_period_in_North_America]
 
   - id: poverty-point
@@ -44,6 +45,7 @@ lanes:
       - { id: squash, date: c. 8000 BCE, label: "Squash is domesticated in Oaxaca", prominence: 3, themes: [technology], sources: [wikipedia:Guilá_Naquitz_Cave] }
       - { id: maize, date: c. 7000 BCE, label: "Teosinte becomes maize — the grain that will feed the Americas", prominence: 1, themes: [technology], confidence: probable, sources: [wikipedia:Maize] }
       - { id: guila-naquitz, date: c. 8000 BCE, label: "Guilá Naquitz cave: the first squash seeds", prominence: 4, sources: [wikipedia:Guilá_Naquitz_Cave] }
+      - { id: mesoamerica-pottery, date: c. 1900 BCE, label: "The first pottery in Mesoamerica", prominence: 4, themes: [technology], sources: [wikipedia:Mesoamerican_chronology] }
     sources: [wikipedia:Archaic_period_in_the_Americas]
 
   - id: andean-archaic
@@ -74,6 +76,7 @@ lanes:
     events:
       - { id: caral, date: c. 2600 BCE, label: "Caral: pyramids and plazas in the oldest city of the Americas", prominence: 1, themes: [art], sources: [wikipedia:Caral] }
       - { id: caral-quipu, date: c. 2500 BCE, label: "Caral's pyramids — no pottery, no war, built on cotton and anchovies", prominence: 3, sources: [wikipedia:Caral] }
+      - { id: aspero, date: c. 3000 BCE, label: "Áspero: platform mounds on the Peruvian coast", prominence: 4, sources: [wikipedia:Aspero] }
     sources: [wikipedia:Norte_Chico_civilization]
 
   - id: archaic-caribbean
@@ -86,6 +89,9 @@ lanes:
     span: c. 4000 – c. 500 BCE
     relations:
       - { type: becomes, lane: taino, at: c. 500 BCE }
+    events:
+      - { id: caribbean-settled, date: c. 4000 BCE, label: "The first settlers reach the Caribbean islands by canoe", prominence: 4, themes: [migration, exploration], confidence: probable, sources: [wikipedia:Archaic_Age_in_the_Caribbean] }
+      - { id: ortoiroid, date: c. 2000 BCE, label: "Ortoiroid foragers spread through the Lesser Antilles", prominence: 4, themes: [migration], confidence: probable, sources: [wikipedia:Ortoiroid_people] }
     sources: [wikipedia:Pre-Arawakan_languages_of_the_Greater_Antilles]
 
   - id: amazonia
@@ -99,7 +105,7 @@ lanes:
     events:
       - { id: cassava, date: c. 6000 BCE, label: "Cassava is domesticated in the southern Amazon", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Cassava] }
       - { id: terra-preta, date: c. 450 CE, label: "Marajoara mound-builders and the fertile 'dark earths' of the Amazon", prominence: 3, sources: [wikipedia:Marajoara_culture] }
-      - { id: marajoara, date: c. 800 CE, label: "Marajoara mound-builders on the Amazon's mouth", prominence: 3, themes: [art], sources: [wikipedia:Marajoara_culture] }
       - { id: orellana, date: 1542 CE, label: "Orellana sails down the Amazon and reports great towns on its banks", prominence: 3, themes: [exploration], sources: [wikipedia:Francisco_de_Orellana] }
       - { id: rubber-boom, date: c. 1890 CE, label: "The rubber boom brings forced labour to the Amazon", prominence: 4, themes: [trade], sources: [wikipedia:Amazon_rubber_cycle] }
+      - { id: cacao, date: c. 3300 BCE, label: "Cacao is first used in the upper Amazon", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Theobroma_cacao] }
     sources: [wikipedia:Indigenous_peoples_in_Brazil]

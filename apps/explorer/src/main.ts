@@ -104,7 +104,7 @@ window.addEventListener('keydown', (e) => { if ((e.key === 'l' || e.key === 'L')
 const atlasEl = document.getElementById('atlas')!;
 const atlasBtn = document.getElementById('atlas-btn')!;
 const atlas = new Atlas(atlasEl);
-atlas.load(`/atlas/${SHEET}.topo.json`).catch((err) => console.warn('atlas', err));
+atlas.load(`/atlas/${SHEET}.atlas.json`).catch((err) => console.warn('atlas', err));
 atlas.onPickLane = (laneId) => select(laneId, true);
 const laneOf = (ref: string | null) => {
   const e = ref ? folio.entries[ref] : undefined;

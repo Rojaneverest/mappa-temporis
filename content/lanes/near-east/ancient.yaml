@@ -97,6 +97,7 @@ lanes:
 
   - id: egypt-new-kingdom
     name: New Kingdom Egypt
+    endonym: { text: "𓆎𓅓𓏏𓊖", script: Egyp, translit: "Kemet" }
     region: near-east
     group: egypt
     sphere: egyptian
@@ -207,6 +208,7 @@ lanes:
 
   - id: hittites
     name: Hittite Empire
+    endonym: { text: "𒄩𒀜𒋾", script: Xsux, translit: "Ḫatti" }
     region: near-east
     group: anatolia
     sphere: persian
@@ -271,6 +273,7 @@ lanes:
 
   - id: akkad
     name: Akkadian Empire
+    endonym: { text: "𒀀𒂵𒉈", script: Xsux, translit: "Agade" }
     region: near-east
     group: iran
     sphere: persian
@@ -287,6 +290,7 @@ lanes:
 
   - id: ur-iii
     name: Third Dynasty of Ur
+    endonym: { text: "𒋀𒀊𒆠𒈠", script: Xsux, translit: "Urim" }
     region: near-east
     group: iran
     sphere: persian
@@ -304,6 +308,7 @@ lanes:
 
   - id: old-babylon
     name: Old Babylonian Empire
+    endonym: { text: "𒆍𒀭𒊏𒆠", script: Xsux, translit: "Bābili" }
     region: near-east
     group: iran
     sphere: persian
@@ -331,6 +336,7 @@ lanes:
 
   - id: assyria-early
     name: Old and Middle Assyria
+    endonym: { text: "𒀸𒋩", script: Xsux, translit: "Aššur" }
     region: near-east
     group: iran
     sphere: persian

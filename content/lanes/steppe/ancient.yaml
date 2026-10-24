@@ -12,7 +12,6 @@ lanes:
       - { type: influences, lane: neolithic-europe, at: c. 2900 BCE }
     events:
       - { id: steppe-wagons, date: c. 3000 BCE, label: "Wagon-dwelling herders roam the Pontic steppe — likely speakers of Proto-Indo-European", prominence: 2, themes: [migration, technology], confidence: probable, sources: [wikipedia:Yamnaya_culture] }
-      - { id: yamnaya-wagons, date: c. 3000 BCE, label: "Wagons and herds let Yamnaya herders roam the open steppe", prominence: 3, themes: [technology, migration], sources: [wikipedia:Yamnaya_culture] }
       - { id: yamnaya-europe, date: c. 2800 BCE, label: "Steppe ancestry floods into Europe — and Indo-European languages with it", prominence: 2, themes: [migration], confidence: probable, sources: [wikipedia:Indo-European_migrations] }
     sources: [wikipedia:Yamnaya_culture]
 
@@ -54,6 +53,7 @@ lanes:
     events:
       - { id: chariot, date: c. 2000 BCE, label: "The spoked-wheel war chariot", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture] }
       - { id: arkaim, date: c. 1900 BCE, label: "Arkaim, a fortified ring settlement", prominence: 4, sources: [wikipedia:Arkaim] }
+      - { id: andronovo-spread, date: c. 1800 BCE, label: "Andronovo herders spread across Kazakhstan to the Altai", prominence: 4, themes: [migration], sources: [wikipedia:Andronovo_culture] }
     sources: [wikipedia:Andronovo_culture]
 
   - id: afanasievo
@@ -66,4 +66,32 @@ lanes:
     span: c. 3300 – c. 2500 BCE
     events:
       - { id: afanasievo-altai, date: c. 3000 BCE, label: "Herders reach the Altai, 2,000 km east of the Yamnaya", prominence: 4, themes: [migration], sources: [wikipedia:Afanasievo_culture] }
+      - { id: okunev, date: c. 2500 BCE, label: "The Okunev culture follows in southern Siberia", prominence: 4, sources: [wikipedia:Okunev_culture] }
     sources: [wikipedia:Afanasievo_culture]
+
+  - id: steppe-eneolithic
+    name: Steppe Eneolithic (Khvalynsk, Sredny Stog, Maikop)
+    region: steppe
+    group: western-steppe
+    sphere: steppe
+    prominence: 4
+    basis: archaeology
+    span: c. 5000 – c. 3300 BCE
+    events:
+      - { id: khvalynsk, date: c. 4700 BCE, label: "Khvalynsk: Volga herders bury their dead with copper and horse bones", prominence: 4, themes: [religion], sources: [wikipedia:Khvalynsk_culture] }
+      - { id: sredny-stog, date: c. 4500 BCE, label: "Sredny Stog: early horse-keeping on the Dnieper", prominence: 4, themes: [technology], confidence: disputed, sources: [wikipedia:Sredny_Stog_culture] }
+      - { id: maikop, date: c. 3700 BCE, label: "Maikop chiefs of the north Caucasus are buried under kurgans full of gold", prominence: 3, themes: [art], sources: [wikipedia:Maykop_culture] }
+    sources: [wikipedia:Khvalynsk_culture]
+
+  - id: deer-stone-cultures
+    name: Deer stones & khirigsuurs
+    region: steppe
+    group: steppe
+    sphere: steppe
+    prominence: 4
+    basis: archaeology
+    span: c. 1300 – c. 300 BCE
+    events:
+      - { id: khirigsuurs, date: c. 1100 BCE, label: "Khirigsuurs: stone mounds ringed by horse burials across Mongolia", prominence: 4, themes: [religion], sources: [wikipedia:Khirigsuur] }
+      - { id: deer-stones, date: c. 1000 BCE, label: "Deer stones: carved standing stones of flying stags", prominence: 3, themes: [art, religion], sources: [wikipedia:Deer_stones] }
+    sources: [wikipedia:Deer_stones]

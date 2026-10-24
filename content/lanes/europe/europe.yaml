@@ -14,6 +14,7 @@ lanes:
     events:
       - { id: hallstatt-salt, date: c. 700 BCE, label: "Salt mines at Hallstatt make Alpine chiefs rich", prominence: 4, themes: [trade], sources: [wikipedia:Hallstatt_culture] }
       - { id: vix-krater, date: c. 500 BCE, label: "The Vix krater, a Greek bronze in a Celtic princess's grave", prominence: 3, themes: [women, trade], sources: [wikipedia:Vix_Grave] }
+      - { id: heuneburg, date: c. 620 BCE, label: "Heuneburg: a mudbrick-walled Celtic hillfort on the Danube", prominence: 4, sources: [wikipedia:Heuneburg] }
     sources: [wikipedia:Hallstatt_culture]
 
   - id: la-tene
@@ -49,6 +50,7 @@ lanes:
 
   - id: franks
     name: Franks (Merovingians)
+    endonym: { text: "Regnum Francorum", script: Latn }
     region: europe
     group: north-europe
     sphere: celtic-germanic
@@ -74,6 +76,7 @@ lanes:
 
   - id: visigoths
     name: Visigothic kingdom
+    endonym: { text: "Regnum Visigothorum", script: Latn }
     region: europe
     group: iberia
     sphere: celtic-germanic
@@ -87,6 +90,7 @@ lanes:
   # ------------------------------------------------------------------ italy
   - id: etruscans
     name: Etruscans
+    endonym: { text: "Rasna", script: Latn }
     region: europe
     group: italy
     sphere: italic
@@ -95,10 +99,12 @@ lanes:
     events:
       - { id: etruscan-league, date: c. 600 BCE, label: "Twelve Etruscan cities at the height of their power", prominence: 4, sources: [wikipedia:Etruscan_civilization] }
       - { id: etruscan-tombs, date: c. 600 BCE, label: "Painted tombs of Tarquinia", prominence: 3, themes: [art], sources: [wikipedia:Tarquinia] }
+      - { id: etruscan-alphabet, date: c. 700 BCE, label: "The Etruscans adapt the Greek alphabet", prominence: 4, themes: [ideas], sources: [wikipedia:Etruscan_alphabet] }
     sources: [wikipedia:Etruscan_civilization]
 
   - id: roman-kingdom
     name: Roman Kingdom
+    endonym: { text: "Regnum Romanum", script: Latn }
     region: europe
     group: italy
     sphere: roman
@@ -110,7 +116,6 @@ lanes:
       - { type: becomes, lane: roman-republic, at: 509 BCE }
     events:
       - { id: founding-rome, date: 753 BCE, label: "Romulus founds Rome (traditional date)", prominence: 3, confidence: legendary, sources: [wikipedia:Founding_of_Rome] }
-      - { id: tarquin-expelled, date: 509 BCE, label: "The last king is expelled", prominence: 3, themes: [government], confidence: legendary, sources: [wikipedia:Tarquinius_Superbus] }
     sources: [wikipedia:Roman_Kingdom]
 
   - id: roman-republic
@@ -135,6 +140,8 @@ lanes:
       - { id: spartacus, date: 73 BCE, label: "Spartacus leads a slave revolt", prominence: 3, themes: [war], sources: [wikipedia:Spartacus] }
       - { id: gallic-war, date: 58 BCE, label: "Caesar begins the conquest of Gaul", prominence: 3, themes: [war], sources: [wikipedia:Gallic_Wars] }
       - { id: caesar-assassinated, date: 44 BCE, label: "Julius Caesar is assassinated on the Ides of March", prominence: 1, themes: [government], sources: [wikipedia:Assassination_of_Julius_Caesar] }
+    images:
+      - { id: coin-caesar, source: "commons:File:Denarius portrait of Julius Caesar.jpg", date: 44 BCE, prominence: 3, treatment: coin, caption: "Caesar: the first living Roman on a coin" }
     sources: [wikipedia:Roman_Republic]
 
   - id: roman-empire
@@ -168,10 +175,12 @@ lanes:
       - { id: christian-state, date: 380 CE, label: "Christianity becomes the state religion", prominence: 3, themes: [religion], sources: [wikipedia:Edict_of_Thessalonica] }
     images:
       - { id: augustus-portrait, source: "met:247993", date: c. 20 CE, prominence: 2, treatment: cutout, caption: "Portrait of the emperor Augustus" }
+      - { id: coin-augustus, source: "commons:File:Augustus denarius obverse (FindID 59835).jpg", date: c. 1 CE, prominence: 3, treatment: coin, caption: "A denarius of Augustus" }
     sources: [wikipedia:Roman_Empire]
 
   - id: western-roman
     name: Western Roman Empire
+    endonym: { text: "Imperium Romanum", script: Latn }
     region: europe
     group: italy
     sphere: roman
@@ -230,6 +239,7 @@ lanes:
 
   - id: athens
     name: Athens
+    endonym: { text: "Ἀθῆναι", script: Grek, translit: "Athênai" }
     region: europe
     group: greece
     sphere: hellenic
@@ -244,18 +254,20 @@ lanes:
       - { id: cleisthenes, date: 508 BCE, label: "Cleisthenes founds Athenian democracy", prominence: 1, themes: [government], sources: [wikipedia:Cleisthenes] }
       - { id: marathon, date: 490 BCE, label: "Athenians defeat the Persians at Marathon", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Marathon] }
       - { id: salamis, date: 480 BCE, label: "The Greek fleet destroys Xerxes' navy at Salamis", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Salamis] }
-      - { id: parthenon, date: 447 BCE, label: "Work begins on the Parthenon", prominence: 1, themes: [art], sources: [wikipedia:Parthenon] }
+      - { id: parthenon, date: 447 BCE, label: "Work begins on the Parthenon", prominence: 1, themes: [art], sources: [wikipedia:Parthenon], people: [p-pericles] }
       - { id: herodotus, date: c. 430 BCE, label: "Herodotus writes his Histories — the 'father of history'", prominence: 2, themes: [ideas], sources: [wikipedia:Herodotus] }
       - { id: peloponnesian-war, date: 431 BCE, label: "The Peloponnesian War with Sparta begins", prominence: 2, themes: [war], sources: [wikipedia:Peloponnesian_War] }
-      - { id: socrates, date: 399 BCE, label: "Socrates is sentenced to death", prominence: 2, themes: [ideas], sources: [wikipedia:Trial_of_Socrates] }
+      - { id: socrates, date: 399 BCE, label: "Socrates is sentenced to death", prominence: 2, themes: [ideas], sources: [wikipedia:Trial_of_Socrates], people: [p-socrates] }
       - { id: academy, date: c. 387 BCE, label: "Plato founds the Academy", prominence: 3, themes: [ideas], sources: [wikipedia:Platonic_Academy] }
       - { id: lyceum, date: 335 BCE, label: "Aristotle opens the Lyceum", prominence: 3, themes: [ideas], sources: [wikipedia:Lyceum] }
     images:
       - { id: parthenon-west, source: "commons:File:Parthenon from west.jpg", date: 432 BCE, prominence: 1, treatment: plate, caption: "The Parthenon, Athens" }
+      - { id: coin-athena, source: "commons:File:Tetradrachm Athens 450 obverse CdM Paris.jpg", date: c. 450 BCE, prominence: 3, treatment: coin, caption: "Athena on an Athenian silver 'owl'" }
     sources: [wikipedia:History_of_Athens]
 
   - id: sparta
     name: Sparta
+    endonym: { text: "Λακεδαίμων", script: Grek, translit: "Lakedaímōn" }
     region: europe
     group: greece
     sphere: hellenic
@@ -270,6 +282,7 @@ lanes:
 
   - id: macedon
     name: Macedon
+    endonym: { text: "Μακεδονία", script: Grek, translit: "Makedonía" }
     region: europe
     group: greece
     sphere: hellenic
@@ -300,6 +313,8 @@ lanes:
       - { id: gaugamela, date: 331 BCE, label: "Victory at Gaugamela: the Persian Empire falls", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Gaugamela] }
       - { id: hydaspes, date: 326 BCE, label: "Alexander's army reaches India and refuses to go further", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Hydaspes] }
       - { id: alexander-dies, date: 323 BCE, label: "Alexander dies in Babylon at 32; his generals divide the empire", prominence: 1, sources: [wikipedia:Death_of_Alexander_the_Great] }
+    images:
+      - { id: coin-alexander, source: "commons:File:Silver tetradrachm obverse Alexander the Great CdM Paris FG718.jpg", date: c. 325 BCE, prominence: 3, treatment: coin, caption: "Alexander's tetradrachm: Herakles in a lion skin" }
     sources: [wikipedia:Alexander_the_Great]
 
   - id: antigonid
@@ -340,4 +355,5 @@ lanes:
       - { id: greek-scholars-italy, date: c. 1400 CE, label: "Greek scholars carry Plato to Florence", prominence: 4, themes: [ideas], sources: [wikipedia:Greek_scholars_in_the_Renaissance] }
     images:
       - { id: hagia-sophia-view, source: "commons:File:Hagia Sophia Mars 2013.jpg", date: 537 CE, prominence: 1, treatment: plate, caption: "Hagia Sophia, Constantinople" }
+      - { id: coin-justinian, source: "commons:File:Gold Solidus of Justinian I (527–65) MET DP100644.jpg", date: c. 540 CE, prominence: 3, treatment: coin, caption: "Justinian's gold solidus" }
     sources: [wikipedia:Byzantine_Empire]

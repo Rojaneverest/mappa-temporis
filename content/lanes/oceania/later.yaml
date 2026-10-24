@@ -16,7 +16,7 @@ lanes:
       - { id: gallipoli, date: 1915 CE, label: "Gallipoli", prominence: 3, themes: [war], sources: [wikipedia:Gallipoli_campaign] }
       - { id: referendum-1967, date: 1967 CE, label: "Aboriginal Australians counted in the census at last", prominence: 4, themes: [government], sources: [wikipedia:1967_Australian_referendum] }
       - { id: darwin-bombed, date: 1942 CE, label: "Japanese bombers strike Darwin", prominence: 4, themes: [war], sources: [wikipedia:Bombing_of_Darwin] }
-      - { id: stolen-generations-apology, date: 2008 CE, label: "The national apology to the Stolen Generations", prominence: 4, themes: [government], sources: [wikipedia:Stolen_Generations] }
+      - { id: opera-house-opens, date: 1973 CE, label: "The Sydney Opera House opens", prominence: 4, themes: [art], sources: [wikipedia:Sydney_Opera_House] }
     images:
       - { id: sydney-opera-house, source: "commons:File:Sydney Opera House - Dec 2008.jpg", date: 1973 CE, prominence: 3, treatment: plate, caption: "The Sydney Opera House, 1973" }
     sources: [wikipedia:History_of_Australia]
@@ -36,10 +36,12 @@ lanes:
       - { id: polynesian-triangle, date: c. 1000 CE, label: "Star-navigating canoes settle the Polynesian Triangle — a sixth of the globe", prominence: 1, themes: [exploration, migration, sky], sources: [wikipedia:Polynesian_navigation] }
       - { id: sweet-potato, date: c. 1100 CE, label: "Sweet potatoes from South America: Polynesians reached the Americas", prominence: 3, confidence: probable, themes: [exploration, trade], sources: [wikipedia:Sweet_potato] }
       - { id: rarotonga, date: c. 1000 CE, label: "Voyagers settle the Cook and Society Islands", prominence: 3, themes: [migration], confidence: probable, sources: [wikipedia:Polynesian_navigation] }
+      - { id: voyaging-fades, date: c. 1300 CE, label: "Long voyages between Tahiti and Hawaiʻi grow rare", prominence: 4, themes: [exploration], confidence: probable, sources: [wikipedia:Polynesian_navigation] }
     sources: [wikipedia:Polynesian_triangle]
 
   - id: tui-tonga
     name: Tuʻi Tonga & Tonga
+    endonym: { text: "Puleʻanga Fakatuʻi ʻo Tonga", script: Latn }
     region: oceania
     group: pacific
     sphere: oceanian
@@ -51,6 +53,10 @@ lanes:
       - { id: tonga-empire, date: c. 1200 CE, label: "Tonga's maritime chiefdom reaches Samoa and beyond", prominence: 3, themes: [government], confidence: probable, sources: [wikipedia:Tuʻi_Tonga_Empire] }
       - { id: tonga-constitution, date: 1875 CE, label: "Tonga's constitution; it is never colonised", prominence: 4, themes: [government], sources: [wikipedia:Tonga] }
       - { id: tupou-i, date: 1845 CE, label: "George Tupou I unites Tonga", prominence: 4, themes: [government], sources: [wikipedia:George_Tupou_I] }
+      - { id: tui-haatakalaua, date: c. 1470 CE, label: "A new line of Tongan chiefs takes over everyday rule", prominence: 4, themes: [government], confidence: probable, sources: [wikipedia:Tuʻi_Haʻatakalaua] }
+      - { id: schouten-tonga, date: 1616 CE, label: "Dutch sailors Schouten and Le Maire reach Tonga", prominence: 4, themes: [exploration], sources: [wikipedia:Willem_Schouten] }
+      - { id: hunga-tonga, date: 2022 CE, label: "The Hunga Tonga eruption, the largest in over a century", prominence: 4, themes: [climate], sources: [wikipedia:2022_Hunga_Tonga–Hunga_Haʻapai_eruption_and_tsunami] }
+      - { id: tasman-tonga, date: 1643 CE, label: "Abel Tasman reaches Tonga", prominence: 4, themes: [exploration], sources: [wikipedia:Abel_Tasman] }
     sources: [wikipedia:Tuʻi_Tonga_Empire]
 
   - id: nan-madol
@@ -76,10 +82,12 @@ lanes:
     cliopatria: ["Kingdom of Hawaii", "Hawaii"]
     events:
       - { id: cook-hawaii, date: 1778 CE, label: "James Cook reaches Hawaiʻi; he dies there the next year", prominence: 3, themes: [exploration], sources: [wikipedia:James_Cook] }
-      - { id: kamehameha, date: 1810 CE, label: "Kamehameha unites the islands", prominence: 3, themes: [government], sources: [wikipedia:Kamehameha_I] }
+      - { id: kamehameha, date: 1810 CE, label: "Kamehameha unites the islands", prominence: 3, themes: [government], sources: [wikipedia:Kamehameha_I], people: [p-kamehameha] }
       - { id: hawaii-annexed, date: 1898 CE, label: "After a coup by planters, the US annexes Hawaiʻi", prominence: 4, themes: [government], sources: [wikipedia:Overthrow_of_the_Hawaiian_Kingdom] }
       - { id: hawaii-settled, date: c. 1250 CE, label: "Polynesians settle Hawaiʻi", prominence: 3, themes: [migration], sources: [wikipedia:History_of_Hawaii] }
-      - { id: liliuokalani, date: 1893 CE, label: "Queen Liliʻuokalani is overthrown", prominence: 3, themes: [women, government], sources: [wikipedia:Liliʻuokalani] }
+      - { id: liliuokalani, date: 1893 CE, label: "Queen Liliʻuokalani is overthrown", prominence: 3, themes: [women, government], sources: [wikipedia:Liliʻuokalani], people: [p-liliuokalani] }
+      - { id: hawaiian-fishponds, date: c. 1400 CE, label: "Hawaiians build stone-walled fishponds", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Hawaiian_fishpond] }
+      - { id: umi-a-liloa, date: c. 1500 CE, label: "ʻUmi-a-Līloa unites the island of Hawaiʻi", prominence: 4, themes: [government], confidence: probable, sources: [wikipedia:ʻUmi-a-Līloa] }
     sources: [wikipedia:History_of_Hawaii]
 
   - id: rapa-nui
@@ -96,6 +104,9 @@ lanes:
       - { id: rapa-nui-slavers, date: 1862 CE, label: "Peruvian slave raids and smallpox leave 111 islanders", prominence: 4, themes: [disease], sources: [wikipedia:Easter_Island] }
       - { id: rapa-nui-settled, date: c. 1200 CE, label: "Polynesians reach Rapa Nui, the most remote inhabited island", prominence: 3, themes: [migration], sources: [wikipedia:Easter_Island] }
       - { id: roggeveen, date: 1722 CE, label: "Roggeveen lands on Easter Sunday", prominence: 4, themes: [exploration], sources: [wikipedia:Jacob_Roggeveen] }
+      - { id: rapa-nui-forest, date: c. 1500 CE, label: "Rapa Nui's palm forests disappear", prominence: 4, themes: [climate], confidence: disputed, sources: [wikipedia:Easter_Island] }
+      - { id: birdman-cult, date: c. 1600 CE, label: "The birdman contest at Orongo", prominence: 3, themes: [religion], confidence: probable, sources: [wikipedia:Tangata_manu] }
+      - { id: poike-ditch, date: c. 1680 CE, label: "The battle of the Poike ditch, as Rapa Nui tradition tells it", prominence: 4, themes: [war], confidence: legendary, sources: [wikipedia:Easter_Island] }
     images:
       - { id: moai-rano-raraku, source: "commons:File:Moai Rano raraku.jpg", date: c. 1300 CE, prominence: 1, treatment: plate, caption: "Moai at Rano Raraku, Rapa Nui" }
     sources: [wikipedia:Easter_Island]
@@ -122,6 +133,10 @@ lanes:
       - { id: new-zealand-wars, date: 1845 CE, label: "The New Zealand Wars over land", prominence: 4, themes: [war], sources: [wikipedia:New_Zealand_Wars] }
       - { id: maori-language-act, date: 1987 CE, label: "Te reo Māori becomes an official language", prominence: 4, sources: [wikipedia:Māori_Language_Act_1987] }
       - { id: rainbow-warrior, date: 1985 CE, label: "French agents sink the Rainbow Warrior in Auckland", prominence: 4, themes: [war], sources: [wikipedia:Sinking_of_the_Rainbow_Warrior] }
+      - { id: maori-pa, date: c. 1500 CE, label: "Māori build fortified pā on hilltops", prominence: 4, themes: [war], confidence: probable, sources: [wikipedia:Pā] }
+      - { id: waitangi-tribunal, date: 1975 CE, label: "The Waitangi Tribunal begins hearing Māori claims", prominence: 4, themes: [government], sources: [wikipedia:Waitangi_Tribunal] }
+      - { id: christchurch-2019, date: 2019 CE, label: "The Christchurch mosque attacks; New Zealand bans semi-automatic weapons", prominence: 4, sources: [wikipedia:Christchurch_mosque_shootings] }
+      - { id: wairau-bar, date: c. 1300 CE, label: "Wairau Bar: an early Polynesian village in Aotearoa", prominence: 4, sources: [wikipedia:Wairau_Bar] }
     sources: [wikipedia:History_of_New_Zealand]
 
   - id: fiji
@@ -137,4 +152,7 @@ lanes:
       - { id: indo-fijians, date: 1879 CE, label: "Indentured workers from India arrive in Fiji", prominence: 4, themes: [migration], sources: [wikipedia:Indo-Fijians] }
       - { id: fiji-independence, date: 1970 CE, label: "Fiji becomes independent", prominence: 4, themes: [government], sources: [wikipedia:Fiji] }
       - { id: fiji-coups, date: 1987 CE, label: "Two military coups in Fiji", prominence: 4, themes: [government], sources: [wikipedia:1987_Fijian_coups_d'état] }
+      - { id: tasman-fiji, date: 1643 CE, label: "Abel Tasman sights Fiji", prominence: 4, themes: [exploration], sources: [wikipedia:Abel_Tasman] }
+      - { id: fiji-coup-2006, date: 2006 CE, label: "A fourth coup in Fiji", prominence: 4, themes: [government], sources: [wikipedia:2006_Fijian_coup_d'état] }
+      - { id: fiji-ring-ditch, date: c. 1100 CE, label: "Fijian chiefdoms build fortified ring-ditch villages", prominence: 4, themes: [war], confidence: probable, sources: [wikipedia:History_of_Fiji] }
     sources: [wikipedia:History_of_Fiji]

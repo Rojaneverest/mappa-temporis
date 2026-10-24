@@ -45,6 +45,8 @@ export const Event = z.object({
   thread: z.string().optional(),
   sources: z.array(z.string()).min(1, 'every event needs a source'),
   note: z.string().optional(),
+  /** People who took part: the build checks they were alive at the date. */
+  people: z.array(z.string()).default([]),
 });
 
 export const LaneImage = z.object({
@@ -55,8 +57,9 @@ export const LaneImage = z.object({
   date: DateText,
   prominence: Prominence,
   /** cutout: object lifted from its photo with a soft shadow; plate: framed rectangle (paintings, scenes);
-   *  backdrop: printed into the paper (multiplied), unframed — the era maps. */
-  treatment: z.enum(['cutout', 'plate', 'backdrop']),
+   *  backdrop: printed into the paper (multiplied), unframed — the era maps; coin: a coin lifted from its
+   *  photo as an embossed roundel (struck in the ruler's lifetime). */
+  treatment: z.enum(['cutout', 'plate', 'backdrop', 'coin']),
   caption: z.string().max(80),
   /** Made in the era it illustrates (vs. a later depiction). */
   ofItsTime: z.boolean().default(true),
@@ -201,3 +204,49 @@ export const Tour = z.object({
   })).min(1),
 });
 export type Tour = z.infer<typeof Tour>;
+
+/** A person, drawn beside their lane at the century zoom with a thin bar for their lifetime. */
+export const Person = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  name: z.string().max(40),
+  lane: z.string(),
+  /** Birth – death, human-style ("c. 551 – 479 BCE"). */
+  life: SpanText,
+  /** What they did, in a few words ("teacher of rulers"). */
+  role: z.string().max(60),
+  prominence: z.union([z.literal(2), z.literal(3), z.literal(4), z.literal(5)]),
+  endonym: Endonym.optional(),
+  sources: z.array(z.string()).min(1),
+});
+export type Person = z.infer<typeof Person>;
+export const PeopleFile = z.object({ people: z.array(Person) });
+
+/** A voice: a short quotation from a primary source, set in italic beside a landmark (P1–P2) lane. */
+export const Voice = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  lane: z.string(),
+  date: DateText,
+  /** The words, in English (keep under ~20 words; long quotes belong in the Folio, not on the canvas). */
+  text: z.string().max(160),
+  speaker: z.string().max(50),
+  /** The work it comes from ("Analects 2.4"). */
+  work: z.string().max(80),
+  /** The translation used, when it is not our own plain rendering. */
+  translation: z.string().optional(),
+  prominence: z.union([z.literal(3), z.literal(4), z.literal(5)]),
+  sources: z.array(z.string()).min(1),
+});
+export type Voice = z.infer<typeof Voice>;
+export const VoicesFile = z.object({ voices: z.array(Voice) });
+
+/** Daily life: a short card on how ordinary people lived. Folio only, never drawn. */
+export const DailyCard = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  lane: z.string(),
+  span: SpanText,
+  title: z.string().max(60),
+  text: z.string().max(700),
+  sources: z.array(z.string()).min(1),
+});
+export type DailyCard = z.infer<typeof DailyCard>;
+export const DailyFile = z.object({ cards: z.array(DailyCard) });

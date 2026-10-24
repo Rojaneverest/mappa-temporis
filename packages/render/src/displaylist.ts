@@ -95,7 +95,7 @@ export interface ImageItem extends Base {
   h: number;
   /** Available long-side pixel sizes, ascending. */
   sizes: number[];
-  treatment: 'cutout' | 'plate' | 'backdrop';
+  treatment: 'cutout' | 'plate' | 'backdrop' | 'coin';
 }
 
 export type Item = TextItem | PathItem | RectItem | LineItem | ImageItem;

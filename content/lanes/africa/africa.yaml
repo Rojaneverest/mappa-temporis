@@ -50,6 +50,7 @@ lanes:
 
   - id: ghana-empire
     name: Ghana (Wagadu)
+    endonym: { text: "Wagadu", script: Latn }
     region: africa
     group: west-africa
     sphere: african
@@ -65,6 +66,7 @@ lanes:
   # ------------------------------------------------------------------ the middle nile & the horn
   - id: kush
     name: Kingdom of Kush
+    endonym: { text: "𓎡𓄿𓈙", script: Egyp, translit: "Kꜣš" }
     region: africa
     group: nile-horn
     sphere: african
@@ -94,6 +96,8 @@ lanes:
     sphere: african
     prominence: 4
     span: c. 980 – 400 BCE
+    events:
+      - { id: yeha, date: c. 700 BCE, label: "The temple at Yeha, built by the kingdom of Dʿmt", prominence: 3, themes: [religion, art], sources: [wikipedia:Yeha] }
     sources: [wikipedia:Dʿmt]
 
   - id: aksum
@@ -116,6 +120,7 @@ lanes:
       - { id: aksum-decline, date: c. 800 CE, label: "Red Sea trade passes to Muslim merchants; Aksum fades inland", prominence: 4, themes: [trade], sources: [wikipedia:Kingdom_of_Aksum] }
     images:
       - { id: aksum-stele, source: "commons:File:Rome Stele.jpg", date: 4th c., prominence: 3, treatment: plate, caption: "The great stele of Aksum" }
+      - { id: coin-ezana, source: "commons:File:Ezana gold coin with cross. British Museum. 1921,0316.1.jpg", date: c. 340 CE, prominence: 3, treatment: coin, caption: "Ezana's gold coin, among the first to bear a cross" }
     sources: [wikipedia:Kingdom_of_Aksum]
 
   # ------------------------------------------------------------------ the maghreb
@@ -132,6 +137,7 @@ lanes:
 
   - id: carthage
     name: Carthage
+    endonym: { text: "𐤒𐤓𐤕𐤇𐤃𐤔𐤕", script: Phnx, translit: "Qart-ḥadašt" }
     region: africa
     group: maghreb
     sphere: punic

@@ -1,4 +1,4 @@
-// The Folio side panel: details, voices of the sources, images and links for one item.
+// The Folio side panel: details, people, voices of the sources, daily life, images and links for one item.
 import type { Folio, FolioEntry } from '../../../packages/render/src/folio.ts';
 
 const PROMINENCE = ['', 'Landmark', 'Major', 'Standard', 'Whisper', 'Archive'];
@@ -61,22 +61,27 @@ export class Panel {
   }
 
   private render(e: FolioEntry): string {
-    const kind = ({ lane: 'Civilization · state · period', event: 'Event', thread: 'Thread', image: 'Object', era: 'Era', climate: 'Climate', population: 'People' } as const)[e.kind];
+    const kind = ({ lane: 'Civilization · state · period', event: 'Event', thread: 'Thread', image: 'Object', era: 'Era', climate: 'Climate', population: 'People', person: 'Person', voice: 'Voice', daily: 'Daily life' } as const)[e.kind];
     const parts: string[] = [];
     const laneLink = e.laneId ? ` · <a href="#" data-go="${esc(e.laneId)}">${esc(e.laneName)}</a>` : '';
     parts.push(`<div class="kicker">${kind} · ${esc(e.region)}${e.kind !== 'lane' ? laneLink : ''}</div>`);
     if (e.endonym) parts.push(`<div class="endonym">${esc(e.endonym.text)}${e.endonym.translit ? `<span>${esc(e.endonym.translit)}</span>` : ''}</div>`);
     parts.push(`<h2>${esc(e.title)}</h2>`);
-    const badges = [`<span class="badge p${e.prominence}">${PROMINENCE[e.prominence]}</span>`];
+    // Daily-life cards live only here by design: no prominence, nothing "missing" from the chart.
+    const badges = e.kind === 'daily' ? [] : [`<span class="badge p${e.prominence}">${PROMINENCE[e.prominence]}</span>`];
     if (e.confidence && e.confidence !== 'attested') badges.push(`<span class="badge warn">${esc(e.confidence)}</span>`);
     if (e.basis && e.basis !== 'texts') badges.push(`<span class="badge warn">known from ${esc(e.basis)}</span>`);
-    if (!e.drawn) badges.push('<span class="badge">not drawn on the chart</span>');
+    if (!e.drawn && e.kind !== 'daily') badges.push('<span class="badge">not drawn on the chart</span>');
     parts.push(`<div class="dates">${esc(e.dates)} ${badges.join(' ')}</div>`);
     if (e.image) {
       const size = e.image.sizes.find((z) => z >= 900) ?? e.image.sizes[e.image.sizes.length - 1];
       parts.push(`<figure class="${e.image.treatment}"><img src="/img/${esc(e.id)}/${size}.webp" alt="${esc(e.image.caption)}"><figcaption>${esc(e.image.title)}<br><span>${esc(e.image.credit)} · ${esc(e.image.license)}</span></figcaption></figure>`);
     }
-    if (e.note) parts.push(`<p class="note">${esc(e.note)}</p>`);
+    if (e.role) parts.push(`<p class="note">${esc(e.role[0]!.toUpperCase() + e.role.slice(1))}.</p>`);
+    if (e.quote) {
+      parts.push(`<blockquote class="voice">“${esc(e.quote.text)}”<cite>— ${esc(e.quote.speaker)}, <i>${esc(e.quote.work)}</i>${e.quote.translation ? ` · tr. ${esc(e.quote.translation)}` : ''}</cite></blockquote>`);
+    }
+    if (e.note) parts.push(...e.note.split(/\n\s*\n/).map((para) => `<p class="note">${esc(para)}</p>`));
     if (e.forces?.length) parts.push('<div class="forces">' + e.forces.map((f) => `<span class="force ${esc(f)}">${esc(f)}</span>`).join('') + '</div>');
     if (e.wikipedia) parts.push('<div class="wiki"><p class="loading">Loading summary…</p></div>');
     if (e.segments?.length) {
@@ -85,6 +90,18 @@ export class Panel {
     if (e.events?.length) {
       parts.push(`<h3>${e.kind === 'thread' ? 'Stops along the way' : 'Events'}</h3><ul class="list events">` + e.events.map((ev) =>
         `<li><a href="#" data-go="${esc(ev.id)}"><span>${esc(ev.dates)}</span>${esc(ev.label)}</a>${ev.drawn ? '' : ' <em>(off the chart)</em>'}</li>`).join('') + '</ul>');
+    }
+    if (e.people?.length) {
+      parts.push('<h3>People</h3><ul class="list">' + e.people.map((p) =>
+        `<li><a href="#" data-go="${esc(p.id)}"><span>${esc(p.dates)}</span>${esc(p.name)}, ${esc(p.role)}</a>${p.drawn ? '' : ' <em>(off the chart)</em>'}</li>`).join('') + '</ul>');
+    }
+    if (e.voices?.length) {
+      parts.push('<h3>Voices</h3><ul class="list voices">' + e.voices.map((v) =>
+        `<li><a href="#" data-go="${esc(v.id)}"><span>${esc(v.dates)}</span><q>${esc(v.text)}</q> — ${esc(v.speaker)}</a></li>`).join('') + '</ul>');
+    }
+    if (e.daily?.length) {
+      parts.push('<h3>Daily life</h3><ul class="list">' + e.daily.map((d) =>
+        `<li><a href="#" data-go="${esc(d.id)}"><span>${esc(d.dates)}</span>${esc(d.title)}</a></li>`).join('') + '</ul>');
     }
     if (e.images?.length) {
       parts.push('<h3>Objects</h3><div class="thumbs">' + e.images.map((id) => {

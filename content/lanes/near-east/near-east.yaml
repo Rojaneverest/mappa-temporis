@@ -38,6 +38,7 @@ lanes:
 
   - id: ptolemaic
     name: Ptolemaic Egypt
+    endonym: { text: "Αἴγυπτος", script: Grek, translit: "Aígyptos" }
     region: near-east
     group: egypt
     sphere: hellenic
@@ -54,6 +55,7 @@ lanes:
       - { id: cleopatra-dies, date: 30 BCE, label: "Cleopatra dies; Egypt becomes a Roman province", prominence: 2, sources: [wikipedia:Death_of_Cleopatra] }
     images:
       - { id: arsinoe, source: "met:547699", date: c. 275 BCE, prominence: 3, treatment: cutout, caption: "Head attributed to Queen Arsinoe II" }
+      - { id: coin-cleopatra, source: "commons:File:Cleopatra VII tetradrachm Ascalon mint.jpg", date: c. 50 BCE, prominence: 3, treatment: coin, caption: "Cleopatra VII, struck in her lifetime" }
     sources: [wikipedia:Ptolemaic_Kingdom]
 
   # ------------------------------------------------------------------ levant & arabia
@@ -148,6 +150,8 @@ lanes:
     cliopatria: ["Sabaeans", "Himyarite Kingdom"]
     events:
       - { id: marib-dam, date: c. 700 BCE, label: "The great dam of Marib waters the incense kingdom of Sheba", prominence: 4, themes: [technology, trade], confidence: probable, sources: [wikipedia:Marib_Dam] }
+      - { id: aksum-himyar, date: 525 CE, label: "Aksum invades Himyar across the Red Sea", prominence: 4, themes: [war], sources: [wikipedia:Himyarite_Kingdom] }
+      - { id: marib-dam-bursts, date: c. 570 CE, label: "The great dam of Ma'rib bursts for the last time", prominence: 3, themes: [climate], sources: [wikipedia:Marib_Dam] }
     sources: [wikipedia:Sabaeans, wikipedia:Himyarite_Kingdom]
 
   - id: palmyra
@@ -164,6 +168,7 @@ lanes:
 
   - id: early-islam
     name: Muhammad's community
+    endonym: { text: "الأمة", script: Arab, translit: "al-Umma" }
     region: near-east
     group: levant
     sphere: islamic
@@ -172,7 +177,7 @@ lanes:
     relations:
       - { type: becomes, lane: rashidun, at: 632 CE }
     events:
-      - { id: hijra, date: 622 CE, label: "The Hijra: Muhammad moves to Medina — year 1 of the Islamic calendar", prominence: 1, themes: [religion], sources: [wikipedia:Hijrah] }
+      - { id: hijra, date: 622 CE, label: "The Hijra: Muhammad moves to Medina — year 1 of the Islamic calendar", prominence: 1, themes: [religion], sources: [wikipedia:Hijrah], people: [p-muhammad] }
       - { id: mecca-630, date: 630 CE, label: "Muhammad returns to Mecca", prominence: 3, themes: [religion], sources: [wikipedia:Conquest_of_Mecca] }
       - { id: first-revelation, date: 610 CE, label: "Muhammad's first revelation on Mount Hira", prominence: 2, themes: [religion], sources: [wikipedia:Muhammad's_first_revelation] }
     sources: [wikipedia:Muhammad]
@@ -192,10 +197,12 @@ lanes:
       - { id: yarmouk, date: 636 CE, label: "Arab armies defeat Byzantium at the Yarmouk", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Yarmuk] }
       - { id: egypt-641, date: 641 CE, label: "Egypt falls to the caliphate", prominence: 3, themes: [war], sources: [wikipedia:Muslim_conquest_of_Egypt] }
       - { id: quran-compiled, date: c. 650 CE, label: "Uthman's standard text of the Quran", prominence: 3, themes: [religion], sources: [wikipedia:History_of_the_Quran] }
+      - { id: first-fitna, date: 656 CE, label: "Uthman is murdered; the first civil war of Islam", prominence: 3, themes: [war, religion], sources: [wikipedia:First_Fitna] }
     sources: [wikipedia:Rashidun_Caliphate]
 
   - id: umayyad
     name: Umayyad Caliphate
+    endonym: { text: "الخلافة الأموية", script: Arab, translit: "al-Khilāfa al-Umawiyya" }
     region: near-east
     group: levant
     sphere: islamic
@@ -205,8 +212,11 @@ lanes:
       - { id: karbala, date: 680 CE, label: "Husayn is killed at Karbala; Sunni and Shia diverge", prominence: 2, themes: [religion, war], sources: [wikipedia:Battle_of_Karbala] }
       - { id: dome-rock, date: 691 CE, label: "The Dome of the Rock is completed", prominence: 2, themes: [art, religion], sources: [wikipedia:Dome_of_the_Rock] }
       - { id: tours, date: 732 CE, label: "Tours: the Arab advance into France is halted", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Tours] }
+      - { id: arabic-coinage, date: 696 CE, label: "Abd al-Malik's coins: Arabic replaces Greek and Persian", prominence: 4, themes: [government, trade], sources: [wikipedia:Abd_al-Malik_ibn_Marwan] }
+      - { id: umayyad-mosque, date: 715 CE, label: "The Great Mosque of Damascus is completed", prominence: 3, themes: [art, religion], sources: [wikipedia:Umayyad_Mosque] }
     images:
       - { id: dome-of-the-rock, source: "commons:File:Jerusalem-2013(2)-Temple Mount-Dome of the Rock (SE exposure).jpg", date: 691 CE, prominence: 2, treatment: plate, caption: "The Dome of the Rock, Jerusalem" }
+      - { id: coin-standing-caliph, source: "commons:File:First Umayyad gold dinar, Caliph Abd al-Malik, 695 CE.jpg", date: 695 CE, prominence: 3, treatment: coin, caption: "Abd al-Malik's 'standing caliph' dinar" }
     sources: [wikipedia:Umayyad_Caliphate]
 
   # ------------------------------------------------------------------ anatolia & the caucasus
@@ -230,8 +240,9 @@ lanes:
     span: c. 680 – 546 BCE
     events:
       - { id: first-coins, date: c. 600 BCE, label: "Lydia strikes the world's first coins, in electrum", prominence: 1, themes: [trade], thread: money, sources: [wikipedia:Lydian_coinage] }
-      - { id: halys-eclipse, date: 585 BCE, label: "A solar eclipse stops the battle of Lydians and Medes", prominence: 4, themes: [war, sky], sources: [wikipedia:Eclipse_of_Thales] }
       - { id: croesus, date: 546 BCE, label: "Cyrus defeats Croesus, the proverbially rich", prominence: 3, themes: [war], sources: [wikipedia:Croesus] }
+    images:
+      - { id: coin-croesus, source: "commons:File:Lydia - king Kroisos - 561-546 BC - gold stater - foreparts of lion and bull - two quadrata incusa - München SMS.jpg", date: c. 550 BCE, prominence: 3, treatment: coin, caption: "Croesus's gold stater: lion meets bull" }
     sources: [wikipedia:Lydia]
 
   - id: urartu
@@ -273,6 +284,7 @@ lanes:
   # ------------------------------------------------------------------ mesopotamia & iran
   - id: neo-assyria
     name: Neo-Assyrian Empire
+    endonym: { text: "𒀸𒋩", script: Xsux, translit: "Aššur" }
     region: near-east
     group: iran
     sphere: persian
@@ -290,6 +302,7 @@ lanes:
 
   - id: neo-babylonian
     name: Neo-Babylonian Empire
+    endonym: { text: "𒆍𒀭𒊏𒆠", script: Xsux, translit: "Bābili" }
     region: near-east
     group: iran
     sphere: persian
@@ -300,13 +313,13 @@ lanes:
     events:
       - { id: carchemish, date: 605 BCE, label: "Nebuchadnezzar defeats Egypt at Carchemish", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Carchemish] }
       - { id: ishtar-gate, date: c. 575 BCE, label: "The blue-glazed Ishtar Gate of Babylon", prominence: 2, themes: [art], sources: [wikipedia:Ishtar_Gate] }
-      - { id: nebuchadnezzar, date: 587 BCE, label: "Nebuchadnezzar destroys Jerusalem", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Jerusalem_(587_BC)] }
     images:
       - { id: ishtar-gate-photo, source: "commons:File:Ishtar gate in Pergamon museum.jpg", date: 575 BCE, prominence: 2, treatment: plate, caption: "The Ishtar Gate of Babylon, now in Berlin" }
     sources: [wikipedia:Neo-Babylonian_Empire]
 
   - id: media
     name: Media
+    endonym: { text: "𐎶𐎠𐎭", script: Xpeo, translit: "Māda" }
     region: near-east
     group: iran
     sphere: persian
@@ -345,6 +358,7 @@ lanes:
 
   - id: seleucid
     name: Seleucid Empire
+    endonym: { text: "Βασιλεία τῶν Σελευκιδῶν", script: Grek, translit: "Basileía tôn Seleukidôn" }
     region: near-east
     group: iran
     sphere: hellenic
@@ -353,7 +367,6 @@ lanes:
     events:
       - { id: seleucid-elephants, date: c. 303 BCE, label: "Seleucus trades India's borderlands to Chandragupta for 500 elephants", prominence: 4, sources: [wikipedia:Seleucid–Mauryan_war] }
       - { id: antiochus-temple, date: 167 BCE, label: "Antiochus IV desecrates the Jerusalem Temple", prominence: 4, themes: [religion], sources: [wikipedia:Antiochus_IV_Epiphanes] }
-      - { id: antiochus-maccabees, date: 167 BCE, label: "The Maccabean revolt", prominence: 3, themes: [religion, war], sources: [wikipedia:Maccabean_Revolt] }
     sources: [wikipedia:Seleucid_Empire]
 
   - id: parthian
@@ -386,6 +399,7 @@ lanes:
       - { id: last-war, date: 602 CE, label: "The last great Roman–Persian war exhausts both empires", prominence: 3, themes: [war], sources: [wikipedia:Byzantine–Sasanian_War_of_602–628] }
       - { id: qadisiyyah, date: 636 CE, label: "Arab armies win at al-Qadisiyyah", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_al-Qadisiyyah] }
       - { id: yazdegerd, date: 651 CE, label: "Yazdegerd III, last shah, is killed; Persia falls to the Arabs", prominence: 2, sources: [wikipedia:Yazdegerd_III] }
+      - { id: antioch-540, date: 540 CE, label: "Khosrow I sacks Antioch", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Antioch_(540)] }
     images:
       - { id: hunting-plate, source: "commons:File:Hunting king plate, 303-309 CE, silver, Sasanian, Cleveland Museum of Art.JPG", date: c. 306 CE, prominence: 2, treatment: cutout, caption: "Silver plate: a Sasanian king hunting" }
     sources: [wikipedia:Sasanian_Empire]

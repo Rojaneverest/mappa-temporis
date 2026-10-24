@@ -3,6 +3,7 @@ lanes:
   # ------------------------------------------------------------------ west africa
   - id: mali
     name: Mali Empire
+    endonym: { text: "Manden Kurufaba", script: Latn }
     region: africa
     group: west-africa
     sphere: african
@@ -19,6 +20,7 @@ lanes:
       - { id: kurukan-fuga, date: 1236 CE, label: "The Kouroukan Fouga charter of Mali (oral tradition)", prominence: 3, confidence: legendary, themes: [government], sources: [wikipedia:Kouroukan_Fouga] }
       - { id: abu-bakr-ii, date: c. 1311 CE, label: "Abu Bakr II sails into the Atlantic, never to return (tradition)", prominence: 4, confidence: legendary, themes: [exploration], sources: [wikipedia:Abu_Bakr_II] }
       - { id: catalan-atlas, date: 1375 CE, label: "The Catalan Atlas pictures Mansa Musa holding a gold nugget", prominence: 3, themes: [art], sources: [wikipedia:Catalan_Atlas] }
+      - { id: jenne-1599, date: 1599 CE, label: "Mali's last attempt to retake Djenné fails", prominence: 4, themes: [war], sources: [wikipedia:Mali_Empire] }
     images:
       - { id: djenne-mosque, source: "commons:File:Great Mosque of Djenné 1.jpg", date: c. 1330 CE, prominence: 2, treatment: plate, caption: "The Great Mosque of Djenné (rebuilt 1907 in the old style)", ofItsTime: false }
     sources: [wikipedia:Mali_Empire]
@@ -36,6 +38,7 @@ lanes:
       - { id: tondibi, date: 1591 CE, label: "Moroccan guns defeat Songhai at Tondibi", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Tondibi] }
       - { id: sonni-ali, date: 1468 CE, label: "Sonni Ali takes Timbuktu", prominence: 3, themes: [war], sources: [wikipedia:Sonni_Ali] }
       - { id: askia-muhammad, date: 1495 CE, label: "Askia Muhammad's pilgrimage to Mecca; Songhai at its height", prominence: 3, themes: [religion, government], sources: [wikipedia:Askia_Muhammad_I] }
+      - { id: timbuktu-manuscripts, date: c. 1550 CE, label: "Timbuktu's scholars and manuscripts at their height", prominence: 3, themes: [ideas], sources: [wikipedia:Timbuktu_Manuscripts] }
     sources: [wikipedia:Songhai_Empire]
 
   - id: kanem-bornu
@@ -54,6 +57,7 @@ lanes:
 
   - id: ife-benin
     name: Ife & Benin
+    endonym: { text: "Ilé-Ifẹ̀ · Ẹdo", script: Latn }
     region: africa
     group: west-africa
     sphere: african
@@ -69,6 +73,7 @@ lanes:
 
   - id: ashanti
     name: Asante & Ghana
+    endonym: { text: "Asanteman", script: Latn }
     region: africa
     group: west-africa
     sphere: african
@@ -103,6 +108,7 @@ lanes:
   # ------------------------------------------------------------------ central & southern africa
   - id: swahili
     name: Swahili coast
+    endonym: { text: "سواحلي", script: Arab, translit: "Sawāḥilī" }
     region: africa
     group: central-south
     sphere: african
@@ -137,6 +143,7 @@ lanes:
 
   - id: mutapa
     name: Mutapa
+    endonym: { text: "Mwene Mutapa", script: Latn }
     region: africa
     group: central-south
     sphere: african
@@ -150,6 +157,7 @@ lanes:
 
   - id: kongo
     name: Kingdom of Kongo
+    endonym: { text: "Kongo dia Ntotila", script: Latn }
     region: africa
     group: central-south
     sphere: african
@@ -161,10 +169,13 @@ lanes:
       - { id: afonso-kongo, date: 1526 CE, label: "Afonso I of Kongo protests the slave trade to the king of Portugal", prominence: 3, themes: [government], sources: [wikipedia:Afonso_I_of_Kongo] }
       - { id: mbwila, date: 1665 CE, label: "Defeat at Mbwila; Kongo splinters", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Mbwila] }
       - { id: kimpa-vita, date: 1704 CE, label: "Kimpa Vita's movement to restore Kongo", prominence: 4, themes: [women, religion], sources: [wikipedia:Beatriz_Kimpa_Vita] }
+      - { id: luanda-founded, date: 1575 CE, label: "Portugal founds Luanda, base of the Angolan slave trade", prominence: 4, themes: [trade], sources: [wikipedia:Luanda] }
+      - { id: queen-nzinga, date: 1624 CE, label: "Queen Nzinga of Ndongo resists the Portuguese for forty years", prominence: 3, themes: [war, women], sources: [wikipedia:Nzinga_of_Ndongo_and_Matamba] }
     sources: [wikipedia:Kingdom_of_Kongo]
 
   - id: zulu
     name: Zulu Kingdom
+    endonym: { text: "KwaZulu", script: Latn }
     region: africa
     group: central-south
     sphere: african
@@ -175,10 +186,12 @@ lanes:
       - { id: isandlwana, date: 1879 CE, label: "The Zulu army destroys a British force at Isandlwana", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Isandlwana] }
       - { id: shaka, date: 1816 CE, label: "Shaka builds the Zulu kingdom", prominence: 3, themes: [war, government], sources: [wikipedia:Shaka] }
       - { id: blood-river, date: 1838 CE, label: "Blood River: Boer trekkers defeat the Zulu", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Blood_River] }
+      - { id: shaka-killed, date: 1828 CE, label: "Shaka is assassinated by his half-brothers", prominence: 4, themes: [government], sources: [wikipedia:Shaka] }
     sources: [wikipedia:Zulu_Kingdom]
 
   - id: south-africa
     name: South Africa
+    endonym: { text: "Suid-Afrika · iNingizimu Afrika", script: Latn }
     region: africa
     group: central-south
     sphere: celtic-germanic
@@ -188,13 +201,16 @@ lanes:
     events:
       - { id: cape-colony, date: 1652 CE, label: "The Dutch found a supply station at the Cape", prominence: 3, themes: [migration], sources: [wikipedia:Dutch_Cape_Colony] }
       - { id: apartheid, date: 1948 CE, label: "Apartheid becomes law", prominence: 2, themes: [government], sources: [wikipedia:Apartheid] }
-      - { id: mandela, date: 1994 CE, label: "Free elections: Nelson Mandela becomes president", prominence: 1, themes: [government], sources: [wikipedia:1994_South_African_general_election] }
+      - { id: mandela, date: 1994 CE, label: "Free elections: Nelson Mandela becomes president", prominence: 1, themes: [government], sources: [wikipedia:1994_South_African_general_election], people: [p-mandela] }
       - { id: great-trek, date: 1836 CE, label: "The Great Trek", prominence: 3, themes: [migration], sources: [wikipedia:Great_Trek] }
       - { id: kimberley, date: 1871 CE, label: "Diamonds at Kimberley, gold on the Witwatersrand in 1886", prominence: 3, themes: [trade], sources: [wikipedia:Kimberley_Mine] }
       - { id: boer-war, date: 1899 CE, label: "The Boer War and British concentration camps", prominence: 3, themes: [war], sources: [wikipedia:Second_Boer_War] }
       - { id: sharpeville, date: 1960 CE, label: "The Sharpeville massacre", prominence: 4, themes: [government], sources: [wikipedia:Sharpeville_massacre] }
       - { id: soweto, date: 1976 CE, label: "The Soweto uprising", prominence: 4, themes: [government], sources: [wikipedia:Soweto_uprising] }
       - { id: truth-commission, date: 1996 CE, label: "The Truth and Reconciliation Commission", prominence: 4, themes: [government], sources: [wikipedia:Truth_and_Reconciliation_Commission_(South_Africa)] }
+      - { id: cape-british, date: 1795 CE, label: "Britain takes the Cape from the Dutch", prominence: 4, themes: [war], sources: [wikipedia:Invasion_of_the_Cape_Colony] }
+      - { id: union-south-africa, date: 1910 CE, label: "The Union of South Africa", prominence: 3, themes: [government], sources: [wikipedia:Union_of_South_Africa] }
+      - { id: anc-founded, date: 1912 CE, label: "The African National Congress is founded", prominence: 3, themes: [government], sources: [wikipedia:African_National_Congress] }
     sources: [wikipedia:History_of_South_Africa]
 
   - id: colonial-africa
@@ -214,6 +230,7 @@ lanes:
       - { id: oau, date: 1963 CE, label: "The Organisation of African Unity is founded", prominence: 4, themes: [government], sources: [wikipedia:Organisation_of_African_Unity] }
       - { id: suez-crisis, date: 1956 CE, label: "The Suez Crisis", prominence: 4, themes: [war], sources: [wikipedia:Suez_Crisis] }
       - { id: lumumba, date: 1961 CE, label: "Patrice Lumumba is murdered", prominence: 4, sources: [wikipedia:Patrice_Lumumba] }
+      - { id: algerian-war, date: 1954 CE, label: "Algeria's war of independence against France", prominence: 3, themes: [war], sources: [wikipedia:Algerian_War] }
     sources: [wikipedia:Scramble_for_Africa]
 
   - id: rwanda
@@ -244,6 +261,7 @@ lanes:
 
   - id: zagwe
     name: Zagwe dynasty
+    endonym: { text: "ዛጔ", script: Ethi, translit: "Zagwe" }
     region: africa
     group: nile-horn
     sphere: african
@@ -282,11 +300,15 @@ lanes:
       - { id: lucy-found, date: 1974 CE, label: "'Lucy', a 3.2-million-year-old ancestor, is found", prominence: 4, themes: [science], sources: [wikipedia:Lucy_(Australopithecus)] }
       - { id: african-union, date: 2002 CE, label: "The African Union is founded, seated in Addis Ababa", prominence: 4, themes: [government, diplomacy], sources: [wikipedia:African_Union] }
       - { id: gerd, date: 2011 CE, label: "Work begins on the Grand Renaissance Dam on the Blue Nile", prominence: 4, themes: [technology], sources: [wikipedia:Grand_Ethiopian_Renaissance_Dam] }
+      - { id: wayna-daga, date: 1543 CE, label: "Ahmad Gran is killed at Wayna Daga", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Wayna_Daga] }
+      - { id: zemene-mesafint, date: 1769 CE, label: "The Era of the Princes: Ethiopia's emperors become puppets", prominence: 4, themes: [government], sources: [wikipedia:Zemene_Mesafint] }
+      - { id: tigray-war, date: 2020 CE, label: "War in Tigray", prominence: 4, themes: [war], sources: [wikipedia:Tigray_war] }
     sources: [wikipedia:Ethiopian_Empire]
 
   # ------------------------------------------------------------------ the maghreb
   - id: almoravids
     name: Almoravids & Almohads
+    endonym: { text: "المرابطون", script: Arab, translit: "al-Murābiṭūn" }
     region: africa
     group: maghreb
     sphere: islamic
@@ -304,6 +326,7 @@ lanes:
 
   - id: morocco
     name: Morocco
+    endonym: { text: "المغرب", script: Arab, translit: "al-Maghrib" }
     region: africa
     group: maghreb
     sphere: islamic
@@ -317,6 +340,7 @@ lanes:
       - { id: morocco-recognises-us, date: 1777 CE, label: "Morocco is the first state to recognise the United States", prominence: 4, themes: [government], sources: [wikipedia:Morocco–United_States_relations] }
       - { id: green-march, date: 1975 CE, label: "The Green March into Western Sahara", prominence: 4, sources: [wikipedia:Green_March] }
       - { id: morocco-protectorate, date: 1912 CE, label: "Morocco becomes a French protectorate", prominence: 4, themes: [government], sources: [wikipedia:French_protectorate_in_Morocco] }
+      - { id: moulay-ismail, date: 1672 CE, label: "Moulay Ismail builds his imperial city at Meknes", prominence: 4, themes: [government, art], sources: [wikipedia:Ismail_Ibn_Sharif] }
     sources: [wikipedia:History_of_Morocco]
 
   - id: algeria
@@ -330,3 +354,96 @@ lanes:
       - { id: algeria-war, date: 1962 CE, label: "After a brutal war, Algeria wins independence from France", prominence: 3, themes: [war], sources: [wikipedia:Algerian_War] }
       - { id: algeria-civil-war, date: 1991 CE, label: "The Algerian Civil War", prominence: 4, themes: [war], sources: [wikipedia:Algerian_Civil_War] }
     sources: [wikipedia:Algeria]
+
+  - id: atlantic-slave-trade
+    name: The Atlantic slave trade
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 2
+    span: 1526 – 1867 CE
+    events:
+      - { id: first-direct-slave-voyage, date: 1526 CE, label: "The first slave ship sails straight from Africa to the Americas", prominence: 3, themes: [trade, migration], sources: [wikipedia:Atlantic_slave_trade] }
+      - { id: elmina-dutch, date: 1637 CE, label: "The Dutch seize Elmina castle on the Gold Coast", prominence: 4, themes: [trade, war], sources: [wikipedia:Elmina_Castle] }
+      - { id: slave-trade-peak, date: c. 1780 CE, label: "The trade peaks: some 12.5 million people are carried off over four centuries", prominence: 2, themes: [trade, migration], sources: [wikipedia:Atlantic_slave_trade] }
+      - { id: zong, date: 1781 CE, label: "The Zong massacre: 130 captives thrown overboard for insurance", prominence: 4, sources: [wikipedia:Zong_massacre] }
+      - { id: slave-trade-act, date: 1807 CE, label: "Britain bans the slave trade and sends ships to stop it", prominence: 3, themes: [government], sources: [wikipedia:Slave_Trade_Act_1807] }
+      - { id: last-slave-voyages, date: 1867 CE, label: "The last known slave voyages reach Cuba", prominence: 4, sources: [wikipedia:Atlantic_slave_trade] }
+    sources: [wikipedia:Atlantic_slave_trade]
+
+  - id: oyo
+    name: Oyo Empire
+    endonym: { text: "Ọ̀yọ́", script: Latn }
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 3
+    span: c. 1300 – 1896 CE
+    events:
+      - { id: oyo-cavalry, date: c. 1650 CE, label: "Oyo's cavalry dominates the Yoruba lands", prominence: 4, themes: [war], sources: [wikipedia:Oyo_Empire] }
+      - { id: oyo-falls, date: c. 1836 CE, label: "Old Oyo is abandoned as the empire breaks apart", prominence: 4, themes: [war], sources: [wikipedia:Oyo_Empire] }
+    sources: [wikipedia:Oyo_Empire]
+
+  - id: dahomey
+    name: Dahomey
+    endonym: { text: "Danxomɛ", script: Latn }
+    region: africa
+    group: west-africa
+    sphere: african
+    prominence: 3
+    span: c. 1600 – 1904 CE
+    events:
+      - { id: dahomey-ouidah, date: 1727 CE, label: "Dahomey conquers the slave port of Ouidah", prominence: 4, themes: [war, trade], sources: [wikipedia:Kingdom_of_Dahomey] }
+      - { id: agojie, date: c. 1730 CE, label: "The Agojie, Dahomey's women soldiers", prominence: 4, themes: [war, women], sources: [wikipedia:Dahomey_Amazons] }
+      - { id: dahomey-french, date: 1892 CE, label: "France conquers Dahomey", prominence: 4, themes: [war], sources: [wikipedia:Second_Franco-Dahomean_War] }
+    sources: [wikipedia:Kingdom_of_Dahomey]
+
+  - id: merina-madagascar
+    name: Merina & Madagascar
+    endonym: { text: "Madagasikara", script: Latn }
+    region: africa
+    group: central-south
+    sphere: african
+    prominence: 3
+    span: c. 1540 – 2026 CE
+    events:
+      - { id: radama-i, date: 1817 CE, label: "Radama I unites most of Madagascar", prominence: 4, themes: [government], sources: [wikipedia:Radama_I] }
+      - { id: madagascar-french, date: 1896 CE, label: "France annexes Madagascar", prominence: 4, themes: [war], sources: [wikipedia:French_Madagascar] }
+      - { id: malagasy-uprising, date: 1947 CE, label: "The Malagasy uprising is crushed", prominence: 4, themes: [war], sources: [wikipedia:Malagasy_Uprising] }
+      - { id: madagascar-independence, date: 1960 CE, label: "Madagascar becomes independent", prominence: 4, themes: [government], sources: [wikipedia:Madagascar] }
+    sources: [wikipedia:History_of_Madagascar]
+
+  - id: oman-zanzibar
+    name: Oman's Zanzibar
+    endonym: { text: "زنجبار", script: Arab, translit: Zanjibār }
+    region: africa
+    group: nile-horn
+    sphere: islamic
+    prominence: 3
+    span: 1698 – 1964 CE
+    events:
+      - { id: fort-jesus, date: 1698 CE, label: "Omani forces take Fort Jesus at Mombasa from Portugal", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Fort_Jesus] }
+      - { id: said-zanzibar, date: 1840 CE, label: "Sultan Said moves his capital to Zanzibar: cloves and slaves", prominence: 4, themes: [trade], sources: [wikipedia:Said_bin_Sultan] }
+      - { id: zanzibar-slave-market, date: 1873 CE, label: "Zanzibar's slave market is closed", prominence: 4, themes: [trade], sources: [wikipedia:Sultanate_of_Zanzibar] }
+      - { id: anglo-zanzibar-war, date: 1896 CE, label: "The Anglo-Zanzibar War, shortest in history: under 45 minutes", prominence: 4, themes: [war], sources: [wikipedia:Anglo-Zanzibar_War] }
+      - { id: zanzibar-revolution, date: 1964 CE, label: "The Zanzibar revolution; union with Tanganyika as Tanzania", prominence: 4, themes: [government], sources: [wikipedia:Zanzibar_Revolution] }
+    sources: [wikipedia:Sultanate_of_Zanzibar]
+
+  - id: sudan
+    name: Sennar & Sudan
+    endonym: { text: "السودان", script: Arab, translit: as-Sūdān }
+    region: africa
+    group: nile-horn
+    sphere: islamic
+    prominence: 3
+    span: 1504 – 2026 CE
+    events:
+      - { id: funj-sennar, date: 1504 CE, label: "The Funj Sultanate of Sennar is founded on the Blue Nile", prominence: 4, themes: [government], sources: [wikipedia:Funj_Sultanate] }
+      - { id: turkiyya, date: 1821 CE, label: "Egypt conquers Sudan", prominence: 4, themes: [war], sources: [wikipedia:Turkiyya] }
+      - { id: khartoum-1885, date: 1885 CE, label: "The Mahdi's army takes Khartoum; Gordon is killed", prominence: 3, themes: [war, religion], sources: [wikipedia:Siege_of_Khartoum] }
+      - { id: omdurman, date: 1898 CE, label: "Omdurman: machine guns destroy the Mahdist army", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Omdurman] }
+      - { id: sudan-independence, date: 1956 CE, label: "Sudan becomes independent", prominence: 4, themes: [government], sources: [wikipedia:Sudan] }
+      - { id: darfur, date: 2003 CE, label: "War and mass killing in Darfur", prominence: 3, themes: [war], sources: [wikipedia:War_in_Darfur] }
+      - { id: south-sudan, date: 2011 CE, label: "South Sudan becomes independent", prominence: 4, themes: [government], sources: [wikipedia:South_Sudan] }
+      - { id: sudan-war-2023, date: 2023 CE, label: "Civil war between Sudan's army and the RSF", prominence: 4, themes: [war], sources: ["wikipedia:Sudanese_civil_war_(2023–present)"] }
+    sources: [wikipedia:History_of_Sudan]

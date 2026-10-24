@@ -134,6 +134,7 @@ lanes:
     events:
       - { id: jomon-pottery, date: c. 14000 BCE, label: "Jōmon pottery, among the oldest in the world", prominence: 2, themes: [technology, art], sources: [wikipedia:Jōmon_pottery] }
       - { id: sannai-maruyama, date: c. 3500 BCE, label: "Sannai-Maruyama, a large Jōmon village", prominence: 3, sources: [wikipedia:Sannai-Maruyama_site] }
+      - { id: oyu-circles, date: c. 2000 BCE, label: "The Ōyu stone circles", prominence: 4, themes: [religion], sources: [wikipedia:Ōyu_Stone_Circles] }
     sources: [wikipedia:Jōmon_period]
 
   - id: yayoi
@@ -204,6 +205,7 @@ lanes:
   - id: asuka
     group: japan
     name: Asuka
+    endonym: { text: "飛鳥", script: Jpan, translit: "Asuka" }
     region: east-asia
     sphere: korean-japanese
     prominence: 3

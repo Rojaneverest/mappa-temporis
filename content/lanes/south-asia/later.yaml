@@ -26,6 +26,7 @@ lanes:
 
   - id: pala
     name: Pala Empire
+    endonym: { text: "पाल", script: Deva, translit: "Pāla" }
     region: south-asia
     group: gangetic
     sphere: indic
@@ -39,6 +40,7 @@ lanes:
 
   - id: ghurids
     name: Ghurids
+    endonym: { text: "غوریان", script: Arab, translit: "Ghūriyān" }
     region: south-asia
     group: northwest
     sphere: islamic
@@ -77,6 +79,7 @@ lanes:
       - { id: timur-delhi, date: 1398 CE, label: "Timur sacks Delhi", prominence: 3, themes: [war], sources: [wikipedia:Sack_of_Delhi_(1398)] }
       - { id: alauddin-mongols, date: 1303 CE, label: "Alauddin Khalji turns back the Mongols", prominence: 3, themes: [war], sources: [wikipedia:Alauddin_Khalji] }
       - { id: kabir, date: c. 1450 CE, label: "Kabir's poems bridge Hindu and Muslim devotion", prominence: 3, themes: [religion, art], sources: [wikipedia:Kabir] }
+      - { id: malik-kafur, date: 1310 CE, label: "Malik Kafur's armies raid the far south", prominence: 4, themes: [war], sources: [wikipedia:Malik_Kafur] }
     sources: [wikipedia:Delhi_Sultanate]
 
   - id: mughal
@@ -96,7 +99,7 @@ lanes:
     relations:
       - { type: becomes, lane: british-raj, at: 1857 CE }
     events:
-      - { id: panipat-1526, date: 1526 CE, label: "Babur wins at Panipat with cannon", prominence: 2, themes: [war, technology], sources: [wikipedia:First_Battle_of_Panipat] }
+      - { id: panipat-1526, date: 1526 CE, label: "Babur wins at Panipat with cannon", prominence: 2, themes: [war, technology], sources: [wikipedia:First_Battle_of_Panipat], people: [p-babur] }
       - { id: akbar, date: 1556 CE, label: "Akbar the Great: tolerance, the Din-i Ilahi, a debating house of faiths", prominence: 1, themes: [ideas, religion, government], sources: [wikipedia:Akbar] }
       - { id: taj-mahal, date: 1653 CE, label: "The Taj Mahal is completed", prominence: 1, themes: [art], sources: [wikipedia:Taj_Mahal] }
       - { id: aurangzeb, date: 1707 CE, label: "Aurangzeb dies; the empire, at its largest, begins to fall apart", prominence: 3, themes: [government], sources: [wikipedia:Aurangzeb] }
@@ -107,8 +110,10 @@ lanes:
       - { id: east-india-company-arrives, date: 1608 CE, label: "The East India Company lands at Surat", prominence: 3, themes: [trade], sources: [wikipedia:Surat] }
       - { id: india-share-world, date: c. 1700 CE, label: "Mughal India produces about a quarter of the world's goods", prominence: 2, themes: [trade], confidence: probable, sources: [wikipedia:Economy_of_the_Mughal_Empire] }
       - { id: khalsa, date: 1699 CE, label: "Guru Gobind Singh founds the Khalsa", prominence: 3, themes: [religion], sources: [wikipedia:Khalsa] }
+      - { id: tegh-bahadur, date: 1675 CE, label: "Guru Tegh Bahadur is executed in Delhi", prominence: 4, themes: [religion], sources: [wikipedia:Guru_Tegh_Bahadur] }
     images:
       - { id: taj-mahal-view, source: "commons:File:Taj Mahal (Edited).jpeg", date: 1653 CE, prominence: 1, treatment: plate, caption: "The Taj Mahal, Agra" }
+      - { id: coin-jahangir, source: "commons:File:Gold mohur of Jahangir struck at Agra in his sixth regnal year 1611-1612 CE, Ashmolean Museum.jpg", date: 1611 CE, prominence: 3, treatment: coin, caption: "A gold mohur of Jahangir, struck at Agra" }
     sources: [wikipedia:Mughal_Empire]
 
   - id: sikh-empire
@@ -121,7 +126,7 @@ lanes:
     span: 1799 – 1849 CE
     cliopatria: ["Sikh Empire"]
     events:
-      - { id: ranjit-singh, date: 1799 CE, label: "Ranjit Singh takes Lahore", prominence: 3, sources: [wikipedia:Ranjit_Singh] }
+      - { id: ranjit-singh, date: 1799 CE, label: "Ranjit Singh takes Lahore", prominence: 3, sources: [wikipedia:Ranjit_Singh], people: [p-ranjit-singh] }
       - { id: golden-temple, date: 1830 CE, label: "Ranjit Singh gilds the Harmandir Sahib: the Golden Temple", prominence: 3, themes: [art, religion], sources: [wikipedia:Golden_Temple] }
       - { id: anglo-sikh, date: 1849 CE, label: "Britain annexes the Punjab", prominence: 4, themes: [war], sources: [wikipedia:Second_Anglo-Sikh_War] }
     sources: [wikipedia:Sikh_Empire]
@@ -145,7 +150,7 @@ lanes:
       - { id: rebellion-1857, date: 1857 CE, label: "The great uprising of 1857; the Crown takes over India", prominence: 1, themes: [war], sources: [wikipedia:Indian_Rebellion_of_1857] }
       - { id: congress, date: 1885 CE, label: "The Indian National Congress is founded", prominence: 4, themes: [government], sources: [wikipedia:Indian_National_Congress] }
       - { id: tagore-nobel, date: 1913 CE, label: "Tagore, the first non-European Nobel laureate in literature", prominence: 4, themes: [art], sources: [wikipedia:Rabindranath_Tagore] }
-      - { id: salt-march, date: 1930 CE, label: "Gandhi's Salt March", prominence: 1, themes: [government], sources: [wikipedia:Salt_March] }
+      - { id: salt-march, date: 1930 CE, label: "Gandhi's Salt March", prominence: 1, themes: [government], sources: [wikipedia:Salt_March], people: [p-gandhi] }
       - { id: railways-india, date: 1853 CE, label: "India's first railway, Bombay to Thane", prominence: 3, themes: [technology], sources: [wikipedia:History_of_rail_transport_in_India] }
       - { id: famine-1876, date: 1876 CE, label: "The Great Famine kills millions as grain is exported", prominence: 3, themes: [disease, climate], sources: [wikipedia:Great_Famine_of_1876–1878] }
       - { id: amritsar, date: 1919 CE, label: "The Amritsar massacre", prominence: 3, themes: [war], sources: [wikipedia:Jallianwala_Bagh_massacre] }
@@ -153,6 +158,9 @@ lanes:
       - { id: ram-mohan-roy, date: 1828 CE, label: "Ram Mohan Roy founds the Brahmo Samaj", prominence: 4, themes: [ideas, religion], sources: [wikipedia:Ram_Mohan_Roy] }
       - { id: partition-bengal, date: 1905 CE, label: "The partition of Bengal and the Swadeshi movement", prominence: 4, sources: [wikipedia:Partition_of_Bengal_(1905)] }
       - { id: quit-india, date: 1942 CE, label: "Quit India", prominence: 3, themes: [government], sources: [wikipedia:Quit_India_Movement] }
+      - { id: sati-banned, date: 1829 CE, label: "Sati, widow-burning, is banned", prominence: 4, themes: [women], sources: [wikipedia:Sati_(practice)] }
+      - { id: macaulay-minute, date: 1835 CE, label: "Macaulay's Minute: English becomes the language of education", prominence: 4, themes: [ideas], sources: [wikipedia:Thomas_Babington_Macaulay] }
+      - { id: vivekananda, date: 1893 CE, label: "Vivekananda speaks at the Parliament of Religions in Chicago", prominence: 4, themes: [religion], sources: [wikipedia:Swami_Vivekananda] }
     sources: [wikipedia:British_Raj]
 
   - id: india
@@ -194,6 +202,7 @@ lanes:
       - { id: bhutto, date: 1988 CE, label: "Benazir Bhutto, first woman to lead a Muslim-majority democracy", prominence: 4, themes: [women, government], sources: [wikipedia:Benazir_Bhutto] }
       - { id: malala, date: 2014 CE, label: "Malala Yousafzai wins the Nobel Peace Prize", prominence: 4, themes: [women, ideas], sources: [wikipedia:Malala_Yousafzai] }
       - { id: chagai, date: 1998 CE, label: "Pakistan answers India's nuclear tests with its own", prominence: 4, themes: [war, technology], sources: [wikipedia:Chagai-I] }
+      - { id: indo-pak-1965, date: 1965 CE, label: "The second war between India and Pakistan", prominence: 4, themes: [war], sources: [wikipedia:Indo-Pakistani_war_of_1965] }
     sources: [wikipedia:Pakistan]
 
   - id: bangladesh
@@ -228,6 +237,7 @@ lanes:
       - { id: kailasa, date: c. 760 CE, label: "The Kailasa temple at Ellora, carved down from a single rock", prominence: 2, themes: [art, religion], sources: [wikipedia:Kailasa_temple,_Ellora] }
       - { id: aihole, date: 634 CE, label: "The Aihole inscription of Pulakeshin II", prominence: 4, sources: [wikipedia:Aihole_inscription] }
       - { id: brahmagupta-zero, date: 628 CE, label: "Brahmagupta's rules for zero and negative numbers", prominence: 2, themes: [science], thread: numerals, sources: [wikipedia:Brahmagupta] }
+      - { id: basava, date: c. 1160 CE, label: "Basava's movement rejects caste: the Lingayats", prominence: 4, themes: [religion], sources: [wikipedia:Basava] }
     sources: [wikipedia:Rashtrakuta_dynasty]
 
   - id: chola
@@ -253,6 +263,7 @@ lanes:
 
   - id: vijayanagara
     name: Vijayanagara Empire
+    endonym: { text: "विजयनगर", script: Deva, translit: "Vijayanagara" }
     region: south-asia
     group: deccan-south
     sphere: indic
@@ -277,6 +288,7 @@ lanes:
     events:
       - { id: golconda, date: c. 1600 CE, label: "Golconda's diamond mines", prominence: 4, themes: [trade], sources: [wikipedia:Golconda] }
       - { id: gol-gumbaz, date: 1656 CE, label: "The Gol Gumbaz, Bijapur", prominence: 4, themes: [art], sources: [wikipedia:Gol_Gumbaz] }
+      - { id: goa-1510, date: 1510 CE, label: "Portugal seizes Goa", prominence: 3, themes: [war, trade], sources: [wikipedia:Portuguese_conquest_of_Goa] }
     sources: [wikipedia:Bahmani_Sultanate]
 
   - id: maratha
@@ -289,7 +301,7 @@ lanes:
     span: 1674 – 1818 CE
     cliopatria: ["Maratha Empire", "Maratha Confederacy"]
     events:
-      - { id: shivaji, date: 1674 CE, label: "Shivaji is crowned at Raigad", prominence: 2, themes: [government], sources: [wikipedia:Shivaji] }
+      - { id: shivaji, date: 1674 CE, label: "Shivaji is crowned at Raigad", prominence: 2, themes: [government], sources: [wikipedia:Shivaji], people: [p-shivaji] }
       - { id: panipat-1761, date: 1761 CE, label: "Third Panipat: the Afghans halt the Marathas", prominence: 3, themes: [war], sources: [wikipedia:Third_Battle_of_Panipat] }
       - { id: peshwas, date: 1720 CE, label: "The Peshwas rule from Pune", prominence: 4, sources: [wikipedia:Peshwa] }
       - { id: anglo-maratha, date: 1818 CE, label: "The last Anglo-Maratha war: Britain dominates India", prominence: 3, themes: [war], sources: [wikipedia:Third_Anglo-Maratha_War] }
@@ -305,6 +317,7 @@ lanes:
     cliopatria: ["Kingdom of Mysore", "Mysore"]
     events:
       - { id: mysore-rockets, date: 1792 CE, label: "Tipu Sultan's iron rockets inspire Britain's Congreve rockets", prominence: 4, themes: [technology, war], sources: [wikipedia:Mysorean_rockets] }
+      - { id: seringapatam, date: 1799 CE, label: "Tipu Sultan dies defending Seringapatam", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Seringapatam_(1799)] }
     sources: [wikipedia:Kingdom_of_Mysore]
 
   # ------------------------------------------------------------------ lanka
@@ -332,6 +345,7 @@ lanes:
 
   - id: sri-lanka
     name: Ceylon & Sri Lanka
+    endonym: { text: "ශ්‍රී ලංකාව", script: Sinh, translit: "Śrī Laṅkāva" }
     region: south-asia
     group: lanka
     sphere: indic
