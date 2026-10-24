@@ -100,7 +100,41 @@ Each step runs on `phase-5/richness` and is checked against the numbers above wi
   - P1 and P2 lane widths over time are seeded from Cliopatria territory area per century (the data is already in the Atlas), then curated with segment weights.
   - P1 peaks reach about 500–600 units, and P4 lanes come down to about 40.
 
-### 5d. Content: the connective layer and pictures
+### 5d. Look: the poster grammar
+5b and 5c make the chart dense. This step makes it *look* like a UsefulCharts poster, based on Rojan's close-up screenshots (Bronze Age, Iron Age, early Middle Ages).
+- **Transit-map shapes.**
+  - Lanes are flat bars with rounded ends.
+  - Forks get chunky shoulders: Rome → Western/Eastern, Charlemagne → West/East Francia, Abbasids → Fatimids, Rum, Seljuks.
+  - Branches and sideways shifts run as straight horizontals plus 45° diagonals, not soft splines.
+  - Successor states in one track sit as joined pills (Rashidun → Umayyad → Abbasid). Short-lived peoples are ovals or pills (Huns, Turks, Germanic tribes).
+  - The straight tracks of decision 14 stay; only branches and jogs change shape.
+- **Peoples and language families as dotted lanes.** A new `basis: people` is drawn as a dotted line in the sphere colour, and it can fan out on labelled dotted diagonals: Indo-Europeans → Centum/Satem → Hellenic, Anatolian, Indo-Iranian; Germanic peoples → Visigoths, Vandals, Franks; Bantu; Austronesians.
+- **No dates on canvas labels.**
+  - Position already shows the date, so the label is just "Hannibal crosses the Alps".
+  - The date appears on hover, in the Folio and Meanwhile, and on the canvas only at the detail zoom.
+  - This shortens every label and is a big part of UsefulCharts' clean look.
+- **A flat, brighter palette.**
+  - The historical pigments are lightened to UsefulCharts' lightness: lilac Rome, sky-blue Greece, yellow Egypt, green Islam, orange India, coral China.
+  - P1–P3 lanes get the same strength of colour. Importance shows through width and name size, not paleness. Only P4 is a pale tint.
+  - Lane and segment names are bold, white on dark colours and ink on yellows, and fill the bar (Old / Middle / New Kingdom inside Egypt).
+- **Zones and bands in the field.**
+  - Translucent grey boxes mark region-periods ("GREEK 'DARK AGES'", "WESTERN EUROPEAN 'DARK AGES'").
+  - Full-width grey bands with spaced-caps titles mark world events: the 4.2-kiloyear event, the Bronze Age collapse, 535–36 and the plague.
+  - Turning points move from the left margin into the field (amends decision 23). The margin keeps the era names.
+- **Paper.**
+  - One continuous public-domain early-modern world map (Ortelius or Blaeu style) is ink-printed faintly behind the whole sheet, like their antique-map ground.
+  - White century rules (already there) stay, plus a darker rule at each era boundary.
+- **Group headers.** Small frozen headers name the peoples of the tracks on screen ("Egyptians", "Sumerians", "Indo-Europeans", "Indus Valley Peoples"), under the region headers.
+- **Type.**
+  - Event labels share one size, in a clean dark grey sans, in sentence case.
+  - Key events are bold and larger ("Bronze Age Collapse").
+  - Movements use spaced caps.
+- **Pictures.**
+  - Cut-outs and white-matted plates with soft shadows, as now, but large.
+  - They may sit over open paper next to their lane, and over thin neighbours where the layout allows.
+- **What stays ours.** Native names, voices, people's lifetime bars and coins come in at the century zoom, so the era view reads as the poster. These are additions UsefulCharts doesn't have.
+
+### 5e. Content: the connective layer and pictures
 - **Movements** (new content type, P1–P2, ~60–80):
   - examples: Axial Age, Hellenism, Pax Romana, Silk Road, Bantu expansion, Islamic Golden Age, Polynesian voyaging, Pax Mongolica, Renaissance, Columbian Exchange, Scientific Revolution, Enlightenment, Industrial Revolution, Decolonisation;
   - set in spaced caps in the field, placed by the layout in free cells across the lanes they cover.
@@ -108,7 +142,11 @@ Each step runs on `phase-5/richness` and is checked against the numbers above wi
 - **Pictures:** 95 → ~400 (every P1 lane at least 3, P2 at least 1–2), through the existing `pnpm images` pipeline, region by region.
 - **Shorter labels:** the median label is 7 words now, and the target is 3–6. Add a length lint per prominence.
 
-### 5e. Composition pass and review
+- **Peoples and language-family trees** for the new dotted lanes (Indo-European, Bantu, Austronesian, Turkic, Germanic, Slavic), with their branch labels.
+- **Zones:** about 20–30 region-periods for the grey boxes, plus field titles for each era's turning point.
+
+### 5f. Composition pass and review
+Matt Baker places every UsefulCharts label by hand; our layout is automatic. Getting the last stretch of "feel" takes a by-eye pass with pins, era by era, and that's the plan for this step.
 - Compare each era view with the UsefulCharts frame side by side.
 - Pins only where the layout can't solve something.
 - Update the Phase 5 notes and decisions, then merge.
@@ -122,6 +160,11 @@ The old Phase 5 (layers, print, offline, accessibility) becomes Phase 6.
 - Movements become a content type.
 - Amend **2** and **22**: the default sheet starts at 3300 BCE. The 10,000 BCE prologue becomes the folded "deep time" sheet, still on the ⅛ scale.
 - The bottom help bar is removed, and shortcuts live in the toolbar tooltips.
+- Amend **14**: tracks stay straight, but forks, branches and jogs use horizontals and 45° diagonals with rounded bars.
+- Amend **23**: turning points move into the field as titled bands; the left margin keeps era names and era maps.
+- Poster palette: lighter, flat pigments with equal strength for P1–P3. Width carries importance.
+- Canvas event labels drop their date prefix below the detail zoom.
+- New lane basis `people` (dotted), and zones (region-period boxes) as content.
 
 ## Risks
 - **Clutter.** Hierarchy has to carry the calm: strong P1 lanes and names, one event-text size, grey P4. The budgets still apply.
