@@ -2,6 +2,8 @@
 
 Branch `phase-5/richness`. Decisions 46–52 are logged.
 
+> **Update:** the deep-time part below (the 3300 BCE default, `world-deep` and the fold) was reverted by decision 53. The world sheet starts at 10,000 BCE again; see `02-tools-and-speed.md`.
+
 ## 5a. Measure
 - **`pnpm density [sheet]`** (`scripts/density.ts`) reports these numbers at fixed views on a 1440×900 screen:
   - readable labels (8 px or more);
