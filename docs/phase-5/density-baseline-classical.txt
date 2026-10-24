@@ -1,0 +1,11 @@
+The Classical World — Every region of the Earth · 800 BCE – 700 CE (classical-world) · 68238 × 21288 units · cover s=0.0423
+view                                    s  readable  small  greeked  pictures   open
+wall (cover)                        0.042         0     23       17         2    80%
+era · roman-empire 100              0.100         6     34        0         1    88%
+era · han 0                         0.100         5     41        0         3    82%
+era · maurya -250                   0.100         3     31        1         3    84%
+era · maya 300                      0.100         5     14        0         5    83%
+era · kush -300                     0.100         6     11        1         2    82%
+century · roman-empire 100          0.300        10      6        0         2    84%
+
+era view average: 5 readable labels ✗ (target 150–250) · 2.8 pictures ✗ (target 15–25) · 84% open ✗ (target ≤ 20%)

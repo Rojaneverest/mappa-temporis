@@ -14,10 +14,6 @@
         background: rgba(43, 36, 32, 0.78); color: #f3ead8; font-variant-numeric: tabular-nums;
         pointer-events: none; white-space: pre; font-size: 12px;
       }
-      #help {
-        position: fixed; left: 460px; bottom: 12px; padding: 6px 10px; border-radius: 8px;
-        background: rgba(239, 230, 210, 0.86); color: #6b5f55; font-size: 12px; pointer-events: none;
-      }
       #loading { position: fixed; inset: 0; display: grid; place-items: center; font: italic 18px Georgia, serif; color: #6b5f55; }
       #folio {
         position: fixed; top: 64px; right: 14px; bottom: 56px; width: 372px; overflow: auto;
@@ -129,16 +125,15 @@
   <body>
     <canvas id="view"></canvas>
     <div id="status"></div>
-    <div id="help">Scroll or pinch to zoom · drag to pan · click anything for details · double-click to zoom · K lenses · T threads · Y meanwhile · L layers · A atlas · 0 to fit</div>
     <div id="loading">Unrolling the map…</div>
     <aside id="folio" aria-label="Details"></aside>
     <nav id="toolbar" aria-label="Tools">
-      <button id="layers-btn" aria-expanded="false">Layers</button>
-      <button id="lenses-btn" aria-expanded="false"><span class="dot"></span>Lenses</button>
-      <button id="threads-btn" aria-expanded="false">Threads</button>
+      <button id="layers-btn" aria-expanded="false" title="Layers (L)">Layers</button>
+      <button id="lenses-btn" aria-expanded="false" title="Lenses (K)"><span class="dot"></span>Lenses</button>
+      <button id="threads-btn" aria-expanded="false" title="Threads (T)">Threads</button>
       <button id="meanwhile-btn" title="Everything happening at one year (Y, or click the year ruler)">Meanwhile</button>
-      <button id="atlas-btn" aria-pressed="true">Atlas</button>
-      <button id="search-btn">Search ⌘K</button>
+      <button id="atlas-btn" aria-pressed="true" title="Atlas (A)">Atlas</button>
+      <button id="search-btn" title="Search (⌘K or /)">Search ⌘K</button>
       <div id="lens-chip" role="status"></div>
     </nav>
     <div id="layers" role="dialog" aria-label="Layers"></div>

@@ -1,0 +1,16 @@
+Mappa Temporis — A map of time — from the first farmers to today (world) · 111406 × 73986 units · cover s=0.0129
+view                                    s  readable  small  greeked  pictures   open
+wall (cover)                        0.013         0      0      281        11    59%
+era · roman-empire 100              0.100         5     21        0         1    93%
+era · han 0                         0.100         3     31        0         3    87%
+era · maurya -250                   0.100         2     23        0         2    90%
+era · maya 300                      0.100         5     12        0         5    85%
+era · abbasid 850                   0.100         7     29        1         1    91%
+era · egypt-new-kingdom -1300       0.100         5     28        0         0    89%
+era · holy-roman-empire 1600        0.100         6     34        0         2    75%
+era · aztec 1450                    0.100         3     27        1         1    83%
+era · mughal 1650                   0.100         3     34        9         3    80%
+era · kush -300                     0.100         2      7        0         0    92%
+century · roman-empire 100          0.300         8      6        0         2    88%
+
+era view average: 4 readable labels ✗ (target 150–250) · 1.8 pictures ✗ (target 15–25) · 86% open ✗ (target ≤ 20%)
