@@ -1,4 +1,4 @@
-import type { DisplayList } from '../../../packages/render/src/displaylist.ts';
+import { regionExtentAt, yearToY, yToYear, type DisplayList } from '../../../packages/render/src/displaylist.ts';
 import type { Folio } from '../../../packages/render/src/folio.ts';
 import { Viewer, type ViewState } from './viewer.ts';
 import { Panel } from './panel.ts';
@@ -6,8 +6,10 @@ import { Atlas } from './atlas.ts';
 import { Search } from './search.ts';
 import { Meanwhile, roundYear } from './meanwhile.ts';
 
-// ?sheet=<id> picks a sheet (default: the whole world poster); see content/sheets/.
-const SHEET = new URLSearchParams(location.search).get('sheet') ?? 'world';
+// ?sheet=<id> picks a sheet (default: the whole world poster from 3300 BCE, or its deep-time
+// variant if that was the last choice — decision 49); see content/sheets/.
+const SHEET = new URLSearchParams(location.search).get('sheet')
+  ?? ((() => { try { return localStorage.getItem('mt-deep-time'); } catch { return null; } })() === 'on' ? 'world-deep' : 'world');
 // Everything is fetched relative to where the site is served (a subpath on GitHub Pages).
 const BASE = import.meta.env.BASE_URL;
 const CHART = `${BASE}chart/${SHEET}`;
@@ -24,6 +26,9 @@ const viewer = new Viewer(document.getElementById('view') as HTMLCanvasElement, 
 const panel = new Panel(document.getElementById('folio')!, folio, (id, fly) => select(id || null, fly));
 
 function select(id: string | null, fly = false) {
+  // Something from before this sheet's window (deep time): open it on the sheet that shows it.
+  const yrs = id ? folio.entries[id]?.years : undefined;
+  if (id && yrs && yrs[1] < dl.time.year0 && dl.sheet?.fold) { switchSheet(dl.sheet.fold.sheet, id); return; }
   viewer.select(id);
   panel.show(id);
   if (id && fly) {
@@ -48,10 +53,50 @@ function writeHash() {
     history.replaceState(null, '', `#${parts.join('&')}`);
   }, 250);
 }
-viewer.onViewChange = writeHash;
+viewer.onViewChange = () => { writeHash(); updateFold(); };
+
+// ---- deep time (decision 49): the world sheet from 3300 BCE, or world-deep from 10,000 BCE.
+// Switching keeps the camera on the same year, region and scale.
+function switchSheet(target: string, selectId?: string, atYear?: number) {
+  const v = viewer.view;
+  const year = atYear ?? Math.round(yToYear(dl, v.cy));
+  let at = { i: 0, frac: 0.5 };
+  let bestD = Infinity;
+  dl.regions.forEach((r, i) => {
+    const e = regionExtentAt(r, v.cy);
+    if (!e) return;
+    const d = v.cx < e[0] ? e[0] - v.cx : v.cx > e[1] ? v.cx - e[1] : 0;
+    if (d < bestD) { bestD = d; at = { i, frac: Math.min(1, Math.max(0, (v.cx - e[0]) / (e[1] - e[0]))) }; }
+  });
+  try { localStorage.setItem('mt-deep-time', target === 'world-deep' ? 'on' : 'off'); } catch { /* not remembered */ }
+  const parts = [`at=${year},${at.i},${at.frac.toFixed(3)},${viewer.scale.toFixed(5)}`];
+  if (selectId) parts.push(`s=${encodeURIComponent(selectId)}`);
+  location.href = `?sheet=${encodeURIComponent(target)}#${parts.join('&')}`;
+}
+const foldEl = document.getElementById('fold') as HTMLButtonElement;
+if (dl.sheet?.fold) {
+  const fold = dl.sheet.fold;
+  foldEl.textContent = `${fold.label} ${fold.sheet === 'world-deep' ? '▾' : '▴'}`;
+  // Unfolding lands on the seam at 3300 BCE, with deep time filling the top half of the screen.
+  foldEl.addEventListener('click', () => switchSheet(fold.sheet, undefined, fold.sheet === 'world-deep' ? -3300 : undefined));
+}
+/** The fold strip shows while the top of time is on screen. */
+function updateFold() {
+  if (!dl.sheet?.fold) return;
+  const v = viewer.view;
+  const topOnScreen = v.cy - (innerHeight / 2) / viewer.scale < dl.time.y0 + 200 / viewer.scale;
+  foldEl.classList.toggle('shown', topOnScreen);
+}
 
 function readHash() {
   const params = new URLSearchParams(location.hash.slice(1));
+  const at = params.get('at')?.split(',').map(Number);
+  if (at && at.length === 4 && at.every(Number.isFinite)) {
+    const [year, ri, frac, s] = at as [number, number, number, number];
+    const y = yearToY(dl, Math.min(dl.time.year1, Math.max(dl.time.year0, year)));
+    const e = dl.regions[ri] ? regionExtentAt(dl.regions[ri]!, y) : null;
+    viewer.setScaleView(e ? e[0] + (e[1] - e[0]) * frac : dl.width / 2, y, s);
+  }
   const v = params.get('v')?.split(',').map(Number);
   if (v && v.length === 3 && v.every(Number.isFinite)) viewer.setView({ cx: v[0]!, cy: v[1]!, z: v[2]! } satisfies ViewState);
   const s = params.get('s');
@@ -99,9 +144,11 @@ const hotkey = (keys: string, fn: () => void) => window.addEventListener('keydow
 // Layers: the paper's engravings.
 const layersMenu = menu('layers-btn', 'layers');
 layersMenu.el.innerHTML = `<h4>Paper</h4><label><input type="checkbox" data-layer="atmosphere" ${on.has('atmosphere') ? 'checked' : ''}>Engravings of each age</label>
-  <p>Faint period engravings in the open paper.</p>`;
+  <p>Faint period engravings in the open paper.</p>${dl.sheet?.fold ? `<h4>Time</h4><label><input type="checkbox" data-deep-time ${SHEET === 'world-deep' ? 'checked' : ''}>Deep time, from 10,000 BCE</label>
+  <p>Unfold the Neolithic before writing above 3300 BCE.</p>` : ''}`;
 layersMenu.el.addEventListener('change', (e) => {
   const box = e.target as HTMLInputElement;
+  if (box.dataset.deepTime !== undefined) { if (dl.sheet?.fold) switchSheet(dl.sheet.fold.sheet); return; }
   if (box.checked) on.add(box.dataset.layer!); else on.delete(box.dataset.layer!);
   applyLayers();
 });
@@ -187,6 +234,9 @@ hotkey('yY', () => showMeanwhile(cursorYear ?? viewer.centerYear));
 
 applyLayers();
 readHash();
+// The viewer settles its size after load, and setView does not report changes: check the fold now and then.
+updateFold();
+setInterval(updateFold, 400);
 // Pasted links and back/forward (our own replaceState writes don't fire this).
 window.addEventListener('hashchange', readHash);
 
@@ -194,7 +244,7 @@ window.addEventListener('hashchange', readHash);
 const atlasEl = document.getElementById('atlas')!;
 const atlasBtn = document.getElementById('atlas-btn')!;
 const atlas = new Atlas(atlasEl);
-atlas.load(`${BASE}atlas/${SHEET}.atlas.json`).catch((err) => console.warn('atlas', err));
+atlas.load(`${BASE}atlas/${dl.sheet?.atlas ?? SHEET}.atlas.json`).catch((err) => console.warn('atlas', err));
 atlas.onPickLane = (laneId) => select(laneId, true);
 const laneOf = (ref: string | null) => {
   const e = ref ? folio.entries[ref] : undefined;

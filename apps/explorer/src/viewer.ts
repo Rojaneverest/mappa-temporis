@@ -2,7 +2,7 @@
 // compositing of paper + ink tiles, picking, and the frozen HUD (year ruler, region
 // and lane headers, minimap, status).
 import type { DisplayList } from '../../../packages/render/src/displaylist.ts';
-import { yToYear, yearToY } from '../../../packages/render/src/displaylist.ts';
+import { yToYear, yearToY, regionExtentAt } from '../../../packages/render/src/displaylist.ts';
 import type { Folio } from '../../../packages/render/src/folio.ts';
 import { paperPixels, MOTTLE_OCTAVES, mottleOpacity } from '../../../packages/render/src/painter.ts';
 import { PAPER, INK, INK_SOFT } from '../../../packages/core/src/palette.ts';
@@ -12,7 +12,7 @@ import { Picker } from './picker.ts';
 
 /** Tile edge in CSS pixels. */
 const TILE = 256;
-const MAX_SCALE = 2.5;
+const MAX_SCALE = 1.2;
 const MAX_TILES = 260;
 const RULER_W = 64;
 const HEADER_H = 30;
@@ -153,6 +153,14 @@ export class Viewer {
 
   get view(): ViewState {
     return { cx: this.x0 + this.cssW / 2 / this.s, cy: this.y0 + this.cssH / 2 / this.s, z: this.s / this.fitScale };
+  }
+
+  /** Current scale (CSS px per world unit). */
+  get scale(): number { return this.s; }
+
+  /** Centre the view on a world point at an absolute scale. */
+  setScaleView(cx: number, cy: number, s: number) {
+    this.setView({ cx, cy, z: s / this.fitScale });
   }
 
   setView(v: ViewState) {
@@ -596,9 +604,12 @@ export class Viewer {
     ctx.textBaseline = 'middle';
     // Region names: shrink to fit their column; drop any that would collide.
     let lastRight = -Infinity;
+    const midY = this.y0 + this.cssH / 2 / this.s;
     for (const r of this.dl.regions) {
-      const a = Math.max(RULER_W + 8, (r.x0 - this.x0) * this.s);
-      const b = Math.min(this.cssW - 8, (r.x1 - this.x0) * this.s);
+      const ext = regionExtentAt(r, midY);
+      if (!ext) continue;
+      const a = Math.max(RULER_W + 8, (ext[0] - this.x0) * this.s);
+      const b = Math.min(this.cssW - 8, (ext[1] - this.x0) * this.s);
       if (b - a < 40) continue;
       let label = spaced(r.name.toUpperCase());
       let size = 12;

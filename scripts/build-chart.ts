@@ -2,7 +2,7 @@
 //
 //   1. load + validate + lint the YAML
 //   2. tracks: chains of succession share a track; related lanes sit close   (packages/layout/tracks)
-//   3. flow: track positions become smooth functions of time                   (packages/layout/tracks)
+//   3. columns: each chain is a straight column that takes room only while alive (packages/layout/columns)
 //   4. draw the frame, lanes, names, relations; mark everything on a collision grid
 //   5. place labels and images by priority (P1 first), sliding/demoting when crowded
 //   6. enforce density budgets per screen-sized window at each zoom level     (packages/layout/budget)
@@ -15,6 +15,7 @@ import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
 import { AtmosphereFile, DailyFile, LaneFile, LensFile, MarginsFile, PeopleFile, Sheet, ThreadFile, VoicesFile, type Lane, type LaneImage, type Person, type Prominence, type Voice } from '../packages/core/src/schema.ts';
+import { loadSheet } from '../packages/core/src/sheet.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { makeTimescale, yearToYOf, yToYearOf, upyAt } from '../packages/core/src/timescale.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
@@ -22,7 +23,8 @@ import { FONT_FILES, registerFonts } from '../packages/render/src/fonts.ts';
 import { measure, type TextSpec } from '../packages/render/src/text.ts';
 import { fadeAt } from '../packages/render/src/painter.ts';
 import type { DisplayList, Fade, ImageItem, Item, PathItem, TextItem, TextRole } from '../packages/render/src/displaylist.ts';
-import { assignTracks, flowTracks, type Flow, type RelationKind, type TrackLane } from '../packages/layout/src/tracks.ts';
+import { assignTracks, type RelationKind, type TrackLane } from '../packages/layout/src/tracks.ts';
+import { layoutColumns, packedWidth, type ColumnItem } from '../packages/layout/src/columns.ts';
 import { Grid } from '../packages/layout/src/grid.ts';
 import { overBudget, type BudgetMark } from '../packages/layout/src/budget.ts';
 import { sourceLink, type Folio, type FolioEntry } from '../packages/render/src/folio.ts';
@@ -39,7 +41,7 @@ const HEADER = 2400;
 const FOOTER = 900;
 const REGION_GAP = 300;
 /** Lane width per weight step. */
-const WEIGHT_W = [0, 16, 56, 96, 140, 190, 240];
+const WEIGHT_W = [0, 30, 110, 180, 260, 360, 480];
 const DEFAULT_WEIGHT: Record<Prominence, number> = { 1: 6, 2: 4, 3: 3, 4: 1, 5: 1 };
 /** Screen width (CSS px) landmark lanes never drop below when zoomed out (decision 29). */
 const LANE_MIN_PX: Partial<Record<Prominence, number>> = { 1: 7, 2: 3.5 };
@@ -49,21 +51,25 @@ const ENGRAVING_ALPHA = 0.13;
 /** Most of an engraving's box must be open paper. */
 const ENGRAVING_MAX_OCCUPIED = 0.06;
 /** A track is: margin, its widest lane, a gap, then label space. Thin lanes get thin tracks. */
-const TRACK_MARGIN = 40;
-const TRACK_GAP = 30;
-const LABEL_SPACE: Record<Prominence, number> = { 1: 700, 2: 600, 3: 460, 4: 200, 5: 0 };
-const LABEL_SIZE: Record<Prominence, number> = { 1: 54, 2: 40, 3: 25, 4: 13, 5: 0 };
-const LABEL_MAX_W: Record<Prominence, number> = { 1: 640, 2: 580, 3: 470, 4: 360, 5: 0 };
-const IMAGE_LONG: Record<Prominence, number> = { 1: 900, 2: 540, 3: 310, 4: 0, 5: 0 };
-const CAPTION_SIZE: Record<Prominence, number> = { 1: 34, 2: 22, 3: 15, 4: 0, 5: 0 };
-/** Calm by default: scale ranges over which each prominence fades in (proof-sheet fit ≈ 0.045). */
-const LABEL_FADE: Record<Prominence, Fade | undefined> = { 1: undefined, 2: [0.075, 0.12], 3: [0.17, 0.26], 4: [0.42, 0.62], 5: undefined };
-const IMAGE_FADE: Record<Prominence, Fade | undefined> = { 1: undefined, 2: [0.04, 0.06], 3: [0.09, 0.14], 4: undefined, 5: undefined };
-const LANE_NAME_FADE: Record<Prominence, Fade | undefined> = { 1: undefined, 2: undefined, 3: [0.06, 0.1], 4: [0.3, 0.5], 5: undefined };
+const TRACK_MARGIN = 60;
+const TRACK_GAP = 50;
+// Rich by default (decisions 46–47): one event-text size band, readable (≥ 9 px) at the era view
+// (s = 0.1); labels wrap narrow, 3–5 words a line. Below ~5 px the painter greeks text, so nothing
+// fades to blank paper except the P4 whispers.
+const LABEL_SPACE: Record<Prominence, number> = { 1: 320, 2: 280, 3: 240, 4: 120, 5: 0 };
+const LABEL_SIZE: Record<Prominence, number> = { 1: 120, 2: 105, 3: 90, 4: 70, 5: 0 };
+const LABEL_MAX_W: Record<Prominence, number> = { 1: 880, 2: 800, 3: 720, 4: 600, 5: 0 };
+const IMAGE_LONG: Record<Prominence, number> = { 1: 2000, 2: 1400, 3: 900, 4: 0, 5: 0 };
+/** Voices are set smaller than events of the same prominence. */
+const VOICE_SCALE = 0.72;
+const CAPTION_SIZE: Record<Prominence, number> = { 1: 64, 2: 54, 3: 46, 4: 0, 5: 0 };
+const LABEL_FADE: Record<Prominence, Fade | undefined> = { 1: undefined, 2: undefined, 3: undefined, 4: [0.05, 0.08], 5: undefined };
+const IMAGE_FADE: Record<Prominence, Fade | undefined> = { 1: undefined, 2: undefined, 3: [0.025, 0.04], 4: undefined, 5: undefined };
+const LANE_NAME_FADE: Record<Prominence, Fade | undefined> = { 1: undefined, 2: undefined, 3: undefined, 4: [0.05, 0.08], 5: undefined };
 /** A label or image may slide this far from its date before it is demoted. */
 const MAX_SLIDE_YEARS = 28;
-/** Density budgets per 1440×900 screen. */
-const BUDGET = { viewW: 1440, viewH: 900, labels: 40, images: 6 };
+/** Density budgets per 1440×900 screen (decision 46). */
+const BUDGET = { viewW: 1440, viewH: 900, labels: 220, images: 25 };
 
 // ---------------------------------------------------------------- load content
 const loadYaml = (path: string): unknown => YAML.parse(readFileSync(path, 'utf8'));
@@ -74,7 +80,7 @@ function walk(dir: string): string[] {
   });
 }
 
-const sheet = Sheet.parse(loadYaml(join(ROOT, `content/sheets/${SHEET_ID}.yaml`)));
+const sheet = loadSheet(ROOT, SHEET_ID);
 const margins = sheet.margins ? MarginsFile.parse(loadYaml(join(ROOT, 'content/margins.yaml'))) : undefined;
 /** The left margin carries years, era names and turning points; the right one years and, optionally, the margins. */
 const MARGIN_L = sheet.margins ? 3300 : 1700;
@@ -93,6 +99,10 @@ const people: Person[] = existsSync(join(ROOT, 'content/people'))
 const voices: Voice[] = existsSync(join(ROOT, 'content/voices.yaml')) ? VoicesFile.parse(loadYaml(join(ROOT, 'content/voices.yaml'))).voices : [];
 const dailyCards = existsSync(join(ROOT, 'content/daily-life.yaml')) ? DailyFile.parse(loadYaml(join(ROOT, 'content/daily-life.yaml'))).cards : [];
 const personById = new Map(people.map((p) => [p.id, p]));
+const peopleOnLane = new Map<string, number>();
+for (const p of people) if (p.prominence <= 4) peopleOnLane.set(p.lane, (peopleOnLane.get(p.lane) ?? 0) + 1);
+const voicesOnLane = new Map<string, number>();
+for (const v of voices) if (v.prominence <= 4) voicesOnLane.set(v.lane, (voicesOnLane.get(v.lane) ?? 0) + 1);
 const lensDefs = existsSync(join(ROOT, 'content/lenses.yaml')) ? LensFile.parse(loadYaml(join(ROOT, 'content/lenses.yaml'))).lenses : [];
 /** The lenses an item belongs to, from its themes. */
 const lensesOf = (themes: string[]) => lensDefs.filter((l) => l.themes.some((t) => themes.includes(t))).map((l) => l.id);
@@ -166,16 +176,25 @@ const visibleLanes = lanes.filter((l) => {
   return inSheet(l) && l.prominence !== 5 && s.end.year >= year0 && s.start.year <= year1;
 });
 
-/** Room a lane needs beside it: none for a bare lane, more for many labels or a big image. */
+/** Room a lane needs beside it: a little for a bare lane, more where its labels crowd, enough for a big image. */
 function labelDemand(l: Lane): number {
-  const shown = l.events.filter((e) => e.prominence <= 4).length;
+  const sp = parseSpan(l.span);
+  const a = Math.max(year0, sp.start.year), b = Math.min(year1, sp.end.year + 1);
+  if (b <= a) return 60;
+  const inside = (d: string) => { const y = parseDate(d).year; return y >= a && y <= b; };
+  const count = l.events.filter((e) => e.prominence <= 4 && inside(e.date)).length
+    + (peopleOnLane.get(l.id) ?? 0) + (voicesOnLane.get(l.id) ?? 0)
+    + 2 * l.images.filter((i) => manifest[i.id] && i.prominence <= 3 && inside(i.date)).length;
+  // Labels per century of sheet height: a side holds ~3.5 three-line labels a century at the main scale.
+  const perCentury = count / ((Y(b) - Y(a)) / (100 * UNITS_PER_YEAR));
+  const forLabels = count === 0 ? 60 : Math.min(LABEL_MAX_W[l.prominence] + 80, 100 + 230 * perCentury);
   const bigImage = Math.max(0, ...l.images.filter((i) => manifest[i.id] && i.prominence <= 3).map((i) => {
-    const a = manifest[i.id]!;
+    const asset = manifest[i.id]!;
     const long = IMAGE_LONG[i.prominence];
-    return a.width >= a.height ? long : long * (a.width / a.height);
+    return asset.width >= asset.height ? long : long * (asset.width / asset.height);
   }));
-  const forLabels = shown === 0 ? 40 : Math.min(LABEL_SPACE[l.prominence], 200 + 70 * shown);
-  return Math.max(forLabels, bigImage + 80, l.prominence === 4 ? 120 : 0);
+  // Pictures may spill into open paper, so they only ask for part of their width.
+  return Math.max(forLabels, Math.min(bigImage * 0.5, LABEL_SPACE[l.prominence]), LABEL_SPACE[l.prominence] * 0.5);
 }
 
 /** Widest width a lane reaches in any of its segments. */
@@ -184,11 +203,23 @@ function laneMaxW(l: Lane): number {
   return Math.max(base, ...l.segments.map((s) => (s.weight ? WEIGHT_W[s.weight]! : base)));
 }
 
-interface RegionLayout { id: string; name: string; short?: string; x0: number; width: number; flow: Flow; trackOf: Map<string, number>; trackLaneW: number[] }
-const regionLayouts: RegionLayout[] = [];
-let cursor = MARGIN_L;
-for (const r of sheet.regions) {
+interface RegionLayout {
+  id: string; name: string; short?: string;
+  /** The region's extent sampled down the sheet (only where it has lanes). */
+  samples: { y: number; x0: number; x1: number }[];
+  /** Left and right limits over all time. */
+  x0: number; x1: number;
+}
+interface Column { id: string; region: string; laneW: number; lanes: Lane[] }
+/** Column of every lane, and where the lane's centre sits inside it. */
+const columnOf = new Map<string, Column>();
+const columns: Column[] = [];
+const colItems: ColumnItem[] = [];
+// Slid labels and rounded ends reach past a lane's dates; columns keep clear of that too.
+const COLUMN_PAD = MAX_SLIDE_YEARS * 0.7 * UNITS_PER_YEAR;
+sheet.regions.forEach((r, ri) => {
   const rl = visibleLanes.filter((l) => l.region === r.id);
+  if (!rl.length) return;
   // Groups west → east as the sheet lists them; unlisted groups follow in order of appearance.
   const groupOrder = [...new Set([...r.groups, ...rl.map(groupOf)])];
   const tl: TrackLane[] = rl.map((l) => {
@@ -200,27 +231,79 @@ for (const r of sheet.regions) {
     };
   });
   const assignment = assignTracks(tl, groupOrder);
-  // Lanes chained in one track share a centre line, so the track is as wide as its widest lane.
-  const trackLaneW = assignment.tracks.map((ids) => Math.max(...ids.map((id) => laneMaxW(laneById.get(id)!))));
-  const flow = flowTracks({
-    tracks: assignment.tracks.map((ids, t) => {
-      const first = laneById.get(ids[0]!)!;
+  // A succession chain is one straight column (decision 48); tracks only order the columns west → east.
+  const regionItems: { track: number; item: ColumnItem }[] = [];
+  const byChain = new Map<number, Lane[]>();
+  for (const ids of assignment.tracks) for (const id of ids) {
+    const c = assignment.chainOf.get(id)!;
+    if (!byChain.has(c)) byChain.set(c, []);
+    byChain.get(c)!.push(laneById.get(id)!);
+  }
+  for (const [chain, members] of byChain) {
+    const laneW = Math.max(...members.map(laneMaxW));
+    const col: Column = { id: `${r.id}#${chain}`, region: r.id, laneW, lanes: members };
+    columns.push(col);
+    for (const l of members) columnOf.set(l.id, col);
+    const track = assignment.trackOf.get(members[0]!.id)!;
+    const spans = members.map((l) => {
+      const sp = parseSpan(l.span);
       return {
-        group: groupOf(first),
-        lanes: ids.map((id) => {
-          const l = laneById.get(id)!;
-          const s = parseSpan(l.span);
-          return { start: s.start.year, end: s.end.year + 1, need: TRACK_MARGIN + trackLaneW[t]! + TRACK_GAP + labelDemand(l) };
-        }),
+        y0: Y(Math.max(year0, sp.start.year)) - COLUMN_PAD, y1: Y(Math.min(year1, sp.end.year + 1)) + COLUMN_PAD,
+        need: TRACK_MARGIN + laneW + TRACK_GAP + labelDemand(l),
       };
-    }),
-    year0, year1, step: 10, groupGap: 180, pad: 120,
-  });
-  regionLayouts.push({ id: r.id, name: r.name, short: r.short, x0: cursor, width: flow.width, flow, trackOf: assignment.trackOf, trackLaneW });
-  if (process.env.VERBOSE) console.log(`  region ${r.id}: ${assignment.tracks.length} tracks, ${Math.round(flow.width)} wide`);
-  cursor += flow.width + REGION_GAP;
+    });
+    const life = members.reduce((n, l) => { const sp = parseSpan(l.span); return n + Math.min(year1, sp.end.year) - Math.max(year0, sp.start.year); }, 0);
+    regionItems.push({ track, item: { id: col.id, order: 0, region: ri, group: groupOf(members[0]!), spans, weight: 1 + Math.max(0, life) / 400 } });
+  }
+  // Tracks were ordered for relations (related lanes side by side). Straight columns in a fixed order
+  // form staircases, so swap neighbouring tracks of a group wherever that narrows the region a lot.
+  const nTracks = assignment.tracks.length;
+  const pos = Array.from({ length: nTracks }, (_, t) => t);
+  const groupOfTrack = assignment.tracks.map((ids) => groupOf(laneById.get(ids[0]!)!));
+  const keyed = () => regionItems.map(({ track, item }) => ({ ...item, order: (ri * 1000 + pos[track]!) * 1e5 + Math.min(...item.spans.map((q) => q.y0)) + 1e4 }));
+  const cost = () => packedWidth(keyed(), { regionGap: REGION_GAP, groupGap: 180 }) + 120 * pos.reduce((a, p, t) => a + Math.abs(p - t), 0);
+  let best = cost();
+  for (let improved = true, rounds = 0; improved && rounds < 12; rounds++) {
+    improved = false;
+    for (let a = 0; a < nTracks; a++) for (let b = 0; b < nTracks; b++) {
+      if (a === b || groupOfTrack[a] !== groupOfTrack[b]) continue;
+      [pos[a], pos[b]] = [pos[b]!, pos[a]!];
+      const c = cost();
+      if (c < best - 1) { best = c; improved = true; } else [pos[a], pos[b]] = [pos[b]!, pos[a]!];
+    }
+  }
+  colItems.push(...keyed());
+});
+const colLayout = layoutColumns({ items: colItems, regionGap: REGION_GAP, groupGap: 180, step: 300 });
+if (process.env.DIAG) sheet.regions.forEach((r, ri) => {
+  const l = layoutColumns({ items: colItems.filter((c) => c.region === ri), regionGap: REGION_GAP, groupGap: 180, step: 300 });
+  console.log(`  ${r.id.padEnd(16)} busiest ${Math.round(l.busiest)} packed ${Math.round(l.packed)}`);
+});
+const colX = new Map([...colLayout.x].map(([id, x]) => [id, MARGIN_L + x]));
+const width = MARGIN_L + colLayout.width + MARGIN_R;
+if (process.env.VERBOSE) console.log(`  columns: ${columns.length}, busiest moment ${Math.round(colLayout.busiest)}, packed ${Math.round(colLayout.packed)}, laid out ${Math.round(colLayout.width)} wide`);
+// Region extents down the sheet, for the frozen headers and the engravings.
+const regionLayouts: RegionLayout[] = [];
+for (const r of sheet.regions) {
+  const cols = colItems.filter((c) => columns.find((k) => k.id === c.id)!.region === r.id);
+  if (!cols.length) continue;
+  const samples: RegionLayout['samples'] = [];
+  for (let y = yTop; y <= yBottom; y += 600) {
+    let x0 = Infinity, x1 = -Infinity;
+    for (const c of cols) for (const sp of c.spans) {
+      if (y < sp.y0 + COLUMN_PAD || y > sp.y1 - COLUMN_PAD) continue;
+      x0 = Math.min(x0, colX.get(c.id)!);
+      x1 = Math.max(x1, colX.get(c.id)! + sp.need);
+    }
+    if (x0 < x1) samples.push({ y: Math.round(y), x0: Math.round(x0), x1: Math.round(x1) });
+  }
+  regionLayouts.push({ id: r.id, name: r.name, short: r.short, samples, x0: Math.min(...samples.map((q) => q.x0)), x1: Math.max(...samples.map((q) => q.x1)) });
 }
-const width = cursor - REGION_GAP + MARGIN_R;
+/** A region's extent over a y range (the union of its samples there). */
+function regionExtent(r: RegionLayout, ya: number, yb: number): [number, number] | null {
+  const inside = r.samples.filter((q) => q.y >= ya - 300 && q.y <= yb + 300);
+  return inside.length ? [Math.min(...inside.map((q) => q.x0)), Math.max(...inside.map((q) => q.x1))] : null;
+}
 const regionById = new Map(regionLayouts.map((r) => [r.id, r]));
 
 const grid = new Grid(width, height, 16);
@@ -244,19 +327,16 @@ layers.text.push(text({
 }));
 grid.mark(0, 0, width, yTop - 40);
 
+// Region names over the columns they hold at the top of the sheet (the frozen headers follow them down).
 for (const r of regionLayouts) {
-  const x1 = r.x0 + r.width;
+  const first = r.samples[0]!;
+  const x0 = first.x0, x1 = first.x1, rw = x1 - x0;
+  if (first.y > yTop + 2000 || rw < 600) continue;
   const name = r.name.toUpperCase();
-  const size = Math.min(190, (190 * (r.width - 80)) / fitWidth({ role: 'region', text: name, size: 190, color: INK, align: 'center' }));
-  layers.text.push(text({ role: 'region', text: name, size, color: INK, align: 'center', w: r.width, x: r.x0, y: HEADER - 330 - size }));
-  layers.grid.push({ k: 'line', x1: r.x0, y1: HEADER - 260, x2: x1, y2: HEADER - 260, stroke: INK, sw: 6, b: [r.x0, HEADER - 263, x1, HEADER - 257] });
+  const size = Math.min(190, (190 * (rw - 80)) / fitWidth({ role: 'region', text: name, size: 190, color: INK, align: 'center' }));
+  layers.text.push(text({ role: 'region', text: name, size, color: INK, align: 'center', w: rw, x: x0, y: HEADER - 330 - size }));
+  layers.grid.push({ k: 'line', x1: x0, y1: HEADER - 260, x2: x1, y2: HEADER - 260, stroke: INK, sw: 6, b: [x0, HEADER - 263, x1, HEADER - 257] });
 }
-for (const r of regionLayouts.slice(1)) {
-  const x = r.x0 - REGION_GAP / 2;
-  layers.grid.push({ k: 'line', x1: x, y1: yTop - 200, x2: x, y2: yBottom, stroke: INK_SOFT, sw: 1.2, hair: true, alpha: 0.5, b: [x - 2, yTop - 200, x + 2, yBottom] });
-}
-// Labels and images stay inside their region.
-for (const r of regionLayouts) grid.mark(r.x0 - REGION_GAP, yTop, REGION_GAP - 10, yBottom - yTop);
 grid.mark(0, yTop, MARGIN_L - 10, yBottom - yTop);
 grid.mark(width - MARGIN_R + 10, yTop, MARGIN_R, yBottom - yTop);
 
@@ -271,8 +351,8 @@ for (const seg of timeSegs) {
     const major = step === 1000 || majorCenturies.has(yr);
     layers.grid.push({ k: 'line', x1: fullX0, y1: yy, x2: fullX1, y2: yy, stroke: '#FFFDF6', sw: major ? 2.2 : 1.4, hair: true, alpha: 0.85, b: [fullX0, yy - 2, fullX1, yy + 2] });
     const label = formatYear(yr, { forceEra: true });
-    layers.text.push(text({ role: 'year', text: label, size: 64, color: INK_SOFT, align: 'right', w: 560, x: MARGIN_L - 860, y: yy - 38 }));
-    layers.text.push(text({ role: 'year', text: label, size: 64, color: INK_SOFT, align: 'left', w: 560, x: width - MARGIN_R + 260, y: yy - 38 }));
+    layers.text.push(text({ role: 'year', text: label, size: 100, color: INK_SOFT, align: 'right', w: 700, x: MARGIN_L - 1000, y: yy - 60 }));
+    layers.text.push(text({ role: 'year', text: label, size: 100, color: INK_SOFT, align: 'left', w: 700, x: width - MARGIN_R + 260, y: yy - 60 }));
   }
 }
 // Scale breaks: a zig-zag rule wherever the space per year changes, with the new scale noted below it.
@@ -477,8 +557,6 @@ interface PlacedLane {
   bottom: number;
   cxAt: (y: number) => number;
   halfAt: (y: number) => number;
-  /** Right limit of this lane's track (its label space ends here). */
-  limitAt: (y: number) => number;
 }
 const placed = new Map<string, PlacedLane>();
 const SAMPLE_YEARS = 3;
@@ -498,7 +576,8 @@ function spline(pts: [number, number][]): string {
 
 for (const lane of visibleLanes) {
   const region = regionById.get(lane.region)!;
-  const track = region.trackOf.get(lane.id)!;
+  const col = columnOf.get(lane.id)!;
+  const track = columns.indexOf(col);
   const span = parseSpan(lane.span);
   const startY = Math.max(span.start.year, year0);
   const endY = Math.min(span.end.year + 1, year1);
@@ -519,11 +598,11 @@ for (const lane of visibleLanes) {
     if (prev && yr < s.a + TAPER) return prev.w + (s.w - prev.w) * smooth01((yr - (s.a - TAPER)) / (2 * TAPER));
     return s.w;
   };
-  const cxAtYear = (yr: number) => region.x0 + region.flow.x(track, yr) + TRACK_MARGIN + region.trackLaneW[track]! / 2;
+  const colLeft = colX.get(col.id)!;
+  const cxAtYear = (_yr: number) => colLeft + TRACK_MARGIN + col.laneW / 2;
   const cxAt = (y: number) => cxAtYear(yearAt(y));
   const halfAt = (y: number) => widthAtYear(Math.min(endY - 0.01, Math.max(startY, yearAt(y)))) / 2;
-  const limitAt = (y: number) => region.x0 + region.flow.x(track, yearAt(y)) + region.flow.w(track, yearAt(y));
-  placed.set(lane.id, { lane, region, track, top, bottom, cxAt, halfAt, limitAt });
+  placed.set(lane.id, { lane, region, track, top, bottom, cxAt, halfAt });
 
   // ---- outline: sampled edges joined by smooth curves, rounded caps unless clipped by the window
   const wTop = widthAtYear(startY), wBot = widthAtYear(endY - 0.01);
@@ -584,6 +663,10 @@ for (const lane of visibleLanes) {
     const a = Y(s.a), b = Y(s.b), c = cxAt((a + b) / 2);
     layers.lanes.push({ k: 'rect', x: c - s.w / 2, y: a, w: s.w, h: b - a, fill: PAPER, alpha: 0.55, b: [c - s.w / 2, a, c + s.w / 2, b] });
   }
+  // Lanes older than the sheet's window: say where they really begin (the deep-time sheet shows it).
+  if (clippedTop && sheet.fold) {
+    layers.text.push(text({ role: 'whisper', text: `from ${formatYear(span.start.year)}`, size: 60, color: INK_SOFT, align: 'center', w: 700, x: cxAt(top) - 350, y: top - 10 + 20, alpha: 0.9, ref: lane.id }));
+  }
   for (let yy = top; yy < bottom; yy += 48) {
     const h = Math.min(48, bottom - yy), half = halfAt(yy + h / 2), c = cxAt(yy + h / 2);
     grid.mark(c - half, yy, half * 2, h, 14);
@@ -594,7 +677,7 @@ for (const lane of visibleLanes) {
   const onLane = luminance(color) < 0.22 ? PAPER : mix(pigment, INK, 0.62);
   let reservedTop = top + (rTop || 40);
   const chars = lane.endonym ? [...lane.endonym.text] : [];
-  const sealSize = Math.min(wTop * 0.52, 110);
+  const sealSize = Math.min(wTop * 0.52, 160);
   const sealH = chars.length * sealSize * 1.08 + sealSize * 0.5;
   if (lane.endonym && /\p{Script=Han}/u.test(lane.endonym.text) && wTop >= 90 && !clippedTop && len > sealH * 2.2) {
     // CJK endonyms stack vertically in a small seal at the head of the lane.
@@ -607,7 +690,7 @@ for (const lane of visibleLanes) {
     reservedTop = sy + sealH + 40;
   } else if (lane.endonym && !/\p{Script=Han}/u.test(lane.endonym.text) && wTop >= 56 && !clippedTop) {
     // Other scripts: the name as its people wrote it, set vertically at the head of the lane.
-    const size = Math.min(wTop * 0.4, 52);
+    const size = Math.min(wTop * 0.4, 100);
     const w = fitWidth({ role: 'endonym', text: lane.endonym.text, size, color: onLane, align: 'center' }) + 10;
     const at = top + Math.max(rTop, 30) + 20;
     if (len > w * 3 + 400) {
@@ -639,7 +722,7 @@ for (const lane of visibleLanes) {
     const isMain = i === longest;
     if (lane.prominence === 4) {
       if (!isMain) return;
-      const size = 12;
+      const size = 60;
       const w = Math.min(room, fitWidth({ role: 'whisper', text: lane.name, size, color: INK_SOFT, align: 'left' }) + 4);
       const at = steadiest(a, b, w);
       layers.text.push(text({ role: 'whisper', text: lane.name, size, color: INK_SOFT, align: 'left', w, x: at.cx + s.w / 2 + 6, y: at.y, rot: -90, fade: LANE_NAME_FADE[4], ref: lane.id }));
@@ -648,12 +731,12 @@ for (const lane of visibleLanes) {
     }
     const subName = segNamed && s.name !== lane.name ? s.name : undefined;
     if (isMain) {
-      let size = Math.min(subName ? s.w * 0.46 : s.w * 0.6, lane.prominence === 1 ? 150 : 110);
+      let size = Math.min(subName ? s.w * 0.46 : s.w * 0.6, lane.prominence === 1 ? 320 : 220);
       const role: TextRole = lane.prominence <= 2 ? 'lane-major' : 'lane-minor';
       let w = fitWidth({ role, text: lane.name, size, color: onLane, align: 'center' }) + 10;
       if (w > room) { size *= room / w; w = room; }
       const gap = subName ? s.w * 0.07 : 0;
-      const subSize = subName ? Math.min(s.w * 0.2, 44) : 0;
+      const subSize = subName ? Math.min(s.w * 0.2, 90) : 0;
       const blockW = size * 1.2 + gap + subSize * 1.2;
       const at = steadiest(a, b, w);
       const x = at.cx - blockW / 2;
@@ -663,8 +746,8 @@ for (const lane of visibleLanes) {
         layers.text.push(text({ role: 'segment', text: subName, size: subSize, color: onLane, align: 'center', w: sw, x: x + size * 1.2 + gap, y: at.y + (w - sw) / 2, rot: -90, fade: [0.07, 0.11], alpha: 0.9, ref: lane.id }));
       }
     } else if (subName) {
-      const size = Math.min(s.w * 0.5, 54);
-      if (size < 14) return;
+      const size = Math.min(s.w * 0.5, 110);
+      if (size < 24) return;
       const w = Math.min(room, fitWidth({ role: 'segment', text: subName, size, color: onLane, align: 'center' }) + 10);
       const at = steadiest(a, b, w);
       layers.text.push(text({ role: 'segment', text: subName, size, color: onLane, align: 'center', w, x: at.cx - size * 0.6, y: at.y, rot: -90, fade: [0.07, 0.11], alpha: 0.9, ref: lane.id }));
@@ -731,6 +814,8 @@ interface Placement {
   emit: (prom: Prominence) => Item[];
 }
 const placements: Placement[] = [];
+/** Labels that found no room at any prominence, by their original prominence (they stay in the Folio). */
+const lostByProm: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0 };
 
 /** What a label says and how it looks: an event, a person (with a lifetime bar) or a voice (a quotation). */
 interface LabelSpec {
@@ -754,7 +839,8 @@ for (const p of placed.values()) {
     if (ev.prominence === 5) { stats.archived++; continue; }
     const d = parseDate(ev.date);
     if (d.year < year0 || d.year > year1) continue;
-    jobs.push({ kind: 'label', prom: ev.prominence, yy: Y(d.year), lane: p, spec: { id: ev.id, text: ev.label, pre: formatDate(d), lens: lensesOf(ev.themes) } });
+    jobs.push({ kind: 'label', prom: ev.prominence, yy: Y(d.year), lane: p, // No date on the canvas (decision 51): the label's height is its date; the Folio and hover give it.
+    spec: { id: ev.id, text: ev.label, lens: lensesOf(ev.themes) } });
   }
   for (const img of p.lane.images) {
     stats.images++;
@@ -801,12 +887,15 @@ function labelStyle(prom: Prominence) {
   };
 }
 
-function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence): void {
+function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence, orig: Prominence = prom): void {
   if (prom > 4) { stats.archived++; return; }
   const st = { ...labelStyle(prom), ...(ev.role ? { role: ev.role } : {}) };
+  // Quotations are a quieter, smaller italic: they are for the century zoom.
+  if (ev.role === 'caption') st.size *= VOICE_SCALE;
   const pre = ev.pre;
-  const tick = prom <= 2 ? 26 : 16;
-  const maxSlide = MAX_SLIDE_YEARS * UNITS_PER_YEAR;
+  const tick = prom <= 2 ? 44 : 30;
+  // Major labels may travel further from their date before giving up their place.
+  const maxSlide = MAX_SLIDE_YEARS * (prom <= 2 ? 1.6 : 1) * UNITS_PER_YEAR;
   // Measurements are cached per wrap width (rounded), since sliding re-asks often.
   const measured = new Map<number, ReturnType<typeof measure>>();
   const measureAt = (w: number, align: 'left' | 'right') => {
@@ -815,40 +904,52 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence):
     if (!m) { m = measure(ck, fonts, { role: st.role, text: ev.text, pre, size: st.size, color: st.color, align, w: Math.abs(key) }); measured.set(key, m); }
     return { m, w: Math.abs(key) };
   };
-  const tryAt = (side: 1 | -1) => {
+  // Never wrap narrower than the longest word (no mid-word breaks).
+  const longestWord = Math.max(...`${pre ?? ''} ${ev.text}`.split(/\s+/).filter(Boolean).map((word) => fitWidth({ role: st.role, text: word, size: st.size, color: st.color, align: 'left' })));
+  const minWrap = Math.max(Math.min(320, LABEL_MAX_W[prom]), longestWord + 12);
+  /** A spot beside the lane on one side, `reach` past the usual gap, shifted `shift` from the date. */
+  const tryAt = (side: 1 | -1, reach: number, shift: number) => {
     const edge = side === 1 ? p.cxAt(yy) + p.halfAt(yy) : p.cxAt(yy) - p.halfAt(yy);
-    const x0 = edge + side * (tick + 40);
-    // Slide: try the exact date first, then nudge down (or a little up). At each position, measure
-    // the free run beside the lane and wrap the label to fit it.
-    for (let dy = 0; dy <= maxSlide; dy += 10) {
-      for (const sgn of dy === 0 ? [0] : [1, -1]) {
-        if (sgn === -1 && dy > 3 * UNITS_PER_YEAR) continue;
-        const bandTop = yy - st.size * 0.6 + sgn * dy;
-        const run = side === 1
-          // A label may borrow empty room from the next track; the grid keeps it off lanes and other labels.
-          ? grid.freeRunRight(x0, bandTop, st.size * 1.2, LABEL_MAX_W[prom]) - 30
-          : grid.freeRunLeft(x0, bandTop, st.size * 1.2, LABEL_MAX_W[prom]) - 30;
-        const avail = Math.min(LABEL_MAX_W[prom], run);
-        if (avail < Math.min(200, LABEL_MAX_W[prom])) continue;
-        const { m } = measureAt(avail, side === 1 ? 'left' : 'right');
-        const w = Math.ceil(m.longest) + 4;
-        const x = side === 1 ? x0 : x0 - w;
-        const top = yy - m.lineH / 2 + sgn * dy;
-        if (grid.isFree(x, top, w, m.h)) return { x, top, w, h: m.h, lineH: m.lineH, side };
+    const near = edge + side * (tick + 50);
+    const x0 = near + side * reach;
+    // A label set out from its lane needs a clear path for its leader line.
+    if (reach && !grid.isFree(Math.min(near, x0), yy + shift - 8, reach, 16)) return null;
+    const bandTop = yy - st.size * 0.6 + shift;
+    // A label may borrow empty room from the next track; the grid keeps it off lanes and other labels.
+    const run = (side === 1 ? grid.freeRunRight(x0, bandTop, st.size * 1.2, LABEL_MAX_W[prom]) : grid.freeRunLeft(x0, bandTop, st.size * 1.2, LABEL_MAX_W[prom])) - 30;
+    const avail = Math.min(LABEL_MAX_W[prom], run);
+    if (avail < minWrap) return null;
+    const { m } = measureAt(avail, side === 1 ? 'left' : 'right');
+    const w = Math.ceil(m.longest) + 4;
+    const x = side === 1 ? x0 : x0 - w;
+    const top = yy - m.lineH / 2 + shift;
+    return grid.isFree(x, top, w, m.h) ? { x, top, w, h: m.h, lineH: m.lineH, side, reach } : null;
+  };
+  // Nearest first: at the date on either side, then sliding (mostly later, a little earlier), then
+  // set out from the lane with a leader line.
+  const findSpot = () => {
+    for (const reach of [0, 260, 600]) {
+      for (let dy = 0; dy <= maxSlide; dy += 10) {
+        for (const sgn of dy === 0 ? [0] : [1, -1]) {
+          if (sgn === -1 && dy > 3 * UNITS_PER_YEAR) continue;
+          const found = tryAt(1, reach, sgn * dy) ?? tryAt(-1, reach, sgn * dy);
+          if (found) return found;
+        }
       }
     }
     return null;
   };
-  const spot = tryAt(1) ?? tryAt(-1);
+  const spot = findSpot();
   if (!spot) {
     // No room near its date: one step quieter, and eventually off the canvas into the Folio.
     stats.demoted++;
     if (process.env.VERBOSE) console.warn(`  ↓ P${prom}→P${prom + 1} (no room): ${ev.id}`);
-    if (prom === 4) { stats.archived++; console.warn(`  ↓ archived (no room): ${ev.id}`); return; }
-    placeLabel(p, ev, yy, (prom + 1) as Prominence);
+    if (prom === 4) { stats.archived++; lostByProm[orig]!++; if (process.env.VERBOSE) console.warn(`  ↓ archived (no room): ${ev.id} @ ${p.lane.id}`); return; }
+    placeLabel(p, ev, yy, (prom + 1) as Prominence, orig);
     return;
   }
   grid.mark(spot.x, spot.top, spot.w, spot.h, 10);
+  if (spot.reach) grid.mark(Math.min(spot.x, p.cxAt(yy)), yy - 8, Math.abs(spot.x - p.cxAt(yy)), 16);
   if (Math.abs(spot.top + spot.lineH / 2 - yy) > 4) stats.slid++;
   if (ev.life) stats.drawnPeople++; else if (ev.role === 'caption') stats.drawnVoices++; else stats.drawnEvents++;
   for (const id of ev.lens) lensCount.set(id, (lensCount.get(id) ?? 0) + 1);
@@ -867,7 +968,7 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence):
       const s = labelStyle(current);
       const anchorY = spot.top + spot.lineH / 2;
       const laneEdge = spot.side === 1 ? p.cxAt(yy) + p.halfAt(yy) : p.cxAt(yy) - p.halfAt(yy);
-      const tickEnd = laneEdge + spot.side * (current <= 2 ? 26 : 16);
+      const tickEnd = laneEdge + spot.side * (current <= 2 ? 44 : 30);
       const labelEdge = spot.side === 1 ? spot.x - 10 : spot.x + spot.w + 10;
       const lead = Math.abs(anchorY - yy) > 4
         ? `M ${tickEnd} ${yy} C ${(tickEnd + labelEdge) / 2} ${yy} ${tickEnd} ${anchorY} ${labelEdge} ${anchorY}`
@@ -891,7 +992,7 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence):
         ...lifeBar,
         { k: 'line', x1: laneEdge, y1: yy, x2: tickEnd, y2: yy, stroke: INK, sw: current <= 2 ? 3 : 2, alpha: 0.8, fade: s.fade, b: [Math.min(laneEdge, tickEnd), yy - 3, Math.max(laneEdge, tickEnd), yy + 3] },
         { k: 'path', d: lead, stroke: INK_SOFT, sw: 1, hair: true, alpha: 0.55, fade: s.fade, b: [Math.min(tickEnd, labelEdge) - 4, Math.min(yy, anchorY) - 4, Math.max(tickEnd, labelEdge) + 4, Math.max(yy, anchorY) + 4] },
-        text({ role, text: ev.text, pre, size: s.size, color: s.color, align: spot.side === 1 ? 'left' : 'right', w: spot.w, x: spot.x, y: spot.top, fade: s.fade, ref: ev.id }),
+        text({ role, text: ev.text, pre, size: ev.role === 'caption' ? s.size * VOICE_SCALE : s.size, color: s.color, align: spot.side === 1 ? 'left' : 'right', w: spot.w, x: spot.x, y: spot.top, fade: s.fade, ref: ev.id }),
         ]),
       ];
     },
@@ -905,7 +1006,7 @@ function placeImage(p: PlacedLane, img: LaneImage, yy: number, prom: Prominence,
   const w = aspect >= 1 ? long : long * aspect;
   const h = aspect >= 1 ? long / aspect : long;
   const capSize = CAPTION_SIZE[prom];
-  const capW = Math.max(w, 260);
+  const capW = Math.max(w, 520);
   const cap = measure(ck, fonts, { role: 'caption', text: img.caption, size: capSize, color: INK_SOFT, align: 'center', w: capW });
   const boxW = Math.max(w, capW), boxH = h + capSize * 0.6 + cap.h + capSize;
   const m = asset.treatment === 'plate' ? Math.max(w, h) * 0.05 : 0;
@@ -916,7 +1017,7 @@ function placeImage(p: PlacedLane, img: LaneImage, yy: number, prom: Prominence,
     const top = yy - boxH / 2 + dy;
     const right = p.cxAt(yy) + p.halfAt(yy) + 60 + m;
     const left = p.cxAt(yy) - p.halfAt(yy) - 60 - m - boxW;
-    for (let dx = 0; dx <= 900; dx += 40) {
+    for (let dx = 0; dx <= 2400; dx += 60) {
       candidates.push({ x: right + dx, y: top, cost: Math.abs(dy) + dx * 0.6 });
       candidates.push({ x: left - dx, y: top, cost: Math.abs(dy) + dx * 0.6 + 120 });
     }
@@ -924,7 +1025,7 @@ function placeImage(p: PlacedLane, img: LaneImage, yy: number, prom: Prominence,
   candidates.sort((a, b) => a.cost - b.cost);
   const spot = candidates.find((c) => grid.isFree(c.x - m, c.y - m, boxW + 2 * m, boxH + 2 * m));
   if (!spot) {
-    if (shrink > 0.65) return placeImage(p, img, yy, prom, shrink * 0.8);
+    if (shrink > 0.5) return placeImage(p, img, yy, prom, shrink * 0.8);
     stats.demoted++;
     console.warn(`  ↓ image without room: ${img.id}`);
     return;
@@ -950,8 +1051,9 @@ function placeImage(p: PlacedLane, img: LaneImage, yy: number, prom: Prominence,
 }
 
 // ---------------------------------------------------------------- density budgets
-const fitS = Math.min(BUDGET.viewW / width, BUDGET.viewH / height);
-for (const s of [1, 2.5, 7, 22].map((z) => fitS * z)) {
+// Checkpoints: the cover (wall) view, then the overview, era and century zooms.
+const coverS = Math.max(BUDGET.viewW / width, BUDGET.viewH / height);
+for (const s of [coverS, 0.06, 0.1, 0.2]) {
   for (let round = 0; round < 8; round++) {
     const marksOf = (kind: Placement['kind']): BudgetMark[] => placements.filter((p) => p.kind === kind).map((p) => ({
       id: p.id, x: p.box[0], y: p.box[1], w: p.box[2], h: p.box[3], prominence: p.prom,
@@ -991,6 +1093,9 @@ for (const e of atmosphere) {
   const sp = parseSpan(e.span);
   if (!region || !asset || sp.end.year < year0 || sp.start.year > year1) continue;
   const ya = Y(Math.max(year0, sp.start.year)), yb = Y(Math.min(year1, sp.end.year + 1));
+  const ext = regionExtent(region, ya, yb);
+  if (!ext) { console.log(`  · no room for engraving ${e.id} in ${e.region}`); stats.engravingsSkipped++; continue; }
+  const [rx0, rx1] = ext;
   const long = ENGRAVING_SIZE[e.size];
   let best: { x: number; y: number; w: number; h: number; score: number } | null = null;
   // A strict pass first; crowded columns get a second, more lenient one (smaller, a little overlap).
@@ -999,10 +1104,10 @@ for (const e of atmosphere) {
     const maxOcc = ENGRAVING_MAX_OCCUPIED * slack;
     const k = (long * f) / Math.max(asset.width, asset.height);
     const w = asset.width * k, h = asset.height * k;
-    if (h > yb - ya || w > region.width) continue;
+    if (h > yb - ya || w > rx1 - rx0) continue;
     const step = Math.max(150, Math.min(w, h) / 8);
     for (let y = ya; y + h <= yb; y += step) {
-      for (let x = region.x0; x + w <= region.x0 + region.width; x += step) {
+      for (let x = rx0; x + w <= rx1; x += step) {
         const occ = occupied(x, y, w, h);
         if (occ > maxOcc || overlapsEngraving(x, y, w, h)) continue;
         // Prefer the emptiest spot, then the middle of the span.
@@ -1163,11 +1268,12 @@ for (const th of threadsOut) {
 const dl: DisplayList = {
   version: 1,
   title: `${sheet.title} — ${sheet.subtitle}`,
+  sheet: { id: SHEET_ID, fold: sheet.fold, atlas: sheet.atlas ?? SHEET_ID },
   fonts: `fonts/${SHEET_ID}/`,
   width,
   height,
   time: { y0: HEADER, year0, year1, unitsPerYear: UNITS_PER_YEAR, segments: timeSegs.length > 1 ? timeSegs : undefined },
-  regions: regionLayouts.map((r) => ({ x0: r.x0, x1: r.x0 + r.width, name: r.name, short: r.short })),
+  regions: regionLayouts.map((r) => ({ x0: r.x0, x1: r.x1, name: r.name, short: r.short, samples: r.samples })),
   lenses: lensDefs.map((l) => ({ id: l.id, name: l.name, color: l.color, note: l.note, count: lensCount.get(l.id) ?? 0 })),
   items,
   stats: { ...stats, items: items.length },
@@ -1197,6 +1303,7 @@ console.log(`  ${Math.round(width)} × ${Math.round(height)} units · ${items.le
 console.log(`  fonts subset to ${used.size} characters: ${(fontBytes / 1024).toFixed(0)} KB`);
 console.log(`  events ${stats.drawnEvents}/${stats.events} drawn (${stats.slid} slid off their date) · images ${stats.drawnImages}/${stats.images} · ${stats.demoted} demoted for room · ${stats.budgetDemotions} budget demotions · ${stats.archived} archived · ${stats.engravings} engravings (${stats.engravingsSkipped} without room)`);
 console.log(`  people ${stats.drawnPeople}/${stats.people} drawn · voices ${stats.drawnVoices}/${stats.voices} · daily-life cards ${dailyCards.length} (Folio only)`);
+console.log(`  labels without room (Folio only), by prominence: ${[1, 2, 3, 4].map((p) => `P${p} ${lostByProm[p]}`).join(' · ')}`);
 
 // ---------------------------------------------------------------- helpers & lints
 function smooth01(t: number) {
