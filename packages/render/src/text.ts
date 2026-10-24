@@ -16,10 +16,12 @@ export interface TextSpec {
 
 export const PRE_COLOR = '#8A7C6E';
 
-export function buildParagraph(ck: CanvasKit, fonts: FontCollection, spec: TextSpec): Paragraph {
+/** `alpha` bakes transparency into the glyph colours (cheaper than compositing a layer per label). */
+export function buildParagraph(ck: CanvasKit, fonts: FontCollection, spec: TextSpec, alpha = 1): Paragraph {
   const role = ROLES[spec.role];
+  const tint = (color: string) => { const c = ck.parseColorString(color); c[3] = c[3]! * alpha; return c; };
   const style = (color: string, weightBoost = 0) => ({
-    color: ck.parseColorString(color),
+    color: tint(color),
     fontFamilies: role.families,
     fontSize: spec.size,
     letterSpacing: role.tracking * spec.size,

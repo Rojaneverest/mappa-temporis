@@ -1122,7 +1122,7 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence, 
       // A lens dot on the lane edge for every lens this label belongs to: visible from the wall view.
       const dotX = laneEdge + spot.side * 7;
       const dots: Item[] = ev.lens.map((id) => ({
-        k: 'rect', x: dotX, y: yy, w: 0, h: 0, dot: 4.5, fill: lensDefs.find((l) => l.id === id)!.color, stroke: PAPER, sw: 1.5,
+        k: 'rect', x: dotX, y: yy, w: 0, h: 0, dot: 3.6, fill: lensDefs.find((l) => l.id === id)!.color, stroke: PAPER, sw: 1.5,
         alpha: 0.95, layer: `lens:${id}`, b: [dotX - 400, yy - 400, dotX + 400, yy + 400],
       }));
       const tagged = (items: Item[]) => items.map((it) => ({ ...it, lk: 'label' as const, lens: ev.lens }));

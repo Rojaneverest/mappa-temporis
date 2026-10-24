@@ -14,13 +14,16 @@ const CHART = `${BASE}chart/${SHEET}`;
 
 // Every build rewrites these files, so always revalidate rather than trust a cached copy.
 const fresh = { cache: 'no-cache' } as const;
-const [dl, folio]: [DisplayList, Folio] = await Promise.all([
-  fetch(`${CHART}.json`, fresh).then((r) => r.json()),
+// The chart is fetched once as bytes: parsed here and handed to every tile worker, instead of each
+// worker downloading its own copy.
+const [chartBytes, folio]: [ArrayBuffer, Folio] = await Promise.all([
+  fetch(`${CHART}.json`, fresh).then((r) => r.arrayBuffer()),
   fetch(`${CHART}.folio.json`, fresh).then((r) => r.json()),
 ]);
+const dl = JSON.parse(new TextDecoder().decode(chartBytes)) as DisplayList;
 document.title = `Mappa Temporis — ${dl.title}`;
 
-const viewer = new Viewer(document.getElementById('view') as HTMLCanvasElement, dl, folio, `${CHART}.json`, document.getElementById('status')!);
+const viewer = new Viewer(document.getElementById('view') as HTMLCanvasElement, dl, folio, chartBytes, document.getElementById('status')!);
 const panel = new Panel(document.getElementById('folio')!, folio, (id, fly) => select(id || null, fly));
 
 function select(id: string | null, fly = false) {

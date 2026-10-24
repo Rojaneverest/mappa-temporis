@@ -127,7 +127,6 @@ export class Painter {
   private paths = new Map<number, Path>();
   private paper: { mottle: Image; grain: Image };
   private pen: Paint;
-  private layer: Paint;
 
   private ck: CanvasKit;
   private fonts: FontCollection;
@@ -142,7 +141,6 @@ export class Painter {
     this.paper = makePaperImages(ck);
     this.pen = new ck.Paint();
     this.pen.setAntiAlias(true);
-    this.layer = new ck.Paint();
   }
 
   /**
@@ -168,8 +166,9 @@ export class Painter {
         case 'image': this.drawImage(canvas, item, alpha, view.s); break;
         case 'rect': {
           if (item.dot) {
-            // Radius in CSS pixels, so a dot is the same size on any screen.
-            const r = item.dot / zoom;
+            // Radius in CSS pixels, so a dot is the same size on any screen — about half size at the
+            // wall view, where hundreds of them would otherwise read as a rash.
+            const r = (item.dot * (0.5 + 0.5 * fadeAt([0.015, 0.12], zoom))) / zoom;
             canvas.drawCircle(item.x, item.y, r, this.styled(item.fill!, alpha, 'fill', 0, false, view.s));
             if (item.stroke) canvas.drawCircle(item.x, item.y, r, this.styled(item.stroke, alpha, 'stroke', item.sw, true, view.s));
             break;
@@ -311,20 +310,17 @@ export class Painter {
         canvas.drawRect(this.ck.XYWHRect(x, li * t.lineH + t.lineH * 0.3, lw, t.lineH * 0.42), p);
       });
     } else {
-      let para = this.paragraphs.get(i);
+      // Transparency (lens dimming, fades) is baked into the glyph colours in 1/32 steps and cached:
+      // the same look as compositing each label through its own layer, without the layer.
+      const step = Math.max(1, Math.round(alpha * 32));
+      const key = i * 64 + step;
+      let para = this.paragraphs.get(key);
       if (!para) {
-        para = buildParagraph(this.ck, this.fonts, { ...t, color: t.color });
-        this.paragraphs.set(i, para);
-        if (this.paragraphs.size > 3000) this.evict();
+        para = buildParagraph(this.ck, this.fonts, { ...t, color: t.color }, step / 32);
+        this.paragraphs.set(key, para);
+        if (this.paragraphs.size > 4000) this.evict();
       }
-      if (alpha < 0.999) {
-        this.layer.setAlphaf(alpha);
-        canvas.saveLayer(this.layer);
-        canvas.drawParagraph(para, 0, 0);
-        canvas.restore();
-      } else {
-        canvas.drawParagraph(para, 0, 0);
-      }
+      canvas.drawParagraph(para, 0, 0);
     }
     canvas.restore();
   }
