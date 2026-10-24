@@ -163,6 +163,28 @@ export const MarginsFile = z.object({
 export type MarginsFile = z.infer<typeof MarginsFile>;
 
 export const ThreadFile = z.object({ threads: z.array(Thread) });
+
+/** Atmosphere: a faint ink-printed engraving in the open paper of an era × region (decisions 30–31).
+ *  Decoration, not information: no prominence, never clickable, credited like every image. */
+export const Engraving = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  source: z.string().regex(/^(met:\d+|commons:File:.+)$/),
+  region: z.string(),
+  /** The stretch of time it may sit in; the layout picks the emptiest spot inside it. */
+  span: SpanText,
+  /** What it shows, for the credits. */
+  caption: z.string().max(80),
+  /** s / m / l: how much open paper it wants. */
+  size: z.enum(['s', 'm', 'l']).default('m'),
+  /** Made in the era it decorates (vs. a later depiction). */
+  ofItsTime: z.boolean().default(false),
+  invert: z.boolean().default(false),
+  lift: z.boolean().default(false),
+  /** Keep only this part of the scan, as fractions [left, top, right, bottom] (drops plate frames and captions). */
+  crop: z.tuple([z.number(), z.number(), z.number(), z.number()]).optional(),
+});
+export type Engraving = z.infer<typeof Engraving>;
+export const AtmosphereFile = z.object({ engravings: z.array(Engraving) });
 export type Thread = z.infer<typeof Thread>;
 
 export const Tour = z.object({

@@ -198,7 +198,6 @@ lanes:
     events:
       - { id: mamallapuram, date: 7th c., label: "Temples cut from living rock at Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Group_of_Monuments_at_Mahabalipuram] }
       - { id: shore-temple, date: c. 700 CE, label: "The Shore Temple at Mamallapuram", prominence: 3, themes: [art, religion], sources: [wikipedia:Shore_Temple] }
-      - { id: mamallapuram-rathas, date: c. 650 CE, label: "The rock-cut rathas of Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Pancha_Rathas] }
     sources: [wikipedia:Pallava_dynasty]
 
   # ------------------------------------------------------------------ sri lanka

@@ -182,7 +182,6 @@ lanes:
     events:
       - { id: sack-410, date: 410 CE, label: "Alaric's Visigoths sack Rome", prominence: 2, themes: [war], sources: [wikipedia:Sack_of_Rome_(410)] }
       - { id: fall-west, date: 476 CE, label: "Odoacer deposes the last western emperor", prominence: 1, themes: [government], sources: [wikipedia:Fall_of_the_Western_Roman_Empire] }
-      - { id: alaric, date: 410 CE, label: "Alaric's Goths sack Rome", prominence: 2, themes: [war], sources: [wikipedia:Sack_of_Rome_(410)] }
       - { id: city-of-god, date: 426 CE, label: "Augustine's City of God", prominence: 3, themes: [ideas, religion], sources: [wikipedia:The_City_of_God] }
     sources: [wikipedia:Western_Roman_Empire]
 

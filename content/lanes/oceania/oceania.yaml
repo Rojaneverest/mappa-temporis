@@ -62,4 +62,6 @@ lanes:
       - { id: kuk, date: c. 7000 BCE, label: "Kuk swamp: farming invented independently, with taro and bananas", prominence: 2, themes: [technology], confidence: probable, sources: [wikipedia:Kuk_Swamp] }
       - { id: sweet-potato-highlands, date: c. 1700 CE, label: "The sweet potato reaches the highlands; populations boom", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Ipomoean_revolution] }
       - { id: highlands-contact, date: 1933 CE, label: "Outsiders first meet the million people of the highlands", prominence: 3, themes: [exploration], sources: [wikipedia:Mick_Leahy] }
+      - { id: kokoda, date: 1942 CE, label: "The Kokoda Track campaign", prominence: 4, themes: [war], sources: [wikipedia:Kokoda_Track_campaign] }
+      - { id: png-independence, date: 1975 CE, label: "Papua New Guinea becomes independent", prominence: 4, themes: [government], sources: [wikipedia:Papua_New_Guinea] }
     sources: [wikipedia:Kuk_Swamp]

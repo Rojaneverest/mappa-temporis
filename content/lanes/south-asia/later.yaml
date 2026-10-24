@@ -106,6 +106,7 @@ lanes:
       - { id: jahangir-nur-jahan, date: 1611 CE, label: "Nur Jahan, empress and power behind the throne", prominence: 3, themes: [women, government], sources: [wikipedia:Nur_Jahan] }
       - { id: east-india-company-arrives, date: 1608 CE, label: "The East India Company lands at Surat", prominence: 3, themes: [trade], sources: [wikipedia:Surat] }
       - { id: india-share-world, date: c. 1700 CE, label: "Mughal India produces about a quarter of the world's goods", prominence: 2, themes: [trade], confidence: probable, sources: [wikipedia:Economy_of_the_Mughal_Empire] }
+      - { id: khalsa, date: 1699 CE, label: "Guru Gobind Singh founds the Khalsa", prominence: 3, themes: [religion], sources: [wikipedia:Khalsa] }
     images:
       - { id: taj-mahal-view, source: "commons:File:Taj Mahal (Edited).jpeg", date: 1653 CE, prominence: 1, treatment: plate, caption: "The Taj Mahal, Agra" }
     sources: [wikipedia:Mughal_Empire]
@@ -174,6 +175,7 @@ lanes:
       - { id: india-most-populous, date: 2023 CE, label: "India becomes the most populous country", prominence: 3, sources: [wikipedia:Demographics_of_India] }
       - { id: bhopal, date: 1984 CE, label: "The Bhopal gas disaster", prominence: 4, sources: [wikipedia:Bhopal_disaster] }
       - { id: indira, date: 1966 CE, label: "Indira Gandhi becomes prime minister", prominence: 3, themes: [women, government], sources: [wikipedia:Indira_Gandhi] }
+      - { id: pokhran-ii, date: 1998 CE, label: "India's Pokhran-II nuclear tests", prominence: 4, themes: [war, technology], sources: [wikipedia:Pokhran-II] }
     sources: [wikipedia:History_of_India_(1947–present)]
 
   - id: pakistan
@@ -191,6 +193,7 @@ lanes:
       - { id: jinnah, date: 1947 CE, label: "Jinnah founds Pakistan", prominence: 3, themes: [government], sources: [wikipedia:Muhammad_Ali_Jinnah] }
       - { id: bhutto, date: 1988 CE, label: "Benazir Bhutto, first woman to lead a Muslim-majority democracy", prominence: 4, themes: [women, government], sources: [wikipedia:Benazir_Bhutto] }
       - { id: malala, date: 2014 CE, label: "Malala Yousafzai wins the Nobel Peace Prize", prominence: 4, themes: [women, ideas], sources: [wikipedia:Malala_Yousafzai] }
+      - { id: chagai, date: 1998 CE, label: "Pakistan answers India's nuclear tests with its own", prominence: 4, themes: [war, technology], sources: [wikipedia:Chagai-I] }
     sources: [wikipedia:Pakistan]
 
   - id: bangladesh
@@ -205,6 +208,7 @@ lanes:
     events:
       - { id: bangladesh-war, date: 1971 CE, label: "The Liberation War: Bangladesh is born", prominence: 3, themes: [war], sources: [wikipedia:Bangladesh_Liberation_War] }
       - { id: grameen, date: 1983 CE, label: "Grameen Bank and microcredit", prominence: 4, thread: money, sources: [wikipedia:Grameen_Bank] }
+      - { id: rana-plaza, date: 2013 CE, label: "The Rana Plaza garment factory collapse kills over 1,100", prominence: 4, themes: [trade], sources: [wikipedia:2013_Rana_Plaza_collapse] }
     sources: [wikipedia:Bangladesh]
 
   # ------------------------------------------------------------------ deccan & the south
@@ -339,6 +343,7 @@ lanes:
       - { id: lanka-war, date: 1983 CE, label: "A 26-year civil war begins", prominence: 4, themes: [war], sources: [wikipedia:Sri_Lankan_Civil_War] }
       - { id: tsunami-2004, date: 2004 CE, label: "The Indian Ocean tsunami kills 230,000 across 14 countries", prominence: 3, sources: [wikipedia:2004_Indian_Ocean_earthquake_and_tsunami] }
       - { id: ceylon-tea, date: 1867 CE, label: "Tea planting begins in Ceylon", prominence: 4, themes: [trade], sources: [wikipedia:Tea_production_in_Sri_Lanka] }
+      - { id: sl-civil-war-ends, date: 2009 CE, label: "Sri Lanka's civil war ends", prominence: 4, themes: [war], sources: [wikipedia:Sri_Lankan_civil_war] }
     sources: [wikipedia:Sri_Lanka]
 
   # ------------------------------------------------------------------ himalaya

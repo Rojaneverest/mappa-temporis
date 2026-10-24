@@ -11,7 +11,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
 import sharp from 'sharp';
-import { LaneFile, Sheet, type LaneImage } from '../../packages/core/src/schema.ts';
+import { AtmosphereFile, LaneFile, Sheet, type LaneImage } from '../../packages/core/src/schema.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const CACHE = join(ROOT, '.cache/images');
@@ -55,6 +55,12 @@ function walk(dir: string): string[] {
 const images: LaneImage[] = walk(join(ROOT, 'content/lanes')).flatMap((f) => LaneFile.parse(YAML.parse(readFileSync(f, 'utf8'))).lanes.flatMap((l) => l.images));
 // Era maps live on the sheets.
 for (const f of walk(join(ROOT, 'content/sheets'))) for (const era of Sheet.parse(YAML.parse(readFileSync(f, 'utf8'))).eras) if (era.map && !images.some((i) => i.id === era.map!.id)) images.push(era.map);
+// Atmosphere engravings: printed like the era maps, but with the old paper cut away harder.
+const engravings = new Map<string, { crop?: [number, number, number, number] }>();
+for (const e of AtmosphereFile.parse(YAML.parse(readFileSync(join(ROOT, 'content/atmosphere.yaml'), 'utf8'))).engravings) {
+  engravings.set(e.id, { crop: e.crop });
+  images.push({ id: e.id, source: e.source, date: e.span, prominence: 3, treatment: 'backdrop', caption: e.caption, ofItsTime: e.ofItsTime, invert: e.invert, lift: e.lift });
+}
 const manifestPath = join(OUT, 'manifest.json');
 const manifest: Record<string, ManifestEntry> = existsSync(manifestPath) && !FORCE ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
 
@@ -170,9 +176,9 @@ async function cutout(img: LaneImage, rawPath: string): Promise<Buffer> {
 
 /** Backdrops are printed into the paper: darkness becomes sepia ink, light becomes transparent —
  *  the same as multiplying the map onto whatever paper (and era tint) lies beneath. */
-async function inkPrint(rawPath: string, invert: boolean): Promise<Buffer> {
+async function inkPrint(rawPath: string | Buffer, invert: boolean, paper = 96): Promise<Buffer> {
   const { data, info } = await sharp(rawPath).resize({ width: 2048, height: 2048, fit: 'inside', withoutEnlargement: true })
-    .flatten({ background: '#ffffff' }).grayscale().normalise({ lower: 2, upper: 96 }).raw().toBuffer({ resolveWithObject: true });
+    .flatten({ background: '#ffffff' }).grayscale().normalise({ lower: 2, upper: paper }).raw().toBuffer({ resolveWithObject: true });
   const out = Buffer.alloc(info.width * info.height * 4);
   for (let i = 0; i < info.width * info.height; i++) {
     out[i * 4] = 58; out[i * 4 + 1] = 40; out[i * 4 + 2] = 24;
@@ -180,6 +186,27 @@ async function inkPrint(rawPath: string, invert: boolean): Promise<Buffer> {
     out[i * 4 + 3] = invert ? v : 255 - v;
   }
   return sharp(out, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
+}
+
+/** Atmosphere engravings: cropped to the picture, ink-printed with the old paper cut away harder,
+ *  and feathered at the edges so no plate frame or scan border ever prints. */
+async function engrave(rawPath: string, invert: boolean, crop?: [number, number, number, number]): Promise<Buffer> {
+  let src = sharp(rawPath);
+  if (crop) {
+    const { width = 1, height = 1 } = await src.metadata();
+    const [l, t, r, b] = crop;
+    src = sharp(await src.extract({ left: Math.round(l * width), top: Math.round(t * height), width: Math.round((r - l) * width), height: Math.round((b - t) * height) }).toBuffer());
+  }
+  const printed = await inkPrint(await src.png().toBuffer(), invert, 60);
+  const { data, info } = await sharp(printed).raw().toBuffer({ resolveWithObject: true });
+  const feather = Math.max(4, Math.min(info.width, info.height) * 0.12);
+  const smooth = (t: number) => (t >= 1 ? 1 : t * t * (3 - 2 * t));
+  for (let y = 0; y < info.height; y++) for (let x = 0; x < info.width; x++) {
+    const d = Math.min(x, y, info.width - 1 - x, info.height - 1 - y);
+    const i = (y * info.width + x) * 4 + 3;
+    data[i] = Math.round(data[i]! * smooth(d / feather));
+  }
+  return sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } }).png().toBuffer();
 }
 
 let done = 0;
@@ -190,6 +217,7 @@ for (const img of images) {
     const meta = await resolve(img);
     const rawPath = await download(meta);
     let buf = img.treatment === 'cutout' ? await cutout(img, rawPath)
+      : engravings.has(img.id) ? await engrave(rawPath, img.invert, engravings.get(img.id)!.crop)
       : img.treatment === 'backdrop' ? await inkPrint(img.lift ? liftPath(img, rawPath) : rawPath, img.invert)
       : await sharp(rawPath).png().toBuffer();
     // Cap the master at 2048 on the long side.

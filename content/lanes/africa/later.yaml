@@ -64,6 +64,7 @@ lanes:
       - { id: ife-heads, date: c. 1300 CE, label: "Ife's naturalistic bronze and terracotta heads", prominence: 2, themes: [art], sources: [wikipedia:Ife_Head] }
       - { id: benin-bronzes, date: c. 1550 CE, label: "The Benin Bronzes record the court of the Oba", prominence: 2, themes: [art], sources: [wikipedia:Benin_Bronzes] }
       - { id: benin-1897, date: 1897 CE, label: "A British expedition sacks Benin City and loots its bronzes", prominence: 3, themes: [war], sources: [wikipedia:Benin_Expedition_of_1897] }
+      - { id: benin-plaques, date: c. 1550 CE, label: "Brass plaques sheathe the pillars of the Oba's palace", prominence: 3, themes: [art], sources: [wikipedia:Benin_Bronzes] }
     sources: [wikipedia:Kingdom_of_Benin]
 
   - id: ashanti
@@ -95,6 +96,8 @@ lanes:
       - { id: biafra, date: 1967 CE, label: "The Biafran War", prominence: 3, themes: [war], sources: [wikipedia:Nigerian_Civil_War] }
       - { id: things-fall-apart, date: 1958 CE, label: "Chinua Achebe's Things Fall Apart", prominence: 3, themes: [art], sources: [wikipedia:Things_Fall_Apart] }
       - { id: soyinka, date: 1986 CE, label: "Wole Soyinka, the first African Nobel laureate in literature", prominence: 4, themes: [art], sources: [wikipedia:Wole_Soyinka] }
+      - { id: nigeria-1999, date: 1999 CE, label: "Nigeria returns to civilian rule", prominence: 4, themes: [government], sources: [wikipedia:Fourth_Nigerian_Republic] }
+      - { id: chibok, date: 2014 CE, label: "Boko Haram abducts 276 schoolgirls at Chibok", prominence: 4, themes: [war, women], sources: [wikipedia:Chibok_schoolgirls_kidnapping] }
     sources: [wikipedia:Nigeria]
 
   # ------------------------------------------------------------------ central & southern africa
@@ -154,7 +157,7 @@ lanes:
     span: c. 1390 – 1914 CE
     cliopatria: ["Kingdom of Kongo"]
     events:
-      - { id: kongo-baptism, date: 1491 CE, label: "Kongo's king is baptised; his son Afonso later protests the slave trade to Portugal", prominence: 3, themes: [religion], sources: [wikipedia:Afonso_I_of_Kongo] }
+      - { id: kongo-baptism, date: 1491 CE, label: "Kongo's king Nzinga a Nkuwu is baptised", prominence: 3, themes: [religion], sources: [wikipedia:Afonso_I_of_Kongo] }
       - { id: afonso-kongo, date: 1526 CE, label: "Afonso I of Kongo protests the slave trade to the king of Portugal", prominence: 3, themes: [government], sources: [wikipedia:Afonso_I_of_Kongo] }
       - { id: mbwila, date: 1665 CE, label: "Defeat at Mbwila; Kongo splinters", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Mbwila] }
       - { id: kimpa-vita, date: 1704 CE, label: "Kimpa Vita's movement to restore Kongo", prominence: 4, themes: [women, religion], sources: [wikipedia:Beatriz_Kimpa_Vita] }
@@ -277,6 +280,8 @@ lanes:
       - { id: italo-ethiopian, date: 1935 CE, label: "Mussolini invades with poison gas", prominence: 3, themes: [war], sources: [wikipedia:Second_Italo-Ethiopian_War] }
       - { id: ethiopia-famine, date: 1984 CE, label: "The Ethiopian famine and Live Aid", prominence: 4, themes: [disease], sources: [wikipedia:1983–1985_famine_in_Ethiopia] }
       - { id: lucy-found, date: 1974 CE, label: "'Lucy', a 3.2-million-year-old ancestor, is found", prominence: 4, themes: [science], sources: [wikipedia:Lucy_(Australopithecus)] }
+      - { id: african-union, date: 2002 CE, label: "The African Union is founded, seated in Addis Ababa", prominence: 4, themes: [government, diplomacy], sources: [wikipedia:African_Union] }
+      - { id: gerd, date: 2011 CE, label: "Work begins on the Grand Renaissance Dam on the Blue Nile", prominence: 4, themes: [technology], sources: [wikipedia:Grand_Ethiopian_Renaissance_Dam] }
     sources: [wikipedia:Ethiopian_Empire]
 
   # ------------------------------------------------------------------ the maghreb
@@ -311,6 +316,7 @@ lanes:
       - { id: moroccan-independence, date: 1956 CE, label: "Morocco regains independence", prominence: 4, themes: [government], sources: [wikipedia:Morocco] }
       - { id: morocco-recognises-us, date: 1777 CE, label: "Morocco is the first state to recognise the United States", prominence: 4, themes: [government], sources: [wikipedia:Morocco–United_States_relations] }
       - { id: green-march, date: 1975 CE, label: "The Green March into Western Sahara", prominence: 4, sources: [wikipedia:Green_March] }
+      - { id: morocco-protectorate, date: 1912 CE, label: "Morocco becomes a French protectorate", prominence: 4, themes: [government], sources: [wikipedia:French_protectorate_in_Morocco] }
     sources: [wikipedia:History_of_Morocco]
 
   - id: algeria

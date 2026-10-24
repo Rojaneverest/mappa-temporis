@@ -85,4 +85,13 @@ describe('Grid', () => {
     expect(g.isFree(120, 120, 10, 10)).toBe(false);
     expect(g.freeRunRight(0, 110, 10, 500)).toBe(100);
   });
+
+  it('measures how full a box is', () => {
+    const g = new Grid(1000, 1000, 10);
+    g.mark(0, 0, 395, 395); // 40×40 cells
+    const occ = g.occupancy(4);
+    expect(occ(0, 0, 400, 400)).toBeCloseTo(1);
+    expect(occ(400, 400, 400, 400)).toBe(0);
+    expect(occ(0, 0, 800, 800)).toBeCloseTo(0.25);
+  });
 });

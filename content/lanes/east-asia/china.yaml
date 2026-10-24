@@ -34,7 +34,6 @@ lanes:
         prominence: 4
         themes: [war]
         sources: [wikipedia:Battle_of_Changping]
-      - { id: shang-yang, date: 356 BCE, label: "Shang Yang's Legalist reforms make Qin a war machine", prominence: 3, themes: [government], sources: [wikipedia:Shang_Yang] }
       - { id: dujiangyan, date: 256 BCE, label: "Dujiangyan irrigation, still working today", prominence: 3, themes: [technology], sources: [wikipedia:Dujiangyan] }
     sources: [wikipedia:Qin_(state)]
 
@@ -114,7 +113,7 @@ lanes:
       - id: burning-books
         date: 213 BCE
         label: Burning of books and burying of scholars
-        prominence: 4
+        prominence: 3
         confidence: probable
         sources: [wikipedia:Burning_of_books_and_burying_of_scholars]
       - id: terracotta
@@ -124,7 +123,6 @@ lanes:
         themes: [art]
         sources: [wikipedia:Terracotta_Army]
       - { id: unification-standards, date: 221 BCE, label: "One script, one currency, one axle width: China unified", prominence: 1, themes: [government], thread: scripts, sources: [wikipedia:Qin_dynasty] }
-      - { id: book-burning, date: 213 BCE, label: "The burning of books", prominence: 3, themes: [ideas], confidence: disputed, sources: [wikipedia:Burning_of_books_and_burying_of_scholars] }
     images:
       - id: terracotta-pit-1
         source: "commons:File:Qin Terracotta Army, Pit 1 04.jpg"
@@ -217,7 +215,6 @@ lanes:
         prominence: 3
         themes: [war]
         sources: [wikipedia:Battle_of_Red_Cliffs]
-      - { id: cai-lun, date: 105 CE, label: "Cai Lun presents paper to the court", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Cai_Lun] }
     images:
       - id: han-lacquer-bowl
         source: "met:36449"
@@ -401,7 +398,6 @@ lanes:
         prominence: 3
         themes: [religion, exploration]
         sources: [wikipedia:Faxian]
-      - { id: wang-xizhi, date: 353 CE, label: "Wang Xizhi's Orchid Pavilion calligraphy", prominence: 3, themes: [art], sources: [wikipedia:Lantingji_Xu] }
     images:
       - id: admonitions-scroll
         source: "commons:File:Gu Kaizhi 002.jpg"

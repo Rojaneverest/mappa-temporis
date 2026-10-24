@@ -34,7 +34,6 @@ lanes:
       - { id: psamtik, date: 664 BCE, label: "Psamtik I reunites Egypt", prominence: 3, sources: [wikipedia:Psamtik_I] }
       - { id: necho-africa, date: c. 600 BCE, label: "Phoenician sailors sent by Necho II circle Africa (as Herodotus tells it)", prominence: 4, confidence: disputed, themes: [exploration], sources: [wikipedia:Necho_II] }
       - { id: pelusium, date: 525 BCE, label: "Cambyses II conquers Egypt for Persia", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Pelusium_(525_BC)] }
-      - { id: necho-canal, date: c. 600 BCE, label: "Necho II's Phoenicians sail around Africa (Herodotus)", prominence: 4, themes: [exploration], confidence: disputed, sources: [wikipedia:Necho_II] }
     sources: [wikipedia:Late_Period_of_ancient_Egypt]
 
   - id: ptolemaic
@@ -73,7 +72,6 @@ lanes:
       - { id: tyre-siege-573, date: 573 BCE, label: "Tyre survives Nebuchadnezzar's 13-year siege", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Tyre_(586–573_BC)] }
       - { id: tyre-siege-332, date: 332 BCE, label: "Alexander takes Tyre after a seven-month siege", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Tyre_(332_BC)] }
       - { id: purple-dye, date: c. 1000 BCE, label: "Tyrian purple, the dye of kings", prominence: 3, themes: [trade], sources: [wikipedia:Tyrian_purple] }
-      - { id: alexander-tyre, date: 332 BCE, label: "Alexander besieges Tyre", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Tyre_(332_BC)] }
     sources: [wikipedia:Phoenicia]
 
   - id: israel-kingdom

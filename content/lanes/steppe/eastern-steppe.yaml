@@ -112,5 +112,4 @@ lanes:
         prominence: 4
         themes: [war]
         sources: [wikipedia:Battle_of_Herat_(484)]
-      - { id: hephthalite-peroz, date: 484 CE, label: "The Hephthalites kill the Persian king Peroz", prominence: 4, themes: [war], sources: [wikipedia:Peroz_I] }
     sources: [wikipedia:Hephthalites]

@@ -28,7 +28,6 @@ lanes:
     basis: archaeology
     span: c. 1000 BCE – c. 500 CE
     events:
-      - { id: urewe, date: c. 500 BCE, label: "Iron-working Bantu farmers reach the Great Lakes", prominence: 3, themes: [migration, technology], confidence: probable, sources: [wikipedia:Urewe] }
       - { id: bantu-south, date: c. 300 CE, label: "Bantu-speaking farmers reach southern Africa", prominence: 3, themes: [migration], confidence: probable, sources: [wikipedia:Bantu_expansion] }
       - { id: bantu-languages, date: c. 1000 BCE, label: "Bantu-speaking farmers spread from Cameroon: today 350 million speakers", prominence: 2, themes: [migration], sources: [wikipedia:Bantu_expansion] }
       - { id: bantu-great-lakes, date: c. 500 BCE, label: "Bantu farmers reach the Great Lakes and learn iron-working", prominence: 3, themes: [migration, technology], confidence: probable, sources: [wikipedia:Bantu_expansion] }

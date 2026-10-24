@@ -65,6 +65,9 @@ lanes:
       - { id: rosetta-decoded, date: 1822 CE, label: "Champollion deciphers hieroglyphs", prominence: 2, thread: scripts, themes: [ideas], sources: [wikipedia:Rosetta_Stone] }
       - { id: tutankhamun-found, date: 1922 CE, label: "Carter opens Tutankhamun's tomb", prominence: 3, sources: [wikipedia:Discovery_of_the_tomb_of_Tutankhamun] }
       - { id: mahfouz, date: 1988 CE, label: "Naguib Mahfouz wins the Nobel Prize", prominence: 4, themes: [art], sources: [wikipedia:Naguib_Mahfouz] }
+      - { id: egypt-1919, date: 1919 CE, label: "The 1919 revolution against British rule", prominence: 4, themes: [government], sources: [wikipedia:Egyptian_revolution_of_1919] }
+      - { id: muslim-brotherhood, date: 1928 CE, label: "Hassan al-Banna founds the Muslim Brotherhood", prominence: 3, themes: [religion, ideas], sources: [wikipedia:Muslim_Brotherhood] }
+      - { id: free-officers, date: 1952 CE, label: "The Free Officers overthrow the monarchy", prominence: 3, themes: [government], sources: [wikipedia:Egyptian_revolution_of_1952] }
     sources: [wikipedia:History_of_Egypt]
 
   # ------------------------------------------------------------------ levant & arabia
@@ -95,6 +98,10 @@ lanes:
       - { id: wahhab-pact, date: 1744 CE, label: "The Saud–Wahhab pact", prominence: 4, themes: [religion, government], sources: [wikipedia:Muhammad_ibn_Abd_al-Wahhab] }
       - { id: saudi-kingdom, date: 1932 CE, label: "The Kingdom of Saudi Arabia", prominence: 4, themes: [government], sources: [wikipedia:Saudi_Arabia] }
       - { id: oil-embargo, date: 1973 CE, label: "The oil embargo", prominence: 3, themes: [trade], sources: [wikipedia:1973_oil_crisis] }
+      - { id: wahhabis-mecca, date: 1803 CE, label: "The first Saudi state takes Mecca", prominence: 4, themes: [religion, war], sources: [wikipedia:Emirate_of_Diriyah] }
+      - { id: diriyah-falls, date: 1818 CE, label: "Egyptian armies destroy Diriyah, the first Saudi capital", prominence: 4, themes: [war], sources: [wikipedia:Ottoman–Wahhabi_war] }
+      - { id: riyadh-1902, date: 1902 CE, label: "Ibn Saud retakes Riyadh", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Riyadh_(1902)] }
+      - { id: saudi-women-drive, date: 2018 CE, label: "Saudi women win the right to drive", prominence: 4, themes: [women], sources: [wikipedia:Women_to_drive_movement] }
     sources: [wikipedia:History_of_Saudi_Arabia]
 
   - id: israel
@@ -109,9 +116,9 @@ lanes:
       - { id: israel-founded, date: 1948 CE, label: "The State of Israel; 700,000 Palestinians flee or are expelled — the Nakba", prominence: 2, themes: [war, migration], sources: [wikipedia:1948_Arab–Israeli_War] }
       - { id: six-day-war, date: 1967 CE, label: "The Six-Day War", prominence: 3, themes: [war], sources: [wikipedia:Six-Day_War] }
       - { id: oslo, date: 1993 CE, label: "The Oslo Accords", prominence: 4, themes: [diplomacy], sources: [wikipedia:Oslo_Accords] }
-      - { id: nakba, date: 1948 CE, label: "The Nakba: 700,000 Palestinians flee or are expelled", prominence: 2, themes: [migration, war], sources: [wikipedia:Nakba] }
       - { id: yom-kippur, date: 1973 CE, label: "The Yom Kippur War", prominence: 4, themes: [war], sources: [wikipedia:Yom_Kippur_War] }
       - { id: gaza-war, date: 2023 CE, label: "October 7 and the war in Gaza", prominence: 3, themes: [war], sources: [wikipedia:Gaza_war] }
+      - { id: camp-david, date: 1978 CE, label: "Camp David: Egypt and Israel agree to make peace", prominence: 3, themes: [diplomacy], sources: [wikipedia:Camp_David_Accords] }
     sources: [wikipedia:Israel]
 
   # ------------------------------------------------------------------ anatolia
@@ -157,6 +164,14 @@ lanes:
       - { id: ottoman-printing, date: 1727 CE, label: "İbrahim Müteferrika's printing press", prominence: 4, thread: paper, sources: [wikipedia:Ibrahim_Muteferrika] }
       - { id: gallipoli-ottoman, date: 1915 CE, label: "Mustafa Kemal at Gallipoli", prominence: 4, themes: [war], sources: [wikipedia:Mustafa_Kemal_Atatürk] }
       - { id: balkan-wars, date: 1912 CE, label: "The Balkan Wars", prominence: 4, themes: [war], sources: [wikipedia:Balkan_Wars] }
+      - { id: selim-egypt, date: 1517 CE, label: "Selim I takes Egypt, Syria and the holy cities of Arabia", prominence: 2, themes: [war], sources: [wikipedia:Ottoman–Mamluk_War_(1516–1517)] }
+      - { id: istanbul-coffeehouses, date: c. 1555 CE, label: "Coffeehouses open in Istanbul", prominence: 4, themes: [ideas, trade], sources: [wikipedia:Coffeehouse] }
+      - { id: karlowitz, date: 1699 CE, label: "Treaty of Karlowitz: the Ottomans' first great loss of land", prominence: 3, themes: [war, diplomacy], sources: [wikipedia:Treaty_of_Karlowitz] }
+      - { id: kucuk-kaynarca, date: 1774 CE, label: "Küçük Kaynarca: Russia wins the northern Black Sea coast", prominence: 4, themes: [war, diplomacy], sources: [wikipedia:Treaty_of_Küçük_Kaynarca] }
+      - { id: napoleon-egypt, date: 1798 CE, label: "Napoleon invades Egypt, scholars in tow", prominence: 3, themes: [war, science], sources: [wikipedia:French_invasion_of_Egypt_and_Syria] }
+      - { id: ottoman-constitution, date: 1876 CE, label: "The first Ottoman constitution and parliament", prominence: 4, themes: [government], sources: [wikipedia:Ottoman_constitution_of_1876] }
+      - { id: young-turks, date: 1908 CE, label: "The Young Turk Revolution restores the constitution", prominence: 3, themes: [government], sources: [wikipedia:Young_Turk_Revolution] }
+      - { id: sultanate-abolished, date: 1922 CE, label: "The sultanate is abolished", prominence: 3, themes: [government], sources: [wikipedia:Abolition_of_the_Ottoman_sultanate] }
     sources: [wikipedia:Ottoman_Empire]
 
   - id: turkey
@@ -170,6 +185,9 @@ lanes:
     events:
       - { id: ataturk, date: 1923 CE, label: "Atatürk's republic: Latin alphabet, secular law", prominence: 2, thread: alphabet, themes: [government], sources: [wikipedia:Mustafa_Kemal_Atatürk] }
       - { id: turkish-alphabet, date: 1928 CE, label: "Turkish switches to the Latin alphabet", prominence: 3, thread: alphabet, sources: [wikipedia:Turkish_alphabet] }
+      - { id: turkey-women-vote, date: 1934 CE, label: "Turkish women win the vote", prominence: 4, themes: [women, government], sources: [wikipedia:Women's_suffrage_in_Turkey] }
+      - { id: turkey-nato, date: 1952 CE, label: "Turkey joins NATO", prominence: 4, themes: [diplomacy], sources: [wikipedia:NATO] }
+      - { id: turkey-syria-quake, date: 2023 CE, label: "Earthquakes in Turkey and Syria kill over 50,000", prominence: 3, themes: [climate], sources: [wikipedia:2023_Turkey–Syria_earthquakes] }
     sources: [wikipedia:Turkey]
 
   # ------------------------------------------------------------------ mesopotamia & iran
@@ -247,6 +265,15 @@ lanes:
       - { id: chaldiran, date: 1514 CE, label: "Chaldiran: Ottoman guns defeat the Safavids", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Chaldiran] }
       - { id: nader-shah, date: 1736 CE, label: "Nader Shah ends the Safavids", prominence: 4, sources: [wikipedia:Nader_Shah] }
       - { id: shah-abbas, date: 1588 CE, label: "Shah Abbas the Great", prominence: 3, sources: [wikipedia:Abbas_the_Great] }
+      - { id: qajars, date: 1789 CE, label: "The Qajar dynasty rules Iran from Tehran", prominence: 4, themes: [government], sources: [wikipedia:Qajar_Iran] }
+      - { id: turkmenchay, date: 1828 CE, label: "Treaty of Turkmenchay: Iran loses the Caucasus to Russia", prominence: 4, themes: [war, diplomacy], sources: [wikipedia:Treaty_of_Turkmenchay] }
+      - { id: persian-constitution, date: 1906 CE, label: "The Persian Constitutional Revolution", prominence: 3, themes: [government], sources: [wikipedia:Persian_Constitutional_Revolution] }
+      - { id: masjed-soleyman, date: 1908 CE, label: "Oil is struck at Masjed Soleyman, the first in the Middle East", prominence: 3, themes: [trade, technology], sources: [wikipedia:Masjed_Soleyman] }
+      - { id: reza-shah, date: 1925 CE, label: "Reza Shah founds the Pahlavi dynasty", prominence: 4, themes: [government], sources: [wikipedia:Reza_Shah] }
+      - { id: coup-1953, date: 1953 CE, label: "A CIA- and MI6-backed coup topples Prime Minister Mosaddegh", prominence: 3, themes: [government], sources: [wikipedia:1953_Iranian_coup_d'état] }
+      - { id: iran-iraq-war, date: 1980 CE, label: "Iraq invades Iran: eight years of trench war", prominence: 2, themes: [war], sources: [wikipedia:Iran–Iraq_War] }
+      - { id: green-movement, date: 2009 CE, label: "The Green Movement protests a disputed election", prominence: 4, themes: [government], sources: [wikipedia:2009_Iranian_presidential_election_protests] }
+      - { id: woman-life-freedom, date: 2022 CE, label: "'Woman, Life, Freedom': protests after Mahsa Amini's death", prominence: 3, themes: [women, government], sources: [wikipedia:Mahsa_Amini_protests] }
     sources: [wikipedia:History_of_Iran]
 
   - id: iraq
@@ -261,4 +288,7 @@ lanes:
       - { id: iraq-war, date: 2003 CE, label: "A US-led invasion topples Saddam Hussein", prominence: 2, themes: [war], sources: [wikipedia:Iraq_War] }
       - { id: gulf-war, date: 1991 CE, label: "The Gulf War", prominence: 3, themes: [war], sources: [wikipedia:Gulf_War] }
       - { id: isis, date: 2014 CE, label: "ISIS seizes Mosul", prominence: 4, themes: [war], sources: [wikipedia:Islamic_State] }
+      - { id: iraq-1958, date: 1958 CE, label: "The 14 July Revolution ends Iraq's monarchy", prominence: 4, themes: [government], sources: [wikipedia:14_July_Revolution] }
+      - { id: opec, date: 1960 CE, label: "OPEC is founded in Baghdad", prominence: 3, themes: [trade], sources: [wikipedia:OPEC] }
+      - { id: halabja, date: 1988 CE, label: "Halabja: Saddam's chemical attack on the Kurds", prominence: 3, themes: [war], sources: [wikipedia:Halabja_massacre] }
     sources: [wikipedia:Iraq]

@@ -99,7 +99,7 @@ export function imageNeeds(dl: DisplayList, indices: Iterable<number>, s: number
   const out: string[] = [];
   for (const i of indices) {
     const it = dl.items[i]!;
-    if (it.k !== 'image' || fadeAt(it.fade, zoom) <= 0.01 || Math.max(it.w, it.h) * s < 2) continue;
+    if (it.k !== 'image' || fadeAt(it.fade, zoom) <= 0.01 || (it.fadeOut && fadeAt(it.fadeOut, zoom) >= 0.99) || Math.max(it.w, it.h) * s < 2) continue;
     out.push(`${it.id}/${pickImageSize(it, s)}`);
   }
   return out;

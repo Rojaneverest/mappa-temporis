@@ -1,0 +1,33 @@
+# Coverage targets (Phase 3 balance audit, `pnpm coverage`).
+# A cell's target = the era's baseline × the region's weight. Baselines grow with how much
+# history an era holds on the sheet; weights keep every region from becoming a footnote
+# while admitting that some regions have more recorded history in some eras.
+eras:
+  neolithic: 5
+  early-bronze: 5
+  bronze: 7
+  iron-age: 8
+  classical: 28
+  middle-ages: 40
+  early-modern: 26
+  industrial: 24
+  world-wars: 24
+  contemporary: 12
+regions:
+  americas: 1
+  africa: 1
+  europe: 1.4
+  near-east: 1.4
+  steppe: 0.7
+  south-asia: 1
+  east-asia: 1.3
+  southeast-asia: 0.8
+  oceania: 0.5
+# Pairs the duplicate check flags that are really different events.
+distinct:
+  - [cuban-revolution, missile-crisis]
+  - [hong-kong-1997, shenzhou-5]
+  - [wto-china, shenzhou-5]
+  - [battle-britain, india-independence-uk]
+  - [ataturk, turkish-alphabet]
+  - [isfahan, shah-abbas]

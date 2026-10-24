@@ -72,6 +72,8 @@ lanes:
     events:
       - { id: moscow-burned-1571, date: 1571 CE, label: "Crimean Tatars burn Moscow", prominence: 4, themes: [war], sources: [wikipedia:Russo-Crimean_War_(1571)] }
       - { id: crimea-annexed-1783, date: 1783 CE, label: "Catherine the Great annexes Crimea", prominence: 4, themes: [war], sources: [wikipedia:Annexation_of_the_Crimean_Khanate_by_the_Russian_Empire] }
+      - { id: bakhchisaray, date: 1532 CE, label: "Bakhchisaray becomes the Crimean capital", prominence: 4, themes: [government], sources: [wikipedia:Bakhchysarai] }
+      - { id: crimean-slave-raids, date: c. 1600 CE, label: "Crimean raids carry captives from Poland and Russia to Ottoman slave markets", prominence: 4, themes: [war, trade], sources: [wikipedia:Crimean–Nogai_slave_raids_in_Eastern_Europe] }
     sources: [wikipedia:Crimean_Khanate]
 
   # ------------------------------------------------------------------ central asia
@@ -177,6 +179,13 @@ lanes:
       - { id: great-game, date: c. 1840 CE, label: "The Great Game: Britain and Russia vie for Central Asia", prominence: 3, themes: [war], sources: [wikipedia:The_Great_Game] }
       - { id: tashkent-1865, date: 1865 CE, label: "Russia takes Tashkent", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Tashkent] }
       - { id: basmachi, date: 1918 CE, label: "The Basmachi revolt against Soviet rule", prominence: 4, themes: [war], sources: [wikipedia:Basmachi_movement] }
+      - { id: shaybani-samarkand, date: c. 1500 CE, label: "Muhammad Shaybani's Uzbeks take Samarkand and Bukhara", prominence: 3, themes: [war, migration], sources: [wikipedia:Muhammad_Shaybani] }
+      - { id: sher-dor, date: 1636 CE, label: "The Sher-Dor madrasa completes Samarkand's Registan", prominence: 4, themes: [art, religion], sources: [wikipedia:Registan] }
+      - { id: kokand-founded, date: c. 1709 CE, label: "The Khanate of Kokand breaks away in the Fergana Valley", prominence: 4, themes: [government], sources: [wikipedia:Khanate_of_Kokand] }
+      - { id: bukhara-emirate, date: 1785 CE, label: "The Manghit rulers make Bukhara an emirate", prominence: 4, themes: [government], sources: [wikipedia:Emirate_of_Bukhara] }
+      - { id: bukhara-protectorate, date: 1868 CE, label: "Bukhara becomes a Russian protectorate", prominence: 3, themes: [war, government], sources: [wikipedia:Emirate_of_Bukhara] }
+      - { id: khiva-1873, date: 1873 CE, label: "Russia conquers Khiva", prominence: 4, themes: [war], sources: [wikipedia:Khiva_campaign_of_1873] }
+      - { id: kokand-annexed, date: 1876 CE, label: "Russia annexes Kokand", prominence: 4, themes: [war], sources: [wikipedia:Khanate_of_Kokand] }
     sources: [wikipedia:Khanate_of_Bukhara]
 
   - id: kazakh-khanate
@@ -197,6 +206,10 @@ lanes:
       - { id: aral-sea, date: c. 1990 CE, label: "The Aral Sea, drained for cotton, shrinks to a tenth", prominence: 3, themes: [climate], sources: [wikipedia:Aral_Sea] }
       - { id: kazakh-hordes, date: c. 1718 CE, label: "The Dzungar wars split the Kazakhs into three hordes", prominence: 4, themes: [war], sources: [wikipedia:Kazakh_Khanate] }
       - { id: semipalatinsk, date: 1949 CE, label: "Semipalatinsk: 456 nuclear tests on the steppe", prominence: 4, themes: [war, technology], sources: [wikipedia:Semipalatinsk_Test_Site] }
+      - { id: junior-horde-russia, date: 1731 CE, label: "The Junior Horde accepts Russian protection", prominence: 4, themes: [government, diplomacy], sources: [wikipedia:Kazakh_Khanate] }
+      - { id: kenesary, date: 1847 CE, label: "Kenesary Khan's revolt, the last great Kazakh rising, is crushed", prominence: 4, themes: [war], sources: [wikipedia:Kenesary_Kasymov] }
+      - { id: astana-capital, date: 1997 CE, label: "Kazakhstan moves its capital to Astana on the open steppe", prominence: 4, themes: [government], sources: [wikipedia:Astana] }
+      - { id: kazakh-unrest, date: 2022 CE, label: "Fuel-price protests turn into deadly unrest in Kazakhstan", prominence: 4, themes: [government], sources: [wikipedia:2022_Kazakh_unrest] }
     sources: [wikipedia:Kazakh_Khanate]
 
   - id: central-asian-republics
@@ -209,6 +222,10 @@ lanes:
     cliopatria: ["Uzbekistan", "Turkmenistan", "Tajikistan", "Kyrgyzstan", "Uzbek SSR", "Turkmen SSR", "Tajik SSR", "Kirghiz SSR"]
     events:
       - { id: central-asia-independence, date: 1991 CE, label: "The Soviet Union dissolves; five republics become independent", prominence: 3, themes: [government], sources: [wikipedia:Dissolution_of_the_Soviet_Union] }
+      - { id: soviet-delimitation, date: 1924 CE, label: "Soviet planners draw Central Asia's national borders", prominence: 3, themes: [government], sources: [wikipedia:National_delimitation_in_the_Soviet_Union] }
+      - { id: tajik-civil-war, date: 1992 CE, label: "Civil war in Tajikistan", prominence: 4, themes: [war], sources: [wikipedia:Tajikistani_Civil_War] }
+      - { id: tulip-revolution, date: 2005 CE, label: "The Tulip Revolution topples Kyrgyzstan's president", prominence: 4, themes: [government], sources: [wikipedia:Tulip_Revolution] }
+      - { id: andijan, date: 2005 CE, label: "Troops fire on protesters at Andijan, Uzbekistan", prominence: 4, themes: [government], sources: [wikipedia:Andijan_massacre] }
     sources: [wikipedia:Central_Asia]
 
   # ------------------------------------------------------------------ eastern steppe
@@ -282,6 +299,10 @@ lanes:
       - { id: altan-khan, date: 1578 CE, label: "Altan Khan names the first Dalai Lama", prominence: 4, themes: [religion], sources: [wikipedia:Altan_Khan] }
       - { id: mongolia-1921, date: 1921 CE, label: "A Soviet-backed revolution in Mongolia", prominence: 4, themes: [government], sources: [wikipedia:Mongolian_Revolution_of_1921] }
       - { id: mongolia-1990, date: 1990 CE, label: "Peaceful democratic revolution", prominence: 4, themes: [government], sources: [wikipedia:Mongolian_Revolution_of_1990] }
+      - { id: erdene-zuu, date: 1585 CE, label: "Erdene Zuu, Mongolia's first great Buddhist monastery", prominence: 4, themes: [religion, art], sources: [wikipedia:Erdene_Zuu_Monastery] }
+      - { id: dolon-nor, date: 1691 CE, label: "At Dolon Nor the Khalkha Mongols submit to the Qing", prominence: 4, themes: [government], sources: [wikipedia:Dolon_Nor] }
+      - { id: mongolia-1911, date: 1911 CE, label: "Mongolia declares independence as the Qing fall", prominence: 3, themes: [government], sources: [wikipedia:Bogd_Khanate_of_Mongolia] }
+      - { id: khalkhin-gol, date: 1939 CE, label: "Khalkhin Gol: Soviet and Mongolian forces defeat Japan", prominence: 4, themes: [war], sources: [wikipedia:Battles_of_Khalkhin_Gol] }
     sources: [wikipedia:History_of_Mongolia]
 
   - id: dzungars
@@ -295,4 +316,6 @@ lanes:
     events:
       - { id: dzungar-genocide, date: 1755 CE, label: "The Qing destroy the Dzungars — 'the last nomad empire'", prominence: 3, themes: [war], sources: [wikipedia:Dzungar_genocide] }
       - { id: galdan, date: 1688 CE, label: "Galdan Boshugtu invades Khalkha", prominence: 4, themes: [war], sources: [wikipedia:Galdan_Boshugtu_Khan] }
+      - { id: dzungars-lhasa, date: 1717 CE, label: "Dzungar raiders invade Tibet and sack Lhasa", prominence: 4, themes: [war], sources: [wikipedia:Dzungar_Khanate] }
+      - { id: barefoot-flight, date: 1723 CE, label: "The 'Barefoot Flight': Dzungars rout the Kazakhs", prominence: 4, themes: [war, migration], sources: [wikipedia:Kazakh–Dzungar_Wars] }
     sources: [wikipedia:Dzungar_Khanate]

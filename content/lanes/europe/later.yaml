@@ -89,6 +89,7 @@ lanes:
       - { id: book-of-kells, date: c. 800 CE, label: "Monks illuminate the Book of Kells", prominence: 3, themes: [art, religion], sources: [wikipedia:Book_of_Kells] }
       - { id: irish-famine, date: 1845 CE, label: "The Great Famine: a million die, a million emigrate", prominence: 2, themes: [disease, migration], sources: [wikipedia:Great_Famine_(Ireland)] }
       - { id: irish-independence, date: 1922 CE, label: "The Irish Free State", prominence: 3, themes: [government], sources: [wikipedia:Irish_Free_State] }
+      - { id: good-friday, date: 1998 CE, label: "The Good Friday Agreement ends the Troubles", prominence: 3, themes: [diplomacy], sources: [wikipedia:Good_Friday_Agreement] }
     sources: [wikipedia:History_of_Ireland]
 
   # ------------------------------------------------------------------ iberia
@@ -147,6 +148,7 @@ lanes:
       - { id: guernica, date: 1937 CE, label: "Guernica is bombed; Picasso paints it", prominence: 3, themes: [war, art], sources: [wikipedia:Guernica_(Picasso)] }
       - { id: reconquista-expulsion, date: 1492 CE, label: "Jews are expelled from Spain", prominence: 3, themes: [religion, migration], sources: [wikipedia:Alhambra_Decree] }
       - { id: goya, date: 1814 CE, label: "Goya's The Third of May 1808", prominence: 3, themes: [art, war], sources: [wikipedia:The_Third_of_May_1808] }
+      - { id: catalan-referendum, date: 2017 CE, label: "Catalonia's disputed independence referendum", prominence: 4, themes: [government], sources: [wikipedia:2017_Catalan_independence_referendum] }
     sources: [wikipedia:Spain]
 
   - id: portugal
@@ -219,6 +221,7 @@ lanes:
       - { id: lumiere, date: 1895 CE, label: "The Lumière brothers' first film screening", prominence: 3, themes: [technology, art], sources: [wikipedia:Auguste_and_Louis_Lumière] }
       - { id: verdun-1916, date: 1916 CE, label: "Verdun", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Verdun] }
       - { id: d-day, date: 1944 CE, label: "D-Day", prominence: 2, themes: [war], sources: [wikipedia:Normandy_landings] }
+      - { id: notre-dame-fire, date: 2019 CE, label: "Fire guts Notre-Dame de Paris", prominence: 4, themes: [art], sources: [wikipedia:Notre-Dame_fire] }
     images:
       - { id: notre-dame-paris, source: "commons:File:Notre-Dame de Paris 2013-07-24.jpg", date: 1260 CE, prominence: 2, treatment: plate, caption: "Notre-Dame de Paris" }
       - { id: eiffel-tower, source: "commons:File:Tour Eiffel Wikimedia Commons.jpg", date: 1889 CE, prominence: 3, treatment: plate, caption: "The Eiffel Tower, 1889" }
@@ -253,6 +256,7 @@ lanes:
       - { id: swedish-empire, date: 1611 CE, label: "Gustavus Adolphus makes Sweden a great power", prominence: 4, sources: [wikipedia:Swedish_Empire] }
       - { id: gustavus, date: 1631 CE, label: "Gustavus Adolphus wins at Breitenfeld", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Breitenfeld_(1631)] }
       - { id: nordic-model, date: c. 1950 CE, label: "The Nordic welfare state", prominence: 4, themes: [government], sources: [wikipedia:Nordic_model] }
+      - { id: greta-strike, date: 2018 CE, label: "Greta Thunberg's school strike for the climate", prominence: 4, themes: [climate], sources: [wikipedia:Greta_Thunberg] }
     sources: [wikipedia:Scandinavia]
 
   - id: dutch
@@ -389,6 +393,7 @@ lanes:
       - { id: bismarck-welfare, date: 1883 CE, label: "Bismarck's health insurance: the first welfare state", prominence: 3, themes: [government], sources: [wikipedia:Health_Insurance_Act_of_1883] }
       - { id: kristallnacht, date: 1938 CE, label: "Kristallnacht", prominence: 3, sources: [wikipedia:Kristallnacht] }
       - { id: nuremberg, date: 1945 CE, label: "The Nuremberg trials", prominence: 3, themes: [government], sources: [wikipedia:Nuremberg_trials] }
+      - { id: refugees-2015, date: 2015 CE, label: "Germany takes in about a million refugees", prominence: 4, themes: [migration], sources: [wikipedia:European_migrant_crisis] }
     sources: [wikipedia:Germany]
 
   - id: habsburg-austria
@@ -451,6 +456,7 @@ lanes:
       - { id: euro, date: 1999 CE, label: "The euro", prominence: 3, themes: [trade], thread: money, sources: [wikipedia:Euro] }
       - { id: maastricht, date: 1992 CE, label: "The Maastricht Treaty creates the EU", prominence: 3, themes: [government], sources: [wikipedia:Maastricht_Treaty] }
       - { id: schengen, date: 1995 CE, label: "Schengen: borders open", prominence: 4, themes: [migration], sources: [wikipedia:Schengen_Area] }
+      - { id: eu-enlargement-2004, date: 2004 CE, label: "Ten countries, most of them once behind the Iron Curtain, join the EU", prominence: 4, themes: [government], sources: [wikipedia:2004_enlargement_of_the_European_Union] }
     sources: [wikipedia:European_Union]
 
   # ------------------------------------------------------------------ eastern europe
@@ -491,7 +497,7 @@ lanes:
       - { id: moscow-1812, date: 1812 CE, label: "Napoleon takes Moscow — and loses his army in the winter", prominence: 2, themes: [war], sources: [wikipedia:French_invasion_of_Russia] }
       - { id: serfs-freed, date: 1861 CE, label: "The serfs are freed", prominence: 3, themes: [government], sources: [wikipedia:Emancipation_reform_of_1861] }
       - { id: russian-revolution, date: 1917 CE, label: "The Russian Revolution: Lenin and the Bolsheviks take power", prominence: 1, themes: [government, war], sources: [wikipedia:Russian_Revolution] }
-      - { id: barbarossa, date: 1941 CE, label: "Germany invades the Soviet Union; Stalingrad follows", prominence: 1, themes: [war], sources: [wikipedia:Operation_Barbarossa] }
+      - { id: barbarossa, date: 1941 CE, label: "Germany invades the Soviet Union", prominence: 1, themes: [war], sources: [wikipedia:Operation_Barbarossa] }
       - { id: sputnik, date: 1957 CE, label: "Sputnik — the first satellite", prominence: 1, themes: [technology, sky], sources: [wikipedia:Sputnik_1] }
       - { id: gagarin, date: 1961 CE, label: "Yuri Gagarin, the first human in space", prominence: 2, themes: [technology, sky], sources: [wikipedia:Yuri_Gagarin] }
       - { id: chernobyl, date: 1986 CE, label: "The Chernobyl disaster", prominence: 3, themes: [technology], sources: [wikipedia:Chernobyl_disaster] }
@@ -506,6 +512,8 @@ lanes:
       - { id: decembrists, date: 1825 CE, label: "The Decembrist revolt", prominence: 4, themes: [government], sources: [wikipedia:Decembrist_revolt] }
       - { id: crimean-war, date: 1853 CE, label: "The Crimean War; Florence Nightingale's nursing", prominence: 3, themes: [war, women], sources: [wikipedia:Crimean_War] }
       - { id: tsar-bomba, date: 1961 CE, label: "The Tsar Bomba", prominence: 4, themes: [war, technology], sources: [wikipedia:Tsar_Bomba] }
+      - { id: putin, date: 2000 CE, label: "Vladimir Putin becomes president", prominence: 3, themes: [government], sources: [wikipedia:Vladimir_Putin] }
+      - { id: crimea-2014, date: 2014 CE, label: "Russia annexes Crimea", prominence: 3, themes: [war], sources: [wikipedia:Annexation_of_Crimea_by_the_Russian_Federation] }
     images:
       - { id: moscow-kremlin, source: "commons:File:Kremlin Moscow.jpg", date: c. 1500 CE, prominence: 3, treatment: plate, caption: "The Moscow Kremlin" }
     sources: [wikipedia:History_of_Russia]
@@ -534,7 +542,6 @@ lanes:
     cliopatria: ["First Bulgarian Empire", "Second Bulgarian Empire"]
     events:
       - { id: cyrillic, date: c. 893 CE, label: "The Cyrillic alphabet is created at Preslav", prominence: 2, thread: alphabet, sources: [wikipedia:Cyrillic_script] }
-      - { id: preslav, date: c. 900 CE, label: "The Preslav school: Cyrillic is born", prominence: 3, thread: alphabet, sources: [wikipedia:Preslav_Literary_School] }
     sources: [wikipedia:Bulgarian_Empire]
 
   - id: serbia
@@ -560,6 +567,7 @@ lanes:
     events:
       - { id: greek-independence, date: 1821 CE, label: "The Greek War of Independence", prominence: 3, themes: [war], sources: [wikipedia:Greek_War_of_Independence] }
       - { id: greece-1832, date: 1832 CE, label: "Independent Greece is recognised", prominence: 4, themes: [government], sources: [wikipedia:Treaty_of_Constantinople_(1832)] }
+      - { id: greek-debt-crisis, date: 2010 CE, label: "The Greek debt crisis shakes the euro", prominence: 4, themes: [trade], sources: [wikipedia:Greek_government-debt_crisis] }
     sources: [wikipedia:Greece]
 
   - id: yugoslavia

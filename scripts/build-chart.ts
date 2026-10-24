@@ -14,7 +14,7 @@ import { createRequire } from 'node:module';
 import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
-import { LaneFile, MarginsFile, Sheet, ThreadFile, Tour, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
+import { AtmosphereFile, LaneFile, MarginsFile, Sheet, ThreadFile, Tour, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { makeTimescale, yearToYOf, yToYearOf, upyAt } from '../packages/core/src/timescale.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
@@ -43,6 +43,12 @@ const WEIGHT_W = [0, 16, 56, 96, 140, 190, 240];
 const DEFAULT_WEIGHT: Record<Prominence, number> = { 1: 6, 2: 4, 3: 3, 4: 1, 5: 1 };
 /** Screen width (CSS px) landmark lanes never drop below when zoomed out (decision 29). */
 const LANE_MIN_PX: Partial<Record<Prominence, number>> = { 1: 7, 2: 3.5 };
+/** Atmosphere engravings (decision 30): longest side per size, faint ink, gone before P3 labels arrive. */
+const ENGRAVING_SIZE = { s: 3400, m: 5000, l: 7000 };
+const ENGRAVING_ALPHA = 0.13;
+const ENGRAVING_FADE_OUT: Fade = [0.09, 0.16];
+/** Most of an engraving's box must be open paper. */
+const ENGRAVING_MAX_OCCUPIED = 0.06;
 /** A track is: margin, its widest lane, a gap, then label space. Thin lanes get thin tracks. */
 const TRACK_MARGIN = 40;
 const TRACK_GAP = 30;
@@ -194,8 +200,8 @@ const width = cursor - REGION_GAP + MARGIN_R;
 const regionById = new Map(regionLayouts.map((r) => [r.id, r]));
 
 const grid = new Grid(width, height, 16);
-const layers = { substrate: [] as Item[], grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], threads: [] as Item[] };
-const stats = { lanes: visibleLanes.length, events: 0, drawnEvents: 0, images: 0, drawnImages: 0, slid: 0, demoted: 0, archived: 0, budgetDemotions: 0 };
+const layers = { substrate: [] as Item[], atmosphere: [] as Item[], grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], threads: [] as Item[] };
+const stats = { lanes: visibleLanes.length, events: 0, drawnEvents: 0, images: 0, drawnImages: 0, slid: 0, demoted: 0, archived: 0, budgetDemotions: 0, engravings: 0, engravingsSkipped: 0 };
 
 function text(spec: TextSpec & { x: number; y: number; rot?: 0 | -90; fade?: Fade; alpha?: number; ref?: string; layer?: string }): TextItem {
   const m = measure(ck, fonts, spec);
@@ -888,6 +894,51 @@ for (const p of placements) {
   for (const it of p.emit(p.prom)) (it.k === 'image' ? layers.images : it.k === 'text' ? layers.text : layers.marks).push(it);
 }
 
+// ---------------------------------------------------------------- atmosphere: engravings in the open paper
+// Placed last, into whatever room the content left: each one takes the emptiest spot inside its
+// region and span, shrinking if it must, and is skipped (with a note) if there is no room at all.
+const atmosphere = AtmosphereFile.parse(loadYaml(join(ROOT, 'content/atmosphere.yaml'))).engravings;
+const occupied = grid.occupancy(4);
+const engravingBoxes: [number, number, number, number][] = [];
+const overlapsEngraving = (x: number, y: number, w: number, h: number) =>
+  engravingBoxes.some(([bx, by, bw, bh]) => x < bx + bw + 400 && bx < x + w + 400 && y < by + bh + 400 && by < y + h + 400);
+for (const e of atmosphere) {
+  const region = regionById.get(e.region);
+  const asset = manifest[e.id];
+  const sp = parseSpan(e.span);
+  if (!region || !asset || sp.end.year < year0 || sp.start.year > year1) continue;
+  const ya = Y(Math.max(year0, sp.start.year)), yb = Y(Math.min(year1, sp.end.year + 1));
+  const long = ENGRAVING_SIZE[e.size];
+  let best: { x: number; y: number; w: number; h: number; score: number } | null = null;
+  // A strict pass first; crowded columns get a second, more lenient one (smaller, a little overlap).
+  const passes: [number, number][] = [[1, 1], [0.85, 1], [0.7, 1], [0.55, 1], [0.55, 2], [0.45, 2]];
+  for (const [f, slack] of passes) {
+    const maxOcc = ENGRAVING_MAX_OCCUPIED * slack;
+    const k = (long * f) / Math.max(asset.width, asset.height);
+    const w = asset.width * k, h = asset.height * k;
+    if (h > yb - ya || w > region.width) continue;
+    const step = Math.max(150, Math.min(w, h) / 8);
+    for (let y = ya; y + h <= yb; y += step) {
+      for (let x = region.x0; x + w <= region.x0 + region.width; x += step) {
+        const occ = occupied(x, y, w, h);
+        if (occ > maxOcc || overlapsEngraving(x, y, w, h)) continue;
+        // Prefer the emptiest spot, then the middle of the span.
+        const score = occ + Math.abs(y + h / 2 - (ya + yb) / 2) / (yb - ya) * 0.02;
+        if (!best || score < best.score) best = { x, y, w, h, score };
+      }
+    }
+    if (best) break;
+  }
+  if (!best) { console.log(`  · no room for engraving ${e.id} in ${e.region}`); stats.engravingsSkipped++; continue; }
+  const { x, y, w, h } = best;
+  engravingBoxes.push([x, y, w, h]);
+  layers.atmosphere.push({
+    k: 'image', id: e.id, x, y, w, h, sizes: asset.sizes, treatment: 'backdrop',
+    alpha: ENGRAVING_ALPHA, fadeOut: ENGRAVING_FADE_OUT, layer: 'atmosphere', b: [x, y, x + w, y + h],
+  });
+  stats.engravings++;
+}
+
 // ---------------------------------------------------------------- threads (optional layers)
 const threadDefs = ThreadFile.parse(loadYaml(join(ROOT, 'content/threads.yaml'))).threads;
 const threadsOut: { id: string; name: string; color: string; events: string[]; box: [number, number, number, number] }[] = [];
@@ -916,7 +967,7 @@ for (const th of threadDefs) {
 }
 
 // ---------------------------------------------------------------- assemble & write
-const items: Item[] = [layers.substrate, layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.threads].flat();
+const items: Item[] = [layers.substrate, layers.atmosphere, layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.threads].flat();
 for (const it of items) if (!it.b) throw new Error(`item without bbox: ${JSON.stringify(it).slice(0, 120)}`);
 
 // ---------------------------------------------------------------- folio (side-panel data)
@@ -1020,7 +1071,7 @@ copyFileSync(join(ckDir, 'canvaskit.wasm'), join(OUT, 'canvaskit/canvaskit.wasm'
 console.log(`✓ ${dl.title}`);
 console.log(`  ${Math.round(width)} × ${Math.round(height)} units · ${items.length} marks · ${stats.lanes} lanes`);
 console.log(`  fonts subset to ${used.size} characters: ${(fontBytes / 1024).toFixed(0)} KB`);
-console.log(`  events ${stats.drawnEvents}/${stats.events} drawn (${stats.slid} slid off their date) · images ${stats.drawnImages}/${stats.images} · ${stats.demoted} demoted for room · ${stats.budgetDemotions} budget demotions · ${stats.archived} archived`);
+console.log(`  events ${stats.drawnEvents}/${stats.events} drawn (${stats.slid} slid off their date) · images ${stats.drawnImages}/${stats.images} · ${stats.demoted} demoted for room · ${stats.budgetDemotions} budget demotions · ${stats.archived} archived · ${stats.engravings} engravings (${stats.engravingsSkipped} without room)`);
 
 // ---------------------------------------------------------------- helpers & lints
 function smooth01(t: number) {

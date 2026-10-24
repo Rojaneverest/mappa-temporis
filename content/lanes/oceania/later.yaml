@@ -15,6 +15,8 @@ lanes:
       - { id: gold-rush-australia, date: 1851 CE, label: "The Victorian gold rush", prominence: 4, themes: [migration], sources: [wikipedia:Victorian_gold_rush] }
       - { id: gallipoli, date: 1915 CE, label: "Gallipoli", prominence: 3, themes: [war], sources: [wikipedia:Gallipoli_campaign] }
       - { id: referendum-1967, date: 1967 CE, label: "Aboriginal Australians counted in the census at last", prominence: 4, themes: [government], sources: [wikipedia:1967_Australian_referendum] }
+      - { id: darwin-bombed, date: 1942 CE, label: "Japanese bombers strike Darwin", prominence: 4, themes: [war], sources: [wikipedia:Bombing_of_Darwin] }
+      - { id: stolen-generations-apology, date: 2008 CE, label: "The national apology to the Stolen Generations", prominence: 4, themes: [government], sources: [wikipedia:Stolen_Generations] }
     images:
       - { id: sydney-opera-house, source: "commons:File:Sydney Opera House - Dec 2008.jpg", date: 1973 CE, prominence: 3, treatment: plate, caption: "The Sydney Opera House, 1973" }
     sources: [wikipedia:History_of_Australia]
@@ -48,6 +50,7 @@ lanes:
       - { id: haamonga, date: c. 1200 CE, label: "The Haʻamonga ʻa Maui trilithon", prominence: 4, themes: [art], sources: [wikipedia:Haʻamonga_ʻa_Maui] }
       - { id: tonga-empire, date: c. 1200 CE, label: "Tonga's maritime chiefdom reaches Samoa and beyond", prominence: 3, themes: [government], confidence: probable, sources: [wikipedia:Tuʻi_Tonga_Empire] }
       - { id: tonga-constitution, date: 1875 CE, label: "Tonga's constitution; it is never colonised", prominence: 4, themes: [government], sources: [wikipedia:Tonga] }
+      - { id: tupou-i, date: 1845 CE, label: "George Tupou I unites Tonga", prominence: 4, themes: [government], sources: [wikipedia:George_Tupou_I] }
     sources: [wikipedia:Tuʻi_Tonga_Empire]
 
   - id: nan-madol
@@ -118,6 +121,7 @@ lanes:
       - { id: musket-wars, date: 1807 CE, label: "The Musket Wars", prominence: 4, themes: [war], sources: [wikipedia:Musket_Wars] }
       - { id: new-zealand-wars, date: 1845 CE, label: "The New Zealand Wars over land", prominence: 4, themes: [war], sources: [wikipedia:New_Zealand_Wars] }
       - { id: maori-language-act, date: 1987 CE, label: "Te reo Māori becomes an official language", prominence: 4, sources: [wikipedia:Māori_Language_Act_1987] }
+      - { id: rainbow-warrior, date: 1985 CE, label: "French agents sink the Rainbow Warrior in Auckland", prominence: 4, themes: [war], sources: [wikipedia:Sinking_of_the_Rainbow_Warrior] }
     sources: [wikipedia:History_of_New_Zealand]
 
   - id: fiji
@@ -130,4 +134,7 @@ lanes:
     cliopatria: ["Fiji", "Colony of Fiji"]
     events:
       - { id: fiji-ceded, date: 1874 CE, label: "Fiji is ceded to Britain; Indian indentured labourers follow", prominence: 4, themes: [migration], sources: [wikipedia:Colony_of_Fiji] }
+      - { id: indo-fijians, date: 1879 CE, label: "Indentured workers from India arrive in Fiji", prominence: 4, themes: [migration], sources: [wikipedia:Indo-Fijians] }
+      - { id: fiji-independence, date: 1970 CE, label: "Fiji becomes independent", prominence: 4, themes: [government], sources: [wikipedia:Fiji] }
+      - { id: fiji-coups, date: 1987 CE, label: "Two military coups in Fiji", prominence: 4, themes: [government], sources: [wikipedia:1987_Fijian_coups_d'état] }
     sources: [wikipedia:History_of_Fiji]

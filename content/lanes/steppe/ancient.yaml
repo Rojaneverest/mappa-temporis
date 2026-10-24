@@ -53,7 +53,6 @@ lanes:
       - { type: influences, lane: early-vedic, at: c. 1500 BCE }
     events:
       - { id: chariot, date: c. 2000 BCE, label: "The spoked-wheel war chariot", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture] }
-      - { id: sintashta-chariots, date: c. 2000 BCE, label: "Sintashta: the first spoked-wheel chariots", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture] }
       - { id: arkaim, date: c. 1900 BCE, label: "Arkaim, a fortified ring settlement", prominence: 4, sources: [wikipedia:Arkaim] }
     sources: [wikipedia:Andronovo_culture]
 

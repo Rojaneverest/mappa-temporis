@@ -90,6 +90,7 @@ lanes:
       - { id: my-son, date: 4th c., label: "Mỹ Sơn sanctuary to Shiva is begun", prominence: 4, themes: [religion, art], sources: [wikipedia:Mỹ_Sơn] }
       - { id: champa-rice, date: 1012 CE, label: "Champa rice, fast-ripening, is sent to Song China and feeds a boom", prominence: 3, themes: [technology], sources: [wikipedia:Champa_rice] }
       - { id: vijaya-falls, date: 1471 CE, label: "Đại Việt takes the Cham capital Vijaya", prominence: 4, themes: [war], sources: [wikipedia:Cham–Vietnamese_War_(1471)] }
+      - { id: champa-annexed, date: 1832 CE, label: "Emperor Minh Mạng annexes the last of Champa", prominence: 4, themes: [war], sources: [wikipedia:Champa] }
     sources: [wikipedia:Champa]
 
   - id: pyu
