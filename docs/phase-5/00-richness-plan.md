@@ -42,6 +42,19 @@ The comparison uses the same window: the whole world, from 900 BCE to 1100 CE. O
 
 Only one real information gap is left: connective content (movements, labelled relations, process notes such as "Spread of Olmec culture"). Pictures are the next one, once they're big enough to see.
 
+**The shape of the sheet tells the same story.** The full UsefulCharts poster is portrait, about 0.7 wide per 1 tall. Ours is landscape at 1.5 wide per 1 tall. Relative to its time span, ours is about twice as wide, and that extra width is the empty paper.
+
+### Does the 10,000 BCE prologue cause it? (Rojan's question)
+It's part of the answer, but a small part.
+- The prologue (10,000–3300 BCE, already squeezed to ⅛ scale) takes **13.6% of the sheet's height**.
+- Only **7 of 386 lanes** and **96 of 2,734 Folio entries** live entirely before 3300 BCE. Another 22 lanes cross into it.
+- The emptiness is mostly **horizontal**, from causes 1 and 2. Removing the prologue makes the sheet shorter but no less wide; the ratio goes from 1.51 to 1.74.
+- What it does fix:
+  - the opening view starts where UsefulCharts starts, with writing, instead of with thinly populated deep time;
+  - the wall view gets about 9% bigger.
+
+So it's worth doing, as the default and not just as an option. It joins 5b below.
+
 ## Targets (the reference "era view")
 
 The reference is a 1440×900 screen at s = 0.1. That's your screenshot's zoom, about a quarter of the world's width and about 750 years.
@@ -59,6 +72,8 @@ Each step runs on `phase-5/richness` and is checked against the numbers above wi
 - Turn the density script used for this note into `pnpm density`.
   - It reports readable labels, pictures and open paper at the reference views: the wall view, the era view at s = 0.1 in six places, and the century view.
 - Add a side-by-side capture of our 900 BCE – 1100 CE window to compare with the UsefulCharts frame.
+- **Remove the bottom help bar** (`#help` in `apps/explorer/index.html`: "Scroll or pinch to zoom · drag to pan · …"). Keep the date-and-era box (`#status`).
+  - The keyboard shortcuts it listed move into the toolbar buttons' tooltips ("Lenses (K)", "Threads (T)", "Meanwhile (Y)", "Layers (L)", "Atlas (A)"), so they stay discoverable.
 
 ### 5b. Re-proportion: "shrink the paper, keep the ink" (the biggest change)
 - **Bigger ink against fixed time.** Keep 12 units/year so no positions churn.
@@ -70,6 +85,12 @@ Each step runs on `phase-5/richness` and is checked against the numbers above wi
 - **Region columns flow over time**, as PLAN §2 always intended (curved dividers). The total width becomes the busiest moment of the *whole world*, not the sum of each region's busiest moment. Expected canvas: about 55–65k units wide.
 - **Fades become greeking.** Labels and pictures are always drawn; below about 6 px, text becomes soft grey lines (`GREEK_BELOW_PX` already exists). Only P4 fades in early, and P5 stays in the Folio.
 - **New budgets:** at most ~220 readable labels and ~25 pictures per 1440×900 screen, and at least ~15% open paper. Auto-demotion stays.
+- **"Since writing" is the default; deep time folds away.**
+  - The world sheet is built twice: `world` (3300 BCE → today, the default) and `world-deep` (10,000 BCE → today, as now). Each build stays poster-true. The viewer doesn't cut a band out of one sheet, which would clip lanes, engravings and era maps at the seam.
+  - Above 3300 BCE, a thin fold strip reads "Before writing · 10,000–3300 BCE ▾". Clicking it, or the Layers toggle "Deep time", switches sheets and keeps the camera on the same year and region. The choice is remembered.
+  - The 22 lanes that cross 3300 BCE start with a feathered top and a small "from c. 7400 BCE" note.
+  - The 96 prologue entries stay in search, the Folio and Meanwhile. Opening one switches to the deep sheet.
+  - The Atlas index is shared by both sheets, so no second Atlas build.
 
 ### 5c. Structure between lanes
 - **Forks and merges:** `splits-into` and `merges-into` draw as Y-branches out of the parent's body (Rome → West/East, Alexander → Diadochi, Germanic peoples → tribes, Abbasids → successor states).
@@ -99,6 +120,8 @@ The old Phase 5 (layers, print, offline, accessibility) becomes Phase 6.
 - Supersede **10**: "calm by default" becomes **"clear by hierarchy"**. The P1–P5 system stays, but it sets loudness (width, colour, weight), not emptiness. New budgets: ~220 labels, ~25 pictures, ≥15% open paper. Greeking replaces fade-to-nothing.
 - Region columns flow over time.
 - Movements become a content type.
+- Amend **2** and **22**: the default sheet starts at 3300 BCE. The 10,000 BCE prologue becomes the folded "deep time" sheet, still on the ⅛ scale.
+- The bottom help bar is removed, and shortcuts live in the toolbar tooltips.
 
 ## Risks
 - **Clutter.** Hierarchy has to carry the calm: strong P1 lanes and names, one event-text size, grey P4. The budgets still apply.
