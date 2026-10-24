@@ -129,8 +129,8 @@ lanes:
     span: 509 – 27 BCE
     relations:
       - { type: becomes, lane: roman-empire, at: 27 BCE }
-      - { type: conquers, lane: carthage, at: 146 BCE }
-      - { type: conquers, lane: antigonid, at: 168 BCE }
+      - { type: conquers, lane: carthage, at: 146 BCE, label: "Rome destroys Carthage" }
+      - { type: conquers, lane: antigonid, at: 168 BCE, label: "Rome conquers Macedon at Pydna" }
     events:
       - { id: republic-founded, date: 509 BCE, label: "The last king is expelled and the Republic is born", prominence: 2, themes: [government], sources: [wikipedia:Roman_Republic] }
       - { id: twelve-tables, date: 450 BCE, label: "The Twelve Tables: Rome's first written laws", prominence: 4, themes: [government], sources: [wikipedia:Twelve_Tables] }
@@ -160,8 +160,8 @@ lanes:
       - { name: Dominate, span: 284 – 395 CE, weight: 5 }
     relations:
       - { type: splits-into, lanes: [western-roman, eastern-roman], at: 395 CE }
-      - { type: conquers, lane: ptolemaic, at: 30 BCE }
-      - { type: conquers, lane: nabataea, at: 106 CE }
+      - { type: conquers, lane: ptolemaic, at: 30 BCE, label: "Egypt becomes a Roman province" }
+      - { type: conquers, lane: nabataea, at: 106 CE, label: "Trajan annexes Nabataea" }
     events:
       - { id: augustus, date: 27 BCE, label: "Octavian becomes Augustus, the first emperor", prominence: 2, themes: [government], sources: [wikipedia:Augustus] }
       - { id: roman-silk, date: c. 77 CE, label: "Pliny complains of the gold Rome pays for Chinese silk", prominence: 4, thread: silk-road, themes: [trade], sources: [wikipedia:Silk_Road] }
@@ -307,7 +307,7 @@ lanes:
       - { name: Empire of Alexander, span: 336 – 323 BCE, weight: 6 }
     relations:
       - { type: splits-into, lanes: [antigonid, ptolemaic, seleucid], at: 323 BCE }
-      - { type: conquers, lane: achaemenid, at: 330 BCE }
+      - { type: conquers, lane: achaemenid, at: 330 BCE, label: "Alexander conquers Persia" }
     events:
       - { id: issus, date: 333 BCE, label: "Alexander routs Darius III at Issus", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Issus] }
       - { id: alexandria-founded, date: 331 BCE, label: "Alexander founds Alexandria in Egypt", prominence: 2, sources: [wikipedia:Alexandria] }
@@ -341,8 +341,8 @@ lanes:
     span: 395 – 1453 CE
     cliopatria: ["Eastern Roman Empire", "Byzantine Empire"]
     relations:
-      - { type: conquers, lane: vandal-kingdom, at: 534 CE }
-      - { type: conquers, lane: ostrogoths, at: 553 CE }
+      - { type: conquers, lane: vandal-kingdom, at: 534 CE, label: "Belisarius retakes North Africa" }
+      - { type: conquers, lane: ostrogoths, at: 553 CE, label: "Justinian's armies retake Italy" }
     events:
       - { id: justinian-code, date: 529 CE, label: "Justinian's Code gathers a thousand years of Roman law", prominence: 3, themes: [government], sources: [wikipedia:Corpus_Juris_Civilis] }
       - { id: hagia-sophia, date: 537 CE, label: "Hagia Sophia is consecrated", prominence: 1, themes: [art, religion], sources: [wikipedia:Hagia_Sophia] }

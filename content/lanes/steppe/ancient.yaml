@@ -9,7 +9,7 @@ lanes:
     basis: archaeology
     span: c. 3300 – c. 2600 BCE
     relations:
-      - { type: influences, lane: neolithic-europe, at: c. 2900 BCE }
+      - { type: influences, lane: neolithic-europe, at: c. 2900 BCE, label: "Steppe herders spread into Europe" }
     events:
       - { id: steppe-wagons, date: c. 3000 BCE, label: "Wagon-dwelling herders roam the Pontic steppe — likely speakers of Proto-Indo-European", prominence: 2, themes: [migration, technology], confidence: probable, sources: [wikipedia:Yamnaya_culture] }
       - { id: yamnaya-europe, date: c. 2800 BCE, label: "Steppe ancestry floods into Europe — and Indo-European languages with it", prominence: 2, themes: [migration], confidence: probable, sources: [wikipedia:Indo-European_migrations] }
@@ -49,7 +49,7 @@ lanes:
     basis: archaeology
     span: c. 2100 – c. 900 BCE
     relations:
-      - { type: influences, lane: early-vedic, at: c. 1500 BCE }
+      - { type: influences, lane: early-vedic, at: c. 1500 BCE, label: "Indo-Aryan speakers move south" }
     events:
       - { id: chariot, date: c. 2000 BCE, label: "The spoked-wheel war chariot", prominence: 2, themes: [technology, war], sources: [wikipedia:Sintashta_culture], threads: [horse] }
       - { id: arkaim, date: c. 1900 BCE, label: "Arkaim, a fortified ring settlement", prominence: 4, sources: [wikipedia:Arkaim] }

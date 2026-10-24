@@ -41,7 +41,7 @@ const HEADER = 2400;
 const FOOTER = 900;
 const REGION_GAP = 300;
 /** Lane width per weight step. */
-const WEIGHT_W = [0, 30, 110, 180, 260, 360, 480];
+const WEIGHT_W = [0, 30, 110, 180, 300, 440, 620];
 const DEFAULT_WEIGHT: Record<Prominence, number> = { 1: 6, 2: 4, 3: 3, 4: 1, 5: 1 };
 /** Screen width (CSS px) landmark lanes never drop below when zoomed out (decision 29). */
 const LANE_MIN_PX: Partial<Record<Prominence, number>> = { 1: 7, 2: 3.5 };
@@ -201,10 +201,41 @@ function labelDemand(l: Lane): { right: number; left: number } {
   return { right: Math.max(forLabels, Math.min(bigImage * 0.5, LABEL_SPACE[l.prominence]), LABEL_SPACE[l.prominence] * 0.5), left };
 }
 
+/**
+ * Territory over time (decision 57, content/power.json from Cliopatria): P1–P3 lanes swell at their
+ * height and thin in decline — a lane is at full width at its own peak and never below 40% of it —
+ * and the very largest empires are drawn a little wider than modest ones.
+ */
+const powerFile = existsSync(join(ROOT, 'content/power.json'))
+  ? JSON.parse(readFileSync(join(ROOT, 'content/power.json'), 'utf8')) as { step: number; lanes: Record<string, [number, number][]> } : { step: 10, lanes: {} };
+const powerCache = new Map<string, { peak: number; scale: number; at: (yr: number) => number } | null>();
+function powerOf(l: Lane) {
+  if (powerCache.has(l.id)) return powerCache.get(l.id)!;
+  const rows = l.prominence <= 3 ? powerFile.lanes[l.id] : undefined;
+  let out: { peak: number; scale: number; at: (yr: number) => number } | null = null;
+  if (rows && rows.length >= 3) {
+    // Smooth over ±20 years so a border redrawn in one decade doesn't make the lane twitch.
+    const smooth = rows.map(([y], i) => [y, rows.slice(Math.max(0, i - 2), i + 3).reduce((a, r) => a + r[1], 0) / rows.slice(Math.max(0, i - 2), i + 3).length] as [number, number]);
+    const peak = Math.max(...smooth.map((r) => r[1]));
+    if (peak >= 50_000) {
+      const scale = Math.min(1.15, Math.max(0.8, 0.85 + 0.15 * Math.log10(peak / 1e6)));
+      const at = (yr: number) => {
+        const i = smooth.findIndex((r) => r[0] >= yr);
+        const v = i <= 0 ? smooth[i === 0 ? 0 : smooth.length - 1]![1]
+          : smooth[i - 1]![1] + (smooth[i]![1] - smooth[i - 1]![1]) * ((yr - smooth[i - 1]![0]) / (smooth[i]![0] - smooth[i - 1]![0]));
+        return scale * (0.4 + 0.6 * Math.sqrt(Math.max(0, v) / peak));
+      };
+      out = { peak, scale, at };
+    }
+  }
+  powerCache.set(l.id, out);
+  return out;
+}
+
 /** Widest width a lane reaches in any of its segments. */
 function laneMaxW(l: Lane): number {
   const base = WEIGHT_W[DEFAULT_WEIGHT[l.prominence]]!;
-  return Math.max(base, ...l.segments.map((s) => (s.weight ? WEIGHT_W[s.weight]! : base)));
+  return Math.max(base, ...l.segments.map((s) => (s.weight ? WEIGHT_W[s.weight]! : base))) * Math.max(1, powerOf(l)?.scale ?? 1);
 }
 
 interface RegionLayout {
@@ -214,6 +245,9 @@ interface RegionLayout {
   /** Left and right limits over all time. */
   x0: number; x1: number;
 }
+/** How strongly a relation pulls two columns together when ordering them (decision 56). */
+const REL_PULL: Record<RelationKind, number> = { succeeds: 3, becomes: 3, 'splits-into': 3, 'merges-into': 2, conquers: 1.5, influences: 0.6 };
+const regionIndex = new Map(sheet.regions.map((r, i) => [r.id, i]));
 interface Column { id: string; region: string; laneW: number; lanes: Lane[]; leftRoom: number }
 /** Column of every lane, and where the lane's centre sits inside it. */
 const columnOf = new Map<string, Column>();
@@ -261,20 +295,43 @@ sheet.regions.forEach((r, ri) => {
     regionItems.push({ track, item: { id: col.id, order: 0, region: ri, group: groupOf(members[0]!), spans, weight: 1 + Math.max(0, life) / 400 } });
   }
   // Tracks were ordered for relations (related lanes side by side). Straight columns in a fixed order
-  // form staircases, so after that, move single columns within their group wherever that narrows
-  // the region a lot; every step away from the relation order costs a little.
+  // form staircases, so after that, move single columns wherever that narrows the region a lot. Related
+  // columns pull together (Rome beside Byzantium), relations to another region pull a column to the
+  // edge that faces it, and every step away from the track order costs a little.
   regionItems.sort((p, q) => p.track - q.track || Math.min(...p.item.spans.map((v) => v.y0)) - Math.min(...q.item.spans.map((v) => v.y0)));
   const home = new Map(regionItems.map((r, i) => [r.item.id, i]));
+  const colIdOf = (laneId: string) => { const l = laneById.get(laneId); return l && l.region === r.id ? `${r.id}#${assignment.chainOf.get(laneId)}` : undefined; };
+  const pairs = new Map<string, number>();
+  const pull = new Map<string, number>(); // net pull towards the east (+) or west (−) edge
+  for (const l of rl) {
+    const a = colIdOf(l.id)!;
+    for (const rel of l.relations) for (const t of rel.lanes ?? (rel.lane ? [rel.lane] : [])) {
+      const other = laneById.get(t);
+      if (!other) continue;
+      const w = REL_PULL[rel.type];
+      const b = colIdOf(t);
+      if (b && b !== a) { const key = a < b ? `${a}|${b}` : `${b}|${a}`; pairs.set(key, (pairs.get(key) ?? 0) + w); }
+      else if (!b) {
+        const dir = Math.sign(regionIndex.get(other.region)! - ri);
+        pull.set(a, (pull.get(a) ?? 0) + dir * w);
+      }
+    }
+  }
   let seq = regionItems.map((r) => r.item);
   const keyed = (order: ColumnItem[]) => order.map((item, i) => ({ ...item, order: (ri * 1000 + i) * 1e5 }));
-  const cost = (order: ColumnItem[]) => packedWidth(keyed(order), { regionGap: REGION_GAP, groupGap: 180 })
-    + 90 * order.reduce((acc, it, i) => acc + Math.abs(i - home.get(it.id)!), 0);
+  const cost = (order: ColumnItem[]) => {
+    const pos = new Map(order.map((it, i) => [it.id, i]));
+    let c = packedWidth(keyed(order), { regionGap: REGION_GAP, groupGap: 180 }) + 90 * order.reduce((acc, it, i) => acc + Math.abs(i - home.get(it.id)!), 0);
+    for (const [key, w] of pairs) { const [a, b] = key.split('|') as [string, string]; c += 220 * w * Math.max(0, Math.abs(pos.get(a)! - pos.get(b)!) - 1); }
+    for (const [id, w] of pull) c += 140 * Math.abs(w) * (w > 0 ? order.length - 1 - pos.get(id)! : pos.get(id)!);
+    return c;
+  };
   let best = cost(seq);
   for (let improved = true, rounds = 0; improved && rounds < 6; rounds++) {
     improved = false;
     for (let from = 0; from < seq.length; from++) {
       for (let to = 0; to < seq.length; to++) {
-        if (to === from || seq[from]!.group !== seq[to]!.group) continue;
+        if (to === from) continue;
         const next = [...seq];
         const [moved] = next.splice(from, 1);
         next.splice(to, 0, moved!);
@@ -285,7 +342,14 @@ sheet.regions.forEach((r, ri) => {
   }
   colItems.push(...keyed(seq));
 });
-const colLayout = layoutColumns({ items: colItems, regionGap: REGION_GAP, groupGap: 180, step: 300 });
+// Columns joined by a split or a succession sit side by side where the layout allows (decision 56).
+const colPairs: [string, string, number][] = [];
+for (const l of visibleLanes) for (const rel of l.relations) for (const t of rel.lanes ?? (rel.lane ? [rel.lane] : [])) {
+  const a = columnOf.get(l.id), b = columnOf.get(t);
+  if (!a || !b || a === b) continue;
+  colPairs.push([a.id, b.id, rel.type === 'conquers' || rel.type === 'influences' ? 0.25 : 0.8]);
+}
+const colLayout = layoutColumns({ items: colItems, regionGap: REGION_GAP, groupGap: 180, step: 300, pairs: colPairs });
 if (process.env.DIAG) sheet.regions.forEach((r, ri) => {
   const l = layoutColumns({ items: colItems.filter((c) => c.region === ri), regionGap: REGION_GAP, groupGap: 180, step: 300 });
   console.log(`  ${r.id.padEnd(16)} busiest ${Math.round(l.busiest)} packed ${Math.round(l.packed)}`);
@@ -601,7 +665,8 @@ for (const lane of visibleLanes) {
   });
   // Width over time, with smooth tapers where segments change width.
   const TAPER = 8;
-  const widthAtYear = (yr: number) => {
+  const power = powerOf(lane);
+  const segWidthAt = (yr: number) => {
     let i = segs.findIndex((s) => yr < s.b);
     if (i === -1) i = segs.length - 1;
     const s = segs[i]!, next = segs[i + 1], prev = segs[i - 1];
@@ -609,6 +674,8 @@ for (const lane of visibleLanes) {
     if (prev && yr < s.a + TAPER) return prev.w + (s.w - prev.w) * smooth01((yr - (s.a - TAPER)) / (2 * TAPER));
     return s.w;
   };
+  // Rounded to 4 units so steady stretches stay single straight segments in the outline.
+  const widthAtYear = power ? (yr: number) => Math.round((segWidthAt(yr) * power.at(yr)) / 4) * 4 : segWidthAt;
   const colLeft = colX.get(col.id)!;
   const cxAtYear = (_yr: number) => colLeft + TRACK_MARGIN + col.leftRoom + col.laneW / 2;
   const cxAt = (y: number) => cxAtYear(yearAt(y));
@@ -738,7 +805,7 @@ for (const lane of visibleLanes) {
     }
     const subName = segNamed && s.name !== lane.name ? s.name : undefined;
     if (isMain) {
-      let size = Math.min(subName ? s.w * 0.46 : s.w * 0.6, lane.prominence === 1 ? 320 : 220);
+      let size = Math.min(subName ? s.w * 0.46 : s.w * 0.6, lane.prominence === 1 ? 400 : 240);
       const role: TextRole = lane.prominence <= 2 ? 'lane-major' : 'lane-minor';
       let w = fitWidth({ role, text: lane.name, size, color: onLane, align: 'center' }) + 10;
       if (w > room) { size *= room / w; w = room; }
@@ -766,48 +833,89 @@ for (const lane of visibleLanes) {
 const ARROW = (x: number, yy: number, dir: 1 | -1, size: number) =>
   `M ${x} ${yy} L ${x - dir * size} ${yy - size * 0.55} L ${x - dir * size} ${yy + size * 0.55} Z`;
 
+/**
+ * A branch (decision 56): a split, a succession or a merge between two columns, drawn like the
+ * poster's forks — a bar leaving the earlier lane, a 45° corner, and a drop into the later lane, as
+ * wide as the narrower of the two and in the later lane's colour, under the lanes themselves.
+ */
+function drawBranch(from: PlacedLane, to: PlacedLane, at: number): void {
+  const ya = Math.min(from.bottom, Math.max(from.top, at));
+  const yb = Math.max(to.top, Math.min(to.bottom, at));
+  const xa = from.cxAt(ya), xb = to.cxAt(yb), dx = xb - xa;
+  if (Math.abs(dx) < 1) return;
+  const w = Math.max(24, Math.min(from.halfAt(ya - 1) * 2, to.halfAt(yb + 1) * 2));
+  const color = laneColor(to.lane.sphere, to.lane.prominence);
+  // Branches that would slash across whole regions become thin threads that appear up close.
+  if (Math.abs(dx) > 6000) {
+    const d = `M ${r1(xa)} ${r1(ya)} C ${r1(xa)} ${r1(ya + 300)} ${r1(xb)} ${r1(yb - 300)} ${r1(xb)} ${r1(yb + 60)}`;
+    layers.links.push({ k: 'path', d, stroke: color, sw: 3, hair: true, alpha: 0.6, fade: [0.07, 0.11], b: [Math.min(xa, xb), Math.min(ya, yb) - 300, Math.max(xa, xb), Math.max(ya, yb) + 300] });
+    return;
+  }
+  const sgn = Math.sign(dx);
+  const yBar = Math.min(ya, yb) - w / 2;
+  const c = Math.min(Math.abs(dx), w * 1.2 + 40);
+  const yEnd = Math.max(yb + Math.min(w, 120), yBar + c + 10);
+  const centre = ck.Path.MakeFromSVGString(`M ${xa} ${yBar} L ${xb - sgn * c} ${yBar} L ${xb} ${yBar + c} L ${xb} ${yEnd}`)!;
+  const outline = centre.makeStroked({ width: w, join: ck.StrokeJoin.Round, cap: ck.StrokeCap.Butt })!;
+  const d = outline.toSVGString();
+  centre.delete();
+  outline.delete();
+  const x0 = Math.min(xa, xb) - w, x1 = Math.max(xa, xb) + w;
+  layers.links.push({ k: 'path', d, fill: color, multiply: true, alpha: to.lane.basis === 'archaeology' ? 0.62 : 1, ref: to.lane.id, b: [x0, yBar - w / 2, x1, yEnd] });
+  grid.mark(Math.min(xa, xb), yBar - w / 2, Math.abs(dx), w, 8);
+  grid.mark(xb - w / 2, yBar, w, yEnd - yBar, 8);
+}
+
+/** A conquest, influence or merge: an arrow across the gap with its few words above it, where they fit. */
+function drawArrow(from: PlacedLane, to: PlacedLane, type: string, at: number, label?: string): void {
+  const yy = type === 'merges-into' ? Math.min(at, from.bottom) + 40 : at;
+  const dir: 1 | -1 = to.cxAt(yy) > from.cxAt(yy) ? 1 : -1;
+  const x1 = from.cxAt(yy) + dir * from.halfAt(yy);
+  const x2 = to.cxAt(yy) - dir * (to.halfAt(yy) + 10);
+  const color = mix(laneColor(from.lane.sphere, Math.min(3, from.lane.prominence) as Prominence), INK, 0.25);
+  const d = type === 'merges-into'
+    ? `M ${from.cxAt(yy - 80)} ${yy - 80} C ${from.cxAt(yy)} ${yy} ${x2 - dir * 120} ${yy} ${x2} ${yy}`
+    : `M ${x1} ${yy} L ${x2} ${yy}`;
+  // Long-distance arrows would slash across whole regions at the wall view: let them appear only up close.
+  const fade: Fade | undefined = Math.abs(x2 - x1) > 6000 ? [0.07, 0.11] : undefined;
+  layers.links.push({ k: 'path', d, stroke: color, sw: 2.4, hair: true, dash: type === 'influences' ? [6, 5] : undefined, alpha: 0.8, fade, ref: from.lane.id, b: [Math.min(x1, x2) - 20, yy - 90, Math.max(x1, x2) + 20, yy + 30] });
+  layers.links.push({ k: 'path', d: ARROW(x2 + dir * 10, yy, dir, 60), fill: color, alpha: 0.9, fade, b: [Math.min(x2 - 70, x2 + 70), yy - 40, Math.max(x2 - 70, x2 + 70), yy + 40] });
+  grid.mark(Math.min(x1, x2), yy - 14, Math.abs(x2 - x1), 28);
+  // An event on either lane at the same moment already tells the story: no second caption.
+  const year = yearAt(at);
+  const told = [from, to].some((q) => q.lane.events.some((e) => e.prominence <= 3 && Math.abs(parseDate(e.date).year - year) <= 5));
+  if (!label || told) return;
+  // Above the line, as near the arrowhead as there is room; a long gap may take two lines.
+  const size = LABEL_SIZE[3];
+  const span = Math.abs(x2 - x1) - 160;
+  const wrap = Math.min(1100, Math.max(420, span));
+  const m = measure(ck, fonts, { role: 'label', text: label, size, color: INK, align: dir === 1 ? 'right' : 'left', w: wrap });
+  const w = Math.ceil(m.longest) + 6;
+  if (w > span + 120) return;
+  for (let k = 0; k <= 8; k++) {
+    const shift = (k / 8) * Math.max(0, span - w);
+    const x = dir === 1 ? x2 - 80 - w - shift : x2 + 80 + shift;
+    const top = yy - 24 - m.h;
+    if (!grid.isFree(x, top, w, m.h + 10)) continue;
+    grid.mark(x, top, w, m.h + 10, 6);
+    layers.text.push(text({ role: 'label', text: label, size, color: mix(color, INK, 0.5), align: dir === 1 ? 'right' : 'left', w, x, y: top, fade, ref: from.lane.id }));
+    return;
+  }
+}
+
+const drawnLinks = new Set<string>();
 for (const p of placed.values()) {
   for (const rel of p.lane.relations) {
     const at = Y(parseDate(rel.at).year);
     const targets = (rel.lanes ?? (rel.lane ? [rel.lane] : [])).map((id) => placed.get(id)).filter((t): t is PlacedLane => !!t);
-    const color = laneColor(p.lane.sphere, Math.min(3, p.lane.prominence) as Prominence);
     for (const t of targets) {
-      if (rel.type === 'conquers' || rel.type === 'influences' || rel.type === 'merges-into') {
-        const yy = rel.type === 'merges-into' ? Math.min(at, p.bottom) + 40 : at;
-        const dir: 1 | -1 = t.cxAt(yy) > p.cxAt(yy) ? 1 : -1;
-        const x1 = p.cxAt(yy) + dir * p.halfAt(yy);
-        const x2 = t.cxAt(yy) - dir * (t.halfAt(yy) + 10);
-        const d = rel.type === 'merges-into'
-          ? `M ${p.cxAt(yy - 80)} ${yy - 80} C ${p.cxAt(yy)} ${yy} ${x2 - dir * 120} ${yy} ${x2} ${yy}`
-          : `M ${x1} ${yy} L ${x2} ${yy}`;
-        // Long-distance arrows would slash across whole regions at the wall view: let them appear only up close.
-        const fade: Fade | undefined = Math.abs(x2 - x1) > 2500 ? [0.07, 0.11] : undefined;
-        layers.links.push({ k: 'path', d, stroke: mix(color, INK, 0.25), sw: 2.2, hair: true, dash: rel.type === 'influences' ? [5, 5] : undefined, alpha: 0.75, fade, b: [Math.min(x1, x2) - 20, yy - 90, Math.max(x1, x2) + 20, yy + 30] });
-        layers.links.push({ k: 'path', d: ARROW(x2 + dir * 10, yy, dir, 34), fill: mix(color, INK, 0.25), alpha: 0.85, fade, b: [Math.min(x2 - 40, x2 + 50), yy - 30, Math.max(x2 - 40, x2 + 50), yy + 30] });
-        grid.mark(Math.min(x1, x2), yy - 14, Math.abs(x2 - x1), 28);
-      } else {
-        // Succession / splits between tracks: a soft ribbon from the end of one lane into the next.
-        const ya = Math.min(p.bottom, at) - 10;
-        const yb = Math.max(t.top, at) + 10;
-        const xa = p.cxAt(ya), xb = t.cxAt(yb);
-        if (p.track === t.track) continue;
-        const mid = (ya + yb) / 2 + 140;
-        const w = Math.max(14, Math.min(p.halfAt(ya), t.halfAt(yb)) * 0.7);
-        const d = `M ${xa} ${ya - 80} C ${xa} ${mid} ${xb} ${mid - 140} ${xb} ${yb + 80}`;
-        // Long ribbons (e.g. Alexander's empire to the Seleucids) become thin threads that appear up close.
-        const far = Math.abs(xb - xa) > 2500;
-        layers.links.push({
-          k: 'path', d, stroke: color, sw: far ? 3 : w, hair: far, alpha: far ? 0.6 : 0.55, multiply: true,
-          fade: far ? [0.07, 0.11] : undefined, b: [Math.min(xa, xb) - w, ya - 100, Math.max(xa, xb) + w, yb + 100],
-        });
-        if (far) continue;
-        for (let k = 0; k <= 12; k++) {
-          const t2 = k / 12, u = 1 - t2;
-          const bx = u ** 3 * xa + 3 * u * u * t2 * xa + 3 * u * t2 * t2 * xb + t2 ** 3 * xb;
-          const by = u ** 3 * (ya - 80) + 3 * u * u * t2 * mid + 3 * u * t2 * t2 * (mid - 140) + t2 ** 3 * (yb + 80);
-          grid.mark(bx - w / 2, by - 20, w, 40, 6);
-        }
-      }
+      if (rel.type === 'conquers' || rel.type === 'influences' || rel.type === 'merges-into') { drawArrow(p, t, rel.type, at, rel.label); continue; }
+      // A succession or split between two columns (one column carries its own chain straight on).
+      const [from, to] = rel.type === 'succeeds' ? [t, p] : [p, t];
+      const key = `${from.lane.id}>${to.lane.id}`;
+      if (from.track === to.track || drawnLinks.has(key)) continue;
+      drawnLinks.add(key);
+      drawBranch(from, to, at);
     }
   }
 }

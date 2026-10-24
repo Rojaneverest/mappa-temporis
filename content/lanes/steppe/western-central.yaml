@@ -9,7 +9,7 @@ lanes:
     span: c. 800 BCE – c. 200 CE
     cliopatria: ["Scythia"]
     relations:
-      - { type: influences, lane: neo-assyria, at: c. 650 BCE }
+      - { type: influences, lane: neo-assyria, at: c. 650 BCE, label: "Scythian raids weaken Assyria" }
     events:
       - { id: scythian-raids, date: c. 650 BCE, label: "Scythian horsemen raid deep into the Near East", prominence: 4, themes: [war, migration], confidence: probable, sources: [wikipedia:Scythians], threads: [horse] }
       - { id: darius-scythia, date: c. 513 BCE, label: "Darius invades Scythia and finds no one to fight", prominence: 3, themes: [war], sources: [wikipedia:Darius_I's_European_Scythian_campaign] }
@@ -41,7 +41,7 @@ lanes:
     span: c. 370 – 469 CE
     cliopatria: ["Huns", "Hunnic Empire"]
     relations:
-      - { type: influences, lane: germanic-peoples, at: 376 CE }
+      - { type: influences, lane: germanic-peoples, at: 376 CE, label: "The Huns drive the Goths west" }
     events:
       - { id: catalaunian, date: 451 CE, label: "Romans and Visigoths stop Attila on the Catalaunian Plains", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Catalaunian_Plains] }
       - { id: attila-dies, date: 453 CE, label: "Attila dies on his wedding night; the Hunnic empire breaks apart", prominence: 3, sources: [wikipedia:Attila] }
@@ -81,7 +81,7 @@ lanes:
     span: c. 300 BCE – 30 CE
     relations:
       - { type: becomes, lane: kushan, at: 30 CE }
-      - { type: conquers, lane: greco-bactria, at: c. 130 BCE }
+      - { type: conquers, lane: greco-bactria, at: c. 130 BCE, label: "The Yuezhi overrun Bactria" }
     events:
       - { id: yuezhi-west, date: c. 176 BCE, label: "Driven west by the Xiongnu, the Yuezhi migrate to Bactria", prominence: 3, themes: [migration], sources: [wikipedia:Yuezhi] }
       - { id: zhang-qian, date: 138 BCE, label: "Zhang Qian travels west to find the Yuezhi", prominence: 3, thread: silk-road, themes: [exploration], sources: [wikipedia:Zhang_Qian] }

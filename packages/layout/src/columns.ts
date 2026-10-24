@@ -37,6 +37,8 @@ export interface ColumnInput {
   groupGap: number;
   /** Sampling step in world y for the justified spread. */
   step: number;
+  /** Related columns (a split, a succession) that should sit side by side: [a, b, strength 0–1]. */
+  pairs?: [string, string, number][];
 }
 
 export interface ColumnLayout {
@@ -122,6 +124,20 @@ export function layoutColumns(input: ColumnInput): ColumnLayout {
     });
   }
   const desired = items.map((it, i) => (cnt[i] ? sum[i]! / cnt[i]! : 0));
+  // Related columns give up some of the even spread to sit next to each other.
+  const indexOf = new Map(items.map((it, i) => [it.id, i]));
+  for (let round = 0; round < 6; round++) {
+    for (const [ida, idb, k] of input.pairs ?? []) {
+      let a = indexOf.get(ida), b = indexOf.get(idb);
+      if (a === undefined || b === undefined || a === b) continue;
+      if (a > b) [a, b] = [b, a];
+      const gap = Math.max(...items[a]!.spans.map((q) => q.need)) + gapBetween(items[a]!, items[b]!, input);
+      const err = desired[b]! - desired[a]! - gap;
+      if (err <= 0) continue;
+      desired[a] = desired[a]! + (err * k) / 2;
+      desired[b] = desired[b]! - (err * k) / 2;
+    }
+  }
 
   // ---- separation constraints: a column clears every earlier column it overlaps in time
   const incoming = constraints(items, input);

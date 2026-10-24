@@ -77,7 +77,7 @@ lanes:
       - { name: Napata, span: c. 1070 – 270 BCE, weight: 5 }
       - { name: Meroë, span: 270 BCE – c. 350 CE, weight: 4 }
     relations:
-      - { type: conquers, lane: egypt-third-intermediate, at: c. 728 BCE }
+      - { type: conquers, lane: egypt-third-intermediate, at: c. 728 BCE, label: "Kushites conquer Egypt and rule as its 25th dynasty" }
     events:
       - { id: black-pharaohs, date: c. 728 BCE, label: "Piye conquers Egypt — the 'Black Pharaohs' of the 25th Dynasty", prominence: 1, sources: [wikipedia:Twenty-fifth_Dynasty_of_Egypt] }
       - { id: kush-leaves-egypt, date: 664 BCE, label: "Assyria drives the Kushite pharaohs out of Egypt", prominence: 4, themes: [war], sources: [wikipedia:Tantamani] }
@@ -110,8 +110,8 @@ lanes:
     span: c. 100 – c. 940 CE
     cliopatria: ["Kingdom of Axum"]
     relations:
-      - { type: conquers, lane: kush, at: c. 350 CE }
-      - { type: conquers, lane: saba, at: c. 525 CE }
+      - { type: conquers, lane: kush, at: c. 350 CE, label: "Aksum sacks Meroë" }
+      - { type: conquers, lane: saba, at: c. 525 CE, label: "Aksum invades Himyar across the Red Sea" }
     events:
       - { id: aksum-coins, date: c. 270 CE, label: "Aksum mints its own gold coins", prominence: 4, thread: money, themes: [trade], sources: [wikipedia:Aksumite_currency] }
       - { id: aksum-stelae, date: 4th c., label: "Giant stone stelae rise over Aksum's royal tombs", prominence: 3, themes: [art], sources: [wikipedia:Obelisk_of_Axum] }

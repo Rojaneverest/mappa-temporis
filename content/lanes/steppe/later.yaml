@@ -36,7 +36,7 @@ lanes:
     span: c. 1050 – 1241 CE
     cliopatria: ["Cumania", "Kipchaks", "Cuman-Kipchak Confederation"]
     relations:
-      - { type: merges-into, lane: golden-horde, at: 1241 CE }
+      - { type: merges-into, lane: golden-horde, at: 1241 CE, label: "Cumans absorbed into the Horde" }
     events:
       - { id: kalka, date: 1223 CE, label: "The Kalka River: the Mongols' first blow against Rus' and Cumans", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Kalka_River] }
       - { id: cumans-hungary, date: 1239 CE, label: "Fleeing Cumans settle in Hungary", prominence: 4, themes: [migration], sources: [wikipedia:Cumans] }
@@ -286,7 +286,7 @@ lanes:
       - { name: Great Mongol Empire, span: 1206 – 1260 CE, weight: 6 }
       - { name: Northern Yuan heartland, span: 1260 – 1368 CE, weight: 3 }
     relations:
-      - { type: conquers, lane: khwarazm, at: 1220 CE }
+      - { type: conquers, lane: khwarazm, at: 1220 CE, label: "The Mongols destroy Khwarazm" }
       - { type: splits-into, lanes: [golden-horde, chagatai, ilkhanate, yuan], at: 1260 CE }
       - { type: becomes, lane: mongolia, at: 1368 CE }
     events:

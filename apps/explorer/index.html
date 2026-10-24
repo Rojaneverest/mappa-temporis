@@ -55,9 +55,9 @@
       #folio .thumbs img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #efe6d2; border-radius: 6px; }
       #folio .sources { padding-left: 18px; margin: 0; } #folio .sources a { color: #7a2219; }
       /* Tools hide behind a compass rose in the corner of the frame (where the ruler meets the headers). */
-      #seal { position: fixed; top: 2px; left: 12px; z-index: 7; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%;
+      #seal { position: fixed; top: calc((var(--hud-h, 44px) - 36px) / 2); left: 14px; z-index: 7; width: 36px; height: 36px; transition: top .2s ease; padding: 0; border: 0; border-radius: 50%;
         background: none; cursor: pointer; filter: drop-shadow(0 1px 2px rgba(60,40,20,.25)); }
-      #seal svg { width: 40px; height: 40px; display: block; transition: transform .35s cubic-bezier(.3,.7,.2,1); }
+      #seal svg { width: 36px; height: 36px; display: block; transition: transform .35s cubic-bezier(.3,.7,.2,1); }
       #seal:hover svg { transform: rotate(22.5deg); }
       #seal[aria-expanded="true"] svg { transform: rotate(45deg); }
       #seal .disc { fill: #f7f1e3; stroke: #2b2420; stroke-width: 1.3; }

@@ -65,6 +65,8 @@ export class Viewer {
   private gen = 0;
   /** Tiles from before the last layer switch, shown until their replacements arrive. */
   private stale = new Map<string, CachedTile>();
+  /** Height of the frozen header last drawn (region names, plus lane names when zoomed in). */
+  private hudH = 0;
 
   /** Called when the user picks something on the chart (or empty paper: null). */
   onPick: (ref: string | null) => void = () => {};
@@ -586,6 +588,8 @@ export class Viewer {
     const laneHeads = z < 2.2 ? [] : this.folio.lanes.filter((l) =>
       l.top < viewTop && l.bottom > viewTop + 40 / this.s && l.bottom < Infinity && l.top < viewBottom && l.prominence <= (z < 6 ? 2 : z < 15 ? 3 : 4));
     const headerH = HEADER_H + (laneHeads.length ? LANE_HEADER_H : 0);
+    // The compass rose (index.html) centres itself in the corner box, which grows with the lane headers.
+    if (headerH !== this.hudH) { this.hudH = headerH; document.documentElement.style.setProperty('--hud-h', `${headerH}px`); }
 
     ctx.globalAlpha = 0.93;
     ctx.fillStyle = PAPER;

@@ -74,7 +74,7 @@ lanes:
     prominence: 2
     span: 552 – 744 CE
     relations:
-      - { type: conquers, lane: rouran, at: 552 CE }
+      - { type: conquers, lane: rouran, at: 552 CE, label: "The Göktürks overthrow the Rouran" }
     events:
       - id: bumin
         date: 552 CE

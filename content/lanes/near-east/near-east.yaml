@@ -69,7 +69,7 @@ lanes:
     span: c. 1100 – 332 BCE
     cliopatria: ["Phoenicia"]
     relations:
-      - { type: influences, lane: greek-poleis, at: c. 775 BCE }
+      - { type: influences, lane: greek-poleis, at: c. 775 BCE, label: "The Greeks adopt the Phoenician alphabet" }
     events:
       - { id: tyre-siege-573, date: 573 BCE, label: "Tyre survives Nebuchadnezzar's 13-year siege", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Tyre_(586–573_BC)] }
       - { id: tyre-siege-332, date: 332 BCE, label: "Alexander takes Tyre after a seven-month siege", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Tyre_(332_BC)] }
@@ -192,7 +192,7 @@ lanes:
     span: 632 – 661 CE
     relations:
       - { type: becomes, lane: umayyad, at: 661 CE }
-      - { type: conquers, lane: sasanian, at: 651 CE }
+      - { type: conquers, lane: sasanian, at: 651 CE, label: "The Arab conquest of Persia" }
     events:
       - { id: yarmouk, date: 636 CE, label: "Arab armies defeat Byzantium at the Yarmouk", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Yarmuk] }
       - { id: egypt-641, date: 641 CE, label: "Egypt falls to the caliphate", prominence: 3, themes: [war], sources: [wikipedia:Muslim_conquest_of_Egypt] }
@@ -291,7 +291,7 @@ lanes:
     prominence: 1
     span: 911 – 609 BCE
     relations:
-      - { type: conquers, lane: israel-kingdom, at: 720 BCE }
+      - { type: conquers, lane: israel-kingdom, at: 720 BCE, label: "Assyria deports the ten tribes" }
     events:
       - { id: tiglath-pileser, date: 745 BCE, label: "Tiglath-Pileser III builds the first standing army", prominence: 4, themes: [war, government], sources: [wikipedia:Tiglath-Pileser_III] }
       - { id: ashurbanipal-library, date: c. 650 BCE, label: "Ashurbanipal collects the Library of Nineveh — Gilgamesh survives here", prominence: 2, themes: [ideas], sources: [wikipedia:Library_of_Ashurbanipal] }
@@ -309,7 +309,7 @@ lanes:
     prominence: 2
     span: 626 – 539 BCE
     relations:
-      - { type: conquers, lane: judah, at: 587 BCE }
+      - { type: conquers, lane: judah, at: 587 BCE, label: "Babylon destroys Jerusalem: the exile" }
     events:
       - { id: carchemish, date: 605 BCE, label: "Nebuchadnezzar defeats Egypt at Carchemish", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Carchemish] }
       - { id: ishtar-gate, date: c. 575 BCE, label: "The blue-glazed Ishtar Gate of Babylon", prominence: 2, themes: [art], sources: [wikipedia:Ishtar_Gate] }
@@ -342,8 +342,8 @@ lanes:
     prominence: 1
     span: 550 – 330 BCE
     relations:
-      - { type: conquers, lane: neo-babylonian, at: 539 BCE }
-      - { type: conquers, lane: lydia, at: 546 BCE }
+      - { type: conquers, lane: neo-babylonian, at: 539 BCE, label: "Cyrus takes Babylon" }
+      - { type: conquers, lane: lydia, at: 546 BCE, label: "Cyrus defeats Croesus" }
     events:
       - { id: cyrus, date: 550 BCE, label: "Cyrus the Great founds the Persian Empire", prominence: 2, themes: [government], sources: [wikipedia:Cyrus_the_Great] }
       - { id: babylon-539, date: 539 BCE, label: "Cyrus takes Babylon; the Cyrus Cylinder", prominence: 2, sources: [wikipedia:Cyrus_Cylinder] }
