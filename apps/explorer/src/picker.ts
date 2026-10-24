@@ -46,8 +46,21 @@ export class Picker {
     return best && { ref: best.ref, item: best.item };
   }
 
+  /** Highlight boxes by ref and zoom step: the hover and the selection are redrawn every frame. */
+  private boxes = new Map<string, [number, number, number, number] | null>();
+
   /** Union of the boxes of every visible item carrying this ref (for highlighting). */
   boxOf(ref: string, s: number): [number, number, number, number] | null {
+    // Fades change gradually with zoom, so eighth-of-an-octave steps are fine-grained enough.
+    const key = `${ref}|${Math.round(Math.log2(s) * 8)}|${[...this.layers].join(',')}`;
+    if (this.boxes.has(key)) return this.boxes.get(key)!;
+    if (this.boxes.size > 200) this.boxes.clear();
+    const box = this.computeBox(ref, s);
+    this.boxes.set(key, box);
+    return box;
+  }
+
+  private computeBox(ref: string, s: number): [number, number, number, number] | null {
     let box: [number, number, number, number] | null = null;
     for (const i of this.ids) {
       const it = this.dl.items[i]!;

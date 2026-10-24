@@ -106,7 +106,7 @@ lanes:
     cliopatria: ["New Kingdom of Egypt"]
     relations:
       - { type: becomes, lane: egypt-third-intermediate, at: 1069 BCE }
-      - { type: conquers, lane: kerma, at: c. 1500 BCE }
+      - { type: conquers, lane: kerma, at: c. 1500 BCE, label: "Egypt conquers Nubia" }
     events:
       - { id: hatshepsut, date: 1479 BCE, label: "Hatshepsut rules as pharaoh and sends ships to Punt", prominence: 2, themes: [women, trade], sources: [wikipedia:Hatshepsut] }
       - { id: megiddo, date: 1457 BCE, label: "Thutmose III wins at Megiddo — the first battle recorded in detail", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Megiddo_(15th_century_BC)] }

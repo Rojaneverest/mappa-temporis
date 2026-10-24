@@ -39,7 +39,7 @@ lanes:
     basis: archaeology
     span: c. 3500 – c. 500 BCE
     relations:
-      - { type: influences, lane: lapita, at: c. 1600 BCE }
+      - { type: influences, lane: lapita, at: c. 1600 BCE, label: "Austronesian sailors carry Lapita into the Pacific" }
     events:
       - { id: out-of-taiwan, date: c. 3000 BCE, label: "Outrigger canoes carry farmers from Taiwan into the Philippines", prominence: 2, themes: [migration, exploration], sources: [wikipedia:Austronesian_expansion] }
       - { id: austronesian-indonesia, date: c. 2000 BCE, label: "Austronesians spread through Indonesia — and eventually to Madagascar and Easter Island", prominence: 3, themes: [migration], sources: [wikipedia:Austronesian_peoples] }

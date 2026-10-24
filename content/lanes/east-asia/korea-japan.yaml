@@ -24,7 +24,7 @@ lanes:
     prominence: 2
     span: 37 BCE – 668 CE
     relations:
-      - { type: conquers, lane: lelang, at: 313 CE }
+      - { type: conquers, lane: lelang, at: 313 CE, label: "Goguryeo ends Chinese rule in Lelang" }
     events:
       - id: jumong
         date: 37 BCE
@@ -72,7 +72,7 @@ lanes:
     prominence: 3
     span: 18 BCE – 660 CE
     relations:
-      - { type: influences, lane: kofun, at: 538 CE }
+      - { type: influences, lane: kofun, at: 538 CE, label: "Baekje sends Buddhism to Japan" }
     events:
       - { id: baekje-buddhism-japan, date: 552 CE, label: "Baekje sends Buddhist images to Japan", prominence: 3, themes: [religion], sources: [wikipedia:Baekje] }
       - { id: baekje-incense, date: c. 600 CE, label: "The gilt-bronze incense burner of Baekje", prominence: 4, themes: [art], sources: [wikipedia:Gilt-bronze_Incense_Burner_of_Baekje] }

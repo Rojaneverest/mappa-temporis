@@ -270,7 +270,7 @@ lanes:
       - { name: Kingdom of Cusco, span: c. 1200 – 1438 CE, weight: 3 }
       - { name: Tawantinsuyu, span: 1438 – 1533 CE, weight: 6 }
     relations:
-      - { type: conquers, lane: chimu, at: c. 1470 CE }
+      - { type: conquers, lane: chimu, at: c. 1470 CE, label: "The Inca take Chan Chan" }
       - { type: becomes, lane: peru, at: 1533 CE }
     events:
       - { id: pachacuti, date: 1438 CE, label: "Pachacuti turns Cusco into an empire", prominence: 2, sources: [wikipedia:Pachacuti] }

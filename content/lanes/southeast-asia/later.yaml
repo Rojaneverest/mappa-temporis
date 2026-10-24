@@ -90,7 +90,7 @@ lanes:
     cliopatria: ["Dai Viet", "Đại Việt", "Vietnam", "Nguyen Dynasty", "Ly Dynasty", "Tran Dynasty", "Le Dynasty", "Democratic Republic of Vietnam", "South Vietnam"]
     relations:
       - { type: succeeds, lane: jiaozhi, at: 939 CE }
-      - { type: conquers, lane: champa, at: 1832 CE }
+      - { type: conquers, lane: champa, at: 1832 CE, label: "Vietnam absorbs the last of Champa" }
     segments:
       - { name: Đại Việt, span: 939 – 1802 CE, weight: 4 }
       - { name: Nguyễn dynasty, span: 1802 – 1887 CE, weight: 3 }

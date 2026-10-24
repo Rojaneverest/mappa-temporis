@@ -47,7 +47,9 @@ export function assignTracks(lanes: TrackLane[], groupOrder: string[]): TrackAss
   const pred = new Map<string, string>();
   const link = (a: string, b: string) => {
     const la = byId.get(a), lb = byId.get(b);
-    if (!la || !lb || la.group !== lb.group) return;
+    // Successions may cross groups (Rome, in Italy, continues as Byzantium, in Greece); the chain is
+    // packed with its first lane's group.
+    if (!la || !lb) return;
     if (succ.has(a) || pred.has(b)) return;
     if (lb.start < la.end - HANDOVER_YEARS) return;
     succ.set(a, b);
@@ -58,7 +60,13 @@ export function assignTracks(lanes: TrackLane[], groupOrder: string[]): TrackAss
     for (const r of l.relations) {
       if (r.type === 'becomes') r.targets.forEach((t) => link(l.id, t));
       else if (r.type === 'succeeds') r.targets.forEach((t) => link(t, l.id));
-      else if (r.type === 'splits-into' && r.targets[0]) link(l.id, r.targets[0]);
+      // A split continues the column into its weightiest, longest-lived successor (Rome → Byzantium),
+      // and the others branch off.
+      else if (r.type === 'splits-into') {
+        const main = r.targets.map((t) => byId.get(t)).filter((t): t is TrackLane => !!t)
+          .sort((a, b) => b.weight * Math.sqrt(b.end - b.start) - a.weight * Math.sqrt(a.end - a.start))[0];
+        if (main) link(l.id, main.id);
+      }
     }
   }
   const chainOf = new Map<string, number>();

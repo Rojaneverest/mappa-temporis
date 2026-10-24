@@ -2,7 +2,7 @@
 // compositing of paper + ink tiles, picking, and the frozen HUD (year ruler, region
 // and lane headers, minimap, status).
 import type { DisplayList } from '../../../packages/render/src/displaylist.ts';
-import { yToYear, yearToY } from '../../../packages/render/src/displaylist.ts';
+import { yToYear, yearToY, regionExtentAt } from '../../../packages/render/src/displaylist.ts';
 import type { Folio } from '../../../packages/render/src/folio.ts';
 import { paperPixels, MOTTLE_OCTAVES, mottleOpacity } from '../../../packages/render/src/painter.ts';
 import { PAPER, INK, INK_SOFT } from '../../../packages/core/src/palette.ts';
@@ -12,10 +12,10 @@ import { Picker } from './picker.ts';
 
 /** Tile edge in CSS pixels. */
 const TILE = 256;
-const MAX_SCALE = 2.5;
+const MAX_SCALE = 1.2;
 const MAX_TILES = 260;
 const RULER_W = 64;
-const HEADER_H = 30;
+const HEADER_H = 44;
 const LANE_HEADER_H = 22;
 const MINI_W = 150;
 const ACCENT = '#B8392D';
@@ -65,6 +65,8 @@ export class Viewer {
   private gen = 0;
   /** Tiles from before the last layer switch, shown until their replacements arrive. */
   private stale = new Map<string, CachedTile>();
+  /** Height of the frozen header last drawn (region names, plus lane names when zoomed in). */
+  private hudH = 0;
 
   /** Called when the user picks something on the chart (or empty paper: null). */
   onPick: (ref: string | null) => void = () => {};
@@ -87,7 +89,8 @@ export class Viewer {
     this.resize();
     this.fit();
     this.makePaper();
-    const n = Math.max(2, Math.min(6, (navigator.hardwareConcurrency || 4) - 1));
+    // Tiles take ~5–10 ms each, so four workers keep up; each holds its own copy of the chart and pictures.
+    const n = Math.max(2, Math.min(4, (navigator.hardwareConcurrency || 4) - 1));
     for (let i = 0; i < n; i++) {
       const w = new Worker(new URL('./tile-worker.ts', import.meta.url), { type: 'module' });
       const slot: Slot = { w, busy: false, ready: false };
@@ -585,6 +588,8 @@ export class Viewer {
     const laneHeads = z < 2.2 ? [] : this.folio.lanes.filter((l) =>
       l.top < viewTop && l.bottom > viewTop + 40 / this.s && l.bottom < Infinity && l.top < viewBottom && l.prominence <= (z < 6 ? 2 : z < 15 ? 3 : 4));
     const headerH = HEADER_H + (laneHeads.length ? LANE_HEADER_H : 0);
+    // The compass rose (index.html) centres itself in the corner box, which grows with the lane headers.
+    if (headerH !== this.hudH) { this.hudH = headerH; document.documentElement.style.setProperty('--hud-h', `${headerH}px`); }
 
     ctx.globalAlpha = 0.93;
     ctx.fillStyle = PAPER;
@@ -596,9 +601,12 @@ export class Viewer {
     ctx.textBaseline = 'middle';
     // Region names: shrink to fit their column; drop any that would collide.
     let lastRight = -Infinity;
+    const midY = this.y0 + this.cssH / 2 / this.s;
     for (const r of this.dl.regions) {
-      const a = Math.max(RULER_W + 8, (r.x0 - this.x0) * this.s);
-      const b = Math.min(this.cssW - 8, (r.x1 - this.x0) * this.s);
+      const ext = regionExtentAt(r, midY);
+      if (!ext) continue;
+      const a = Math.max(RULER_W + 8, (ext[0] - this.x0) * this.s);
+      const b = Math.min(this.cssW - 8, (ext[1] - this.x0) * this.s);
       if (b - a < 40) continue;
       let label = spaced(r.name.toUpperCase());
       let size = 12;

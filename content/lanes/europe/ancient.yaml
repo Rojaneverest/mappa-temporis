@@ -111,7 +111,7 @@ lanes:
     span: c. 3100 – c. 1100 BCE
     cliopatria: ["Minoan Civilization", "Minoan civilization"]
     relations:
-      - { type: influences, lane: mycenaeans, at: c. 1600 BCE }
+      - { type: influences, lane: mycenaeans, at: c. 1600 BCE, label: "Minoan art and writing pass to Mycenae" }
     events:
       - { id: knossos, date: c. 1950 BCE, label: "The first palace at Knossos", prominence: 2, themes: [art], sources: [wikipedia:Knossos] }
       - { id: linear-a, date: c. 1800 BCE, label: "Linear A, still undeciphered", prominence: 3, thread: scripts, sources: [wikipedia:Linear_A] }

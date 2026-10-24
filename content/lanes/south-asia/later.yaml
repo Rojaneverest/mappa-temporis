@@ -251,7 +251,7 @@ lanes:
     cliopatria: ["Chola Empire", "Cholas"]
     relations:
       - { type: succeeds, lane: pallava, at: 897 CE }
-      - { type: conquers, lane: anuradhapura, at: 1017 CE }
+      - { type: conquers, lane: anuradhapura, at: 1017 CE, label: "Chola armies take northern Lanka" }
     events:
       - { id: brihadeeswara, date: 1010 CE, label: "Rajaraja's Brihadeeswara temple at Thanjavur", prominence: 2, themes: [art, religion], sources: [wikipedia:Brihadisvara_Temple,_Thanjavur] }
       - { id: chola-bronzes, date: c. 1000 CE, label: "Chola bronzes: Shiva as Nataraja, lord of the dance", prominence: 2, themes: [art], sources: [wikipedia:Chola_art] }

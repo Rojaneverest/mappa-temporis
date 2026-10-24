@@ -30,7 +30,7 @@ lanes:
     cliopatria: ["Ayyubid Sultanate", "Ayyubid Dynasty"]
     relations:
       - { type: becomes, lane: mamluks, at: 1250 CE }
-      - { type: conquers, lane: crusader-states, at: 1187 CE }
+      - { type: conquers, lane: crusader-states, at: 1187 CE, label: "Saladin takes Jerusalem" }
     events:
       - { id: saladin, date: 1187 CE, label: "Saladin retakes Jerusalem", prominence: 2, themes: [war, religion], sources: [wikipedia:Siege_of_Jerusalem_(1187)], people: [p-saladin] }
       - { id: hattin, date: 1187 CE, label: "Hattin: Saladin destroys the crusader army", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Hattin] }
@@ -168,8 +168,8 @@ lanes:
     span: 1299 – 1922 CE
     cliopatria: ["Ottoman Empire", "Ottoman Beylik"]
     relations:
-      - { type: conquers, lane: eastern-roman, at: 1453 CE }
-      - { type: conquers, lane: mamluks, at: 1517 CE }
+      - { type: conquers, lane: eastern-roman, at: 1453 CE, label: "The Ottomans take Constantinople" }
+      - { type: conquers, lane: mamluks, at: 1517 CE, label: "The Ottomans take Egypt" }
       - { type: becomes, lane: turkey, at: 1923 CE }
     events:
       - { id: osman, date: 1299 CE, label: "Osman I founds a frontier principality in Anatolia", prominence: 3, sources: [wikipedia:Osman_I] }
@@ -276,7 +276,7 @@ lanes:
     span: 1037 – 1194 CE
     cliopatria: ["Seljuk Empire", "Great Seljuk Empire"]
     relations:
-      - { type: conquers, lane: eastern-roman, at: 1071 CE }
+      - { type: conquers, lane: eastern-roman, at: 1071 CE, label: "Manzikert opens Anatolia to the Turks" }
     events:
       - { id: manzikert, date: 1071 CE, label: "Victory at Manzikert opens Anatolia to the Turks", prominence: 2, themes: [war, migration], sources: [wikipedia:Battle_of_Manzikert] }
       - { id: khayyam, date: 1079 CE, label: "Omar Khayyam's solar calendar — and his quatrains", prominence: 3, thread: calendars, themes: [ideas, art], sources: [wikipedia:Omar_Khayyam] }

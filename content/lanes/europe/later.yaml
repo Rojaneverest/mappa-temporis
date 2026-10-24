@@ -40,7 +40,7 @@ lanes:
     span: 843 – 1707 CE
     cliopatria: ["Kingdom of Scotland", "Scotland"]
     relations:
-      - { type: merges-into, lane: united-kingdom, at: 1707 CE }
+      - { type: merges-into, lane: united-kingdom, at: 1707 CE, label: "Acts of Union: Great Britain" }
     events:
       - { id: bannockburn, date: 1314 CE, label: "Robert the Bruce wins at Bannockburn", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Bannockburn] }
       - { id: arbroath, date: 1320 CE, label: "The Declaration of Arbroath", prominence: 4, themes: [government], sources: [wikipedia:Declaration_of_Arbroath] }
@@ -106,7 +106,7 @@ lanes:
     span: 711 – 1492 CE
     cliopatria: ["Emirate of Cordoba", "Caliphate of Cordoba", "Emirate of Granada"]
     relations:
-      - { type: conquers, lane: visigoths, at: 711 CE }
+      - { type: conquers, lane: visigoths, at: 711 CE, label: "Umayyad armies conquer Hispania" }
     events:
       - { id: tariq, date: 711 CE, label: "Tariq ibn Ziyad crosses at Gibraltar", prominence: 2, themes: [war, migration], sources: [wikipedia:Umayyad_conquest_of_Hispania] }
       - { id: cordoba-caliphate, date: 929 CE, label: "The Caliphate of Córdoba; its capital is Europe's greatest city", prominence: 2, sources: [wikipedia:Caliphate_of_Córdoba] }

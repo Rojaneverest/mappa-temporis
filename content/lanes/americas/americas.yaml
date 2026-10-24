@@ -111,7 +111,7 @@ lanes:
       - { name: Classic Maya, span: 250 – 900 CE, weight: 6 }
       - { name: Postclassic Maya, span: 900 – 1697 CE, weight: 3 }
     relations:
-      - { type: influences, lane: teotihuacan, at: 378 CE }
+      - { type: influences, lane: teotihuacan, at: 378 CE, label: "Teotihuacan's envoys reshape Tikal's dynasty" }
     events:
       - { id: el-mirador, date: c. 300 BCE, label: "El Mirador, a Preclassic metropolis of colossal pyramids", prominence: 3, sources: [wikipedia:El_Mirador] }
       - { id: long-count-36, date: 36 BCE, label: "The oldest known Long Count date is carved at Chiapa de Corzo", prominence: 3, thread: calendars, sources: [wikipedia:Mesoamerican_Long_Count_calendar] }

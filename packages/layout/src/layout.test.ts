@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { assignTracks, flowTracks, type TrackLane } from './tracks.ts';
 import { overBudget, type BudgetMark } from './budget.ts';
 import { Grid } from './grid.ts';
+import { layoutColumns, overlaps, packedWidth, type ColumnItem } from './columns.ts';
 
 const lane = (id: string, start: number, end: number, extra: Partial<TrackLane> = {}): TrackLane =>
   ({ id, group: 'g', start, end, weight: 1, relations: [], ...extra });
@@ -93,5 +94,32 @@ describe('Grid', () => {
     expect(occ(0, 0, 400, 400)).toBeCloseTo(1);
     expect(occ(400, 400, 400, 400)).toBe(0);
     expect(occ(0, 0, 800, 800)).toBeCloseTo(0.25);
+  });
+});
+
+describe('layoutColumns (decision 48)', () => {
+  const col = (id: string, order: number, region: number, spans: [number, number, number][]): ColumnItem =>
+    ({ id, order, region, group: `g${region}`, weight: 1, spans: spans.map(([y0, y1, need]) => ({ y0, y1, need })) });
+  const items = [
+    col('a', 1, 0, [[0, 1000, 300]]),
+    col('b', 2, 0, [[500, 2000, 200]]),
+    col('c', 3, 1, [[0, 400, 400]]),
+    col('d', 4, 1, [[1500, 3000, 500]]),
+    col('e', 5, 1, [[0, 3000, 100]]),
+  ];
+  const out = layoutColumns({ items, regionGap: 50, groupGap: 20, step: 100 });
+  it('keeps every pair of columns that are alive together apart, in west → east order', () => {
+    for (let i = 0; i < items.length; i++) for (let j = i + 1; j < items.length; j++) {
+      const a = items[i]!, b = items[j]!;
+      expect(overlaps(a, b, out.x.get(a.id)!, out.x.get(b.id)!)).toBe(false);
+    }
+    expect(out.x.get('a')!).toBeLessThan(out.x.get('b')!);
+    expect(out.x.get('c')!).toBeLessThan(out.x.get('e')!);
+  });
+  it('is no wider than the tightest packing in that order needs', () => {
+    expect(out.width).toBeCloseTo(Math.max(out.packed, out.width), 3);
+    expect(out.packed).toBeCloseTo(packedWidth(items, { regionGap: 50, groupGap: 20 }), 3);
+    // Columns that never meet share the same stretch of paper: narrower than every column side by side.
+    expect(out.width).toBeLessThan(items.reduce((s, c) => s + c.spans[0]!.need, 0));
   });
 });

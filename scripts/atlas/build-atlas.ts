@@ -11,6 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import YAML from 'yaml';
 import { LaneFile, Sheet, type Lane } from '../../packages/core/src/schema.ts';
+import { loadSheet } from '../../packages/core/src/sheet.ts';
 import { parseSpan } from '../../packages/core/src/dates.ts';
 import { laneColor } from '../../packages/core/src/palette.ts';
 
@@ -27,7 +28,7 @@ const walk = (dir: string): string[] => readdirSync(dir).flatMap((f) => {
   const p = join(dir, f);
   return statSync(p).isDirectory() ? walk(p) : f.endsWith('.yaml') ? [p] : [];
 });
-const sheet = Sheet.parse(YAML.parse(readFileSync(join(ROOT, `content/sheets/${SHEET_ID}.yaml`), 'utf8')));
+const sheet = loadSheet(ROOT, SHEET_ID);
 const regions = new Set(sheet.regions.map((r) => r.id));
 const lanes: Lane[] = walk(join(ROOT, 'content/lanes'))
   .flatMap((f) => LaneFile.parse(YAML.parse(readFileSync(f, 'utf8'))).lanes)

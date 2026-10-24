@@ -150,7 +150,7 @@ lanes:
     relations:
       - { type: succeeds, lane: qin, at: 202 BCE }
       - { type: splits-into, lanes: [cao-wei, shu-han, eastern-wu], at: 220 CE }
-      - { type: conquers, lane: gojoseon, at: 108 BCE }
+      - { type: conquers, lane: gojoseon, at: 108 BCE, label: "Han armies conquer Gojoseon" }
     events:
       - id: wudi
         date: 141 BCE
@@ -428,7 +428,7 @@ lanes:
       - { name: Liang, span: 502 – 557 CE }
       - { name: Chen, span: 557 – 589 CE }
     relations:
-      - { type: merges-into, lane: sui, at: 589 CE }
+      - { type: merges-into, lane: sui, at: 589 CE, label: "Sui reunites China" }
     events:
       - { id: tao-yuanming, date: c. 420 CE, label: "Tao Yuanming, poet of fields and gardens", prominence: 4, themes: [art], sources: [wikipedia:Tao_Yuanming] }
       - { id: zu-chongzhi, date: c. 480 CE, label: "Zu Chongzhi computes π to seven digits", prominence: 3, themes: [science], sources: [wikipedia:Zu_Chongzhi] }

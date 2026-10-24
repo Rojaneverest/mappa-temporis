@@ -2,7 +2,7 @@
 
 *A deep-zoom atlas of world history. Working title: "a map of time", after the medieval* mappae mundi.
 
-Status: **plan locked 2026-10-23** (v2 — revised for a calmer, less cluttered chart). Work has started at Phase 0.
+Status: **plan locked 2026-10-23** (v2 — revised for a calmer, less cluttered chart). **2026-10-24: Phase 5 replaces "calm by default" with "clear by hierarchy"** — see decisions 46–52 and `docs/phase-5/00-richness-plan.md`; §2–§3 numbers below are superseded where those decisions say so.
 
 ---
 
@@ -234,7 +234,8 @@ mappa-temporis/
 | **2. Skeleton** *(done — see `docs/phase-2/`)* | All eras/regions at P1–P3 (~400 lanes, ~2,500 events), substrates, era maps, turning-point bands, margins | The poster exists end to end |
 | **3. Depth** *(done — see `docs/phase-3/`)* | Era-by-era P3–P5 fill, people, voices, daily life, coins, native names; balance audits | Coverage targets met within density budgets |
 | **4. Explore** *(done — see `docs/phase-4/`)* | Lenses (theme highlighting), threads (follow a story across regions), Meanwhile (everything at one year) | Each works from the toolbar at every zoom |
-| **5. Layers & editions** | Optional layers (sky, calendars, curiosities, your lifetime), print editions, offline, accessibility | Launch (private) |
+| **5. Rich by default** *(in progress — see `docs/phase-5/`)* | Re-proportioned ink, flowing columns, tools behind a compass rose, smoother panning, poster grammar (forks, arrows, zones, movements, palette), more pictures | The era view reads like the UsefulCharts poster: 150–250 readable labels and 15–25 pictures per screen |
+| **6. Layers & editions** | Optional layers (sky, calendars, curiosities, your lifetime), print editions, offline, accessibility | Launch (private) |
 
 Real time estimates come after Phase 0.
 

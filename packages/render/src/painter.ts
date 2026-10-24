@@ -6,7 +6,7 @@ import { buildParagraph } from './text.ts';
 import { PAPER, INK_SOFT } from '../../core/src/palette.ts';
 
 /** Below this on-screen size text is drawn as soft grey lines ("greeking"). */
-export const GREEK_BELOW_PX = 3.4;
+export const GREEK_BELOW_PX = 5;
 /** Below this on-screen size text is not drawn at all. */
 export const SKIP_BELOW_PX = 0.6;
 
@@ -265,6 +265,8 @@ export class Painter {
     p.setStrokeWidth(hair ? sw / s : sw);
     p.setBlendMode(multiply ? ck.BlendMode.Multiply : ck.BlendMode.SrcOver);
     p.setPathEffect(dash ? ck.PathEffect.MakeDash(hair ? dash.map((d) => d / s) : dash, 0) : null);
+    // Dashes get round ends, so a near-zero dash draws a clean dot.
+    p.setStrokeCap(dash ? ck.StrokeCap.Round : ck.StrokeCap.Butt);
     return p;
   }
 

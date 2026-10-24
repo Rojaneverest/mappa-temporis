@@ -115,8 +115,9 @@ export interface DisplayList {
   height: number;
   /** y = y0 + (astronomicalYear - year0) * unitsPerYear, or piecewise via `segments` when a prologue is compressed. */
   time: { y0: number; year0: number; year1: number; unitsPerYear: number; segments?: TimeSegment[] };
-  /** Column headers for the frozen HUD: [x0, x1, name]. */
-  regions: { x0: number; x1: number; name: string; short?: string }[];
+  /** Column headers for the frozen HUD. Columns flow over time (decision 48): `samples` gives each
+   *  region's extent down the sheet; x0/x1 are its limits over all time. */
+  regions: { x0: number; x1: number; name: string; short?: string; samples?: { y: number; x0: number; x1: number }[] }[];
   /** Lenses offered by the viewer, with how many drawn labels each lights up. */
   lenses?: { id: string; name: string; color: string; note: string; count: number }[];
   items: Item[];
@@ -134,4 +135,12 @@ export function yToYear(dl: Pick<DisplayList, 'time'>, y: number): number {
 /** Units per year around a given year (the prologue is compressed). */
 export function unitsPerYearAt(dl: Pick<DisplayList, 'time'>, year: number): number {
   return dl.time.segments ? upyAt(dl.time.segments, year) : dl.time.unitsPerYear;
+}
+
+/** A region's horizontal extent at world y (nearest sample), or null where it has no lanes. */
+export function regionExtentAt(r: DisplayList['regions'][number], y: number): [number, number] | null {
+  if (!r.samples?.length) return [r.x0, r.x1];
+  let best = r.samples[0]!;
+  for (const q of r.samples) if (Math.abs(q.y - y) < Math.abs(best.y - y)) best = q;
+  return Math.abs(best.y - y) > 1500 ? null : [best.x0, best.x1];
 }

@@ -33,6 +33,8 @@ export const Relation = z.object({
   lane: z.string().optional(),
   lanes: z.array(z.string()).optional(),
   at: DateText,
+  /** A few words drawn along a conquest / influence / merge arrow ("Rome destroys Carthage"). */
+  label: z.string().max(60).optional(),
 });
 
 export const Event = z.object({

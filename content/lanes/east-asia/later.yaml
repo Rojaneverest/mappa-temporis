@@ -83,7 +83,7 @@ lanes:
     span: 1115 – 1234 CE
     cliopatria: ["Jin Dynasty (1115–1234)", "Jurchen Jin"]
     relations:
-      - { type: conquers, lane: liao, at: 1125 CE }
+      - { type: conquers, lane: liao, at: 1125 CE, label: "The Jurchen overthrow the Khitan Liao" }
     events:
       - { id: zhongdu-falls, date: 1215 CE, label: "The Mongols take Zhongdu (Beijing)", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Zhongdu] }
       - { id: jin-fire-lance, date: 1232 CE, label: "Jin defenders use fire lances and bombs against the Mongols", prominence: 4, themes: [technology, war], sources: [wikipedia:Siege_of_Kaifeng_(1232)], threads: [gunpowder] }
@@ -99,7 +99,7 @@ lanes:
     span: 1271 – 1368 CE
     cliopatria: ["Yuan Dynasty"]
     relations:
-      - { type: conquers, lane: song, at: 1279 CE }
+      - { type: conquers, lane: song, at: 1279 CE, label: "The Mongols end the Song" }
       - { type: becomes, lane: ming, at: 1368 CE }
     events:
       - { id: kublai, date: 1271 CE, label: "Kublai Khan proclaims the Yuan and builds Khanbaliq (Beijing)", prominence: 2, themes: [government], sources: [wikipedia:Kublai_Khan] }
@@ -153,7 +153,7 @@ lanes:
     span: 1636 – 1912 CE
     cliopatria: ["Qing Dynasty", "Later Jin (1616–1636)"]
     relations:
-      - { type: conquers, lane: dzungars, at: 1758 CE }
+      - { type: conquers, lane: dzungars, at: 1758 CE, label: "Qing armies destroy the Dzungars" }
       - { type: becomes, lane: roc, at: 1912 CE }
     events:
       - { id: kangxi, date: 1661 CE, label: "The Kangxi Emperor's 61-year reign", prominence: 3, themes: [government], sources: [wikipedia:Kangxi_Emperor] }
