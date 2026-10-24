@@ -1,0 +1,236 @@
+# Daily life: short cards on how ordinary people lived. Folio only (listed under their lane and
+# found by search); never drawn on the canvas. Plain prose, a few sentences, each with a source.
+cards:
+  # ---------------- Near East
+  - id: d-catalhoyuk-home
+    lane: catalhoyuk
+    span: c. 7100 – c. 6000 BCE
+    title: Living on the roof at Çatalhöyük
+    text: "Houses were packed wall to wall with no streets; people walked across the roofs and climbed down ladders through the smoke-hole. Each home had an oven, plastered benches for sleeping, and the family's dead buried beneath the floor. Walls were replastered again and again, some painted with bulls and vultures."
+    sources: [wikipedia:Çatalhöyük]
+  - id: d-sumer-beer
+    lane: sumer
+    span: c. 3100 – c. 2334 BCE
+    title: Bread, beer and barley wages
+    text: "Most people in Sumer worked the land or for a temple, and were paid in rations of barley, oil and wool. Beer, thick and drunk through straws, was a daily food; a hymn to the goddess Ninkasi doubles as a recipe. Scribes recorded every ration on clay tablets."
+    sources: [wikipedia:Beer_in_ancient_Mesopotamia]
+  - id: d-deir-el-medina
+    lane: egypt-new-kingdom
+    span: 1550 – 1069 BCE
+    title: The tomb-builders' village
+    text: "At Deir el-Medina lived the craftsmen who cut the royal tombs in the Valley of the Kings. They worked eight-day shifts, kept attendance registers, borrowed tools, quarrelled in court, and in about 1157 BCE staged the first recorded strike when their grain rations were late."
+    sources: [wikipedia:Deir_el-Medina]
+  - id: d-baghdad-market
+    lane: abbasid
+    span: 762 – 1000 CE
+    title: Paper, books and markets in Baghdad
+    text: "Baghdad's markets sold goods from China to Spain. Cheap paper made books affordable: there were street-side copyists, booksellers' quarters and public libraries. Bathhouses, hospitals and mosques shaped daily routine, and a market inspector checked weights and prices."
+    sources: [wikipedia:Baghdad]
+  - id: d-ottoman-coffeehouse
+    lane: ottoman
+    span: 1555 – 1900 CE
+    title: The coffeehouse
+    text: "From the 1550s coffeehouses spread through Ottoman cities. Men met there to talk, hear storytellers, play backgammon and read newspapers once they appeared. Authorities sometimes closed them as places of gossip and sedition, but they always reopened."
+    sources: [wikipedia:Ottoman_coffeehouse]
+
+  # ---------------- Europe
+  - id: d-athens-household
+    lane: athens
+    span: c. 500 – 322 BCE
+    title: An Athenian household
+    text: "Citizen men spent their days in the agora, the assembly or the gymnasium; citizen women ran the household, rarely seen in public. Many homes had enslaved workers. The diet was bread or barley porridge, olives, figs, cheese and fish, with meat mainly at sacrifices."
+    sources: [wikipedia:Ancient_Greek_cuisine]
+  - id: d-roman-insula
+    lane: roman-empire
+    span: 27 BCE – 395 CE
+    title: Flats, baths and bread in Rome
+    text: "Most of Rome's million people rented rooms in crowded apartment blocks, insulae, with shops on the ground floor and the poorest at the top. Few had kitchens, so they ate at street bars. Public baths, fountains and latrines were social places, and the state handed out free grain to citizens."
+    sources: [wikipedia:Insula_(building)]
+  - id: d-medieval-village
+    lane: france
+    span: 900 – 1350 CE
+    title: The medieval village year
+    text: "Nine in ten people were peasants. Their year turned on ploughing, sowing, haymaking and harvest, the open fields shared in strips. Serfs owed labour to their lord, tithes to the church and fees to use his mill. Holy days, perhaps one in three days, broke up the work."
+    sources: [wikipedia:Medieval_demography]
+  - id: d-plague-household
+    lane: italian-cities
+    span: 1347 – 1351 CE
+    title: Living through the Black Death
+    text: "In Florence, wrote Boccaccio, people fled, shut themselves in, or partied as if nothing mattered. Whole households died together. Afterwards labour was scarce: survivors earned higher wages, ate more meat, and many lords could no longer hold peasants to the land."
+    sources: [wikipedia:Black_Death]
+  - id: d-industrial-mill
+    lane: united-kingdom
+    span: 1780 – 1850 CE
+    title: Life by the factory bell
+    text: "Mill workers, many of them children, worked twelve to fourteen hours a day by the clock and the bell. Families crowded into back-to-back housing without clean water, and cholera swept the new towns. Factory Acts from 1833 began to limit children's hours."
+    sources: [wikipedia:Factory_Acts]
+
+  # ---------------- East Asia
+  - id: d-han-farm
+    lane: han
+    span: 202 BCE – 220 CE
+    title: A Han farming family
+    text: "Most families farmed small plots of millet, wheat or rice, paid a land tax and a poll tax, and owed a month of labour or army service a year. Iron ploughs and wheelbarrows eased the work. Tomb models show courtyard farmhouses with pigsties, granaries and watchtowers."
+    sources: [wikipedia:Agriculture_in_ancient_China]
+  - id: d-song-city
+    lane: song
+    span: 960 – 1279 CE
+    title: Night markets in Kaifeng and Hangzhou
+    text: "Song cities never slept: curfews were dropped and markets ran into the night. Restaurants served regional cuisines, teahouses and theatres filled the entertainment quarters, and paper money and printed books were part of daily life."
+    sources: [wikipedia:Song_dynasty]
+  - id: d-heian-court
+    lane: nara-heian
+    span: 794 – 1185 CE
+    title: Life at the Heian court
+    text: "A few thousand aristocrats lived by elaborate rules of taste: twelve-layered robes, poems exchanged as messages, incense contests and moon viewing. Noblewomen lived behind screens and wrote the great literature of the age in the Japanese kana script."
+    sources: [wikipedia:Heian_period]
+  - id: d-edo-townsmen
+    lane: edo
+    span: 1600 – 1868 CE
+    title: The townsmen of Edo
+    text: "Merchants and artisans, the chōnin, ranked below samurai and farmers but held the money. They lived in crowded row-houses, ate at noodle stalls, bathed in public baths and spent their spare coins on kabuki, sumo and woodblock prints of the 'floating world'."
+    sources: [wikipedia:Chōnin]
+  - id: d-joseon-village
+    lane: joseon
+    span: 1392 – 1897 CE
+    title: Ondol floors and kimchi jars
+    text: "Joseon houses were heated from below: smoke from the kitchen fire ran under stone floors, so people sat and slept on the warm ground. Families fermented vegetables in big earthen jars to last the winter; chili peppers reached Korea from the Americas in the 1600s."
+    sources: [wikipedia:Ondol]
+
+  # ---------------- South Asia
+  - id: d-harappa-street
+    lane: indus-valley
+    span: c. 2600 – c. 1900 BCE
+    title: Drains on every street
+    text: "In Mohenjo-daro most houses had a washing platform and many a toilet, emptying into covered street drains. Bricks came in standard sizes and weights followed one system. People wore cotton, the first known in the world, and beads of carnelian and shell."
+    sources: [wikipedia:Mohenjo-daro]
+  - id: d-gupta-village
+    lane: gupta
+    span: c. 320 – c. 550 CE
+    title: Village and temple
+    text: "Most people lived in villages ruled through local councils, growing rice, wheat, sugarcane and cotton. Guilds of craftsmen and merchants ran their own affairs and lent money. Temples, still small, were becoming centres of worship, learning and charity."
+    sources: [wikipedia:Gupta_Empire]
+  - id: d-mughal-bazaar
+    lane: mughal
+    span: 1556 – 1707 CE
+    title: Cotton for the world
+    text: "Weavers in Bengal and Gujarat made fine cotton cloth sold from Japan to West Africa. Bazaars in Agra and Lahore sold spices, indigo, saltpetre and sugar. Peasants paid about a third of their harvest in tax, assessed on what the land could yield."
+    sources: [wikipedia:Mughal_Empire]
+  - id: d-raj-railway
+    lane: british-raj
+    span: 1853 – 1947 CE
+    title: Third-class carriages
+    text: "Railways changed ordinary life: millions travelled to pilgrimages, markets and new jobs in third-class carriages. But exports of grain by rail could worsen famines, and most Indians remained poor village farmers paying taxes to the Raj."
+    sources: [wikipedia:Rail_transport_in_India]
+
+  # ---------------- Africa
+  - id: d-kerma-herders
+    lane: kerma
+    span: c. 2500 – c. 1500 BCE
+    title: Cattle wealth in Kerma
+    text: "Kerma's people measured wealth in cattle: thousands of decorated cattle skulls ring some burials. They grew barley and wheat along the Nile, made thin black-topped red pottery, and traded gold and ivory north to Egypt."
+    sources: [wikipedia:Kerma_culture]
+  - id: d-mali-griots
+    lane: mali
+    span: 1235 – 1600 CE
+    title: Griots and markets
+    text: "Griots, hereditary bards, kept the history of families and kings in song. Market towns traded Saharan salt, gold, kola nuts, cloth and grain. Most people farmed millet and sorghum or fished the Niger, and Islam spread first among traders and townspeople."
+    sources: [wikipedia:Griot]
+  - id: d-swahili-town
+    lane: swahili
+    span: c. 1000 – 1500 CE
+    title: Coral-stone towns of the Swahili coast
+    text: "Wealthy Swahili families lived in coral-stone houses with carved doors and wall niches for Chinese porcelain. They traded ivory, gold and mangrove poles for cloth and beads, timed by the monsoon winds, and spoke a Bantu language rich in Arabic words."
+    sources: [wikipedia:Swahili_culture]
+  - id: d-asante-kente
+    lane: ashanti
+    span: 1701 – 1900 CE
+    title: Gold dust and kente cloth
+    text: "Asante traders weighed gold dust with small brass weights cast in the shapes of animals and proverbs. Weavers wove narrow strips of kente cloth on looms and sewed them together; patterns had names and some were reserved for royalty."
+    sources: [wikipedia:Akan_goldweights]
+  - id: d-apartheid-pass
+    lane: south-africa
+    span: 1948 – 1994 CE
+    title: The pass book
+    text: "Under apartheid, Black South Africans had to carry a pass book saying where they could live and work, and could be arrested without one. Families were split between 'homelands' and townships, schools were segregated, and most could not vote."
+    sources: [wikipedia:Pass_laws]
+
+  # ---------------- Americas
+  - id: d-maya-village
+    lane: maya
+    span: c. 250 – 900 CE
+    title: Maize, the Maya staple
+    text: "Most Maya were farmers who grew maize, beans and squash in milpa fields, ground maize on stone metates for tortillas and tamales, and lived in pole-and-thatch houses around shared patios. Cacao was a drink of the elite and also used as money."
+    sources: [wikipedia:Maya_cuisine]
+  - id: d-aztec-market
+    lane: aztec
+    span: 1428 – 1521 CE
+    title: The great market at Tlatelolco
+    text: "Spanish witnesses guessed that 20,000 to 60,000 people came to the Tlatelolco market each day. Traders sold maize, turkeys, cotton cloth, obsidian blades and feathers, and cacao beans served as small change. Judges sat in the market to settle disputes."
+    sources: [wikipedia:Tlatelolco_(altepetl)]
+  - id: d-inca-mita
+    lane: inca
+    span: 1438 – 1533 CE
+    title: Paying taxes in work
+    text: "The Inca had no money and no markets on a large scale. Households paid tax as labour, the mit'a: farming state fields, building roads and terraces, serving as soldiers or runners. In return the state stored food and cloth for bad years and feasts."
+    sources: [wikipedia:Mit'a]
+  - id: d-plantation
+    lane: brazil
+    span: 1550 – 1888 CE
+    title: Life on a sugar plantation
+    text: "Enslaved Africans cut cane and worked the mills in brutal shifts during the harvest; many died within a few years. They kept African languages, faiths and foods alive, and some escaped to quilombos, free settlements such as Palmares. Brazil abolished slavery only in 1888."
+    sources: [wikipedia:Slavery_in_Brazil]
+  - id: d-tenement
+    lane: united-states
+    span: 1880 – 1920 CE
+    title: New York tenements
+    text: "Millions of immigrants crowded into tenements on the Lower East Side: several families to a floor, one tap in the hall, and piecework sewing done at the kitchen table. Settlement houses, unions and reformers such as Jacob Riis pushed for better housing."
+    sources: [wikipedia:Tenement]
+
+  # ---------------- Steppe
+  - id: d-nomad-year
+    lane: mongol-empire
+    span: 1206 – 1368 CE
+    title: The nomad's year
+    text: "Herding families moved between summer and winter pastures with their sheep, goats, horses, cattle and camels, living in felt gers that could be packed onto a cart. They lived on meat and milk: fermented mare's milk, airag, was the summer drink. Children rode almost before they walked."
+    sources: [wikipedia:Mongolian_nomadic_life]
+  - id: d-sogdian-merchants
+    lane: sogdians
+    span: c. 300 – 750 CE
+    title: Sogdian merchant families
+    text: "Sogdian families ran trading houses from Samarkand to Chang'an, sending sons along the caravan routes with silk, silver, musk and slaves. A bundle of letters lost around 313 CE includes a wife's complaint that her husband had left her stranded in China."
+    sources: [wikipedia:Ancient_Letters]
+
+  # ---------------- Southeast Asia
+  - id: d-angkor-reservoirs
+    lane: khmer
+    span: 802 – 1431 CE
+    title: Rice, reservoirs and temple service
+    text: "Angkor's farmers grew rice fed by vast reservoirs and canals. Villages owed rice, labour and goods to temples, which kept long lists of dancers, cooks and servants. Zhou Daguan saw people bathing in ponds together, men and women alike."
+    sources: [wikipedia:Angkor]
+  - id: d-spice-islands
+    lane: dutch-east-indies
+    span: 1602 – 1800 CE
+    title: Cloves and nutmeg
+    text: "In the Moluccas families grew cloves and nutmeg, found nowhere else on Earth, and traded them for rice and cloth. The Dutch East India Company forced a monopoly, cutting down trees elsewhere and, in Banda, killing or enslaving most of the people."
+    sources: [wikipedia:Spice_trade]
+
+  # ---------------- Oceania
+  - id: d-wayfinding
+    lane: east-polynesia
+    span: c. 900 – c. 1300 CE
+    title: Wayfinding
+    text: "Polynesian navigators crossed thousands of kilometres of ocean without instruments, reading star paths, the swell, cloud colour and the flight of birds. Double-hulled canoes carried families, pigs, dogs, chickens and plant cuttings to found new islands."
+    sources: [wikipedia:Polynesian_navigation]
+  - id: d-firestick
+    lane: aboriginal-australia
+    span: c. 65000 BCE – 1788 CE
+    title: Caring for Country
+    text: "Aboriginal peoples managed the land with fire, burning patches in cool seasons to renew grass, draw game and prevent wildfires. Seasonal rounds followed food: yams, seeds, eels, fish and kangaroo. Kinship and songlines tied each person to places and to one another."
+    sources: [wikipedia:Fire-stick_farming]
+  - id: d-maori-pa
+    lane: maori
+    span: c. 1450 – 1840 CE
+    title: Life in a pā and kāinga
+    text: "Māori lived in unfortified villages, kāinga, near gardens of kūmara (sweet potato), retreating to hilltop pā in times of war. Food was stored in raised pātaka and cooked in earth ovens, hāngī. Whakapapa, genealogy, tied every person to their iwi and its land."
+    sources: [wikipedia:Māori_culture]

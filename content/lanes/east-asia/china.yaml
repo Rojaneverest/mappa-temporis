@@ -34,7 +34,6 @@ lanes:
         prominence: 4
         themes: [war]
         sources: [wikipedia:Battle_of_Changping]
-      - { id: shang-yang, date: 356 BCE, label: "Shang Yang's Legalist reforms make Qin a war machine", prominence: 3, themes: [government], sources: [wikipedia:Shang_Yang] }
       - { id: dujiangyan, date: 256 BCE, label: "Dujiangyan irrigation, still working today", prominence: 3, themes: [technology], sources: [wikipedia:Dujiangyan] }
     sources: [wikipedia:Qin_(state)]
 
@@ -114,7 +113,7 @@ lanes:
       - id: burning-books
         date: 213 BCE
         label: Burning of books and burying of scholars
-        prominence: 4
+        prominence: 3
         confidence: probable
         sources: [wikipedia:Burning_of_books_and_burying_of_scholars]
       - id: terracotta
@@ -123,8 +122,6 @@ lanes:
         prominence: 2
         themes: [art]
         sources: [wikipedia:Terracotta_Army]
-      - { id: unification-standards, date: 221 BCE, label: "One script, one currency, one axle width: China unified", prominence: 1, themes: [government], thread: scripts, sources: [wikipedia:Qin_dynasty] }
-      - { id: book-burning, date: 213 BCE, label: "The burning of books", prominence: 3, themes: [ideas], confidence: disputed, sources: [wikipedia:Burning_of_books_and_burying_of_scholars] }
     images:
       - id: terracotta-pit-1
         source: "commons:File:Qin Terracotta Army, Pit 1 04.jpg"
@@ -133,6 +130,7 @@ lanes:
         treatment: plate
         caption: "The Terracotta Army, Pit 1, Xi’an"
       - { id: terracotta-army, source: "commons:File:Terracotta Army, View of Pit 1.jpg", date: 210 BCE, prominence: 1, treatment: plate, caption: "The Terracotta Army guarding the First Emperor" }
+      - { id: coin-ban-liang, source: "commons:File:Ban Liang (半兩) - Kingdom of Qin - Scott Semans 01.jpg", date: c. 220 BCE, prominence: 3, treatment: coin, caption: "A Qin ban liang: one coin for all China" }
     sources: [wikipedia:Qin_dynasty]
 
   - id: han
@@ -217,7 +215,6 @@ lanes:
         prominence: 3
         themes: [war]
         sources: [wikipedia:Battle_of_Red_Cliffs]
-      - { id: cai-lun, date: 105 CE, label: "Cai Lun presents paper to the court", prominence: 2, thread: paper, themes: [technology], sources: [wikipedia:Cai_Lun] }
     images:
       - id: han-lacquer-bowl
         source: "met:36449"
@@ -339,6 +336,7 @@ lanes:
         prominence: 3
         treatment: cutout
         caption: "Female musician with lute"
+      - { id: coin-kaiyuan, source: "commons:File:KaiyuanTongbao.png", date: 621 CE, prominence: 3, treatment: coin, caption: "Kaiyuan tongbao: the pattern for Asian cash coins for 1,300 years" }
     sources: [wikipedia:Tang_dynasty]
 
   - id: chu
@@ -357,6 +355,7 @@ lanes:
         confidence: probable
         themes: [art]
         sources: [wikipedia:Qu_Yuan]
+      - { id: chu-king, date: 704 BCE, label: "Chu's ruler takes the title of king, defying the Zhou", prominence: 4, themes: [government], sources: [wikipedia:Chu_(state)] }
     images:
       - id: zheng-bell
         source: "met:61289"
@@ -401,7 +400,6 @@ lanes:
         prominence: 3
         themes: [religion, exploration]
         sources: [wikipedia:Faxian]
-      - { id: wang-xizhi, date: 353 CE, label: "Wang Xizhi's Orchid Pavilion calligraphy", prominence: 3, themes: [art], sources: [wikipedia:Lantingji_Xu] }
     images:
       - id: admonitions-scroll
         source: "commons:File:Gu Kaizhi 002.jpg"
@@ -413,6 +411,7 @@ lanes:
 
   - id: southern-dynasties
     name: Southern dynasties
+    endonym: { text: "南朝", script: Hant, translit: "Náncháo" }
     region: east-asia
     group: china
     sphere: sinic
@@ -439,6 +438,8 @@ lanes:
     sphere: sinic
     prominence: 4
     span: 1046 – 221 BCE
+    events:
+      - { id: duke-huan, date: 685 BCE, label: "Duke Huan of Qi and Guan Zhong: the first hegemon", prominence: 3, themes: [government], sources: [wikipedia:Duke_Huan_of_Qi] }
     sources: [wikipedia:Qi_(state)]
 
   - id: eastern-wu
@@ -463,6 +464,8 @@ lanes:
     span: c. 1042 – 403 BCE
     relations:
       - { type: splits-into, lanes: [three-jin], at: 403 BCE }
+    events:
+      - { id: chengpu, date: 632 BCE, label: "Jin defeats Chu at Chengpu", prominence: 4, themes: [war], sources: [wikipedia:Battle_of_Chengpu] }
     sources: [wikipedia:Jin_(Chinese_state)]
 
   - id: three-jin

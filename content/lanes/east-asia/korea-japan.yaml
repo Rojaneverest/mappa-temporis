@@ -43,7 +43,6 @@ lanes:
         label: Gwanggaeto Stele raised to the great conqueror-king
         prominence: 3
         sources: [wikipedia:Gwanggaeto_Stele]
-      - { id: gwanggaeto, date: 414 CE, label: "The Gwanggaeto Stele", prominence: 3, sources: [wikipedia:Gwanggaeto_Stele] }
       - { id: salsu, date: 612 CE, label: "Eulji Mundeok destroys a Sui army at the Salsu River", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Salsu] }
     images:
       - id: goguryeo-mural
@@ -102,7 +101,6 @@ lanes:
         sources: [wikipedia:Unified_Silla]
       - { id: seokguram, date: 774 CE, label: "The Seokguram grotto Buddha", prominence: 3, themes: [art, religion], sources: [wikipedia:Seokguram] }
       - { id: jang-bogo, date: 828 CE, label: "Jang Bogo's fleet rules the Yellow Sea trade", prominence: 4, themes: [trade], sources: [wikipedia:Jang_Bogo] }
-      - { id: silla-unification, date: 668 CE, label: "Silla, allied with Tang, unifies Korea", prominence: 2, themes: [war], sources: [wikipedia:Unified_Silla] }
       - { id: cheomseongdae, date: c. 640 CE, label: "Cheomseongdae, an early observatory", prominence: 3, themes: [sky], sources: [wikipedia:Cheomseongdae] }
     images:
       - id: silla-crown
@@ -136,6 +134,7 @@ lanes:
     events:
       - { id: jomon-pottery, date: c. 14000 BCE, label: "Jōmon pottery, among the oldest in the world", prominence: 2, themes: [technology, art], sources: [wikipedia:Jōmon_pottery] }
       - { id: sannai-maruyama, date: c. 3500 BCE, label: "Sannai-Maruyama, a large Jōmon village", prominence: 3, sources: [wikipedia:Sannai-Maruyama_site] }
+      - { id: oyu-circles, date: c. 2000 BCE, label: "The Ōyu stone circles", prominence: 4, themes: [religion], sources: [wikipedia:Ōyu_Stone_Circles] }
     sources: [wikipedia:Jōmon_period]
 
   - id: yayoi
@@ -152,7 +151,7 @@ lanes:
       - id: rice-japan
         date: c. 300 BCE
         label: Wet-rice farming and bronze arrive from the mainland
-        prominence: 3
+        prominence: 2
         confidence: probable
         themes: [technology, migration]
         sources: [wikipedia:Yayoi_period]
@@ -168,7 +167,6 @@ lanes:
         prominence: 2
         themes: [women, diplomacy]
         sources: [wikipedia:Himiko]
-      - { id: yayoi-rice, date: c. 300 BCE, label: "Wet rice and bronze arrive from Korea", prominence: 2, themes: [migration, technology], sources: [wikipedia:Yayoi_period] }
     sources: [wikipedia:Yayoi_period]
 
   - id: kofun
@@ -195,7 +193,6 @@ lanes:
         confidence: probable
         themes: [religion]
         sources: [wikipedia:Buddhism_in_Japan]
-      - { id: daisen-kofun, date: c. 450 CE, label: "Daisen Kofun, a keyhole tomb larger than the Great Pyramid's base", prominence: 3, sources: [wikipedia:Daisen_Kofun] }
     images:
       - id: haniwa-warrior
         source: "met:45545"
@@ -208,6 +205,7 @@ lanes:
   - id: asuka
     group: japan
     name: Asuka
+    endonym: { text: "飛鳥", script: Jpan, translit: "Asuka" }
     region: east-asia
     sphere: korean-japanese
     prominence: 3
@@ -227,5 +225,4 @@ lanes:
         prominence: 4
         themes: [art, religion]
         sources: [wikipedia:Hōryū-ji]
-      - { id: shotoku, date: 604 CE, label: "Prince Shōtoku's Seventeen-Article Constitution", prominence: 3, themes: [government], sources: [wikipedia:Seventeen-article_constitution] }
     sources: [wikipedia:Asuka_period]

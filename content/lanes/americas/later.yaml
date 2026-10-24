@@ -15,6 +15,7 @@ lanes:
       - { id: cahokia, date: c. 1050 CE, label: "Cahokia: a city of 15,000 around Monks Mound, the largest north of Mexico", prominence: 1, themes: [art], sources: [wikipedia:Cahokia] }
       - { id: moundville, date: c. 1200 CE, label: "Moundville, Alabama", prominence: 4, sources: [wikipedia:Moundville_Archaeological_Site] }
       - { id: de-soto, date: 1540 CE, label: "De Soto's expedition spreads epidemics through the Southeast", prominence: 3, themes: [disease, exploration], sources: [wikipedia:Hernando_de_Soto] }
+      - { id: spiro, date: c. 1200 CE, label: "Spiro Mounds, a great Mississippian trading centre", prominence: 4, themes: [trade], sources: [wikipedia:Spiro_Mounds] }
     images:
       - { id: monks-mound, source: "commons:File:Cahokia Monks Mound.jpg", date: c. 1050 CE, prominence: 3, treatment: plate, caption: "Monks Mound, Cahokia" }
     sources: [wikipedia:Mississippian_culture]
@@ -119,6 +120,7 @@ lanes:
 
   - id: new-france-canada
     name: New France & Canada
+    endonym: { text: "Nouvelle-France", script: Latn }
     region: americas
     group: north-america
     sphere: celtic-germanic
@@ -136,6 +138,7 @@ lanes:
   # ------------------------------------------------------------------ mesoamerica
   - id: toltecs
     name: Toltecs
+    endonym: { text: "Tōltēcah", script: Latn }
     region: americas
     group: mesoamerica
     sphere: mesoamerican
@@ -170,6 +173,7 @@ lanes:
 
   - id: new-spain
     name: New Spain & Mexico
+    endonym: { text: "Nueva España · México", script: Latn }
     region: americas
     group: mesoamerica
     sphere: italic
@@ -203,13 +207,15 @@ lanes:
     prominence: 3
     span: c. 500 BCE – c. 1550 CE
     events:
-      - { id: columbus-lands, date: 1492 CE, label: "Columbus lands in the Bahamas: two worlds meet — the Columbian Exchange begins", prominence: 1, themes: [exploration, disease, trade], sources: [wikipedia:Columbian_exchange] }
+      - { id: columbus-lands, date: 1492 CE, label: "Columbus lands in the Bahamas: two worlds meet — the Columbian Exchange begins", prominence: 1, themes: [exploration, disease, trade], sources: [wikipedia:Columbian_exchange], people: [p-columbus] }
       - { id: taino-cemis, date: c. 1200 CE, label: "Taíno villages, ball courts and zemí spirits", prominence: 4, themes: [religion], sources: [wikipedia:Zemi] }
       - { id: hispaniola-collapse, date: 1518 CE, label: "Smallpox reaches Hispaniola; the Taíno population collapses", prominence: 3, themes: [disease], sources: [wikipedia:Taíno_genocide] }
+      - { id: saladoid, date: c. 500 BCE, label: "Saladoid potters from the Orinoco settle the Antilles", prominence: 3, themes: [migration], sources: [wikipedia:Saladoid] }
     sources: [wikipedia:Taíno]
 
   - id: haiti
     name: Saint-Domingue & Haiti
+    endonym: { text: "Ayiti", script: Latn }
     region: americas
     group: caribbean
     sphere: celtic-germanic
@@ -273,12 +279,14 @@ lanes:
       - { id: cajamarca, date: 1532 CE, label: "Pizarro seizes Atahualpa at Cajamarca", prominence: 1, themes: [war], sources: [wikipedia:Battle_of_Cajamarca] }
       - { id: qhapaq-nan, date: c. 1470 CE, label: "The Qhapaq Ñan: 40,000 km of roads, runners and storehouses", prominence: 2, themes: [technology, government], sources: [wikipedia:Inca_road_system] }
       - { id: inca-civil-war, date: 1529 CE, label: "Smallpox kills Huayna Capac; his sons fight a civil war", prominence: 3, themes: [disease, war], sources: [wikipedia:Inca_Civil_War] }
+      - { id: topa-inca, date: 1471 CE, label: "Topa Inca extends the empire to Ecuador and Chile", prominence: 3, themes: [war], sources: [wikipedia:Topa_Inca_Yupanqui] }
     images:
       - { id: machu-picchu-view, source: "commons:File:Machu Picchu, Peru.jpg", date: c. 1450 CE, prominence: 1, treatment: plate, caption: "Machu Picchu" }
     sources: [wikipedia:Inca_Empire]
 
   - id: peru
     name: Peru & the Andean republics
+    endonym: { text: "Perú · Piruw", script: Latn }
     region: americas
     group: andes
     sphere: italic
@@ -298,10 +306,13 @@ lanes:
       - { id: vilcabamba, date: 1572 CE, label: "Túpac Amaru, the last Inca, is executed", prominence: 4, themes: [war], sources: [wikipedia:Túpac_Amaru] }
       - { id: chile-coup, date: 1973 CE, label: "Pinochet's coup in Chile", prominence: 4, themes: [government], sources: [wikipedia:1973_Chilean_coup_d'état] }
       - { id: hiram-bingham, date: 1911 CE, label: "Machu Picchu reaches the world's newspapers", prominence: 4, sources: [wikipedia:Hiram_Bingham_III] }
+    images:
+      - { id: coin-eight-reales, source: "commons:File:8 reales de 1651 (Potosí) - anverso.jpg", date: 1651 CE, prominence: 3, treatment: coin, caption: "A Potosí piece of eight: the first global currency" }
     sources: [wikipedia:Viceroyalty_of_Peru]
 
   - id: brazil
     name: Brazil
+    endonym: { text: "Brasil", script: Latn }
     region: americas
     group: south-america
     sphere: italic
@@ -322,6 +333,7 @@ lanes:
       - { id: brazil-dictatorship, date: 1964 CE, label: "A military coup; dictatorship until 1985", prominence: 4, themes: [government], sources: [wikipedia:Military_dictatorship_in_Brazil] }
       - { id: brazil-coffee, date: c. 1850 CE, label: "Brazil grows half the world's coffee", prominence: 4, themes: [trade], sources: [wikipedia:Coffee_production_in_Brazil] }
       - { id: rio-summit, date: 1992 CE, label: "The Rio Earth Summit", prominence: 4, themes: [climate], sources: [wikipedia:Earth_Summit] }
+      - { id: amazon-fires, date: 2019 CE, label: "Fires sweep the Brazilian Amazon", prominence: 4, themes: [climate], sources: [wikipedia:2019_Amazon_rainforest_wildfires] }
     sources: [wikipedia:History_of_Brazil]
 
   - id: argentina
@@ -337,4 +349,5 @@ lanes:
       - { id: conquest-desert, date: 1878 CE, label: "The 'Conquest of the Desert' seizes Patagonia", prominence: 4, themes: [war], sources: [wikipedia:Conquest_of_the_Desert] }
       - { id: peron, date: 1946 CE, label: "Juan and Eva Perón", prominence: 4, themes: [government], sources: [wikipedia:Juan_Perón] }
       - { id: falklands, date: 1982 CE, label: "The Falklands War", prominence: 4, themes: [war], sources: [wikipedia:Falklands_War] }
+      - { id: argentina-2001, date: 2001 CE, label: "Argentina defaults on its debt amid riots", prominence: 4, themes: [trade], sources: [wikipedia:1998–2002_Argentine_great_depression] }
     sources: [wikipedia:History_of_Argentina]

@@ -60,12 +60,17 @@ readHash();
 // Pasted links and back/forward (our own replaceState writes don't fire this).
 window.addEventListener('hashchange', readHash);
 
-// ---- layers: optional threads (off by default — calm first). Remembered per browser.
+// ---- layers: optional threads (off by default — calm first) and the atmosphere engravings
+// (on by default: decoration, decision 30). Remembered per browser.
 const layersEl = document.getElementById('layers')!;
 const layersBtn = document.getElementById('layers-btn')!;
 const stored = (() => { try { return JSON.parse(localStorage.getItem('mt-layers') ?? '[]') as string[]; } catch { return []; } })();
 const on = new Set(stored.filter((l) => folio.threads.some((t) => `thread:${t.id}` === l)));
-layersEl.innerHTML = '<h4>Threads</h4>' + folio.threads.map((t) => `
+const atmosphereOff = (() => { try { return localStorage.getItem('mt-atmosphere') === 'off'; } catch { return false; } })();
+if (!atmosphereOff) on.add('atmosphere');
+layersEl.innerHTML = `<h4>Paper</h4><label><input type="checkbox" data-layer="atmosphere" ${on.has('atmosphere') ? 'checked' : ''}>Engravings of each age</label>
+  <p>Faint period engravings in the open paper; they fade as you zoom in.</p>`
+  + '<h4>Threads</h4>' + folio.threads.map((t) => `
   <label><input type="checkbox" data-layer="thread:${t.id}" ${on.has(`thread:${t.id}`) ? 'checked' : ''}>
   <span class="swatch" style="background:${t.color}"></span>${t.name}
   <a href="#" class="go" data-go="thread:${t.id}" title="Show the whole thread">view ↗</a></label>`).join('')
@@ -75,7 +80,10 @@ layersEl.addEventListener('change', (e) => {
   const box = e.target as HTMLInputElement;
   if (box.checked) on.add(box.dataset.layer!); else on.delete(box.dataset.layer!);
   viewer.setLayers(on);
-  try { localStorage.setItem('mt-layers', JSON.stringify([...on])); } catch { /* private mode: not remembered */ }
+  try {
+    localStorage.setItem('mt-layers', JSON.stringify([...on].filter((l) => l !== 'atmosphere')));
+    localStorage.setItem('mt-atmosphere', on.has('atmosphere') ? 'on' : 'off');
+  } catch { /* private mode: not remembered */ }
 });
 layersEl.addEventListener('click', (e) => {
   const a = (e.target as HTMLElement).closest('[data-go]') as HTMLElement | null;
@@ -96,7 +104,7 @@ window.addEventListener('keydown', (e) => { if ((e.key === 'l' || e.key === 'L')
 const atlasEl = document.getElementById('atlas')!;
 const atlasBtn = document.getElementById('atlas-btn')!;
 const atlas = new Atlas(atlasEl);
-atlas.load(`/atlas/${SHEET}.topo.json`).catch((err) => console.warn('atlas', err));
+atlas.load(`/atlas/${SHEET}.atlas.json`).catch((err) => console.warn('atlas', err));
 atlas.onPickLane = (laneId) => select(laneId, true);
 const laneOf = (ref: string | null) => {
   const e = ref ? folio.entries[ref] : undefined;

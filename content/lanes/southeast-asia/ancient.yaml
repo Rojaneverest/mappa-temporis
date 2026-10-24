@@ -11,6 +11,8 @@ lanes:
     events:
       - { id: spirit-cave, date: c. 9000 BCE, label: "Spirit Cave: foragers gather nuts and plants in Thailand", prominence: 4, sources: [wikipedia:Spirit_Cave_(Thailand)] }
       - { id: rice-arrives, date: c. 2500 BCE, label: "Rice farmers spread south from China", prominence: 3, themes: [migration], confidence: probable, sources: [wikipedia:Neolithic_Southeast_Asia] }
+      - { id: da-but, date: c. 4500 BCE, label: "Đa Bút shell middens: coastal villages in Vietnam", prominence: 4, sources: [wikipedia:Đa_Bút_culture] }
+      - { id: phung-nguyen, date: c. 2000 BCE, label: "Phùng Nguyên farmers settle the Red River delta", prominence: 4, sources: [wikipedia:Phùng_Nguyên_culture] }
     sources: [wikipedia:Hoabinhian]
 
   - id: ban-chiang
@@ -23,6 +25,9 @@ lanes:
     span: c. 2100 BCE – c. 200 CE
     events:
       - { id: ban-chiang-bronze, date: c. 1500 BCE, label: "Bronze working begins in Thailand", prominence: 3, confidence: disputed, themes: [technology], sources: [wikipedia:Ban_Chiang] }
+      - { id: ban-chiang-founded, date: c. 2100 BCE, label: "A farming village is founded at Ban Chiang", prominence: 4, sources: [wikipedia:Ban_Chiang] }
+      - { id: ban-chiang-iron, date: c. 500 BCE, label: "Iron tools appear at Ban Chiang", prominence: 4, themes: [technology], sources: [wikipedia:Ban_Chiang] }
+      - { id: plain-of-jars, date: c. 500 BCE, label: "The Plain of Jars in Laos: stone jars for the dead", prominence: 3, themes: [religion], confidence: probable, sources: [wikipedia:Plain_of_Jars] }
     sources: [wikipedia:Ban_Chiang]
 
   - id: austronesians
@@ -38,7 +43,9 @@ lanes:
     events:
       - { id: out-of-taiwan, date: c. 3000 BCE, label: "Outrigger canoes carry farmers from Taiwan into the Philippines", prominence: 2, themes: [migration, exploration], sources: [wikipedia:Austronesian_expansion] }
       - { id: austronesian-indonesia, date: c. 2000 BCE, label: "Austronesians spread through Indonesia — and eventually to Madagascar and Easter Island", prominence: 3, themes: [migration], sources: [wikipedia:Austronesian_peoples] }
-      - { id: taiwan-out, date: c. 3000 BCE, label: "Austronesian seafarers set out from Taiwan", prominence: 2, themes: [migration, exploration], confidence: probable, sources: [wikipedia:Austronesian_expansion] }
-      - { id: outrigger, date: c. 2000 BCE, label: "Outrigger canoes reach the Philippines and Indonesia", prominence: 3, themes: [technology], sources: [wikipedia:Outrigger_boat] }
       - { id: madagascar, date: c. 500 BCE, label: "Austronesians cross the Indian Ocean toward Madagascar (by c. 500 CE)", prominence: 3, themes: [migration], confidence: disputed, sources: [wikipedia:Malagasy_people] }
+      - { id: dapenkeng, date: c. 3500 BCE, label: "Rice and millet farmers settle the coasts of Taiwan", prominence: 4, sources: [wikipedia:Dapenkeng_culture] }
+      - { id: marianas-settled, date: c. 1500 BCE, label: "Seafarers cross 2,000 km of open sea to the Mariana Islands", prominence: 3, themes: [exploration, migration], confidence: probable, sources: [wikipedia:Chamorro_people] }
+      - { id: sa-huynh, date: c. 1000 BCE, label: "Sa Huỳnh people of central Vietnam bury their dead in jars", prominence: 4, themes: [religion], sources: [wikipedia:Sa_Huỳnh_culture] }
+      - { id: jade-road, date: c. 1000 BCE, label: "Taiwanese jade is carried across the South China Sea", prominence: 4, themes: [trade], confidence: probable, sources: [wikipedia:Maritime_Jade_Road] }
     sources: [wikipedia:Austronesian_expansion]

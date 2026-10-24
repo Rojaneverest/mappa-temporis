@@ -1,0 +1,14 @@
+# People of Southeast Asia.
+people:
+  - { id: p-jayavarman-vii, name: Jayavarman VII, lane: khmer, life: "c. 1122 – c. 1218 CE", role: "builder of Angkor Thom and the Bayon", prominence: 2, sources: [wikipedia:Jayavarman_VII] }
+  - { id: p-gajah-mada, name: Gajah Mada, lane: majapahit, life: "c. 1290 – 1364 CE", role: "prime minister who united the archipelago", prominence: 3, sources: [wikipedia:Gajah_Mada] }
+  - { id: p-hayam-wuruk, name: Hayam Wuruk, lane: majapahit, life: "1334 – 1389 CE", role: "king of Majapahit at its height", prominence: 4, sources: [wikipedia:Hayam_Wuruk] }
+  - { id: p-nguyen-trai, name: Nguyễn Trãi, lane: dai-viet, life: "1380 – 1442 CE", role: "poet and strategist", prominence: 4, sources: [wikipedia:Nguyễn_Trãi] }
+  - { id: p-le-loi, name: Lê Lợi, lane: dai-viet, life: "1385 – 1433 CE", role: "drove out the Ming, founded the Lê dynasty", prominence: 3, sources: [wikipedia:Lê_Lợi] }
+  - { id: p-sultan-agung, name: Sultan Agung, lane: aceh-mataram, life: "1593 – 1645 CE", role: "sultan of Mataram", prominence: 4, sources: [wikipedia:Sultan_Agung_of_Mataram] }
+  - { id: p-mongkut, name: Mongkut, lane: siam, life: "1804 – 1868 CE", role: "scholar-king of Siam", prominence: 4, sources: [wikipedia:Mongkut] }
+  - { id: p-chulalongkorn, name: Chulalongkorn, lane: siam, life: "1853 – 1910 CE", role: "king who kept Siam free", prominence: 3, sources: [wikipedia:Chulalongkorn] }
+  - { id: p-ho-chi-minh, name: Hồ Chí Minh, lane: dai-viet, life: "1890 – 1969 CE", role: "leader of Vietnamese independence", prominence: 2, sources: [wikipedia:Ho_Chi_Minh] }
+  - { id: p-sukarno, name: Sukarno, lane: dutch-east-indies, life: "1901 – 1970 CE", role: "first president of Indonesia", prominence: 3, sources: [wikipedia:Sukarno] }
+  - { id: p-aung-san, name: Aung San, lane: pagan, life: "1915 – 1947 CE", role: "father of Burmese independence", prominence: 4, sources: [wikipedia:Aung_San] }
+  - { id: p-pol-pot, name: Pol Pot, lane: cambodia, life: "1925 – 1998 CE", role: "Khmer Rouge leader", prominence: 3, sources: [wikipedia:Pol_Pot] }

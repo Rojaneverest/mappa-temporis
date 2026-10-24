@@ -1,0 +1,54 @@
+# Atmosphere: faint engravings printed into the open paper of each era × region (decisions 30–31).
+# Decoration only: no prominence, never clickable, fading out before the century zoom.
+# The layout picks the emptiest spot inside `span` within the region; `size` is how much room it wants.
+# `crop` keeps part of the scan ([left, top, right, bottom] as fractions) to drop plate frames and captions;
+# every engraving is also feathered at its edges. Credits land in docs/CREDITS.md via `pnpm images`.
+engravings:
+  # ---- Prologue
+  - { id: atm-tassili-elephant, region: africa, span: 7000 – 3301 BCE, size: m, source: "commons:File:Tassilli Elephas.png", caption: "Elephant from the rock art of Tassili n'Ajjer, traced copy" }
+
+  # ---- Early Bronze Age
+  - { id: atm-giza-pyramids, region: near-east, span: 3000 – 2201 BCE, size: l, crop: [0.06, 0.16, 0.94, 0.76], source: "commons:File:Planche 7 Memphis Et Environs, Pyramides de Memphis. Vue Générale Des Pyramides, Prise Du Sud-Est. Antiquites Tome Cinquieme. (IA dr planche-7-memphis-et-environs-pyramides-de-memphis-vue-gnrale-des-pyram-10404355).jpg", caption: "The pyramids of Giza, Description de l'Égypte (1809–29)" }
+  - { id: atm-stonehenge-stukeley, region: europe, span: 3000 – 2201 BCE, size: m, source: "commons:File:Stonehenge Stukeley.jpg", caption: "Stonehenge, after William Stukeley (1740)" }
+
+  # ---- Bronze Age
+  - { id: atm-karnak, region: near-east, span: 2000 – 1201 BCE, size: l, crop: [0.06, 0.12, 0.94, 0.78], source: "commons:File:Thèbes. Karnak. Vue des ruines de la salle hypostyle et de appartemens de granit du palais (NYPL b14212718-1268041).jpg", caption: "The hypostyle hall at Karnak, Description de l'Égypte" }
+
+  # ---- Iron Age
+  - { id: atm-nineveh-palaces, region: near-east, span: 1000 – 601 BCE, size: l, source: "commons:File:Artist’s impression of Assyrian palaces from The Monuments of Nineveh by Sir Austen Henry Layard, 1853.jpg", caption: "Assyrian palaces restored, Layard's Monuments of Nineveh (1853)" }
+  - { id: atm-jebel-barkal, region: africa, span: 900 – 601 BCE, size: m, crop: [0.02, 0.06, 0.98, 0.88], source: "commons:File:Pyramids at Jebel Barkal in 1821.jpg", caption: "The pyramids at Jebel Barkal, Napata, drawn in 1821" }
+
+  # ---- Classical Antiquity
+  - { id: atm-colosseum, region: europe, span: 100 BCE – 500 CE, size: l, crop: [0.07, 0.07, 0.93, 0.8], source: "commons:File:Veduta dell'Anfiteatro Flavio, detto il Colosseo 1778 barcode (1778).jpg", caption: "The Colosseum, Piranesi's Vedute di Roma (1778)" }
+  - { id: atm-persepolis, region: near-east, span: 550 – 200 BCE, size: m, crop: [0.1, 0.08, 0.72, 0.9], source: "commons:File:Persépolis. Parallèle des colonnes (NYPL b12482496-1542882).jpg", caption: "The columns of Persepolis, Flandin and Coste (1840s)" }
+  - { id: atm-meroe, region: africa, span: 300 BCE – 350 CE, size: l, crop: [0.02, 0.06, 0.98, 0.88], source: "commons:File:Nubian pyramids of Meroe in 1821.jpg", caption: "The pyramids of Meroë, drawn by Cailliaud in 1821" }
+  - { id: atm-siberian-buckle, region: steppe, span: 600 – 100 BCE, size: s, source: "commons:File:Watercolour drawing of an ornate belt buckle from the 1730s, Siberian Collection of Peter the Great.jpg", caption: "A steppe gold belt plaque, drawn for Peter the Great's collection" }
+
+  # ---- Middle Ages
+  - { id: atm-bayeux, region: europe, span: 1000 – 1250, size: l, source: "commons:File:Stothard Bayeux 37 38 Plate 9.jpg", caption: "The Bayeux Tapestry, engraved by Charles Stothard (1819)" }
+  - { id: atm-chartres-buttress, region: europe, span: 1150 – 1450, size: s, source: "commons:File:Arc.boutant.cathedrale.Chartres.png", caption: "A flying buttress at Chartres, Viollet-le-Duc's Dictionnaire" }
+  - { id: atm-hagia-sophia, region: near-east, span: 600 – 1450, size: l, source: "commons:File:Aya Sofia, Constantinople (BM 1889,0603.107).jpg", caption: "Hagia Sophia, Fossati and Haghe (1852)" }
+  - { id: atm-kailasa, region: south-asia, span: 750 – 1100, size: m, source: "commons:File:S.W. view of Kailasa by Thomas Daniell and James Wales, 1803.jpg", caption: "The Kailasa temple at Ellora, Daniell and Wales (1803)" }
+  - { id: atm-borobudur, region: southeast-asia, span: 750 – 1150, size: m, source: "commons:File:Borobudur-Nothwest-view.jpg", caption: "Borobudur from the northwest" }
+  - { id: atm-chichen-itza, region: americas, span: 800 – 1250, size: l, source: "commons:File:Chichen Itza - Incidents of Travel in Yucatan 1843 - El Castillo.jpg", caption: "El Castillo at Chichén Itzá, Catherwood (1843)" }
+  - { id: atm-angkor, region: southeast-asia, span: 1000 – 1500, size: m, source: "commons:File:Mouhot drawing of Ongcor.jpg", caption: "Angkor Wat, drawn by Henri Mouhot (1860s)" }
+  - { id: atm-great-zimbabwe, region: africa, span: 1100 – 1500, size: m, source: "commons:File:The Great Zimbabwe, ancient ruins LCCN89714067.jpg", caption: "The ruins of Great Zimbabwe" }
+  - { id: atm-easter-island, region: oceania, span: 1100 – 1650, size: m, crop: [0.05, 0.05, 0.95, 0.74], source: "commons:File:Monuments in Easter Island. Drawn from nature by W. Hodges. Engraved by W. Woollett. No. XLIX. Published Feb. 1st (IA dr monuments-in-easter-island-drawn-from-nature-by-w-hodges-engraved-by-w-00874095).jpg", caption: "Moai on Rapa Nui, Hodges and Woollett, from Cook's voyage (1777)" }
+
+  # ---- Early Modern
+  - { id: atm-printing-press, region: europe, span: 1501 – 1700, size: m, ofItsTime: true, crop: [0, 0, 1, 0.9], source: "commons:File:Impressio Librorum (BM 1948,0410.4.194).jpg", caption: "A printing shop, Stradanus's Nova Reperta (c. 1600)" }
+  - { id: atm-benin-city, region: africa, span: 1550 – 1760, size: l, ofItsTime: true, source: "commons:File:AMH-6859-KB View of the city of Benin.jpg", caption: "Benin City, from Dapper's Description of Africa (1668)" }
+  - { id: atm-constantinople, region: near-east, span: 1501 – 1700, size: l, ofItsTime: true, crop: [0.04, 0.06, 0.96, 0.94], source: "commons:File:Prospect of Constantinople, Sheet 9, Melchior Lorck, 1559.jpg", caption: "Constantinople, Melchior Lorck's Prospect (1559)" }
+  - { id: atm-tenochtitlan, region: americas, span: 1501 – 1650, size: m, ofItsTime: true, source: "commons:File:Map of Tenochtitlan, 1524.jpg", caption: "Tenochtitlan, the Nuremberg map (1524)" }
+  - { id: atm-taj-mahal, region: south-asia, span: 1600 – 1800, size: m, source: "commons:File:Daniell Taje Mahel3.JPG", caption: "The Taj Mahal, Thomas and William Daniell (1790s)" }
+  - { id: atm-great-wall, region: east-asia, span: 1501 – 1700, size: m, crop: [0.04, 0.06, 0.96, 0.94], source: "commons:File:Henry William Parish - Plan, Section and Geometrical Elevation of the Great Wall and a Tower, near the Pass at Cou-pe-keou.jpg", caption: "The Great Wall in plan and elevation, Macartney embassy (1790s)" }
+  - { id: atm-qing-badakhshan, region: steppe, span: 1700 – 1800, size: m, ofItsTime: true, source: "commons:File:Le Khan de Badakhsan demande a se soumettre.png", caption: "The Khan of Badakhshan submits, Qianlong's conquest engravings (1760s)" }
+
+  # ---- Revolutions & Industry
+  - { id: atm-locomotive, region: europe, span: 1820 – 1900, size: m, ofItsTime: true, source: "commons:File:Stephenson’s 2-2-2 Patent Locomotive of 1837 – Enhanced version, black and white, side view only.jpg", caption: "Stephenson's patent locomotive (1837)" }
+  - { id: atm-great-wave, region: east-asia, span: 1790 – 1868, size: m, ofItsTime: true, source: "commons:File:The Great Wave off Kanagawa.jpg", caption: "The Great Wave off Kanagawa, Hokusai (c. 1831)" }
+  - { id: atm-tahiti-fleet, region: oceania, span: 1700 – 1900, size: m, ofItsTime: true, source: "commons:File:Engraving of 'The Fleet of Otaheite Assembled at Oparee'.jpg", caption: "The fleet of Tahiti, after Hodges, from Cook's voyage (1777)" }
+
+  # ---- World Wars & Cold War
+  - { id: atm-mark-i-tank, region: europe, span: 1915 – 1945, size: s, ofItsTime: true, crop: [0, 0.04, 1, 0.84], source: "commons:File:A Mark I tank RMG PU9983.jpg", caption: "A Mark I tank, 1916" }
+  - { id: atm-saturn-v, region: americas, span: 1950 – 1991, size: m, ofItsTime: true, invert: true, source: "commons:File:Saturn V cutaway-without-labels.png", caption: "Saturn V cutaway, NASA (1960s)" }

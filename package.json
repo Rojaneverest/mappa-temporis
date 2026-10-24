@@ -6,6 +6,7 @@
   "scripts": {
     "build:chart": "for f in content/sheets/*.yaml; do node scripts/build-chart.ts $(basename $f .yaml) || exit 1; done",
     "images": "node scripts/images/pipeline.ts",
+    "coverage": "node scripts/coverage.ts",
     "atlas": "for f in content/sheets/*.yaml; do node scripts/atlas/build-atlas.ts $(basename $f .yaml) || exit 1; done",
     "build:tools": "mkdir -p tools/bin && swiftc -O tools/cutout/cutout.swift -o tools/bin/cutout",
     "dev": "pnpm build:chart && pnpm --filter explorer dev",

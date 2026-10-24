@@ -25,6 +25,7 @@ lanes:
 
   - id: kushan
     name: Kushan Empire
+    endonym: { text: "ΚΟϷΑΝΟ", script: Grek, translit: "Košano" }
     region: south-asia
     group: northwest
     sphere: steppe
@@ -35,11 +36,13 @@ lanes:
       - { id: kanishka, date: c. 127 CE, label: "Kanishka the Great, patron of Buddhism, rules from Peshawar to the Ganges", prominence: 2, sources: [wikipedia:Kanishka] }
     images:
       - { id: gandhara-buddha-statue, source: "met:646117", date: 3rd c., prominence: 2, treatment: cutout, caption: "Buddha from Gandhara" }
+      - { id: coin-kanishka, source: "commons:File:Stater Kanishka I obverse Guimet MG24357 v2.jpg", date: c. 130 CE, prominence: 3, treatment: coin, caption: "Kanishka's gold stater, with Greek letters" }
     sources: [wikipedia:Kushan_Empire]
 
   # ------------------------------------------------------------------ the ganges plain
   - id: vedic
     name: Late Vedic India
+    endonym: { text: "आर्यावर्त", script: Deva, translit: "Āryāvarta" }
     region: south-asia
     group: gangetic
     sphere: indic
@@ -51,10 +54,15 @@ lanes:
       - { id: upanishads, date: c. 700 BCE, label: "The first Upanishads: karma, rebirth and the self", prominence: 2, confidence: probable, themes: [ideas, religion], sources: [wikipedia:Upanishads] }
       - { id: iron-ganges, date: c. 1000 BCE, label: "Iron tools clear the Ganges forests", prominence: 3, themes: [technology], sources: [wikipedia:Iron_Age_in_India] }
       - { id: varna, date: c. 900 BCE, label: "The varna order takes shape", prominence: 4, themes: [government, religion], confidence: probable, sources: [wikipedia:Varna_(Hinduism)] }
+      - { id: kuru-kingdom, date: c. 1000 BCE, label: "The Kuru kingdom: the first Vedic state", prominence: 3, themes: [government], sources: [wikipedia:Kuru_kingdom] }
+      - { id: painted-grey-ware, date: c. 1000 BCE, label: "Painted Grey Ware villages spread across the Ganges plain", prominence: 4, sources: [wikipedia:Painted_Grey_Ware_culture] }
+      - { id: brahmanas, date: c. 850 BCE, label: "The Brahmanas set out the great Vedic sacrifices", prominence: 4, themes: [religion], sources: [wikipedia:Brahmanas] }
+      - { id: nbpw, date: c. 700 BCE, label: "Northern Black Polished Ware marks the rise of Gangetic towns", prominence: 4, sources: [wikipedia:Northern_Black_Polished_Ware] }
     sources: [wikipedia:Vedic_period]
 
   - id: magadha
     name: Magadha
+    endonym: { text: "𑀫𑀕𑀥", script: Brah, translit: "Magadha" }
     region: south-asia
     group: gangetic
     sphere: indic
@@ -118,6 +126,7 @@ lanes:
 
   - id: gupta
     name: Gupta Empire
+    endonym: { text: "𑀕𑀼𑀧𑁆𑀢", script: Brah, translit: "Gupta" }
     wikidata: Q11774
     region: south-asia
     group: gangetic
@@ -134,6 +143,7 @@ lanes:
       - { id: huna-invasions, date: c. 480 CE, label: "Huna invasions shake the empire", prominence: 3, themes: [war, migration], sources: [wikipedia:Alchon_Huns] }
     images:
       - { id: gupta-buddha, source: "met:38201", date: c. 500 CE, prominence: 3, treatment: cutout, caption: "Head of a Buddha, late Gupta" }
+      - { id: coin-chandragupta-ii, source: "commons:File:Dinar of Chandragupta II LACMA M.77.55.20 (1 of 3).jpg", date: c. 400 CE, prominence: 3, treatment: coin, caption: "A gold dinar of Chandragupta II" }
     sources: [wikipedia:Gupta_Empire]
 
   - id: harsha
@@ -144,7 +154,6 @@ lanes:
     prominence: 3
     span: 606 – 647 CE
     events:
-      - { id: brahmagupta, date: 628 CE, label: "Brahmagupta writes down the rules of arithmetic with zero", prominence: 2, thread: numerals, themes: [ideas], note: "Brahmagupta worked at Bhillamala, outside Harsha's realm, in the same years.", sources: [wikipedia:Brahmagupta] }
       - { id: xuanzang-harsha, date: 643 CE, label: "Xuanzang attends Harsha's great assembly", prominence: 3, themes: [religion], sources: [wikipedia:Xuanzang] }
     sources: [wikipedia:Harsha]
 
@@ -176,6 +185,7 @@ lanes:
 
   - id: tamilakam
     name: Cheras, Cholas & Pandyas
+    endonym: { text: "தமிழகம்", script: Taml, translit: "Tamiḻakam" }
     region: south-asia
     group: deccan-south
     sphere: indic
@@ -185,10 +195,12 @@ lanes:
     events:
       - { id: sangam, date: c. 100 CE, label: "Sangam poets write the classics of Tamil literature", prominence: 3, confidence: probable, themes: [art], sources: [wikipedia:Sangam_literature] }
       - { id: muziris, date: 1st c., label: "Roman ships trade gold for pepper at Muziris", prominence: 3, themes: [trade], sources: [wikipedia:Muziris] }
+      - { id: thomas-india, date: c. 52 CE, label: "St Thomas reaches Kerala (tradition): India's first Christians", prominence: 4, themes: [religion], confidence: legendary, sources: [wikipedia:Thomas_the_Apostle] }
     sources: [wikipedia:Sangam_period]
 
   - id: pallava
     name: Pallavas
+    endonym: { text: "பல்லவர்", script: Taml, translit: "Pallavar" }
     region: south-asia
     group: deccan-south
     sphere: indic
@@ -198,12 +210,12 @@ lanes:
     events:
       - { id: mamallapuram, date: 7th c., label: "Temples cut from living rock at Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Group_of_Monuments_at_Mahabalipuram] }
       - { id: shore-temple, date: c. 700 CE, label: "The Shore Temple at Mamallapuram", prominence: 3, themes: [art, religion], sources: [wikipedia:Shore_Temple] }
-      - { id: mamallapuram-rathas, date: c. 650 CE, label: "The rock-cut rathas of Mamallapuram", prominence: 3, themes: [art], sources: [wikipedia:Pancha_Rathas] }
     sources: [wikipedia:Pallava_dynasty]
 
   # ------------------------------------------------------------------ sri lanka
   - id: anuradhapura
     name: Anuradhapura kingdom
+    endonym: { text: "අනුරාධපුර", script: Sinh, translit: "Anurādhapura" }
     region: south-asia
     group: lanka
     sphere: indic

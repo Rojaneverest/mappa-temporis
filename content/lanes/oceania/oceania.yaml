@@ -17,6 +17,10 @@ lanes:
       - { id: apology-2008, date: 2008 CE, label: "The national Apology to the Stolen Generations", prominence: 4, themes: [government], sources: [wikipedia:Apology_to_Australia's_Indigenous_peoples] }
       - { id: mungo-man, date: c. 40000 BCE, label: "Lake Mungo: the oldest known cremation", prominence: 3, themes: [religion], sources: [wikipedia:Mungo_Man] }
       - { id: cook-botany-bay, date: 1770 CE, label: "Cook lands at Botany Bay", prominence: 3, themes: [exploration], sources: [wikipedia:Botany_Bay] }
+      - { id: small-tool-tradition, date: c. 3000 BCE, label: "Small, finely backed stone blades spread across Australia", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Australian_Small_Tool_Tradition] }
+      - { id: wandjina, date: c. 2000 BCE, label: "Wandjina spirit figures are painted in the Kimberley", prominence: 3, themes: [art, religion], confidence: probable, sources: [wikipedia:Wandjina] }
+      - { id: janszoon, date: 1606 CE, label: "Willem Janszoon: the first recorded European landing in Australia", prominence: 3, themes: [exploration], sources: [wikipedia:Willem_Janszoon] }
+      - { id: voice-referendum, date: 2023 CE, label: "Australians reject an Indigenous Voice to Parliament", prominence: 4, themes: [government], sources: [wikipedia:2023_Australian_Indigenous_Voice_referendum] }
     sources: [wikipedia:Aboriginal_Australians]
 
   - id: lapita
@@ -33,6 +37,8 @@ lanes:
       - { id: lapita-tonga, date: c. 800 BCE, label: "Lapita canoes reach Tonga and Samoa — no humans had lived there before", prominence: 2, themes: [exploration, migration], sources: [wikipedia:Lapita_culture] }
       - { id: lapita-bismarck, date: c. 1500 BCE, label: "Lapita pottery appears in the Bismarck Archipelago", prominence: 3, themes: [art], sources: [wikipedia:Lapita_culture] }
       - { id: lapita-vanuatu, date: c. 1000 BCE, label: "The first people reach Vanuatu and Fiji", prominence: 3, themes: [migration], sources: [wikipedia:Teouma] }
+      - { id: lapita-obsidian, date: c. 1300 BCE, label: "New Britain obsidian is traded across the western Pacific", prominence: 4, themes: [trade], sources: [wikipedia:Lapita_culture] }
+      - { id: teouma, date: c. 900 BCE, label: "Teouma, Vanuatu: the oldest Lapita cemetery", prominence: 4, themes: [religion], sources: [wikipedia:Teouma] }
     images:
       - { id: lapita-pot, source: "commons:File:PortVilaLapita.jpg", date: c. 800 BCE, prominence: 3, treatment: cutout, caption: "Lapita pottery with stamped designs, Vanuatu" }
     sources: [wikipedia:Lapita_culture]
@@ -48,6 +54,9 @@ lanes:
     events:
       - { id: long-pause, date: c. 1 CE, label: "The 'Long Pause': Polynesian culture takes shape in Tonga and Samoa", prominence: 3, confidence: probable, themes: [migration], sources: [wikipedia:Polynesia] }
       - { id: kava, date: c. 500 CE, label: "Kava, tapa and tattoo: Polynesian culture takes shape", prominence: 4, confidence: probable, sources: [wikipedia:Polynesian_culture] }
+      - { id: polynesian-plainware, date: c. 500 BCE, label: "Plain pottery replaces Lapita designs in Tonga and Samoa", prominence: 4, themes: [art], sources: [wikipedia:Polynesians] }
+      - { id: proto-polynesian, date: c. 200 BCE, label: "Proto-Polynesian, the parent of Māori, Hawaiian and Tahitian, is spoken", prominence: 4, themes: [ideas], confidence: probable, sources: [wikipedia:Proto-Polynesian_language] }
+      - { id: polynesian-pottery-ends, date: c. 300 CE, label: "Polynesians stop making pottery", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Polynesians] }
     sources: [wikipedia:Polynesians]
 
   - id: new-guinea
@@ -62,4 +71,9 @@ lanes:
       - { id: kuk, date: c. 7000 BCE, label: "Kuk swamp: farming invented independently, with taro and bananas", prominence: 2, themes: [technology], confidence: probable, sources: [wikipedia:Kuk_Swamp] }
       - { id: sweet-potato-highlands, date: c. 1700 CE, label: "The sweet potato reaches the highlands; populations boom", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Ipomoean_revolution] }
       - { id: highlands-contact, date: 1933 CE, label: "Outsiders first meet the million people of the highlands", prominence: 3, themes: [exploration], sources: [wikipedia:Mick_Leahy] }
+      - { id: kokoda, date: 1942 CE, label: "The Kokoda Track campaign", prominence: 4, themes: [war], sources: [wikipedia:Kokoda_Track_campaign] }
+      - { id: png-independence, date: 1975 CE, label: "Papua New Guinea becomes independent", prominence: 4, themes: [government], sources: [wikipedia:Papua_New_Guinea] }
+      - { id: kuk-mounds, date: c. 4500 BCE, label: "Kuk farmers build mounds to grow taro and bananas", prominence: 4, themes: [technology], sources: [wikipedia:Kuk_Swamp] }
+      - { id: papuan-coast-potters, date: c. 1 CE, label: "Austronesian-speaking potters settle the coasts of eastern New Guinea", prominence: 4, themes: [migration], confidence: probable, sources: [wikipedia:Austronesian_peoples] }
+      - { id: ortiz-de-retez, date: 1545 CE, label: "A Spanish captain names the island 'Nueva Guinea'", prominence: 4, themes: [exploration], sources: [wikipedia:Yñigo_Ortiz_de_Retez] }
     sources: [wikipedia:Kuk_Swamp]

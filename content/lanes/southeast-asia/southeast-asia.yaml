@@ -10,7 +10,8 @@ lanes:
     span: c. 1000 BCE – c. 1 CE
     events:
       - { id: bronze-drums, date: c. 500 BCE, label: "Great bronze drums are cast and traded across Southeast Asia", prominence: 2, themes: [art, trade], sources: [wikipedia:Dong_Son_drum] }
-      - { id: dong-son-drums, date: c. 500 BCE, label: "Đông Sơn bronze drums travel across the islands", prominence: 2, themes: [art, trade], sources: [wikipedia:Dong_Son_drum] }
+      - { id: dong-son-rises, date: c. 1000 BCE, label: "The Đông Sơn bronze culture rises on the Red River", prominence: 3, themes: [technology], sources: [wikipedia:Đông_Sơn_culture] }
+      - { id: van-lang, date: c. 700 BCE, label: "Văn Lang, kingdom of the Hùng kings", prominence: 4, themes: [government], confidence: legendary, sources: [wikipedia:Văn_Lang] }
     images:
       - { id: ngoc-lu-drum, source: "commons:File:Ngoc Lu.jpg", date: c. 500 BCE, prominence: 3, treatment: plate, caption: "The Ngọc Lũ bronze drum" }
     sources: [wikipedia:Đông_Sơn_culture]
@@ -26,6 +27,7 @@ lanes:
       - { type: becomes, lane: nanyue, at: 179 BCE }
     events:
       - { id: co-loa, date: c. 250 BCE, label: "Cổ Loa, a spiral citadel", prominence: 4, sources: [wikipedia:Cổ_Loa_Citadel] }
+      - { id: au-lac-falls, date: 179 BCE, label: "Nanyue conquers Âu Lạc", prominence: 4, themes: [war], sources: [wikipedia:Âu_Lạc] }
     sources: [wikipedia:Âu_Lạc]
 
   - id: nanyue
@@ -41,6 +43,7 @@ lanes:
     events:
       - { id: zhao-tuo, date: 204 BCE, label: "Zhao Tuo, a Qin general, founds Nanyue", prominence: 4, sources: [wikipedia:Zhao_Tuo] }
       - { id: nanyue-conquest, date: 111 BCE, label: "Han Wudi conquers Nanyue", prominence: 4, themes: [war], sources: [wikipedia:Han_conquest_of_Nanyue] }
+      - { id: zhao-mo-tomb, date: c. 122 BCE, label: "King Zhao Mo of Nanyue is buried in a jade suit", prominence: 4, themes: [art], sources: [wikipedia:Mausoleum_of_the_Nanyue_King] }
     sources: [wikipedia:Nanyue]
 
   - id: jiaozhi
@@ -52,6 +55,10 @@ lanes:
     span: 111 BCE – 939 CE
     events:
       - { id: trung-sisters, date: 40 CE, label: "The Trưng sisters lead a revolt against Han rule", prominence: 2, themes: [women, war], sources: [wikipedia:Trưng_sisters] }
+      - { id: luy-lau, date: c. 200 CE, label: "Luy Lâu becomes an early centre of Buddhism", prominence: 4, themes: [religion], sources: [wikipedia:Luy_Lâu] }
+      - { id: lady-trieu, date: 248 CE, label: "Lady Triệu leads a revolt against Wu", prominence: 4, themes: [war, women], sources: [wikipedia:Lady_Triệu] }
+      - { id: van-xuan, date: 544 CE, label: "Lý Bí declares the kingdom of Vạn Xuân", prominence: 4, themes: [government], sources: [wikipedia:Early_Lý_dynasty] }
+      - { id: annam-protectorate, date: 679 CE, label: "Tang China sets up the Protectorate of Annam", prominence: 4, themes: [government], sources: [wikipedia:Protectorate_General_to_Pacify_the_South] }
     sources: [wikipedia:First_Chinese_domination_of_Vietnam]
 
   - id: funan
@@ -65,6 +72,8 @@ lanes:
       - { type: becomes, lane: chenla, at: c. 627 CE }
     events:
       - { id: oc-eo, date: 2nd c., label: "Oc Eo port trades with India and Rome — a Roman gold coin was found here", prominence: 3, themes: [trade], sources: [wikipedia:Óc_Eo] }
+      - { id: kaundinya-soma, date: c. 100 CE, label: "Funan's founding legend: the Brahmin Kaundinya marries the naga queen Soma", prominence: 3, confidence: legendary, sources: [wikipedia:Funan] }
+      - { id: kang-tai, date: c. 245 CE, label: "Chinese envoys Kang Tai and Zhu Ying visit Funan", prominence: 4, themes: [diplomacy], sources: [wikipedia:Funan] }
     sources: [wikipedia:Funan]
 
   - id: chenla
@@ -90,6 +99,9 @@ lanes:
       - { id: my-son, date: 4th c., label: "Mỹ Sơn sanctuary to Shiva is begun", prominence: 4, themes: [religion, art], sources: [wikipedia:Mỹ_Sơn] }
       - { id: champa-rice, date: 1012 CE, label: "Champa rice, fast-ripening, is sent to Song China and feeds a boom", prominence: 3, themes: [technology], sources: [wikipedia:Champa_rice] }
       - { id: vijaya-falls, date: 1471 CE, label: "Đại Việt takes the Cham capital Vijaya", prominence: 4, themes: [war], sources: [wikipedia:Cham–Vietnamese_War_(1471)] }
+      - { id: champa-annexed, date: 1832 CE, label: "Emperor Minh Mạng annexes the last of Champa", prominence: 4, themes: [war], sources: [wikipedia:Champa] }
+      - { id: lam-ap, date: 192 CE, label: "Lâm Ấp, the first Cham state, breaks free of Han rule", prominence: 4, themes: [government], sources: [wikipedia:Lâm_Ấp] }
+      - { id: angkor-sacked-1177, date: 1177 CE, label: "A Cham fleet sacks Angkor", prominence: 3, themes: [war], sources: [wikipedia:Champa] }
     sources: [wikipedia:Champa]
 
   - id: pyu
@@ -103,6 +115,7 @@ lanes:
     events:
       - { id: sri-ksetra, date: c. 800 CE, label: "Pyu city-states at Sri Ksetra and Halin", prominence: 4, sources: [wikipedia:Sri_Ksetra_Kingdom] }
       - { id: pyu-buddhism, date: c. 500 CE, label: "Pyu cities embrace Buddhism", prominence: 4, themes: [religion], sources: [wikipedia:Pyu_city-states] }
+      - { id: beikthano, date: c. 200 BCE, label: "Beikthano, an early walled Pyu city", prominence: 4, sources: [wikipedia:Beikthano] }
     sources: [wikipedia:Pyu_city-states]
 
   - id: tarumanagara
@@ -116,6 +129,7 @@ lanes:
     events:
       - { id: kutai-yupa, date: c. 400 CE, label: "Sanskrit pillar inscriptions at Kutai, the oldest in Indonesia", prominence: 4, thread: scripts, sources: [wikipedia:Kutai_Martadipura] }
       - { id: tugu, date: c. 450 CE, label: "The Tugu inscription: a king's canal in Java", prominence: 4, themes: [technology], sources: [wikipedia:Tugu_inscription] }
+      - { id: faxian-java, date: 414 CE, label: "The pilgrim Faxian stops in Java on his voyage home from India", prominence: 4, themes: [religion, exploration], sources: [wikipedia:Faxian] }
     sources: [wikipedia:Tarumanagara]
 
   - id: srivijaya
@@ -128,4 +142,6 @@ lanes:
     events:
       - { id: yijing, date: 671 CE, label: "The Chinese monk Yijing studies Sanskrit at Srivijaya", prominence: 3, themes: [religion, ideas], sources: [wikipedia:Yijing_(monk)] }
       - { id: srivijaya-straits, date: c. 800 CE, label: "Srivijaya controls the Strait of Malacca: Buddhist scholars study at Palembang", prominence: 3, themes: [trade, religion], sources: [wikipedia:Srivijaya] }
+      - { id: kedukan-bukit, date: 682 CE, label: "The Kedukan Bukit inscription records Srivijaya's founding expedition", prominence: 3, sources: [wikipedia:Kedukan_Bukit_inscription] }
+      - { id: chola-srivijaya, date: 1025 CE, label: "Chola fleets raid Srivijaya", prominence: 3, themes: [war], sources: [wikipedia:Chola_invasion_of_Srivijaya] }
     sources: [wikipedia:Srivijaya]

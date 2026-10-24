@@ -1,0 +1,20 @@
+# People of the Steppe & Central Asia.
+people:
+  - { id: p-modu-chanyu, name: Modu Chanyu, lane: xiongnu, life: "c. 234 – 174 BCE", role: "founder of the Xiongnu empire", prominence: 3, sources: [wikipedia:Modu_Chanyu] }
+  - { id: p-attila, name: Attila, lane: huns, life: "c. 406 – 453 CE", role: "ruler of the Huns", prominence: 2, sources: [wikipedia:Attila] }
+  - { id: p-bilge-khagan, name: Bilge Khagan, lane: gokturks, life: "683 – 734 CE", role: "khagan of the Orkhon inscriptions", prominence: 4, sources: [wikipedia:Bilge_Khagan] }
+  - { id: p-rudaki, name: Rudaki, lane: samanids, life: "858 – c. 941 CE", role: "father of Persian poetry", prominence: 4, sources: [wikipedia:Rudaki] }
+  - { id: p-al-farabi, name: Al-Farabi, lane: samanids, life: "c. 870 – c. 950 CE", role: "philosopher, 'the Second Teacher'", prominence: 3, sources: [wikipedia:Al-Farabi] }
+  - { id: p-ferdowsi, name: Ferdowsi, lane: samanids, life: "940 – c. 1020 CE", role: "poet of the Shahnameh", prominence: 3, sources: [wikipedia:Ferdowsi] }
+  - { id: p-mahmud-ghazni, name: Mahmud of Ghazni, lane: ghaznavids, life: "971 – 1030 CE", role: "sultan who raided India seventeen times", prominence: 3, sources: [wikipedia:Mahmud_of_Ghazni] }
+  - { id: p-al-biruni, name: Al-Biruni, lane: ghaznavids, life: "973 – c. 1050 CE", role: "scholar of India and the stars", prominence: 3, sources: [wikipedia:Al-Biruni] }
+  - { id: p-genghis-khan, name: Genghis Khan, lane: mongol-empire, life: "c. 1162 – 1227 CE", role: "founder of the Mongol empire", prominence: 2, endonym: { text: "Чингис хаан", script: Cyrl, translit: Chinggis Khaan }, sources: [wikipedia:Genghis_Khan] }
+  - { id: p-ogedei, name: Ögedei Khan, lane: mongol-empire, life: "c. 1186 – 1241 CE", role: "second Great Khan", prominence: 4, sources: [wikipedia:Ögedei_Khan] }
+  - { id: p-sorghaghtani, name: Sorghaghtani Beki, lane: mongol-empire, life: "c. 1190 – 1252 CE", role: "mother of three emperors", prominence: 4, sources: [wikipedia:Sorghaghtani_Beki] }
+  - { id: p-batu, name: Batu Khan, lane: golden-horde, life: "c. 1205 – 1255 CE", role: "founder of the Golden Horde", prominence: 4, sources: [wikipedia:Batu_Khan] }
+  - { id: p-timur, name: Timur, lane: timurids, life: "1336 – 1405 CE", role: "conqueror from Delhi to Damascus", prominence: 2, sources: [wikipedia:Timur] }
+  - { id: p-ulugh-beg, name: Ulugh Beg, lane: timurids, life: "1394 – 1449 CE", role: "astronomer-king of Samarkand", prominence: 3, sources: [wikipedia:Ulugh_Beg] }
+  - { id: p-navoi, name: Alisher Navoi, lane: timurids, life: "1441 – 1501 CE", role: "poet in Chagatai Turkic", prominence: 4, sources: [wikipedia:Ali-Shir_Nava'i] }
+  - { id: p-ablai-khan, name: Ablai Khan, lane: kazakh-khanate, life: "1711 – 1781 CE", role: "khan who held off the Dzungars", prominence: 4, sources: [wikipedia:Ablai_Khan] }
+  - { id: p-abai, name: Abai Kunanbaev, lane: kazakh-khanate, life: "1845 – 1904 CE", role: "Kazakh poet and thinker", prominence: 4, sources: [wikipedia:Abai_Qunanbaiuly] }
+  - { id: p-sukhbaatar, name: Damdin Sükhbaatar, lane: mongolia, life: "1893 – 1923 CE", role: "leader of Mongolia's revolution", prominence: 4, sources: [wikipedia:Damdin_Sükhbaatar] }

@@ -14,7 +14,7 @@ import { createRequire } from 'node:module';
 import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
-import { LaneFile, MarginsFile, Sheet, ThreadFile, Tour, type Lane, type LaneImage, type Prominence } from '../packages/core/src/schema.ts';
+import { AtmosphereFile, DailyFile, LaneFile, MarginsFile, PeopleFile, Sheet, ThreadFile, Tour, VoicesFile, type Lane, type LaneImage, type Person, type Prominence, type Voice } from '../packages/core/src/schema.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { makeTimescale, yearToYOf, yToYearOf, upyAt } from '../packages/core/src/timescale.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
@@ -41,6 +41,14 @@ const REGION_GAP = 300;
 /** Lane width per weight step. */
 const WEIGHT_W = [0, 16, 56, 96, 140, 190, 240];
 const DEFAULT_WEIGHT: Record<Prominence, number> = { 1: 6, 2: 4, 3: 3, 4: 1, 5: 1 };
+/** Screen width (CSS px) landmark lanes never drop below when zoomed out (decision 29). */
+const LANE_MIN_PX: Partial<Record<Prominence, number>> = { 1: 7, 2: 3.5 };
+/** Atmosphere engravings (decision 30): longest side per size, faint ink, gone before P3 labels arrive. */
+const ENGRAVING_SIZE = { s: 3400, m: 5000, l: 7000 };
+const ENGRAVING_ALPHA = 0.13;
+const ENGRAVING_FADE_OUT: Fade = [0.09, 0.16];
+/** Most of an engraving's box must be open paper. */
+const ENGRAVING_MAX_OCCUPIED = 0.06;
 /** A track is: margin, its widest lane, a gap, then label space. Thin lanes get thin tracks. */
 const TRACK_MARGIN = 40;
 const TRACK_GAP = 30;
@@ -81,9 +89,14 @@ const lanes: Lane[] = walk(join(ROOT, 'content/lanes')).flatMap((f) => {
   return parsed.data.lanes;
 });
 const laneById = new Map(lanes.map((l) => [l.id, l]));
+const people: Person[] = existsSync(join(ROOT, 'content/people'))
+  ? walk(join(ROOT, 'content/people')).flatMap((f) => PeopleFile.parse(loadYaml(f)).people) : [];
+const voices: Voice[] = existsSync(join(ROOT, 'content/voices.yaml')) ? VoicesFile.parse(loadYaml(join(ROOT, 'content/voices.yaml'))).voices : [];
+const dailyCards = existsSync(join(ROOT, 'content/daily-life.yaml')) ? DailyFile.parse(loadYaml(join(ROOT, 'content/daily-life.yaml'))).cards : [];
+const personById = new Map(people.map((p) => [p.id, p]));
 const groupOf = (l: Lane) => l.group ?? l.region;
 const manifestPath = join(OUT, 'img/manifest.json');
-const manifest: Record<string, { width: number; height: number; sizes: number[]; treatment: 'cutout' | 'plate' | 'backdrop'; credit: string; license: string; title: string; url: string }> =
+const manifest: Record<string, { width: number; height: number; sizes: number[]; treatment: 'cutout' | 'plate' | 'backdrop' | 'coin'; credit: string; license: string; title: string; url: string }> =
   existsSync(manifestPath) ? JSON.parse(readFileSync(manifestPath, 'utf8')) : {};
 lint();
 
@@ -99,6 +112,22 @@ for (const { file } of FONT_FILES) {
 const fonts: FontCollection = ck.FontCollection.Make();
 fonts.setDefaultFontManager(registerFonts(ck, fontBuffers));
 fonts.enableFontFallback();
+// Every native name must be drawable: each character needs a glyph in one of our fonts.
+{
+  const faces = [...fontBuffers.values()].map((b) => ck.Typeface.MakeTypefaceFromData(b)!).filter(Boolean);
+  const missing: string[] = [];
+  for (const l of [...lanes, ...people]) {
+    if (!l.endonym) continue;
+    for (const ch of new Set([...l.endonym.text].filter((c) => /[^\s\p{M}\u200d\u200c·]/u.test(c)))) {
+      if (!faces.some((f) => f.getGlyphIDs(ch)[0] !== 0)) missing.push(`${l.id}: '${ch}' U+${ch.codePointAt(0)!.toString(16).toUpperCase()}`);
+    }
+  }
+  for (const f of faces) f.delete();
+  if (missing.length) {
+    console.error(`✗ native names with characters no font can draw:\n  ${missing.join('\n  ')}`);
+    process.exit(1);
+  }
+}
 
 // ---------------------------------------------------------------- frame & tracks
 const win = parseSpan(sheet.window);
@@ -192,8 +221,8 @@ const width = cursor - REGION_GAP + MARGIN_R;
 const regionById = new Map(regionLayouts.map((r) => [r.id, r]));
 
 const grid = new Grid(width, height, 16);
-const layers = { substrate: [] as Item[], grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], threads: [] as Item[] };
-const stats = { lanes: visibleLanes.length, events: 0, drawnEvents: 0, images: 0, drawnImages: 0, slid: 0, demoted: 0, archived: 0, budgetDemotions: 0 };
+const layers = { substrate: [] as Item[], atmosphere: [] as Item[], grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], threads: [] as Item[] };
+const stats = { lanes: visibleLanes.length, events: 0, drawnEvents: 0, images: 0, drawnImages: 0, slid: 0, demoted: 0, archived: 0, budgetDemotions: 0, engravings: 0, engravingsSkipped: 0, people: 0, voices: 0, drawnPeople: 0, drawnVoices: 0 };
 
 function text(spec: TextSpec & { x: number; y: number; rot?: 0 | -90; fade?: Fade; alpha?: number; ref?: string; layer?: string }): TextItem {
   const m = measure(ck, fonts, spec);
@@ -533,6 +562,18 @@ for (const lane of visibleLanes) {
     lanePath.grad = { y0: top, y1: bottom, stops: [[0, fadeTop ? 0 : 1], [Math.min(0.45, fadeTop / len), 1], [Math.max(0.55, 1 - fadeBot / len), 1], [1, fadeBot ? 0 : 1]] };
   }
   layers.lanes.push(lanePath);
+  // Zoomed out, a centre stroke keeps the lane at its minimum screen width; it fades once the lane is wider.
+  const minPx = LANE_MIN_PX[lane.prominence];
+  if (minPx) {
+    const narrowest = Math.min(...segs.filter((s) => s.style !== 'interregnum').map((s) => s.w));
+    const centres = inner.map((yr) => [cxAtYear(yr), Y(yr)] as [number, number]);
+    const pad = 300;
+    layers.lanes.push({
+      k: 'path', d: `M ${r1(centres[0]![0])} ${r1(centres[0]![1])} ${spline(centres)}`, stroke: color, sw: minPx, hair: true,
+      alpha: lanePath.alpha, grad: lanePath.grad, fadeOut: [minPx / narrowest, (minPx / narrowest) * 1.6],
+      b: [bbox[0] - pad, top, bbox[2] + pad, bottom],
+    });
+  }
   if (lane.basis !== 'texts') {
     layers.lanes.push({ k: 'path', d, stroke: mix(PIGMENTS[lane.sphere]!.hex, INK, 0.3), sw: 1.1, hair: true, dash: [4, 6], alpha: 0.45, b: bbox });
   }
@@ -688,8 +729,18 @@ interface Placement {
 }
 const placements: Placement[] = [];
 
+/** What a label says and how it looks: an event, a person (with a lifetime bar) or a voice (a quotation). */
+interface LabelSpec {
+  id: string;
+  text: string;
+  pre?: string;
+  /** Overrides the prominence's text role (voices are set in the italic caption face). */
+  role?: TextRole;
+  /** People: birth and death, drawn as a bar beside the lane. */
+  life?: [number, number];
+}
 type Job =
-  | { kind: 'label'; prom: Prominence; yy: number; lane: PlacedLane; ev: Lane['events'][number] }
+  | { kind: 'label'; prom: Prominence; yy: number; lane: PlacedLane; spec: LabelSpec }
   | { kind: 'image'; prom: Prominence; yy: number; lane: PlacedLane; img: LaneImage };
 const jobs: Job[] = [];
 for (const p of placed.values()) {
@@ -698,7 +749,7 @@ for (const p of placed.values()) {
     if (ev.prominence === 5) { stats.archived++; continue; }
     const d = parseDate(ev.date);
     if (d.year < year0 || d.year > year1) continue;
-    jobs.push({ kind: 'label', prom: ev.prominence, yy: Y(d.year), lane: p, ev });
+    jobs.push({ kind: 'label', prom: ev.prominence, yy: Y(d.year), lane: p, spec: { id: ev.id, text: ev.label, pre: formatDate(d) } });
   }
   for (const img of p.lane.images) {
     stats.images++;
@@ -707,11 +758,32 @@ for (const p of placed.values()) {
     jobs.push({ kind: 'image', prom: img.prominence, yy: Y(parseDate(img.date).year), lane: p, img });
   }
 }
+// People sit beside their lane at the height of their working life; voices at their date.
+for (const who of people) {
+  const p = placed.get(who.lane);
+  if (!p) continue;
+  if (who.prominence === 5) { stats.archived++; continue; }
+  const life = parseSpan(who.life);
+  if (life.end.year < year0 || life.start.year > year1) continue;
+  const prime = life.start.year + (life.end.year - life.start.year) * 0.65;
+  const yy = Math.min(p.bottom - 20, Math.max(p.top + 20, Y(Math.max(year0, Math.min(year1, prime)))));
+  stats.people++;
+  jobs.push({ kind: 'label', prom: who.prominence, yy, lane: p, spec: { id: who.id, text: `${who.name}, ${who.role}`, pre: formatSpan(life), life: [life.start.year, life.end.year + 1] } });
+}
+for (const v of voices) {
+  const p = placed.get(v.lane);
+  if (!p) continue;
+  if (v.prominence === 5) { stats.archived++; continue; }
+  const d = parseDate(v.date);
+  if (d.year < year0 || d.year > year1) continue;
+  stats.voices++;
+  jobs.push({ kind: 'label', prom: v.prominence, yy: Y(d.year), lane: p, spec: { id: v.id, text: `“${v.text}” — ${v.speaker}`, role: 'caption' } });
+}
 // Words before pictures: P1–P2 labels, then P1–P2 images, then P3 labels, P3 images, P4 labels.
 const rank = (j: Job) => (j.kind === 'label' ? (j.prom <= 2 ? 0 : j.prom === 3 ? 2 : 4) : j.prom <= 2 ? 1 : 3);
 jobs.sort((a, b) => rank(a) - rank(b) || a.prom - b.prom || a.yy - b.yy);
 for (const job of jobs) {
-  if (job.kind === 'label') placeLabel(job.lane, job.ev, job.yy, job.prom);
+  if (job.kind === 'label') placeLabel(job.lane, job.spec, job.yy, job.prom);
   else placeImage(job.lane, job.img, job.yy, job.prom);
 }
 
@@ -724,10 +796,10 @@ function labelStyle(prom: Prominence) {
   };
 }
 
-function placeLabel(p: PlacedLane, ev: Lane['events'][number], yy: number, prom: Prominence): void {
+function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence): void {
   if (prom > 4) { stats.archived++; return; }
-  const st = labelStyle(prom);
-  const pre = formatDate(parseDate(ev.date));
+  const st = { ...labelStyle(prom), ...(ev.role ? { role: ev.role } : {}) };
+  const pre = ev.pre;
   const tick = prom <= 2 ? 26 : 16;
   const maxSlide = MAX_SLIDE_YEARS * UNITS_PER_YEAR;
   // Measurements are cached per wrap width (rounded), since sliding re-asks often.
@@ -735,7 +807,7 @@ function placeLabel(p: PlacedLane, ev: Lane['events'][number], yy: number, prom:
   const measureAt = (w: number, align: 'left' | 'right') => {
     const key = Math.floor(w / 20) * 20 * (align === 'left' ? 1 : -1);
     let m = measured.get(key);
-    if (!m) { m = measure(ck, fonts, { role: st.role, text: ev.label, pre, size: st.size, color: st.color, align, w: Math.abs(key) }); measured.set(key, m); }
+    if (!m) { m = measure(ck, fonts, { role: st.role, text: ev.text, pre, size: st.size, color: st.color, align, w: Math.abs(key) }); measured.set(key, m); }
     return { m, w: Math.abs(key) };
   };
   const tryAt = (side: 1 | -1) => {
@@ -773,7 +845,15 @@ function placeLabel(p: PlacedLane, ev: Lane['events'][number], yy: number, prom:
   }
   grid.mark(spot.x, spot.top, spot.w, spot.h, 10);
   if (Math.abs(spot.top + spot.lineH / 2 - yy) > 4) stats.slid++;
-  stats.drawnEvents++;
+  if (ev.life) stats.drawnPeople++; else if (ev.role === 'caption') stats.drawnVoices++; else stats.drawnEvents++;
+  // A lifetime bar runs beside the lane from birth to death, where the paper is free.
+  const laneEdgeAt = (y: number) => (spot.side === 1 ? p.cxAt(y) + p.halfAt(y) : p.cxAt(y) - p.halfAt(y));
+  let bar: { x: number; a: number; b: number } | null = null;
+  if (ev.life) {
+    const a = Math.max(p.top, Y(Math.max(year0, ev.life[0]))), b = Math.min(p.bottom, Y(Math.min(year1, ev.life[1])));
+    const x = laneEdgeAt(yy) + spot.side * 8;
+    if (b - a > 20 && grid.isFree(x - 3, a, 6, b - a)) { bar = { x, a, b }; grid.mark(x - 3, a, 6, b - a); }
+  }
   placements.push({
     kind: 'label', id: ev.id, prom,
     box: [spot.x, spot.top, spot.w, spot.h],
@@ -786,10 +866,17 @@ function placeLabel(p: PlacedLane, ev: Lane['events'][number], yy: number, prom:
       const lead = Math.abs(anchorY - yy) > 4
         ? `M ${tickEnd} ${yy} C ${(tickEnd + labelEdge) / 2} ${yy} ${tickEnd} ${anchorY} ${labelEdge} ${anchorY}`
         : `M ${tickEnd} ${yy} L ${labelEdge} ${yy}`;
+      const role = ev.role ?? s.role;
+      const lifeBar: Item[] = bar ? [
+        { k: 'line', x1: bar.x, y1: bar.a, x2: bar.x, y2: bar.b, stroke: INK_SOFT, sw: 1.6, hair: true, alpha: 0.5, fade: s.fade, ref: ev.id, b: [bar.x - 3, bar.a, bar.x + 3, bar.b] },
+        { k: 'line', x1: bar.x - 5, y1: bar.a, x2: bar.x + 5, y2: bar.a, stroke: INK_SOFT, sw: 1.2, hair: true, alpha: 0.5, fade: s.fade, b: [bar.x - 6, bar.a - 2, bar.x + 6, bar.a + 2] },
+        { k: 'line', x1: bar.x - 5, y1: bar.b, x2: bar.x + 5, y2: bar.b, stroke: INK_SOFT, sw: 1.2, hair: true, alpha: 0.5, fade: s.fade, b: [bar.x - 6, bar.b - 2, bar.x + 6, bar.b + 2] },
+      ] : [];
       return [
+        ...lifeBar,
         { k: 'line', x1: laneEdge, y1: yy, x2: tickEnd, y2: yy, stroke: INK, sw: current <= 2 ? 3 : 2, alpha: 0.8, fade: s.fade, b: [Math.min(laneEdge, tickEnd), yy - 3, Math.max(laneEdge, tickEnd), yy + 3] },
         { k: 'path', d: lead, stroke: INK_SOFT, sw: 1, hair: true, alpha: 0.55, fade: s.fade, b: [Math.min(tickEnd, labelEdge) - 4, Math.min(yy, anchorY) - 4, Math.max(tickEnd, labelEdge) + 4, Math.max(yy, anchorY) + 4] },
-        text({ role: s.role, text: ev.label, pre, size: s.size, color: s.color, align: spot.side === 1 ? 'left' : 'right', w: spot.w, x: spot.x, y: spot.top, fade: s.fade, ref: ev.id }),
+        text({ role, text: ev.text, pre, size: s.size, color: s.color, align: spot.side === 1 ? 'left' : 'right', w: spot.w, x: spot.x, y: spot.top, fade: s.fade, ref: ev.id }),
       ];
     },
   });
@@ -874,6 +961,51 @@ for (const p of placements) {
   for (const it of p.emit(p.prom)) (it.k === 'image' ? layers.images : it.k === 'text' ? layers.text : layers.marks).push(it);
 }
 
+// ---------------------------------------------------------------- atmosphere: engravings in the open paper
+// Placed last, into whatever room the content left: each one takes the emptiest spot inside its
+// region and span, shrinking if it must, and is skipped (with a note) if there is no room at all.
+const atmosphere = AtmosphereFile.parse(loadYaml(join(ROOT, 'content/atmosphere.yaml'))).engravings;
+const occupied = grid.occupancy(4);
+const engravingBoxes: [number, number, number, number][] = [];
+const overlapsEngraving = (x: number, y: number, w: number, h: number) =>
+  engravingBoxes.some(([bx, by, bw, bh]) => x < bx + bw + 400 && bx < x + w + 400 && y < by + bh + 400 && by < y + h + 400);
+for (const e of atmosphere) {
+  const region = regionById.get(e.region);
+  const asset = manifest[e.id];
+  const sp = parseSpan(e.span);
+  if (!region || !asset || sp.end.year < year0 || sp.start.year > year1) continue;
+  const ya = Y(Math.max(year0, sp.start.year)), yb = Y(Math.min(year1, sp.end.year + 1));
+  const long = ENGRAVING_SIZE[e.size];
+  let best: { x: number; y: number; w: number; h: number; score: number } | null = null;
+  // A strict pass first; crowded columns get a second, more lenient one (smaller, a little overlap).
+  const passes: [number, number][] = [[1, 1], [0.85, 1], [0.7, 1], [0.55, 1], [0.55, 2], [0.45, 2]];
+  for (const [f, slack] of passes) {
+    const maxOcc = ENGRAVING_MAX_OCCUPIED * slack;
+    const k = (long * f) / Math.max(asset.width, asset.height);
+    const w = asset.width * k, h = asset.height * k;
+    if (h > yb - ya || w > region.width) continue;
+    const step = Math.max(150, Math.min(w, h) / 8);
+    for (let y = ya; y + h <= yb; y += step) {
+      for (let x = region.x0; x + w <= region.x0 + region.width; x += step) {
+        const occ = occupied(x, y, w, h);
+        if (occ > maxOcc || overlapsEngraving(x, y, w, h)) continue;
+        // Prefer the emptiest spot, then the middle of the span.
+        const score = occ + Math.abs(y + h / 2 - (ya + yb) / 2) / (yb - ya) * 0.02;
+        if (!best || score < best.score) best = { x, y, w, h, score };
+      }
+    }
+    if (best) break;
+  }
+  if (!best) { console.log(`  · no room for engraving ${e.id} in ${e.region}`); stats.engravingsSkipped++; continue; }
+  const { x, y, w, h } = best;
+  engravingBoxes.push([x, y, w, h]);
+  layers.atmosphere.push({
+    k: 'image', id: e.id, x, y, w, h, sizes: asset.sizes, treatment: 'backdrop',
+    alpha: ENGRAVING_ALPHA, fadeOut: ENGRAVING_FADE_OUT, layer: 'atmosphere', b: [x, y, x + w, y + h],
+  });
+  stats.engravings++;
+}
+
 // ---------------------------------------------------------------- threads (optional layers)
 const threadDefs = ThreadFile.parse(loadYaml(join(ROOT, 'content/threads.yaml'))).threads;
 const threadsOut: { id: string; name: string; color: string; events: string[]; box: [number, number, number, number] }[] = [];
@@ -902,7 +1034,7 @@ for (const th of threadDefs) {
 }
 
 // ---------------------------------------------------------------- assemble & write
-const items: Item[] = [layers.substrate, layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.threads].flat();
+const items: Item[] = [layers.substrate, layers.atmosphere, layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.threads].flat();
 for (const it of items) if (!it.b) throw new Error(`item without bbox: ${JSON.stringify(it).slice(0, 120)}`);
 
 // ---------------------------------------------------------------- folio (side-panel data)
@@ -920,11 +1052,41 @@ for (const lane of lanes) {
     sources: [...lane.sources.map(sourceLink), ...(lane.wikidata ? [sourceLink(`wikidata:${lane.wikidata}`)] : [])],
     segments: lane.segments.map((s) => ({ name: s.name, dates: formatSpan(parseSpan(s.span)) })),
     relations: lane.relations.flatMap((r) => (r.lanes ?? (r.lane ? [r.lane] : [])).map((id) => ({ type: r.type, laneId: id, laneName: laneById.get(id)?.name ?? id, dates: formatDate(parseDate(r.at)) }))),
-    events: lane.events.map((e) => ({ id: e.id, dates: formatDate(parseDate(e.date)), label: e.label, drawn: placedBox.has(e.id) })),
+    events: [...lane.events].sort((a, b) => parseDate(a.date).year - parseDate(b.date).year)
+      .map((e) => ({ id: e.id, dates: formatDate(parseDate(e.date)), label: e.label, drawn: placedBox.has(e.id) })),
     images: lane.images.filter((i) => manifest[i.id]).map((i) => i.id),
+    people: people.filter((w) => w.lane === lane.id).sort((a, b) => parseSpan(a.life).start.year - parseSpan(b.life).start.year)
+      .map((w) => ({ id: w.id, dates: formatSpan(parseSpan(w.life)), name: w.name, role: w.role, drawn: placedBox.has(w.id) })),
+    voices: voices.filter((v) => v.lane === lane.id).map((v) => ({ id: v.id, dates: formatDate(parseDate(v.date)), text: v.text, speaker: v.speaker })),
+    daily: dailyCards.filter((c) => c.lane === lane.id).map((c) => ({ id: c.id, dates: formatSpan(parseSpan(c.span)), title: c.title })),
     box: laneBox,
   };
   folio.entries[lane.id] = entry;
+  const near = (year: number): [number, number, number, number] => (p ? [p.cxAt(Y(year)) - 200, Y(year) - 100, 600, 200] : laneBox);
+  const wikiOf = (sources: string[]) => sources.find((x) => x.startsWith('wikipedia:'))?.slice(10);
+  for (const w of people.filter((x) => x.lane === lane.id)) {
+    const life = parseSpan(w.life);
+    folio.entries[w.id] = {
+      id: w.id, kind: 'person', title: w.name, dates: formatSpan(life), region, laneId: lane.id, laneName: lane.name,
+      prominence: w.prominence, drawn: placedBox.has(w.id), role: w.role, endonym: w.endonym, wikipedia: wikiOf(w.sources),
+      sources: w.sources.map(sourceLink), box: placedBox.get(w.id) ?? near(Math.round((life.start.year + life.end.year) / 2)),
+      events: lanes.flatMap((l) => l.events.filter((e) => e.people.includes(w.id)).map((e) => ({ id: e.id, dates: formatDate(parseDate(e.date)), label: e.label, drawn: placedBox.has(e.id) }))),
+    };
+  }
+  for (const v of voices.filter((x) => x.lane === lane.id)) {
+    folio.entries[v.id] = {
+      id: v.id, kind: 'voice', title: `${v.speaker}: “${v.text.length > 60 ? v.text.slice(0, 57) + '…' : v.text}”`, dates: formatDate(parseDate(v.date)), region, laneId: lane.id, laneName: lane.name,
+      prominence: v.prominence, drawn: placedBox.has(v.id), quote: { text: v.text, speaker: v.speaker, work: v.work, translation: v.translation },
+      sources: v.sources.map(sourceLink), box: placedBox.get(v.id) ?? near(parseDate(v.date).year),
+    };
+  }
+  for (const c of dailyCards.filter((x) => x.lane === lane.id)) {
+    const sp = parseSpan(c.span);
+    folio.entries[c.id] = {
+      id: c.id, kind: 'daily', title: c.title, dates: formatSpan(sp), region, laneId: lane.id, laneName: lane.name,
+      prominence: 5, drawn: false, note: c.text, sources: c.sources.map(sourceLink), box: near(Math.round((sp.start.year + sp.end.year) / 2)),
+    };
+  }
   for (const e of lane.events) {
     const box = placedBox.get(e.id) ?? (p ? [p.cxAt(Y(parseDate(e.date).year)) - 200, Y(parseDate(e.date).year) - 100, 600, 200] as [number, number, number, number] : laneBox);
     const ewiki = e.sources.find((s) => s.startsWith('wikipedia:'))?.slice(10);
@@ -1006,7 +1168,8 @@ copyFileSync(join(ckDir, 'canvaskit.wasm'), join(OUT, 'canvaskit/canvaskit.wasm'
 console.log(`✓ ${dl.title}`);
 console.log(`  ${Math.round(width)} × ${Math.round(height)} units · ${items.length} marks · ${stats.lanes} lanes`);
 console.log(`  fonts subset to ${used.size} characters: ${(fontBytes / 1024).toFixed(0)} KB`);
-console.log(`  events ${stats.drawnEvents}/${stats.events} drawn (${stats.slid} slid off their date) · images ${stats.drawnImages}/${stats.images} · ${stats.demoted} demoted for room · ${stats.budgetDemotions} budget demotions · ${stats.archived} archived`);
+console.log(`  events ${stats.drawnEvents}/${stats.events} drawn (${stats.slid} slid off their date) · images ${stats.drawnImages}/${stats.images} · ${stats.demoted} demoted for room · ${stats.budgetDemotions} budget demotions · ${stats.archived} archived · ${stats.engravings} engravings (${stats.engravingsSkipped} without room)`);
+console.log(`  people ${stats.drawnPeople}/${stats.people} drawn · voices ${stats.drawnVoices}/${stats.voices} · daily-life cards ${dailyCards.length} (Folio only)`);
 
 // ---------------------------------------------------------------- helpers & lints
 function smooth01(t: number) {
@@ -1039,6 +1202,30 @@ function lint() {
     }
     for (const r of l.relations) for (const id of r.lanes ?? (r.lane ? [r.lane] : [])) if (!laneById.has(id)) problems.push(`${l.id}: relation to unknown lane "${id}"`);
     if (!PIGMENTS[l.sphere]) problems.push(`${l.id}: unknown sphere "${l.sphere}"`);
+    // People alive at their events (with the slack that 'c.' dates allow).
+    for (const e of l.events) for (const pid of e.people) {
+      const who = personById.get(pid);
+      if (!who) { problems.push(`${e.id}: unknown person "${pid}"`); continue; }
+      const life = parseSpan(who.life), d = parseDate(e.date);
+      if (d.latest < life.start.earliest || d.earliest > life.end.latest) problems.push(`${e.id} (${e.date}) is outside ${who.name}'s life (${who.life})`);
+    }
+  }
+  for (const x of [...people, ...voices, ...dailyCards]) {
+    if (ids.has(x.id)) problems.push(`duplicate id "${x.id}"`);
+    ids.add(x.id);
+    if (!laneById.has(x.lane)) problems.push(`${x.id}: unknown lane "${x.lane}"`);
+  }
+  for (const p of people) {
+    const life = parseSpan(p.life);
+    if (life.end.year - life.start.year > 110) problems.push(`${p.id}: a life of ${life.end.year - life.start.year} years (${p.life})`);
+  }
+  for (const v of voices) {
+    const lane = laneById.get(v.lane);
+    if (!lane) continue;
+    if (lane.prominence > 2) problems.push(`${v.id}: voices belong to landmark (P1–P2) lanes; ${lane.id} is P${lane.prominence}`);
+    const span = parseSpan(lane.span), d = parseDate(v.date);
+    if (d.latest < span.start.year - 1 || d.earliest > span.end.year + 1) problems.push(`${v.id} (${v.date}) outside ${lane.id} (${lane.span})`);
+    if (v.text.split(/\s+/).length > 26) problems.push(`${v.id}: ${v.text.split(/\s+/).length} words — voices on the canvas stay short`);
   }
   if (problems.length) {
     console.error('✗ content lint failed:\n' + problems.map((p) => '  ' + p).join('\n'));

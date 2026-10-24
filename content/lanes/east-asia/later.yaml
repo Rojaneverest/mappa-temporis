@@ -47,6 +47,7 @@ lanes:
 
   - id: liao
     name: Liao dynasty (Khitan)
+    endonym: { text: "遼", script: Hant, translit: "Liáo" }
     region: east-asia
     group: china
     sphere: steppe
@@ -74,6 +75,7 @@ lanes:
 
   - id: jin-jurchen
     name: Jin dynasty (Jurchen)
+    endonym: { text: "金", script: Hant, translit: "Jīn" }
     region: east-asia
     group: china
     sphere: steppe
@@ -128,6 +130,13 @@ lanes:
       - { id: yongle-encyclopedia, date: 1408 CE, label: "The Yongle Encyclopedia: 11,000 volumes", prominence: 3, themes: [ideas], sources: [wikipedia:Yongle_Encyclopedia] }
       - { id: wang-yangming, date: c. 1510 CE, label: "Wang Yangming: knowledge and action are one", prominence: 4, themes: [ideas], sources: [wikipedia:Wang_Yangming] }
       - { id: ming-silver, date: c. 1580 CE, label: "American silver floods Ming China", prominence: 3, thread: money, themes: [trade], sources: [wikipedia:Single_whip_law] }
+      - { id: macau, date: 1557 CE, label: "The Portuguese settle Macau", prominence: 4, themes: [trade], sources: [wikipedia:Portuguese_Macau] }
+      - { id: single-whip, date: c. 1580 CE, label: "The Single Whip reform: taxes paid in New World silver", prominence: 3, themes: [trade, government], sources: [wikipedia:Single_whip_law] }
+      - { id: ming-falls, date: 1644 CE, label: "Rebels take Beijing; the last Ming emperor hangs himself", prominence: 2, themes: [war], sources: [wikipedia:Chongzhen_Emperor] }
+      - { id: altan-beijing, date: 1550 CE, label: "Altan Khan's Mongols besiege Beijing", prominence: 4, themes: [war], sources: [wikipedia:Altan_Khan] }
+      - { id: shaanxi-earthquake, date: 1556 CE, label: "The Shaanxi earthquake kills some 830,000, the deadliest on record", prominence: 3, themes: [climate], sources: [wikipedia:1556_Shaanxi_earthquake] }
+      - { id: bencao-gangmu, date: 1578 CE, label: "Li Shizhen completes the Compendium of Materia Medica", prominence: 3, themes: [science], sources: [wikipedia:Bencao_Gangmu] }
+      - { id: tiangong-kaiwu, date: 1637 CE, label: "Song Yingxing's encyclopedia of crafts, the Tiangong Kaiwu", prominence: 4, themes: [technology], sources: [wikipedia:Tiangong_Kaiwu] }
     images:
       - { id: forbidden-city-view, source: "commons:File:The Forbidden City - View from Coal Hill.jpg", date: 1420 CE, prominence: 1, treatment: plate, caption: "The Forbidden City, Beijing" }
       - { id: great-wall-view, source: "commons:File:Great Wall of China July 2006.JPG", date: c. 1570 CE, prominence: 2, treatment: plate, caption: "The Ming Great Wall" }
@@ -160,6 +169,18 @@ lanes:
       - { id: summer-palace, date: 1860 CE, label: "British and French troops loot the Summer Palace", prominence: 4, themes: [war], sources: [wikipedia:Old_Summer_Palace] }
       - { id: self-strengthening, date: 1861 CE, label: "The Self-Strengthening Movement", prominence: 4, themes: [technology], sources: [wikipedia:Self-Strengthening_Movement] }
       - { id: cixi, date: 1861 CE, label: "Empress Dowager Cixi rules behind the curtain", prominence: 3, themes: [women, government], sources: [wikipedia:Empress_Dowager_Cixi] }
+      - { id: zeelandia, date: 1662 CE, label: "Koxinga drives the Dutch out of Taiwan", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Fort_Zeelandia] }
+      - { id: three-feudatories, date: 1673 CE, label: "The Revolt of the Three Feudatories", prominence: 4, themes: [war], sources: [wikipedia:Revolt_of_the_Three_Feudatories] }
+      - { id: qing-taiwan, date: 1683 CE, label: "The Qing annex Taiwan", prominence: 4, themes: [war], sources: [wikipedia:Kingdom_of_Tungning] }
+      - { id: nerchinsk, date: 1689 CE, label: "The Treaty of Nerchinsk fixes the Russian border", prominence: 3, themes: [diplomacy], sources: [wikipedia:Treaty_of_Nerchinsk] }
+      - { id: kangxi-dictionary, date: 1716 CE, label: "The Kangxi Dictionary: 47,000 characters", prominence: 4, themes: [ideas], sources: [wikipedia:Kangxi_Dictionary] }
+      - { id: siku-quanshu, date: 1782 CE, label: "The Siku Quanshu, the largest collection of books ever copied by hand", prominence: 3, themes: [ideas], sources: [wikipedia:Siku_Quanshu] }
+      - { id: white-lotus, date: 1796 CE, label: "The White Lotus Rebellion", prominence: 4, themes: [war, religion], sources: [wikipedia:White_Lotus_Rebellion] }
+      - { id: nanking-treaty, date: 1842 CE, label: "The Treaty of Nanking cedes Hong Kong to Britain", prominence: 3, themes: [diplomacy], sources: [wikipedia:Treaty_of_Nanking] }
+      - { id: yellow-river-1855, date: 1855 CE, label: "The Yellow River bursts its banks and changes course", prominence: 4, themes: [climate], sources: [wikipedia:Yellow_River] }
+      - { id: northern-famine, date: 1876 CE, label: "Famine in northern China kills perhaps 10 million", prominence: 3, themes: [climate, disease], sources: [wikipedia:Northern_Chinese_Famine_of_1876–1879] }
+      - { id: hundred-days, date: 1898 CE, label: "The Hundred Days' Reform is crushed by Cixi", prominence: 4, themes: [government], sources: [wikipedia:Hundred_Days'_Reform] }
+      - { id: exams-abolished, date: 1905 CE, label: "The imperial examinations are abolished after 1,300 years", prominence: 3, themes: [government, ideas], sources: [wikipedia:Imperial_examination] }
     sources: [wikipedia:Qing_dynasty]
 
   - id: roc
@@ -181,6 +202,13 @@ lanes:
       - { id: nanjing-1937, date: 1937 CE, label: "Japan invades; the Nanjing Massacre", prominence: 2, themes: [war], sources: [wikipedia:Nanjing_Massacre] }
       - { id: long-march, date: 1934 CE, label: "The Long March", prominence: 3, themes: [war], sources: [wikipedia:Long_March] }
       - { id: taiwan-democracy, date: 1996 CE, label: "Taiwan's first direct presidential election", prominence: 4, themes: [government], sources: [wikipedia:1996_Taiwanese_presidential_election] }
+      - { id: shanghai-1927, date: 1927 CE, label: "The Shanghai massacre: civil war between Nationalists and Communists", prominence: 3, themes: [war], sources: [wikipedia:Shanghai_massacre] }
+      - { id: northern-expedition, date: 1928 CE, label: "The Northern Expedition reunites China under the Nationalists", prominence: 4, themes: [war], sources: [wikipedia:Northern_Expedition] }
+      - { id: incident-228, date: 1947 CE, label: "The 228 Incident in Taiwan", prominence: 4, themes: [government], sources: [wikipedia:February_28_incident] }
+      - { id: roc-to-taiwan, date: 1949 CE, label: "The Nationalist government retreats to Taiwan", prominence: 3, themes: [war, migration], sources: [wikipedia:Retreat_of_the_government_of_the_Republic_of_China_to_Taiwan] }
+      - { id: taiwan-martial-law, date: 1987 CE, label: "Taiwan lifts 38 years of martial law", prominence: 4, themes: [government], sources: [wikipedia:Martial_law_in_Taiwan] }
+      - { id: tsai-ing-wen, date: 2016 CE, label: "Tsai Ing-wen becomes Taiwan's first woman president", prominence: 4, themes: [women, government], sources: [wikipedia:Tsai_Ing-wen] }
+      - { id: taiwan-marriage, date: 2019 CE, label: "Taiwan legalises same-sex marriage, the first in Asia", prominence: 4, themes: [government], sources: [wikipedia:Same-sex_marriage_in_Taiwan] }
     sources: [wikipedia:Republic_of_China_(1912–1949)]
 
   - id: prc
@@ -193,7 +221,7 @@ lanes:
     span: 1949 – 2026 CE
     cliopatria: ["People's Republic of China", "China"]
     events:
-      - { id: prc-founded, date: 1949 CE, label: "Mao proclaims the People's Republic", prominence: 1, themes: [government], sources: [wikipedia:Proclamation_of_the_People's_Republic_of_China] }
+      - { id: prc-founded, date: 1949 CE, label: "Mao proclaims the People's Republic", prominence: 1, themes: [government], sources: [wikipedia:Proclamation_of_the_People's_Republic_of_China], people: [p-mao] }
       - { id: great-leap, date: 1959 CE, label: "The Great Leap Forward famine: perhaps 30 million die", prominence: 2, themes: [disease], sources: [wikipedia:Great_Chinese_Famine] }
       - { id: cultural-revolution, date: 1966 CE, label: "The Cultural Revolution", prominence: 2, themes: [ideas], sources: [wikipedia:Cultural_Revolution] }
       - { id: reform-opening, date: 1978 CE, label: "Deng Xiaoping's reforms: 800 million lifted from poverty", prominence: 1, themes: [trade], sources: [wikipedia:Reform_and_opening_up] }
@@ -204,6 +232,11 @@ lanes:
       - { id: one-child, date: 1980 CE, label: "The one-child policy", prominence: 3, sources: [wikipedia:One-child_policy] }
       - { id: wto-china, date: 2001 CE, label: "China joins the WTO: workshop of the world", prominence: 3, themes: [trade], sources: [wikipedia:China_and_the_World_Trade_Organization] }
       - { id: shenzhou-5, date: 2003 CE, label: "China's first astronaut", prominence: 4, themes: [technology, sky], sources: [wikipedia:Shenzhou_5] }
+      - { id: beijing-olympics, date: 2008 CE, label: "The Beijing Olympics", prominence: 4, themes: [government], sources: [wikipedia:2008_Summer_Olympics] }
+      - { id: china-bomb, date: 1964 CE, label: "China's first atomic bomb", prominence: 4, themes: [war, technology], sources: [wikipedia:596_(nuclear_test)] }
+      - { id: nixon-china, date: 1972 CE, label: "Nixon visits Mao", prominence: 3, themes: [diplomacy], sources: [wikipedia:1972_visit_by_Richard_Nixon_to_China] }
+      - { id: belt-and-road, date: 2013 CE, label: "The Belt and Road Initiative", prominence: 3, themes: [trade], sources: [wikipedia:Belt_and_Road_Initiative] }
+      - { id: hong-kong-2019, date: 2019 CE, label: "Mass protests in Hong Kong", prominence: 4, themes: [government], sources: [wikipedia:2019–2020_Hong_Kong_protests] }
     sources: [wikipedia:People's_Republic_of_China]
 
   # ------------------------------------------------------------------ korea
@@ -258,6 +291,12 @@ lanes:
       - { id: rain-gauge, date: 1441 CE, label: "Joseon's standardised rain gauges", prominence: 4, themes: [science, climate], sources: [wikipedia:Cheugugi] }
       - { id: silhak, date: c. 1750 CE, label: "Silhak: practical learning", prominence: 4, themes: [ideas], sources: [wikipedia:Silhak] }
       - { id: donghak, date: 1894 CE, label: "The Donghak Peasant Revolution", prominence: 4, themes: [religion, war], sources: [wikipedia:Donghak_Peasant_Revolution] }
+      - { id: manchu-korea-1636, date: 1636 CE, label: "A Qing invasion forces Joseon to submit", prominence: 4, themes: [war], sources: [wikipedia:Second_Manchu_invasion_of_Korea] }
+      - { id: hwaseong, date: 1796 CE, label: "Hwaseong Fortress rises at Suwon", prominence: 4, themes: [art], sources: [wikipedia:Hwaseong_Fortress] }
+      - { id: dongui-bogam, date: 1613 CE, label: "Heo Jun's Dongui Bogam, a classic of Korean medicine", prominence: 4, themes: [science], sources: [wikipedia:Dongui_Bogam] }
+      - { id: french-korea-1866, date: 1866 CE, label: "Korea repels a French expedition", prominence: 4, themes: [war], sources: [wikipedia:French_campaign_against_Korea] }
+      - { id: ganghwa-treaty, date: 1876 CE, label: "The Treaty of Ganghwa forces Korea open to Japan", prominence: 4, themes: [diplomacy], sources: [wikipedia:Japan–Korea_Treaty_of_1876] }
+      - { id: queen-min, date: 1895 CE, label: "Japanese agents murder Queen Min", prominence: 4, themes: [women, government], sources: [wikipedia:Empress_Myeongseong] }
     sources: [wikipedia:Joseon]
 
   - id: korean-empire
@@ -275,6 +314,8 @@ lanes:
       - { type: splits-into, lanes: [south-korea, north-korea], at: 1945 CE }
     events:
       - { id: march-first, date: 1919 CE, label: "The March First Movement for independence", prominence: 4, themes: [government], sources: [wikipedia:March_First_Movement] }
+      - { id: korean-empire-1897, date: 1897 CE, label: "King Gojong proclaims the Korean Empire", prominence: 4, themes: [government], sources: [wikipedia:Korean_Empire] }
+      - { id: korea-protectorate, date: 1905 CE, label: "Japan makes Korea a protectorate", prominence: 4, themes: [government], sources: [wikipedia:Japan–Korea_Treaty_of_1905] }
     sources: [wikipedia:Korea_under_Japanese_rule]
 
   - id: south-korea
@@ -293,6 +334,7 @@ lanes:
       - { id: korea-democracy, date: 1987 CE, label: "South Korea becomes a democracy", prominence: 4, themes: [government], sources: [wikipedia:June_Democratic_Struggle] }
       - { id: seoul-olympics, date: 1988 CE, label: "The Seoul Olympics", prominence: 4, sources: [wikipedia:1988_Summer_Olympics] }
       - { id: hallyu, date: c. 2010 CE, label: "The Korean Wave goes global", prominence: 4, themes: [art], sources: [wikipedia:Korean_wave] }
+      - { id: candlelight, date: 2016 CE, label: "Candlelight protests bring down a president", prominence: 4, themes: [government], sources: [wikipedia:2016–2017_South_Korean_protests] }
     sources: [wikipedia:South_Korea]
 
   - id: north-korea
@@ -307,6 +349,8 @@ lanes:
     events:
       - { id: korean-war-north, date: 1950 CE, label: "North Korea invades the South", prominence: 3, themes: [war], sources: [wikipedia:Korean_War] }
       - { id: nk-famine, date: 1994 CE, label: "The Arduous March famine", prominence: 4, themes: [disease], sources: [wikipedia:North_Korean_famine] }
+      - { id: nk-nuclear-test, date: 2006 CE, label: "North Korea's first nuclear test", prominence: 4, themes: [war, technology], sources: [wikipedia:2006_North_Korean_nuclear_test] }
+      - { id: singapore-summit, date: 2018 CE, label: "Kim Jong Un meets a US president in Singapore", prominence: 4, themes: [diplomacy], sources: [wikipedia:2018_North_Korea–United_States_Singapore_Summit] }
     sources: [wikipedia:North_Korea]
 
   # ------------------------------------------------------------------ japan
@@ -355,13 +399,15 @@ lanes:
       - { id: noh, date: c. 1400 CE, label: "Zeami perfects Noh theatre", prominence: 4, themes: [art], sources: [wikipedia:Zeami_Motokiyo] }
       - { id: tanegashima, date: 1543 CE, label: "Portuguese guns arrive at Tanegashima", prominence: 3, themes: [technology, war], sources: [wikipedia:Tanegashima_(Japanese_matchlock)] }
       - { id: nobunaga, date: 1582 CE, label: "Nobunaga, then Hideyoshi, reunite Japan by force", prominence: 3, themes: [war], sources: [wikipedia:Oda_Nobunaga] }
+      - { id: francis-xavier, date: 1549 CE, label: "Francis Xavier brings Christianity to Japan", prominence: 3, themes: [religion], sources: [wikipedia:Francis_Xavier] }
+      - { id: sword-hunt, date: 1588 CE, label: "Hideyoshi's sword hunt disarms the peasants", prominence: 4, themes: [government], sources: [wikipedia:Sword_hunt] }
     images:
       - { id: kinkakuji, source: "commons:File:Kinkaku-ji the Golden Temple in Kyoto overlooking the lake - high rez.JPG", date: 1397 CE, prominence: 3, treatment: plate, caption: "Kinkaku-ji, the Golden Pavilion" }
     sources: [wikipedia:Kamakura_shogunate]
 
   - id: edo
     name: Tokugawa Japan (Edo)
-    endonym: { text: 江戸, script: Jpan, translit: Edo }
+    endonym: { text: 江戶, script: Jpan, translit: Edo }
     region: east-asia
     group: japan
     sphere: korean-japanese
@@ -371,15 +417,21 @@ lanes:
     relations:
       - { type: becomes, lane: empire-japan, at: 1868 CE }
     events:
-      - { id: sekigahara, date: 1600 CE, label: "Sekigahara: Tokugawa Ieyasu wins Japan", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Sekigahara] }
+      - { id: sekigahara, date: 1600 CE, label: "Sekigahara: Tokugawa Ieyasu wins Japan", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Sekigahara], people: [p-tokugawa-ieyasu] }
       - { id: sakoku, date: 1639 CE, label: "Sakoku: Japan closes itself for two centuries", prominence: 2, themes: [trade], sources: [wikipedia:Sakoku] }
       - { id: basho, date: 1689 CE, label: "Bashō's Narrow Road to the Deep North", prominence: 4, themes: [art], sources: [wikipedia:Oku_no_Hosomichi] }
-      - { id: great-wave, date: 1831 CE, label: "Hokusai's Great Wave off Kanagawa", prominence: 1, themes: [art], sources: [wikipedia:The_Great_Wave_off_Kanagawa] }
+      - { id: great-wave, date: 1831 CE, label: "Hokusai's Great Wave off Kanagawa", prominence: 1, themes: [art], sources: [wikipedia:The_Great_Wave_off_Kanagawa], people: [p-hokusai] }
       - { id: perry, date: 1853 CE, label: "Perry's black ships force Japan open", prominence: 2, themes: [trade, war], sources: [wikipedia:Perry_Expedition] }
       - { id: kabuki, date: 1603 CE, label: "Izumo no Okuni begins kabuki", prominence: 4, themes: [art, women], sources: [wikipedia:Izumo_no_Okuni] }
       - { id: edo-largest, date: c. 1720 CE, label: "Edo, a million people, may be the world's largest city", prominence: 3, sources: [wikipedia:Edo] }
       - { id: rangaku, date: 1774 CE, label: "Rangaku: Dutch learning and the first Western anatomy in Japanese", prominence: 4, themes: [science], sources: [wikipedia:Rangaku] }
       - { id: ukiyo-e, date: c. 1765 CE, label: "Full-colour woodblock prints: ukiyo-e", prominence: 3, themes: [art], sources: [wikipedia:Ukiyo-e] }
+      - { id: shimabara, date: 1637 CE, label: "The Shimabara Rebellion of Christian peasants", prominence: 4, themes: [war, religion], sources: [wikipedia:Shimabara_Rebellion] }
+      - { id: genroku, date: c. 1690 CE, label: "Genroku: kabuki and woodblock prints flourish in Edo and Osaka", prominence: 4, themes: [art], sources: [wikipedia:Genroku] }
+      - { id: forty-seven-ronin, date: 1703 CE, label: "The 47 rōnin avenge their lord", prominence: 4, themes: [war], sources: [wikipedia:Forty-seven_rōnin] }
+      - { id: meireki-fire, date: 1657 CE, label: "The Great Fire of Meireki burns most of Edo", prominence: 4, sources: [wikipedia:Great_fire_of_Meireki] }
+      - { id: oshio, date: 1837 CE, label: "Ōshio Heihachirō's rising in famine-struck Osaka", prominence: 4, themes: [government], sources: [wikipedia:Ōshio_Heihachirō] }
+      - { id: last-shogun, date: 1867 CE, label: "The last shogun hands power back to the emperor", prominence: 4, themes: [government], sources: [wikipedia:Tokugawa_Yoshinobu] }
     images:
       - { id: great-wave-print, source: "commons:File:Tsunami by hokusai 19th century.jpg", date: 1831 CE, prominence: 1, treatment: plate, caption: "Hokusai, The Great Wave off Kanagawa" }
     sources: [wikipedia:Edo_period]
@@ -403,6 +455,9 @@ lanes:
       - { id: korea-annexed, date: 1910 CE, label: "Japan annexes Korea", prominence: 3, themes: [war], sources: [wikipedia:Japan–Korea_Treaty_of_1910] }
       - { id: manchuria, date: 1931 CE, label: "Japan seizes Manchuria", prominence: 3, themes: [war], sources: [wikipedia:Japanese_invasion_of_Manchuria] }
       - { id: kanto-quake, date: 1923 CE, label: "The Great Kantō earthquake", prominence: 4, sources: [wikipedia:1923_Great_Kantō_earthquake] }
+      - { id: japan-railway, date: 1872 CE, label: "Japan's first railway, Tokyo to Yokohama", prominence: 4, themes: [technology], sources: [wikipedia:Rail_transport_in_Japan] }
+      - { id: satsuma-rebellion, date: 1877 CE, label: "The Satsuma Rebellion: the last samurai rising", prominence: 4, themes: [war], sources: [wikipedia:Satsuma_Rebellion] }
+      - { id: meiji-constitution, date: 1889 CE, label: "The Meiji Constitution", prominence: 4, themes: [government], sources: [wikipedia:Meiji_Constitution] }
     sources: [wikipedia:Empire_of_Japan]
 
   - id: japan-postwar
@@ -421,4 +476,5 @@ lanes:
       - { id: walkman, date: 1979 CE, label: "Japan's electronics age: the Walkman", prominence: 4, themes: [technology], sources: [wikipedia:Walkman] }
       - { id: japan-miracle, date: c. 1960 CE, label: "The Japanese economic miracle", prominence: 3, themes: [trade], sources: [wikipedia:Japanese_economic_miracle] }
       - { id: lost-decade, date: 1991 CE, label: "The bubble bursts: the Lost Decades", prominence: 4, themes: [trade], sources: [wikipedia:Lost_Decades] }
+      - { id: kobe-quake, date: 1995 CE, label: "The Great Hanshin earthquake devastates Kobe", prominence: 4, themes: [climate], sources: [wikipedia:Great_Hanshin_earthquake] }
     sources: [wikipedia:Post-occupation_Japan]

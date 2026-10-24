@@ -48,19 +48,39 @@ export class Atlas {
     canvas.addEventListener('click', () => { if (this.hoverPolity?.properties.l) this.onPickLane(this.hoverPolity.properties.l); });
   }
 
-  async load(url: string) {
-    const topo = await fetch(url).then((r) => r.json()) as Topology<{ polities: GeometryCollection<PolityProps>; land: GeometryCollection }>;
-    this.polities = (feature(topo, topo.objects.polities) as FeatureCollection<Geometry, PolityProps>).features
-      // Smaller shapes last, so vassals and city-states sit on top of the empires around them.
-      .sort((a, b) => (this.path.area(b) ?? 0) - (this.path.area(a) ?? 0));
-    this.land = feature(topo, topo.objects.land) as FeatureCollection;
-    this.draw(true);
+  /** Era files listed by the index; each is fetched the first time its years are shown. */
+  private chunks: { from: number; to: number; url: string; polities?: Polity[]; loading?: Promise<void> }[] = [];
+  private current: (typeof this.chunks)[number] | null = null;
+
+  async load(indexUrl: string) {
+    this.chunks = (await fetch(indexUrl).then((r) => r.json()) as { chunks: { from: number; to: number; url: string }[] }).chunks;
+    await this.ensure(this.year);
+  }
+
+  /** Load (once) the era file covering a year, and make it the one drawn. */
+  private async ensure(year: number) {
+    const c = this.chunks.find((x) => year >= x.from && year <= x.to)
+      ?? (year < (this.chunks[0]?.from ?? 0) ? this.chunks[0] : this.chunks[this.chunks.length - 1]);
+    if (!c) return;
+    this.current = c;
+    if (!c.polities) {
+      c.loading ??= fetch(c.url).then((r) => r.json()).then((topo: Topology<{ polities: GeometryCollection<PolityProps>; land: GeometryCollection }>) => {
+        c.polities = (feature(topo, topo.objects.polities) as FeatureCollection<Geometry, PolityProps>).features
+          // Smaller shapes last, so vassals and city-states sit on top of the empires around them.
+          .sort((a, b) => (this.path.area(b) ?? 0) - (this.path.area(a) ?? 0));
+        this.land ??= feature(topo, topo.objects.land) as FeatureCollection;
+      });
+      await c.loading;
+    }
+    if (this.current === c) { this.polities = c.polities!; this.draw(true); }
   }
 
   /** Update the year (astronomical) and the lane in focus; redraws only when something changed. */
   set(year: number, focus: string | null) {
     this.year = Math.round(year);
     this.focus = focus;
+    const c = this.current;
+    if (this.chunks.length && (!c || this.year < c.from || this.year > c.to)) void this.ensure(this.year);
     this.draw();
   }
 

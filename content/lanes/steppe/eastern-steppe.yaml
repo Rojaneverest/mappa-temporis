@@ -32,6 +32,7 @@ lanes:
         themes: [war]
         sources: [wikipedia:Battle_of_Ikh_Bayan]
       - { id: heqin, date: 198 BCE, label: "Heqin: the Han pay tribute and send princesses north", prominence: 3, themes: [government], sources: [wikipedia:Heqin] }
+      - { id: noin-ula, date: c. 1 CE, label: "Noin-Ula: Xiongnu nobles buried with Chinese silks and Greek-style textiles", prominence: 4, themes: [trade, art], sources: [wikipedia:Noin-Ula_burial_site] }
     images:
       - id: xiongnu-buckle
         source: "met:322484"
@@ -67,6 +68,7 @@ lanes:
 
   - id: gokturks
     name: Göktürk Khaganate
+    endonym: { text: "Kök Türük", script: Latn }
     region: steppe
     sphere: steppe
     prominence: 2
@@ -86,7 +88,6 @@ lanes:
         confidence: probable
         sources: [wikipedia:Göktürk_civil_war]
       - { id: orkhon, date: 732 CE, label: "The Orkhon inscriptions: the oldest Turkic writing", prominence: 3, thread: scripts, sources: [wikipedia:Orkhon_inscriptions] }
-      - { id: gokturk-split, date: 583 CE, label: "The Turkic Khaganate splits east and west", prominence: 4, sources: [wikipedia:Turkic_Khaganate] }
     sources: [wikipedia:Turkic_Khaganate]
 
   - id: southern-xiongnu
@@ -112,5 +113,4 @@ lanes:
         prominence: 4
         themes: [war]
         sources: [wikipedia:Battle_of_Herat_(484)]
-      - { id: hephthalite-peroz, date: 484 CE, label: "The Hephthalites kill the Persian king Peroz", prominence: 4, themes: [war], sources: [wikipedia:Peroz_I] }
     sources: [wikipedia:Hephthalites]

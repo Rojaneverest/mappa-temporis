@@ -35,7 +35,7 @@ export class Viewer {
   private y0 = 0;
   private s = 0.05;
   private fitScale = 0.05;
-  /** Until the user moves the camera, keep the whole sheet fitted (also fixes loading in a hidden tab). */
+  /** Until the user moves the camera, keep the opening view (also fixes loading in a hidden tab). */
   private userMoved = false;
 
   private workers: Slot[] = [];
@@ -101,6 +101,7 @@ export class Viewer {
       if (keep) {
         this.x0 = keep.cx - this.cssW / 2 / this.s;
         this.y0 = keep.cy - this.cssH / 2 / this.s;
+        this.clamp();
       } else this.fit();
       this.dirty = true;
     };
@@ -111,20 +112,36 @@ export class Viewer {
   }
 
   // ------------------------------------------------------------------ camera
-  /** Window size changes also change the "fit" reference scale that zoom factors are measured against. */
+  /**
+   * Window size changes also change the "fit" reference scale that zoom factors are measured against.
+   * Fit means *cover*: the paper fills the screen and is the furthest you can zoom out (decision 28).
+   */
   private resize() {
     this.cssW = Math.max(1, window.innerWidth);
     this.cssH = Math.max(1, window.innerHeight);
     this.canvas.width = Math.round(this.cssW * this.dpr);
     this.canvas.height = Math.round(this.cssH * this.dpr);
-    this.fitScale = Math.max(1e-4, Math.min((this.cssW - RULER_W - 20) / this.dl.width, (this.cssH - HEADER_H - 10) / this.dl.height));
+    this.fitScale = Math.max(1e-4, Math.max((this.cssW - RULER_W) / this.dl.width, (this.cssH - HEADER_H) / this.dl.height));
   }
 
+  /** The opening view: the paper filling the screen, from the top of time. */
   fit() {
     this.s = this.fitScale;
-    this.x0 = -(RULER_W + (this.cssW - RULER_W - this.dl.width * this.s) / 2) / this.s;
-    this.y0 = -(HEADER_H + (this.cssH - HEADER_H - this.dl.height * this.s) / 2) / this.s;
+    this.x0 = -Infinity;
+    this.y0 = -Infinity;
+    this.clamp();
     this.dirty = true;
+  }
+
+  /** Keep the camera on the paper: never smaller than the screen, never past its edges. */
+  private clamp() {
+    this.s = Math.min(MAX_SCALE, Math.max(this.fitScale, this.s));
+    const fitAxis = (v: number, lead: number, screen: number, size: number) => {
+      const lo = -lead / this.s, hi = size - screen / this.s;
+      return hi < lo ? (lo + hi) / 2 : Math.min(hi, Math.max(lo, v));
+    };
+    this.x0 = fitAxis(this.x0, RULER_W, this.cssW, this.dl.width);
+    this.y0 = fitAxis(this.y0, HEADER_H, this.cssH, this.dl.height);
   }
 
   get view(): ViewState {
@@ -132,21 +149,23 @@ export class Viewer {
   }
 
   setView(v: ViewState) {
-    this.s = Math.min(MAX_SCALE, Math.max(this.fitScale * 0.5, v.z * this.fitScale));
+    this.s = Math.min(MAX_SCALE, Math.max(this.fitScale, v.z * this.fitScale));
     this.x0 = v.cx - this.cssW / 2 / this.s;
     this.y0 = v.cy - this.cssH / 2 / this.s;
+    this.clamp();
     this.userMoved = true;
     this.dirty = true;
   }
 
   private moved() {
+    this.clamp();
     this.userMoved = true;
     this.dirty = true;
     this.onViewChange(this.view);
   }
 
   private zoomAt(px: number, py: number, factor: number) {
-    const s = Math.min(MAX_SCALE, Math.max(this.fitScale * 0.5, this.s * factor));
+    const s = Math.min(MAX_SCALE, Math.max(this.fitScale, this.s * factor));
     const wx = this.x0 + px / this.s;
     const wy = this.y0 + py / this.s;
     this.s = s;
@@ -453,6 +472,7 @@ export class Viewer {
     }
     if (!this.dirty) return;
     this.dirty = false;
+    this.clamp();
     this.draw();
   }
 

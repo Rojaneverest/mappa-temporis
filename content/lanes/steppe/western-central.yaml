@@ -16,6 +16,8 @@ lanes:
       - { id: herodotus-scythians, date: c. 440 BCE, label: "Herodotus describes Scythian burials, horses and gold", prominence: 4, themes: [ideas], sources: [wikipedia:Scythians] }
       - { id: arzhan, date: c. 800 BCE, label: "The Arzhan kurgan: the earliest Scythian royal tomb", prominence: 3, sources: [wikipedia:Arzhan_(kurgan)] }
       - { id: pazyryk, date: c. 300 BCE, label: "Pazyryk: tattooed chiefs and the world's oldest pile carpet, frozen in ice", prominence: 3, themes: [art], sources: [wikipedia:Pazyryk_burials] }
+      - { id: cimmerians, date: c. 700 BCE, label: "Scythians drive the Cimmerians into Anatolia", prominence: 4, themes: [war, migration], confidence: probable, sources: [wikipedia:Cimmerians] }
+      - { id: arzhan-2, date: c. 620 BCE, label: "Arzhan 2: a Scythian king and queen buried with 20 kg of gold", prominence: 3, themes: [art], sources: [wikipedia:Arzhan] }
     sources: [wikipedia:Scythians]
 
   - id: sarmatians
@@ -60,6 +62,7 @@ lanes:
 
   - id: greco-bactria
     name: Greco-Bactrian kingdom
+    endonym: { text: "Βακτριανή", script: Grek, translit: "Baktrianḗ" }
     region: steppe
     group: central-asia
     sphere: hellenic

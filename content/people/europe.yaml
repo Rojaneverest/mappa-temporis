@@ -1,0 +1,53 @@
+# People of Europe: drawn beside their lane at the century zoom, with a bar for their lifetime.
+people:
+  - { id: p-sappho, name: Sappho, lane: greek-poleis, life: "c. 630 – c. 570 BCE", role: "poet of Lesbos", prominence: 3, sources: [wikipedia:Sappho] }
+  - { id: p-solon, name: Solon, lane: athens, life: "c. 630 – c. 560 BCE", role: "lawgiver of Athens", prominence: 3, sources: [wikipedia:Solon] }
+  - { id: p-pericles, name: Pericles, lane: athens, life: "c. 495 – 429 BCE", role: "leader of democratic Athens", prominence: 2, sources: [wikipedia:Pericles] }
+  - { id: p-herodotus, name: Herodotus, lane: greek-poleis, life: "c. 484 – c. 425 BCE", role: "the 'father of history'", prominence: 3, sources: [wikipedia:Herodotus] }
+  - { id: p-socrates, name: Socrates, lane: athens, life: "c. 470 – 399 BCE", role: "philosopher, put to death by Athens", prominence: 2, sources: [wikipedia:Socrates] }
+  - { id: p-plato, name: Plato, lane: athens, life: "c. 428 – 348 BCE", role: "philosopher, founder of the Academy", prominence: 2, sources: [wikipedia:Plato] }
+  - { id: p-aristotle, name: Aristotle, lane: athens, life: "384 – 322 BCE", role: "philosopher, tutor of Alexander", prominence: 2, sources: [wikipedia:Aristotle] }
+  - { id: p-alexander, name: Alexander the Great, lane: alexander-empire, life: "356 – 323 BCE", role: "conqueror from Greece to India", prominence: 2, endonym: { text: "Ἀλέξανδρος", script: Grek, translit: Aléxandros }, sources: [wikipedia:Alexander_the_Great] }
+  - { id: p-archimedes, name: Archimedes, lane: roman-republic, life: "c. 287 – 212 BCE", role: "mathematician of Syracuse", prominence: 3, sources: [wikipedia:Archimedes] }
+  - { id: p-cicero, name: Cicero, lane: roman-republic, life: "106 – 43 BCE", role: "orator and statesman", prominence: 3, sources: [wikipedia:Cicero] }
+  - { id: p-julius-caesar, name: Julius Caesar, lane: roman-republic, life: "100 – 44 BCE", role: "general and dictator", prominence: 2, sources: [wikipedia:Julius_Caesar] }
+  - { id: p-virgil, name: Virgil, lane: roman-republic, life: "70 – 19 BCE", role: "poet of the Aeneid", prominence: 3, sources: [wikipedia:Virgil] }
+  - { id: p-augustus, name: Augustus, lane: roman-empire, life: "63 BCE – 14 CE", role: "first Roman emperor", prominence: 2, sources: [wikipedia:Augustus] }
+  - { id: p-marcus-aurelius, name: Marcus Aurelius, lane: roman-empire, life: "121 – 180 CE", role: "philosopher-emperor", prominence: 3, sources: [wikipedia:Marcus_Aurelius] }
+  - { id: p-constantine, name: Constantine, lane: roman-empire, life: "c. 272 – 337 CE", role: "first Christian emperor", prominence: 2, sources: [wikipedia:Constantine_the_Great] }
+  - { id: p-augustine, name: Augustine of Hippo, lane: western-roman, life: "354 – 430 CE", role: "bishop and theologian", prominence: 3, sources: [wikipedia:Augustine_of_Hippo] }
+  - { id: p-justinian, name: Justinian, lane: eastern-roman, life: "c. 482 – 565 CE", role: "emperor, codifier of Roman law", prominence: 2, sources: [wikipedia:Justinian_I] }
+  - { id: p-theodora, name: Theodora, lane: eastern-roman, life: "c. 497 – 548 CE", role: "empress and co-ruler", prominence: 3, sources: [wikipedia:Theodora_(wife_of_Justinian_I)] }
+  - { id: p-charlemagne, name: Charlemagne, lane: carolingians, life: "c. 747 – 814 CE", role: "king of the Franks, emperor", prominence: 2, sources: [wikipedia:Charlemagne] }
+  - { id: p-alfred, name: Alfred the Great, lane: anglo-saxons, life: "849 – 899 CE", role: "king of Wessex", prominence: 3, sources: [wikipedia:Alfred_the_Great] }
+  - { id: p-hildegard, name: Hildegard of Bingen, lane: holy-roman-empire, life: "1098 – 1179 CE", role: "abbess, composer and visionary", prominence: 3, sources: [wikipedia:Hildegard_of_Bingen] }
+  - { id: p-aquinas, name: Thomas Aquinas, lane: papal-states, life: "c. 1225 – 1274 CE", role: "theologian", prominence: 3, sources: [wikipedia:Thomas_Aquinas] }
+  - { id: p-dante, name: Dante, lane: italian-cities, life: "c. 1265 – 1321 CE", role: "poet of the Divine Comedy", prominence: 2, sources: [wikipedia:Dante_Alighieri] }
+  - { id: p-joan-of-arc, name: Joan of Arc, lane: france, life: "c. 1412 – 1431 CE", role: "led French armies, burned at 19", prominence: 3, sources: [wikipedia:Joan_of_Arc] }
+  - { id: p-gutenberg, name: Johannes Gutenberg, lane: holy-roman-empire, life: "c. 1400 – 1468 CE", role: "printer with movable type", prominence: 2, sources: [wikipedia:Johannes_Gutenberg] }
+  - { id: p-leonardo, name: Leonardo da Vinci, lane: italian-cities, life: "1452 – 1519 CE", role: "painter, engineer, anatomist", prominence: 2, sources: [wikipedia:Leonardo_da_Vinci] }
+  - { id: p-michelangelo, name: Michelangelo, lane: italian-cities, life: "1475 – 1564 CE", role: "sculptor and painter", prominence: 3, sources: [wikipedia:Michelangelo] }
+  - { id: p-columbus, name: Christopher Columbus, lane: spain, life: "c. 1451 – 1506 CE", role: "sailed west for Castile", prominence: 3, sources: [wikipedia:Christopher_Columbus] }
+  - { id: p-copernicus, name: Nicolaus Copernicus, lane: poland, life: "1473 – 1543 CE", role: "put the Sun at the centre", prominence: 2, sources: [wikipedia:Nicolaus_Copernicus] }
+  - { id: p-luther, name: Martin Luther, lane: holy-roman-empire, life: "1483 – 1546 CE", role: "began the Reformation", prominence: 2, sources: [wikipedia:Martin_Luther] }
+  - { id: p-elizabeth-i, name: Elizabeth I, lane: england, life: "1533 – 1603 CE", role: "queen of England", prominence: 3, sources: [wikipedia:Elizabeth_I] }
+  - { id: p-shakespeare, name: William Shakespeare, lane: england, life: "1564 – 1616 CE", role: "playwright and poet", prominence: 2, sources: [wikipedia:William_Shakespeare] }
+  - { id: p-galileo, name: Galileo Galilei, lane: italian-cities, life: "1564 – 1642 CE", role: "astronomer, tried by the Inquisition", prominence: 2, sources: [wikipedia:Galileo_Galilei] }
+  - { id: p-descartes, name: René Descartes, lane: france, life: "1596 – 1650 CE", role: "philosopher and mathematician", prominence: 3, sources: [wikipedia:René_Descartes] }
+  - { id: p-newton, name: Isaac Newton, lane: england, life: "1643 – 1727 CE", role: "laws of motion and gravity", prominence: 2, sources: [wikipedia:Isaac_Newton] }
+  - { id: p-peter-the-great, name: Peter the Great, lane: muscovy, life: "1672 – 1725 CE", role: "tsar who westernised Russia", prominence: 2, sources: [wikipedia:Peter_the_Great] }
+  - { id: p-voltaire, name: Voltaire, lane: france, life: "1694 – 1778 CE", role: "Enlightenment writer", prominence: 3, sources: [wikipedia:Voltaire] }
+  - { id: p-catherine-the-great, name: Catherine the Great, lane: muscovy, life: "1729 – 1796 CE", role: "empress of Russia", prominence: 3, sources: [wikipedia:Catherine_the_Great] }
+  - { id: p-mozart, name: Wolfgang Amadeus Mozart, lane: habsburg-austria, life: "1756 – 1791 CE", role: "composer", prominence: 3, sources: [wikipedia:Wolfgang_Amadeus_Mozart] }
+  - { id: p-napoleon-bonaparte, name: Napoleon Bonaparte, lane: france, life: "1769 – 1821 CE", role: "emperor of the French", prominence: 2, sources: [wikipedia:Napoleon] }
+  - { id: p-beethoven, name: Ludwig van Beethoven, lane: germany, life: "1770 – 1827 CE", role: "composer", prominence: 3, sources: [wikipedia:Ludwig_van_Beethoven] }
+  - { id: p-charles-darwin, name: Charles Darwin, lane: united-kingdom, life: "1809 – 1882 CE", role: "naturalist, theory of evolution", prominence: 2, sources: [wikipedia:Charles_Darwin] }
+  - { id: p-ada-lovelace, name: Ada Lovelace, lane: united-kingdom, life: "1815 – 1852 CE", role: "wrote the first computer program", prominence: 4, sources: [wikipedia:Ada_Lovelace] }
+  - { id: p-karl-marx, name: Karl Marx, lane: germany, life: "1818 – 1883 CE", role: "author of Capital", prominence: 2, sources: [wikipedia:Karl_Marx] }
+  - { id: p-marie-curie, name: Marie Curie, lane: france, life: "1867 – 1934 CE", role: "physicist and chemist, two Nobel prizes", prominence: 2, sources: [wikipedia:Marie_Curie] }
+  - { id: p-lenin, name: Vladimir Lenin, lane: muscovy, life: "1870 – 1924 CE", role: "Bolshevik leader", prominence: 2, sources: [wikipedia:Vladimir_Lenin] }
+  - { id: p-churchill, name: Winston Churchill, lane: united-kingdom, life: "1874 – 1965 CE", role: "wartime prime minister", prominence: 3, sources: [wikipedia:Winston_Churchill] }
+  - { id: p-stalin, name: Joseph Stalin, lane: muscovy, life: "1878 – 1953 CE", role: "Soviet dictator", prominence: 2, sources: [wikipedia:Joseph_Stalin] }
+  - { id: p-einstein, name: Albert Einstein, lane: germany, life: "1879 – 1955 CE", role: "physicist, relativity", prominence: 2, sources: [wikipedia:Albert_Einstein] }
+  - { id: p-hitler, name: Adolf Hitler, lane: germany, life: "1889 – 1945 CE", role: "Nazi dictator", prominence: 2, sources: [wikipedia:Adolf_Hitler] }
+  - { id: p-gorbachev, name: Mikhail Gorbachev, lane: muscovy, life: "1931 – 2022 CE", role: "last Soviet leader", prominence: 3, sources: [wikipedia:Mikhail_Gorbachev] }

@@ -15,6 +15,8 @@ interface Base {
   /** Bounding box [minX, minY, maxX, maxY] in world units (filled by the build). */
   b?: [number, number, number, number];
   fade?: Fade;
+  /** Scale range over which an item fades out: [fully visible below, invisible at]. */
+  fadeOut?: Fade;
   alpha?: number;
   /** Stable id of the content item this mark belongs to (for picking / the Folio). */
   ref?: string;
@@ -93,7 +95,7 @@ export interface ImageItem extends Base {
   h: number;
   /** Available long-side pixel sizes, ascending. */
   sizes: number[];
-  treatment: 'cutout' | 'plate' | 'backdrop';
+  treatment: 'cutout' | 'plate' | 'backdrop' | 'coin';
 }
 
 export type Item = TextItem | PathItem | RectItem | LineItem | ImageItem;

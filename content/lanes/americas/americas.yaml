@@ -28,6 +28,7 @@ lanes:
       - { id: hopewell-trade, date: c. 100 CE, label: "Trade spans a continent: Rockies obsidian, Gulf shells, Lake Superior copper", prominence: 2, themes: [trade], sources: [wikipedia:Hopewell_tradition] }
       - { id: newark-earthworks, date: c. 250 CE, label: "The Newark Earthworks, aligned to the 18.6-year cycle of the Moon", prominence: 3, confidence: probable, themes: [sky, art], sources: [wikipedia:Newark_Earthworks] }
       - { id: hopewell-obsidian, date: c. 100 CE, label: "Obsidian from Yellowstone and shells from Florida meet in Ohio", prominence: 4, themes: [trade], sources: [wikipedia:Hopewell_Interaction_Sphere] }
+      - { id: hopewell-fades, date: c. 500 CE, label: "The Hopewell exchange network fades", prominence: 4, themes: [trade], sources: [wikipedia:Hopewell_tradition] }
     images:
       - { id: hopewell-falcon, source: "commons:File:Hopewell culture falcon.jpg", date: c. 200 CE, prominence: 2, treatment: cutout, caption: "Hopewell falcon cut from sheet copper" }
     sources: [wikipedia:Hopewell_tradition]
@@ -42,6 +43,7 @@ lanes:
     span: c. 1500 BCE – c. 750 CE
     events:
       - { id: bow-arrow, date: c. 500 CE, label: "The bow and arrow and fired pottery reach the Southwest", prominence: 4, confidence: probable, themes: [technology], sources: [wikipedia:Basketmaker_III_era] }
+      - { id: maize-southwest, date: c. 1500 BCE, label: "Maize farming takes hold in the American Southwest", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Basketmaker_culture] }
     sources: [wikipedia:Ancestral_Puebloans]
 
   # ------------------------------------------------------------------ mesoamerica
@@ -59,6 +61,7 @@ lanes:
       - { id: cascajal, date: c. 900 BCE, label: "The Cascajal Block — perhaps the first writing in the Americas", prominence: 4, confidence: disputed, thread: scripts, sources: [wikipedia:Cascajal_Block] }
       - { id: colossal-heads, date: c. 1200 BCE, label: "San Lorenzo's colossal stone heads", prominence: 2, themes: [art], sources: [wikipedia:Olmec_colossal_heads] }
       - { id: olmec-ballgame, date: c. 1000 BCE, label: "Rubber balls and the Mesoamerican ballgame", prominence: 3, themes: [religion], sources: [wikipedia:Mesoamerican_ballgame] }
+      - { id: la-venta-abandoned, date: c. 400 BCE, label: "La Venta is abandoned", prominence: 4, sources: [wikipedia:La_Venta] }
     images:
       - { id: olmec-face, source: "met:310279", date: c. 700 BCE, prominence: 3, treatment: cutout, caption: "Olmec jade face" }
     sources: [wikipedia:Olmecs]
@@ -121,6 +124,12 @@ lanes:
       - { id: dresden-codex, date: c. 1200 CE, label: "The Dresden Codex tracks Venus and eclipses", prominence: 3, themes: [sky, science], thread: calendars, sources: [wikipedia:Dresden_Codex] }
       - { id: mani-auto-da-fe, date: 1562 CE, label: "Bishop Landa burns the Maya books at Maní", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Diego_de_Landa] }
       - { id: nojpeten, date: 1697 CE, label: "Nojpetén, the last independent Maya city, falls", prominence: 3, themes: [war], sources: [wikipedia:Spanish_conquest_of_Petén] }
+      - { id: maya-villages, date: c. 2000 BCE, label: "Farming villages appear in the Maya lands", prominence: 4, confidence: probable, sources: [wikipedia:Maya_civilization] }
+      - { id: ceibal, date: c. 1000 BCE, label: "Ceibal: the first Maya ceremonial plaza", prominence: 3, themes: [religion], sources: [wikipedia:Ceibal_(Maya_site)] }
+      - { id: nakbe, date: c. 750 BCE, label: "Nakbe raises the first great Maya platforms", prominence: 3, themes: [art], sources: [wikipedia:Nakbe] }
+      - { id: san-bartolo, date: c. 100 BCE, label: "The San Bartolo murals: the Maya creation story in paint", prominence: 3, themes: [art, religion], sources: [wikipedia:San_Bartolo_(Maya_site)] }
+      - { id: el-mirador-falls, date: c. 150 CE, label: "El Mirador is abandoned", prominence: 4, sources: [wikipedia:El_Mirador] }
+      - { id: mayapan, date: c. 1220 CE, label: "Mayapán becomes the last great Maya capital", prominence: 4, sources: [wikipedia:Mayapan] }
     images:
       - { id: maya-vessel, source: "met:662967", date: c. 700 CE, prominence: 2, treatment: cutout, caption: "Maya vessel with a mythological scene" }
       - { id: tikal-temple, source: "commons:File:Tikal Temple I.jpg", date: 732 CE, prominence: 2, treatment: plate, caption: "Tikal, Temple I" }
@@ -139,6 +148,7 @@ lanes:
     events:
       - { id: chavin-temple, date: c. 750 BCE, label: "Pilgrims crowd the labyrinthine temple at Chavín de Huántar", prominence: 3, themes: [religion], sources: [wikipedia:Chavín_de_Huántar] }
       - { id: lanzon, date: c. 800 BCE, label: "The Lanzón, a carved deity deep in the temple's galleries", prominence: 3, themes: [religion, art], sources: [wikipedia:Lanzón] }
+      - { id: chavin-cult, date: c. 500 BCE, label: "The Chavín cult spreads through the Andes", prominence: 4, themes: [religion], sources: [wikipedia:Chavín_culture] }
     sources: [wikipedia:Chavín_culture]
 
   - id: paracas
@@ -198,6 +208,7 @@ lanes:
     events:
       - { id: gateway-sun, date: c. 600 CE, label: "The Gateway of the Sun above Lake Titicaca", prominence: 3, themes: [art], confidence: probable, sources: [wikipedia:Gate_of_the_Sun] }
       - { id: titicaca-fields, date: c. 600 CE, label: "Raised fields around Lake Titicaca feed perhaps 100,000", prominence: 3, themes: [technology], sources: [wikipedia:Tiwanaku] }
+      - { id: tiwanaku-falls, date: c. 1000 CE, label: "Tiwanaku collapses in a long drought", prominence: 4, themes: [climate], confidence: probable, sources: [wikipedia:Tiwanaku] }
     sources: [wikipedia:Tiwanaku]
 
   - id: wari

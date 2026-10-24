@@ -31,6 +31,8 @@ lanes:
       - { id: yangshao-pottery, date: c. 4500 BCE, label: "Painted pottery villages along the Yellow River", prominence: 3, themes: [art], sources: [wikipedia:Yangshao_culture] }
       - { id: banpo, date: c. 4500 BCE, label: "Banpo village: round houses, kilns, painted fish", prominence: 3, sources: [wikipedia:Banpo] }
       - { id: silk-first, date: c. 3600 BCE, label: "Silkworms are cultivated", prominence: 3, thread: silk-road, themes: [technology], confidence: probable, sources: [wikipedia:Silk] }
+      - { id: majiayao, date: c. 3100 BCE, label: "Majiayao potters in Gansu paint jars with swirling spirals", prominence: 4, themes: [art], sources: [wikipedia:Majiayao_culture] }
+      - { id: linjia-knife, date: c. 3000 BCE, label: "A bronze knife at Linjia, the oldest found in China", prominence: 4, themes: [technology], sources: [wikipedia:Majiayao_culture] }
     sources: [wikipedia:Yangshao_culture]
 
   - id: liangzhu
@@ -44,6 +46,7 @@ lanes:
     events:
       - { id: liangzhu-dams, date: c. 3000 BCE, label: "Liangzhu's jade and dams: one of East Asia's first states", prominence: 3, themes: [technology], sources: [wikipedia:Liangzhu_culture] }
       - { id: liangzhu-jade, date: c. 3000 BCE, label: "Jade cong tubes, symbols of power", prominence: 4, themes: [art], sources: [wikipedia:Cong_(vessel)] }
+      - { id: liangzhu-ends, date: c. 2300 BCE, label: "Liangzhu collapses, perhaps after great floods", prominence: 4, themes: [climate], confidence: probable, sources: [wikipedia:Liangzhu_culture] }
     sources: [wikipedia:Liangzhu_culture]
 
   - id: longshan
@@ -59,10 +62,12 @@ lanes:
     events:
       - { id: taosi, date: c. 2300 BCE, label: "Taosi: a walled city with a solar observatory", prominence: 3, themes: [sky], sources: [wikipedia:Taosi] }
       - { id: shimao, date: c. 2000 BCE, label: "Shimao's stone walls, decorated with carved faces", prominence: 4, sources: [wikipedia:Shimao_(site)] }
+      - { id: eggshell-pottery, date: c. 2500 BCE, label: "Longshan potters throw black eggshell-thin cups", prominence: 4, themes: [art], sources: [wikipedia:Longshan_culture] }
     sources: [wikipedia:Longshan_culture]
 
   - id: xia
     name: Xia · Erlitou
+    endonym: { text: "夏", script: Hant, translit: "Xià" }
     region: east-asia
     group: china
     sphere: sinic
@@ -74,6 +79,7 @@ lanes:
     events:
       - { id: yu-flood, date: c. 2070 BCE, label: "Yu the Great tames the flood and founds the Xia (tradition)", prominence: 3, confidence: legendary, sources: [wikipedia:Xia_dynasty] }
       - { id: erlitou, date: c. 1800 BCE, label: "Erlitou: palaces and the first bronze ritual vessels", prominence: 3, sources: [wikipedia:Erlitou_culture] }
+      - { id: erlitou-dragon, date: c. 1700 BCE, label: "A turquoise dragon is buried at Erlitou", prominence: 4, themes: [art], sources: [wikipedia:Erlitou_culture] }
     sources: [wikipedia:Xia_dynasty]
 
   - id: sanxingdui
@@ -104,6 +110,8 @@ lanes:
       - { id: yinxu, date: c. 1300 BCE, label: "The capital moves to Yin (Anyang)", prominence: 3, sources: [wikipedia:Yinxu] }
       - { id: oracle-bones, date: c. 1250 BCE, label: "Oracle bones: the first Chinese writing, questions put to the ancestors", prominence: 1, thread: scripts, themes: [religion, ideas], sources: [wikipedia:Oracle_bone_script] }
       - { id: fu-hao, date: c. 1200 BCE, label: "Fu Hao, queen and general, buried with 1,600 objects", prominence: 2, themes: [women, war], sources: [wikipedia:Fu_Hao] }
+      - { id: erligang, date: c. 1600 BCE, label: "Erligang: a walled Shang capital at Zhengzhou", prominence: 3, sources: [wikipedia:Erligang_culture] }
+      - { id: chariots-china, date: c. 1200 BCE, label: "Horse chariots reach China from the steppe", prominence: 3, themes: [technology, war], sources: [wikipedia:Chariot] }
     sources: [wikipedia:Shang_dynasty]
 
   - id: western-zhou
@@ -134,4 +142,7 @@ lanes:
     span: c. 1500 – c. 300 BCE
     relations:
       - { type: becomes, lane: gojoseon, at: c. 400 BCE }
+    events:
+      - { id: mumun-rice, date: c. 1500 BCE, label: "Rice farming and the first large villages of Korea", prominence: 3, themes: [technology], sources: [wikipedia:Mumun_pottery_period] }
+      - { id: korean-dolmens, date: c. 800 BCE, label: "Korea raises dolmens: nearly half the world's total", prominence: 4, themes: [religion], sources: [wikipedia:Gochang, _Hwasun_and_Ganghwa_Dolmen_Sites] }
     sources: [wikipedia:Mumun_pottery_period]

@@ -14,6 +14,8 @@ lanes:
       - { id: mehrgarh-farming, date: c. 7000 BCE, label: "Farming villages with barley, wheat and cattle at the foot of the Bolan Pass", prominence: 3, themes: [technology], sources: [wikipedia:Mehrgarh] }
       - { id: mehrgarh-dentistry, date: c. 5500 BCE, label: "Mehrgarh: teeth drilled with flint bits — the oldest dentistry", prominence: 3, themes: [science], sources: [wikipedia:Mehrgarh] }
       - { id: mehrgarh-cotton, date: c. 5000 BCE, label: "Cotton is cultivated in the Indus borderlands", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Cotton] }
+      - { id: zebu, date: c. 6500 BCE, label: "Humped zebu cattle are domesticated in South Asia", prominence: 4, themes: [technology], confidence: probable, sources: [wikipedia:Zebu] }
+      - { id: mehrgarh-wheel, date: c. 4000 BCE, label: "Mehrgarh potters turn pots on the wheel", prominence: 4, themes: [technology], sources: [wikipedia:Mehrgarh] }
     sources: [wikipedia:Mehrgarh]
 
   - id: indus-valley
@@ -36,6 +38,9 @@ lanes:
       - { id: indus-decline, date: c. 1900 BCE, label: "As the monsoon weakens, the great cities empty", prominence: 2, themes: [climate, migration], confidence: probable, sources: [wikipedia:Indus_Valley_Civilisation] }
       - { id: indus-weights, date: c. 2600 BCE, label: "Standard weights, baked bricks, drains in every street", prominence: 3, themes: [technology, government], sources: [wikipedia:Indus_Valley_Civilisation] }
       - { id: lothal, date: c. 2400 BCE, label: "Lothal's dock; Indus seals turn up in Mesopotamia", prominence: 3, themes: [trade], sources: [wikipedia:Lothal] }
+      - { id: kot-diji, date: c. 3300 BCE, label: "Early Harappan towns such as Kot Diji", prominence: 4, sources: [wikipedia:Kot_Diji] }
+      - { id: daimabad, date: c. 1800 BCE, label: "Bronze chariot and animals buried at Daimabad", prominence: 4, themes: [art], confidence: disputed, sources: [wikipedia:Daimabad] }
+      - { id: cemetery-h, date: c. 1800 BCE, label: "Late Harappan villages: the Cemetery H culture", prominence: 4, sources: [wikipedia:Cemetery_H_culture] }
     images:
       - { id: mohenjo-daro-view, source: "commons:File:Mohenjo-daro.jpg", date: c. 2500 BCE, prominence: 2, treatment: plate, caption: "Mohenjo-daro: the Great Bath and the stupa mound" }
     sources: [wikipedia:Indus_Valley_Civilisation]
@@ -51,6 +56,8 @@ lanes:
       - { type: becomes, lane: vedic, at: c. 1100 BCE }
     events:
       - { id: rigveda, date: c. 1400 BCE, label: "The hymns of the Rigveda are composed and memorised", prominence: 2, confidence: probable, themes: [religion, art], sources: [wikipedia:Rigveda] }
+      - { id: indo-aryans-punjab, date: c. 1500 BCE, label: "Indo-Aryan speakers settle the Punjab", prominence: 3, themes: [migration], confidence: probable, sources: [wikipedia:Indo-Aryan_migrations] }
+      - { id: mitanni-treaty-gods, date: c. 1380 BCE, label: "A Mitanni treaty invokes Vedic gods: Indra, Mitra, Varuna", prominence: 4, themes: [religion], sources: [wikipedia:Mitanni] }
     sources: [wikipedia:Vedic_period]
 
   - id: southern-neolithic
@@ -63,4 +70,7 @@ lanes:
     span: c. 3000 – c. 300 BCE
     relations:
       - { type: becomes, lane: tamilakam, at: c. 300 BCE }
+    events:
+      - { id: sanganakallu, date: c. 2000 BCE, label: "Deccan herders burn cattle dung into great ash mounds", prominence: 4, sources: [wikipedia:Sanganakallu] }
+      - { id: south-megaliths, date: c. 1000 BCE, label: "Iron and megalithic burials spread across South India", prominence: 4, themes: [technology, religion], sources: [wikipedia:Iron_Age_in_India] }
     sources: [wikipedia:South_Indian_Neolithic]

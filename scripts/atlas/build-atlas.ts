@@ -1,5 +1,6 @@
 // Atlas data for a sheet: Cliopatria polity borders (Seshat, CC BY 4.0) within the sheet's
-// window, simplified, linked to our lanes, plus Natural Earth land — as one small TopoJSON.
+// window, simplified, linked to our lanes, plus Natural Earth land — split into one small TopoJSON
+// per era with an index (<sheet>.atlas.json), so the map loads only what the current year needs.
 //
 //   node scripts/atlas/build-atlas.ts [sheetId]
 //
@@ -59,19 +60,44 @@ for (const f of clio.features) {
     properties: { n: p.Name, f: p.FromYear, t: p.ToYear, ...(lane ? { l: lane.id, c: laneColor(lane.sphere, Math.min(3, lane.prominence) as 1 | 2 | 3) } : {}) },
   });
 }
-writeFileSync(join(CACHE, `${SHEET_ID}-polities.geojson`), JSON.stringify({ type: 'FeatureCollection', features }));
-
-// ---- simplify + quantise into one TopoJSON with two objects: polities and land
-const out = join(OUT, `${SHEET_ID}.topo.json`);
-execFileSync('npx', ['mapshaper',
-  '-i', join(CACHE, `${SHEET_ID}-polities.geojson`), LAND, 'combine-files',
-  '-rename-layers', 'polities,land',
-  // Thousands of shapes on the world sheet: simplify harder so the inset map stays light.
-  '-simplify', features.length > 5000 ? '2.5%' : '7%', 'keep-shapes', 'target=*',
-  '-o', 'format=topojson', 'quantization=20000', 'target=*', out,
-], { stdio: 'pipe', cwd: ROOT });
-
-const size = statSync(out).size;
-console.log(`✓ atlas ${SHEET_ID}: ${features.length} shapes, ${matched.size}/${lanes.length} lanes linked, ${(size / 1024).toFixed(0)} KB`);
+// ---- one small TopoJSON per era (polities alive in it, plus land), and an index the viewer
+// reads first: the inset map only ever needs the shapes of the year under the cursor.
+const alive = (c: { from: number; to: number }) => features.filter((f) => (f.properties.t as number) >= c.from && (f.properties.f as number) <= c.to).length;
+const chunks: { from: number; to: number }[] = [];
+const split = (c: { from: number; to: number }): void => {
+  // Crowded stretches (the Middle Ages has thousands of shapes) are halved until each file is light.
+  if (alive(c) > 1500 && c.to - c.from > 60) {
+    const mid = Math.floor((c.from + c.to) / 2);
+    split({ from: c.from, to: mid });
+    split({ from: mid + 1, to: c.to });
+  } else chunks.push(c);
+};
+for (const sp of sheet.eras.map((e) => parseSpan(e.span))) {
+  const c = { from: Math.max(win.start.year, sp.start.year), to: Math.min(win.end.year, sp.end.year) };
+  if (c.to >= c.from) split(c);
+}
+const index: { chunks: { from: number; to: number; url: string }[] } = { chunks: [] };
+mkdirSync(join(OUT, SHEET_ID), { recursive: true });
+let total = 0;
+for (const [i, c] of chunks.entries()) {
+  const part = features.filter((f) => (f.properties.t as number) >= c.from && (f.properties.f as number) <= c.to);
+  const src = join(CACHE, `${SHEET_ID}-${i}.geojson`);
+  writeFileSync(src, JSON.stringify({ type: 'FeatureCollection', features: part }));
+  const file = `${SHEET_ID}/${i}.topo.json`;
+  execFileSync('npx', ['mapshaper',
+    '-i', src, LAND, 'combine-files',
+    '-rename-layers', 'polities,land',
+    // Busy eras get simplified harder so each file stays light.
+    '-simplify', part.length > 2000 ? '3%' : '7%', 'keep-shapes', 'target=*',
+    '-o', 'format=topojson', 'quantization=20000', 'target=*', join(OUT, file),
+  ], { stdio: 'pipe', cwd: ROOT });
+  const size = statSync(join(OUT, file)).size;
+  total += size;
+  index.chunks.push({ from: c.from, to: c.to, url: `/atlas/${file}` });
+  if (process.env.VERBOSE) console.log(`  ${file}: ${part.length} shapes, ${(size / 1024).toFixed(0)} KB`);
+}
+writeFileSync(join(OUT, `${SHEET_ID}.atlas.json`), JSON.stringify(index));
+const largest = Math.max(...index.chunks.map((c) => statSync(join(OUT, c.url.slice('/atlas/'.length))).size));
+console.log(`✓ atlas ${SHEET_ID}: ${features.length} shapes in ${chunks.length} era files (largest ${(largest / 1024).toFixed(0)} KB, all ${(total / 1024).toFixed(0)} KB), ${matched.size}/${lanes.length} lanes linked`);
 const unmatched = lanes.filter((l) => !matched.has(l.id) && parseSpan(l.span).end.year >= win.start.year && parseSpan(l.span).start.year <= win.end.year);
 if (process.env.VERBOSE) console.log('  not linked:', unmatched.map((l) => l.id).join(', '));

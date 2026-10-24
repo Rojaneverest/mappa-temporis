@@ -37,6 +37,9 @@ lanes:
     events:
       - { id: khmer-rouge, date: 1975 CE, label: "The Khmer Rouge: a quarter of Cambodians die", prominence: 2, themes: [war], sources: [wikipedia:Cambodian_genocide] }
       - { id: angkor-rediscovered, date: 1860 CE, label: "Mouhot's drawings bring Angkor to Europe", prominence: 4, sources: [wikipedia:Henri_Mouhot] }
+      - { id: longvek, date: 1594 CE, label: "Siam sacks Longvek, the Khmer capital", prominence: 4, themes: [war], sources: [wikipedia:Longvek] }
+      - { id: cambodia-protectorate, date: 1863 CE, label: "Cambodia becomes a French protectorate", prominence: 4, themes: [government], sources: [wikipedia:French_protectorate_of_Cambodia] }
+      - { id: khmer-rouge-tribunal, date: 2006 CE, label: "A tribunal begins to try Khmer Rouge leaders", prominence: 4, themes: [government], sources: [wikipedia:Khmer_Rouge_Tribunal] }
     sources: [wikipedia:History_of_Cambodia]
 
   - id: pagan
@@ -64,6 +67,13 @@ lanes:
       - { id: mongols-pagan, date: 1287 CE, label: "Mongol invasions break Pagan", prominence: 4, themes: [war], sources: [wikipedia:First_Mongol_invasion_of_Burma] }
       - { id: anglo-burmese, date: 1885 CE, label: "Britain takes Mandalay", prominence: 4, themes: [war], sources: [wikipedia:Third_Anglo-Burmese_War] }
       - { id: aung-san-suu-kyi, date: 1991 CE, label: "Aung San Suu Kyi wins the Nobel Peace Prize under house arrest", prominence: 4, themes: [women, government], sources: [wikipedia:Aung_San_Suu_Kyi] }
+      - { id: konbaung, date: 1752 CE, label: "Alaungpaya founds the Konbaung dynasty", prominence: 4, themes: [government], sources: [wikipedia:Konbaung_dynasty] }
+      - { id: anglo-burmese-1824, date: 1824 CE, label: "The first Anglo-Burmese War", prominence: 4, themes: [war], sources: [wikipedia:First_Anglo-Burmese_War] }
+      - { id: burma-independence, date: 1948 CE, label: "Burma becomes independent", prominence: 3, themes: [government], sources: [wikipedia:Myanmar] }
+      - { id: ne-win-coup, date: 1962 CE, label: "Ne Win's coup begins half a century of military rule", prominence: 4, themes: [government], sources: [wikipedia:1962_Burmese_coup_d'état] }
+      - { id: rohingya, date: 2017 CE, label: "Over 700,000 Rohingya are driven from Myanmar", prominence: 3, themes: [war, migration], sources: [wikipedia:Rohingya_genocide] }
+      - { id: myanmar-coup-2021, date: 2021 CE, label: "The army seizes power again", prominence: 4, themes: [government], sources: [wikipedia:2021_Myanmar_coup_d'état] }
+      - { id: de-brito, date: 1599 CE, label: "The Portuguese adventurer de Brito seizes Syriam", prominence: 4, themes: [war], sources: [wikipedia:Filipe_de_Brito_e_Nicote] }
     images:
       - { id: bagan-plain, source: "commons:File:Bagan, Burma.jpg", date: c. 1100 CE, prominence: 2, treatment: plate, caption: "The temples of Bagan" }
       - { id: shwedagon, source: "commons:File:Shwedagon Pagoda.jpg", date: c. 1800 CE, prominence: 3, treatment: plate, caption: "The Shwedagon Pagoda, Yangon" }
@@ -96,6 +106,13 @@ lanes:
       - { id: tet, date: 1968 CE, label: "The Tet Offensive", prominence: 3, themes: [war], sources: [wikipedia:Tet_Offensive] }
       - { id: doi-moi, date: 1986 CE, label: "Đổi Mới reforms", prominence: 4, themes: [trade], sources: [wikipedia:Đổi_Mới] }
       - { id: boat-people, date: 1978 CE, label: "The boat people flee Vietnam", prominence: 4, themes: [migration], sources: [wikipedia:Vietnamese_boat_people] }
+      - { id: trinh-nguyen, date: 1627 CE, label: "The Trịnh and Nguyễn lords split Vietnam in war", prominence: 4, themes: [war], sources: [wikipedia:Trịnh–Nguyễn_War] }
+      - { id: quoc-ngu, date: 1651 CE, label: "De Rhodes' dictionary writes Vietnamese in Latin letters", prominence: 4, themes: [ideas], sources: [wikipedia:Vietnamese_alphabet] }
+      - { id: tay-son, date: 1771 CE, label: "The Tây Sơn rebellion", prominence: 4, themes: [war], sources: [wikipedia:Tây_Sơn_dynasty] }
+      - { id: gia-long, date: 1802 CE, label: "Gia Long unites Vietnam and rules from Huế", prominence: 3, themes: [government], sources: [wikipedia:Gia_Long] }
+      - { id: cochinchina, date: 1862 CE, label: "France takes Cochinchina", prominence: 4, themes: [war], sources: [wikipedia:Cochinchina_campaign] }
+      - { id: vietnam-1945, date: 1945 CE, label: "Hồ Chí Minh declares Vietnam independent", prominence: 3, themes: [government], sources: [wikipedia:Proclamation_of_Independence_of_the_Democratic_Republic_of_Vietnam] }
+      - { id: mac-dynasty, date: 1527 CE, label: "The Mạc seize the throne of Đại Việt", prominence: 4, themes: [government], sources: [wikipedia:Mạc_dynasty] }
     sources: [wikipedia:History_of_Vietnam]
 
   - id: siam
@@ -119,6 +136,15 @@ lanes:
       - { id: ayutthaya-trade, date: c. 1600 CE, label: "Ayutthaya, a cosmopolitan port of a million", prominence: 3, themes: [trade], confidence: probable, sources: [wikipedia:Ayutthaya_Kingdom] }
       - { id: chakri, date: 1782 CE, label: "The Chakri dynasty founds Bangkok", prominence: 4, sources: [wikipedia:Chakri_dynasty] }
       - { id: siam-1932, date: 1932 CE, label: "The revolution ends absolute monarchy", prominence: 4, themes: [government], sources: [wikipedia:Siamese_revolution_of_1932] }
+      - { id: naresuan, date: 1593 CE, label: "Naresuan wins an elephant duel against Burma's crown prince", prominence: 4, themes: [war], sources: [wikipedia:Naresuan] }
+      - { id: narai-france, date: 1685 CE, label: "French embassies at King Narai's court", prominence: 4, themes: [diplomacy], sources: [wikipedia:Narai] }
+      - { id: bowring-treaty, date: 1855 CE, label: "The Bowring Treaty opens Siam to free trade", prominence: 4, themes: [trade], sources: [wikipedia:Bowring_Treaty] }
+      - { id: chulalongkorn, date: 1868 CE, label: "Chulalongkorn modernises Siam and abolishes slavery", prominence: 3, themes: [government], sources: [wikipedia:Chulalongkorn] }
+      - { id: asian-crisis, date: 1997 CE, label: "The Asian financial crisis begins in Bangkok", prominence: 3, themes: [trade], sources: [wikipedia:1997_Asian_financial_crisis] }
+      - { id: thai-coup-2014, date: 2014 CE, label: "Another military coup in Thailand", prominence: 4, themes: [government], sources: [wikipedia:2014_Thai_coup_d'état] }
+      - { id: ayutthaya-founded, date: 1351 CE, label: "Ayutthaya is founded", prominence: 2, themes: [government], sources: [wikipedia:Ayutthaya_Kingdom] }
+      - { id: siam-1688, date: 1688 CE, label: "Siam's revolution of 1688 expels the French", prominence: 4, themes: [government], sources: [wikipedia:Siamese_revolution_of_1688] }
+      - { id: thai-cave-rescue, date: 2018 CE, label: "Twelve boys are rescued from the flooded Tham Luang cave", prominence: 4, sources: [wikipedia:Tham_Luang_cave_rescue] }
     sources: [wikipedia:History_of_Thailand]
 
   - id: lan-xang
@@ -132,6 +158,8 @@ lanes:
     events:
       - { id: fa-ngum, date: 1353 CE, label: "Fa Ngum founds Lan Xang, 'a million elephants'", prominence: 4, sources: [wikipedia:Fa_Ngum] }
       - { id: laos-bombing, date: 1964 CE, label: "Laos becomes the most-bombed country per person", prominence: 4, themes: [war], sources: [wikipedia:Laotian_Civil_War] }
+      - { id: vientiane, date: 1560 CE, label: "Setthathirath moves the capital to Vientiane", prominence: 4, themes: [government], sources: [wikipedia:Setthathirath] }
+      - { id: lan-xang-split, date: 1707 CE, label: "Lan Xang splits into three kingdoms", prominence: 4, themes: [government], sources: [wikipedia:Lan_Xang] }
     sources: [wikipedia:Lan_Xang]
 
   # ------------------------------------------------------------------ islands
@@ -153,6 +181,7 @@ lanes:
 
   - id: majapahit
     name: Singhasari & Majapahit
+    endonym: { text: "Wilwatikta", script: Latn }
     region: southeast-asia
     group: islands
     sphere: indic
@@ -165,10 +194,12 @@ lanes:
       - { id: palapa-oath, date: 1336 CE, label: "Gajah Mada's oath to unite the archipelago", prominence: 3, themes: [government], sources: [wikipedia:Gajah_Mada] }
       - { id: nagarakretagama, date: 1365 CE, label: "The Nagarakretagama praises Majapahit's realm", prominence: 3, themes: [art], sources: [wikipedia:Nagarakretagama] }
       - { id: majapahit-bali, date: c. 1520 CE, label: "Majapahit's court culture lives on in Bali", prominence: 4, sources: [wikipedia:Majapahit] }
+      - { id: mongols-java, date: 1293 CE, label: "A Mongol invasion of Java fails; Majapahit rises", prominence: 3, themes: [war], sources: [wikipedia:Mongol_invasion_of_Java] }
     sources: [wikipedia:Majapahit]
 
   - id: malacca
     name: Malacca Sultanate
+    endonym: { text: "ملاک", script: Arab, translit: "Melaka" }
     region: southeast-asia
     group: islands
     sphere: islamic
@@ -189,10 +220,15 @@ lanes:
     prominence: 4
     span: c. 1496 – 1904 CE
     cliopatria: ["Aceh Sultanate", "Mataram Sultanate", "Banten Sultanate", "Sultanate of Ternate", "Johor Sultanate", "Brunei"]
+    events:
+      - { id: iskandar-muda, date: 1607 CE, label: "Iskandar Muda leads Aceh's golden age", prominence: 4, themes: [government, trade], sources: [wikipedia:Iskandar_Muda] }
+      - { id: agung-batavia, date: 1628 CE, label: "Sultan Agung of Mataram besieges Dutch Batavia", prominence: 4, themes: [war], sources: [wikipedia:Sultan_Agung_of_Mataram] }
+      - { id: aceh-war, date: 1873 CE, label: "The Aceh War: thirty years of resistance to the Dutch", prominence: 4, themes: [war], sources: [wikipedia:Aceh_War] }
     sources: [wikipedia:Aceh_Sultanate]
 
   - id: dutch-east-indies
     name: Dutch East Indies & Indonesia
+    endonym: { text: "Nusantara", script: Latn }
     region: southeast-asia
     group: islands
     sphere: celtic-germanic
@@ -213,10 +249,16 @@ lanes:
       - { id: kartini, date: 1899 CE, label: "Kartini's letters on women's education", prominence: 4, themes: [women, ideas], sources: [wikipedia:Kartini] }
       - { id: java-war, date: 1825 CE, label: "Diponegoro's Java War", prominence: 4, themes: [war], sources: [wikipedia:Java_War] }
       - { id: indonesia-1965, date: 1965 CE, label: "The mass killings of 1965", prominence: 3, themes: [war], sources: [wikipedia:Indonesian_mass_killings_of_1965–66] }
+      - { id: suharto-falls, date: 1998 CE, label: "Suharto falls after 31 years in power", prominence: 3, themes: [government], sources: [wikipedia:Fall_of_Suharto] }
+      - { id: east-timor, date: 2002 CE, label: "East Timor becomes independent", prominence: 4, themes: [government], sources: [wikipedia:East_Timor] }
+      - { id: batavia, date: 1619 CE, label: "Jan Pieterszoon Coen founds Batavia", prominence: 3, themes: [trade], sources: [wikipedia:Batavia, _Dutch_East_Indies] }
+      - { id: nusantara-capital, date: 2019 CE, label: "Indonesia plans a new capital, Nusantara, on Borneo", prominence: 4, themes: [government], sources: [wikipedia:Nusantara_(city)] }
+      - { id: east-timor-1975, date: 1975 CE, label: "Indonesia invades East Timor", prominence: 4, themes: [war], sources: [wikipedia:Indonesian_invasion_of_East_Timor] }
     sources: [wikipedia:Dutch_East_Indies]
 
   - id: philippines
     name: The Philippines
+    endonym: { text: "Pilipinas", script: Latn }
     region: southeast-asia
     group: islands
     sphere: italic
@@ -233,4 +275,7 @@ lanes:
       - { id: manila-founded, date: 1571 CE, label: "Legazpi founds Spanish Manila", prominence: 3, sources: [wikipedia:Manila] }
       - { id: philippine-american-war, date: 1899 CE, label: "The Philippine–American War", prominence: 3, themes: [war], sources: [wikipedia:Philippine–American_War] }
       - { id: pinatubo, date: 1991 CE, label: "Pinatubo erupts and cools the planet", prominence: 4, themes: [climate], sources: [wikipedia:1991_eruption_of_Mount_Pinatubo] }
+      - { id: drug-war, date: 2016 CE, label: "Duterte's drug war kills thousands", prominence: 4, themes: [government], sources: [wikipedia:Philippine_drug_war] }
+      - { id: sangley-1603, date: 1603 CE, label: "Thousands of Chinese are massacred in Manila", prominence: 4, sources: [wikipedia:Sangley_Rebellion] }
+      - { id: bataan, date: 1942 CE, label: "The Bataan Death March", prominence: 4, themes: [war], sources: [wikipedia:Bataan_Death_March] }
     sources: [wikipedia:History_of_the_Philippines]

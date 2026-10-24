@@ -27,7 +27,6 @@ lanes:
     relations:
       - { type: becomes, lane: egypt-old-kingdom, at: 2686 BCE }
     events:
-      - { id: narmer, date: c. 3100 BCE, label: "Narmer unites Upper and Lower Egypt", prominence: 2, themes: [government], confidence: probable, sources: [wikipedia:Narmer] }
       - { id: narmer-palette, date: c. 3100 BCE, label: "The Narmer Palette: Upper and Lower Egypt united", prominence: 1, themes: [government, art], sources: [wikipedia:Narmer_Palette] }
       - { id: abydos-tombs, date: c. 3000 BCE, label: "Royal tombs at Abydos", prominence: 4, sources: [wikipedia:Umm_El_Qa'ab] }
     sources: [wikipedia:Early_Dynastic_Period_(Egypt)]
@@ -98,6 +97,7 @@ lanes:
 
   - id: egypt-new-kingdom
     name: New Kingdom Egypt
+    endonym: { text: "𓆎𓅓𓏏𓊖", script: Egyp, translit: "Kemet" }
     region: near-east
     group: egypt
     sphere: egyptian
@@ -133,7 +133,6 @@ lanes:
       - { type: becomes, lane: ppn-levant, at: c. 9500 BCE }
     events:
       - { id: natufian-villages, date: c. 10000 BCE, label: "Foragers settle in year-round villages and harvest wild cereals", prominence: 3, sources: [wikipedia:Natufian_culture] }
-      - { id: natufian-feast, date: c. 10000 BCE, label: "Natufians settle in villages and harvest wild cereals", prominence: 3, themes: [technology], sources: [wikipedia:Natufian_culture] }
     sources: [wikipedia:Natufian_culture]
 
   - id: ppn-levant
@@ -162,7 +161,6 @@ lanes:
       - { type: becomes, lane: phoenicia, at: c. 1150 BCE }
     events:
       - { id: proto-sinaitic, date: c. 1850 BCE, label: "Proto-Sinaitic: the first alphabet, a few dozen letters from hieroglyphs", prominence: 1, thread: alphabet, confidence: probable, sources: [wikipedia:Proto-Sinaitic_script] }
-      - { id: ugarit, date: c. 1400 BCE, label: "Ugarit writes an alphabet in cuneiform signs", prominence: 4, thread: alphabet, sources: [wikipedia:Ugaritic_alphabet] }
       - { id: ugarit-alphabet, date: c. 1400 BCE, label: "Ugarit's cuneiform alphabet", prominence: 3, thread: alphabet, sources: [wikipedia:Ugaritic_alphabet] }
     sources: [wikipedia:Canaan]
 
@@ -210,6 +208,7 @@ lanes:
 
   - id: hittites
     name: Hittite Empire
+    endonym: { text: "𒄩𒀜𒋾", script: Xsux, translit: "Ḫatti" }
     region: near-east
     group: anatolia
     sphere: persian
@@ -270,11 +269,11 @@ lanes:
       - { id: gilgamesh-king, date: c. 2700 BCE, label: "Gilgamesh rules Uruk — later the hero of the world's oldest epic", prominence: 3, confidence: legendary, themes: [art], sources: [wikipedia:Gilgamesh] }
       - { id: ur-royal-tombs, date: c. 2600 BCE, label: "The Royal Tombs of Ur, full of gold and lapis lazuli", prominence: 2, themes: [art], sources: [wikipedia:Royal_Cemetery_at_Ur] }
       - { id: sexagesimal, date: c. 2500 BCE, label: "Counting in sixties — why we still have 60 minutes", prominence: 3, thread: numerals, themes: [ideas], confidence: probable, sources: [wikipedia:Sexagesimal] }
-      - { id: royal-tombs-ur, date: c. 2600 BCE, label: "The Royal Tombs of Ur", prominence: 3, themes: [art], sources: [wikipedia:Royal_Cemetery_at_Ur] }
     sources: [wikipedia:Sumer]
 
   - id: akkad
     name: Akkadian Empire
+    endonym: { text: "𒀀𒂵𒉈", script: Xsux, translit: "Agade" }
     region: near-east
     group: iran
     sphere: persian
@@ -291,6 +290,7 @@ lanes:
 
   - id: ur-iii
     name: Third Dynasty of Ur
+    endonym: { text: "𒋀𒀊𒆠𒈠", script: Xsux, translit: "Urim" }
     region: near-east
     group: iran
     sphere: persian
@@ -302,13 +302,13 @@ lanes:
     events:
       - { id: ur-nammu, date: c. 2100 BCE, label: "The Code of Ur-Nammu, the oldest surviving law code", prominence: 2, themes: [government], sources: [wikipedia:Code_of_Ur-Nammu] }
       - { id: ziggurat-ur, date: c. 2100 BCE, label: "The Great Ziggurat of Ur", prominence: 2, themes: [art, religion], sources: [wikipedia:Ziggurat_of_Ur] }
-      - { id: ur-nammu-code, date: c. 2100 BCE, label: "The Code of Ur-Nammu, the oldest surviving law code", prominence: 3, themes: [government], sources: [wikipedia:Code_of_Ur-Nammu] }
     images:
       - { id: ur-ziggurat, source: "commons:File:Ancient ziggurat at Ali Air Base Iraq 2005.jpg", date: c. 2100 BCE, prominence: 2, treatment: plate, caption: "The Ziggurat of Ur (restored facade)", ofItsTime: false }
     sources: [wikipedia:Third_Dynasty_of_Ur]
 
   - id: old-babylon
     name: Old Babylonian Empire
+    endonym: { text: "𒆍𒀭𒊏𒆠", script: Xsux, translit: "Bābili" }
     region: near-east
     group: iran
     sphere: persian
@@ -336,6 +336,7 @@ lanes:
 
   - id: assyria-early
     name: Old and Middle Assyria
+    endonym: { text: "𒀸𒋩", script: Xsux, translit: "Aššur" }
     region: near-east
     group: iran
     sphere: persian
