@@ -71,6 +71,7 @@ const storedLens = recall('mt-lens');
 if (storedLens && dl.lenses?.some((l) => l.id === storedLens)) on.add(`lens:${storedLens}`);
 const applyLayers = () => {
   viewer.setLayers(on);
+  updateSeal();
   remember('mt-layers', JSON.stringify([...on].filter((l) => l.startsWith('thread:'))));
   remember('mt-atmosphere', on.has('atmosphere') ? 'on' : 'off');
   remember('mt-lens', [...on].find((l) => l.startsWith('lens:'))?.slice(5) ?? '');
@@ -80,12 +81,33 @@ const applyLayers = () => {
 
 /** Toolbar menus open under their own button; opening one closes the others. */
 const menus: [HTMLElement, HTMLElement][] = [];
+// ---- tools: folded behind the compass rose in the frame's corner until asked for (remembered).
+const seal = document.getElementById('seal')!;
+const toolbar = document.getElementById('toolbar')!;
+function setTools(open: boolean) {
+  toolbar.classList.toggle('collapsed', !open);
+  seal.setAttribute('aria-expanded', String(open));
+  if (!open) for (const [b, m] of menus) { m.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); }
+  remember('mt-tools', open ? 'open' : 'closed');
+}
+/** While the tools are folded, a dot on the rose says a lens or thread is still on. */
+function updateSeal() {
+  const badge = seal.querySelector('.badge') as HTMLElement;
+  const lens = dl.lenses?.find((l) => on.has(`lens:${l.id}`));
+  const thread = folio.threads.find((t) => on.has(`thread:${t.id}`));
+  badge.classList.toggle('on', !!(lens || thread));
+  badge.style.background = lens?.color ?? '#B8392D';
+}
+seal.addEventListener('click', () => setTools(toolbar.classList.contains('collapsed')));
+
 function menu(btnId: string, menuId: string) {
   const btn = document.getElementById(btnId)!, el = document.getElementById(menuId)!;
   menus.push([btn, el]);
   const toggle = (open = !el.classList.contains('open')) => {
     for (const [b, m] of menus) if (m !== el) { m.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); }
-    el.style.left = `${btn.getBoundingClientRect().left}px`;
+    // Opened by a shortcut while the tools are folded away, a menu sits where the toolbar would be.
+    const r = btn.getBoundingClientRect();
+    el.style.left = `${r.width ? r.left : 76}px`;
     el.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', String(open));
   };
@@ -106,6 +128,8 @@ layersMenu.el.addEventListener('change', (e) => {
   applyLayers();
 });
 hotkey('lL', () => layersMenu.toggle());
+hotkey('.', () => setTools(toolbar.classList.contains('collapsed')));
+setTools(recall('mt-tools') === 'open');
 
 // ---- lenses: one theme lit up, everything else steps back (Phase 4)
 const lensMenu = menu('lenses-btn', 'lenses-menu');

@@ -15,7 +15,7 @@ const TILE = 256;
 const MAX_SCALE = 1.2;
 const MAX_TILES = 260;
 const RULER_W = 64;
-const HEADER_H = 30;
+const HEADER_H = 44;
 const LANE_HEADER_H = 22;
 const MINI_W = 150;
 const ACCENT = '#B8392D';
@@ -87,7 +87,8 @@ export class Viewer {
     this.resize();
     this.fit();
     this.makePaper();
-    const n = Math.max(2, Math.min(6, (navigator.hardwareConcurrency || 4) - 1));
+    // Tiles take ~5–10 ms each, so four workers keep up; each holds its own copy of the chart and pictures.
+    const n = Math.max(2, Math.min(4, (navigator.hardwareConcurrency || 4) - 1));
     for (let i = 0; i < n; i++) {
       const w = new Worker(new URL('./tile-worker.ts', import.meta.url), { type: 'module' });
       const slot: Slot = { w, busy: false, ready: false };
