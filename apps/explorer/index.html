@@ -123,23 +123,6 @@
       #search li.on, #search li:hover { background: rgba(184,57,45,.1); }
       #search li .t { font: 15px Georgia, serif; color: #2b2420; } #search li .m { font: 11px ui-sans-serif, sans-serif; color: #8a7c6e; }
       #search li.none { color: #8a7c6e; cursor: default; }
-      #tours-menu { position: fixed; top: 100px; left: 76px; z-index: 6; width: 300px; padding: 12px; display: none;
-        background: #f7f1e3; border: 1px solid rgba(107,95,85,.35); border-radius: 10px; box-shadow: 0 10px 28px rgba(60,40,20,.16); }
-      #tours-menu.open { display: block; }
-      #tours-menu h4 { margin: 0 0 8px; font: 600 11px ui-sans-serif, sans-serif; letter-spacing: .08em; text-transform: uppercase; color: #8a7c6e; }
-      #tours-menu button { display: block; width: 100%; text-align: left; border: 0; background: none; padding: 8px; border-radius: 7px; cursor: pointer; color: #2b2420; }
-      #tours-menu button:hover { background: rgba(184,57,45,.1); }
-      #tours-menu strong { display: block; font: 600 15px Georgia, serif; } #tours-menu span { font: 12px ui-sans-serif, sans-serif; color: #8a7c6e; }
-      #tour-card { position: fixed; left: 50%; bottom: 52px; transform: translateX(-50%); z-index: 6; width: min(560px, 80vw); display: none;
-        background: #fffaf0; border: 1px solid rgba(107,95,85,.4); border-radius: 12px; box-shadow: 0 16px 40px rgba(60,40,20,.22); padding: 14px 18px 12px; }
-      #tour-card.open { display: block; }
-      #tour-card .kicker { font: 600 11px ui-sans-serif, sans-serif; letter-spacing: .06em; text-transform: uppercase; color: #8a7c6e; }
-      #tour-card p { font: 16px/1.55 Georgia, serif; color: #2b2420; margin: 8px 0 12px; }
-      #tour-card .nav { display: flex; gap: 8px; }
-      #tour-card .nav button { border: 1px solid rgba(107,95,85,.35); background: #f7f1e3; border-radius: 7px; padding: 6px 12px; cursor: pointer; font: 13px ui-sans-serif, sans-serif; color: #2b2420; }
-      #tour-card .nav button[disabled] { opacity: .4; cursor: default; }
-      #tour-card .nav .quiet { margin-left: auto; border-color: transparent; background: none; color: #8a7c6e; }
-      #tour-card .nav .primary { background: #b8392d; border-color: #b8392d; color: #fff8ee; }
       #atlas .caption { font: 600 12px ui-sans-serif, sans-serif; color: #2b2420; padding: 6px 2px 0; font-variant-numeric: tabular-nums; }
     </style>
   </head>
@@ -156,14 +139,11 @@
       <button id="meanwhile-btn" title="Everything happening at one year (Y, or click the year ruler)">Meanwhile</button>
       <button id="atlas-btn" aria-pressed="true">Atlas</button>
       <button id="search-btn">Search ⌘K</button>
-      <button id="tours-btn">Tours</button>
       <div id="lens-chip" role="status"></div>
     </nav>
     <div id="layers" role="dialog" aria-label="Layers"></div>
     <div id="lenses-menu" class="menu" role="dialog" aria-label="Lenses"></div>
     <div id="threads-menu" class="menu" role="dialog" aria-label="Threads"></div>
-    <div id="tours-menu"></div>
-    <div id="tour-card" role="dialog" aria-label="Tour"></div>
     <div id="search"></div>
     <div id="atlas" aria-label="Atlas: the world in the year under the cursor"></div>
     <script type="module" src="/src/main.ts"></script>

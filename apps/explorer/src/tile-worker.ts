@@ -42,9 +42,9 @@ self.onmessage = async (e: MessageEvent<ToWorker>) => {
 
 async function init(chartUrl: string) {
   const [kit, chart] = await Promise.all([
-    CanvasKitInit({ locateFile: (f: string) => `/canvaskit/${f}` }),
+    CanvasKitInit({ locateFile: (f: string) => `${import.meta.env.BASE_URL}canvaskit/${f}` }),
     fetch(chartUrl, { cache: 'no-cache' }).then((r) => r.json() as Promise<DisplayList>),  ]);
-  const fontBufs = await Promise.all(FONT_FILES.map((f) => fetch(`${chart.fonts}${f.file}`).then((r) => r.arrayBuffer())));
+  const fontBufs = await Promise.all(FONT_FILES.map((f) => fetch(`${import.meta.env.BASE_URL}${chart.fonts}${f.file}`).then((r) => r.arrayBuffer())));
   ck = kit;
   dl = chart;
   const buffers = new Map(FONT_FILES.map((f, i) => [f.file, fontBufs[i]!] as const));
@@ -62,8 +62,8 @@ async function init(chartUrl: string) {
 function loadImage(key: string): Promise<void> {
   let p = loading.get(key);
   if (!p) {
-    p = fetch(`/img/${key}.webp`)
-      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error(`${r.status} /img/${key}.webp`))))
+    p = fetch(`${import.meta.env.BASE_URL}img/${key}.webp`)
+      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error(`${r.status} img/${key}.webp`))))
       .then((buf) => {
         const img = ck.MakeImageFromEncoded(new Uint8Array(buf));
         if (img) images.set(key, img);

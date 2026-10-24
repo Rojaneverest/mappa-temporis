@@ -93,11 +93,12 @@ for (const [i, c] of chunks.entries()) {
   ], { stdio: 'pipe', cwd: ROOT });
   const size = statSync(join(OUT, file)).size;
   total += size;
-  index.chunks.push({ from: c.from, to: c.to, url: `/atlas/${file}` });
+  // Relative to the index, so the site works under any base path.
+  index.chunks.push({ from: c.from, to: c.to, url: file.slice(SHEET_ID.length + 1) });
   if (process.env.VERBOSE) console.log(`  ${file}: ${part.length} shapes, ${(size / 1024).toFixed(0)} KB`);
 }
 writeFileSync(join(OUT, `${SHEET_ID}.atlas.json`), JSON.stringify(index));
-const largest = Math.max(...index.chunks.map((c) => statSync(join(OUT, c.url.slice('/atlas/'.length))).size));
+const largest = Math.max(...index.chunks.map((c) => statSync(join(OUT, SHEET_ID, c.url)).size));
 console.log(`✓ atlas ${SHEET_ID}: ${features.length} shapes in ${chunks.length} era files (largest ${(largest / 1024).toFixed(0)} KB, all ${(total / 1024).toFixed(0)} KB), ${matched.size}/${lanes.length} lanes linked`);
 const unmatched = lanes.filter((l) => !matched.has(l.id) && parseSpan(l.span).end.year >= win.start.year && parseSpan(l.span).start.year <= win.end.year);
 if (process.env.VERBOSE) console.log('  not linked:', unmatched.map((l) => l.id).join(', '));

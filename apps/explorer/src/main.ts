@@ -4,20 +4,19 @@ import { Viewer, type ViewState } from './viewer.ts';
 import { Panel } from './panel.ts';
 import { Atlas } from './atlas.ts';
 import { Search } from './search.ts';
-import { Tours } from './tours.ts';
 import { Meanwhile, roundYear } from './meanwhile.ts';
-import type { Tour } from '../../../packages/core/src/schema.ts';
 
 // ?sheet=<id> picks a sheet (default: the whole world poster); see content/sheets/.
 const SHEET = new URLSearchParams(location.search).get('sheet') ?? 'world';
-const CHART = `/chart/${SHEET}`;
+// Everything is fetched relative to where the site is served (a subpath on GitHub Pages).
+const BASE = import.meta.env.BASE_URL;
+const CHART = `${BASE}chart/${SHEET}`;
 
 // Every build rewrites these files, so always revalidate rather than trust a cached copy.
 const fresh = { cache: 'no-cache' } as const;
-const [dl, folio, tourList]: [DisplayList, Folio, Tour[]] = await Promise.all([
+const [dl, folio]: [DisplayList, Folio] = await Promise.all([
   fetch(`${CHART}.json`, fresh).then((r) => r.json()),
   fetch(`${CHART}.folio.json`, fresh).then((r) => r.json()),
-  fetch(`${CHART}.tours.json`, fresh).then((r) => (r.ok ? r.json() : [])).catch(() => []),
 ]);
 document.title = `Mappa Temporis — ${dl.title}`;
 
@@ -195,7 +194,7 @@ window.addEventListener('hashchange', readHash);
 const atlasEl = document.getElementById('atlas')!;
 const atlasBtn = document.getElementById('atlas-btn')!;
 const atlas = new Atlas(atlasEl);
-atlas.load(`/atlas/${SHEET}.atlas.json`).catch((err) => console.warn('atlas', err));
+atlas.load(`${BASE}atlas/${SHEET}.atlas.json`).catch((err) => console.warn('atlas', err));
 atlas.onPickLane = (laneId) => select(laneId, true);
 const laneOf = (ref: string | null) => {
   const e = ref ? folio.entries[ref] : undefined;
@@ -219,19 +218,6 @@ const search = new Search(document.getElementById('search')!, folio, (id) => {
   select(id, true);
 });
 document.getElementById('search-btn')!.addEventListener('click', () => search.open());
-
-// ---- tours: the panel stays closed; the tour card narrates while the camera flies
-new Tours(document.getElementById('tour-card')!, document.getElementById('tours-menu')!, document.getElementById('tours-btn')!, tourList,
-  (target, zoom) => {
-    const e = folio.entries[target]!;
-    if (e.kind === 'thread' && !on.has(target)) { on.add(target); applyLayers(); }
-    viewer.select(target);
-    panel.show(null);
-    const [x, y, w, h] = e.box;
-    const pad = e.kind === 'event' || e.kind === 'image' ? [1100, 900] : [400, 300];
-    viewer.flyTo([x - pad[0]!, y - pad[1]!, w + 2 * pad[0]!, h + 2 * pad[1]!], { maxZ: zoom ?? (e.kind === 'event' ? 10 : 5) });
-  },
-  () => viewer.select(null));
 
 // Handy for debugging from the console.
 (window as unknown as { viewer: Viewer }).viewer = viewer;
