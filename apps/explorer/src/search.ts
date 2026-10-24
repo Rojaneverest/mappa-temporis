@@ -2,7 +2,7 @@
 // the ones archived off the canvas for calm. Small enough to search in memory, instantly.
 import type { Folio, FolioEntry } from '../../../packages/render/src/folio.ts';
 
-const KIND: Record<FolioEntry['kind'], string> = { lane: 'Civilization', event: 'Event', image: 'Object', thread: 'Thread', era: 'Era', climate: 'Climate', population: 'People', person: 'Person', voice: 'Voice', daily: 'Daily life' };
+const KIND: Record<FolioEntry['kind'], string> = { lane: 'Civilization', event: 'Event', image: 'Object', thread: 'Thread', era: 'Era', climate: 'Climate', population: 'People', person: 'Person', voice: 'Voice', daily: 'Daily life', conflict: 'War', 'turning-point': 'Turning point' };
 const fold = (s: string) => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '');
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 

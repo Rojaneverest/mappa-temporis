@@ -8,7 +8,7 @@ import { FONT_FILES, registerFonts } from '../../../packages/render/src/fonts.ts
 import { Painter, imageNeeds, type ImageStore } from '../../../packages/render/src/painter.ts';
 
 export type ToWorker =
-  | { type: 'init'; chartUrl: string }
+  | { type: 'init'; chart: ArrayBuffer; fonts: ArrayBuffer[] }
   | { type: 'tile'; id: string; x0: number; y0: number; s: number; zoom: number; w: number; h: number; layers: string[] };
 
 export type FromWorker =
@@ -33,18 +33,17 @@ const post = (msg: FromWorker, transfer: Transferable[] = []) => (self as unknow
 self.onmessage = async (e: MessageEvent<ToWorker>) => {
   const msg = e.data;
   try {
-    if (msg.type === 'init') await init(msg.chartUrl);
+    if (msg.type === 'init') await init(msg.chart, msg.fonts);
     else if (msg.type === 'tile') await renderTile(msg);
   } catch (err) {
     post({ type: 'error', message: String((err as Error)?.stack ?? err) });
   }
 };
 
-async function init(chartUrl: string) {
-  const [kit, chart] = await Promise.all([
-    CanvasKitInit({ locateFile: (f: string) => `${import.meta.env.BASE_URL}canvaskit/${f}` }),
-    fetch(chartUrl, { cache: 'no-cache' }).then((r) => r.json() as Promise<DisplayList>),  ]);
-  const fontBufs = await Promise.all(FONT_FILES.map((f) => fetch(`${import.meta.env.BASE_URL}${chart.fonts}${f.file}`).then((r) => r.arrayBuffer())));
+/** The page hands over the chart and font bytes it already downloaded (one download, not one per worker). */
+async function init(chartBytes: ArrayBuffer, fontBufs: ArrayBuffer[]) {
+  const kit = await CanvasKitInit({ locateFile: (f: string) => `${import.meta.env.BASE_URL}canvaskit/${f}` });
+  const chart = JSON.parse(new TextDecoder().decode(chartBytes)) as DisplayList;
   ck = kit;
   dl = chart;
   const buffers = new Map(FONT_FILES.map((f, i) => [f.file, fontBufs[i]!] as const));

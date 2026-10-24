@@ -8,7 +8,7 @@ export interface FolioSource {
 
 export interface FolioEntry {
   id: string;
-  kind: 'lane' | 'event' | 'image' | 'thread' | 'era' | 'climate' | 'population' | 'person' | 'voice' | 'daily';
+  kind: 'lane' | 'event' | 'image' | 'thread' | 'era' | 'climate' | 'population' | 'person' | 'voice' | 'daily' | 'conflict' | 'turning-point';
   title: string;
   /** Human-readable date or span. */
   dates: string;
@@ -28,6 +28,13 @@ export interface FolioEntry {
   wikipedia?: string;
   /** Our own short text (eras, climate, population). */
   note?: string;
+  /** Lens detail (decision 59): why it happened, and what it changed. */
+  cause?: string;
+  consequence?: string;
+  /** Conflicts: who fought whom. */
+  sides?: string;
+  /** Conflicts: the lanes involved. */
+  involved?: { laneId: string; laneName: string }[];
   /** Forces at work (eras). */
   forces?: string[];
   sources: FolioSource[];

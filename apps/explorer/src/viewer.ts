@@ -9,6 +9,7 @@ import { PAPER, INK, INK_SOFT } from '../../../packages/core/src/palette.ts';
 import { formatYear, roundYears } from '../../../packages/core/src/dates.ts';
 import type { FromWorker, ToWorker } from './tile-worker.ts';
 import { Picker } from './picker.ts';
+import { FONT_FILES } from '../../../packages/render/src/fonts.ts';
 
 /** Tile edge in CSS pixels. */
 const TILE = 256;
@@ -79,7 +80,7 @@ export class Viewer {
   /** Distance of the minimap from the bottom edge (other panels may sit below it). */
   miniBottom = 48;
 
-  constructor(canvas: HTMLCanvasElement, dl: DisplayList, folio: Folio, chartUrl: string, status: HTMLElement) {
+  constructor(canvas: HTMLCanvasElement, dl: DisplayList, folio: Folio, chartBytes: ArrayBuffer, status: HTMLElement) {
     this.canvas = canvas;
     this.dl = dl;
     this.folio = folio;
@@ -91,11 +92,17 @@ export class Viewer {
     this.makePaper();
     // Tiles take ~5–10 ms each, so four workers keep up; each holds its own copy of the chart and pictures.
     const n = Math.max(2, Math.min(4, (navigator.hardwareConcurrency || 4) - 1));
+    // Fonts, like the chart, are downloaded once and copied to each worker.
+    const fonts = Promise.all(FONT_FILES.map((f) => fetch(`${import.meta.env.BASE_URL}${dl.fonts}${f.file}`).then((r) => r.arrayBuffer())));
     for (let i = 0; i < n; i++) {
       const w = new Worker(new URL('./tile-worker.ts', import.meta.url), { type: 'module' });
       const slot: Slot = { w, busy: false, ready: false };
       w.onmessage = (e: MessageEvent<FromWorker>) => this.onWorker(slot, e.data);
-      w.postMessage({ type: 'init', chartUrl } satisfies ToWorker);
+      void fonts.then((bufs) => {
+        const chart = chartBytes.slice(0);
+        const copies = bufs.map((b) => b.slice(0));
+        w.postMessage({ type: 'init', chart, fonts: copies } satisfies ToWorker, [chart, ...copies]);
+      });
       this.workers.push(slot);
     }
     this.bindInput();
