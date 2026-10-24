@@ -11,7 +11,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import YAML from 'yaml';
 import sharp from 'sharp';
-import { AtmosphereFile, LaneFile, Sheet, type LaneImage } from '../../packages/core/src/schema.ts';
+import { AtmosphereFile, LaneFile, LensContent, Sheet, type LaneImage } from '../../packages/core/src/schema.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const CACHE = join(ROOT, '.cache/images');
@@ -55,6 +55,12 @@ function walk(dir: string): string[] {
 const images: LaneImage[] = walk(join(ROOT, 'content/lanes')).flatMap((f) => LaneFile.parse(YAML.parse(readFileSync(f, 'utf8'))).lanes.flatMap((l) => l.images));
 // Era maps live on the sheets.
 for (const f of walk(join(ROOT, 'content/sheets'))) for (const era of Sheet.parse(YAML.parse(readFileSync(f, 'utf8'))).eras) if (era.map && !images.some((i) => i.id === era.map!.id)) images.push(era.map);
+// Lens pictures (decision 59): content/lenses/<id>.yaml.
+if (existsSync(join(ROOT, 'content/lenses'))) {
+  for (const f of readdirSync(join(ROOT, 'content/lenses')).filter((n) => n.endsWith('.yaml'))) {
+    for (const img of LensContent.parse(YAML.parse(readFileSync(join(ROOT, 'content/lenses', f), 'utf8'))).images) if (!images.some((i) => i.id === img.id)) images.push(img);
+  }
+}
 // Atmosphere engravings: printed like the era maps, but with the old paper cut away harder.
 const engravings = new Map<string, { crop?: [number, number, number, number] }>();
 for (const e of AtmosphereFile.parse(YAML.parse(readFileSync(join(ROOT, 'content/atmosphere.yaml'), 'utf8'))).engravings) {

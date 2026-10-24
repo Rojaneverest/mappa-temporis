@@ -1,0 +1,637 @@
+# The War & conquest lens (decision 59): drawn only while the lens is on.
+# conflicts — bands across the lanes involved; arrows — conquests and invasions the chart doesn't
+# already draw; images — the lens's own pictures; cards — turning points in how war was fought;
+# notes — why a war or battle was fought and what it changed, for events already on the chart.
+# Claude drafts, Rojan reviews (decision 6). Every entry is sourced.
+lens: war
+
+conflicts:
+  - id: c-egypt-hittite
+    name: Egypt against the Hittites
+    span: 1300 – 1259 BCE
+    lanes: [egypt-new-kingdom, hittites]
+    prominence: 2
+    sides: New Kingdom Egypt against the Hittite Empire
+    cause: The two great powers of the Bronze Age wanted the rich trading cities of Syria and the Levant, which sat on the border between their empires and changed sides as each grew stronger.
+    consequence: Neither could win. After the stalemate at Kadesh they signed the oldest peace treaty whose text survives, fixed a border, and kept the peace for a generation, until both were shaken by the Bronze Age collapse.
+    sources: [wikipedia:Egyptian–Hittite_peace_treaty]
+  - id: c-assyrian-conquests
+    name: Assyria's wars of conquest
+    span: 911 – 612 BCE
+    lanes: [neo-assyria, judah, phoenicia, neo-babylonian, egypt-third-intermediate, elam]
+    prominence: 2
+    sides: The Neo-Assyrian Empire against its neighbours
+    cause: Assyrian kings saw conquest as a duty to their god Ashur, and their economy ran on tribute, plunder and deported labour; a professional standing army with iron weapons and siege engines made expansion possible.
+    consequence: Assyria built the first empire to span the whole Near East, moving whole peoples across it. Its brutality left it hated, and when it fell in 612 BCE its methods of governing an empire passed to Babylon and Persia.
+    sources: [wikipedia:Neo-Assyrian_Empire]
+  - id: c-greco-persian
+    name: The Greco-Persian Wars
+    span: 499 – 449 BCE
+    lanes: [achaemenid, athens, sparta, greek-poleis]
+    prominence: 1
+    sides: The Persian Empire against an alliance of Greek city-states
+    cause: Greek cities in Ionia revolted against Persian rule with help from Athens. Darius, and then Xerxes, set out to punish Athens and bring the Aegean under Persian control.
+    consequence: The small Greek states held off the largest empire on earth. Athens turned its leadership of the alliance into a naval empire whose tribute paid for the Parthenon, and whose growing power led straight to war with Sparta.
+    sources: [wikipedia:Greco-Persian_Wars]
+  - id: c-peloponnesian
+    name: The Peloponnesian War
+    span: 431 – 404 BCE
+    lanes: [athens, sparta]
+    prominence: 1
+    sides: Athens and its empire against Sparta and the Peloponnesian League
+    cause: "Thucydides put it in one line: the growth of Athenian power and the fear this caused in Sparta. Quarrels over Corinth's colonies and Megara's trade gave the spark."
+    consequence: Athens lost its fleet, its empire and for a time its democracy. The Greek city-states were left exhausted and divided, and within seventy years Macedon had mastered them all.
+    sources: [wikipedia:Peloponnesian_War]
+  - id: c-alexander
+    name: Alexander's conquests
+    span: 334 – 323 BCE
+    lanes: [alexander-empire, achaemenid, macedon]
+    prominence: 1
+    sides: Macedon and the Greeks against the Persian Empire
+    cause: Philip II had planned a war of revenge on Persia for Xerxes' invasion, to unite the Greeks behind Macedon. His son Alexander carried it out, driven by ambition, plunder and the wish to outdo the heroes of Homer.
+    consequence: The Persian Empire fell in four years. Greek became the language of power from Egypt to Afghanistan, and Alexander's generals split his empire into kingdoms whose cities spread Greek culture for three centuries.
+    sources: [wikipedia:Wars_of_Alexander_the_Great]
+  - id: c-warring-states
+    name: The Warring States
+    span: 475 – 221 BCE
+    lanes: [zhou-eastern, qin-state, chu, qin]
+    prominence: 1
+    sides: Seven kingdoms fighting for mastery of China
+    cause: The Zhou kings had lost all real power, and the seven strongest states fought to replace them. Iron, mass conscript infantry, crossbows and cavalry made each war bigger than the last.
+    consequence: Qin, the most ruthlessly organised of the seven, conquered the rest in 221 BCE and created the first unified Chinese empire, with one script, one currency and one law.
+    sources: [wikipedia:Warring_States_period]
+  - id: c-punic
+    name: The Punic Wars
+    span: 264 – 146 BCE
+    lanes: [roman-republic, carthage, numidia]
+    prominence: 1
+    sides: Rome against Carthage
+    cause: Rome and Carthage collided over Sicily, which lay between them. Each victory gave Rome new frontiers to defend, and Carthage's revival after each defeat convinced Rome's senators that it had to be destroyed.
+    consequence: Carthage was razed in 146 BCE. Rome became master of the western Mediterranean, gained its first overseas provinces, and turned east against the Greek kingdoms with the navy and armies it had built.
+    sources: [wikipedia:Punic_Wars]
+  - id: c-han-xiongnu
+    name: The Han–Xiongnu wars
+    span: 133 BCE – 89 CE
+    lanes: [han, xiongnu]
+    prominence: 1
+    sides: Han China against the Xiongnu confederation of the steppe
+    cause: The Xiongnu raided northern China and forced the early Han to pay tribute and send princesses as brides. Emperor Wu ended this humiliating peace and sent huge cavalry armies onto the steppe.
+    consequence: The Han won the Gansu corridor and the oases of the Tarim Basin, opening the Silk Road to the west. The Xiongnu split; some of their descendants may later have reached Europe as the Huns.
+    sources: [wikipedia:Han–Xiongnu_War]
+  - id: c-rome-persia
+    name: Rome against Persia
+    span: 54 BCE – 628 CE
+    lanes: [roman-republic, roman-empire, eastern-roman, parthian, sasanian, armenia]
+    prominence: 2
+    sides: Rome and Byzantium against Parthian and then Sasanian Persia
+    cause: The two greatest empires of western Asia met along the Euphrates. Each wanted Armenia and the rich cities of Mesopotamia, and each claimed to be the heir of Alexander or of the ancient Persian kings.
+    consequence: Seven centuries of wars changed the border little. The last and greatest of them, from 602 to 628, exhausted both empires just as the armies of Islam came out of Arabia.
+    sources: [wikipedia:Roman–Persian_Wars]
+  - id: c-three-kingdoms
+    name: The Three Kingdoms wars
+    span: 184 – 280 CE
+    lanes: [han, cao-wei, shu-han, eastern-wu]
+    prominence: 2
+    sides: Warlords of the falling Han, then Wei, Shu and Wu
+    cause: Court intrigue, famine and the Yellow Turban rebellion broke Han authority. Generals raised private armies, and the strongest carved China into three rival states.
+    consequence: China's registered population fell by more than half. Jin reunified the country in 280, but only briefly; centuries of division between north and south followed, and the era became China's great legend of loyalty and cunning.
+    sources: [wikipedia:Three_Kingdoms]
+  - id: c-fall-of-west
+    name: The fall of the Western Empire
+    span: 376 – 476 CE
+    lanes: [western-roman, roman-empire, germanic-peoples, visigoths, huns, vandal-kingdom]
+    prominence: 1
+    sides: The Western Roman Empire against Goths, Vandals, Huns and others
+    cause: The Huns drove the Goths across the Danube into Roman land. Rome failed either to defeat them or to settle them peacefully, and its civil wars, fiscal crisis and dependence on barbarian soldiers let other peoples follow.
+    consequence: The Western Empire was replaced by Germanic kingdoms, while the Eastern Empire survived for another thousand years. Latin Christianity, Roman law and the Roman church outlived the state that made them.
+    sources: [wikipedia:Fall_of_the_Western_Roman_Empire]
+  - id: c-arab-conquests
+    name: The Arab conquests
+    span: 632 – 750 CE
+    lanes: [rashidun, umayyad, sasanian, eastern-roman, visigoths]
+    prominence: 1
+    sides: The early caliphate against Byzantium, Persia and Visigothic Spain
+    cause: Islam had united the tribes of Arabia under one leader for the first time. Its neighbours, Byzantium and Persia, were exhausted by their own long war, and conquest brought faith, land and plunder together.
+    consequence: In a century the caliphate stretched from Spain to the Indus. Persia fell entirely and Byzantium lost Syria and Egypt; Arabic and Islam spread across a world that still largely speaks and prays in them.
+    sources: [wikipedia:Early_Muslim_conquests]
+  - id: c-an-lushan
+    name: The An Lushan rebellion
+    span: 755 – 763 CE
+    lanes: [tang]
+    prominence: 2
+    sides: The Tang dynasty against its own frontier general An Lushan
+    cause: The Tang had placed huge armies on the frontier under a few generals. An Lushan, who commanded three of them, fell out with the chief minister and marched on the capitals.
+    consequence: Millions died and the Tang never regained full control of its provinces, which passed to military governors. The court grew wary of the outside world, and the age of Tang expansion ended.
+    sources: [wikipedia:An_Lushan_rebellion]
+  - id: c-vikings
+    name: The Viking raids
+    span: 793 – 1066 CE
+    lanes: [vikings, england, france, gaelic-ireland, rus]
+    prominence: 2
+    sides: Norse raiders and settlers against the kingdoms of the north and west
+    cause: Rich, unguarded monasteries and towns lay a few days' sail from Scandinavia, and Norse longships could reach them by sea and river. Land shortage at home and the prestige of plunder drew young men abroad.
+    consequence: Raiders became settlers and rulers, in the Danelaw, Normandy, Iceland and Kievan Rus. Their trade routes linked Baghdad to Dublin, and their descendants, the Normans, conquered England in 1066.
+    sources: [wikipedia:Viking_expansion]
+  - id: c-reconquista
+    name: The Reconquista
+    span: 718 – 1492 CE
+    lanes: [al-andalus, castile, portugal, spain]
+    prominence: 2
+    sides: The Christian kingdoms of Iberia against al-Andalus
+    cause: Small Christian kingdoms in the northern mountains pushed south over centuries, for land, for the Church and for the glory of their kings, helped whenever al-Andalus split into rival states.
+    consequence: Granada, the last Muslim state, fell in 1492. Spain was united under Catholic monarchs who expelled its Jews and later its Muslims, and turned the same crusading energy across the Atlantic.
+    sources: [wikipedia:Reconquista]
+  - id: c-crusades
+    name: The Crusades
+    span: 1095 – 1291 CE
+    lanes: [papal-states, crusader-states, eastern-roman, seljuks, fatimids, ayyubids, mamluks]
+    prominence: 1
+    sides: Western Christian armies against the Muslim powers of the Levant
+    cause: Byzantium asked the Pope for help against the Seljuk Turks. Urban II called instead for an armed pilgrimage to free Jerusalem, promising forgiveness of sins; land, adventure and Italian trade drew many more.
+    consequence: The crusader states were gone by 1291. The Fourth Crusade's sack of Constantinople fatally weakened Byzantium, Italian cities grew rich on eastern trade, and the memory of the Crusades still shapes how Christians and Muslims see each other.
+    sources: [wikipedia:Crusades]
+  - id: c-mongol
+    name: The Mongol conquests
+    span: 1206 – 1294 CE
+    lanes: [mongol-empire, khwarazm, jin-jurchen, song, abbasid, rus, golden-horde, ilkhanate, yuan]
+    prominence: 1
+    sides: The Mongol Empire against most of Eurasia
+    cause: Genghis Khan united the feuding tribes of the steppe. To hold his followers together he had to keep them winning and rich, and an army of disciplined horse archers made almost any target possible.
+    consequence: The largest land empire in history, built at the cost of tens of millions of lives. It joined China to Persia and Russia, carried trade, ideas and probably the Black Death across Eurasia, and destroyed Baghdad's caliphate.
+    sources: [wikipedia:Mongol_invasions_and_conquests]
+  - id: c-hundred-years
+    name: The Hundred Years' War
+    span: 1337 – 1453 CE
+    lanes: [england, france]
+    prominence: 1
+    sides: The kings of England against the kings of France
+    cause: English kings held land in France as vassals of the French king, and Edward III claimed the French crown itself through his mother.
+    consequence: England lost everything in France but Calais. Both kingdoms came out with stronger kings, standing armies and a sharper sense of national identity, and the longbow and the cannon had changed how battles were won.
+    sources: [wikipedia:Hundred_Years'_War]
+  - id: c-ottoman-rise
+    name: The Ottoman conquests
+    span: 1354 – 1529 CE
+    lanes: [ottoman, eastern-roman, bulgaria, mamluks, hungary, habsburg-austria]
+    prominence: 2
+    sides: The Ottoman Empire against Byzantium, the Balkans, Mamluk Egypt and Hungary
+    cause: A frontier state of Turkish warriors grew by holy war and by absorbing the lands of its weaker neighbours, with a disciplined slave infantry, the Janissaries, and the best cannon of the age.
+    consequence: Constantinople fell in 1453 and the Ottomans ruled from Hungary to Mecca. Europe's eastern trade routes ran through their hands, one reason western sailors looked for a way round Africa.
+    sources: [wikipedia:Rise_of_the_Ottoman_Empire]
+  - id: c-americas-conquest
+    name: The Spanish conquest of the Americas
+    span: 1519 – 1572 CE
+    lanes: [aztec, inca, new-spain, peru, spain, maya]
+    prominence: 1
+    sides: Spanish conquistadors and their native allies against the Aztec and Inca empires
+    cause: Conquistadors came for gold, land and titles, and in the name of converting souls. Steel, horses and guns mattered, but what decided the wars were native allies who hated their overlords, and epidemics.
+    consequence: Two great empires were destroyed and smallpox and other diseases killed most of the population of the Americas. Silver from Mexico and Peru flooded into Europe and China and paid for a global economy.
+    sources: [wikipedia:Spanish_conquest_of_the_Aztec_Empire, wikipedia:Spanish_conquest_of_the_Inca_Empire]
+  - id: c-imjin
+    name: The Imjin War
+    span: 1592 – 1598 CE
+    lanes: [joseon, shogunate, ming]
+    prominence: 2
+    sides: Japan against Joseon Korea and Ming China
+    cause: Toyotomi Hideyoshi, having just unified Japan, wanted to conquer Ming China and keep his warlords busy abroad. Korea refused to let his army pass.
+    consequence: Korea was devastated, but Admiral Yi Sun-sin's navy cut the Japanese supply lines. The war drained the Ming treasury, and after Hideyoshi's death Japan withdrew and, under the Tokugawa, turned inwards.
+    sources: [wikipedia:Japanese_invasions_of_Korea_(1592–1598)]
+  - id: c-thirty-years
+    name: The Thirty Years' War
+    span: 1618 – 1648 CE
+    lanes: [holy-roman-empire, france, scandinavia, spain, dutch, habsburg-austria]
+    prominence: 1
+    sides: Catholic Habsburgs against Protestant princes, Sweden and France
+    cause: It began as a revolt of Protestant Bohemia against its Catholic Habsburg king and grew into a struggle between France and the Habsburgs for mastery of Europe.
+    consequence: Perhaps a third of the people of Germany died. The Peace of Westphalia made each ruler sovereign within his own lands, a principle the modern system of states still rests on.
+    sources: [wikipedia:Thirty_Years'_War]
+  - id: c-manchu-conquest
+    name: The Manchu conquest of China
+    span: 1618 – 1683 CE
+    lanes: [ming, qing]
+    prominence: 2
+    sides: The Manchu Qing against the Ming dynasty and its loyalists
+    cause: The Manchus had built a strong state north of the Great Wall while the Ming collapsed under famine, debt and peasant rebellion. When rebels took Beijing, a Ming general let the Manchus in to defeat them.
+    consequence: The Qing ruled China until 1912 and doubled its territory, taking Taiwan, Mongolia, Xinjiang and Tibet. Han Chinese men were ordered to wear the Manchu queue as a sign of submission.
+    sources: [wikipedia:Transition_from_Ming_to_Qing]
+  - id: c-seven-years
+    name: The Seven Years' War
+    span: 1756 – 1763 CE
+    lanes: [united-kingdom, france, habsburg-austria, spain, british-america, muscovy]
+    prominence: 2
+    sides: Britain and Prussia against France, Austria, Russia and Spain
+    cause: Britain and France competed for North America, India and the sugar islands, while Austria wanted back the province of Silesia that Prussia had seized.
+    consequence: Britain won Canada and the upper hand in India and became the leading global power. Its war debts led it to tax the American colonies, which led to revolution; France's debts helped bring on its own.
+    sources: [wikipedia:Seven_Years'_War]
+  - id: c-american-revolution
+    name: The American Revolutionary War
+    span: 1775 – 1783 CE
+    lanes: [british-america, united-states, united-kingdom, france]
+    prominence: 1
+    sides: Thirteen American colonies, with France, against Britain
+    cause: Colonists rejected taxes laid on them by a Parliament in which they had no vote, and Britain's attempts to enforce its authority by force turned protest into war.
+    consequence: The United States became independent, a republic built on written principles of rights and self-government. Its example, and France's ruinous cost of joining in, helped set off revolutions in France and Latin America.
+    sources: [wikipedia:American_Revolutionary_War]
+  - id: c-napoleonic
+    name: The French Revolutionary and Napoleonic Wars
+    span: 1792 – 1815 CE
+    lanes: [france, united-kingdom, habsburg-austria, muscovy, spain, holy-roman-empire]
+    prominence: 1
+    sides: Revolutionary and Napoleonic France against coalitions of European monarchies
+    cause: Europe's kings tried to crush the French Revolution before it spread; France fought back with mass conscript armies and carried the revolution abroad. Napoleon then turned defence into conquest.
+    consequence: The Holy Roman Empire ended and nationalism spread across Europe. Napoleon's legal code outlived him, Spain's hold on its American colonies broke, and the Congress of Vienna set a balance of power that lasted a century.
+    sources: [wikipedia:Napoleonic_Wars]
+  - id: c-latin-independence
+    name: The wars of Spanish American independence
+    span: 1808 – 1826 CE
+    lanes: [new-spain, peru, argentina, spain]
+    prominence: 2
+    sides: Patriot armies of Spanish America against the Spanish Crown
+    cause: When Napoleon seized Spain in 1808, royal authority in the colonies collapsed. American-born elites, long kept from power by Spaniards, chose to govern themselves.
+    consequence: Spain's empire on the mainland was gone by 1826, replaced by republics from Mexico to Argentina. Power stayed largely with the creole elite and the army, and many of the new states were ruled by generals for decades.
+    sources: [wikipedia:Spanish_American_wars_of_independence]
+  - id: c-opium
+    name: The Opium Wars
+    span: 1839 – 1860 CE
+    lanes: [qing, united-kingdom]
+    prominence: 1
+    sides: Britain, later with France, against Qing China
+    cause: Britain bought vast amounts of Chinese tea and paid for it with opium smuggled from India. When China destroyed the opium and banned the trade, Britain went to war to force it open.
+    consequence: China ceded Hong Kong, opened treaty ports and paid indemnities. The "unequal treaties" began what China still calls its century of humiliation, and badly weakened the Qing.
+    sources: [wikipedia:Opium_Wars]
+  - id: c-taiping
+    name: The Taiping Rebellion
+    span: 1850 – 1864 CE
+    lanes: [qing]
+    prominence: 1
+    sides: The Taiping Heavenly Kingdom against the Qing dynasty
+    cause: Famine, overpopulation and resentment of the Manchu dynasty met a failed examination candidate, Hong Xiuquan, who believed he was the younger brother of Jesus and promised a kingdom of equality.
+    consequence: Perhaps 20 to 30 million people died, making it one of the deadliest wars in history. The Qing survived only by relying on provincial armies, which hollowed out central power.
+    sources: [wikipedia:Taiping_Rebellion]
+  - id: c-us-civil-war
+    name: The American Civil War
+    span: 1861 – 1865 CE
+    lanes: [united-states]
+    prominence: 1
+    sides: The Union against the slave-holding Confederacy
+    cause: The question of whether slavery would spread into the new western territories. When Lincoln was elected on a platform against its spread, eleven southern states seceded to protect it.
+    consequence: About 620,000 soldiers died. The Union was preserved and slavery abolished, and the industrial North set the course of the country, though the promise of equal rights for freed people was largely abandoned after 1877.
+    sources: [wikipedia:American_Civil_War]
+  - id: c-scramble
+    name: The conquest of Africa
+    span: 1881 – 1914 CE
+    lanes: [colonial-africa, ethiopia, zulu, ashanti, dahomey, ife-benin, sudan]
+    prominence: 1
+    sides: European powers against African states and peoples
+    cause: Industrial Europe wanted raw materials, markets and prestige, and rivalry between the powers turned into a race. Quinine, steamships, railways and the machine gun made conquest cheap.
+    consequence: By 1914 all of Africa except Ethiopia and Liberia was ruled from Europe. Colonial borders drawn with little regard for the peoples inside them are still, almost unchanged, the borders of Africa today.
+    sources: [wikipedia:Scramble_for_Africa]
+  - id: c-ww1
+    name: The First World War
+    span: 1914 – 1918 CE
+    lanes: [habsburg-austria, germany, france, united-kingdom, muscovy, ottoman, italy, united-states, empire-japan]
+    prominence: 1
+    sides: The Allies against the Central Powers
+    cause: The murder of an Austrian archduke set off a chain of alliances, mobilisation plans and imperial rivalries that no government was willing to stop.
+    consequence: About 20 million died. The German, Austrian, Russian and Ottoman empires fell, Russia turned communist, the Middle East was divided between Britain and France, and the peace left grievances that fed the next war.
+    sources: [wikipedia:World_War_I]
+  - id: c-ww2
+    name: The Second World War
+    span: 1939 – 1945 CE
+    lanes: [germany, muscovy, united-kingdom, france, united-states, empire-japan, roc, italy, poland]
+    prominence: 1
+    sides: The Allies against Germany, Italy and Japan
+    cause: Nazi Germany set out to overturn the post-1918 settlement and conquer living space in the east, and imperial Japan to dominate Asia; the Great Depression had brought both regimes to power or emboldened them.
+    consequence: Some 70 to 85 million died, including six million Jews in the Holocaust. Europe was divided, the United States and the Soviet Union became superpowers, the United Nations was founded, and the European empires began to fall.
+    sources: [wikipedia:World_War_II]
+  - id: c-cold-war
+    name: The Cold War
+    span: 1947 – 1991 CE
+    lanes: [united-states, muscovy, prc, south-korea, dai-viet, afghanistan, cuba]
+    prominence: 1
+    sides: The United States and its allies against the Soviet Union and its allies
+    cause: The two victors of 1945 had opposed systems, capitalist democracy and communist one-party rule, and each saw the other's influence in Europe and beyond as a threat.
+    consequence: The superpowers never fought directly, but nuclear arms races and proxy wars in Korea, Vietnam and Afghanistan killed millions. It ended with the collapse of the Soviet Union in 1991.
+    sources: [wikipedia:Cold_War]
+  - id: c-korean
+    name: The Korean War
+    span: 1950 – 1953 CE
+    lanes: [south-korea, prc, united-states]
+    prominence: 2
+    sides: North Korea and China against South Korea and United Nations forces
+    cause: Korea had been divided at the end of the Second World War. North Korea invaded the South to reunify it under communist rule, with Stalin's approval.
+    consequence: About three million died and the front ended almost where it began. Korea remains divided, and the war turned the Cold War into an arms race fought around the world.
+    sources: [wikipedia:Korean_War]
+  - id: c-vietnam
+    name: The Vietnam wars
+    span: 1946 – 1975 CE
+    lanes: [dai-viet, france, united-states]
+    prominence: 1
+    sides: The Viet Minh and North Vietnam against France, then South Vietnam and the United States
+    cause: Vietnamese nationalists fought first to end French colonial rule. After the country was divided in 1954, the United States backed the South to stop communism spreading in Asia.
+    consequence: Vietnam was reunified under communist rule in 1975. Millions of Vietnamese died, Cambodia fell into the Khmer Rouge terror, and the United States learnt the limits of its power.
+    sources: [wikipedia:Vietnam_War]
+
+arrows:
+  - { from: akkad, to: sumer, at: c. 2334 BCE, label: "Sargon conquers the Sumerian cities" }
+  - { from: egypt-new-kingdom, to: canaan, at: c. 1457 BCE, label: "Thutmose III wins at Megiddo" }
+  - { from: hittites, to: old-babylon, at: 1595 BCE, label: "The Hittites sack Babylon" }
+  - { from: neo-assyria, to: egypt-third-intermediate, at: 671 BCE, label: "Assyria conquers Egypt" }
+  - { from: neo-babylonian, to: neo-assyria, at: 612 BCE, label: "Nineveh falls to Babylon and the Medes" }
+  - { from: achaemenid, to: egypt-late-period, at: 525 BCE, label: "Cambyses conquers Egypt" }
+  - { from: achaemenid, to: athens, at: 490 BCE, label: "Darius' fleet lands at Marathon" }
+  - { from: qin, to: chu, at: 223 BCE, label: "Qin conquers Chu" }
+  - { from: han, to: nanyue, at: 111 BCE, label: "Han conquers Nanyue" }
+  - { from: roman-republic, to: la-tene, at: 52 BCE, label: "Caesar conquers Gaul" }
+  - { from: visigoths, to: western-roman, at: 410 CE, label: "Alaric sacks Rome" }
+  - { from: huns, to: western-roman, at: 452 CE, label: "Attila invades Italy" }
+  - { from: vandal-kingdom, to: western-roman, at: 455 CE, label: "The Vandals sack Rome" }
+  - { from: mongol-empire, to: jin-jurchen, at: 1234 CE, label: "The Mongols destroy the Jin" }
+  - { from: mongol-empire, to: rus, at: 1240 CE, label: "The Mongols take Kiev" }
+  - { from: mongol-empire, to: abbasid, at: 1258 CE, label: "Hülegü sacks Baghdad" }
+  - { from: mamluks, to: ilkhanate, at: 1260 CE, label: "The Mamluks stop the Mongols at Ain Jalut" }
+  - { from: ottoman, to: hungary, at: 1526 CE, label: "Mohács: the Ottomans take Hungary" }
+  - { from: ottoman, to: habsburg-austria, at: 1529 CE, label: "The first siege of Vienna" }
+  - { from: spain, to: aztec, at: 1521 CE, label: "Cortés takes Tenochtitlan" }
+  - { from: spain, to: inca, at: 1532 CE, label: "Pizarro seizes Atahualpa" }
+  - { from: mughal, to: delhi-sultanate, at: 1526 CE, label: "Babur wins at Panipat" }
+  - { from: shogunate, to: joseon, at: 1592 CE, label: "Hideyoshi invades Korea" }
+  - { from: qing, to: ming, at: 1644 CE, label: "The Manchus take Beijing" }
+  - { from: united-kingdom, to: qing, at: 1842 CE, label: "Britain wins the First Opium War" }
+  - { from: france, to: muscovy, at: 1812 CE, label: "Napoleon marches on Moscow" }
+  - { from: germany, to: poland, at: 1939 CE, label: "Germany invades Poland" }
+  - { from: germany, to: muscovy, at: 1941 CE, label: "Operation Barbarossa" }
+  - { from: empire-japan, to: roc, at: 1937 CE, label: "Japan invades China" }
+  - { from: muscovy, to: afghanistan, at: 1979 CE, label: "The Soviet invasion of Afghanistan" }
+
+images:
+  # The lens's own pictures: hidden ordinary pictures make room for these (decision 59).
+  - { id: w-narmer, lane: egypt-early-dynastic, source: "commons:File:Narmer Palette smiting side.jpg", date: c. 3100 BCE, prominence: 2, treatment: plate, caption: "The Narmer Palette: a king smites his enemy as Egypt is united" }
+  - { id: w-ur-standard, lane: sumer, source: "commons:File:Standard of Ur - War.jpg", date: c. 2500 BCE, prominence: 2, treatment: plate, caption: "The Standard of Ur: Sumerian war wagons ride over the fallen" }
+  - { id: w-vultures, lane: sumer, source: "commons:File:Stele of the vultures (war).jpg", date: c. 2450 BCE, prominence: 3, treatment: plate, caption: "The Stele of the Vultures: Lagash's phalanx marches over Umma's dead" }
+  - { id: w-lachish, lane: neo-assyria, source: "commons:File:Assyrian Archers and Slingers from the Siege of Lachish Relief British Museum 124906.jpg", date: 701 BCE, prominence: 2, treatment: plate, caption: "Assyrian archers and slingers at the siege of Lachish" }
+  - { id: w-hoplite-helmet, lane: greek-poleis, source: "commons:File:Corinthian helmet 15153 NAMAthens.jpg", date: c. 600 BCE, prominence: 2, treatment: cutout, caption: "A Corinthian helmet, worn by the hoplites of the Greek phalanx" }
+  - { id: w-alexander-mosaic, lane: alexander-empire, source: "commons:File:Alexander (Battle of Issus) Mosaic.jpg", date: 333 BCE, prominence: 1, treatment: plate, caption: "The Alexander Mosaic: Alexander charges Darius at Issus" }
+  - { id: w-zama, lane: roman-republic, source: "commons:File:Cornelis Cort - The Battle of Zama - 1990.563 - Art Institute of Chicago.jpg", date: 202 BCE, prominence: 3, treatment: plate, caption: "The Battle of Zama, as imagined in 1567", ofItsTime: false }
+  - { id: w-terracotta, lane: qin, source: "commons:File:Qin Shihuang Terracotta Army, Pit 1.jpg", date: 210 BCE, prominence: 1, treatment: plate, caption: "The Terracotta Army: the first emperor's guard for the afterlife" }
+  - { id: w-trajan, lane: roman-empire, source: "commons:File:Dacian ambassadors ask Traianus for mercy (Detail from Trajan's Column in Rome).jpg", date: 106 CE, prominence: 2, treatment: plate, caption: "Trajan's Column: Dacian envoys beg the emperor for mercy" }
+  - { id: w-oseberg, lane: vikings, source: "commons:File:Oseberg ship - IMG 9186.jpg", date: c. 820 CE, prominence: 2, treatment: plate, caption: "The Oseberg ship, buried with a Viking noblewoman" }
+  - { id: w-bayeux, lane: england, source: "commons:File:Bayeux Tapestry scene57 Harold death (cropped).jpg", date: 1066 CE, prominence: 1, treatment: plate, caption: "The Bayeux Tapestry: Harold falls at Hastings" }
+  - { id: w-jerusalem-1099, lane: crusader-states, source: "commons:File:1099 Siege of Jerusalem.jpg", date: 1099 CE, prominence: 2, treatment: plate, caption: "The crusaders storm Jerusalem, in a later manuscript", ofItsTime: false }
+  - { id: w-mongols-jin, lane: mongol-empire, source: "commons:File:Bataille entre mongols & chinois (1211).jpeg", date: 1211 CE, prominence: 1, treatment: plate, caption: "Mongol horsemen fight the Jin, from Rashid al-Din's history", ofItsTime: false }
+  - { id: w-baghdad-1258, lane: abbasid, source: "commons:File:Bagdad1258.jpg", date: 1258 CE, prominence: 2, treatment: plate, caption: "The Mongol siege of Baghdad, painted a few decades later", ofItsTime: false }
+  - { id: w-crecy, lane: england, source: "commons:File:Battle of crecy froissart (cropped).jpg", date: 1346 CE, prominence: 2, treatment: plate, caption: "Longbows against crossbows at Crécy, from Froissart", ofItsTime: false }
+  - { id: w-constantinople, lane: ottoman, source: "commons:File:Zografos-Makriyannis 02 The fall of Konstantinople.jpg", date: 1453 CE, prominence: 1, treatment: plate, caption: "The fall of Constantinople, painted for General Makriyannis in 1836", ofItsTime: false }
+  - { id: w-eagle-knight, lane: aztec, source: "commons:File:Aztec Stone Head of Eagle Knight (9754750422).jpg", date: c. 1480 CE, prominence: 2, treatment: cutout, caption: "An Aztec eagle warrior" }
+  - { id: w-lienzo, lane: aztec, source: "commons:File:Momento en el que Hernán Cortés es capturado en la batalla de Colhuacatonco, en el Lienzo de Tlaxcala.jpg", date: 1521 CE, prominence: 2, treatment: plate, caption: "Spaniards and Tlaxcalan allies at war, from the Lienzo de Tlaxcala" }
+  - { id: w-panipat, lane: mughal, source: "commons:File:Battle of Panipat (20 April 1526). Baburnama of 1598.jpg", date: 1526 CE, prominence: 2, treatment: plate, caption: "Babur wins at Panipat, from the Baburnama" }
+  - { id: w-nagashino, lane: shogunate, source: "commons:File:Battle of Nagashino.jpg", date: 1575 CE, prominence: 2, treatment: plate, caption: "Massed muskets win the Battle of Nagashino" }
+  - { id: w-turtle-ship, lane: joseon, source: "commons:File:Geobukseon Cartagena.jpg", date: 1592 CE, prominence: 3, treatment: plate, caption: "A turtle ship, Admiral Yi's armoured warship (model)", ofItsTime: false }
+  - { id: w-lutzen, lane: holy-roman-empire, source: "commons:File:Peter Snayers - The battle at Lützen, 1632.jpg", date: 1632 CE, prominence: 2, treatment: plate, caption: "The Battle of Lützen, where Gustavus Adolphus fell" }
+  - { id: w-plassey, lane: british-raj, source: "commons:File:Robert Clive and Mir Jafar after the Battle of Plassey, 1757 by Francis Hayman.jpg", date: 1757 CE, prominence: 2, treatment: plate, caption: "Clive meets Mir Jafar after Plassey" }
+  - { id: w-napoleon-alps, lane: france, source: "commons:File:David - Napoleon crossing the Alps - Malmaison2.jpg", date: 1800 CE, prominence: 1, treatment: plate, caption: "Napoleon Crossing the Alps, by Jacques-Louis David" }
+  - { id: w-palm-tree-hill, lane: haiti, source: "commons:File:Battle for Palm Tree Hill.jpg", date: 1802 CE, prominence: 2, treatment: plate, caption: "The battle for Palm Tree Hill in the Haitian Revolution" }
+  - { id: w-goya, lane: spain, source: "commons:File:El Tres de Mayo, by Francisco de Goya, from Prado (cropped).jpg", date: 1808 CE, prominence: 1, treatment: plate, caption: "Goya's The Third of May 1808" }
+  - { id: w-waterloo, lane: united-kingdom, source: "commons:File:Battle of Waterloo 1815.PNG", date: 1815 CE, prominence: 2, treatment: plate, caption: "The Battle of Waterloo" }
+  - { id: w-nemesis, lane: qing, source: "commons:File:Destroying Chinese war junks, by E. Duncan (1843).jpg", date: 1841 CE, prominence: 2, treatment: plate, caption: "The iron steamship Nemesis destroys Chinese war junks" }
+  - { id: w-taiping, lane: qing, source: "commons:File:Taiping breaking out of Shuoheng.jpg", date: 1860 CE, prominence: 3, treatment: plate, caption: "Qing forces against the Taiping, from a court painting" }
+  - { id: w-gettysburg, lane: united-states, source: "commons:File:Gettysburg, Pa. Confederate dead gathered for burial at the edge of the Rose woods, July 5, 1863 (cropped).jpg", date: 1863 CE, prominence: 2, treatment: plate, caption: "Confederate dead at Gettysburg, July 1863" }
+  - { id: w-adwa, lane: ethiopia, source: "commons:File:Ethiopian painting, Battle of Adwa, 1896.jpg", date: 1896 CE, prominence: 1, treatment: plate, caption: "The Battle of Adwa in Ethiopian painting", ofItsTime: false }
+  - { id: w-chateau-wood, lane: france, source: "commons:File:Chateau Wood Ypres 1917.jpg", date: 1917 CE, prominence: 1, treatment: plate, caption: "Chateau Wood, Ypres, 1917" }
+  - { id: w-stalingrad, lane: muscovy, source: "commons:File:The German Advance on Stalingrad September 1942 HU5163.jpg", date: 1942 CE, prominence: 2, treatment: plate, caption: "The German advance on Stalingrad, September 1942" }
+  - { id: w-nagasaki, lane: empire-japan, source: "commons:File:Nagasakibomb.jpg", date: 1945 CE, prominence: 1, treatment: plate, caption: "The atomic cloud over Nagasaki, 9 August 1945" }
+  # Turning-point cards
+  - { id: w-chariot, lane: egypt-new-kingdom, source: "commons:File:Ancient Chariot from Tutankhamon Tomb, Displayed in Cairo Museum 1.jpg", date: c. 1550 BCE, prominence: 1, treatment: plate, caption: "A chariot from the tomb of Tutankhamun" }
+  - { id: w-iron-sword, lane: hallstatt, source: "commons:File:Early La Tene Sword from Hallstatt Grave 994.JPG", date: c. 750 BCE, prominence: 1, treatment: plate, caption: "An iron sword from a grave at Hallstatt" }
+  - { id: w-crossbow, lane: zhou-eastern, source: "commons:File:Han crossbow trigger mechanism.jpg", date: c. 400 BCE, prominence: 1, treatment: plate, caption: "A bronze crossbow trigger of the Han dynasty" }
+  - { id: w-stirrup, lane: eastern-jin, source: "commons:File:Stirrup MET DP278488.jpg", date: c. 322 CE, prominence: 1, treatment: cutout, caption: "An iron stirrup", ofItsTime: false }
+  - { id: w-greek-fire, lane: eastern-roman, source: "commons:File:Greekfire-madridskylitzes1.jpg", date: 672 CE, prominence: 1, treatment: plate, caption: "Greek fire, from the Madrid Skylitzes", ofItsTime: false }
+  - { id: w-fire-lance, lane: song, source: "commons:File:FireLanceAndGrenade10thCenturyDunhuang.jpg", date: 1044 CE, prominence: 1, treatment: plate, caption: "A fire lance and a grenade on a 10th-century banner from Dunhuang" }
+  - { id: w-bombard, lane: ottoman, source: "commons:File:Great Turkish Bombard at Fort Nelson.JPG", date: 1453 CE, prominence: 1, treatment: plate, caption: "The Great Turkish Bombard, cast in 1464" }
+  - { id: w-star-fort, lane: dutch, source: "commons:File:Крепость Буртанж (вид сверху).jpg", date: 1593 CE, prominence: 1, treatment: plate, caption: "Bourtange, a Dutch star fort of 1593", ofItsTime: false }
+  - { id: w-musket-drill, lane: dutch, source: "commons:File:Fotothek df tg 0004638 Kriegskunde ^ Militär ^ Waffe ^ Drill ^ Kavallerie ^ Muskete.jpg", date: 1607 CE, prominence: 1, treatment: plate, caption: "Musket drill, engraved by Jacob de Gheyn" }
+  - { id: w-maxim, lane: united-kingdom, source: "commons:File:Maxim Machine Gun for Turkey - Cassier's 1895-04.png", date: 1884 CE, prominence: 1, treatment: plate, caption: "A Maxim gun, 1895" }
+  - { id: w-fokker, lane: germany, source: "commons:File:Jasta 14 Fokker Dr I.jpg", date: 1917 CE, prominence: 1, treatment: plate, caption: "A Fokker triplane of Jasta 14" }
+  - { id: w-trinity, lane: united-states, source: "commons:File:Trinity Test Fireball 16ms.jpg", date: 1945 CE, prominence: 1, treatment: plate, caption: "The Trinity test, 16 milliseconds after detonation" }
+
+cards:
+  - id: k-chariot
+    title: The war chariot
+    date: c. 1600 BCE
+    lane: egypt-new-kingdom
+    image: w-chariot
+    text: Light spoked-wheel chariots carried archers fast across the battlefields of the Bronze Age.
+    cause: Two inventions of the steppe, the tamed horse and the light spoked wheel, made a fast, stable platform for an archer.
+    consequence: Chariot armies became the core of every great Bronze Age power from Egypt to Shang China, and a costly chariot-owning elite ruled until the Bronze Age collapse.
+    sources: [wikipedia:Chariot]
+  - id: k-iron
+    title: Iron for the many
+    date: c. 750 BCE
+    lane: hallstatt
+    image: w-iron-sword
+    text: Iron, found almost everywhere, armed far larger armies than scarce bronze ever could.
+    cause: The collapse of the Bronze Age trade networks around 1200 BCE cut the long routes that supplied tin, while iron ore lay nearly everywhere.
+    consequence: Cheap iron let kings arm ordinary men by the thousand. Assyria built the first great iron-armed army, and Celtic smiths spread iron across Europe.
+    sources: [wikipedia:Iron_Age]
+  - id: k-crossbow
+    title: The crossbow
+    date: c. 400 BCE
+    lane: zhou-eastern
+    image: w-crossbow
+    text: A bronze trigger let a peasant conscript shoot with deadly force after a few days' training.
+    cause: The Warring States needed to turn huge numbers of farmers into soldiers quickly, and a weapon that did not need years of practice.
+    consequence: Massed crossbows decided Chinese wars for a thousand years and helped hold back steppe cavalry. In Europe the crossbow returned in the Middle Ages, and the Church tried to ban it against Christians.
+    sources: [wikipedia:Crossbow]
+  - id: k-stirrup
+    title: The stirrup
+    date: c. 322 CE
+    lane: eastern-jin
+    image: w-stirrup
+    text: A footrest for riders gave cavalry a firm seat for the lance, the sword and the bow.
+    cause: Armoured horsemen in north China and on the steppe needed a stable seat; the first paired stirrups appear in Chinese tombs of the early 4th century.
+    consequence: Carried west by the Avars by the 600s, it helped make heavy cavalry the masters of the battlefield, from Persian cataphracts to the European knight.
+    sources: [wikipedia:Stirrup]
+  - id: k-greek-fire
+    title: Greek fire
+    date: 672 CE
+    lane: eastern-roman
+    image: w-greek-fire
+    text: A secret liquid fire that burned on water saved Constantinople from the Arab fleets.
+    cause: Arab navies were besieging Constantinople; tradition says a refugee engineer from Syria, Kallinikos, brought the recipe.
+    consequence: Byzantium broke the great sieges of 674–678 and 717–718 and survived for another seven centuries. The secret was kept so well that the formula is still unknown.
+    sources: [wikipedia:Greek_fire]
+  - id: k-gunpowder
+    title: Gunpowder
+    date: 1044 CE
+    lane: song
+    image: w-fire-lance
+    text: Chinese alchemists' "fire drug" became fire lances, bombs and, in time, guns.
+    cause: Daoist alchemists searching for elixirs mixed saltpetre, sulphur and charcoal. The Song, under constant threat from the north, turned it into weapons and wrote down the formula in 1044.
+    consequence: Within three centuries gunpowder weapons had spread across Eurasia, and the gun ended the age of castles and armoured knights.
+    sources: [wikipedia:Gunpowder]
+  - id: k-cannon
+    title: The siege cannon
+    date: 1453 CE
+    lane: ottoman
+    image: w-bombard
+    text: Giant bronze bombards broke walls that had stood for a thousand years.
+    cause: Mehmed II hired the engineer Orban to cast guns big enough to breach the Theodosian walls of Constantinople.
+    consequence: High medieval walls became useless. Rulers who could pay for siege guns crushed those who couldn't, helping build the great gunpowder empires of the Ottomans, Safavids and Mughals.
+    sources: [wikipedia:Fall_of_Constantinople]
+  - id: k-star-fort
+    title: The star fort
+    date: c. 1530 CE
+    lane: italian-cities
+    image: w-star-fort
+    text: Low, thick, angled walls shrugged off cannon and covered every approach with fire.
+    cause: Italian engineers answered the siege cannon with earth-backed walls built low and set into star-shaped bastions.
+    consequence: Sieges grew long and ruinously expensive again; armies grew huge to conduct them, and only states with large treasuries could fight.
+    sources: [wikipedia:Bastion_fort]
+  - id: k-drill
+    title: Musket and drill
+    date: 1600 CE
+    lane: dutch
+    image: w-musket-drill
+    text: Maurice of Nassau drilled musketeers to fire in volleys, rank after rank, in unbroken rhythm.
+    cause: Muskets were slow to reload. Fighting the Spanish, the Dutch needed a way to keep up steady fire, and took their model from Roman drill.
+    consequence: Disciplined standing armies became the pattern for every European state, and for the colonial armies that later conquered much of the world.
+    sources: [wikipedia:Maurice_of_Orange]
+  - id: k-machine-gun
+    title: The machine gun
+    date: 1884 CE
+    lane: united-kingdom
+    image: w-maxim
+    text: Hiram Maxim's gun fired 600 rounds a minute, worked by the force of its own recoil.
+    cause: Industrial engineering applied to firearms, and empires eager for an edge in colonial wars.
+    consequence: It let small colonial forces slaughter African armies, and in 1914–18 it made frontal attack suicidal and trapped whole armies in trenches.
+    sources: [wikipedia:Maxim_gun]
+  - id: k-air
+    title: War in the air
+    date: 1917 CE
+    lane: germany
+    image: w-fokker
+    text: Within fifteen years of the first flight, aircraft scouted, fought each other and bombed cities.
+    cause: Generals needed to see over the trenches, then to stop the enemy seeing, and finally to strike far behind the front.
+    consequence: By the Second World War bombers could reach cities hundreds of miles away; air power decided battles on land and sea, and civilians became targets.
+    sources: [wikipedia:Aerial_warfare]
+  - id: k-nuclear
+    title: The atomic bomb
+    date: 1945 CE
+    lane: united-states
+    image: w-trinity
+    text: One bomb could now destroy a city; within years, thousands could end civilisation.
+    cause: Fear that Nazi Germany would build one first drove the Manhattan Project, which tested its first bomb in New Mexico in July 1945.
+    consequence: Hiroshima and Nagasaki ended the Pacific war. Nuclear deterrence then kept the superpowers from fighting each other directly throughout the Cold War, under the threat of mutual destruction.
+    sources: [wikipedia:Nuclear_weapon]
+
+notes:
+  sargon:
+    cause: Sargon, a cupbearer turned king of Kish, set out to rule all the quarreling Sumerian city-states and the trade routes that fed them.
+    consequence: The first empire, ruling peoples of different languages from one capital. Its model of a king of the four corners of the world was copied for two thousand years.
+  kadesh:
+    cause: Ramesses II marched north to take back Kadesh and southern Syria from the Hittite king Muwatalli, the great rival for the Levant.
+    consequence: Both sides claimed victory. Sixteen years later they made the first peace treaty whose text survives, and agreed to defend each other.
+  marathon:
+    cause: Darius sent an expedition to punish Athens for helping the Ionian Greeks revolt against Persia.
+    consequence: Athens' citizen hoplites beat the invaders on their own. The victory gave the young democracy its founding legend and the confidence to build a navy.
+  thermopylae:
+    cause: Xerxes invaded Greece with a vast army; a small force under Leonidas of Sparta held the narrow pass to buy time for the Greek fleet.
+    consequence: The defenders were wiped out, but their stand became a symbol of resistance, and weeks later the Greek fleet destroyed the Persian navy at Salamis.
+  gaugamela:
+    cause: Darius III gathered the full strength of Persia to stop Alexander, who had already taken Asia Minor, Syria and Egypt.
+    consequence: Alexander broke the Persian army and Darius fled. The capitals Babylon, Susa and Persepolis fell, and the Persian Empire passed to Macedon.
+  kalinga:
+    cause: Ashoka set out to conquer Kalinga, a rich coastal kingdom that blocked the Mauryan empire's control of the eastern sea routes.
+    consequence: About 100,000 were killed. Ashoka, horrified, turned to Buddhism and to ruling by moral law, and had his remorse carved on rocks across India.
+  hannibal-alps:
+    cause: Hannibal decided to fight Rome in Italy itself, hoping that Rome's allies would desert it if he won there.
+    consequence: He won at Trebia, Trasimene and Cannae but could not take Rome. The war ended in Carthage's defeat at Zama, and Rome learned to fight wars of attrition.
+  carrhae:
+    cause: Crassus, the richest man in Rome, invaded Parthia to win military glory equal to his rivals Caesar and Pompey.
+    consequence: Parthian horse archers destroyed his legions and Crassus was killed. The Euphrates became the frontier between Rome and Persia for centuries.
+  teutoburg:
+    cause: Arminius, a Germanic chief who had served in the Roman army, led three legions into an ambush to stop Rome turning Germania into a province.
+    consequence: Three legions were destroyed. Rome gave up conquering Germany and made the Rhine its frontier, so Latin never took root east of it.
+  sack-410:
+    cause: Alaric's Visigoths had been refused land and payment by the Western Roman government, and he took Rome to force its hand.
+    consequence: The first sack of Rome by a foreign enemy in eight centuries shocked the Mediterranean; Augustine wrote the City of God in reply. The Visigoths later settled in Gaul and Spain.
+  karbala:
+    cause: Husayn, grandson of the Prophet, refused to accept Yazid as caliph and set out for Kufa, where supporters had promised to rise for him.
+    consequence: Husayn and his family were killed. His death became the founding tragedy of Shia Islam, mourned every year at Ashura, and deepened the divide between Sunni and Shia.
+  tariq:
+    cause: Umayyad forces in North Africa crossed into Visigothic Spain, which was divided by a disputed succession.
+    consequence: King Roderic was killed and most of Iberia was conquered within a decade. Al-Andalus became a centre of learning for eight centuries.
+  hastings:
+    cause: William of Normandy claimed the English throne had been promised to him, and invaded when Harold Godwinson was crowned instead.
+    consequence: Harold was killed and William became king. A French-speaking nobility replaced the English one, the English language changed for good, and England was tied to France for four centuries.
+  manzikert:
+    cause: The emperor Romanos IV marched east to stop Seljuk raids into Armenia and Anatolia.
+    consequence: He was defeated and captured. Turkish tribes poured into Anatolia, which became Turkey, and Byzantium's appeal for help led to the First Crusade.
+  jerusalem-1099:
+    cause: The First Crusade was called to free Jerusalem and the holy places from Muslim rule.
+    consequence: The crusaders took the city and massacred its Muslim and Jewish people. They founded Latin states in the Levant that lasted almost two hundred years.
+  saladin:
+    cause: Saladin had united Egypt and Syria and called for holy war to take back Jerusalem from the crusaders.
+    consequence: After destroying the crusader army at Hattin, he took Jerusalem with little bloodshed. The Third Crusade failed to win it back.
+  baghdad-1258:
+    cause: Hülegü, Genghis Khan's grandson, demanded the caliph's submission; the caliph refused.
+    consequence: Baghdad was sacked, perhaps hundreds of thousands killed, its libraries thrown into the Tigris. The Abbasid caliphate in Baghdad ended, and the centre of the Islamic world moved to Cairo.
+  ain-jalut:
+    cause: After sacking Baghdad, the Mongols demanded the surrender of Mamluk Egypt, the last great Muslim power.
+    consequence: The Mamluks won, the first time a Mongol army was decisively beaten in battle. It saved Egypt and the holy cities and set the western limit of the Mongol advance.
+  constantinople-1453:
+    cause: Mehmed II wanted the city that blocked his empire's heart and the prestige of Rome's last capital.
+    consequence: The Byzantine Empire ended after 1,100 years. Constantinople became the Ottoman capital, and Greek scholars carried ancient texts west to Italy.
+  cortes:
+    cause: Cortés, with Tlaxcalan and other allies who resented Aztec rule, besieged Tenochtitlan after being driven out of the city in 1520.
+    consequence: The city fell after smallpox had killed much of its people. The Aztec empire became New Spain, and Mexico City was built on its ruins.
+  cajamarca:
+    cause: Pizarro, with fewer than 200 men, met the Inca emperor Atahualpa just after he had won a civil war against his brother.
+    consequence: Pizarro seized Atahualpa, took a room of gold as ransom and killed him anyway. The Inca empire, already divided and struck by smallpox, fell to Spain.
+  panipat-1526:
+    cause: Babur, a Timurid prince driven out of Central Asia, invaded India to win a new kingdom from the Lodi sultan of Delhi.
+    consequence: His cannon and cavalry won against a much larger army. He founded the Mughal Empire, which ruled most of India for two centuries.
+  sekigahara:
+    cause: After Toyotomi Hideyoshi died, his regents split into two camps over who would rule Japan in his young son's name.
+    consequence: Tokugawa Ieyasu won and became shogun in 1603. His family ruled a peaceful, closed Japan for 250 years.
+  plassey:
+    cause: The Nawab of Bengal attacked the British East India Company for fortifying Calcutta; Robert Clive bribed his commander to change sides.
+    consequence: The Company took control of Bengal, the richest province of India, and used its revenues to conquer much of the rest of the subcontinent.
+  waterloo:
+    cause: Napoleon escaped from exile and retook France, and the allied powers marched to remove him again.
+    consequence: Napoleon was defeated by Wellington and Blücher and exiled for good. The Congress of Vienna's settlement held Europe in balance until 1914.
+  haitian-revolution:
+    cause: Enslaved Africans on the richest sugar colony in the world rose against their masters, inspired in part by the French Revolution's talk of rights.
+    consequence: Haiti became the first state founded by formerly enslaved people, in 1804. Its example terrified slave owners across the Americas, and France demanded a crushing indemnity for its losses.
+  opium-war:
+    cause: China seized and destroyed British opium at Canton to stop the drug trade; Britain went to war to protect it.
+    consequence: China ceded Hong Kong and opened ports to foreign trade. The first of the unequal treaties began what China calls its century of humiliation.
+  rebellion-1857:
+    cause: Indian soldiers of the East India Company rose over new cartridges rumoured to be greased with cow and pig fat, on top of deep anger at annexations and reforms.
+    consequence: The rising was crushed with great brutality. The British Crown took over India from the Company, and the last Mughal emperor was exiled.
+  adwa:
+    cause: Italy claimed that a treaty had made Ethiopia its protectorate; Emperor Menelik II rejected the claim and Italy invaded.
+    consequence: Menelik's army destroyed the Italian force. Ethiopia stayed independent through the Scramble for Africa and became a symbol of African resistance.
+  tsushima:
+    cause: Japan and Russia were fighting over Manchuria and Korea; Russia's Baltic fleet sailed halfway round the world to relieve Port Arthur.
+    consequence: Japan's navy sank almost the entire Russian fleet. For the first time in modern history an Asian power had defeated a European one, and revolution broke out in Russia.
+  sarajevo:
+    cause: A Bosnian Serb nationalist shot Archduke Franz Ferdinand to strike at Austrian rule over the South Slavs.
+    consequence: Austria's ultimatum to Serbia set off the alliances and mobilisation plans of the great powers, and within six weeks Europe was at war.
+  invasion-poland:
+    cause: Hitler wanted living space in the east and the return of land lost in 1919; a secret pact with Stalin had divided Poland between them.
+    consequence: Britain and France declared war on Germany two days later. Poland was crushed between Germany and the Soviet Union, and the Second World War in Europe began.
+  barbarossa:
+    cause: Hitler aimed to destroy the Soviet Union, seize its land and grain for German settlers, and exterminate its Jews and communists.
+    consequence: The largest invasion in history stalled before Moscow. The war in the east, the bloodiest front of the war, eventually broke the German army.
+  stalingrad:
+    cause: Germany drove for the Caucasus oil fields and the city bearing Stalin's name on the Volga.
+    consequence: A whole German army was encircled and destroyed. The tide of the war in Europe turned towards the Soviet Union.
+  hiroshima:
+    cause: The United States wanted to force Japan's surrender without an invasion, and to end the war on its own terms.
+    consequence: Over 200,000 people died in the two cities. Japan surrendered, and the world entered the nuclear age.
+  vietnam-war:
+    cause: The United States fought to stop communist North Vietnam and the Viet Cong reunifying the country.
+    consequence: After 58,000 American and millions of Vietnamese deaths, the US withdrew; Saigon fell in 1975 and Vietnam was reunified under communist rule.
+  berlin-conference:
+    cause: European powers wanted rules to divide Africa among themselves without going to war with each other.
+    consequence: Africa was partitioned on maps in Berlin, with no African present. Within thirty years almost the whole continent was under European rule.

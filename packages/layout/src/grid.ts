@@ -22,6 +22,13 @@ export class Grid {
     return { c0, r0, c1, r1 };
   }
 
+  /** An independent copy (the lens passes start from the chart's structure, without its labels). */
+  clone(): Grid {
+    const g = Object.create(Grid.prototype) as Grid;
+    Object.assign(g, { cell: this.cell, cols: this.cols, rows: this.rows, data: this.data.slice() });
+    return g;
+  }
+
   mark(x: number, y: number, w: number, h: number, pad = 0): void {
     const { c0, r0, c1, r1 } = this.range(x - pad, y - pad, w + 2 * pad, h + 2 * pad);
     for (let r = r0; r <= r1; r++) this.data.fill(1, r * this.cols + c0, r * this.cols + c1 + 1);

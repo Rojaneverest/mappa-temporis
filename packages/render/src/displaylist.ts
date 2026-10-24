@@ -26,6 +26,8 @@ interface Base {
   lk?: 'label' | 'lane' | 'image';
   /** Lenses this mark belongs to (stays bright when one of them is on). */
   lens?: string[];
+  /** Lanes under a lens they are not part of: drawn in this receding tint instead of their colour. */
+  alt?: string;
 }
 
 export interface TextItem extends Base {

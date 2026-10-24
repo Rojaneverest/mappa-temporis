@@ -159,6 +159,10 @@ export class Painter {
     for (const i of indices) {
       const item = this.dl.items[i]!;
       if (item.layer && !view.layers?.has(item.layer)) continue;
+      // Under a lens the engravings step out entirely (decision 59).
+      if (lens && item.layer === 'atmosphere') continue;
+      // Lanes the lens doesn't touch recede into a solid paper tint rather than going see-through.
+      const tint = lens && item.lk === 'lane' && item.alt && !item.lens?.includes(lens) ? item.alt : undefined;
       const alpha = (item.alpha ?? 1) * fadeAt(item.fade, zoom) * (item.fadeOut ? 1 - fadeAt(item.fadeOut, zoom) : 1) * lensDim(item, lens);
       if (alpha <= 0.01) continue;
       switch (item.k) {
@@ -173,7 +177,7 @@ export class Painter {
             if (item.stroke) canvas.drawCircle(item.x, item.y, r, this.styled(item.stroke, alpha, 'stroke', item.sw, true, view.s));
             break;
           }
-          const p = this.styled(item.fill ?? item.stroke!, alpha, item.fill ? 'fill' : 'stroke', item.sw, item.hair, view.s, undefined, item.multiply);
+          const p = this.styled(tint ?? item.fill ?? item.stroke!, alpha, item.fill ? 'fill' : 'stroke', item.sw, item.hair, view.s, undefined, item.multiply);
           const rect = ck.XYWHRect(item.x, item.y, item.w, item.h);
           if (item.r) canvas.drawRRect(ck.RRectXY(rect, item.r, item.r), p);
           else canvas.drawRect(rect, p);
@@ -185,7 +189,7 @@ export class Painter {
           break;
         }
         case 'line': {
-          const p = this.styled(item.stroke, alpha, 'stroke', item.sw, item.hair, view.s, item.dash);
+          const p = this.styled(tint ?? item.stroke, alpha, 'stroke', item.sw, item.hair, view.s, item.dash);
           canvas.drawLine(item.x1, item.y1, item.x2, item.y2, p);
           break;
         }
@@ -204,14 +208,14 @@ export class Painter {
             p.setShader(ck.Shader.MakeLinearGradient([0, y0], [0, y1], colors, stops.map(([t]) => t), ck.TileMode.Clamp));
           };
           if (item.fill) {
-            const p = this.styled(item.fill, alpha, 'fill', 0, false, view.s, undefined, item.multiply);
-            ramp(p, item.fill);
+            const p = this.styled(tint ?? item.fill, alpha, 'fill', 0, false, view.s, undefined, item.multiply);
+            ramp(p, tint ?? item.fill);
             canvas.drawPath(path, p);
             p.setShader(null);
           }
           if (item.stroke) {
-            const p = this.styled(item.stroke, alpha, 'stroke', item.sw, item.hair, view.s, item.dash);
-            if (!item.fill) ramp(p, item.stroke);
+            const p = this.styled(tint ?? item.stroke, alpha, 'stroke', item.sw, item.hair, view.s, item.dash);
+            if (!item.fill) ramp(p, tint ?? item.stroke);
             canvas.drawPath(path, p);
             p.setShader(null);
           }
@@ -342,11 +346,17 @@ export function lensOf(layers: ReadonlySet<string> | undefined): string | null {
   return null;
 }
 
-/** Under a lens: matching labels stay full; everything else steps back. */
+/**
+ * Under a lens (decision 59): matching labels stay full and the rest fade; pictures outside the lens
+ * are hidden (the lens brings its own); lanes it touches stay full, the others recede to a solid
+ * tint (`alt`) — only their names, which have no tint, fade.
+ */
 export function lensDim(item: Item, lens: string | null): number {
   if (!lens || !item.lk) return 1;
-  if (item.lk === 'label') return item.lens?.includes(lens) ? 1 : 0.13;
-  return item.lk === 'image' ? 0.3 : 0.45;
+  const mine = !!item.lens?.includes(lens);
+  if (item.lk === 'label') return mine ? 1 : 0.13;
+  if (item.lk === 'image') return mine ? 1 : 0;
+  return mine || item.alt ? 1 : 0.4;
 }
 
 export function fadeAt(fade: [number, number] | undefined, s: number): number {

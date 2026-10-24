@@ -48,7 +48,8 @@ const visible = dl.items.map((it, i) => [it, i] as const).filter(([it]) => it.b!
 const times: number[] = [];
 for (let r = 0; r < (process.env.BENCH ? 5 : 1); r++) {
   const t0 = performance.now();
-  painter.paint(surface.getCanvas(), { x0, y0, s, widthPx: wPx, heightPx: hPx }, visible, { paper: !process.env.TRANSPARENT });
+  // LAYERS=lens:war,thread:silk-road renders with optional layers switched on.
+  painter.paint(surface.getCanvas(), { x0, y0, s, widthPx: wPx, heightPx: hPx, layers: new Set((process.env.LAYERS ?? '').split(',').filter(Boolean)) }, visible, { paper: !process.env.TRANSPARENT });
   surface.flush();
   times.push(performance.now() - t0);
 }

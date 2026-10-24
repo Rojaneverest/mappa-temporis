@@ -92,7 +92,7 @@ export class Panel {
   }
 
   private render(e: FolioEntry): string {
-    const kind = ({ lane: 'Civilization · state · period', event: 'Event', thread: 'Thread', image: 'Object', era: 'Era', climate: 'Climate', population: 'People', person: 'Person', voice: 'Voice', daily: 'Daily life' } as const)[e.kind];
+    const kind = ({ lane: 'Civilization · state · period', event: 'Event', thread: 'Thread', image: 'Object', era: 'Era', climate: 'Climate', population: 'People', person: 'Person', voice: 'Voice', daily: 'Daily life', conflict: 'War', 'turning-point': 'Turning point in war' } as const)[e.kind];
     const parts: string[] = [this.followBar(e)];
     const laneLink = e.laneId ? ` · <a href="#" data-go="${esc(e.laneId)}">${esc(e.laneName)}</a>` : '';
     parts.push(`<div class="kicker">${kind} · ${esc(e.region)}${e.kind !== 'lane' ? laneLink : ''}</div>`);
@@ -113,6 +113,11 @@ export class Panel {
       parts.push(`<blockquote class="voice">“${esc(e.quote.text)}”<cite>— ${esc(e.quote.speaker)}, <i>${esc(e.quote.work)}</i>${e.quote.translation ? ` · tr. ${esc(e.quote.translation)}` : ''}</cite></blockquote>`);
     }
     if (e.note) parts.push(...e.note.split(/\n\s*\n/).map((para) => `<p class="note">${esc(para)}</p>`));
+    // Lens detail (decision 59): what caused it and what it changed — the two things worth knowing.
+    if (e.sides) parts.push(`<p class="sides">${esc(e.sides)}</p>`);
+    if (e.cause) parts.push(`<h3>${e.kind === 'turning-point' ? 'Why it came about' : 'Why it was fought'}</h3><p class="note">${esc(e.cause)}</p>`);
+    if (e.consequence) parts.push(`<h3>What it changed</h3><p class="note">${esc(e.consequence)}</p>`);
+    if (e.involved?.length) parts.push('<h3>Who was involved</h3><ul class="list">' + e.involved.map((l) => `<li><a href="#" data-go="${esc(l.laneId)}">${esc(l.laneName)}</a></li>`).join('') + '</ul>');
     if (e.forces?.length) parts.push('<div class="forces">' + e.forces.map((f) => `<span class="force ${esc(f)}">${esc(f)}</span>`).join('') + '</div>');
     if (e.wikipedia) parts.push('<div class="wiki"><p class="loading">Loading summary…</p></div>');
     if (e.segments?.length) {

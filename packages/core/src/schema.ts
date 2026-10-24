@@ -255,3 +255,45 @@ export const Lens = z.object({
 });
 export type Lens = z.infer<typeof Lens>;
 export const LensFile = z.object({ lenses: z.array(Lens) });
+
+/**
+ * A lens's own content (content/lenses/<id>.yaml), drawn only while that lens is on (decision 59):
+ * conflicts as bands across the lanes involved, extra arrows, pictures, turning-point cards, and
+ * why / what-it-changed notes for the lens's key events.
+ */
+const WhyAndAfter = { cause: z.string().max(420), consequence: z.string().max(420) };
+export const LensConflict = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  name: z.string(),
+  span: SpanText,
+  lanes: z.array(z.string()).min(1),
+  prominence: Prominence,
+  /** Who fought whom, in a line. */
+  sides: z.string().optional(),
+  ...WhyAndAfter,
+  sources: z.array(z.string()).min(1),
+});
+export const LensArrow = z.object({ from: z.string(), to: z.string(), at: DateText, label: z.string().max(60) });
+export const LensCard = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  title: z.string().max(40),
+  date: DateText,
+  lane: z.string(),
+  /** A picture from this file's `images`. */
+  image: z.string().optional(),
+  /** One line on the map. */
+  text: z.string().max(110),
+  ...WhyAndAfter,
+  sources: z.array(z.string()).min(1),
+});
+export const LensImage = LaneImage.extend({ lane: z.string() });
+export const LensContent = z.object({
+  lens: z.string(),
+  conflicts: z.array(LensConflict).default([]),
+  arrows: z.array(LensArrow).default([]),
+  images: z.array(LensImage).default([]),
+  cards: z.array(LensCard).default([]),
+  /** Why and what it changed, for events already on the chart (keyed by event id). */
+  notes: z.record(z.string(), z.object(WhyAndAfter)).default({}),
+});
+export type LensContent = z.infer<typeof LensContent>;

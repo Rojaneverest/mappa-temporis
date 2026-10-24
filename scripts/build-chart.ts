@@ -14,7 +14,7 @@ import { createRequire } from 'node:module';
 import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
-import { AtmosphereFile, DailyFile, LaneFile, LensFile, MarginsFile, PeopleFile, Sheet, ThreadFile, VoicesFile, type Lane, type LaneImage, type Person, type Prominence, type Voice } from '../packages/core/src/schema.ts';
+import { AtmosphereFile, DailyFile, LaneFile, LensContent as LensContentSchema, LensFile, MarginsFile, PeopleFile, Sheet, ThreadFile, VoicesFile, type Lane, type LaneImage, type LensContent, type Person, type Prominence, type Voice } from '../packages/core/src/schema.ts';
 import { loadSheet } from '../packages/core/src/sheet.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { makeTimescale, yearToYOf, yToYearOf, upyAt } from '../packages/core/src/timescale.ts';
@@ -106,6 +106,36 @@ for (const v of voices) if (v.prominence <= 4) voicesOnLane.set(v.lane, (voicesO
 const lensDefs = existsSync(join(ROOT, 'content/lenses.yaml')) ? LensFile.parse(loadYaml(join(ROOT, 'content/lenses.yaml'))).lenses : [];
 /** The lenses an item belongs to, from its themes. */
 const lensesOf = (themes: string[]) => lensDefs.filter((l) => l.themes.some((t) => themes.includes(t))).map((l) => l.id);
+/** Lens content (decision 59): content/lenses/<id>.yaml, drawn only while that lens is on. */
+const lensContents: LensContent[] = existsSync(join(ROOT, 'content/lenses'))
+  ? readdirSync(join(ROOT, 'content/lenses')).filter((f) => f.endsWith('.yaml')).map((f) => LensContentSchema.parse(loadYaml(join(ROOT, 'content/lenses', f)))) : [];
+{
+  // Every id a lens file points at must exist.
+  const eventIds = new Set(lanes.flatMap((l) => l.events.map((e) => e.id)));
+  const bad: string[] = [];
+  for (const c of lensContents) {
+    const imgs = new Set(c.images.map((i) => i.id));
+    const lane = (id: string, where: string) => { if (!laneById.has(id)) bad.push(`${c.lens}: ${where} → unknown lane ${id}`); };
+    for (const k of c.conflicts) k.lanes.forEach((id) => lane(id, k.id));
+    for (const a of c.arrows) { lane(a.from, `arrow ${a.label}`); lane(a.to, `arrow ${a.label}`); }
+    for (const i of c.images) lane(i.lane, i.id);
+    for (const k of c.cards) { lane(k.lane, k.id); if (k.image && !imgs.has(k.image)) bad.push(`${c.lens}: ${k.id} → unknown picture ${k.image}`); }
+    for (const id of Object.keys(c.notes)) if (!eventIds.has(id)) bad.push(`${c.lens}: note for unknown event ${id}`);
+  }
+  if (bad.length) { console.error(`✗ lens content:\n  ${bad.join('\n  ')}`); process.exit(1); }
+}
+/** Which lenses each lane takes part in: its events (P1–P3) in the lens's themes, plus the lens's own content. */
+const lensLanes = new Map<string, string[]>();
+const addLensLane = (laneId: string, lens: string) => { const a = lensLanes.get(laneId) ?? []; if (!a.includes(lens)) a.push(lens); lensLanes.set(laneId, a); };
+for (const l of lanes) for (const e of l.events) if (e.prominence <= 3) for (const id of lensesOf(e.themes)) addLensLane(l.id, id);
+for (const c of lensContents) {
+  for (const k of c.conflicts) for (const id of k.lanes) addLensLane(id, c.lens);
+  for (const a of c.arrows) { addLensLane(a.from, c.lens); addLensLane(a.to, c.lens); }
+}
+/** Why and what it changed, for events the lenses explain (shown in the Folio whatever the lens). */
+const eventNotes = new Map<string, { cause: string; consequence: string }>(lensContents.flatMap((c) => Object.entries(c.notes)));
+/** The receding tint of a lane colour under a lens it isn't part of: greyed and lightened, still solid. */
+const recede = (color: string) => mix(mix(color, INK_SOFT, 0.35), PAPER, 0.62);
 const lensCount = new Map<string, number>();
 const groupOf = (l: Lane) => l.group ?? l.region;
 const manifestPath = join(OUT, 'img/manifest.json');
@@ -382,7 +412,7 @@ function regionExtent(r: RegionLayout, ya: number, yb: number): [number, number]
 const regionById = new Map(regionLayouts.map((r) => [r.id, r]));
 
 const grid = new Grid(width, height, 16);
-const layers = { substrate: [] as Item[], atmosphere: [] as Item[], grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], threads: [] as Item[] };
+const layers = { substrate: [] as Item[], atmosphere: [] as Item[], grid: [] as Item[], bands: [] as Item[], links: [] as Item[], lanes: [] as Item[], images: [] as Item[], marks: [] as Item[], text: [] as Item[], lens: [] as Item[], threads: [] as Item[] };
 const stats = { lanes: visibleLanes.length, events: 0, drawnEvents: 0, images: 0, drawnImages: 0, slid: 0, demoted: 0, archived: 0, budgetDemotions: 0, engravings: 0, engravingsSkipped: 0, people: 0, voices: 0, drawnPeople: 0, drawnVoices: 0 };
 
 function text(spec: TextSpec & { x: number; y: number; rot?: 0 | -90; fade?: Fade; alpha?: number; ref?: string; layer?: string }): TextItem {
@@ -721,7 +751,8 @@ for (const lane of visibleLanes) {
   // with a dotted edge.
   const baseColor = laneColor(lane.sphere, lane.prominence);
   const color = lane.basis === 'archaeology' ? mix(baseColor, PAPER, 0.35) : lane.basis === 'legend' ? mix(baseColor, PAPER, 0.5) : baseColor;
-  const lanePath: PathItem = { k: 'path', d, fill: color, ref: lane.id, b: bbox };
+  const inLens = lensLanes.get(lane.id) ?? [];
+  const lanePath: PathItem = { k: 'path', d, fill: color, ref: lane.id, lens: inLens, alt: recede(color), b: bbox };
   layers.lanes.push(lanePath);
   // Uncertain dates: the bar ends at the probable date and trails off in a few dots towards the
   // earliest (or latest) possible one.
@@ -734,7 +765,7 @@ for (const lane of visibleLanes) {
       const y = from + dir * (i + 1) * step;
       return `M ${r1(cx - r)} ${r1(y)} a ${r1(r)} ${r1(r)} 0 1 0 ${r1(2 * r)} 0 a ${r1(r)} ${r1(r)} 0 1 0 ${r1(-2 * r)} 0`;
     }).join(' ');
-    layers.lanes.push({ k: 'path', d: circles, fill: color, alpha: 0.85, ref: lane.id, b: [cx - r, Math.min(from, to) - r, cx + r, Math.max(from, to) + r] });
+    layers.lanes.push({ k: 'path', d: circles, fill: color, alpha: 0.85, ref: lane.id, lens: inLens, alt: recede(color), b: [cx - r, Math.min(from, to) - r, cx + r, Math.max(from, to) + r] });
   };
   if (span.start.circa && !clippedTop && span.start.earliest < span.start.year) dots(top, Math.max(Y(Math.max(year0, span.start.earliest)), top - 420), wTop);
   if (span.end.circa && !clippedBottom && span.end.latest > span.end.year) dots(bottom, Math.min(Y(Math.min(year1, span.end.latest + 1)), bottom + 420), wBot);
@@ -745,7 +776,7 @@ for (const lane of visibleLanes) {
     const centres = inner.map((yr) => [cxAtYear(yr), Y(yr)] as [number, number]);
     const pad = 300;
     layers.lanes.push({
-      k: 'path', d: `M ${r1(centres[0]![0])} ${r1(centres[0]![1])} ${spline(centres)}`, stroke: color, sw: minPx, hair: true,
+      k: 'path', d: `M ${r1(centres[0]![0])} ${r1(centres[0]![1])} ${spline(centres)}`, stroke: color, sw: minPx, hair: true, lens: inLens, alt: recede(color),
       fadeOut: [minPx / narrowest, (minPx / narrowest) * 1.6],
       b: [bbox[0] - pad, top, bbox[2] + pad, bottom],
     });
@@ -877,19 +908,24 @@ function drawBranch(from: PlacedLane, to: PlacedLane, at: number): void {
   outline.delete();
   const x0 = Math.min(xa, xb) - w, x1 = Math.max(xa, xb) + w;
   const ink = to.lane.basis === 'archaeology' ? mix(color, PAPER, 0.35) : to.lane.basis === 'legend' ? mix(color, PAPER, 0.5) : color;
-  layers.links.push({ k: 'path', d, fill: ink, ref: to.lane.id, b: [x0, yBar - w / 2, x1, yEnd] });
+  layers.links.push({ k: 'path', d, fill: ink, ref: to.lane.id, lens: lensLanes.get(to.lane.id) ?? [], alt: recede(ink), b: [x0, yBar - w / 2, x1, yEnd] });
   grid.mark(Math.min(xa, xb), yBar - w / 2, Math.abs(dx), w, 8);
   grid.mark(xb - w / 2, yBar, w, yEnd - yBar, 8);
 }
 
 /** A conquest, influence or merge: an arrow across the gap with its few words above it, where they fit. */
+/** Every conquest / influence / merge, and what of it the chart drew (the lens passes draw the rest). */
+const relArrows: { from: PlacedLane; to: PlacedLane; type: string; at: number; label?: string; line: boolean; caption: boolean; told: boolean }[] = [];
 function drawArrow(from: PlacedLane, to: PlacedLane, type: string, at: number, label?: string): void {
+  const log = { from, to, type, at, label, line: false, caption: false, told: false };
+  relArrows.push(log);
   const yy = type === 'merges-into' ? Math.min(at, from.bottom) + 40 : at;
   const dir: 1 | -1 = to.cxAt(yy) > from.cxAt(yy) ? 1 : -1;
   const x1 = from.cxAt(yy) + dir * from.halfAt(yy);
   const x2 = to.cxAt(yy) - dir * (to.halfAt(yy) + 10);
   // A long arrow cuts across every lane between: leave those to the event labels and the Folio.
   if (Math.abs(x2 - x1) > MAX_ARROW) return;
+  log.line = true;
   const color = mix(laneColor(from.lane.sphere, Math.min(3, from.lane.prominence) as Prominence), INK, 0.25);
   const d = type === 'merges-into'
     ? `M ${from.cxAt(yy - 80)} ${yy - 80} C ${from.cxAt(yy)} ${yy} ${x2 - dir * 120} ${yy} ${x2} ${yy}`
@@ -901,6 +937,7 @@ function drawArrow(from: PlacedLane, to: PlacedLane, type: string, at: number, l
   // An event on either lane at the same moment already tells the story: no second caption.
   const year = yearAt(at);
   const told = [from, to].some((q) => q.lane.events.some((e) => e.prominence <= 3 && Math.abs(parseDate(e.date).year - year) <= 5));
+  log.told = told;
   if (!label || told) return;
   // Above the line, as near the arrowhead as there is room; a long gap may take two lines.
   const size = LABEL_SIZE[3];
@@ -916,6 +953,7 @@ function drawArrow(from: PlacedLane, to: PlacedLane, type: string, at: number, l
     if (!grid.isFree(x, top, w, m.h + 10)) continue;
     grid.mark(x, top, w, m.h + 10, 6);
     layers.text.push(text({ role: 'label', text: label, size, color: mix(color, INK, 0.5), align: dir === 1 ? 'right' : 'left', w, x, y: top, fade, ref: from.lane.id }));
+    log.caption = true;
     return;
   }
 }
@@ -939,11 +977,15 @@ for (const p of placed.values()) {
 
 // Era rules: labels and pictures keep clear of them.
 for (const y of eraRules) grid.mark(MARGIN_L, y - 34, width - MARGIN_L - MARGIN_R, 68);
+/** The chart's structure before any label or picture: where the lens passes start from. */
+const structureGrid = grid.clone();
 
 // ---------------------------------------------------------------- labels & images, by priority
 interface Placement {
   kind: 'label' | 'image';
   id: string;
+  /** Labels: the lenses they belong to. */
+  lens?: string[];
   prom: Prominence;
   box: [number, number, number, number]; // x, y, w, h
   emit: (prom: Prominence) => Item[];
@@ -1098,7 +1140,7 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence, 
     if (b - a > 20 && grid.isFree(x - 3, a, 6, b - a)) { bar = { x, a, b }; grid.mark(x - 3, a, 6, b - a); }
   }
   placements.push({
-    kind: 'label', id: ev.id, prom,
+    kind: 'label', id: ev.id, prom, lens: ev.lens,
     box: [spot.x, spot.top, spot.w, spot.h],
     emit(current) {
       const s = labelStyle(current);
@@ -1123,7 +1165,7 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence, 
       const dotX = laneEdge + spot.side * 7;
       const dots: Item[] = ev.lens.map((id) => ({
         k: 'rect', x: dotX, y: yy, w: 0, h: 0, dot: 3.6, fill: lensDefs.find((l) => l.id === id)!.color, stroke: PAPER, sw: 1.5,
-        alpha: 0.95, layer: `lens:${id}`, b: [dotX - 400, yy - 400, dotX + 400, yy + 400],
+        alpha: 0.95, layer: `lens:${id}`, fadeOut: [0.06, 0.1], b: [dotX - 400, yy - 400, dotX + 400, yy + 400],
       }));
       const tagged = (items: Item[]) => items.map((it) => ({ ...it, lk: 'label' as const, lens: ev.lens }));
       return [
@@ -1219,6 +1261,181 @@ for (const p of placements) {
   for (const it of p.emit(p.prom)) (it.k === 'image' ? layers.images : it.k === 'text' ? layers.text : layers.marks).push(it);
 }
 
+// ---------------------------------------------------------------- lens content (decision 59)
+// Each lens with its own content gets a second layout pass, on its own layer, drawn only while the lens
+// is on. It starts from the chart's structure (lanes, branches, arrows, era rules) plus the lens's own
+// labels: everything else is faded or hidden under the lens, so its room is free for the lens's
+// conflicts, arrows, pictures and turning-point cards.
+const LENS_ARROW_MAX = 30000;
+const lensEntries: FolioEntry[] = [];
+const lensPlaced = new Map<string, [number, number, number, number]>();
+for (const c of lensContents) {
+  const def = lensDefs.find((l) => l.id === c.lens);
+  if (!def) { console.warn(`  ! lens content for unknown lens ${c.lens}`); continue; }
+  const layer = `lens:${c.lens}`;
+  const g = structureGrid.clone();
+  for (const p of placements) if (p.kind === 'label' && p.lens?.includes(c.lens)) g.mark(p.box[0], p.box[1], p.box[2], p.box[3], 10);
+  const ink = mix(def.color, INK, 0.35);
+  const lensText = (spec: Parameters<typeof text>[0]) => ({ ...text(spec), layer } as Item);
+
+  // Conflicts: a soft band across the lanes involved, named in spaced capitals.
+  for (const k of [...c.conflicts].sort((a, b) => a.prominence - b.prominence)) {
+    const sp = parseSpan(k.span);
+    const a = Math.max(year0, sp.start.year), b = Math.min(year1, sp.end.year + 1);
+    const ps = k.lanes.map((id) => placed.get(id)).filter((q): q is PlacedLane => !!q);
+    if (b <= a || !ps.length) { if (b > a) console.warn(`  ! conflict ${k.id}: none of its lanes are drawn`); continue; }
+    const ya = Y(a), yb = Math.max(Y(b), Y(a) + 120);
+    const mid = (ya + yb) / 2;
+    const x0 = Math.min(...ps.map((q) => q.cxAt(mid) - q.halfAt(mid))) - 220;
+    const x1 = Math.max(...ps.map((q) => q.cxAt(mid) + q.halfAt(mid))) + 220;
+    layers.bands.push({ k: 'rect', x: x0, y: ya, w: x1 - x0, h: yb - ya, r: 60, fill: def.color, alpha: k.prominence <= 1 ? 0.11 : 0.08, layer, ref: k.id, b: [x0, ya, x1, yb] });
+    // The name in spaced capitals inside the band, on open paper: largest size that fits, never
+    // wrapped inside a word.
+    const name = k.name.toUpperCase();
+    let placedName: { x: number; y: number; w: number; size: number } | null = null;
+    // Inside the band first; then just around it (short wars are thin bands). A narrow wrap stacks
+    // the words so the name can stand between lanes.
+    const areas: [number, number, number, number][] = [[x0 + 60, x1 - 60, ya + 30, Math.max(yb - 20, ya + 30)], [x0 - 1600, x1 + 1600, ya - 700, yb + 400]];
+    search: for (const [ax0, ax1, ay0, ay1] of areas) {
+      for (const size of k.prominence <= 1 ? [240, 190, 150, 120] : [190, 150, 120, 100]) {
+        const longestWord = Math.max(...name.split(/\s+/).map((word) => fitWidth({ role: 'region', text: word, size, color: ink, align: 'left' })));
+        for (const wrap of [Math.max(longestWord + 20, Math.min(x1 - x0 - 120, 2600)), longestWord + 20]) {
+          const m = measure(ck, fonts, { role: 'region', text: name, size, color: ink, align: 'left', w: wrap });
+          // Wide letter-spacing renders a hair differently in each browser: leave slack so a line never re-breaks.
+          const w = Math.ceil(m.longest * 1.04) + 24;
+          let best: { x: number; y: number; d: number } | null = null;
+          for (let y = ay0; y + m.h <= Math.max(ay1, ay0 + m.h); y += 50) {
+            for (let x = ax0; x + w <= Math.max(ax1, ax0 + w); x += 70) {
+              if (!g.isFree(x, y, w, m.h)) continue;
+              // Nearest to the band's top-left corner.
+              const d = Math.hypot(Math.max(0, x0 - x, x + w - x1), Math.max(0, ya - y, y + m.h - yb)) + Math.abs(y - ya) * 0.1;
+              if (!best || d < best.d) best = { x, y, d };
+            }
+          }
+          if (best) { placedName = { x: best.x, y: best.y, w, size }; g.mark(best.x, best.y, w, m.h, 20); break search; }
+        }
+      }
+    }
+    if (placedName) layers.lens.push(lensText({ role: 'region', text: name, size: placedName.size, color: ink, align: 'left', w: placedName.w, x: placedName.x, y: placedName.y, ref: k.id }));
+    else console.warn(`  ↓ no room for the name of ${k.id}`);
+    lensPlaced.set(k.id, [x0, ya, x1 - x0, yb - ya]);
+    lensEntries.push({
+      id: k.id, kind: 'conflict', title: k.name, dates: formatSpan(sp), years: [sp.start.year, sp.end.year], region: 'Across the chart',
+      laneId: ps[0]!.lane.id, laneName: ps[0]!.lane.name, prominence: k.prominence, drawn: true, sides: k.sides, cause: k.cause, consequence: k.consequence,
+      involved: ps.map((q) => ({ laneId: q.lane.id, laneName: q.lane.name })), themes: def.themes,
+      wikipedia: k.sources.find((x) => x.startsWith('wikipedia:'))?.slice(10), sources: k.sources.map(sourceLink), box: [x0, ya, x1 - x0, yb - ya],
+    });
+  }
+
+  // Arrows: the lens's own, plus conquests the chart left out (too long) or left without words.
+  const lensArrows = [
+    ...c.arrows.map((a) => ({ from: placed.get(a.from), to: placed.get(a.to), at: Y(parseDate(a.at).year), label: a.label as string | undefined, line: true, caption: true })),
+    // (An event at the same moment already tells it: no second caption, under the lens either.)
+    ...(c.lens === 'war' ? relArrows.filter((r) => r.type === 'conquers').map((r) => ({ from: r.from, to: r.to, at: r.at, label: r.label, line: !r.line, caption: !r.caption && !r.told })) : []),
+  ];
+  for (const a of lensArrows) {
+    if (!a.from || !a.to) continue;
+    const yy = a.at;
+    const dir: 1 | -1 = a.to.cxAt(yy) > a.from.cxAt(yy) ? 1 : -1;
+    const x1 = a.from.cxAt(yy) + dir * a.from.halfAt(yy), x2 = a.to.cxAt(yy) - dir * (a.to.halfAt(yy) + 10);
+    if (Math.abs(x2 - x1) > LENS_ARROW_MAX || Math.abs(x2 - x1) < 60) continue;
+    if (a.line) {
+      layers.links.push({ k: 'path', d: `M ${r1(x1)} ${r1(yy)} L ${r1(x2)} ${r1(yy)}`, stroke: ink, sw: 2, hair: true, alpha: 0.85, layer, b: [Math.min(x1, x2), yy - 30, Math.max(x1, x2), yy + 30] });
+      layers.links.push({ k: 'path', d: ARROW(x2 + dir * 10, yy, dir, 52), fill: ink, alpha: 0.9, layer, b: [x2 - 80, yy - 40, x2 + 80, yy + 40] });
+    }
+    if (!a.caption || !a.label) continue;
+    const yr = yearAt(yy);
+    if ([a.from, a.to].some((q) => q.lane.events.some((e) => e.prominence <= 3 && Math.abs(parseDate(e.date).year - yr) <= 5))) continue;
+    const size = LABEL_SIZE[3];
+    const span = Math.abs(x2 - x1) - 160;
+    const m = measure(ck, fonts, { role: 'label', text: a.label, size, color: ink, align: dir === 1 ? 'right' : 'left', w: Math.min(1100, Math.max(420, span)) });
+    const w = Math.ceil(m.longest) + 6;
+    if (w > span + 120) continue;
+    for (let k = 0; k <= 10; k++) {
+      const x = dir === 1 ? x2 - 80 - w - (k / 10) * Math.max(0, span - w) : x2 + 80 + (k / 10) * Math.max(0, span - w);
+      const top = yy - 24 - m.h;
+      if (!g.isFree(x, top, w, m.h + 10)) continue;
+      g.mark(x, top, w, m.h + 10, 6);
+      layers.lens.push(lensText({ role: 'label', text: a.label, size, color: ink, align: dir === 1 ? 'right' : 'left', w, x, y: top, ref: a.from.lane.id }));
+      break;
+    }
+  }
+
+  // Pictures and turning-point cards, beside their lane near their date.
+  const placeLensPicture = (p: PlacedLane, img: LaneImage, yy: number, card?: { id: string; title: string; text: string }) => {
+    const asset = manifest[img.id];
+    if (!asset) { console.warn(`  ! lens image ${img.id} not processed yet (run pnpm images)`); return false; }
+    for (const shrink of [1, 0.82, 0.66, 0.52, 0.42]) {
+      const long = IMAGE_LONG[card ? 2 : img.prominence] * shrink;
+      const aspect = asset.width / asset.height;
+      const w = aspect >= 1 ? long : long * aspect, h = aspect >= 1 ? long / aspect : long;
+      const capSize = card ? 0 : CAPTION_SIZE[img.prominence];
+      const textW = Math.max(w, card ? 900 : 520);
+      const title = card ? measure(ck, fonts, { role: 'label-strong', text: card.title, size: LABEL_SIZE[1], color: ink, align: 'left', w: textW }) : null;
+      const body = card ? measure(ck, fonts, { role: 'label', text: card.text, size: LABEL_SIZE[3], color: INK, align: 'left', w: textW }) : measure(ck, fonts, { role: 'caption', text: img.caption, size: capSize, color: INK_SOFT, align: 'center', w: textW });
+      const boxW = Math.max(w, textW), boxH = h + 40 + (title ? title.h + 16 : 0) + body.h + 30;
+      const m = asset.treatment === 'plate' ? Math.max(w, h) * 0.05 : 0;
+      const cands: { x: number; y: number; cost: number }[] = [];
+      for (let dy = -900; dy <= 2000; dy += 50) for (let dx = 0; dx <= 2600; dx += 70) {
+        const top = yy - boxH / 2 + dy;
+        cands.push({ x: p.cxAt(yy) + p.halfAt(yy) + 80 + m + dx, y: top, cost: Math.abs(dy) + dx * 0.6 });
+        cands.push({ x: p.cxAt(yy) - p.halfAt(yy) - 80 - m - boxW - dx, y: top, cost: Math.abs(dy) + dx * 0.6 + 100 });
+      }
+      cands.sort((u, v) => u.cost - v.cost);
+      const spot = cands.find((q) => g.isFree(q.x - m, q.y - m, boxW + 2 * m, boxH + 2 * m));
+      if (!spot) continue;
+      g.mark(spot.x - m, spot.y - m, boxW + 2 * m, boxH + 2 * m, 30);
+      const ref = card?.id ?? img.id;
+      const ix = spot.x + (card ? 0 : (boxW - w) / 2);
+      layers.lens.push({ k: 'image', id: img.id, x: ix, y: spot.y, w, h, sizes: asset.sizes, treatment: asset.treatment, layer, ref, b: [ix - m * 1.6, spot.y - m * 1.6, ix + w + m * 1.6, spot.y + h + m * 1.6] });
+      let ty = spot.y + h + 40;
+      if (card && title) {
+        layers.lens.push(lensText({ role: 'label-strong', text: card.title, size: LABEL_SIZE[1], color: ink, align: 'left', w: textW, x: spot.x, y: ty, ref }));
+        ty += title.h + 16;
+        layers.lens.push(lensText({ role: 'label', text: card.text, size: LABEL_SIZE[3], color: INK, align: 'left', w: textW, x: spot.x, y: ty, ref }));
+      } else {
+        layers.lens.push(lensText({ role: 'caption', text: img.caption, size: capSize, color: INK_SOFT, align: 'center', w: textW, x: spot.x + (boxW - textW) / 2, y: ty, ref }));
+        layers.lens.push(lensText({ role: 'whisper', text: `${asset.credit} · ${asset.license}`, size: Math.max(7, capSize * 0.42), color: INK_SOFT, align: 'center', w: textW, x: spot.x + (boxW - textW) / 2, y: ty + body.h + 4, fade: [0.5, 0.8], alpha: 0.8, ref }));
+      }
+      lensPlaced.set(ref, [spot.x, spot.y, boxW, boxH]);
+      return true;
+    }
+    console.warn(`  ↓ lens picture without room: ${card?.id ?? img.id}`);
+    return false;
+  };
+  const imgById = new Map(c.images.map((i) => [i.id, i]));
+  const cardImages = new Set(c.cards.map((k) => k.image).filter(Boolean));
+  for (const k of c.cards) {
+    const p = placed.get(k.lane), img = k.image ? imgById.get(k.image) : undefined;
+    if (!p || !img) { console.warn(`  ! card ${k.id}: lane or picture missing`); continue; }
+    const d = parseDate(k.date);
+    if (d.year < year0 || d.year > year1) continue;
+    placeLensPicture(p, img, Y(d.year), { id: k.id, title: k.title, text: k.text });
+    const asset = manifest[img.id];
+    lensEntries.push({
+      id: k.id, kind: 'turning-point', title: k.title, dates: formatDate(d), years: [d.year, d.year], region: p.region.name, laneId: p.lane.id, laneName: p.lane.name,
+      prominence: 1, drawn: lensPlaced.has(k.id), note: k.text, cause: k.cause, consequence: k.consequence, themes: def.themes,
+      wikipedia: k.sources.find((x) => x.startsWith('wikipedia:'))?.slice(10), sources: k.sources.map(sourceLink), box: lensPlaced.get(k.id) ?? [p.cxAt(Y(d.year)), Y(d.year), 400, 400],
+      image: asset ? { caption: img.caption, title: img.caption, credit: asset.credit, license: asset.license, url: asset.url, sizes: asset.sizes, width: asset.width, height: asset.height, treatment: asset.treatment } : undefined,
+    });
+  }
+  for (const img of [...c.images].filter((i) => !cardImages.has(i.id)).sort((a, b) => a.prominence - b.prominence)) {
+    const p = placed.get(img.lane);
+    const d = parseDate(img.date);
+    if (!p || d.year < year0 || d.year > year1) continue;
+    placeLensPicture(p, img, Y(Math.min(Math.max(d.year, yearAt(p.top)), yearAt(p.bottom))));
+    const asset = manifest[img.id];
+    if (asset) lensEntries.push({
+      id: img.id, kind: 'image', title: img.caption, dates: formatDate(d), years: [d.year, d.year], region: p.region.name, laneId: p.lane.id, laneName: p.lane.name,
+      prominence: img.prominence, drawn: lensPlaced.has(img.id), sources: [{ label: asset.credit, url: asset.url }], themes: def.themes,
+      box: lensPlaced.get(img.id) ?? [p.cxAt(Y(d.year)), Y(d.year), 400, 400],
+      image: { caption: img.caption, title: img.caption, credit: asset.credit, license: asset.license, url: asset.url, sizes: asset.sizes, width: asset.width, height: asset.height, treatment: asset.treatment },
+    });
+  }
+  const shown = layers.lens.filter((it) => it.layer === layer && it.k === 'image').length;
+  console.log(`  lens ${c.lens}: ${c.conflicts.length} conflicts · ${shown} pictures and cards · ${Object.keys(c.notes).length} notes`);
+}
+
 // ---------------------------------------------------------------- atmosphere: engravings in the open paper
 // Placed last, into whatever room the content left: each one takes the emptiest spot inside its
 // region and span, shrinking if it must, and is skipped (with a note) if there is no room at all.
@@ -1299,8 +1516,8 @@ for (const th of threadDefs) {
 // Under a lens, lanes and their names dim a little, pictures more, labels outside the lens most.
 const laneIds = new Set(lanes.map((l) => l.id));
 const imageIds = new Set(lanes.flatMap((l) => l.images.map((i) => i.id)));
-for (const it of [...layers.lanes, ...layers.links]) it.lk ??= 'lane';
-for (const it of layers.images) it.lk ??= 'image';
+for (const it of [...layers.lanes, ...layers.links]) if (!it.layer) it.lk ??= 'lane';
+for (const it of layers.images) if (!it.layer) it.lk ??= 'image';
 for (const it of [...layers.text, ...layers.marks]) {
   if (it.lk || !it.ref) continue;
   if (laneIds.has(it.ref)) it.lk = 'lane';
@@ -1308,7 +1525,7 @@ for (const it of [...layers.text, ...layers.marks]) {
 }
 
 // ---------------------------------------------------------------- assemble & write
-const items: Item[] = [layers.substrate, layers.atmosphere, layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.threads].flat();
+const items: Item[] = [layers.substrate, layers.atmosphere, layers.grid, layers.bands, layers.links, layers.lanes, layers.images, layers.marks, layers.text, layers.lens, layers.threads].flat();
 for (const it of items) if (!it.b) throw new Error(`item without bbox: ${JSON.stringify(it).slice(0, 120)}`);
 
 // ---------------------------------------------------------------- folio (side-panel data)
@@ -1369,7 +1586,7 @@ for (const lane of lanes) {
     folio.entries[e.id] = {
       id: e.id, kind: 'event', title: e.label, dates: formatDate(parseDate(e.date)), years: dateYears(e.date), region, laneId: lane.id, laneName: lane.name,
       prominence: e.prominence, drawn: placedBox.has(e.id), confidence: e.confidence, themes: e.themes, wikipedia: ewiki,
-      sources: e.sources.map(sourceLink), box,
+      sources: e.sources.map(sourceLink), box, ...eventNotes.get(e.id),
     };
   }
   for (const i of lane.images) {
@@ -1395,7 +1612,7 @@ for (const era of sheet.eras) {
     sources: era.sources.map(sourceLink), wikipedia: era.sources.find((s) => s.startsWith('wikipedia:'))?.slice(10), box: eraBoxes[era.id]!,
   };
 }
-for (const m of [...marginEntries, ...eraMapEntries]) folio.entries[m.id] = m;
+for (const m of [...marginEntries, ...eraMapEntries, ...lensEntries]) folio.entries[m.id] = m;
 for (const th of threadsOut) {
   const evs = th.events.map((id) => folio.entries[id]!).filter(Boolean);
   folio.entries[`thread:${th.id}`] = {
