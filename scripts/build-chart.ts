@@ -430,13 +430,13 @@ for (const seg of timeSegs) {
     layers.text.push(text({ role: 'year', text: label, size: 100, color: INK_SOFT, align: 'left', w: 700, x: width - MARGIN_R + 260, y: yy - 60 }));
   }
 }
-// Scale breaks: a zig-zag rule wherever the space per year changes, with the new scale noted below it.
+// Scale changes are marked in the margins only (decision 58): a small double rule beside the year.
 for (let i = 1; i < timeSegs.length; i++) {
   if (timeSegs[i]!.upy === timeSegs[i - 1]!.upy) continue;
   const yy = timeSegs[i]!.y0;
-  const zig: string[] = [`M ${fullX0 - 900} ${yy}`];
-  for (let x = fullX0 - 900, k = 0; x < fullX1 + 200; x += 120, k++) zig.push(`L ${x + 60} ${yy + (k % 2 ? 22 : -22)} L ${x + 120} ${yy}`);
-  layers.bands.push({ k: 'path', d: zig.join(' '), stroke: INK, sw: 6, alpha: 0.7, b: [fullX0 - 900, yy - 30, fullX1 + 260, yy + 30] });
+  for (const [xa, xb] of [[MARGIN_L - 270, MARGIN_L - 120], [width - MARGIN_R + 100, width - MARGIN_R + 230]] as const) {
+    for (const dy of [-10, 10]) layers.bands.push({ k: 'line', x1: xa, y1: yy + dy, x2: xb, y2: yy + dy, stroke: INK_SOFT, sw: 1, hair: true, alpha: 0.7, b: [xa, yy + dy - 2, xb, yy + dy + 2] });
+  }
 }
 for (const c of sheet.scale) {
   if (!c.label) continue;
@@ -452,6 +452,7 @@ const FORCE_COLOR: Record<string, string> = {
   climate: '#3C7A86', migration: '#8A6A34', disease: '#6E7F2E', war: '#9C2E2E', technology: '#4C5C7E', ideas: '#7A4C8C',
 };
 const eraBoxes: Record<string, [number, number, number, number]> = {};
+const eraRules: number[] = [];
 const TP_FADE: Fade = [0.07, 0.1];
 const eraMapEntries: FolioEntry[] = [];
 for (const era of sheet.eras) {
@@ -462,7 +463,9 @@ for (const era of sheet.eras) {
   const ref = `era:${era.id}`;
   eraBoxes[era.id] = [0, Y(a), width, Y(b) - Y(a)];
   if (span.start.year > year0) {
-    layers.bands.push({ k: 'rect', x: fullX0 - 900, y: Y(a) - 9, w: fullX1 - fullX0 + 1100, h: 18, fill: INK, alpha: 0.82, b: [fullX0 - 900, Y(a) - 9, fullX1 + 200, Y(a) + 9] });
+    layers.bands.push({ k: 'rect', x: fullX0 - 900, y: Y(a) - 4, w: fullX1 - fullX0 + 1100, h: 8, fill: INK_SOFT, alpha: 0.55, b: [fullX0 - 900, Y(a) - 4, fullX1 + 200, Y(a) + 4] });
+    // Labels and pictures keep clear of the rule instead of being struck through by it.
+    eraRules.push(Y(a));
   }
   const len = Y(b) - Y(a);
   let tpBottom: number | undefined;
@@ -492,7 +495,6 @@ for (const era of sheet.eras) {
     const ta = Y(Math.max(tp.start.year, year0));
     const tb = Y(Math.min(tp.end.year + 1, year1));
     layers.bands.push({ k: 'rect', x: fullX0, y: ta, w: fullX1 - fullX0, h: tb - ta, fill: '#7A6A58', alpha: 0.075, multiply: true, b: [fullX0, ta, fullX1, tb] });
-    for (const yy of [ta, tb]) layers.bands.push({ k: 'line', x1: fullX0, y1: yy, x2: fullX1, y2: yy, stroke: '#7A6A58', sw: 1, hair: true, alpha: 0.45, b: [fullX0, yy - 2, fullX1, yy + 2] });
     // The hinge, named in the left margin, with the forces that turned it as small coloured chips.
     const colR = MARGIN_L - 1000;
     const colW = sheet.margins ? 1700 : 700;
@@ -713,15 +715,29 @@ for (const lane of visibleLanes) {
   const xs = [...right, ...left].map((p) => p[0]);
   const bbox: [number, number, number, number] = [Math.min(...xs), top, Math.max(...xs), bottom];
 
-  const fadeTop = clippedTop ? 300 : span.start.circa ? Math.max(120, (span.start.year - span.start.earliest) * upy(span.start.year) * 2) : 0;
-  const fadeBot = clippedBottom ? 300 : span.end.circa ? Math.max(120, (span.end.latest - span.end.year) * upy(span.end.year) * 2) : 0;
   const len = bottom - top;
-  const color = laneColor(lane.sphere, lane.prominence);
-  const lanePath: PathItem = { k: 'path', d, fill: color, multiply: true, ref: lane.id, alpha: lane.basis === 'archaeology' ? 0.62 : 1, b: bbox };
-  if (fadeTop || fadeBot) {
-    lanePath.grad = { y0: top, y1: bottom, stops: [[0, fadeTop ? 0 : 1], [Math.min(0.45, fadeTop / len), 1], [Math.max(0.55, 1 - fadeBot / len), 1], [1, fadeBot ? 0 : 1]] };
-  }
+  // Flat ink (decision 58): no blend modes, so a branch meeting its lane never doubles the colour.
+  // Known only from archaeology: a lighter, solid tint of the same pigment; legend: lighter still,
+  // with a dotted edge.
+  const baseColor = laneColor(lane.sphere, lane.prominence);
+  const color = lane.basis === 'archaeology' ? mix(baseColor, PAPER, 0.35) : lane.basis === 'legend' ? mix(baseColor, PAPER, 0.5) : baseColor;
+  const lanePath: PathItem = { k: 'path', d, fill: color, ref: lane.id, b: bbox };
   layers.lanes.push(lanePath);
+  // Uncertain dates: the bar ends at the probable date and trails off in a few dots towards the
+  // earliest (or latest) possible one.
+  const dots = (from: number, to: number, w: number) => {
+    const r = Math.max(6, Math.min(w * 0.16, 34));
+    const step = r * 3.2, dir = Math.sign(to - from), n = Math.min(5, Math.floor(Math.abs(to - from) / step));
+    if (n < 1) return;
+    const cx = cxAt(from);
+    const circles = Array.from({ length: n }, (_, i) => {
+      const y = from + dir * (i + 1) * step;
+      return `M ${r1(cx - r)} ${r1(y)} a ${r1(r)} ${r1(r)} 0 1 0 ${r1(2 * r)} 0 a ${r1(r)} ${r1(r)} 0 1 0 ${r1(-2 * r)} 0`;
+    }).join(' ');
+    layers.lanes.push({ k: 'path', d: circles, fill: color, alpha: 0.85, ref: lane.id, b: [cx - r, Math.min(from, to) - r, cx + r, Math.max(from, to) + r] });
+  };
+  if (span.start.circa && !clippedTop && span.start.earliest < span.start.year) dots(top, Math.max(Y(Math.max(year0, span.start.earliest)), top - 420), wTop);
+  if (span.end.circa && !clippedBottom && span.end.latest > span.end.year) dots(bottom, Math.min(Y(Math.min(year1, span.end.latest + 1)), bottom + 420), wBot);
   // Zoomed out, a centre stroke keeps the lane at its minimum screen width; it fades once the lane is wider.
   const minPx = LANE_MIN_PX[lane.prominence];
   if (minPx) {
@@ -730,12 +746,12 @@ for (const lane of visibleLanes) {
     const pad = 300;
     layers.lanes.push({
       k: 'path', d: `M ${r1(centres[0]![0])} ${r1(centres[0]![1])} ${spline(centres)}`, stroke: color, sw: minPx, hair: true,
-      alpha: lanePath.alpha, grad: lanePath.grad, fadeOut: [minPx / narrowest, (minPx / narrowest) * 1.6],
+      fadeOut: [minPx / narrowest, (minPx / narrowest) * 1.6],
       b: [bbox[0] - pad, top, bbox[2] + pad, bottom],
     });
   }
-  if (lane.basis !== 'texts') {
-    layers.lanes.push({ k: 'path', d, stroke: mix(PIGMENTS[lane.sphere]!.hex, INK, 0.3), sw: 1.1, hair: true, dash: [4, 6], alpha: 0.45, b: bbox });
+  if (lane.basis === 'legend') {
+    layers.lanes.push({ k: 'path', d, stroke: mix(PIGMENTS[lane.sphere]!.hex, INK, 0.3), sw: 1.2, hair: true, dash: [1.5, 4], alpha: 0.6, b: bbox });
   }
   for (const s of segs.filter((s) => s.style === 'interregnum')) {
     const a = Y(s.a), b = Y(s.b), c = cxAt((a + b) / 2);
@@ -830,6 +846,9 @@ for (const lane of visibleLanes) {
 }
 
 // ---------------------------------------------------------------- relations
+/** Longest conquest / influence arrow and branch drawn (decision 58). */
+const MAX_ARROW = 4000;
+const MAX_BRANCH = 6000;
 const ARROW = (x: number, yy: number, dir: 1 | -1, size: number) =>
   `M ${x} ${yy} L ${x - dir * size} ${yy - size * 0.55} L ${x - dir * size} ${yy + size * 0.55} Z`;
 
@@ -845,12 +864,8 @@ function drawBranch(from: PlacedLane, to: PlacedLane, at: number): void {
   if (Math.abs(dx) < 1) return;
   const w = Math.max(24, Math.min(from.halfAt(ya - 1) * 2, to.halfAt(yb + 1) * 2));
   const color = laneColor(to.lane.sphere, to.lane.prominence);
-  // Branches that would slash across whole regions become thin threads that appear up close.
-  if (Math.abs(dx) > 6000) {
-    const d = `M ${r1(xa)} ${r1(ya)} C ${r1(xa)} ${r1(ya + 300)} ${r1(xb)} ${r1(yb - 300)} ${r1(xb)} ${r1(yb + 60)}`;
-    layers.links.push({ k: 'path', d, stroke: color, sw: 3, hair: true, alpha: 0.6, fade: [0.07, 0.11], b: [Math.min(xa, xb), Math.min(ya, yb) - 300, Math.max(xa, xb), Math.max(ya, yb) + 300] });
-    return;
-  }
+  // A branch across half a region would cut through every lane between: the Folio links those instead.
+  if (Math.abs(dx) > MAX_BRANCH) return;
   const sgn = Math.sign(dx);
   const yBar = Math.min(ya, yb) - w / 2;
   const c = Math.min(Math.abs(dx), w * 1.2 + 40);
@@ -861,7 +876,8 @@ function drawBranch(from: PlacedLane, to: PlacedLane, at: number): void {
   centre.delete();
   outline.delete();
   const x0 = Math.min(xa, xb) - w, x1 = Math.max(xa, xb) + w;
-  layers.links.push({ k: 'path', d, fill: color, multiply: true, alpha: to.lane.basis === 'archaeology' ? 0.62 : 1, ref: to.lane.id, b: [x0, yBar - w / 2, x1, yEnd] });
+  const ink = to.lane.basis === 'archaeology' ? mix(color, PAPER, 0.35) : to.lane.basis === 'legend' ? mix(color, PAPER, 0.5) : color;
+  layers.links.push({ k: 'path', d, fill: ink, ref: to.lane.id, b: [x0, yBar - w / 2, x1, yEnd] });
   grid.mark(Math.min(xa, xb), yBar - w / 2, Math.abs(dx), w, 8);
   grid.mark(xb - w / 2, yBar, w, yEnd - yBar, 8);
 }
@@ -872,14 +888,15 @@ function drawArrow(from: PlacedLane, to: PlacedLane, type: string, at: number, l
   const dir: 1 | -1 = to.cxAt(yy) > from.cxAt(yy) ? 1 : -1;
   const x1 = from.cxAt(yy) + dir * from.halfAt(yy);
   const x2 = to.cxAt(yy) - dir * (to.halfAt(yy) + 10);
+  // A long arrow cuts across every lane between: leave those to the event labels and the Folio.
+  if (Math.abs(x2 - x1) > MAX_ARROW) return;
   const color = mix(laneColor(from.lane.sphere, Math.min(3, from.lane.prominence) as Prominence), INK, 0.25);
   const d = type === 'merges-into'
     ? `M ${from.cxAt(yy - 80)} ${yy - 80} C ${from.cxAt(yy)} ${yy} ${x2 - dir * 120} ${yy} ${x2} ${yy}`
     : `M ${x1} ${yy} L ${x2} ${yy}`;
-  // Long-distance arrows would slash across whole regions at the wall view: let them appear only up close.
-  const fade: Fade | undefined = Math.abs(x2 - x1) > 6000 ? [0.07, 0.11] : undefined;
-  layers.links.push({ k: 'path', d, stroke: color, sw: 2.4, hair: true, dash: type === 'influences' ? [6, 5] : undefined, alpha: 0.8, fade, ref: from.lane.id, b: [Math.min(x1, x2) - 20, yy - 90, Math.max(x1, x2) + 20, yy + 30] });
-  layers.links.push({ k: 'path', d: ARROW(x2 + dir * 10, yy, dir, 60), fill: color, alpha: 0.9, fade, b: [Math.min(x2 - 70, x2 + 70), yy - 40, Math.max(x2 - 70, x2 + 70), yy + 40] });
+  const fade: Fade | undefined = undefined;
+  layers.links.push({ k: 'path', d, stroke: color, sw: 1.6, hair: true, dash: type === 'influences' ? [6, 5] : undefined, alpha: 0.8, fade, ref: from.lane.id, b: [Math.min(x1, x2) - 20, yy - 90, Math.max(x1, x2) + 20, yy + 30] });
+  layers.links.push({ k: 'path', d: ARROW(x2 + dir * 10, yy, dir, 46), fill: color, alpha: 0.9, fade, b: [Math.min(x2 - 70, x2 + 70), yy - 40, Math.max(x2 - 70, x2 + 70), yy + 40] });
   grid.mark(Math.min(x1, x2), yy - 14, Math.abs(x2 - x1), 28);
   // An event on either lane at the same moment already tells the story: no second caption.
   const year = yearAt(at);
@@ -919,6 +936,9 @@ for (const p of placed.values()) {
     }
   }
 }
+
+// Era rules: labels and pictures keep clear of them.
+for (const y of eraRules) grid.mark(MARGIN_L, y - 34, width - MARGIN_L - MARGIN_R, 68);
 
 // ---------------------------------------------------------------- labels & images, by priority
 interface Placement {
@@ -1044,7 +1064,7 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence, 
   // set out from the lane with a leader line.
   const findSpot = () => {
     // Landmark labels look further before giving way.
-    for (const reach of orig === 1 ? [0, 260, 600, 1100, 1800, 2600] : [0, 260, 600, 1100]) {
+    for (const reach of orig === 1 ? [0, 260, 600, 1100] : [0, 260, 600]) {
       for (let dy = 0; dy <= maxSlide; dy += 10) {
         for (const sgn of dy === 0 ? [0] : [1, -1]) {
           if (sgn === -1 && dy > 3 * UNITS_PER_YEAR) continue;
@@ -1086,8 +1106,12 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence, 
       const laneEdge = spot.side === 1 ? p.cxAt(yy) + p.halfAt(yy) : p.cxAt(yy) - p.halfAt(yy);
       const tickEnd = laneEdge + spot.side * (current <= 2 ? 44 : 30);
       const labelEdge = spot.side === 1 ? spot.x - 10 : spot.x + spot.w + 10;
-      const lead = Math.abs(anchorY - yy) > 4
-        ? `M ${tickEnd} ${yy} C ${(tickEnd + labelEdge) / 2} ${yy} ${tickEnd} ${anchorY} ${labelEdge} ${anchorY}`
+      // A label slid off its date is joined by a square bracket: down the lane edge, a 45° corner,
+      // then straight across (decision 58) — never a loose curve over other ink.
+      const dyL = anchorY - yy;
+      const corner = Math.min(Math.abs(dyL), Math.abs(labelEdge - tickEnd) / 2, 24) * Math.sign(dyL);
+      const lead = Math.abs(dyL) > 4
+        ? `M ${tickEnd} ${yy} L ${tickEnd} ${anchorY - corner} L ${tickEnd + spot.side * Math.abs(corner)} ${anchorY} L ${labelEdge} ${anchorY}`
         : `M ${tickEnd} ${yy} L ${labelEdge} ${yy}`;
       const role = ev.role ?? s.role;
       const lifeBar: Item[] = bar ? [
@@ -1261,7 +1285,8 @@ for (const th of threadDefs) {
   })].join(' ');
   const xs = stops.map((st) => st.x), ys = stops.map((st) => st.y);
   const box: [number, number, number, number] = [Math.min(...xs) - 40, Math.min(...ys) - 40, Math.max(...xs) + 40, Math.max(...ys) + 40];
-  layers.threads.push({ k: 'path', d, stroke: th.color, sw: 3, hair: true, dash: [12, 7], alpha: 0.9, layer, ref: layer, b: box });
+  // A thread is a quiet line of dots between its stops, not a rule across the chart.
+  layers.threads.push({ k: 'path', d, stroke: th.color, sw: 3.2, hair: true, dash: [0.01, 7], alpha: 0.75, layer, ref: layer, b: box });
   for (const st of stops) {
     layers.threads.push({ k: 'rect', x: st.x - 22, y: st.y - 22, w: 44, h: 44, r: 22, fill: th.color, stroke: PAPER, sw: 6, alpha: 0.95, layer, ref: st.id, b: [st.x - 25, st.y - 25, st.x + 25, st.y + 25] });
   }

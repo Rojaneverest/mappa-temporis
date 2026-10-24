@@ -265,6 +265,8 @@ export class Painter {
     p.setStrokeWidth(hair ? sw / s : sw);
     p.setBlendMode(multiply ? ck.BlendMode.Multiply : ck.BlendMode.SrcOver);
     p.setPathEffect(dash ? ck.PathEffect.MakeDash(hair ? dash.map((d) => d / s) : dash, 0) : null);
+    // Dashes get round ends, so a near-zero dash draws a clean dot.
+    p.setStrokeCap(dash ? ck.StrokeCap.Round : ck.StrokeCap.Butt);
     return p;
   }
 
