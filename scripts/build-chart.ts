@@ -49,7 +49,7 @@ const LANE_MIN_PX: Partial<Record<Prominence, number>> = { 1: 7, 2: 3.5 };
 const ENGRAVING_SIZE = { s: 3400, m: 5000, l: 7000 };
 const ENGRAVING_ALPHA = 0.13;
 /** Most of an engraving's box must be open paper. */
-const ENGRAVING_MAX_OCCUPIED = 0.06;
+const ENGRAVING_MAX_OCCUPIED = 0.1;
 /** A track is: margin, its widest lane, a gap, then label space. Thin lanes get thin tracks. */
 const TRACK_MARGIN = 60;
 const TRACK_GAP = 50;
@@ -177,24 +177,28 @@ const visibleLanes = lanes.filter((l) => {
 });
 
 /** Room a lane needs beside it: a little for a bare lane, more where its labels crowd, enough for a big image. */
-function labelDemand(l: Lane): number {
+function labelDemand(l: Lane): { right: number; left: number } {
   const sp = parseSpan(l.span);
   const a = Math.max(year0, sp.start.year), b = Math.min(year1, sp.end.year + 1);
-  if (b <= a) return 60;
+  if (b <= a) return { right: 60, left: 0 };
   const inside = (d: string) => { const y = parseDate(d).year; return y >= a && y <= b; };
   const count = l.events.filter((e) => e.prominence <= 4 && inside(e.date)).length
     + (peopleOnLane.get(l.id) ?? 0) + (voicesOnLane.get(l.id) ?? 0)
     + 2 * l.images.filter((i) => manifest[i.id] && i.prominence <= 3 && inside(i.date)).length;
   // Labels per century of sheet height: a side holds ~3.5 three-line labels a century at the main scale.
   const perCentury = count / ((Y(b) - Y(a)) / (100 * UNITS_PER_YEAR));
-  const forLabels = count === 0 ? 60 : Math.min(LABEL_MAX_W[l.prominence] + 80, 100 + 230 * perCentury);
+  const wanted = count === 0 ? 60 : 100 + 230 * perCentury;
+  const side = LABEL_MAX_W[l.prominence] + 80;
+  const forLabels = Math.min(side, wanted);
+  // The busiest lanes (a modern state, Athens) also keep room on their left.
+  const left = Math.min(side, Math.max(0, wanted - side));
   const bigImage = Math.max(0, ...l.images.filter((i) => manifest[i.id] && i.prominence <= 3).map((i) => {
     const asset = manifest[i.id]!;
     const long = IMAGE_LONG[i.prominence];
     return asset.width >= asset.height ? long : long * (asset.width / asset.height);
   }));
   // Pictures may spill into open paper, so they only ask for part of their width.
-  return Math.max(forLabels, Math.min(bigImage * 0.5, LABEL_SPACE[l.prominence]), LABEL_SPACE[l.prominence] * 0.5);
+  return { right: Math.max(forLabels, Math.min(bigImage * 0.5, LABEL_SPACE[l.prominence]), LABEL_SPACE[l.prominence] * 0.5), left };
 }
 
 /** Widest width a lane reaches in any of its segments. */
@@ -210,13 +214,13 @@ interface RegionLayout {
   /** Left and right limits over all time. */
   x0: number; x1: number;
 }
-interface Column { id: string; region: string; laneW: number; lanes: Lane[] }
+interface Column { id: string; region: string; laneW: number; lanes: Lane[]; leftRoom: number }
 /** Column of every lane, and where the lane's centre sits inside it. */
 const columnOf = new Map<string, Column>();
 const columns: Column[] = [];
 const colItems: ColumnItem[] = [];
 // Slid labels and rounded ends reach past a lane's dates; columns keep clear of that too.
-const COLUMN_PAD = MAX_SLIDE_YEARS * 0.7 * UNITS_PER_YEAR;
+const COLUMN_PAD = MAX_SLIDE_YEARS * 0.3 * UNITS_PER_YEAR;
 sheet.regions.forEach((r, ri) => {
   const rl = visibleLanes.filter((l) => l.region === r.id);
   if (!rl.length) return;
@@ -241,7 +245,8 @@ sheet.regions.forEach((r, ri) => {
   }
   for (const [chain, members] of byChain) {
     const laneW = Math.max(...members.map(laneMaxW));
-    const col: Column = { id: `${r.id}#${chain}`, region: r.id, laneW, lanes: members };
+    const leftRoom = Math.max(...members.map((l) => labelDemand(l).left));
+    const col: Column = { id: `${r.id}#${chain}`, region: r.id, laneW, lanes: members, leftRoom };
     columns.push(col);
     for (const l of members) columnOf.set(l.id, col);
     const track = assignment.trackOf.get(members[0]!.id)!;
@@ -249,30 +254,36 @@ sheet.regions.forEach((r, ri) => {
       const sp = parseSpan(l.span);
       return {
         y0: Y(Math.max(year0, sp.start.year)) - COLUMN_PAD, y1: Y(Math.min(year1, sp.end.year + 1)) + COLUMN_PAD,
-        need: TRACK_MARGIN + laneW + TRACK_GAP + labelDemand(l),
+        need: TRACK_MARGIN + leftRoom + laneW + TRACK_GAP + labelDemand(l).right,
       };
     });
     const life = members.reduce((n, l) => { const sp = parseSpan(l.span); return n + Math.min(year1, sp.end.year) - Math.max(year0, sp.start.year); }, 0);
     regionItems.push({ track, item: { id: col.id, order: 0, region: ri, group: groupOf(members[0]!), spans, weight: 1 + Math.max(0, life) / 400 } });
   }
   // Tracks were ordered for relations (related lanes side by side). Straight columns in a fixed order
-  // form staircases, so swap neighbouring tracks of a group wherever that narrows the region a lot.
-  const nTracks = assignment.tracks.length;
-  const pos = Array.from({ length: nTracks }, (_, t) => t);
-  const groupOfTrack = assignment.tracks.map((ids) => groupOf(laneById.get(ids[0]!)!));
-  const keyed = () => regionItems.map(({ track, item }) => ({ ...item, order: (ri * 1000 + pos[track]!) * 1e5 + Math.min(...item.spans.map((q) => q.y0)) + 1e4 }));
-  const cost = () => packedWidth(keyed(), { regionGap: REGION_GAP, groupGap: 180 }) + 120 * pos.reduce((a, p, t) => a + Math.abs(p - t), 0);
-  let best = cost();
-  for (let improved = true, rounds = 0; improved && rounds < 12; rounds++) {
+  // form staircases, so after that, move single columns within their group wherever that narrows
+  // the region a lot; every step away from the relation order costs a little.
+  regionItems.sort((p, q) => p.track - q.track || Math.min(...p.item.spans.map((v) => v.y0)) - Math.min(...q.item.spans.map((v) => v.y0)));
+  const home = new Map(regionItems.map((r, i) => [r.item.id, i]));
+  let seq = regionItems.map((r) => r.item);
+  const keyed = (order: ColumnItem[]) => order.map((item, i) => ({ ...item, order: (ri * 1000 + i) * 1e5 }));
+  const cost = (order: ColumnItem[]) => packedWidth(keyed(order), { regionGap: REGION_GAP, groupGap: 180 })
+    + 90 * order.reduce((acc, it, i) => acc + Math.abs(i - home.get(it.id)!), 0);
+  let best = cost(seq);
+  for (let improved = true, rounds = 0; improved && rounds < 6; rounds++) {
     improved = false;
-    for (let a = 0; a < nTracks; a++) for (let b = 0; b < nTracks; b++) {
-      if (a === b || groupOfTrack[a] !== groupOfTrack[b]) continue;
-      [pos[a], pos[b]] = [pos[b]!, pos[a]!];
-      const c = cost();
-      if (c < best - 1) { best = c; improved = true; } else [pos[a], pos[b]] = [pos[b]!, pos[a]!];
+    for (let from = 0; from < seq.length; from++) {
+      for (let to = 0; to < seq.length; to++) {
+        if (to === from || seq[from]!.group !== seq[to]!.group) continue;
+        const next = [...seq];
+        const [moved] = next.splice(from, 1);
+        next.splice(to, 0, moved!);
+        const c = cost(next);
+        if (c < best - 1) { best = c; seq = next; improved = true; }
+      }
     }
   }
-  colItems.push(...keyed());
+  colItems.push(...keyed(seq));
 });
 const colLayout = layoutColumns({ items: colItems, regionGap: REGION_GAP, groupGap: 180, step: 300 });
 if (process.env.DIAG) sheet.regions.forEach((r, ri) => {
@@ -599,7 +610,7 @@ for (const lane of visibleLanes) {
     return s.w;
   };
   const colLeft = colX.get(col.id)!;
-  const cxAtYear = (_yr: number) => colLeft + TRACK_MARGIN + col.laneW / 2;
+  const cxAtYear = (_yr: number) => colLeft + TRACK_MARGIN + col.leftRoom + col.laneW / 2;
   const cxAt = (y: number) => cxAtYear(yearAt(y));
   const halfAt = (y: number) => widthAtYear(Math.min(endY - 0.01, Math.max(startY, yearAt(y)))) / 2;
   placed.set(lane.id, { lane, region, track, top, bottom, cxAt, halfAt });
@@ -928,7 +939,8 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence, 
   // Nearest first: at the date on either side, then sliding (mostly later, a little earlier), then
   // set out from the lane with a leader line.
   const findSpot = () => {
-    for (const reach of [0, 260, 600]) {
+    // Landmark labels look further before giving way.
+    for (const reach of orig === 1 ? [0, 260, 600, 1100, 1800, 2600] : [0, 260, 600, 1100]) {
       for (let dy = 0; dy <= maxSlide; dy += 10) {
         for (const sgn of dy === 0 ? [0] : [1, -1]) {
           if (sgn === -1 && dy > 3 * UNITS_PER_YEAR) continue;
@@ -1017,7 +1029,7 @@ function placeImage(p: PlacedLane, img: LaneImage, yy: number, prom: Prominence,
     const top = yy - boxH / 2 + dy;
     const right = p.cxAt(yy) + p.halfAt(yy) + 60 + m;
     const left = p.cxAt(yy) - p.halfAt(yy) - 60 - m - boxW;
-    for (let dx = 0; dx <= 2400; dx += 60) {
+    for (let dx = 0; dx <= 1600; dx += 50) {
       candidates.push({ x: right + dx, y: top, cost: Math.abs(dy) + dx * 0.6 });
       candidates.push({ x: left - dx, y: top, cost: Math.abs(dy) + dx * 0.6 + 120 });
     }
@@ -1025,7 +1037,7 @@ function placeImage(p: PlacedLane, img: LaneImage, yy: number, prom: Prominence,
   candidates.sort((a, b) => a.cost - b.cost);
   const spot = candidates.find((c) => grid.isFree(c.x - m, c.y - m, boxW + 2 * m, boxH + 2 * m));
   if (!spot) {
-    if (shrink > 0.5) return placeImage(p, img, yy, prom, shrink * 0.8);
+    if (shrink > 0.4) return placeImage(p, img, yy, prom, shrink * 0.8);
     stats.demoted++;
     console.warn(`  ↓ image without room: ${img.id}`);
     return;
