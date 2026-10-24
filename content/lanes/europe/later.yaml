@@ -73,7 +73,7 @@ lanes:
       - { id: lovelace, date: 1843 CE, label: "Ada Lovelace's notes on the Analytical Engine", prominence: 3, themes: [technology, women], sources: [wikipedia:Ada_Lovelace] }
       - { id: turing, date: 1936 CE, label: "Turing's universal machine", prominence: 3, themes: [technology, ideas], sources: [wikipedia:Turing_machine] }
       - { id: spinning-jenny, date: 1765 CE, label: "The spinning jenny; cotton mills follow", prominence: 3, themes: [technology], sources: [wikipedia:Spinning_jenny] }
-      - { id: vaccination, date: 1796 CE, label: "Jenner's smallpox vaccine", prominence: 2, themes: [science, disease], sources: [wikipedia:Edward_Jenner] }
+      - { id: vaccination, date: 1796 CE, label: "Jenner's smallpox vaccine", prominence: 2, themes: [science, disease], sources: [wikipedia:Edward_Jenner], threads: [pandemics] }
       - { id: faraday, date: 1831 CE, label: "Faraday's electric generator", prominence: 3, themes: [science, technology], sources: [wikipedia:Michael_Faraday] }
       - { id: telegraph-cable, date: 1866 CE, label: "A telegraph cable crosses the Atlantic", prominence: 3, themes: [technology], sources: [wikipedia:Transatlantic_telegraph_cable] }
       - { id: somme, date: 1916 CE, label: "The Somme: 60,000 British casualties on the first day", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_the_Somme] }
@@ -300,6 +300,7 @@ lanes:
       - { id: great-schism, date: 1054 CE, label: "The Great Schism: Catholic and Orthodox churches split", prominence: 2, themes: [religion], sources: [wikipedia:East–West_Schism] }
       - { id: first-crusade, date: 1095 CE, label: "Pope Urban II calls the First Crusade", prominence: 2, themes: [religion, war], sources: [wikipedia:First_Crusade] }
       - { id: galileo, date: 1633 CE, label: "Galileo is tried for teaching that the Earth moves", prominence: 2, themes: [ideas, religion], sources: [wikipedia:Galileo_affair] }
+      - { id: gregorian-calendar, date: 1582 CE, label: "Pope Gregory XIII's calendar drops ten days", prominence: 3, themes: [sky, religion], thread: calendars, sources: [wikipedia:Gregorian_calendar] }
     sources: [wikipedia:Papal_States]
 
   - id: italian-cities
@@ -315,7 +316,7 @@ lanes:
     events:
       - { id: marco-polo, date: 1271 CE, label: "Marco Polo sets out for the court of Kublai Khan", prominence: 2, thread: silk-road, themes: [exploration, trade], sources: [wikipedia:Marco_Polo] }
       - { id: dante, date: c. 1320 CE, label: "Dante completes the Divine Comedy", prominence: 3, themes: [art], sources: [wikipedia:Divine_Comedy] }
-      - { id: black-death-europe, date: 1347 CE, label: "The Black Death arrives in Italy on Genoese ships; a third of Europe dies", prominence: 1, themes: [disease], sources: [wikipedia:Black_Death] }
+      - { id: black-death-europe, date: 1347 CE, label: "The Black Death arrives in Italy on Genoese ships; a third of Europe dies", prominence: 1, themes: [disease], sources: [wikipedia:Black_Death], threads: [pandemics] }
       - { id: brunelleschi, date: 1436 CE, label: "Brunelleschi's dome crowns Florence — the Renaissance", prominence: 2, themes: [art, technology], sources: [wikipedia:Florence_Cathedral] }
       - { id: mona-lisa, date: 1503 CE, label: "Leonardo begins the Mona Lisa", prominence: 1, themes: [art], sources: [wikipedia:Mona_Lisa] }
       - { id: sistine, date: 1512 CE, label: "Michelangelo finishes the Sistine Chapel ceiling", prominence: 2, themes: [art], sources: [wikipedia:Sistine_Chapel_ceiling] }
@@ -363,7 +364,7 @@ lanes:
       - { id: otto, date: 962 CE, label: "Otto I is crowned emperor", prominence: 3, sources: [wikipedia:Otto_the_Great] }
       - { id: canossa, date: 1077 CE, label: "The emperor kneels in the snow at Canossa", prominence: 4, themes: [religion, government], sources: [wikipedia:Road_to_Canossa] }
       - { id: hildegard, date: c. 1150 CE, label: "Hildegard of Bingen: visions, music and medicine", prominence: 3, themes: [women, art, ideas], sources: [wikipedia:Hildegard_of_Bingen] }
-      - { id: gutenberg, date: c. 1450 CE, label: "Gutenberg's printing press", prominence: 1, themes: [technology, ideas], sources: [wikipedia:Printing_press] }
+      - { id: gutenberg, date: c. 1450 CE, label: "Gutenberg's printing press", prominence: 1, themes: [technology, ideas], sources: [wikipedia:Printing_press], threads: [printing] }
       - { id: luther, date: 1517 CE, label: "Luther's 95 Theses start the Reformation", prominence: 1, themes: [religion], sources: [wikipedia:Ninety-five_Theses] }
       - { id: thirty-years-war, date: 1618 CE, label: "The Thirty Years' War devastates central Europe", prominence: 2, themes: [war, religion], sources: [wikipedia:Thirty_Years'_War] }
       - { id: westphalia, date: 1648 CE, label: "The Peace of Westphalia and the idea of sovereign states", prominence: 3, themes: [government], sources: [wikipedia:Peace_of_Westphalia] }
@@ -439,7 +440,7 @@ lanes:
     span: 895 – 2026 CE
     cliopatria: ["Kingdom of Hungary", "Hungary", "Principality of Hungary"]
     events:
-      - { id: magyars, date: 895 CE, label: "Magyar horsemen settle the Carpathian Basin", prominence: 3, themes: [migration], sources: [wikipedia:Hungarian_conquest_of_the_Carpathian_Basin] }
+      - { id: magyars, date: 895 CE, label: "Magyar horsemen settle the Carpathian Basin", prominence: 3, themes: [migration], sources: [wikipedia:Hungarian_conquest_of_the_Carpathian_Basin], threads: [horse] }
       - { id: mohacs, date: 1526 CE, label: "The Ottomans crush Hungary at Mohács", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Mohács] }
       - { id: hungary-1956, date: 1956 CE, label: "The Hungarian Revolution", prominence: 4, themes: [government], sources: [wikipedia:Hungarian_Revolution_of_1956] }
     sources: [wikipedia:History_of_Hungary]

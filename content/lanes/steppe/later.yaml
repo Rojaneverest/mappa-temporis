@@ -55,7 +55,7 @@ lanes:
       - { type: splits-into, lanes: [crimean-khanate, kazakh-khanate], at: c. 1440 CE }
     events:
       - { id: sarai, date: c. 1250 CE, label: "Sarai on the Volga, capital of the Horde", prominence: 4, sources: [wikipedia:Sarai_(city)] }
-      - { id: black-death-caffa, date: 1346 CE, label: "Plague at the siege of Caffa reaches the Black Sea ports", prominence: 2, themes: [disease], confidence: probable, sources: [wikipedia:Siege_of_Caffa] }
+      - { id: black-death-caffa, date: 1346 CE, label: "Plague at the siege of Caffa reaches the Black Sea ports", prominence: 2, themes: [disease], confidence: probable, sources: [wikipedia:Siege_of_Caffa], threads: [pandemics] }
       - { id: ugra, date: 1480 CE, label: "The Great Stand on the Ugra: Moscow stops paying tribute", prominence: 3, themes: [war], sources: [wikipedia:Great_Stand_on_the_Ugra_River] }
       - { id: ozbeg-islam, date: 1313 CE, label: "Özbeg Khan makes Islam the Horde's faith", prominence: 4, themes: [religion], sources: [wikipedia:Öz_Beg_Khan] }
       - { id: kulikovo, date: 1380 CE, label: "Kulikovo: Moscow defeats the Horde", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Kulikovo] }
@@ -313,7 +313,7 @@ lanes:
       - { name: Qing rule, span: 1691 – 1911 CE, weight: 2 }
       - { name: Mongolia, span: 1911 – 2026 CE, weight: 3 }
     events:
-      - { id: altan-khan, date: 1578 CE, label: "Altan Khan names the first Dalai Lama", prominence: 4, themes: [religion], sources: [wikipedia:Altan_Khan] }
+      - { id: altan-khan, date: 1578 CE, label: "Altan Khan names the first Dalai Lama", prominence: 4, themes: [religion], sources: [wikipedia:Altan_Khan], threads: [buddhism] }
       - { id: mongolia-1921, date: 1921 CE, label: "A Soviet-backed revolution in Mongolia", prominence: 4, themes: [government], sources: [wikipedia:Mongolian_Revolution_of_1921] }
       - { id: mongolia-1990, date: 1990 CE, label: "Peaceful democratic revolution", prominence: 4, themes: [government], sources: [wikipedia:Mongolian_Revolution_of_1990] }
       - { id: erdene-zuu, date: 1585 CE, label: "Erdene Zuu, Mongolia's first great Buddhist monastery", prominence: 4, themes: [religion, art], sources: [wikipedia:Erdene_Zuu_Monastery] }

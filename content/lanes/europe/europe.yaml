@@ -140,6 +140,7 @@ lanes:
       - { id: spartacus, date: 73 BCE, label: "Spartacus leads a slave revolt", prominence: 3, themes: [war], sources: [wikipedia:Spartacus] }
       - { id: gallic-war, date: 58 BCE, label: "Caesar begins the conquest of Gaul", prominence: 3, themes: [war], sources: [wikipedia:Gallic_Wars] }
       - { id: caesar-assassinated, date: 44 BCE, label: "Julius Caesar is assassinated on the Ides of March", prominence: 1, themes: [government], sources: [wikipedia:Assassination_of_Julius_Caesar] }
+      - { id: julian-calendar, date: 46 BCE, label: "Caesar's Julian calendar: 365 days and a leap year", prominence: 3, themes: [sky, government], thread: calendars, sources: [wikipedia:Julian_calendar] }
     images:
       - { id: coin-caesar, source: "commons:File:Denarius portrait of Julius Caesar.jpg", date: 44 BCE, prominence: 3, treatment: coin, caption: "Caesar: the first living Roman on a coin" }
     sources: [wikipedia:Roman_Republic]
@@ -168,7 +169,7 @@ lanes:
       - { id: pompeii, date: 79 CE, label: "Vesuvius buries Pompeii and Herculaneum", prominence: 2, sources: [wikipedia:Eruption_of_Mount_Vesuvius_in_79_AD] }
       - { id: colosseum, date: 80 CE, label: "The Colosseum opens with 100 days of games", prominence: 2, themes: [art], sources: [wikipedia:Colosseum] }
       - { id: trajan-extent, date: 117 CE, label: "The Empire at its greatest extent under Trajan", prominence: 2, sources: [wikipedia:Trajan] }
-      - { id: antonine-plague, date: 165 CE, label: "The Antonine Plague kills millions", prominence: 3, themes: [disease], sources: [wikipedia:Antonine_Plague] }
+      - { id: antonine-plague, date: 165 CE, label: "The Antonine Plague kills millions", prominence: 3, themes: [disease], sources: [wikipedia:Antonine_Plague], threads: [pandemics] }
       - { id: citizenship-212, date: 212 CE, label: "Caracalla makes all free men citizens", prominence: 4, themes: [government], sources: [wikipedia:Constitutio_Antoniniana] }
       - { id: edict-milan, date: 313 CE, label: "Edict of Milan tolerates Christianity", prominence: 2, themes: [religion], sources: [wikipedia:Edict_of_Milan] }
       - { id: constantinople-founded, date: 330 CE, label: "Constantine refounds Byzantium as Constantinople", prominence: 2, sources: [wikipedia:Constantinople] }
@@ -346,7 +347,7 @@ lanes:
       - { id: justinian-code, date: 529 CE, label: "Justinian's Code gathers a thousand years of Roman law", prominence: 3, themes: [government], sources: [wikipedia:Corpus_Juris_Civilis] }
       - { id: hagia-sophia, date: 537 CE, label: "Hagia Sophia is consecrated", prominence: 1, themes: [art, religion], sources: [wikipedia:Hagia_Sophia] }
       - { id: silkworms, date: c. 552 CE, label: "Monks smuggle silkworm eggs to Constantinople", prominence: 3, thread: silk-road, themes: [trade, technology], sources: [wikipedia:Sericulture] }
-      - { id: justinian-plague, date: 541 CE, label: "The Plague of Justinian — the first pandemic of bubonic plague", prominence: 2, themes: [disease], sources: [wikipedia:Plague_of_Justinian] }
+      - { id: justinian-plague, date: 541 CE, label: "The Plague of Justinian — the first pandemic of bubonic plague", prominence: 2, themes: [disease], sources: [wikipedia:Plague_of_Justinian], threads: [pandemics] }
       - { id: siege-626, date: 626 CE, label: "Constantinople survives an Avar and Persian siege", prominence: 4, themes: [war], sources: [wikipedia:Siege_of_Constantinople_(626)] }
       - { id: greek-fire, date: c. 674 CE, label: "Greek fire repels the first Arab siege of Constantinople", prominence: 3, themes: [war, technology], confidence: probable, sources: [wikipedia:Siege_of_Constantinople_(674–678)] }
       - { id: iconoclasm, date: 726 CE, label: "Iconoclasm: Leo III orders the holy images destroyed", prominence: 3, themes: [religion, art], sources: [wikipedia:Byzantine_Iconoclasm] }

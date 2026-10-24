@@ -11,7 +11,7 @@ lanes:
     relations:
       - { type: influences, lane: neo-assyria, at: c. 650 BCE }
     events:
-      - { id: scythian-raids, date: c. 650 BCE, label: "Scythian horsemen raid deep into the Near East", prominence: 4, themes: [war, migration], confidence: probable, sources: [wikipedia:Scythians] }
+      - { id: scythian-raids, date: c. 650 BCE, label: "Scythian horsemen raid deep into the Near East", prominence: 4, themes: [war, migration], confidence: probable, sources: [wikipedia:Scythians], threads: [horse] }
       - { id: darius-scythia, date: c. 513 BCE, label: "Darius invades Scythia and finds no one to fight", prominence: 3, themes: [war], sources: [wikipedia:Darius_I's_European_Scythian_campaign] }
       - { id: herodotus-scythians, date: c. 440 BCE, label: "Herodotus describes Scythian burials, horses and gold", prominence: 4, themes: [ideas], sources: [wikipedia:Scythians] }
       - { id: arzhan, date: c. 800 BCE, label: "The Arzhan kurgan: the earliest Scythian royal tomb", prominence: 3, sources: [wikipedia:Arzhan_(kurgan)] }
@@ -57,7 +57,7 @@ lanes:
     cliopatria: ["Avar Khaganate"]
     events:
       - { id: avar-ring, date: 796 CE, label: "Charlemagne's armies plunder the Avar Ring", prominence: 4, themes: [war], sources: [wikipedia:Pannonian_Avars] }
-      - { id: avar-stirrup, date: c. 570 CE, label: "The Avars bring the stirrup to Europe", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Stirrup] }
+      - { id: avar-stirrup, date: c. 570 CE, label: "The Avars bring the stirrup to Europe", prominence: 3, themes: [technology], confidence: probable, sources: [wikipedia:Stirrup], threads: [horse] }
     sources: [wikipedia:Pannonian_Avars]
 
   - id: greco-bactria

@@ -35,7 +35,7 @@ lanes:
     cliopatria: ["Pala Empire", "Palas"]
     events:
       - { id: vikramashila, date: c. 800 CE, label: "Nalanda and Vikramashila, Buddhist universities, at their height", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Vikramashila] }
-      - { id: atisha, date: 1042 CE, label: "Atiśa leaves Vikramashila to revive Buddhism in Tibet", prominence: 4, themes: [religion], sources: [wikipedia:Atiśa] }
+      - { id: atisha, date: 1042 CE, label: "Atiśa leaves Vikramashila to revive Buddhism in Tibet", prominence: 4, themes: [religion], sources: [wikipedia:Atiśa], threads: [buddhism] }
     sources: [wikipedia:Pala_Empire]
 
   - id: ghurids
@@ -51,7 +51,7 @@ lanes:
       - { type: becomes, lane: delhi-sultanate, at: 1206 CE }
     events:
       - { id: tarain, date: 1192 CE, label: "Muhammad of Ghor defeats Prithviraj Chauhan at Tarain", prominence: 3, themes: [war], sources: [wikipedia:Second_Battle_of_Tarain] }
-      - { id: nalanda-burnt, date: c. 1193 CE, label: "Nalanda is sacked; Buddhism fades from its homeland", prominence: 3, themes: [religion], sources: [wikipedia:Nalanda_mahavihara] }
+      - { id: nalanda-burnt, date: c. 1193 CE, label: "Nalanda is sacked; Buddhism fades from its homeland", prominence: 3, themes: [religion], sources: [wikipedia:Nalanda_mahavihara], threads: [buddhism] }
       - { id: qutb-minar, date: 1199 CE, label: "The Qutb Minar rises over Delhi", prominence: 2, themes: [art], sources: [wikipedia:Qutb_Minar] }
     sources: [wikipedia:Ghurid_dynasty]
 
@@ -99,7 +99,7 @@ lanes:
     relations:
       - { type: becomes, lane: british-raj, at: 1857 CE }
     events:
-      - { id: panipat-1526, date: 1526 CE, label: "Babur wins at Panipat with cannon", prominence: 2, themes: [war, technology], sources: [wikipedia:First_Battle_of_Panipat], people: [p-babur] }
+      - { id: panipat-1526, date: 1526 CE, label: "Babur wins at Panipat with cannon", prominence: 2, themes: [war, technology], sources: [wikipedia:First_Battle_of_Panipat], people: [p-babur], threads: [gunpowder] }
       - { id: akbar, date: 1556 CE, label: "Akbar the Great: tolerance, the Din-i Ilahi, a debating house of faiths", prominence: 1, themes: [ideas, religion, government], sources: [wikipedia:Akbar] }
       - { id: taj-mahal, date: 1653 CE, label: "The Taj Mahal is completed", prominence: 1, themes: [art], sources: [wikipedia:Taj_Mahal] }
       - { id: aurangzeb, date: 1707 CE, label: "Aurangzeb dies; the empire, at its largest, begins to fall apart", prominence: 3, themes: [government], sources: [wikipedia:Aurangzeb] }
@@ -316,7 +316,7 @@ lanes:
     span: 1399 – 1950 CE
     cliopatria: ["Kingdom of Mysore", "Mysore"]
     events:
-      - { id: mysore-rockets, date: 1792 CE, label: "Tipu Sultan's iron rockets inspire Britain's Congreve rockets", prominence: 4, themes: [technology, war], sources: [wikipedia:Mysorean_rockets] }
+      - { id: mysore-rockets, date: 1792 CE, label: "Tipu Sultan's iron rockets inspire Britain's Congreve rockets", prominence: 4, themes: [technology, war], sources: [wikipedia:Mysorean_rockets], threads: [gunpowder] }
       - { id: seringapatam, date: 1799 CE, label: "Tipu Sultan dies defending Seringapatam", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Seringapatam_(1799)] }
     sources: [wikipedia:Kingdom_of_Mysore]
 
@@ -373,7 +373,7 @@ lanes:
     relations:
       - { type: becomes, lane: tibet, at: 842 CE }
     events:
-      - { id: songtsen-gampo, date: c. 641 CE, label: "Songtsen Gampo marries Chinese and Nepali princesses; Buddhism arrives", prominence: 3, themes: [religion], sources: [wikipedia:Songtsen_Gampo] }
+      - { id: songtsen-gampo, date: c. 641 CE, label: "Songtsen Gampo marries Chinese and Nepali princesses; Buddhism arrives", prominence: 3, themes: [religion], sources: [wikipedia:Songtsen_Gampo], threads: [buddhism] }
       - { id: tibet-changan, date: 763 CE, label: "Tibetan armies briefly take Chang'an", prominence: 4, themes: [war], sources: [wikipedia:Tibetan_Empire] }
       - { id: samye, date: c. 779 CE, label: "Samye, Tibet's first monastery", prominence: 4, themes: [religion], sources: [wikipedia:Samye] }
     sources: [wikipedia:Tibetan_Empire]
@@ -393,7 +393,7 @@ lanes:
       - { name: Ganden Phodrang, span: 1642 – 1951 CE, weight: 3 }
     events:
       - { id: milarepa, date: c. 1100 CE, label: "Milarepa, yogi and poet", prominence: 4, themes: [religion, art], sources: [wikipedia:Milarepa] }
-      - { id: potala, date: 1645 CE, label: "The Fifth Dalai Lama builds the Potala", prominence: 2, themes: [art, religion], sources: [wikipedia:Potala_Palace] }
+      - { id: potala, date: 1645 CE, label: "The Fifth Dalai Lama builds the Potala", prominence: 2, themes: [art, religion], sources: [wikipedia:Potala_Palace], threads: [buddhism] }
       - { id: tibet-1950, date: 1950 CE, label: "The People's Liberation Army enters Tibet; in 1959 the Dalai Lama flees", prominence: 2, themes: [war], sources: [wikipedia:Annexation_of_Tibet_by_the_People's_Republic_of_China] }
       - { id: tsongkhapa, date: 1409 CE, label: "Tsongkhapa founds the Gelug school", prominence: 4, themes: [religion], sources: [wikipedia:Je_Tsongkhapa] }
     images:

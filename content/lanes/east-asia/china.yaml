@@ -178,6 +178,7 @@ lanes:
         themes: [ideas]
         sources: [wikipedia:Records_of_the_Grand_Historian]
       - id: white-horse
+        threads: [buddhism]
         date: c. 68 CE
         label: White Horse Temple — Buddhism takes root in China
         prominence: 3
@@ -215,6 +216,7 @@ lanes:
         prominence: 3
         themes: [war]
         sources: [wikipedia:Battle_of_Red_Cliffs]
+      - { id: taichu-calendar, date: 104 BCE, label: "The Taichu calendar of Emperor Wu", prominence: 4, themes: [sky, government], thread: calendars, sources: [wikipedia:Chinese_calendar] }
     images:
       - id: han-lacquer-bowl
         source: "met:36449"
@@ -312,6 +314,7 @@ lanes:
     cliopatria: ["Tang Dynasty"]
     events:
       - id: xuanzang
+        threads: [buddhism]
         date: 629 CE
         label: Xuanzang sets out for India to collect Buddhist texts
         prominence: 3
@@ -325,10 +328,10 @@ lanes:
         sources: [wikipedia:Wu_Zetian]
       - { id: li-bai, date: c. 750 CE, label: "Li Bai and Du Fu: the golden age of Chinese poetry", prominence: 2, themes: [art], sources: [wikipedia:Li_Bai] }
       - { id: an-lushan, date: 755 CE, label: "The An Lushan rebellion: the Tang never fully recover", prominence: 2, themes: [war], sources: [wikipedia:An_Lushan_rebellion] }
-      - { id: diamond-sutra, date: 868 CE, label: "The Diamond Sutra, the oldest dated printed book", prominence: 2, thread: paper, themes: [technology, religion], sources: [wikipedia:Diamond_Sutra] }
+      - { id: diamond-sutra, date: 868 CE, label: "The Diamond Sutra, the oldest dated printed book", prominence: 2, thread: paper, themes: [technology, religion], sources: [wikipedia:Diamond_Sutra], threads: [printing] }
       - { id: huang-chao, date: 878 CE, label: "Huang Chao's rebels massacre the foreign merchants of Guangzhou", prominence: 4, themes: [war, trade], sources: [wikipedia:Huang_Chao_rebellion] }
       - { id: changan-largest, date: c. 700 CE, label: "Chang'an, perhaps the world's largest city", prominence: 2, themes: [trade], sources: [wikipedia:Chang'an] }
-      - { id: tang-buddhism-ban, date: 845 CE, label: "The great anti-Buddhist persecution", prominence: 4, themes: [religion], sources: [wikipedia:Great_Anti-Buddhist_Persecution] }
+      - { id: tang-buddhism-ban, date: 845 CE, label: "The great anti-Buddhist persecution", prominence: 4, themes: [religion], sources: [wikipedia:Great_Anti-Buddhist_Persecution], threads: [buddhism] }
     images:
       - id: tang-lute-player
         source: "met:44801"
@@ -395,6 +398,7 @@ lanes:
         themes: [art]
         sources: [wikipedia:Lantingji_Xu]
       - id: faxian
+        threads: [buddhism]
         date: 399 CE
         label: Faxian walks to India for Buddhist scriptures
         prominence: 3

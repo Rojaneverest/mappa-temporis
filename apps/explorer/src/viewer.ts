@@ -68,6 +68,8 @@ export class Viewer {
 
   /** Called when the user picks something on the chart (or empty paper: null). */
   onPick: (ref: string | null) => void = () => {};
+  /** Called with the year when the year ruler is clicked. */
+  onRulerClick: (year: number) => void = () => {};
   /** Called (debounced by the caller) whenever the camera settles somewhere new. */
   onViewChange: (v: ViewState) => void = () => {};
   /** Called every frame drawn: the year under the cursor (or at the centre) and what is hovered / selected. */
@@ -142,6 +144,11 @@ export class Viewer {
     };
     this.x0 = fitAxis(this.x0, RULER_W, this.cssW, this.dl.width);
     this.y0 = fitAxis(this.y0, HEADER_H, this.cssH, this.dl.height);
+  }
+
+  /** The year at the middle of the screen. */
+  get centerYear(): number {
+    return Math.round(yToYear(this.dl, this.y0 + (HEADER_H + (this.cssH - HEADER_H) / 2) / this.s));
   }
 
   get view(): ViewState {
@@ -300,8 +307,11 @@ export class Viewer {
           const r = c.getBoundingClientRect();
           const px = e.clientX - r.left, py = e.clientY - r.top;
           const w = this.toWorld(px, py);
-          const hit = px > RULER_W && py > HEADER_H ? this.picker.pick(w.x, w.y, this.s) : null;
-          this.onPick(hit?.ref ?? null);
+          if (px <= RULER_W && py > HEADER_H) this.onRulerClick(Math.round(yToYear(this.dl, w.y)));
+          else {
+            const hit = px > RULER_W && py > HEADER_H ? this.picker.pick(w.x, w.y, this.s) : null;
+            this.onPick(hit?.ref ?? null);
+          }
         }
       }
       drag = null;

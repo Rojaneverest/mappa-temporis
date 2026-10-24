@@ -1,13 +1,13 @@
 # People of Oceania.
 people:
-  - { id: p-kamehameha, name: Kamehameha I, lane: hawaii, life: "c. 1758 – 1819 CE", role: "king who united Hawaiʻi", prominence: 3, sources: [wikipedia:Kamehameha_I] }
-  - { id: p-bennelong, name: Bennelong, lane: aboriginal-australia, life: "c. 1764 – 1813 CE", role: "Wangal go-between with the first colonists", prominence: 4, sources: [wikipedia:Bennelong] }
-  - { id: p-te-rauparaha, name: Te Rauparaha, lane: maori, life: "c. 1765 – 1849 CE", role: "Ngāti Toa war leader", prominence: 4, sources: [wikipedia:Te_Rauparaha] }
-  - { id: p-hongi-hika, name: Hongi Hika, lane: maori, life: "c. 1772 – 1828 CE", role: "Ngāpuhi chief of the Musket Wars", prominence: 4, sources: [wikipedia:Hongi_Hika] }
-  - { id: p-tupou-i, name: George Tupou I, lane: tui-tonga, life: "1797 – 1893 CE", role: "king who unified Tonga", prominence: 4, sources: [wikipedia:George_Tupou_I] }
-  - { id: p-truganini, name: Truganini, lane: aboriginal-australia, life: "c. 1812 – 1876 CE", role: "Palawa woman of Tasmania", prominence: 4, sources: [wikipedia:Truganini] }
-  - { id: p-cakobau, name: Seru Epenisa Cakobau, lane: fiji, life: "c. 1815 – 1883 CE", role: "king who ceded Fiji to Britain", prominence: 4, sources: [wikipedia:Seru_Epenisa_Cakobau] }
-  - { id: p-liliuokalani, name: Liliʻuokalani, lane: hawaii, life: "1838 – 1917 CE", role: "last queen of Hawaiʻi", prominence: 3, sources: [wikipedia:Liliʻuokalani] }
-  - { id: p-kate-sheppard, name: Kate Sheppard, lane: maori, life: "1847 – 1934 CE", role: "won New Zealand women the vote", prominence: 4, sources: [wikipedia:Kate_Sheppard] }
-  - { id: p-vincent-lingiari, name: Vincent Lingiari, lane: aboriginal-australia, life: "1919 – 1988 CE", role: "led the Gurindji walk-off for land", prominence: 4, sources: [wikipedia:Vincent_Lingiari] }
-  - { id: p-eddie-mabo, name: Eddie Mabo, lane: aboriginal-australia, life: "1936 – 1992 CE", role: "won native title in Australia's courts", prominence: 4, sources: [wikipedia:Eddie_Mabo] }
+  - { id: p-kamehameha, name: Kamehameha I, lane: hawaii, life: "c. 1758 – 1819 CE", role: "king who united Hawaiʻi", themes: [government], prominence: 3, sources: [wikipedia:Kamehameha_I] }
+  - { id: p-bennelong, name: Bennelong, lane: aboriginal-australia, life: "c. 1764 – 1813 CE", role: "Wangal go-between with the first colonists", themes: [government], prominence: 4, sources: [wikipedia:Bennelong] }
+  - { id: p-te-rauparaha, name: Te Rauparaha, lane: maori, life: "c. 1765 – 1849 CE", role: "Ngāti Toa war leader", themes: [government, war], prominence: 4, sources: [wikipedia:Te_Rauparaha] }
+  - { id: p-hongi-hika, name: Hongi Hika, lane: maori, life: "c. 1772 – 1828 CE", role: "Ngāpuhi chief of the Musket Wars", themes: [government, war], prominence: 4, sources: [wikipedia:Hongi_Hika] }
+  - { id: p-tupou-i, name: George Tupou I, lane: tui-tonga, life: "1797 – 1893 CE", role: "king who unified Tonga", themes: [government], prominence: 4, sources: [wikipedia:George_Tupou_I] }
+  - { id: p-truganini, name: Truganini, lane: aboriginal-australia, life: "c. 1812 – 1876 CE", role: "Palawa woman of Tasmania", themes: [women], prominence: 4, sources: [wikipedia:Truganini] }
+  - { id: p-cakobau, name: Seru Epenisa Cakobau, lane: fiji, life: "c. 1815 – 1883 CE", role: "king who ceded Fiji to Britain", themes: [government], prominence: 4, sources: [wikipedia:Seru_Epenisa_Cakobau] }
+  - { id: p-liliuokalani, name: Liliʻuokalani, lane: hawaii, life: "1838 – 1917 CE", role: "last queen of Hawaiʻi", themes: [government, women], prominence: 3, sources: [wikipedia:Liliʻuokalani] }
+  - { id: p-kate-sheppard, name: Kate Sheppard, lane: maori, life: "1847 – 1934 CE", role: "won New Zealand women the vote", themes: [women], prominence: 4, sources: [wikipedia:Kate_Sheppard] }
+  - { id: p-vincent-lingiari, name: Vincent Lingiari, lane: aboriginal-australia, life: "1919 – 1988 CE", role: "led the Gurindji walk-off for land", themes: [government], prominence: 4, sources: [wikipedia:Vincent_Lingiari] }
+  - { id: p-eddie-mabo, name: Eddie Mabo, lane: aboriginal-australia, life: "1936 – 1992 CE", role: "won native title in Australia's courts", themes: [government], prominence: 4, sources: [wikipedia:Eddie_Mabo] }

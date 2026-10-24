@@ -33,6 +33,7 @@ lanes:
         confidence: legendary
         sources: [wikipedia:Dongmyeong_of_Goguryeo]
       - id: buddhism-goguryeo
+        threads: [buddhism]
         date: 372 CE
         label: Buddhism reaches Korea
         prominence: 3
@@ -187,6 +188,7 @@ lanes:
         themes: [art]
         sources: [wikipedia:Daisen_Kofun]
       - id: buddhism-japan
+        threads: [buddhism]
         date: 538 CE
         label: Buddhism arrives from Baekje
         prominence: 2

@@ -10,7 +10,7 @@ lanes:
     span: c. 180 BCE – c. 10 CE
     cliopatria: ["Indo-Greeks"]
     events:
-      - { id: menander, date: c. 150 BCE, label: "King Menander debates a Buddhist monk in the Milinda Pañha", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Menander_I] }
+      - { id: menander, date: c. 150 BCE, label: "King Menander debates a Buddhist monk in the Milinda Pañha", prominence: 3, themes: [ideas, religion], sources: [wikipedia:Menander_I], threads: [buddhism] }
     sources: [wikipedia:Indo-Greek_Kingdom]
 
   - id: indo-scythian
@@ -32,8 +32,8 @@ lanes:
     prominence: 2
     span: 30 – 375 CE
     events:
-      - { id: gandhara-buddha, date: 1st c., label: "Gandharan sculptors carve some of the first images of the Buddha", prominence: 2, themes: [art, religion], sources: [wikipedia:Greco-Buddhist_art] }
-      - { id: kanishka, date: c. 127 CE, label: "Kanishka the Great, patron of Buddhism, rules from Peshawar to the Ganges", prominence: 2, sources: [wikipedia:Kanishka] }
+      - { id: gandhara-buddha, date: 1st c., label: "Gandharan sculptors carve some of the first images of the Buddha", prominence: 2, themes: [art, religion], sources: [wikipedia:Greco-Buddhist_art], threads: [buddhism] }
+      - { id: kanishka, date: c. 127 CE, label: "Kanishka the Great, patron of Buddhism, rules from Peshawar to the Ganges", prominence: 2, sources: [wikipedia:Kanishka], threads: [buddhism] }
     images:
       - { id: gandhara-buddha-statue, source: "met:646117", date: 3rd c., prominence: 2, treatment: cutout, caption: "Buddha from Gandhara" }
       - { id: coin-kanishka, source: "commons:File:Stater Kanishka I obverse Guimet MG24357 v2.jpg", date: c. 130 CE, prominence: 3, treatment: coin, caption: "Kanishka's gold stater, with Greek letters" }
@@ -72,7 +72,7 @@ lanes:
     relations:
       - { type: becomes, lane: nanda, at: c. 345 BCE }
     events:
-      - { id: buddha, date: 5th c. BCE, label: "Siddhartha Gautama, the Buddha, teaches", prominence: 1, confidence: disputed, themes: [religion, ideas], sources: [wikipedia:The_Buddha] }
+      - { id: buddha, date: 5th c. BCE, label: "Siddhartha Gautama, the Buddha, teaches", prominence: 1, confidence: disputed, themes: [religion, ideas], sources: [wikipedia:The_Buddha], threads: [buddhism] }
       - { id: mahavira, date: 5th c. BCE, label: "Mahavira teaches non-violence: the Jain way", prominence: 3, confidence: disputed, themes: [religion], sources: [wikipedia:Mahavira] }
       - { id: panini, date: c. 450 BCE, label: "Pāṇini writes the grammar of Sanskrit", prominence: 3, confidence: disputed, themes: [ideas], sources: [wikipedia:Pāṇini] }
       - { id: rajagriha, date: c. 540 BCE, label: "Bimbisara rules Magadha from Rajagriha", prominence: 4, sources: [wikipedia:Bimbisara] }
@@ -105,7 +105,7 @@ lanes:
     events:
       - { id: chandragupta, date: 322 BCE, label: "Chandragupta Maurya unites northern India", prominence: 2, sources: [wikipedia:Chandragupta_Maurya] }
       - { id: arthashastra, date: c. 300 BCE, label: "The Arthashastra, a manual of statecraft", prominence: 4, confidence: disputed, themes: [government, ideas], sources: [wikipedia:Arthashastra] }
-      - { id: kalinga, date: c. 261 BCE, label: "After the slaughter at Kalinga, Ashoka turns to Buddhism", prominence: 1, themes: [war, religion], sources: [wikipedia:Kalinga_War] }
+      - { id: kalinga, date: c. 261 BCE, label: "After the slaughter at Kalinga, Ashoka turns to Buddhism", prominence: 1, themes: [war, religion], sources: [wikipedia:Kalinga_War], threads: [buddhism] }
       - { id: ashoka-edicts, date: c. 250 BCE, label: "Ashoka's edicts carved on pillars and rocks across India", prominence: 2, thread: scripts, themes: [government, religion], sources: [wikipedia:Edicts_of_Ashoka] }
     images:
       - { id: lion-capital, source: "commons:File:Lion Capital of Ashoka 3.jpg", date: c. 250 BCE, prominence: 2, treatment: cutout, caption: "Ashoka’s lion capital, Sarnath" }
@@ -138,7 +138,7 @@ lanes:
     events:
       - { id: gupta-founded, date: c. 320 CE, label: "Chandragupta I founds the Gupta dynasty", prominence: 3, sources: [wikipedia:Chandragupta_I] }
       - { id: kalidasa, date: 5th c., label: "Kalidasa writes Shakuntala", prominence: 3, themes: [art], sources: [wikipedia:Kalidasa] }
-      - { id: nalanda, date: c. 427 CE, label: "Nalanda, a monastery-university, is founded", prominence: 2, themes: [ideas, religion], sources: [wikipedia:Nalanda_mahavihara] }
+      - { id: nalanda, date: c. 427 CE, label: "Nalanda, a monastery-university, is founded", prominence: 2, themes: [ideas, religion], sources: [wikipedia:Nalanda_mahavihara], threads: [buddhism] }
       - { id: aryabhata, date: 499 CE, label: "Aryabhata's astronomy: the Earth spins on its axis", prominence: 2, themes: [ideas, sky], thread: numerals, sources: [wikipedia:Aryabhatiya] }
       - { id: huna-invasions, date: c. 480 CE, label: "Huna invasions shake the empire", prominence: 3, themes: [war, migration], sources: [wikipedia:Alchon_Huns] }
     images:
@@ -167,7 +167,7 @@ lanes:
     span: c. 100 BCE – c. 225 CE
     cliopatria: ["Satavahana Dynasty"]
     events:
-      - { id: sanchi, date: 1st c. BCE, label: "The carved gateways of the Great Stupa at Sanchi", prominence: 2, themes: [art, religion], sources: [wikipedia:Sanchi] }
+      - { id: sanchi, date: 1st c. BCE, label: "The carved gateways of the Great Stupa at Sanchi", prominence: 2, themes: [art, religion], sources: [wikipedia:Sanchi], threads: [buddhism] }
       - { id: karla-caves, date: c. 100 CE, label: "The rock-cut hall at Karla", prominence: 4, themes: [art, religion], sources: [wikipedia:Karla_Caves] }
     sources: [wikipedia:Satavahana_dynasty]
 
@@ -223,7 +223,7 @@ lanes:
     span: 377 BCE – 1017 CE
     cliopatria: ["Anurādhapura"]
     events:
-      - { id: mahinda, date: c. 250 BCE, label: "Ashoka's son Mahinda brings Buddhism to Sri Lanka", prominence: 3, themes: [religion], sources: [wikipedia:Mahinda_(Buddhist_monk)] }
+      - { id: mahinda, date: c. 250 BCE, label: "Ashoka's son Mahinda brings Buddhism to Sri Lanka", prominence: 3, themes: [religion], sources: [wikipedia:Mahinda_(Buddhist_monk)], threads: [buddhism] }
       - { id: sigiriya, date: c. 480 CE, label: "King Kashyapa builds his palace atop the rock of Sigiriya", prominence: 3, themes: [art], sources: [wikipedia:Sigiriya] }
       - { id: abhayagiri, date: c. 800 CE, label: "Abhayagiri monastery houses 5,000 monks", prominence: 4, themes: [religion], sources: [wikipedia:Abhayagiri_vihāra] }
       - { id: chola-conquest, date: 1017 CE, label: "Chola armies take Anuradhapura", prominence: 3, themes: [war], sources: [wikipedia:Chola_conquest_of_Anuradhapura] }

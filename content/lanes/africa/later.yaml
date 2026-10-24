@@ -35,7 +35,7 @@ lanes:
     cliopatria: ["Songhai Empire"]
     events:
       - { id: timbuktu-scholars, date: c. 1500 CE, label: "Timbuktu's scholars and manuscripts at their height", prominence: 3, themes: [ideas], sources: [wikipedia:Timbuktu_Manuscripts] }
-      - { id: tondibi, date: 1591 CE, label: "Moroccan guns defeat Songhai at Tondibi", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Tondibi] }
+      - { id: tondibi, date: 1591 CE, label: "Moroccan guns defeat Songhai at Tondibi", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Tondibi], threads: [gunpowder] }
       - { id: sonni-ali, date: 1468 CE, label: "Sonni Ali takes Timbuktu", prominence: 3, themes: [war], sources: [wikipedia:Sonni_Ali] }
       - { id: askia-muhammad, date: 1495 CE, label: "Askia Muhammad's pilgrimage to Mecca; Songhai at its height", prominence: 3, themes: [religion, government], sources: [wikipedia:Askia_Muhammad_I] }
       - { id: timbuktu-manuscripts, date: c. 1550 CE, label: "Timbuktu's scholars and manuscripts at their height", prominence: 3, themes: [ideas], sources: [wikipedia:Timbuktu_Manuscripts] }
@@ -51,7 +51,7 @@ lanes:
     cliopatria: ["Kanem Empire", "Bornu Empire", "Kanem-Bornu Empire"]
     events:
       - { id: kanem-islam, date: c. 1085 CE, label: "Mai Hummay of Kanem converts to Islam", prominence: 3, themes: [religion], sources: [wikipedia:Kanem–Bornu_Empire] }
-      - { id: idris-alooma, date: 1571 CE, label: "Idris Alooma's musketeers make Bornu a great power", prominence: 3, themes: [war, technology], sources: [wikipedia:Idris_Alooma] }
+      - { id: idris-alooma, date: 1571 CE, label: "Idris Alooma's musketeers make Bornu a great power", prominence: 3, themes: [war, technology], sources: [wikipedia:Idris_Alooma], threads: [gunpowder] }
       - { id: rabih, date: 1893 CE, label: "Rabih az-Zubayr overthrows Bornu", prominence: 4, themes: [war], sources: [wikipedia:Rabih_az-Zubayr] }
     sources: [wikipedia:Kanem–Bornu_Empire]
 
@@ -290,9 +290,9 @@ lanes:
       - { id: kebra-nagast, date: c. 1320 CE, label: "The Kebra Nagast traces the dynasty to Solomon and Sheba", prominence: 3, themes: [religion, art], sources: [wikipedia:Kebra_Nagast] }
       - { id: adwa, date: 1896 CE, label: "Ethiopia defeats Italy at Adwa and stays free", prominence: 1, themes: [war], sources: [wikipedia:Battle_of_Adwa] }
       - { id: haile-selassie, date: 1974 CE, label: "Haile Selassie is overthrown; the Derg rules", prominence: 4, themes: [government], sources: [wikipedia:Derg] }
-      - { id: smallpox-eradicated, date: 1977 CE, label: "The last natural case of smallpox, in Somalia: a disease is wiped out", prominence: 3, themes: [disease, science], sources: [wikipedia:Smallpox] }
+      - { id: smallpox-eradicated, date: 1977 CE, label: "The last natural case of smallpox, in Somalia: a disease is wiped out", prominence: 3, themes: [disease, science], sources: [wikipedia:Smallpox], threads: [pandemics] }
       - { id: amda-seyon, date: 1314 CE, label: "Amda Seyon's conquests", prominence: 4, themes: [war], sources: [wikipedia:Amda_Seyon_I] }
-      - { id: adal-war, date: 1529 CE, label: "Ahmad Gran's invasion; Portuguese musketeers help repel it", prominence: 3, themes: [war], sources: [wikipedia:Ethiopian–Adal_war] }
+      - { id: adal-war, date: 1529 CE, label: "Ahmad Gran's invasion; Portuguese musketeers help repel it", prominence: 3, themes: [war], sources: [wikipedia:Ethiopian–Adal_war], threads: [gunpowder] }
       - { id: gondar, date: 1636 CE, label: "Gondar, the castle capital", prominence: 3, themes: [art], sources: [wikipedia:Gondar] }
       - { id: tewodros, date: 1855 CE, label: "Tewodros II reunifies Ethiopia", prominence: 4, themes: [government], sources: [wikipedia:Tewodros_II] }
       - { id: italo-ethiopian, date: 1935 CE, label: "Mussolini invades with poison gas", prominence: 3, themes: [war], sources: [wikipedia:Second_Italo-Ethiopian_War] }
@@ -380,7 +380,7 @@ lanes:
     prominence: 3
     span: c. 1300 – 1896 CE
     events:
-      - { id: oyo-cavalry, date: c. 1650 CE, label: "Oyo's cavalry dominates the Yoruba lands", prominence: 4, themes: [war], sources: [wikipedia:Oyo_Empire] }
+      - { id: oyo-cavalry, date: c. 1650 CE, label: "Oyo's cavalry dominates the Yoruba lands", prominence: 4, themes: [war], sources: [wikipedia:Oyo_Empire], threads: [horse] }
       - { id: oyo-falls, date: c. 1836 CE, label: "Old Oyo is abandoned as the empire breaks apart", prominence: 4, themes: [war], sources: [wikipedia:Oyo_Empire] }
     sources: [wikipedia:Oyo_Empire]
 
@@ -441,7 +441,7 @@ lanes:
       - { id: funj-sennar, date: 1504 CE, label: "The Funj Sultanate of Sennar is founded on the Blue Nile", prominence: 4, themes: [government], sources: [wikipedia:Funj_Sultanate] }
       - { id: turkiyya, date: 1821 CE, label: "Egypt conquers Sudan", prominence: 4, themes: [war], sources: [wikipedia:Turkiyya] }
       - { id: khartoum-1885, date: 1885 CE, label: "The Mahdi's army takes Khartoum; Gordon is killed", prominence: 3, themes: [war, religion], sources: [wikipedia:Siege_of_Khartoum] }
-      - { id: omdurman, date: 1898 CE, label: "Omdurman: machine guns destroy the Mahdist army", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Omdurman] }
+      - { id: omdurman, date: 1898 CE, label: "Omdurman: machine guns destroy the Mahdist army", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Omdurman], threads: [gunpowder] }
       - { id: sudan-independence, date: 1956 CE, label: "Sudan becomes independent", prominence: 4, themes: [government], sources: [wikipedia:Sudan] }
       - { id: darfur, date: 2003 CE, label: "War and mass killing in Darfur", prominence: 3, themes: [war], sources: [wikipedia:War_in_Darfur] }
       - { id: south-sudan, date: 2011 CE, label: "South Sudan becomes independent", prominence: 4, themes: [government], sources: [wikipedia:South_Sudan] }

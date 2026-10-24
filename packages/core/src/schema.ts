@@ -43,6 +43,8 @@ export const Event = z.object({
   confidence: Confidence.default('attested'),
   themes: z.array(z.string()).default([]),
   thread: z.string().optional(),
+  /** Further threads this event is a stop on (an event can sit on several). */
+  threads: z.array(z.string()).default([]),
   sources: z.array(z.string()).min(1, 'every event needs a source'),
   note: z.string().optional(),
   /** People who took part: the build checks they were alive at the date. */
@@ -142,6 +144,8 @@ export const Thread = z.object({
   id: z.string(),
   name: z.string(),
   color: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
+  /** One line on what the thread follows. */
+  note: z.string().optional(),
 });
 export const ClimateEpisode = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
@@ -214,6 +218,8 @@ export const Person = z.object({
   life: SpanText,
   /** What they did, in a few words ("teacher of rulers"). */
   role: z.string().max(60),
+  /** Themes for the lenses (religion, art, war, women…), like events. */
+  themes: z.array(z.string()).default([]),
   prominence: z.union([z.literal(2), z.literal(3), z.literal(4), z.literal(5)]),
   endonym: Endonym.optional(),
   sources: z.array(z.string()).min(1),
@@ -233,6 +239,7 @@ export const Voice = z.object({
   work: z.string().max(80),
   /** The translation used, when it is not our own plain rendering. */
   translation: z.string().optional(),
+  themes: z.array(z.string()).default([]),
   prominence: z.union([z.literal(3), z.literal(4), z.literal(5)]),
   sources: z.array(z.string()).min(1),
 });
@@ -250,3 +257,14 @@ export const DailyCard = z.object({
 });
 export type DailyCard = z.infer<typeof DailyCard>;
 export const DailyFile = z.object({ cards: z.array(DailyCard) });
+
+/** A lens: one theme lit up across the chart, the rest dimmed. Matches items by their themes. */
+export const Lens = z.object({
+  id: z.string().regex(/^[a-z0-9-]+$/),
+  name: z.string(),
+  color: z.string().regex(/^#[0-9A-Fa-f]{6}$/),
+  themes: z.array(z.string()).min(1),
+  note: z.string(),
+});
+export type Lens = z.infer<typeof Lens>;
+export const LensFile = z.object({ lenses: z.array(Lens) });

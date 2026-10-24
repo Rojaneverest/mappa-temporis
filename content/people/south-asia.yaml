@@ -1,26 +1,26 @@
 # People of South Asia.
 people:
-  - { id: p-mahavira, name: Mahavira, lane: magadha, life: "c. 599 – c. 527 BCE", role: "teacher of the Jains", prominence: 3, sources: [wikipedia:Mahavira] }
-  - { id: p-buddha, name: Siddhartha Gautama, lane: magadha, life: "c. 563 – c. 483 BCE", role: "the Buddha", prominence: 2, sources: [wikipedia:The_Buddha] }
-  - { id: p-chandragupta-maurya, name: Chandragupta Maurya, lane: maurya, life: "c. 340 – c. 297 BCE", role: "founder of the Maurya empire", prominence: 3, sources: [wikipedia:Chandragupta_Maurya] }
-  - { id: p-ashoka, name: Ashoka, lane: maurya, life: "c. 304 – 232 BCE", role: "emperor who turned to the dharma", prominence: 2, endonym: { text: "𑀅𑀲𑁄𑀓", script: Brah, translit: Asoka }, sources: [wikipedia:Ashoka] }
-  - { id: p-aryabhata, name: Aryabhata, lane: gupta, life: "476 – 550 CE", role: "astronomer and mathematician", prominence: 3, sources: [wikipedia:Aryabhata] }
-  - { id: p-harsha, name: Harsha, lane: harsha, life: "590 – 647 CE", role: "king and playwright", prominence: 4, sources: [wikipedia:Harsha] }
-  - { id: p-rajaraja-chola, name: Rajaraja Chola I, lane: chola, life: "c. 947 – 1014 CE", role: "builder of the Brihadeeswara temple", prominence: 3, sources: [wikipedia:Rajaraja_I] }
-  - { id: p-kabir, name: Kabir, lane: delhi-sultanate, life: "c. 1440 – c. 1518 CE", role: "weaver-poet", prominence: 3, sources: [wikipedia:Kabir] }
-  - { id: p-guru-nanak, name: Guru Nanak, lane: delhi-sultanate, life: "1469 – 1539 CE", role: "founder of the Sikh faith", prominence: 3, sources: [wikipedia:Guru_Nanak] }
-  - { id: p-babur, name: Babur, lane: mughal, life: "1483 – 1530 CE", role: "founder of the Mughal empire, memoirist", prominence: 3, sources: [wikipedia:Babur] }
-  - { id: p-mirabai, name: Mirabai, lane: rajputs, life: "c. 1498 – c. 1547 CE", role: "poet-saint of Krishna", prominence: 4, sources: [wikipedia:Meera] }
-  - { id: p-akbar, name: Akbar, lane: mughal, life: "1542 – 1605 CE", role: "emperor of tolerance", prominence: 2, sources: [wikipedia:Akbar] }
-  - { id: p-shah-jahan, name: Shah Jahan, lane: mughal, life: "1592 – 1666 CE", role: "builder of the Taj Mahal", prominence: 3, sources: [wikipedia:Shah_Jahan] }
-  - { id: p-dalai-lama-5, name: The Fifth Dalai Lama, lane: tibet, life: "1617 – 1682 CE", role: "ruler of a unified Tibet", prominence: 4, sources: [wikipedia:5th_Dalai_Lama] }
-  - { id: p-shivaji, name: Shivaji, lane: maratha, life: "1630 – 1680 CE", role: "founder of the Maratha state", prominence: 3, sources: [wikipedia:Shivaji] }
-  - { id: p-tipu-sultan, name: Tipu Sultan, lane: mysore, life: "1751 – 1799 CE", role: "'Tiger of Mysore'", prominence: 3, sources: [wikipedia:Tipu_Sultan] }
-  - { id: p-ranjit-singh, name: Ranjit Singh, lane: sikh-empire, life: "1780 – 1839 CE", role: "maharaja of the Sikh empire", prominence: 3, sources: [wikipedia:Ranjit_Singh] }
-  - { id: p-lakshmibai, name: Rani Lakshmibai, lane: british-raj, life: "c. 1828 – 1858 CE", role: "queen of Jhansi, killed in the 1857 rising", prominence: 3, sources: [wikipedia:Rani_of_Jhansi] }
-  - { id: p-gandhi, name: Mohandas Gandhi, lane: british-raj, life: "1869 – 1948 CE", role: "leader of non-violent resistance", prominence: 2, sources: [wikipedia:Mahatma_Gandhi] }
-  - { id: p-jinnah, name: Muhammad Ali Jinnah, lane: british-raj, life: "1876 – 1948 CE", role: "founder of Pakistan", prominence: 3, sources: [wikipedia:Muhammad_Ali_Jinnah] }
-  - { id: p-ramanujan, name: Srinivasa Ramanujan, lane: british-raj, life: "1887 – 1920 CE", role: "self-taught mathematician", prominence: 3, sources: [wikipedia:Srinivasa_Ramanujan] }
-  - { id: p-nehru, name: Jawaharlal Nehru, lane: india, life: "1889 – 1964 CE", role: "India's first prime minister", prominence: 3, sources: [wikipedia:Jawaharlal_Nehru] }
-  - { id: p-ambedkar, name: B. R. Ambedkar, lane: british-raj, life: "1891 – 1956 CE", role: "Dalit leader, author of India's constitution", prominence: 3, sources: [wikipedia:B._R._Ambedkar] }
-  - { id: p-indira-gandhi, name: Indira Gandhi, lane: india, life: "1917 – 1984 CE", role: "prime minister", prominence: 3, sources: [wikipedia:Indira_Gandhi] }
+  - { id: p-mahavira, name: Mahavira, lane: magadha, life: "c. 599 – c. 527 BCE", role: "teacher of the Jains", themes: [ideas, religion], prominence: 3, sources: [wikipedia:Mahavira] }
+  - { id: p-buddha, name: Siddhartha Gautama, lane: magadha, life: "c. 563 – c. 483 BCE", role: "the Buddha", themes: [religion], prominence: 2, sources: [wikipedia:The_Buddha] }
+  - { id: p-chandragupta-maurya, name: Chandragupta Maurya, lane: maurya, life: "c. 340 – c. 297 BCE", role: "founder of the Maurya empire", themes: [government], prominence: 3, sources: [wikipedia:Chandragupta_Maurya] }
+  - { id: p-ashoka, name: Ashoka, lane: maurya, life: "c. 304 – 232 BCE", role: "emperor who turned to the dharma", themes: [government, religion], prominence: 2, endonym: { text: "𑀅𑀲𑁄𑀓", script: Brah, translit: Asoka }, sources: [wikipedia:Ashoka] }
+  - { id: p-aryabhata, name: Aryabhata, lane: gupta, life: "476 – 550 CE", role: "astronomer and mathematician", themes: [science], prominence: 3, sources: [wikipedia:Aryabhata] }
+  - { id: p-harsha, name: Harsha, lane: harsha, life: "590 – 647 CE", role: "king and playwright", themes: [art, government], prominence: 4, sources: [wikipedia:Harsha] }
+  - { id: p-rajaraja-chola, name: Rajaraja Chola I, lane: chola, life: "c. 947 – 1014 CE", role: "builder of the Brihadeeswara temple", themes: [technology], prominence: 3, sources: [wikipedia:Rajaraja_I] }
+  - { id: p-kabir, name: Kabir, lane: delhi-sultanate, life: "c. 1440 – c. 1518 CE", role: "weaver-poet", themes: [art], prominence: 3, sources: [wikipedia:Kabir] }
+  - { id: p-guru-nanak, name: Guru Nanak, lane: delhi-sultanate, life: "1469 – 1539 CE", role: "founder of the Sikh faith", themes: [government, religion], prominence: 3, sources: [wikipedia:Guru_Nanak] }
+  - { id: p-babur, name: Babur, lane: mughal, life: "1483 – 1530 CE", role: "founder of the Mughal empire, memoirist", themes: [art, government], prominence: 3, sources: [wikipedia:Babur] }
+  - { id: p-mirabai, name: Mirabai, lane: rajputs, life: "c. 1498 – c. 1547 CE", role: "poet-saint of Krishna", themes: [art, religion, women], prominence: 4, sources: [wikipedia:Meera] }
+  - { id: p-akbar, name: Akbar, lane: mughal, life: "1542 – 1605 CE", role: "emperor of tolerance", themes: [government], prominence: 2, sources: [wikipedia:Akbar] }
+  - { id: p-shah-jahan, name: Shah Jahan, lane: mughal, life: "1592 – 1666 CE", role: "builder of the Taj Mahal", themes: [technology], prominence: 3, sources: [wikipedia:Shah_Jahan] }
+  - { id: p-dalai-lama-5, name: The Fifth Dalai Lama, lane: tibet, life: "1617 – 1682 CE", role: "ruler of a unified Tibet", themes: [government], prominence: 4, sources: [wikipedia:5th_Dalai_Lama] }
+  - { id: p-shivaji, name: Shivaji, lane: maratha, life: "1630 – 1680 CE", role: "founder of the Maratha state", themes: [government], prominence: 3, sources: [wikipedia:Shivaji] }
+  - { id: p-tipu-sultan, name: Tipu Sultan, lane: mysore, life: "1751 – 1799 CE", role: "'Tiger of Mysore'", themes: [war], prominence: 3, sources: [wikipedia:Tipu_Sultan] }
+  - { id: p-ranjit-singh, name: Ranjit Singh, lane: sikh-empire, life: "1780 – 1839 CE", role: "maharaja of the Sikh empire", themes: [government], prominence: 3, sources: [wikipedia:Ranjit_Singh] }
+  - { id: p-lakshmibai, name: Rani Lakshmibai, lane: british-raj, life: "c. 1828 – 1858 CE", role: "queen of Jhansi, killed in the 1857 rising", themes: [government, war, women], prominence: 3, sources: [wikipedia:Rani_of_Jhansi] }
+  - { id: p-gandhi, name: Mohandas Gandhi, lane: british-raj, life: "1869 – 1948 CE", role: "leader of non-violent resistance", themes: [government], prominence: 2, sources: [wikipedia:Mahatma_Gandhi] }
+  - { id: p-jinnah, name: Muhammad Ali Jinnah, lane: british-raj, life: "1876 – 1948 CE", role: "founder of Pakistan", themes: [government], prominence: 3, sources: [wikipedia:Muhammad_Ali_Jinnah] }
+  - { id: p-ramanujan, name: Srinivasa Ramanujan, lane: british-raj, life: "1887 – 1920 CE", role: "self-taught mathematician", themes: [science], prominence: 3, sources: [wikipedia:Srinivasa_Ramanujan] }
+  - { id: p-nehru, name: Jawaharlal Nehru, lane: india, life: "1889 – 1964 CE", role: "India's first prime minister", themes: [government], prominence: 3, sources: [wikipedia:Jawaharlal_Nehru] }
+  - { id: p-ambedkar, name: B. R. Ambedkar, lane: british-raj, life: "1891 – 1956 CE", role: "Dalit leader, author of India's constitution", themes: [art, government], prominence: 3, sources: [wikipedia:B._R._Ambedkar] }
+  - { id: p-indira-gandhi, name: Indira Gandhi, lane: india, life: "1917 – 1984 CE", role: "prime minister", themes: [government, women], prominence: 3, sources: [wikipedia:Indira_Gandhi] }

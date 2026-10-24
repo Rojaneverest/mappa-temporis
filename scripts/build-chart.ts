@@ -14,7 +14,7 @@ import { createRequire } from 'node:module';
 import YAML from 'yaml';
 import subsetFont from 'subset-font';
 import type { CanvasKit, FontCollection } from 'canvaskit-wasm';
-import { AtmosphereFile, DailyFile, LaneFile, MarginsFile, PeopleFile, Sheet, ThreadFile, Tour, VoicesFile, type Lane, type LaneImage, type Person, type Prominence, type Voice } from '../packages/core/src/schema.ts';
+import { AtmosphereFile, DailyFile, LaneFile, LensFile, MarginsFile, PeopleFile, Sheet, ThreadFile, Tour, VoicesFile, type Lane, type LaneImage, type Person, type Prominence, type Voice } from '../packages/core/src/schema.ts';
 import { parseDate, parseSpan, formatDate, formatSpan, formatYear, roundYears } from '../packages/core/src/dates.ts';
 import { makeTimescale, yearToYOf, yToYearOf, upyAt } from '../packages/core/src/timescale.ts';
 import { INK, INK_SOFT, PAPER, laneColor, mix, PIGMENTS } from '../packages/core/src/palette.ts';
@@ -43,10 +43,9 @@ const WEIGHT_W = [0, 16, 56, 96, 140, 190, 240];
 const DEFAULT_WEIGHT: Record<Prominence, number> = { 1: 6, 2: 4, 3: 3, 4: 1, 5: 1 };
 /** Screen width (CSS px) landmark lanes never drop below when zoomed out (decision 29). */
 const LANE_MIN_PX: Partial<Record<Prominence, number>> = { 1: 7, 2: 3.5 };
-/** Atmosphere engravings (decision 30): longest side per size, faint ink, gone before P3 labels arrive. */
+/** Atmosphere engravings (decisions 30, 40): longest side per size, faint ink, visible at every zoom. */
 const ENGRAVING_SIZE = { s: 3400, m: 5000, l: 7000 };
 const ENGRAVING_ALPHA = 0.13;
-const ENGRAVING_FADE_OUT: Fade = [0.09, 0.16];
 /** Most of an engraving's box must be open paper. */
 const ENGRAVING_MAX_OCCUPIED = 0.06;
 /** A track is: margin, its widest lane, a gap, then label space. Thin lanes get thin tracks. */
@@ -94,6 +93,10 @@ const people: Person[] = existsSync(join(ROOT, 'content/people'))
 const voices: Voice[] = existsSync(join(ROOT, 'content/voices.yaml')) ? VoicesFile.parse(loadYaml(join(ROOT, 'content/voices.yaml'))).voices : [];
 const dailyCards = existsSync(join(ROOT, 'content/daily-life.yaml')) ? DailyFile.parse(loadYaml(join(ROOT, 'content/daily-life.yaml'))).cards : [];
 const personById = new Map(people.map((p) => [p.id, p]));
+const lensDefs = existsSync(join(ROOT, 'content/lenses.yaml')) ? LensFile.parse(loadYaml(join(ROOT, 'content/lenses.yaml'))).lenses : [];
+/** The lenses an item belongs to, from its themes. */
+const lensesOf = (themes: string[]) => lensDefs.filter((l) => l.themes.some((t) => themes.includes(t))).map((l) => l.id);
+const lensCount = new Map<string, number>();
 const groupOf = (l: Lane) => l.group ?? l.region;
 const manifestPath = join(OUT, 'img/manifest.json');
 const manifest: Record<string, { width: number; height: number; sizes: number[]; treatment: 'cutout' | 'plate' | 'backdrop' | 'coin'; credit: string; license: string; title: string; url: string }> =
@@ -738,6 +741,8 @@ interface LabelSpec {
   role?: TextRole;
   /** People: birth and death, drawn as a bar beside the lane. */
   life?: [number, number];
+  /** Lenses that light this label up. */
+  lens: string[];
 }
 type Job =
   | { kind: 'label'; prom: Prominence; yy: number; lane: PlacedLane; spec: LabelSpec }
@@ -749,7 +754,7 @@ for (const p of placed.values()) {
     if (ev.prominence === 5) { stats.archived++; continue; }
     const d = parseDate(ev.date);
     if (d.year < year0 || d.year > year1) continue;
-    jobs.push({ kind: 'label', prom: ev.prominence, yy: Y(d.year), lane: p, spec: { id: ev.id, text: ev.label, pre: formatDate(d) } });
+    jobs.push({ kind: 'label', prom: ev.prominence, yy: Y(d.year), lane: p, spec: { id: ev.id, text: ev.label, pre: formatDate(d), lens: lensesOf(ev.themes) } });
   }
   for (const img of p.lane.images) {
     stats.images++;
@@ -768,7 +773,7 @@ for (const who of people) {
   const prime = life.start.year + (life.end.year - life.start.year) * 0.65;
   const yy = Math.min(p.bottom - 20, Math.max(p.top + 20, Y(Math.max(year0, Math.min(year1, prime)))));
   stats.people++;
-  jobs.push({ kind: 'label', prom: who.prominence, yy, lane: p, spec: { id: who.id, text: `${who.name}, ${who.role}`, pre: formatSpan(life), life: [life.start.year, life.end.year + 1] } });
+  jobs.push({ kind: 'label', prom: who.prominence, yy, lane: p, spec: { id: who.id, text: `${who.name}, ${who.role}`, pre: formatSpan(life), life: [life.start.year, life.end.year + 1], lens: lensesOf(who.themes) } });
 }
 for (const v of voices) {
   const p = placed.get(v.lane);
@@ -777,7 +782,7 @@ for (const v of voices) {
   const d = parseDate(v.date);
   if (d.year < year0 || d.year > year1) continue;
   stats.voices++;
-  jobs.push({ kind: 'label', prom: v.prominence, yy: Y(d.year), lane: p, spec: { id: v.id, text: `“${v.text}” — ${v.speaker}`, role: 'caption' } });
+  jobs.push({ kind: 'label', prom: v.prominence, yy: Y(d.year), lane: p, spec: { id: v.id, text: `“${v.text}” — ${v.speaker}`, role: 'caption', lens: lensesOf(v.themes) } });
 }
 // Words before pictures: P1–P2 labels, then P1–P2 images, then P3 labels, P3 images, P4 labels.
 const rank = (j: Job) => (j.kind === 'label' ? (j.prom <= 2 ? 0 : j.prom === 3 ? 2 : 4) : j.prom <= 2 ? 1 : 3);
@@ -846,6 +851,7 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence):
   grid.mark(spot.x, spot.top, spot.w, spot.h, 10);
   if (Math.abs(spot.top + spot.lineH / 2 - yy) > 4) stats.slid++;
   if (ev.life) stats.drawnPeople++; else if (ev.role === 'caption') stats.drawnVoices++; else stats.drawnEvents++;
+  for (const id of ev.lens) lensCount.set(id, (lensCount.get(id) ?? 0) + 1);
   // A lifetime bar runs beside the lane from birth to death, where the paper is free.
   const laneEdgeAt = (y: number) => (spot.side === 1 ? p.cxAt(y) + p.halfAt(y) : p.cxAt(y) - p.halfAt(y));
   let bar: { x: number; a: number; b: number } | null = null;
@@ -872,11 +878,21 @@ function placeLabel(p: PlacedLane, ev: LabelSpec, yy: number, prom: Prominence):
         { k: 'line', x1: bar.x - 5, y1: bar.a, x2: bar.x + 5, y2: bar.a, stroke: INK_SOFT, sw: 1.2, hair: true, alpha: 0.5, fade: s.fade, b: [bar.x - 6, bar.a - 2, bar.x + 6, bar.a + 2] },
         { k: 'line', x1: bar.x - 5, y1: bar.b, x2: bar.x + 5, y2: bar.b, stroke: INK_SOFT, sw: 1.2, hair: true, alpha: 0.5, fade: s.fade, b: [bar.x - 6, bar.b - 2, bar.x + 6, bar.b + 2] },
       ] : [];
+      // A lens dot on the lane edge for every lens this label belongs to: visible from the wall view.
+      const dotX = laneEdge + spot.side * 7;
+      const dots: Item[] = ev.lens.map((id) => ({
+        k: 'rect', x: dotX, y: yy, w: 0, h: 0, dot: 4.5, fill: lensDefs.find((l) => l.id === id)!.color, stroke: PAPER, sw: 1.5,
+        alpha: 0.95, layer: `lens:${id}`, b: [dotX - 400, yy - 400, dotX + 400, yy + 400],
+      }));
+      const tagged = (items: Item[]) => items.map((it) => ({ ...it, lk: 'label' as const, lens: ev.lens }));
       return [
+        ...dots,
+        ...tagged([
         ...lifeBar,
         { k: 'line', x1: laneEdge, y1: yy, x2: tickEnd, y2: yy, stroke: INK, sw: current <= 2 ? 3 : 2, alpha: 0.8, fade: s.fade, b: [Math.min(laneEdge, tickEnd), yy - 3, Math.max(laneEdge, tickEnd), yy + 3] },
         { k: 'path', d: lead, stroke: INK_SOFT, sw: 1, hair: true, alpha: 0.55, fade: s.fade, b: [Math.min(tickEnd, labelEdge) - 4, Math.min(yy, anchorY) - 4, Math.max(tickEnd, labelEdge) + 4, Math.max(yy, anchorY) + 4] },
         text({ role, text: ev.text, pre, size: s.size, color: s.color, align: spot.side === 1 ? 'left' : 'right', w: spot.w, x: spot.x, y: spot.top, fade: s.fade, ref: ev.id }),
+        ]),
       ];
     },
   });
@@ -1001,18 +1017,18 @@ for (const e of atmosphere) {
   engravingBoxes.push([x, y, w, h]);
   layers.atmosphere.push({
     k: 'image', id: e.id, x, y, w, h, sizes: asset.sizes, treatment: 'backdrop',
-    alpha: ENGRAVING_ALPHA, fadeOut: ENGRAVING_FADE_OUT, layer: 'atmosphere', b: [x, y, x + w, y + h],
+    alpha: ENGRAVING_ALPHA, layer: 'atmosphere', b: [x, y, x + w, y + h],
   });
   stats.engravings++;
 }
 
 // ---------------------------------------------------------------- threads (optional layers)
 const threadDefs = ThreadFile.parse(loadYaml(join(ROOT, 'content/threads.yaml'))).threads;
-const threadsOut: { id: string; name: string; color: string; events: string[]; box: [number, number, number, number] }[] = [];
+const threadsOut: Folio['threads'] = [];
 for (const th of threadDefs) {
   // Each stop is where the event touches its lane: right edge, at its date.
   const stops = [...placed.values()].flatMap((p) => p.lane.events
-    .filter((e) => e.thread === th.id && parseDate(e.date).year >= year0 && parseDate(e.date).year <= year1)
+    .filter((e) => (e.thread === th.id || e.threads.includes(th.id)) && parseDate(e.date).year >= year0 && parseDate(e.date).year <= year1)
     .map((e) => { const yy = Y(parseDate(e.date).year); return { id: e.id, x: p.cxAt(yy) + p.halfAt(yy), y: yy }; }))
     .sort((a, b) => a.y - b.y);
   if (stops.length < 2) continue;
@@ -1030,7 +1046,19 @@ for (const th of threadDefs) {
   }
   const first = stops[0]!;
   layers.threads.push(text({ role: 'caption', text: th.name, size: 64, color: th.color, align: 'left', w: 900, x: first.x + 40, y: first.y - 110, layer, ref: layer } as Parameters<typeof text>[0]));
-  threadsOut.push({ id: th.id, name: th.name, color: th.color, events: stops.map((st) => st.id), box: [box[0], box[1], box[2] - box[0], box[3] - box[1]] });
+  threadsOut.push({ id: th.id, name: th.name, color: th.color, note: th.note, events: stops.map((st) => st.id), box: [box[0], box[1], box[2] - box[0], box[3] - box[1]] });
+}
+
+// ---------------------------------------------------------------- lens roles
+// Under a lens, lanes and their names dim a little, pictures more, labels outside the lens most.
+const laneIds = new Set(lanes.map((l) => l.id));
+const imageIds = new Set(lanes.flatMap((l) => l.images.map((i) => i.id)));
+for (const it of [...layers.lanes, ...layers.links]) it.lk ??= 'lane';
+for (const it of layers.images) it.lk ??= 'image';
+for (const it of [...layers.text, ...layers.marks]) {
+  if (it.lk || !it.ref) continue;
+  if (laneIds.has(it.ref)) it.lk = 'lane';
+  else if (imageIds.has(it.ref)) it.lk = 'image';
 }
 
 // ---------------------------------------------------------------- assemble & write
@@ -1039,6 +1067,8 @@ for (const it of items) if (!it.b) throw new Error(`item without bbox: ${JSON.st
 
 // ---------------------------------------------------------------- folio (side-panel data)
 const folio: Folio = { entries: {}, lanes: [], threads: [] };
+const dateYears = (s: string): [number, number] => { const d = parseDate(s); return [d.year, d.year]; };
+const spanYears = (s: string): [number, number] => { const sp = parseSpan(s); return [sp.start.year, sp.end.year]; };
 const placedBox = new Map(placements.map((p) => [p.id, p.box]));
 for (const lane of lanes) {
   const p = placed.get(lane.id);
@@ -1047,7 +1077,7 @@ for (const lane of lanes) {
   const laneBox: [number, number, number, number] = p ? [p.cxAt(p.top) - 260, p.top, 1000, p.bottom - p.top] : [0, 0, 0, 0];
   if (p) folio.lanes.push({ id: lane.id, name: lane.name, cx: p.cxAt(p.top), top: p.top, bottom: p.bottom, prominence: lane.prominence });
   const entry: FolioEntry = {
-    id: lane.id, kind: 'lane', title: lane.name, dates: formatSpan(parseSpan(lane.span)), region, laneId: lane.id, laneName: lane.name,
+    id: lane.id, kind: 'lane', title: lane.name, dates: formatSpan(parseSpan(lane.span)), years: spanYears(lane.span), region, laneId: lane.id, laneName: lane.name,
     prominence: lane.prominence, drawn: !!p, basis: lane.basis, endonym: lane.endonym, wikidata: lane.wikidata, wikipedia: wiki,
     sources: [...lane.sources.map(sourceLink), ...(lane.wikidata ? [sourceLink(`wikidata:${lane.wikidata}`)] : [])],
     segments: lane.segments.map((s) => ({ name: s.name, dates: formatSpan(parseSpan(s.span)) })),
@@ -1067,7 +1097,7 @@ for (const lane of lanes) {
   for (const w of people.filter((x) => x.lane === lane.id)) {
     const life = parseSpan(w.life);
     folio.entries[w.id] = {
-      id: w.id, kind: 'person', title: w.name, dates: formatSpan(life), region, laneId: lane.id, laneName: lane.name,
+      id: w.id, kind: 'person', title: w.name, dates: formatSpan(life), years: spanYears(w.life), region, laneId: lane.id, laneName: lane.name,
       prominence: w.prominence, drawn: placedBox.has(w.id), role: w.role, endonym: w.endonym, wikipedia: wikiOf(w.sources),
       sources: w.sources.map(sourceLink), box: placedBox.get(w.id) ?? near(Math.round((life.start.year + life.end.year) / 2)),
       events: lanes.flatMap((l) => l.events.filter((e) => e.people.includes(w.id)).map((e) => ({ id: e.id, dates: formatDate(parseDate(e.date)), label: e.label, drawn: placedBox.has(e.id) }))),
@@ -1075,7 +1105,7 @@ for (const lane of lanes) {
   }
   for (const v of voices.filter((x) => x.lane === lane.id)) {
     folio.entries[v.id] = {
-      id: v.id, kind: 'voice', title: `${v.speaker}: “${v.text.length > 60 ? v.text.slice(0, 57) + '…' : v.text}”`, dates: formatDate(parseDate(v.date)), region, laneId: lane.id, laneName: lane.name,
+      id: v.id, kind: 'voice', title: `${v.speaker}: “${v.text.length > 60 ? v.text.slice(0, 57) + '…' : v.text}”`, dates: formatDate(parseDate(v.date)), years: dateYears(v.date), region, laneId: lane.id, laneName: lane.name,
       prominence: v.prominence, drawn: placedBox.has(v.id), quote: { text: v.text, speaker: v.speaker, work: v.work, translation: v.translation },
       sources: v.sources.map(sourceLink), box: placedBox.get(v.id) ?? near(parseDate(v.date).year),
     };
@@ -1083,7 +1113,7 @@ for (const lane of lanes) {
   for (const c of dailyCards.filter((x) => x.lane === lane.id)) {
     const sp = parseSpan(c.span);
     folio.entries[c.id] = {
-      id: c.id, kind: 'daily', title: c.title, dates: formatSpan(sp), region, laneId: lane.id, laneName: lane.name,
+      id: c.id, kind: 'daily', title: c.title, dates: formatSpan(sp), years: spanYears(c.span), region, laneId: lane.id, laneName: lane.name,
       prominence: 5, drawn: false, note: c.text, sources: c.sources.map(sourceLink), box: near(Math.round((sp.start.year + sp.end.year) / 2)),
     };
   }
@@ -1091,7 +1121,7 @@ for (const lane of lanes) {
     const box = placedBox.get(e.id) ?? (p ? [p.cxAt(Y(parseDate(e.date).year)) - 200, Y(parseDate(e.date).year) - 100, 600, 200] as [number, number, number, number] : laneBox);
     const ewiki = e.sources.find((s) => s.startsWith('wikipedia:'))?.slice(10);
     folio.entries[e.id] = {
-      id: e.id, kind: 'event', title: e.label, dates: formatDate(parseDate(e.date)), region, laneId: lane.id, laneName: lane.name,
+      id: e.id, kind: 'event', title: e.label, dates: formatDate(parseDate(e.date)), years: dateYears(e.date), region, laneId: lane.id, laneName: lane.name,
       prominence: e.prominence, drawn: placedBox.has(e.id), confidence: e.confidence, themes: e.themes, wikipedia: ewiki,
       sources: e.sources.map(sourceLink), box,
     };
@@ -1100,7 +1130,7 @@ for (const lane of lanes) {
     const a = manifest[i.id];
     if (!a) continue;
     folio.entries[i.id] = {
-      id: i.id, kind: 'image', title: i.caption, dates: formatDate(parseDate(i.date)), region, laneId: lane.id, laneName: lane.name,
+      id: i.id, kind: 'image', title: i.caption, dates: formatDate(parseDate(i.date)), years: dateYears(i.date), region, laneId: lane.id, laneName: lane.name,
       prominence: i.prominence, drawn: placedBox.has(i.id),
       sources: [{ label: a.credit, url: a.url }],
       image: { caption: i.caption, title: a.title, credit: a.credit, license: a.license, url: a.url, sizes: a.sizes, width: a.width, height: a.height, treatment: a.treatment },
@@ -1124,7 +1154,7 @@ for (const th of threadsOut) {
   const evs = th.events.map((id) => folio.entries[id]!).filter(Boolean);
   folio.entries[`thread:${th.id}`] = {
     id: `thread:${th.id}`, kind: 'thread', title: th.name, dates: `${evs[0]?.dates} – ${evs[evs.length - 1]?.dates}`,
-    region: 'Across regions', laneId: '', laneName: '', prominence: 2, drawn: true, sources: [],
+    region: 'Across regions', laneId: '', laneName: '', prominence: 2, drawn: true, sources: [], note: th.note,
     events: evs.map((e) => ({ id: e.id, dates: e.dates, label: `${e.title} (${e.laneName})`, drawn: e.drawn })),
     box: th.box,
   };
@@ -1138,6 +1168,7 @@ const dl: DisplayList = {
   height,
   time: { y0: HEADER, year0, year1, unitsPerYear: UNITS_PER_YEAR, segments: timeSegs.length > 1 ? timeSegs : undefined },
   regions: regionLayouts.map((r) => ({ x0: r.x0, x1: r.x0 + r.width, name: r.name, short: r.short })),
+  lenses: lensDefs.map((l) => ({ id: l.id, name: l.name, color: l.color, note: l.note, count: lensCount.get(l.id) ?? 0 })),
   items,
   stats: { ...stats, items: items.length },
 };
@@ -1185,6 +1216,7 @@ function luminance(hex: string): number {
 
 function lint() {
   const problems: string[] = [];
+  const threadIds = new Set(ThreadFile.parse(loadYaml(join(ROOT, 'content/threads.yaml'))).threads.map((t) => t.id));
   const ids = new Set<string>();
   for (const l of lanes) {
     for (const id of [l.id, ...l.events.map((e) => e.id), ...l.images.map((i) => i.id)]) {
@@ -1202,6 +1234,7 @@ function lint() {
     }
     for (const r of l.relations) for (const id of r.lanes ?? (r.lane ? [r.lane] : [])) if (!laneById.has(id)) problems.push(`${l.id}: relation to unknown lane "${id}"`);
     if (!PIGMENTS[l.sphere]) problems.push(`${l.id}: unknown sphere "${l.sphere}"`);
+    for (const e of l.events) for (const t of [...(e.thread ? [e.thread] : []), ...e.threads]) if (!threadIds.has(t)) problems.push(`${e.id}: unknown thread "${t}"`);
     // People alive at their events (with the slack that 'c.' dates allow).
     for (const e of l.events) for (const pid of e.people) {
       const who = personById.get(pid);

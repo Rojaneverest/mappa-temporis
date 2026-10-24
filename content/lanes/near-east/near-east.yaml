@@ -177,7 +177,7 @@ lanes:
     relations:
       - { type: becomes, lane: rashidun, at: 632 CE }
     events:
-      - { id: hijra, date: 622 CE, label: "The Hijra: Muhammad moves to Medina — year 1 of the Islamic calendar", prominence: 1, themes: [religion], sources: [wikipedia:Hijrah], people: [p-muhammad] }
+      - { id: hijra, date: 622 CE, label: "The Hijra: Muhammad moves to Medina — year 1 of the Islamic calendar", prominence: 1, themes: [religion], sources: [wikipedia:Hijrah], people: [p-muhammad], thread: calendars }
       - { id: mecca-630, date: 630 CE, label: "Muhammad returns to Mecca", prominence: 3, themes: [religion], sources: [wikipedia:Conquest_of_Mecca] }
       - { id: first-revelation, date: 610 CE, label: "Muhammad's first revelation on Mount Hira", prominence: 2, themes: [religion], sources: [wikipedia:Muhammad's_first_revelation] }
     sources: [wikipedia:Muhammad]
@@ -379,7 +379,7 @@ lanes:
     relations:
       - { type: becomes, lane: sasanian, at: 224 CE }
     events:
-      - { id: carrhae, date: 53 BCE, label: "Parthian horse archers annihilate Crassus at Carrhae", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Carrhae] }
+      - { id: carrhae, date: 53 BCE, label: "Parthian horse archers annihilate Crassus at Carrhae", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Carrhae], threads: [horse] }
       - { id: parthian-silk-road, date: c. 115 BCE, label: "Parthia and Han China exchange envoys — the Silk Road is open", prominence: 3, thread: silk-road, themes: [trade], confidence: probable, sources: [wikipedia:Silk_Road] }
     sources: [wikipedia:Parthian_Empire]
 

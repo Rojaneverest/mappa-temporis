@@ -1,38 +1,38 @@
 # People of East Asia.
 people:
-  - { id: p-confucius, name: Confucius, lane: zhou-eastern, life: "551 – 479 BCE", role: "teacher of rulers", prominence: 2, endonym: { text: "孔子", script: Hant, translit: Kǒngzǐ }, sources: [wikipedia:Confucius] }
-  - { id: p-mozi, name: Mozi, lane: zhou-eastern, life: "c. 470 – c. 391 BCE", role: "philosopher of impartial care", prominence: 4, sources: [wikipedia:Mozi] }
-  - { id: p-mencius, name: Mencius, lane: zhou-eastern, life: "c. 372 – c. 289 BCE", role: "Confucian philosopher", prominence: 3, sources: [wikipedia:Mencius] }
-  - { id: p-zhuangzi, name: Zhuangzi, lane: zhou-eastern, life: "c. 369 – c. 286 BCE", role: "Daoist philosopher", prominence: 4, sources: [wikipedia:Zhuang_Zhou] }
-  - { id: p-qin-shi-huang, name: Qin Shi Huang, lane: qin, life: "259 – 210 BCE", role: "the First Emperor", prominence: 2, endonym: { text: "秦始皇", script: Hant, translit: Qín Shǐ Huáng }, sources: [wikipedia:Qin_Shi_Huang] }
-  - { id: p-han-wudi, name: Emperor Wu of Han, lane: han, life: "156 – 87 BCE", role: "emperor who pushed Han power west", prominence: 3, sources: [wikipedia:Emperor_Wu_of_Han] }
-  - { id: p-zhang-qian, name: Zhang Qian, lane: han, life: "c. 164 – 114 BCE", role: "envoy who opened the road to the West", prominence: 3, sources: [wikipedia:Zhang_Qian] }
-  - { id: p-sima-qian, name: Sima Qian, lane: han, life: "c. 145 – c. 86 BCE", role: "historian", prominence: 3, sources: [wikipedia:Sima_Qian] }
-  - { id: p-cao-cao, name: Cao Cao, lane: han, life: "155 – 220 CE", role: "warlord and poet", prominence: 4, sources: [wikipedia:Cao_Cao] }
-  - { id: p-zhuge-liang, name: Zhuge Liang, lane: shu-han, life: "181 – 234 CE", role: "strategist of Shu", prominence: 4, sources: [wikipedia:Zhuge_Liang] }
-  - { id: p-gwanggaeto-king, name: Gwanggaeto the Great, lane: goguryeo, life: "374 – 413 CE", role: "conqueror-king of Goguryeo", prominence: 4, sources: [wikipedia:Gwanggaeto_the_Great] }
-  - { id: p-tang-taizong, name: Emperor Taizong of Tang, lane: tang, life: "598 – 649 CE", role: "emperor of a golden age", prominence: 3, sources: [wikipedia:Emperor_Taizong_of_Tang] }
-  - { id: p-xuanzang, name: Xuanzang, lane: tang, life: "c. 602 – 664 CE", role: "monk who walked to India for sutras", prominence: 3, sources: [wikipedia:Xuanzang] }
-  - { id: p-wu-zetian, name: Wu Zetian, lane: tang, life: "624 – 705 CE", role: "China's only woman emperor", prominence: 2, sources: [wikipedia:Wu_Zetian] }
-  - { id: p-li-bai, name: Li Bai, lane: tang, life: "701 – 762 CE", role: "poet", prominence: 3, sources: [wikipedia:Li_Bai] }
-  - { id: p-du-fu, name: Du Fu, lane: tang, life: "712 – 770 CE", role: "poet", prominence: 4, sources: [wikipedia:Du_Fu] }
-  - { id: p-kukai, name: Kūkai, lane: nara-heian, life: "774 – 835 CE", role: "founder of Shingon Buddhism", prominence: 4, sources: [wikipedia:Kūkai] }
-  - { id: p-sei-shonagon, name: Sei Shōnagon, lane: nara-heian, life: "c. 966 – c. 1025 CE", role: "author of The Pillow Book", prominence: 4, sources: [wikipedia:Sei_Shōnagon] }
-  - { id: p-murasaki, name: Murasaki Shikibu, lane: nara-heian, life: "c. 973 – c. 1014 CE", role: "author of The Tale of Genji", prominence: 2, endonym: { text: "紫式部", script: Jpan, translit: Murasaki Shikibu }, sources: [wikipedia:Murasaki_Shikibu] }
-  - { id: p-su-shi, name: Su Shi, lane: song, life: "1037 – 1101 CE", role: "poet, painter, statesman", prominence: 4, sources: [wikipedia:Su_Shi] }
-  - { id: p-li-qingzhao, name: Li Qingzhao, lane: song, life: "1084 – c. 1155 CE", role: "poet", prominence: 4, sources: [wikipedia:Li_Qingzhao] }
-  - { id: p-zhu-xi, name: Zhu Xi, lane: song, life: "1130 – 1200 CE", role: "Neo-Confucian philosopher", prominence: 3, sources: [wikipedia:Zhu_Xi] }
-  - { id: p-kublai, name: Kublai Khan, lane: yuan, life: "1215 – 1294 CE", role: "Mongol emperor of China", prominence: 2, sources: [wikipedia:Kublai_Khan] }
-  - { id: p-yongle, name: Yongle Emperor, lane: ming, life: "1360 – 1424 CE", role: "builder of the Forbidden City", prominence: 3, sources: [wikipedia:Yongle_Emperor] }
-  - { id: p-zheng-he, name: Zheng He, lane: ming, life: "1371 – 1433 CE", role: "admiral of the treasure fleets", prominence: 2, sources: [wikipedia:Zheng_He] }
-  - { id: p-sejong, name: Sejong the Great, lane: joseon, life: "1397 – 1450 CE", role: "king who created Hangul", prominence: 2, endonym: { text: "세종", script: Kore, translit: Sejong }, sources: [wikipedia:Sejong_the_Great] }
-  - { id: p-oda-nobunaga, name: Oda Nobunaga, lane: shogunate, life: "1534 – 1582 CE", role: "warlord who began Japan's reunification", prominence: 3, sources: [wikipedia:Oda_Nobunaga] }
-  - { id: p-tokugawa-ieyasu, name: Tokugawa Ieyasu, lane: edo, life: "1543 – 1616 CE", role: "first Tokugawa shogun", prominence: 3, sources: [wikipedia:Tokugawa_Ieyasu] }
-  - { id: p-yi-sun-sin, name: Yi Sun-sin, lane: joseon, life: "1545 – 1598 CE", role: "admiral of the turtle ships", prominence: 3, sources: [wikipedia:Yi_Sun-sin] }
-  - { id: p-kangxi, name: Kangxi Emperor, lane: qing, life: "1654 – 1722 CE", role: "Qing emperor for 61 years", prominence: 3, sources: [wikipedia:Kangxi_Emperor] }
-  - { id: p-hokusai, name: Katsushika Hokusai, lane: edo, life: "1760 – 1849 CE", role: "print-maker of the Great Wave", prominence: 3, sources: [wikipedia:Hokusai] }
-  - { id: p-meiji-emperor, name: Emperor Meiji, lane: empire-japan, life: "1852 – 1912 CE", role: "emperor of Japan's modernisation", prominence: 3, sources: [wikipedia:Emperor_Meiji] }
-  - { id: p-sun-yat-sen, name: Sun Yat-sen, lane: roc, life: "1866 – 1925 CE", role: "father of the Chinese republic", prominence: 2, sources: [wikipedia:Sun_Yat-sen] }
-  - { id: p-lu-xun, name: Lu Xun, lane: roc, life: "1881 – 1936 CE", role: "writer", prominence: 4, sources: [wikipedia:Lu_Xun] }
-  - { id: p-mao, name: Mao Zedong, lane: prc, life: "1893 – 1976 CE", role: "founder of the People's Republic", prominence: 2, sources: [wikipedia:Mao_Zedong] }
-  - { id: p-deng-xiaoping, name: Deng Xiaoping, lane: prc, life: "1904 – 1997 CE", role: "architect of China's reforms", prominence: 3, sources: [wikipedia:Deng_Xiaoping] }
+  - { id: p-confucius, name: Confucius, lane: zhou-eastern, life: "551 – 479 BCE", role: "teacher of rulers", themes: [ideas, government], prominence: 2, endonym: { text: "孔子", script: Hant, translit: Kǒngzǐ }, sources: [wikipedia:Confucius] }
+  - { id: p-mozi, name: Mozi, lane: zhou-eastern, life: "c. 470 – c. 391 BCE", role: "philosopher of impartial care", themes: [ideas], prominence: 4, sources: [wikipedia:Mozi] }
+  - { id: p-mencius, name: Mencius, lane: zhou-eastern, life: "c. 372 – c. 289 BCE", role: "Confucian philosopher", themes: [ideas], prominence: 3, sources: [wikipedia:Mencius] }
+  - { id: p-zhuangzi, name: Zhuangzi, lane: zhou-eastern, life: "c. 369 – c. 286 BCE", role: "Daoist philosopher", themes: [ideas], prominence: 4, sources: [wikipedia:Zhuang_Zhou] }
+  - { id: p-qin-shi-huang, name: Qin Shi Huang, lane: qin, life: "259 – 210 BCE", role: "the First Emperor", themes: [government], prominence: 2, endonym: { text: "秦始皇", script: Hant, translit: Qín Shǐ Huáng }, sources: [wikipedia:Qin_Shi_Huang] }
+  - { id: p-han-wudi, name: Emperor Wu of Han, lane: han, life: "156 – 87 BCE", role: "emperor who pushed Han power west", themes: [government], prominence: 3, sources: [wikipedia:Emperor_Wu_of_Han] }
+  - { id: p-zhang-qian, name: Zhang Qian, lane: han, life: "c. 164 – 114 BCE", role: "envoy who opened the road to the West", themes: [exploration], prominence: 3, sources: [wikipedia:Zhang_Qian] }
+  - { id: p-sima-qian, name: Sima Qian, lane: han, life: "c. 145 – c. 86 BCE", role: "historian", themes: [art, ideas], prominence: 3, sources: [wikipedia:Sima_Qian] }
+  - { id: p-cao-cao, name: Cao Cao, lane: han, life: "155 – 220 CE", role: "warlord and poet", themes: [art, war], prominence: 4, sources: [wikipedia:Cao_Cao] }
+  - { id: p-zhuge-liang, name: Zhuge Liang, lane: shu-han, life: "181 – 234 CE", role: "strategist of Shu", themes: [war], prominence: 4, sources: [wikipedia:Zhuge_Liang] }
+  - { id: p-gwanggaeto-king, name: Gwanggaeto the Great, lane: goguryeo, life: "374 – 413 CE", role: "conqueror-king of Goguryeo", themes: [government, war], prominence: 4, sources: [wikipedia:Gwanggaeto_the_Great] }
+  - { id: p-tang-taizong, name: Emperor Taizong of Tang, lane: tang, life: "598 – 649 CE", role: "emperor of a golden age", themes: [government], prominence: 3, sources: [wikipedia:Emperor_Taizong_of_Tang] }
+  - { id: p-xuanzang, name: Xuanzang, lane: tang, life: "c. 602 – 664 CE", role: "monk who walked to India for sutras", themes: [religion, exploration], prominence: 3, sources: [wikipedia:Xuanzang] }
+  - { id: p-wu-zetian, name: Wu Zetian, lane: tang, life: "624 – 705 CE", role: "China's only woman emperor", themes: [government, women], prominence: 2, sources: [wikipedia:Wu_Zetian] }
+  - { id: p-li-bai, name: Li Bai, lane: tang, life: "701 – 762 CE", role: "poet", themes: [art], prominence: 3, sources: [wikipedia:Li_Bai] }
+  - { id: p-du-fu, name: Du Fu, lane: tang, life: "712 – 770 CE", role: "poet", themes: [art], prominence: 4, sources: [wikipedia:Du_Fu] }
+  - { id: p-kukai, name: Kūkai, lane: nara-heian, life: "774 – 835 CE", role: "founder of Shingon Buddhism", themes: [government, religion], prominence: 4, sources: [wikipedia:Kūkai] }
+  - { id: p-sei-shonagon, name: Sei Shōnagon, lane: nara-heian, life: "c. 966 – c. 1025 CE", role: "author of The Pillow Book", themes: [art, women], prominence: 4, sources: [wikipedia:Sei_Shōnagon] }
+  - { id: p-murasaki, name: Murasaki Shikibu, lane: nara-heian, life: "c. 973 – c. 1014 CE", role: "author of The Tale of Genji", themes: [art, women], prominence: 2, endonym: { text: "紫式部", script: Jpan, translit: Murasaki Shikibu }, sources: [wikipedia:Murasaki_Shikibu] }
+  - { id: p-su-shi, name: Su Shi, lane: song, life: "1037 – 1101 CE", role: "poet, painter, statesman", themes: [art, government], prominence: 4, sources: [wikipedia:Su_Shi] }
+  - { id: p-li-qingzhao, name: Li Qingzhao, lane: song, life: "1084 – c. 1155 CE", role: "poet", themes: [art, women], prominence: 4, sources: [wikipedia:Li_Qingzhao] }
+  - { id: p-zhu-xi, name: Zhu Xi, lane: song, life: "1130 – 1200 CE", role: "Neo-Confucian philosopher", themes: [ideas], prominence: 3, sources: [wikipedia:Zhu_Xi] }
+  - { id: p-kublai, name: Kublai Khan, lane: yuan, life: "1215 – 1294 CE", role: "Mongol emperor of China", themes: [government], prominence: 2, sources: [wikipedia:Kublai_Khan] }
+  - { id: p-yongle, name: Yongle Emperor, lane: ming, life: "1360 – 1424 CE", role: "builder of the Forbidden City", themes: [technology], prominence: 3, sources: [wikipedia:Yongle_Emperor] }
+  - { id: p-zheng-he, name: Zheng He, lane: ming, life: "1371 – 1433 CE", role: "admiral of the treasure fleets", themes: [war, exploration], prominence: 2, sources: [wikipedia:Zheng_He] }
+  - { id: p-sejong, name: Sejong the Great, lane: joseon, life: "1397 – 1450 CE", role: "king who created Hangul", themes: [government], prominence: 2, endonym: { text: "세종", script: Kore, translit: Sejong }, sources: [wikipedia:Sejong_the_Great] }
+  - { id: p-oda-nobunaga, name: Oda Nobunaga, lane: shogunate, life: "1534 – 1582 CE", role: "warlord who began Japan's reunification", themes: [war], prominence: 3, sources: [wikipedia:Oda_Nobunaga] }
+  - { id: p-tokugawa-ieyasu, name: Tokugawa Ieyasu, lane: edo, life: "1543 – 1616 CE", role: "first Tokugawa shogun", themes: [government], prominence: 3, sources: [wikipedia:Tokugawa_Ieyasu] }
+  - { id: p-yi-sun-sin, name: Yi Sun-sin, lane: joseon, life: "1545 – 1598 CE", role: "admiral of the turtle ships", themes: [war], prominence: 3, sources: [wikipedia:Yi_Sun-sin] }
+  - { id: p-kangxi, name: Kangxi Emperor, lane: qing, life: "1654 – 1722 CE", role: "Qing emperor for 61 years", themes: [government], prominence: 3, sources: [wikipedia:Kangxi_Emperor] }
+  - { id: p-hokusai, name: Katsushika Hokusai, lane: edo, life: "1760 – 1849 CE", role: "print-maker of the Great Wave", themes: [art], prominence: 3, sources: [wikipedia:Hokusai] }
+  - { id: p-meiji-emperor, name: Emperor Meiji, lane: empire-japan, life: "1852 – 1912 CE", role: "emperor of Japan's modernisation", themes: [government], prominence: 3, sources: [wikipedia:Emperor_Meiji] }
+  - { id: p-sun-yat-sen, name: Sun Yat-sen, lane: roc, life: "1866 – 1925 CE", role: "father of the Chinese republic", themes: [government], prominence: 2, sources: [wikipedia:Sun_Yat-sen] }
+  - { id: p-lu-xun, name: Lu Xun, lane: roc, life: "1881 – 1936 CE", role: "writer", themes: [art], prominence: 4, sources: [wikipedia:Lu_Xun] }
+  - { id: p-mao, name: Mao Zedong, lane: prc, life: "1893 – 1976 CE", role: "founder of the People's Republic", themes: [government], prominence: 2, sources: [wikipedia:Mao_Zedong] }
+  - { id: p-deng-xiaoping, name: Deng Xiaoping, lane: prc, life: "1904 – 1997 CE", role: "architect of China's reforms", themes: [technology], prominence: 3, sources: [wikipedia:Deng_Xiaoping] }

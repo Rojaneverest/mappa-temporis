@@ -43,7 +43,7 @@ self.onmessage = async (e: MessageEvent<ToWorker>) => {
 async function init(chartUrl: string) {
   const [kit, chart] = await Promise.all([
     CanvasKitInit({ locateFile: (f: string) => `/canvaskit/${f}` }),
-    fetch(chartUrl).then((r) => r.json() as Promise<DisplayList>),  ]);
+    fetch(chartUrl, { cache: 'no-cache' }).then((r) => r.json() as Promise<DisplayList>),  ]);
   const fontBufs = await Promise.all(FONT_FILES.map((f) => fetch(`${chart.fonts}${f.file}`).then((r) => r.arrayBuffer())));
   ck = kit;
   dl = chart;

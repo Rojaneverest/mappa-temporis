@@ -45,6 +45,7 @@ function line(e: z.infer<typeof Event>): string {
   if (e.themes.length) parts.push(`themes: [${e.themes.join(', ')}]`);
   if (e.confidence !== 'attested') parts.push(`confidence: ${e.confidence}`);
   if (e.thread) parts.push(`thread: ${e.thread}`);
+  if (e.threads.length) parts.push(`threads: [${e.threads.join(', ')}]`);
   parts.push(`sources: [${e.sources.join(', ')}]`);
   if (e.note) parts.push(`note: ${q(e.note)}`);
   if (e.people.length) parts.push(`people: [${e.people.join(', ')}]`);

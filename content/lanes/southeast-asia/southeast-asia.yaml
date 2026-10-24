@@ -55,7 +55,7 @@ lanes:
     span: 111 BCE – 939 CE
     events:
       - { id: trung-sisters, date: 40 CE, label: "The Trưng sisters lead a revolt against Han rule", prominence: 2, themes: [women, war], sources: [wikipedia:Trưng_sisters] }
-      - { id: luy-lau, date: c. 200 CE, label: "Luy Lâu becomes an early centre of Buddhism", prominence: 4, themes: [religion], sources: [wikipedia:Luy_Lâu] }
+      - { id: luy-lau, date: c. 200 CE, label: "Luy Lâu becomes an early centre of Buddhism", prominence: 4, themes: [religion], sources: [wikipedia:Luy_Lâu], threads: [buddhism] }
       - { id: lady-trieu, date: 248 CE, label: "Lady Triệu leads a revolt against Wu", prominence: 4, themes: [war, women], sources: [wikipedia:Lady_Triệu] }
       - { id: van-xuan, date: 544 CE, label: "Lý Bí declares the kingdom of Vạn Xuân", prominence: 4, themes: [government], sources: [wikipedia:Early_Lý_dynasty] }
       - { id: annam-protectorate, date: 679 CE, label: "Tang China sets up the Protectorate of Annam", prominence: 4, themes: [government], sources: [wikipedia:Protectorate_General_to_Pacify_the_South] }
@@ -114,7 +114,7 @@ lanes:
     span: c. 200 BCE – c. 1050 CE
     events:
       - { id: sri-ksetra, date: c. 800 CE, label: "Pyu city-states at Sri Ksetra and Halin", prominence: 4, sources: [wikipedia:Sri_Ksetra_Kingdom] }
-      - { id: pyu-buddhism, date: c. 500 CE, label: "Pyu cities embrace Buddhism", prominence: 4, themes: [religion], sources: [wikipedia:Pyu_city-states] }
+      - { id: pyu-buddhism, date: c. 500 CE, label: "Pyu cities embrace Buddhism", prominence: 4, themes: [religion], sources: [wikipedia:Pyu_city-states], threads: [buddhism] }
       - { id: beikthano, date: c. 200 BCE, label: "Beikthano, an early walled Pyu city", prominence: 4, sources: [wikipedia:Beikthano] }
     sources: [wikipedia:Pyu_city-states]
 

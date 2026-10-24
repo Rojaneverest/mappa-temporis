@@ -48,7 +48,7 @@ lanes:
     events:
       - { id: ain-jalut, date: 1260 CE, label: "The Mamluks stop the Mongols at Ain Jalut", prominence: 2, themes: [war], sources: [wikipedia:Battle_of_Ain_Jalut] }
       - { id: ibn-khaldun, date: 1377 CE, label: "Ibn Khaldun's Muqaddimah: a science of history and society", prominence: 3, themes: [ideas], sources: [wikipedia:Muqaddimah] }
-      - { id: mamluk-plague, date: 1348 CE, label: "The Black Death kills a third of Cairo", prominence: 3, themes: [disease], sources: [wikipedia:Black_Death_in_the_Middle_East] }
+      - { id: mamluk-plague, date: 1348 CE, label: "The Black Death kills a third of Cairo", prominence: 3, themes: [disease], sources: [wikipedia:Black_Death_in_the_Middle_East], threads: [pandemics] }
       - { id: sultan-hassan, date: 1363 CE, label: "The Mosque-Madrasa of Sultan Hassan rises in Cairo", prominence: 4, themes: [art, religion], sources: [wikipedia:Mosque-Madrasa_of_Sultan_Hassan] }
       - { id: timur-damascus, date: 1400 CE, label: "Timur sacks Damascus", prominence: 3, themes: [war], sources: [wikipedia:Siege_of_Damascus_(1400)] }
     sources: [wikipedia:Mamluk_Sultanate]
@@ -173,7 +173,7 @@ lanes:
       - { type: becomes, lane: turkey, at: 1923 CE }
     events:
       - { id: osman, date: 1299 CE, label: "Osman I founds a frontier principality in Anatolia", prominence: 3, sources: [wikipedia:Osman_I] }
-      - { id: constantinople-1453, date: 1453 CE, label: "Mehmed II takes Constantinople", prominence: 1, themes: [war], sources: [wikipedia:Fall_of_Constantinople], people: [p-mehmed-ii] }
+      - { id: constantinople-1453, date: 1453 CE, label: "Mehmed II takes Constantinople", prominence: 1, themes: [war], sources: [wikipedia:Fall_of_Constantinople], people: [p-mehmed-ii], threads: [gunpowder] }
       - { id: suleiman, date: 1520 CE, label: "Suleiman the Magnificent; Sinan builds his great mosques", prominence: 2, themes: [art, government], sources: [wikipedia:Suleiman_the_Magnificent] }
       - { id: vienna-1683, date: 1683 CE, label: "The siege of Vienna fails", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Vienna] }
       - { id: tanzimat, date: 1839 CE, label: "The Tanzimat reforms", prominence: 4, themes: [government], sources: [wikipedia:Tanzimat] }
@@ -183,7 +183,7 @@ lanes:
       - { id: lepanto, date: 1571 CE, label: "Lepanto", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Lepanto] }
       - { id: sinan, date: 1557 CE, label: "Sinan's Süleymaniye Mosque", prominence: 3, themes: [art], sources: [wikipedia:Süleymaniye_Mosque] }
       - { id: tulip-era, date: 1718 CE, label: "The Tulip Era", prominence: 4, themes: [art], sources: [wikipedia:Tulip_period] }
-      - { id: ottoman-printing, date: 1727 CE, label: "İbrahim Müteferrika's printing press", prominence: 4, thread: paper, sources: [wikipedia:Ibrahim_Muteferrika] }
+      - { id: ottoman-printing, date: 1727 CE, label: "İbrahim Müteferrika's printing press", prominence: 4, thread: paper, sources: [wikipedia:Ibrahim_Muteferrika], threads: [printing] }
       - { id: gallipoli-ottoman, date: 1915 CE, label: "Mustafa Kemal at Gallipoli", prominence: 4, themes: [war], sources: [wikipedia:Mustafa_Kemal_Atatürk] }
       - { id: balkan-wars, date: 1912 CE, label: "The Balkan Wars", prominence: 4, themes: [war], sources: [wikipedia:Balkan_Wars] }
       - { id: selim-egypt, date: 1517 CE, label: "Selim I takes Egypt, Syria and the holy cities of Arabia", prominence: 2, themes: [war], sources: [wikipedia:Ottoman–Mamluk_War_(1516–1517)] }
@@ -319,7 +319,7 @@ lanes:
       - { id: shia-iran, date: 1501 CE, label: "Ismail I makes Shi'ism the faith of Iran", prominence: 2, themes: [religion], sources: [wikipedia:Ismail_I] }
       - { id: isfahan, date: 1598 CE, label: "Shah Abbas rebuilds Isfahan — 'half the world'", prominence: 2, themes: [art], sources: [wikipedia:Isfahan] }
       - { id: iran-revolution, date: 1979 CE, label: "The Iranian Revolution", prominence: 2, themes: [government, religion], sources: [wikipedia:Iranian_revolution] }
-      - { id: chaldiran, date: 1514 CE, label: "Chaldiran: Ottoman guns defeat the Safavids", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Chaldiran] }
+      - { id: chaldiran, date: 1514 CE, label: "Chaldiran: Ottoman guns defeat the Safavids", prominence: 3, themes: [war], sources: [wikipedia:Battle_of_Chaldiran], threads: [gunpowder] }
       - { id: nader-shah, date: 1736 CE, label: "Nader Shah ends the Safavids", prominence: 4, sources: [wikipedia:Nader_Shah] }
       - { id: shah-abbas, date: 1588 CE, label: "Shah Abbas the Great", prominence: 3, sources: [wikipedia:Abbas_the_Great] }
       - { id: qajars, date: 1789 CE, label: "The Qajar dynasty rules Iran from Tehran", prominence: 4, themes: [government], sources: [wikipedia:Qajar_Iran] }
